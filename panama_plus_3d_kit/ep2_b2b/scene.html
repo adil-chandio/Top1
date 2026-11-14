@@ -99,52 +99,56 @@
     renderer.toneMappingExposure = 1.25;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x060911);
-    scene.fog = new THREE.FogExp2(0x060911, 0.032);
+    scene.background = new THREE.Color(0x091324);
+    scene.fog = new THREE.FogExp2(0x091324, 0.024);
 
     const camera = new THREE.PerspectiveCamera(42, 1080 / 1920, 0.1, 200);
 
-    // Dark-Luxury Studio Lighting
-    scene.add(new THREE.HemisphereLight(0xfde68a, 0x0b1220, 1.0));
-    const keyLight = new THREE.DirectionalLight(0xfff4d6, 3.8);
-    keyLight.position.set(6, 14, 8);
+    // Dark-Luxury Studio Lighting (front key + warm gold rim + cool cyan rim + studio fill)
+    scene.add(new THREE.HemisphereLight(0xfff1c9, 0x0e1a2f, 1.45));
+    const keyLight = new THREE.DirectionalLight(0xfff4d6, 4.2);
+    keyLight.position.set(6, 14, 10);
     scene.add(keyLight);
 
-    const rimGold = new THREE.DirectionalLight(0xf59e0b, 3.4);
+    const frontFill = new THREE.PointLight(0xfde68a, 32, 35);
+    frontFill.position.set(2.5, 3.2, 6.5);
+    scene.add(frontFill);
+
+    const rimGold = new THREE.DirectionalLight(0xf59e0b, 3.6);
     rimGold.position.set(-8, 4, -8);
     scene.add(rimGold);
 
-    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 2.8);
+    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 3.2);
     rimCyan.position.set(8, 2, -9);
     scene.add(rimCyan);
 
     // Reflective Obsidian Stage Floor + Subtle Gold Grid
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(140, 140),
-      new THREE.MeshStandardMaterial({ color: 0x090d16, roughness: 0.28, metalness: 0.65 })
+      new THREE.MeshStandardMaterial({ color: 0x0b1322, roughness: 0.25, metalness: 0.7 })
     );
     floor.rotation.x = -Math.PI / 2;
     floor.position.y = -4.2;
     scene.add(floor);
 
-    const grid = new THREE.GridHelper(90, 45, 0xf5bc42, 0x1e293b);
+    const grid = new THREE.GridHelper(90, 45, 0xf5bc42, 0x1e3a5f);
     grid.position.y = -4.18;
-    grid.material.opacity = 0.28;
+    grid.material.opacity = 0.36;
     grid.material.transparent = true;
     scene.add(grid);
 
     // Materials
-    const obsidianMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.22, metalness: 0.85 });
-    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf5bc42, roughness: 0.2, metalness: 0.92, emissive: 0x3b2604, emissiveIntensity: 0.45 });
-    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, roughness: 0.1, metalness: 0.15, transparent: true, opacity: 0.32 });
+    const obsidianMat = new THREE.MeshStandardMaterial({ color: 0x162238, roughness: 0.2, metalness: 0.82 });
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf5bc42, roughness: 0.18, metalness: 0.92, emissive: 0x5c3c08, emissiveIntensity: 0.55 });
+    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, roughness: 0.1, metalness: 0.15, transparent: true, opacity: 0.4 });
 
-    // Architectural Monoliths Ring
+    // Background Architectural Monoliths Crescent (STRICTLY behind Z = -5 so NEVER blocks camera!)
     const pillars = [];
-    const pillarGeo = new THREE.BoxGeometry(1.1, 9.5, 1.1);
-    for (let i = 0; i < 8; i++) {
+    const pillarGeo = new THREE.BoxGeometry(1.0, 9.5, 1.0);
+    for (let i = 0; i < 7; i++) {
       const m = new THREE.Mesh(pillarGeo, i % 2 === 0 ? obsidianMat : goldMat);
-      const ang = (i / 8) * Math.PI * 2;
-      m.position.set(Math.cos(ang) * 7.5, -0.5, Math.sin(ang) * 7.5 - 2);
+      const tPos = (i - 3) / 3; // -1 to +1
+      m.position.set(tPos * 7.2, -0.5, -6.5 - (1 - Math.abs(tPos)) * 5.0);
       scene.add(m);
       pillars.push(m);
     }
