@@ -9,6 +9,7 @@ import argparse
 import json
 from pathlib import Path
 
+PROOF_B2B_URL = "https://drive.google.com/file/d/135l95ZXiJMnVUGI33RYO-cBUC1FeSVgd/view?usp=drivesdk"
 PROOF_3D_URL = "https://drive.google.com/file/d/11rA2TXann9own5xforYa1xE5kbGaAdSd/view?usp=drivesdk"
 PORTAL_URL = "https://monarch-workspace-beryl.vercel.app/?portal=MON-DEMO26"
 PORTFOLIO_URL = "https://adil-chandio.github.io/portfolio/"
@@ -28,7 +29,8 @@ Maine {brand} ki online presence aur content check kiya — {angle}.
 
 Hum MONARCH® Studio me {offer_line} tayyar karte hain. Sabse pehle aapko humare private Client Portal me live watermarked preview milta hai — jab 100% pasand aaye tab SadaPay / Raast / Easypaisa se master files unlock karen:
 
-• Live 3D Quality Proof: {PROOF_3D_URL}
+• B2B 3D Commercial Reel: {PROOF_B2B_URL}
+• Custom 3D World Proof: {PROOF_3D_URL}
 • Interactive Client Portal: {PORTAL_URL}
 • Portfolio: {PORTFOLIO_URL}
 
@@ -49,7 +51,8 @@ Checked out {brand} — {angle}.
 
 At MONARCH® Studio, we produce {offer_line} (-14 LUFS broadcast mix, real 3D staging, zero stock fluff). You inspect every watermarked cut inside a private Client Portal first and only unlock final masters once approved (Card / Apple Pay / 0%-fee Contra escrow / USDC):
 
-• Real 3D Render Proof: {PROOF_3D_URL}
+• B2B 3D Launch Commercial: {PROOF_B2B_URL}
+• Custom 3D World Proof: {PROOF_3D_URL}
 • Live Client Portal Demo: {PORTAL_URL}
 • Portfolio Archive: {PORTFOLIO_URL}
 
