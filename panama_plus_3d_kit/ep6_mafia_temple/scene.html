@@ -259,40 +259,45 @@
       });
       headBust.add(faceRes.group);
 
-      // Sculpted dark hair crown + jaw shadow + mafia suit collar/lapels
-      const hairMat = new THREE.MeshStandardMaterial({ color: 0x111318, roughness: 0.85 });
-      const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.118, 20, 16), hairMat);
-      hairCap.scale.set(0.95, 0.78, 1.06);
-      hairCap.position.set(0, 0.085, -0.02);
+      // Sculpted dark hair crown + tailored dark suit shoulders (zero forehead overlap!)
+      const hairMat = new THREE.MeshStandardMaterial({ color: 0x0d1016, roughness: 0.88 });
+      const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.108, 22, 18), hairMat);
+      hairCap.scale.set(0.86, 0.52, 0.92);
+      hairCap.position.set(0, 0.128, -0.028);
       const suitBust = new THREE.Mesh(
-        new THREE.CylinderGeometry(0.14, 0.25, 0.32, 20),
-        new THREE.MeshStandardMaterial({ color: 0x0b0e14, roughness: 0.62 })
+        new THREE.CylinderGeometry(0.115, 0.24, 0.34, 20),
+        new THREE.MeshStandardMaterial({ color: 0x0a0d13, roughness: 0.65 })
       );
-      suitBust.position.set(0, -0.28, -0.01);
-      const shirtV = new THREE.Mesh(
-        new THREE.ConeGeometry(0.065, 0.18, 12),
-        new THREE.MeshStandardMaterial({ color: 0xdbeafe, roughness: 0.5 })
+      suitBust.position.set(0, -0.32, -0.01);
+      const collarL = new THREE.Mesh(
+        new THREE.BoxGeometry(0.055, 0.14, 0.04),
+        new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.55 })
       );
-      shirtV.rotation.z = Math.PI;
-      shirtV.position.set(0, -0.21, 0.11);
-      headBust.add(hairCap, suitBust, shirtV);
+      collarL.position.set(0.048, -0.19, 0.08);
+      collarL.rotation.set(0.15, 0, -0.35);
+      const collarR = collarL.clone();
+      collarR.position.x = -0.048;
+      collarR.rotation.z = 0.35;
+      headBust.add(hairCap, suitBust, collarL, collarR);
 
-      // Glowing crimson irises for Shot 6!
-      eyeLMat = new THREE.MeshBasicMaterial({ color: 0xff1e1e, transparent: true, opacity: 0.0 });
+      // Glowing crimson irises seated cleanly in LeePerrySmith eye sockets for Shot 6!
+      eyeLMat = new THREE.MeshBasicMaterial({ color: 0xff1a1a, transparent: true, opacity: 0.0 });
       eyeRMat = eyeLMat.clone();
-      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 12), eyeLMat);
-      eyeL.position.set(0.036, 0.012, 0.105);
-      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 12), eyeRMat);
-      eyeR.position.set(-0.036, 0.012, 0.105);
-      headBust.add(eyeL, eyeR);
+      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 12), eyeLMat);
+      eyeL.position.set(0.029, 0.028, 0.095);
+      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 12), eyeRMat);
+      eyeR.position.set(-0.029, 0.028, 0.095);
+      const eyeGlow = new THREE.PointLight(0xff1e1e, 0, 1.2);
+      eyeGlow.position.set(0, 0.028, 0.16);
+      headBust.add(eyeL, eyeR, eyeGlow);
 
-      // Crimson courtyard bokeh orbs behind portrait
+      // Subtle atmospheric courtyard bokeh orbs behind portrait
       for (let i = 0; i < 6; i++) {
         const bk = new THREE.Mesh(
-          new THREE.SphereGeometry(0.12, 12, 12),
-          new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xff2b2b : 0x4b7bec })
+          new THREE.SphereGeometry(0.08, 12, 12),
+          new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xff2b2b : 0x4b7bec, transparent: true, opacity: 0.45 })
         );
-        bk.position.set((i - 2.5) * 0.65, -0.15 + (i % 3) * 0.28, -3.5 - (i % 2));
+        bk.position.set((i - 2.5) * 0.65, -0.12 + (i % 3) * 0.25, -4.2 - (i % 2));
         portraitGroup.add(bk);
       }
 
