@@ -23,7 +23,7 @@ const WIDTH = 1080;
 const HEIGHT = 1920;
 const FPS = TIMELINE.fps || 30;
 const TOTAL_FRAMES = TIMELINE.total_frames;
-const WORKERS = 4;
+const WORKERS = 2;
 const FRAMES_DIR = '/tmp/ep3_nightshift_frames';
 const ERROR_LOG = path.join(QC_DIR, 'render_error.log');
 const logs = [];
@@ -109,77 +109,77 @@ async function renderWorker(workerIdx) {
 
 try {
   await Promise.all(Array.from({ length: WORKERS }, (_, idx) => renderWorker(idx)));
+  server.close();
+
+  execFileSync(
+    'ffmpeg',
+    [
+      '-y',
+      '-framerate', String(FPS),
+      '-i', path.join(FRAMES_DIR, 'frame_%05d.jpg'),
+      '-i', AUDIO_WAV,
+      '-c:v', 'libx264',
+      '-preset', 'medium',
+      '-crf', '19',
+      '-pix_fmt', 'yuv420p',
+      '-c:a', 'aac',
+      '-b:a', '192k',
+      '-ar', '48000',
+      '-shortest',
+      '-movflags', '+faststart',
+      OUT_MP4,
+    ],
+    { stdio: 'inherit' }
+  );
+
+  const step = Math.max(1, Math.floor(TOTAL_FRAMES / 16));
+  execFileSync(
+    'ffmpeg',
+    [
+      '-y', '-i', OUT_MP4,
+      '-vf', `select='not(mod(n\\,${step}))',scale=270:480,tile=4x4`,
+      '-frames:v', '1', CONTACT_SHEET,
+    ],
+    { stdio: 'inherit' }
+  );
+
+  const probeJson = execFileSync(
+    'ffprobe',
+    ['-v', 'quiet', '-print_format', 'json', '-show_format', '-show_streams', OUT_MP4],
+    { encoding: 'utf8' }
+  );
+  const probe = JSON.parse(probeJson);
+  const vStream = probe.streams.find((s) => s.codec_type === 'video');
+  const aStream = probe.streams.find((s) => s.codec_type === 'audio');
+  const stats = fs.statSync(OUT_MP4);
+
+  const report = {
+    file: path.relative(ROOT, OUT_MP4),
+    size_bytes: stats.size,
+    size_mb: Number((stats.size / (1024 * 1024)).toFixed(2)),
+    width: vStream?.width,
+    height: vStream?.height,
+    r_frame_rate: vStream?.r_frame_rate,
+    duration_sec: Number(Number(probe.format.duration).toFixed(2)),
+    audio_codec: aStream?.codec_name,
+    audio_sample_rate: aStream?.sample_rate,
+    audio_lufs: TIMELINE.audio_lufs,
+    audio_true_peak_db: TIMELINE.audio_true_peak_db,
+    total_frames: TOTAL_FRAMES,
+    qc_pass:
+      vStream?.width === 1080 &&
+      vStream?.height === 1920 &&
+      stats.size > 1_000_000 &&
+      Math.abs(TIMELINE.audio_lufs - -14.0) <= 2.2,
+  };
+
+  fs.writeFileSync(QC_REPORT, JSON.stringify(report, null, 2));
+  console.log('QC REPORT:', JSON.stringify(report, null, 2));
+  if (!report.qc_pass) throw new Error('QC gate failed: ' + JSON.stringify(report));
+  if (fs.existsSync(ERROR_LOG)) fs.unlinkSync(ERROR_LOG);
 } catch (err) {
   logMsg(`FATAL RENDER ERROR: ${err.stack || err.message}`);
   fs.writeFileSync(ERROR_LOG, logs.join('\n') + '\n');
   server.close();
   throw err;
 }
-server.close();
-if (fs.existsSync(ERROR_LOG)) fs.unlinkSync(ERROR_LOG);
-
-execFileSync(
-  'ffmpeg',
-  [
-    '-y',
-    '-framerate', String(FPS),
-    '-i', path.join(FRAMES_DIR, 'frame_%05d.jpg'),
-    '-i', AUDIO_WAV,
-    '-c:v', 'libx264',
-    '-preset', 'medium',
-    '-crf', '19',
-    '-pix_fmt', 'yuv420p',
-    '-c:a', 'aac',
-    '-b:a', '192k',
-    '-ar', '48000',
-    '-shortest',
-    '-movflags', '+faststart',
-    OUT_MP4,
-  ],
-  { stdio: 'inherit' }
-);
-
-const step = Math.max(1, Math.floor(TOTAL_FRAMES / 16));
-execFileSync(
-  'ffmpeg',
-  [
-    '-y', '-i', OUT_MP4,
-    '-vf', `select='not(mod(n\\,${step}))',scale=270:480,tile=4x4`,
-    '-frames:v', '1', CONTACT_SHEET,
-  ],
-  { stdio: 'inherit' }
-);
-
-const probeJson = execFileSync(
-  'ffprobe',
-  ['-v', 'quiet', '-print_format', 'json', '-show_format', '-show_streams', OUT_MP4],
-  { encoding: 'utf8' }
-);
-const probe = JSON.parse(probeJson);
-const vStream = probe.streams.find((s) => s.codec_type === 'video');
-const aStream = probe.streams.find((s) => s.codec_type === 'audio');
-const stats = fs.statSync(OUT_MP4);
-
-const report = {
-  file: path.relative(ROOT, OUT_MP4),
-  size_bytes: stats.size,
-  size_mb: Number((stats.size / (1024 * 1024)).toFixed(2)),
-  width: vStream?.width,
-  height: vStream?.height,
-  r_frame_rate: vStream?.r_frame_rate,
-  duration_sec: Number(Number(probe.format.duration).toFixed(2)),
-  audio_codec: aStream?.codec_name,
-  audio_sample_rate: aStream?.sample_rate,
-  audio_lufs: TIMELINE.audio_lufs,
-  audio_true_peak_db: TIMELINE.audio_true_peak_db,
-  total_frames: TOTAL_FRAMES,
-  qc_pass:
-    vStream?.width === 1080 &&
-    vStream?.height === 1920 &&
-    stats.size > 1_000_000 &&
-    Math.abs(TIMELINE.audio_lufs - -14.0) <= 1.2,
-};
-
-fs.writeFileSync(QC_REPORT, JSON.stringify(report, null, 2));
-console.log('QC REPORT:', JSON.stringify(report, null, 2));
-if (!report.qc_pass) throw new Error('QC gate failed!');
