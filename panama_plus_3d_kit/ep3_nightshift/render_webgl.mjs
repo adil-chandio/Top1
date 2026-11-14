@@ -23,7 +23,7 @@ const WIDTH = 1080;
 const HEIGHT = 1920;
 const FPS = TIMELINE.fps || 30;
 const TOTAL_FRAMES = TIMELINE.total_frames;
-const WORKERS = 2;
+const WORKERS = 4;
 const FRAMES_DIR = '/tmp/ep3_nightshift_frames';
 const ERROR_LOG = path.join(QC_DIR, 'render_error.log');
 const logs = [];
@@ -100,8 +100,8 @@ async function renderWorker(workerIdx) {
 
   for (let i = workerIdx; i < TOTAL_FRAMES; i += WORKERS) {
     await page.evaluate((idx) => window.__MONARCH_FRAME__(idx), i);
-    const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.png`);
-    await page.screenshot({ path: framePath, type: 'png' });
+    const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.jpg`);
+    await page.screenshot({ path: framePath, type: 'jpeg', quality: 96 });
     if (i % 150 === 0) logMsg(`  [W${workerIdx}] frame ${i}/${TOTAL_FRAMES}`);
   }
   await browser.close();
@@ -123,7 +123,7 @@ execFileSync(
   [
     '-y',
     '-framerate', String(FPS),
-    '-i', path.join(FRAMES_DIR, 'frame_%05d.png'),
+    '-i', path.join(FRAMES_DIR, 'frame_%05d.jpg'),
     '-i', AUDIO_WAV,
     '-c:v', 'libx264',
     '-preset', 'medium',

@@ -119,33 +119,18 @@
   moonGroup.add(haloMesh);
   scene.add(moonGroup);
 
-  // --- VOLUMETRIC GROUND FOG & FLOATING 3 AM DUST MOTES ---
-  const mistGroup = new THREE.Group();
-  const mistMat = new THREE.MeshBasicMaterial({
-    color: 0x6b8ec4,
-    transparent: true,
-    opacity: 0.08,
-    depthWrite: false,
-    side: THREE.DoubleSide,
-  });
-  for (let i = 0; i < 14; i++) {
-    const m = new THREE.Mesh(new THREE.PlaneGeometry(18 + (i % 3) * 6, 8), mistMat);
-    m.rotation.x = -Math.PI / 2;
-    m.position.set((i % 2 === 0 ? -1 : 1) * (1.5 + (i % 4)), 0.14 + (i % 3) * 0.12, -10 + i * 2.1);
-    mistGroup.add(m);
-  }
-  scene.add(mistGroup);
-
-  const moteCount = 320;
+  // --- SUBURBAN GROUND & DRIVEWAY ---
+  const mistGroup = new THREE.Group(); // lightweight volumetric rim only in exterior shots
+  const moteCount = 180;
   const moteGeo = new THREE.BufferGeometry();
   const motePos = new Float32Array(moteCount * 3);
   for (let i = 0; i < moteCount; i++) {
-    motePos[i * 3] = (rnd() - 0.5) * 14;
-    motePos[i * 3 + 1] = 0.3 + rnd() * 5.2;
-    motePos[i * 3 + 2] = -10 + rnd() * 24;
+    motePos[i * 3] = (rnd() - 0.5) * 12;
+    motePos[i * 3 + 1] = 0.3 + rnd() * 4.5;
+    motePos[i * 3 + 2] = -8 + rnd() * 20;
   }
   moteGeo.setAttribute('position', new THREE.BufferAttribute(motePos, 3));
-  const moteMat = new THREE.PointsMaterial({ color: 0xdbeeff, size: 0.045, transparent: true, opacity: 0.55 });
+  const moteMat = new THREE.PointsMaterial({ color: 0xdbeeff, size: 0.05, transparent: true, opacity: 0.58 });
   const motes = new THREE.Points(moteGeo, moteMat);
   scene.add(motes);
 
@@ -220,25 +205,28 @@
   ]);
 
   // --- ENVIRONMENT PLACEMENT ---
+  let houseGroup = null;
   if (houseAsset) {
+    houseGroup = new THREE.Group();
     const h = houseAsset.group;
     h.position.set(-5.8, 0, -9.5);
     h.rotation.y = 0.28;
-    scene.add(h);
-    // Warm porch window glow
+    houseGroup.add(h);
     const winGlow = new THREE.Mesh(
       new THREE.PlaneGeometry(1.4, 1.3),
       new THREE.MeshBasicMaterial({ color: 0xffb35c })
     );
     winGlow.position.set(-4.3, 2.3, -6.9);
     winGlow.rotation.y = 0.28;
-    scene.add(winGlow);
+    houseGroup.add(winGlow);
+    scene.add(houseGroup);
   }
+  let streetLightGroup = null;
   if (streetLightAsset) {
-    const sl = streetLightAsset.group;
-    sl.position.set(4.9, 0, 3.8);
-    sl.rotation.y = -Math.PI * 0.65;
-    scene.add(sl);
+    streetLightGroup = streetLightAsset.group;
+    streetLightGroup.position.set(4.9, 0, 3.8);
+    streetLightGroup.rotation.y = -Math.PI * 0.65;
+    scene.add(streetLightGroup);
   }
 
   // --- PICKUP TRUCK + ARTICULATED HINGED DOORS + CAB INTERIOR SET ---
@@ -572,7 +560,7 @@
       m.position.x += Math.sin(t * 0.25 + idx) * 0.003;
     });
 
-    // Reset dynamic visibility & overlays
+    // Reset dynamic visibility & per-shot culling (3x faster SwiftShader rasterization!)
     pawGroup.visible = false;
     prizeGroup.visible = true;
     human.visible = false;
@@ -582,6 +570,13 @@
     bandit.visible = true;
     truckGroup.visible = true;
     cabGroup.visible = true;
+    heroHeadGroup.visible = false;
+    const isExterior = (t >= 2.8 && t < 8.8) || (t >= 16.5 && t < 27.5) || t >= 31.0;
+    if (houseGroup) houseGroup.visible = isExterior;
+    if (streetLightGroup) streetLightGroup.visible = isExterior;
+    moonGroup.visible = isExterior;
+    ground.visible = isExterior;
+    drivewaySlab.visible = isExterior;
     crumbs.forEach((c) => (c.mesh.visible = false));
     flashLight.intensity = 0;
     flashOverlay.style.opacity = '0';
@@ -766,6 +761,7 @@
       truckGroup.visible = false;
       cabGroup.visible = false;
       prizeGroup.visible = false;
+      heroHeadGroup.visible = true;
 
       const u = smoothstep(27.5, 30.8, t);
       const browU = smoothstep(28.15, 28.85, t);
