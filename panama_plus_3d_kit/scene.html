@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MONARCH Panama-Plus 3D Renderer</title>
+  <title>MONARCH Panama-Plus 3D — Why Orcas Fear Humpbacks</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: #05080f;
+      background: #020a14;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     }
     #stage {
@@ -20,6 +20,12 @@
       height: 100%;
       display: block;
     }
+    #vignette {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at 50% 42%, transparent 45%, rgba(1, 6, 14, 0.72) 100%);
+    }
     #hud {
       position: fixed;
       inset: 0;
@@ -27,52 +33,95 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 72px 54px 120px;
+      padding: 88px 54px 235px;
     }
-    .tag {
-      align-self: center;
-      background: rgba(10, 12, 18, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      color: #f4efe6;
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .pill {
+      background: rgba(4, 15, 29, 0.72);
+      border: 1px solid rgba(112, 214, 255, 0.35);
+      color: #e6f6ff;
       padding: 12px 24px;
       border-radius: 999px;
-      font-size: 24px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
     }
-    .caption-box {
+    .pill.gold {
+      border-color: rgba(255, 209, 102, 0.5);
+      color: #ffd166;
+    }
+    .center-callout {
       align-self: center;
       text-align: center;
-      max-width: 920px;
+      background: rgba(3, 12, 24, 0.78);
+      border: 1px solid rgba(255, 209, 102, 0.48);
+      padding: 24px 36px;
+      border-radius: 20px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
+      opacity: 0;
+      transform: translateY(14px) scale(0.96);
+      transition: none;
     }
-    .headline {
-      color: #ffffff;
-      font-size: 68px;
+    .center-callout.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+    .callout-head {
+      color: #ffd166;
+      font-size: 46px;
       font-weight: 900;
-      line-height: 1.04;
-      letter-spacing: -0.02em;
-      text-shadow: 0 10px 32px rgba(0, 0, 0, 0.85);
+      letter-spacing: 0.04em;
       text-transform: uppercase;
     }
-    .subline {
-      margin-top: 16px;
-      color: #ffd166;
-      font-size: 32px;
+    .callout-sub {
+      margin-top: 8px;
+      color: #cfefff;
+      font-size: 26px;
       font-weight: 700;
-      letter-spacing: 0.06em;
-      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+      letter-spacing: 0.10em;
+    }
+    .captions-wrap {
+      align-self: center;
+      text-align: center;
+      max-width: 940px;
+      padding: 18px 28px;
+      border-radius: 18px;
+      background: rgba(2, 9, 18, 0.66);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .captions-text {
+      color: #ffffff;
+      font-size: 46px;
+      font-weight: 900;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
+    }
+    .captions-text .hi {
+      color: #ffd166;
     }
   </style>
 </head>
 <body>
   <canvas id="stage"></canvas>
+  <div id="vignette"></div>
   <div id="hud">
-    <div class="tag" id="badge">MONARCH® 3D</div>
-    <div class="caption-box">
-      <div class="headline" id="headline">PANAMA-PLUS 3D</div>
-      <div class="subline" id="subline">1080×1920 · 30FPS</div>
+    <div class="top-bar">
+      <div class="pill">MONARCH® 3D</div>
+      <div class="pill gold" id="beatTag">APEX PREDATOR</div>
+    </div>
+    <div class="center-callout" id="callout">
+      <div class="callout-head" id="calloutHead"></div>
+      <div class="callout-sub" id="calloutSub"></div>
+    </div>
+    <div class="captions-wrap" id="captionWrap">
+      <div class="captions-text" id="captionsText"></div>
     </div>
   </div>
 
@@ -92,118 +141,412 @@
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.15;
+    renderer.toneMappingExposure = 1.18;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x06101d);
-    scene.fog = new THREE.FogExp2(0x06101d, 0.045);
+    scene.background = new THREE.Color(0x031426);
+    scene.fog = new THREE.FogExp2(0x031426, 0.026);
 
-    const camera = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.1, 200);
-    camera.position.set(0, 2.2, 7.5);
+    const camera = new THREE.PerspectiveCamera(44, 1080 / 1920, 0.1, 250);
 
-    // 3-Point Cinema + Cool Rim Lighting
-    const hemi = new THREE.HemisphereLight(0x8ecae6, 0x0b132b, 0.9);
+    // Rich 3-Point Underwater Cinema Lighting
+    const hemi = new THREE.HemisphereLight(0x7dd3fc, 0x020b16, 1.35);
     scene.add(hemi);
 
-    const key = new THREE.DirectionalLight(0xfff1d6, 3.2);
-    key.position.set(6, 9, 6);
-    key.castShadow = true;
-    key.shadow.mapSize.set(2048, 2048);
-    scene.add(key);
+    const sunKey = new THREE.DirectionalLight(0xdff5ff, 3.6);
+    sunKey.position.set(8, 26, 10);
+    sunKey.castShadow = true;
+    sunKey.shadow.mapSize.set(2048, 2048);
+    scene.add(sunKey);
 
-    const rim = new THREE.DirectionalLight(0x38bdf8, 4.0);
-    rim.position.set(-6, 4, -7);
-    scene.add(rim);
+    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 3.8);
+    rimCyan.position.set(-10, 6, -12);
+    scene.add(rimCyan);
 
-    // Reflective dark ocean / studio floor
-    const floorGeo = new THREE.PlaneGeometry(80, 80, 64, 64);
+    const rimGold = new THREE.DirectionalLight(0xffcf70, 1.8);
+    rimGold.position.set(9, -3, -8);
+    scene.add(rimGold);
+
+    // Ocean Ceiling + Caustic Shimmer
+    const surfaceGeo = new THREE.PlaneGeometry(160, 160, 48, 48);
+    const surfaceMat = new THREE.MeshBasicMaterial({
+      color: 0x38bdf8,
+      transparent: true,
+      opacity: 0.24,
+      side: THREE.DoubleSide,
+      wireframe: false,
+    });
+    const surfaceMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
+    surfaceMesh.rotation.x = Math.PI / 2;
+    surfaceMesh.position.y = 14.0;
+    scene.add(surfaceMesh);
+
+    // Deep Seabed Floor
+    const floorGeo = new THREE.PlaneGeometry(180, 180, 48, 48);
+    const floorPos = floorGeo.attributes.position;
+    for (let i = 0; i < floorPos.count; i++) {
+      const x = floorPos.getX(i);
+      const y = floorPos.getY(i);
+      floorPos.setZ(i, Math.sin(x * 0.14) * 0.65 + Math.cos(y * 0.12) * 0.65);
+    }
+    floorGeo.computeVertexNormals();
     const floorMat = new THREE.MeshStandardMaterial({
-      color: 0x0b1d33,
-      roughness: 0.22,
-      metalness: 0.65,
+      color: 0x061b2e,
+      roughness: 0.78,
+      metalness: 0.12,
     });
     const floor = new THREE.Mesh(floorGeo, floorMat);
     floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -1.2;
+    floor.position.y = -7.5;
     floor.receiveShadow = true;
     scene.add(floor);
 
-    let heroGroup = new THREE.Group();
-    scene.add(heroGroup);
+    // Volumetric God-Rays
+    const rayGroup = new THREE.Group();
+    const rayGeo = new THREE.ConeGeometry(4.6, 26, 20, 1, true);
+    const rayMat = new THREE.MeshBasicMaterial({
+      color: 0x7dd3fc,
+      transparent: true,
+      opacity: 0.085,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+      side: THREE.DoubleSide,
+    });
+    const rays = [];
+    for (let i = 0; i < 8; i++) {
+      const r = new THREE.Mesh(rayGeo, rayMat);
+      r.position.set((i - 3.5) * 4.2, 5.5, -4 - (i % 3) * 5);
+      r.rotation.z = (i - 3.5) * 0.07;
+      rayGroup.add(r);
+      rays.push(r);
+    }
+    scene.add(rayGroup);
 
-    // Fallback geometric monolith if no .glb provided
-    function buildPlaceholderMonolith() {
-      const mat = new THREE.MeshStandardMaterial({
-        color: 0xd4af37,
-        metalness: 0.85,
-        roughness: 0.18,
+    // 450 Plankton & Bubble Particles
+    const pCount = 450;
+    const pGeo = new THREE.BufferGeometry();
+    const pArr = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      pArr[i * 3] = (Math.sin(i * 12.9898) * 0.5) * 42;
+      pArr[i * 3 + 1] = ((i % 45) / 45) * 20 - 7;
+      pArr[i * 3 + 2] = (Math.cos(i * 78.233) * 0.5) * 42;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
+    const pMat = new THREE.PointsMaterial({
+      color: 0xbfefff,
+      size: 0.11,
+      transparent: true,
+      opacity: 0.55,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+    const particles = new THREE.Points(pGeo, pMat);
+    scene.add(particles);
+
+    // Sonar Rings (for Beat 5)
+    const sonarGroup = new THREE.Group();
+    const sonarRings = [];
+    for (let i = 0; i < 3; i++) {
+      const rg = new THREE.RingGeometry(0.95, 1.08, 48);
+      const rm = new THREE.MeshBasicMaterial({
+        color: 0x38bdf8,
+        transparent: true,
+        opacity: 0.0,
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
       });
-      const core = new THREE.Mesh(new THREE.OctahedronGeometry(1.35, 2), mat);
-      core.castShadow = true;
-      heroGroup.add(core);
+      const ring = new THREE.Mesh(rg, rm);
+      ring.rotation.x = Math.PI / 2;
+      sonarGroup.add(ring);
+      sonarRings.push(ring);
+    }
+    scene.add(sonarGroup);
+
+    // Asset holders
+    const actors = {
+      orcas: [],
+      whale: null,
+      shark: null,
+      fishes: [],
+    };
+    const mixers = [];
+    const loader = new GLTFLoader();
+
+    function normalizeModel(gltfScene, targetLength) {
+      const root = new THREE.Group();
+      const inner = gltfScene.clone();
+      const box = new THREE.Box3().setFromObject(inner);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      const maxDim = Math.max(size.x, size.y, size.z, 0.001);
+      const scale = targetLength / maxDim;
+      inner.scale.setScalar(scale);
+      inner.position.sub(center.multiplyScalar(scale));
+      inner.traverse((o) => {
+        if (o.isMesh) {
+          o.castShadow = true;
+          o.receiveShadow = true;
+          if (o.material) {
+            o.material = o.material.clone();
+            o.material.roughness = Math.min(o.material.roughness ?? 0.5, 0.48);
+          }
+        }
+      });
+      root.add(inner);
+      return root;
     }
 
-    window.__MONARCH_INIT__ = async (job) => {
-      const w = job.width || 1080;
-      const h = job.height || 1920;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
+    async function loadGLTF(url) {
+      return new Promise((resolve, reject) => {
+        loader.load(url, resolve, undefined, reject);
+      });
+    }
 
-      document.getElementById('headline').textContent = job.headline || 'MONARCH 3D';
-      document.getElementById('subline').textContent = job.subline || `${w}×${h} · ${job.fps || 30}FPS`;
+    let TIMELINE = null;
 
-      if (job.model_served_path) {
-        const loader = new GLTFLoader();
-        await new Promise((resolve) => {
-          loader.load(
-            job.model_served_path,
-            (gltf) => {
-              const root = gltf.scene;
-              const box = new THREE.Box3().setFromObject(root);
-              const size = new THREE.Vector3();
-              const center = new THREE.Vector3();
-              box.getSize(size);
-              box.getCenter(center);
-              const maxDim = Math.max(size.x, size.y, size.z, 0.001);
-              const scale = 3.2 / maxDim;
-              root.scale.setScalar(scale);
-              root.position.sub(center.multiplyScalar(scale));
-              root.traverse((o) => {
-                if (o.isMesh) {
-                  o.castShadow = true;
-                  o.receiveShadow = true;
-                }
-              });
-              heroGroup.add(root);
-              resolve();
-            },
-            undefined,
-            () => {
-              buildPlaceholderMonolith();
-              resolve();
-            }
-          );
-        });
-      } else {
-        buildPlaceholderMonolith();
+    window.__MONARCH_INIT__ = async (timeline) => {
+      TIMELINE = timeline;
+      renderer.setSize(1080, 1920, false);
+
+      const [orcaGltf, whaleGltf, fishGltf, sharkGltf] = await Promise.all([
+        loadGLTF('/assets/orca.glb'),
+        loadGLTF('/assets/whale.glb'),
+        loadGLTF('/assets/fish1.glb'),
+        loadGLTF('/assets/shark.glb'),
+      ]);
+
+      // Build Orca Pod (3 Orcas, ~4.2m scale)
+      for (let i = 0; i < 3; i++) {
+        const o = normalizeModel(orcaGltf.scene, 4.2);
+        scene.add(o);
+        actors.orcas.push(o);
       }
+
+      // Build Giant Humpback Whale (~11.5m scale -> massive vs 4.2m Orcas!)
+      const w = normalizeModel(whaleGltf.scene, 11.5);
+      scene.add(w);
+      actors.whale = w;
+
+      // Shark (~3.2m)
+      const sh = normalizeModel(sharkGltf.scene, 3.2);
+      scene.add(sh);
+      actors.shark = sh;
+
+      // School of 16 Animated Fish
+      for (let i = 0; i < 16; i++) {
+        const f = normalizeModel(fishGltf.scene, 0.75);
+        scene.add(f);
+        actors.fishes.push(f);
+        if (fishGltf.animations && fishGltf.animations.length > 0) {
+          const mx = new THREE.AnimationMixer(f.children[0]);
+          const act = mx.clipAction(fishGltf.animations[0]);
+          act.play();
+          act.time = (i * 0.23) % 2.0;
+          mixers.push(mx);
+        }
+      }
+      if (sharkGltf.animations && sharkGltf.animations.length > 0) {
+        const mx = new THREE.AnimationMixer(sh.children[0]);
+        mx.clipAction(sharkGltf.animations[0]).play();
+        mixers.push(mx);
+      }
+
       renderer.render(scene, camera);
     };
 
-    window.__MONARCH_FRAME__ = (frameIdx, totalFrames) => {
-      const t = frameIdx / Math.max(totalFrames - 1, 1);
-      const angle = t * Math.PI * 0.65 - 0.35;
-      const radius = 6.8 - t * 1.9;
-      camera.position.set(
-        Math.sin(angle) * radius + Math.sin(t * 24) * 0.03,
-        1.4 + Math.cos(t * Math.PI) * 0.6 + Math.cos(t * 17) * 0.02,
-        Math.cos(angle) * radius
-      );
-      camera.lookAt(0, 0.1, 0);
-      heroGroup.rotation.y = t * 0.45;
+    function formatCaption(text, tLocal, dur) {
+      const words = text.split(' ');
+      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.88, 0.2)));
+      const activeIdx = Math.min(words.length - 1, Math.floor(progress * words.length));
+      // Show rolling 6-word window for clean large readability
+      const winStart = Math.max(0, Math.floor(activeIdx / 6) * 6);
+      const slice = words.slice(winStart, winStart + 6);
+      return slice
+        .map((w, i) => {
+          const globalI = winStart + i;
+          return globalI <= activeIdx ? `<span class="hi">${w}</span>` : w;
+        })
+        .join(' ');
+    }
+
+    window.__MONARCH_FRAME__ = (frameIdx) => {
+      const fps = TIMELINE.fps || 30;
+      const t = frameIdx / fps;
+
+      // Advance fish/shark animation mixers deterministically
+      for (const mx of mixers) {
+        mx.setTime(t);
+      }
+
+      // Subtle plankton & god-ray drift
+      particles.position.y = (t * 0.35) % 4.0;
+      rays.forEach((r, idx) => {
+        r.rotation.z = (idx - 3.5) * 0.07 + Math.sin(t * 0.6 + idx) * 0.03;
+      });
+
+      // Find active beat
+      const beats = TIMELINE.beats;
+      let activeBeat = beats[beats.length - 1];
+      let beatIdx = beats.length - 1;
+      for (let i = 0; i < beats.length; i++) {
+        if (t >= beats[i].start && t < beats[i].end) {
+          activeBeat = beats[i];
+          beatIdx = i;
+          break;
+        }
+        if (t < beats[0].start) {
+          activeBeat = beats[0];
+          beatIdx = 0;
+          break;
+        }
+      }
+
+      const bt = Math.max(0, t - activeBeat.start);
+      const bDur = Math.max(0.5, activeBeat.end - activeBeat.start);
+      const u = Math.min(1, bt / bDur);
+
+      // Update HUD Tag & Callout & Captions
+      document.getElementById('beatTag').textContent = activeBeat.tag;
+      const callout = document.getElementById('callout');
+      if (activeBeat.headline) {
+        document.getElementById('calloutHead').textContent = activeBeat.headline;
+        document.getElementById('calloutSub').textContent = activeBeat.subline || '';
+        callout.classList.add('visible');
+      } else {
+        callout.classList.remove('visible');
+      }
+
+      const capWrap = document.getElementById('captionWrap');
+      if (t >= activeBeat.start && t <= activeBeat.voice_end + 0.35) {
+        capWrap.style.opacity = '1';
+        document.getElementById('captionsText').innerHTML = formatCaption(
+          activeBeat.text,
+          t - activeBeat.start,
+          activeBeat.voice_end - activeBeat.start
+        );
+      } else {
+        capWrap.style.opacity = '0.25';
+      }
+
+      // Reset visibility defaults
+      actors.orcas.forEach((o) => (o.visible = true));
+      actors.whale.visible = true;
+      actors.shark.visible = false;
+      actors.fishes.forEach((f) => (f.visible = false));
+      sonarRings.forEach((r) => (r.material.opacity = 0));
+
+      // Gentle breathing swim motion
+      const swim = (idx) => Math.sin(t * 3.1 + idx * 1.4) * 0.14;
+
+      // 8 CINEMATIC BEATS CAMERA + STAGING
+      if (beatIdx === 0) {
+        // Beat 1: Hook — 3 Orcas gliding cleanly toward lens
+        actors.whale.visible = false;
+        actors.orcas[0].position.set(0, 0.2 + swim(0), -4 + u * 5.2);
+        actors.orcas[0].rotation.set(0, 0, Math.sin(t * 2) * 0.04);
+        actors.orcas[1].position.set(-3.2, -0.6 + swim(1), -7.5 + u * 5.0);
+        actors.orcas[1].rotation.set(0, 0.12, 0);
+        actors.orcas[2].position.set(3.4, 0.8 + swim(2), -8.2 + u * 4.8);
+        actors.orcas[2].rotation.set(0, -0.1, 0);
+        camera.position.set(Math.sin(t * 1.1) * 0.35, 1.1 + u * 0.4, 7.2 - u * 1.6);
+        camera.lookAt(0, 0.1, -1.5);
+      } else if (beatIdx === 1) {
+        // Beat 2: Scale Reveal — Giant Whale rises behind lead Orca
+        actors.orcas[0].position.set(-1.3, -0.4 + swim(0), 1.8);
+        actors.orcas[0].rotation.set(0, 0.65, 0);
+        actors.orcas[1].visible = false;
+        actors.orcas[2].visible = false;
+        actors.whale.position.set(1.2, -3.5 + u * 4.4, -7.5);
+        actors.whale.rotation.set(-0.18 + u * 0.16, -0.45, 0.06);
+        camera.position.set(-1.8 + u * 1.2, 0.2, 9.2 - u * 1.4);
+        camera.lookAt(0.2, 0.1, -3.5);
+      } else if (beatIdx === 2) {
+        // Beat 3: Side-by-Side Scale Comparison (Data Card HUD)
+        actors.orcas[0].position.set(-2.5, -2.1 + swim(0), 2.2);
+        actors.orcas[0].rotation.set(0, Math.PI / 2, 0);
+        actors.orcas[1].visible = false;
+        actors.orcas[2].visible = false;
+        actors.whale.position.set(0.4, 1.3 + swim(3) * 0.5, -2.5);
+        actors.whale.rotation.set(0, Math.PI / 2, 0);
+        camera.position.set(0.2, 0.2, 13.5 - u * 1.5);
+        camera.lookAt(0, 0.2, -1);
+      } else if (beatIdx === 3) {
+        // Beat 4: Weapon Close-Up — Gliding along massive pectoral fin/body
+        actors.orcas.forEach((o) => (o.visible = false));
+        actors.whale.position.set(0, 0.1 + swim(0) * 0.4, 0);
+        actors.whale.rotation.set(0.1, 0.4 + u * 0.35, -0.15);
+        camera.position.set(3.2 - u * 2.4, -0.8 + u * 1.2, 5.8 - u * 1.6);
+        camera.lookAt(0.4, 0.0, 0.4);
+      } else if (beatIdx === 4) {
+        // Beat 5: Sonar + Fish Bait Ball + Shark
+        actors.whale.position.set(0, 1.4, -8.5);
+        actors.whale.rotation.set(0.1, 0.2, 0);
+        actors.orcas[0].position.set(-2.8 + u * 1.5, -0.5, -1.5);
+        actors.orcas[0].rotation.set(0, 0.9, 0);
+        actors.orcas[1].position.set(3.1 - u * 1.5, 0.4, -2.0);
+        actors.orcas[1].rotation.set(0, -0.9, 0);
+        actors.orcas[2].visible = false;
+        actors.shark.visible = true;
+        actors.shark.position.set(-1.5 + u * 3.0, -3.2, 1.0);
+        actors.shark.rotation.set(0, Math.PI / 2, 0);
+
+        actors.fishes.forEach((f, idx) => {
+          f.visible = true;
+          const ang = t * 2.4 + (idx / 16) * Math.PI * 2;
+          const rad = 2.1 + (idx % 3) * 0.55;
+          f.position.set(Math.cos(ang) * rad, -0.5 + Math.sin(ang * 2) * 0.6, 1.5 + Math.sin(ang) * rad);
+          f.rotation.set(0, -ang, 0);
+        });
+
+        sonarGroup.position.set(0, 1.2, -7.5);
+        sonarRings.forEach((r, idx) => {
+          const p = (t * 0.8 + idx * 0.33) % 1.0;
+          r.scale.setScalar(1.0 + p * 12.0);
+          r.material.opacity = (1.0 - p) * 0.65;
+        });
+
+        camera.position.set(Math.sin(t * 0.7) * 1.4, 2.4, 9.6);
+        camera.lookAt(0, -0.2, -1.5);
+      } else if (beatIdx === 5) {
+        // Beat 6: Intervention Charge — Humpback bursts forward into pod
+        actors.whale.position.set(0, -0.5 + u * 1.1, -9.0 + u * 9.5);
+        actors.whale.rotation.set(-0.15, 0, Math.sin(t * 6) * 0.04);
+        actors.orcas[0].position.set(-2.2 - u * 1.8, 0.6, 0.5);
+        actors.orcas[0].rotation.set(0, -0.7, 0.25);
+        actors.orcas[1].position.set(2.3 + u * 1.8, -0.4, 0.2);
+        actors.orcas[1].rotation.set(0, 0.7, -0.25);
+        actors.orcas[2].visible = false;
+        // Handheld adrenaline shake
+        camera.position.set(
+          Math.sin(t * 16) * 0.08,
+          -0.6 + Math.cos(t * 13) * 0.07,
+          8.2 - u * 1.5
+        );
+        camera.lookAt(0, 0.1, -1.0);
+      } else if (beatIdx === 6) {
+        // Beat 7: Orca Pod Retreat into Fog
+        actors.whale.position.set(0, 0.3 + swim(0) * 0.4, 0.5);
+        actors.whale.rotation.set(0.05, Math.PI * 0.15, 0);
+        actors.orcas[0].position.set(-3.5 - u * 7.0, 1.2 + u * 1.2, -3.5 - u * 6.0);
+        actors.orcas[0].rotation.set(-0.2, -2.2, 0.2);
+        actors.orcas[1].position.set(3.5 + u * 7.0, -0.5 + u * 1.5, -4.0 - u * 6.0);
+        actors.orcas[1].rotation.set(-0.2, 2.2, -0.2);
+        actors.orcas[2].visible = false;
+        camera.position.set(1.5 - u * 1.8, 1.8, 9.5);
+        camera.lookAt(0, 0.2, -2.5);
+      } else {
+        // Beat 8: Hero Closer — Guardian Rising Toward Sunlit Surface
+        actors.orcas.forEach((o) => (o.visible = false));
+        actors.whale.position.set(0, -1.2 + u * 3.4, -1.0);
+        actors.whale.rotation.set(-0.38, -0.35 + u * 0.4, 0.05);
+        camera.position.set(-2.6, -2.8 + u * 1.2, 8.8 - u * 1.5);
+        camera.lookAt(0, 0.8 + u * 1.5, -1.0);
+      }
+
       renderer.render(scene, camera);
     };
   </script>

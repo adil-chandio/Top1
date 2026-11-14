@@ -6,19 +6,30 @@ import { chromium } from 'playwright';
 
 const ROOT = process.cwd();
 const KIT_DIR = path.join(ROOT, 'panama_plus_3d_kit');
-const JOB = JSON.parse(fs.readFileSync(path.join(KIT_DIR, 'job.json'), 'utf8'));
+const OUT_DIR = path.join(KIT_DIR, 'out');
+const QC_DIR = path.join(KIT_DIR, 'qc');
+const DELIVERABLES_DIR = path.join(ROOT, 'deliverables');
 
-const WIDTH = JOB.width || 1080;
-const HEIGHT = JOB.height || 1920;
-const FPS = JOB.fps || 30;
-const DURATION = JOB.duration_sec || 5;
-const TOTAL_FRAMES = Math.round(FPS * DURATION);
+const TIMELINE = JSON.parse(fs.readFileSync(path.join(OUT_DIR, 'timeline_synced.json'), 'utf8'));
+const AUDIO_WAV = path.join(OUT_DIR, 'audio_master.wav');
+const OUT_MP4 = path.join(
+  DELIVERABLES_DIR,
+  'MONARCH_Why_Orcas_Fear_Humpbacks_PanamaPlus_1080x1920.mp4'
+);
+const CONTACT_SHEET = path.join(QC_DIR, 'contact_sheet.png');
+const QC_REPORT = path.join(QC_DIR, 'qc_report.json');
+
+const WIDTH = 1080;
+const HEIGHT = 1920;
+const FPS = TIMELINE.fps || 30;
+const TOTAL_FRAMES = TIMELINE.total_frames;
+const WORKERS = 4;
 const FRAMES_DIR = '/tmp/panama_plus_frames';
-const OUT_MP4 = path.join(KIT_DIR, 'out', 'panama_plus_hero_1080p.mp4');
 
 fs.rmSync(FRAMES_DIR, { recursive: true, force: true });
 fs.mkdirSync(FRAMES_DIR, { recursive: true });
-fs.mkdirSync(path.dirname(OUT_MP4), { recursive: true });
+fs.mkdirSync(QC_DIR, { recursive: true });
+fs.mkdirSync(DELIVERABLES_DIR, { recursive: true });
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -66,41 +77,42 @@ await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
 const { port } = server.address();
 const baseUrl = `http://127.0.0.1:${port}`;
 
-const browser = await chromium.launch({
-  headless: true,
-  args: [
-    '--use-gl=angle',
-    '--use-angle=swiftshader',
-    '--enable-webgl',
-    '--ignore-gpu-blocklist',
-    '--no-sandbox',
-  ],
-});
+console.log(`Rendering ${TOTAL_FRAMES} frames (${TIMELINE.duration_sec}s @ ${FPS}fps) across ${WORKERS} workers...`);
 
-const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
-page.on('pageerror', (err) => console.error('PAGEERROR:', err));
-page.on('console', (msg) => {
-  if (msg.type() === 'error') console.error('CONSOLE:', msg.text());
-});
-await page.goto(baseUrl, { waitUntil: 'networkidle' });
+async function renderWorker(workerIdx) {
+  const browser = await chromium.launch({
+    headless: true,
+    args: [
+      '--use-gl=angle',
+      '--use-angle=swiftshader',
+      '--enable-webgl',
+      '--ignore-gpu-blocklist',
+      '--no-sandbox',
+    ],
+  });
+  const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
+  page.on('pageerror', (err) => console.error(`[W${workerIdx}] PAGEERROR:`, err));
+  page.on('console', (msg) => {
+    if (msg.type() === 'error') console.error(`[W${workerIdx}] CONSOLE:`, msg.text());
+  });
+  await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  await page.evaluate((tl) => window.__MONARCH_INIT__(tl), TIMELINE);
 
-const localModel = path.join(KIT_DIR, JOB.model_local || 'assets/model.glb');
-const payload = {
-  ...JOB,
-  model_served_path: fs.existsSync(localModel) ? `/${JOB.model_local}` : null,
-};
-
-await page.evaluate((job) => window.__MONARCH_INIT__(job), payload);
-
-for (let i = 0; i < TOTAL_FRAMES; i += 1) {
-  await page.evaluate(([idx, tot]) => window.__MONARCH_FRAME__(idx, tot), [i, TOTAL_FRAMES]);
-  const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.png`);
-  await page.screenshot({ path: framePath, type: 'png' });
+  for (let i = workerIdx; i < TOTAL_FRAMES; i += WORKERS) {
+    await page.evaluate((idx) => window.__MONARCH_FRAME__(idx), i);
+    const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.png`);
+    await page.screenshot({ path: framePath, type: 'png' });
+    if (i % 150 === 0) {
+      console.log(`  [W${workerIdx}] frame ${i}/${TOTAL_FRAMES}`);
+    }
+  }
+  await browser.close();
 }
 
-await browser.close();
+await Promise.all(Array.from({ length: WORKERS }, (_, idx) => renderWorker(idx)));
 server.close();
 
+// Encode final 1080x1920 @ 30fps MP4 with mastered -14 LUFS audio
 execFileSync(
   'ffmpeg',
   [
@@ -109,14 +121,23 @@ execFileSync(
     String(FPS),
     '-i',
     path.join(FRAMES_DIR, 'frame_%05d.png'),
+    '-i',
+    AUDIO_WAV,
     '-c:v',
     'libx264',
     '-preset',
     'medium',
     '-crf',
-    '17',
+    '19',
     '-pix_fmt',
     'yuv420p',
+    '-c:a',
+    'aac',
+    '-b:a',
+    '192k',
+    '-ar',
+    '48000',
+    '-shortest',
     '-movflags',
     '+faststart',
     OUT_MP4,
@@ -124,4 +145,56 @@ execFileSync(
   { stdio: 'inherit' }
 );
 
-console.log(`Rendered ${TOTAL_FRAMES} frames -> ${OUT_MP4}`);
+// Generate 4x4 visual inspection contact sheet (16 evenly spaced frames across the whole film)
+const step = Math.max(1, Math.floor(TOTAL_FRAMES / 16));
+execFileSync(
+  'ffmpeg',
+  [
+    '-y',
+    '-i',
+    OUT_MP4,
+    '-vf',
+    `select='not(mod(n\\,${step}))',scale=270:480,tile=4x4`,
+    '-frames:v',
+    '1',
+    CONTACT_SHEET,
+  ],
+  { stdio: 'inherit' }
+);
+
+// Run strict ffprobe + file QC
+const probeJson = execFileSync(
+  'ffprobe',
+  ['-v', 'quiet', '-print_format', 'json', '-show_format', '-show_streams', OUT_MP4],
+  { encoding: 'utf8' }
+);
+const probe = JSON.parse(probeJson);
+const vStream = probe.streams.find((s) => s.codec_type === 'video');
+const aStream = probe.streams.find((s) => s.codec_type === 'audio');
+const stats = fs.statSync(OUT_MP4);
+
+const report = {
+  file: path.relative(ROOT, OUT_MP4),
+  size_bytes: stats.size,
+  size_mb: Number((stats.size / (1024 * 1024)).toFixed(2)),
+  width: vStream?.width,
+  height: vStream?.height,
+  r_frame_rate: vStream?.r_frame_rate,
+  duration_sec: Number(Number(probe.format.duration).toFixed(2)),
+  audio_codec: aStream?.codec_name,
+  audio_sample_rate: aStream?.sample_rate,
+  audio_lufs: TIMELINE.audio_lufs,
+  audio_true_peak_db: TIMELINE.audio_true_peak_db,
+  total_frames: TOTAL_FRAMES,
+  qc_pass:
+    vStream?.width === 1080 &&
+    vStream?.height === 1920 &&
+    stats.size > 1_000_000 &&
+    Math.abs(TIMELINE.audio_lufs - -14.0) <= 1.2,
+};
+
+fs.writeFileSync(QC_REPORT, JSON.stringify(report, null, 2));
+console.log('QC REPORT:', JSON.stringify(report, null, 2));
+if (!report.qc_pass) {
+  throw new Error('QC gate failed!');
+}
