@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+node_modules/
+panama_plus_3d_kit/out/
+panama_plus_3d_kit/assets/

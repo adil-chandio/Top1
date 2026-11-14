@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MONARCH Panama-Plus 3D Renderer</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #05080f;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+    #stage {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    #hud {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 72px 54px 120px;
+    }
+    .tag {
+      align-self: center;
+      background: rgba(10, 12, 18, 0.72);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: #f4efe6;
+      padding: 12px 24px;
+      border-radius: 999px;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+    .caption-box {
+      align-self: center;
+      text-align: center;
+      max-width: 920px;
+    }
+    .headline {
+      color: #ffffff;
+      font-size: 68px;
+      font-weight: 900;
+      line-height: 1.04;
+      letter-spacing: -0.02em;
+      text-shadow: 0 10px 32px rgba(0, 0, 0, 0.85);
+      text-transform: uppercase;
+    }
+    .subline {
+      margin-top: 16px;
+      color: #ffd166;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div id="hud">
+    <div class="tag" id="badge">MONARCH® 3D</div>
+    <div class="caption-box">
+      <div class="headline" id="headline">PANAMA-PLUS 3D</div>
+      <div class="subline" id="subline">1080×1920 · 30FPS</div>
+    </div>
+  </div>
+
+  <script type="module">
+    import * as THREE from 'https://unpkg.com/three@0.170.0/build/three.module.js';
+    import { GLTFLoader } from 'https://unpkg.com/three@0.170.0/examples/jsm/loaders/GLTFLoader.js';
+
+    const canvas = document.getElementById('stage');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x06101d);
+    scene.fog = new THREE.FogExp2(0x06101d, 0.045);
+
+    const camera = new THREE.PerspectiveCamera(40, 1080 / 1920, 0.1, 200);
+    camera.position.set(0, 2.2, 7.5);
+
+    // 3-Point Cinema + Cool Rim Lighting
+    const hemi = new THREE.HemisphereLight(0x8ecae6, 0x0b132b, 0.9);
+    scene.add(hemi);
+
+    const key = new THREE.DirectionalLight(0xfff1d6, 3.2);
+    key.position.set(6, 9, 6);
+    key.castShadow = true;
+    key.shadow.mapSize.set(2048, 2048);
+    scene.add(key);
+
+    const rim = new THREE.DirectionalLight(0x38bdf8, 4.0);
+    rim.position.set(-6, 4, -7);
+    scene.add(rim);
+
+    // Reflective dark ocean / studio floor
+    const floorGeo = new THREE.PlaneGeometry(80, 80, 64, 64);
+    const floorMat = new THREE.MeshStandardMaterial({
+      color: 0x0b1d33,
+      roughness: 0.22,
+      metalness: 0.65,
+    });
+    const floor = new THREE.Mesh(floorGeo, floorMat);
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -1.2;
+    floor.receiveShadow = true;
+    scene.add(floor);
+
+    let heroGroup = new THREE.Group();
+    scene.add(heroGroup);
+
+    // Fallback geometric monolith if no .glb provided
+    function buildPlaceholderMonolith() {
+      const mat = new THREE.MeshStandardMaterial({
+        color: 0xd4af37,
+        metalness: 0.85,
+        roughness: 0.18,
+      });
+      const core = new THREE.Mesh(new THREE.OctahedronGeometry(1.35, 2), mat);
+      core.castShadow = true;
+      heroGroup.add(core);
+    }
+
+    window.__MONARCH_INIT__ = async (job) => {
+      const w = job.width || 1080;
+      const h = job.height || 1920;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+
+      document.getElementById('headline').textContent = job.headline || 'MONARCH 3D';
+      document.getElementById('subline').textContent = job.subline || `${w}×${h} · ${job.fps || 30}FPS`;
+
+      if (job.model_served_path) {
+        const loader = new GLTFLoader();
+        await new Promise((resolve) => {
+          loader.load(
+            job.model_served_path,
+            (gltf) => {
+              const root = gltf.scene;
+              const box = new THREE.Box3().setFromObject(root);
+              const size = new THREE.Vector3();
+              const center = new THREE.Vector3();
+              box.getSize(size);
+              box.getCenter(center);
+              const maxDim = Math.max(size.x, size.y, size.z, 0.001);
+              const scale = 3.2 / maxDim;
+              root.scale.setScalar(scale);
+              root.position.sub(center.multiplyScalar(scale));
+              root.traverse((o) => {
+                if (o.isMesh) {
+                  o.castShadow = true;
+                  o.receiveShadow = true;
+                }
+              });
+              heroGroup.add(root);
+              resolve();
+            },
+            undefined,
+            () => {
+              buildPlaceholderMonolith();
+              resolve();
+            }
+          );
+        });
+      } else {
+        buildPlaceholderMonolith();
+      }
+      renderer.render(scene, camera);
+    };
+
+    window.__MONARCH_FRAME__ = (frameIdx, totalFrames) => {
+      const t = frameIdx / Math.max(totalFrames - 1, 1);
+      const angle = t * Math.PI * 0.65 - 0.35;
+      const radius = 6.8 - t * 1.9;
+      camera.position.set(
+        Math.sin(angle) * radius + Math.sin(t * 24) * 0.03,
+        1.4 + Math.cos(t * Math.PI) * 0.6 + Math.cos(t * 17) * 0.02,
+        Math.cos(angle) * radius
+      );
+      camera.lookAt(0, 0.1, 0);
+      heroGroup.rotation.y = t * 0.45;
+      renderer.render(scene, camera);
+    };
+  </script>
+</body>
+</html>
