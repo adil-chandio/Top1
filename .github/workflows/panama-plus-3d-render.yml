@@ -29,11 +29,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install FFmpeg & Playwright Chromium
+      - name: Install FFmpeg, Three.js & Playwright Chromium
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg jq curl
-          npm install --no-save playwright
-          npx playwright install chromium
+          npm install --no-save playwright three
+          npx playwright install --with-deps chromium
 
       - name: Download .glb model if model_url is set
         run: |

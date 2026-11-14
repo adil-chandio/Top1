@@ -33,9 +33,26 @@ const MIME = {
 
 const server = http.createServer((req, res) => {
   const reqPath = (req.url || '/').split('?')[0];
-  const rel = reqPath === '/' ? 'scene.html' : reqPath.replace(/^\/+/, '');
-  const full = path.join(KIT_DIR, rel);
-  if (!full.startsWith(KIT_DIR) || !fs.existsSync(full) || fs.statSync(full).isDirectory()) {
+  let full;
+  if (reqPath.startsWith('/vendor/three/')) {
+    const relVendor = reqPath.slice('/vendor/three/'.length);
+    const threeDir = path.join(ROOT, 'node_modules', 'three');
+    full = path.join(threeDir, relVendor);
+    if (!full.startsWith(threeDir)) {
+      res.writeHead(403);
+      res.end('Forbidden');
+      return;
+    }
+  } else {
+    const rel = reqPath === '/' ? 'scene.html' : reqPath.replace(/^\/+/, '');
+    full = path.join(KIT_DIR, rel);
+    if (!full.startsWith(KIT_DIR)) {
+      res.writeHead(403);
+      res.end('Forbidden');
+      return;
+    }
+  }
+  if (!fs.existsSync(full) || fs.statSync(full).isDirectory()) {
     res.writeHead(404);
     res.end('Not found');
     return;
@@ -61,6 +78,10 @@ const browser = await chromium.launch({
 });
 
 const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
+page.on('pageerror', (err) => console.error('PAGEERROR:', err));
+page.on('console', (msg) => {
+  if (msg.type() === 'error') console.error('CONSOLE:', msg.text());
+});
 await page.goto(baseUrl, { waitUntil: 'networkidle' });
 
 const localModel = path.join(KIT_DIR, JOB.model_local || 'assets/model.glb');
