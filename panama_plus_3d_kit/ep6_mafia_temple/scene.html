@@ -259,11 +259,11 @@
       });
       headBust.add(faceRes.group);
 
-      // Sculpted dark hair crown + tailored dark suit shoulders (zero forehead overlap!)
-      const hairMat = new THREE.MeshStandardMaterial({ color: 0x0d1016, roughness: 0.88 });
-      const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.108, 22, 18), hairMat);
-      hairCap.scale.set(0.86, 0.52, 0.92);
-      hairCap.position.set(0, 0.128, -0.028);
+      // Sculpted dark hair crown + tailored dark suit shoulders
+      const hairMat = new THREE.MeshStandardMaterial({ color: 0x0d1016, roughness: 0.90 });
+      const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.102, 22, 18), hairMat);
+      hairCap.scale.set(0.84, 0.36, 0.90);
+      hairCap.position.set(0, 0.132, -0.025);
       const suitBust = new THREE.Mesh(
         new THREE.CylinderGeometry(0.115, 0.24, 0.34, 20),
         new THREE.MeshStandardMaterial({ color: 0x0a0d13, roughness: 0.65 })
@@ -280,15 +280,15 @@
       collarR.rotation.z = 0.35;
       headBust.add(hairCap, suitBust, collarL, collarR);
 
-      // Glowing crimson irises seated cleanly in LeePerrySmith eye sockets for Shot 6!
+      // Glowing crimson irises seated cleanly inside LeePerrySmith eye sockets (y = +0.062)
       eyeLMat = new THREE.MeshBasicMaterial({ color: 0xff1a1a, transparent: true, opacity: 0.0 });
       eyeRMat = eyeLMat.clone();
-      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 12), eyeLMat);
-      eyeL.position.set(0.029, 0.028, 0.095);
-      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.009, 12, 12), eyeRMat);
-      eyeR.position.set(-0.029, 0.028, 0.095);
+      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.0085, 12, 12), eyeLMat);
+      eyeL.position.set(0.030, 0.062, 0.094);
+      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.0085, 12, 12), eyeRMat);
+      eyeR.position.set(-0.030, 0.062, 0.094);
       const eyeGlow = new THREE.PointLight(0xff1e1e, 0, 1.2);
-      eyeGlow.position.set(0, 0.028, 0.16);
+      eyeGlow.position.set(0, 0.062, 0.16);
       headBust.add(eyeL, eyeR, eyeGlow);
 
       // Subtle atmospheric courtyard bokeh orbs behind portrait
