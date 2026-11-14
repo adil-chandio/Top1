@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MONARCH® 3D — Mafia Temple 20s Cut (1920x1080)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #030508; }
+    #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #grade {
+      position: fixed; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.72) 0%, transparent 12%, transparent 88%, rgba(0, 0, 0, 0.78) 100%),
+        radial-gradient(circle at 50% 45%, transparent 52%, rgba(2, 4, 10, 0.74) 100%);
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div id="grade"></div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/vendor/three/build/three.module.js",
+        "three/addons/": "/vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+    const canvas = document.getElementById('stage');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.24;
+    renderer.shadowMap.enabled = true;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x050912);
+    scene.fog = new THREE.FogExp2(0x050912, 0.032);
+
+    const camera = new THREE.PerspectiveCamera(38, 1920 / 1080, 0.1, 160);
+
+    // Neo-Noir Moonlight + Crimson Lantern Lighting
+    scene.add(new THREE.HemisphereLight(0x3b6096, 0x09050a, 0.92));
+    const moonKey = new THREE.DirectionalLight(0x88b4ff, 2.8);
+    moonKey.position.set(-14, 24, -18);
+    moonKey.castShadow = true;
+    moonKey.shadow.mapSize.set(1024, 1024);
+    scene.add(moonKey);
+
+    const moonRim = new THREE.DirectionalLight(0x6fa8ff, 3.0);
+    moonRim.position.set(10, 14, -22);
+    scene.add(moonRim);
+
+    // Moon disc & stars
+    const moonDisc = new THREE.Mesh(
+      new THREE.CircleGeometry(3.8, 32),
+      new THREE.MeshBasicMaterial({ color: 0xdbeafe })
+    );
+    moonDisc.position.set(-12, 22, -55);
+    scene.add(moonDisc);
+
+    // Wet Cobblestone Street + Courtyard
+    const ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(120, 120),
+      new THREE.MeshStandardMaterial({ color: 0x0f141e, roughness: 0.22, metalness: 0.45 })
+    );
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // Rain streaks
+    const rainCount = 420;
+    const rainGeo = new THREE.BufferGeometry();
+    const rainPos = new Float32Array(rainCount * 3);
+    for (let i = 0; i < rainCount; i++) {
+      rainPos[i * 3] = Math.sin(i * 19.7) * 18;
+      rainPos[i * 3 + 1] = (i % 35) * 0.45;
+      rainPos[i * 3 + 2] = Math.cos(i * 53.1) * 24 - 6;
+    }
+    rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPos, 3));
+    const rainPts = new THREE.Points(
+      rainGeo,
+      new THREE.PointsMaterial({ color: 0x9ec5ff, size: 0.08, transparent: true, opacity: 0.42 })
+    );
+    scene.add(rainPts);
+
+    const loader = new GLTFLoader();
+    const loadGLTF = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
+    const texLoader = new THREE.TextureLoader();
+
+    function fitModel(gltfScene, targetHeight) {
+      const group = new THREE.Group();
+      const inner = SkeletonUtils.clone(gltfScene);
+      const box = new THREE.Box3().setFromObject(inner);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      const s = targetHeight / Math.max(size.y, 0.001);
+      inner.scale.setScalar(s);
+      inner.position.set(-center.x * s, -box.min.y * s, -center.z * s);
+      inner.traverse((o) => {
+        if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; }
+      });
+      group.add(inner);
+      return { group, inner };
+    }
+
+    const worldGroup = new THREE.Group();
+    scene.add(worldGroup);
+
+    const portraitGroup = new THREE.Group();
+    portraitGroup.visible = false;
+    portraitGroup.position.set(0, -40, 0);
+    scene.add(portraitGroup);
+
+    let suitActor = null;
+    let suitMixer = null;
+    let walkAction = null;
+    let runAction = null;
+    let eyeLMat = null;
+    let eyeRMat = null;
+    let headBust = null;
+    let TIMELINE = null;
+
+    window.__MONARCH_INIT__ = async (timeline) => {
+      TIMELINE = timeline;
+      renderer.setSize(1920, 1080, false);
+
+      const [suitGltf, archGltf, pagodaGltf, lanternGltf, pillarGltf, streetLightGltf, faceGltf] =
+        await Promise.all([
+          loadGLTF('/assets/suit.glb'),
+          loadGLTF('/assets/stone_archway_01.glb'),
+          loadGLTF('/assets/pagoda_pillar.glb'),
+          loadGLTF('/assets/japanese_stone_lantern_01.glb'),
+          loadGLTF('/assets/pillar_decorated.glb'),
+          loadGLTF('/assets/streetlight.glb'),
+          loadGLTF('/assets/LeePerrySmith.glb'),
+        ]);
+
+      // --- BUILD TEMPLE & STREET ARCHITECTURE ---
+      // Torii / Stone Archway Gate at z = -8.0
+      const arch = fitModel(archGltf.scene, 6.8).group;
+      arch.position.set(0, 0, -8.0);
+      worldGroup.add(arch);
+
+      // Crimson Shrine Glow behind gate
+      const shrineLight = new THREE.PointLight(0xff2a2a, 34, 24);
+      shrineLight.position.set(0, 3.6, -12.0);
+      worldGroup.add(shrineLight);
+
+      const sanctuaryBackdrop = new THREE.Mesh(
+        new THREE.BoxGeometry(10.5, 6.2, 4.5),
+        new THREE.MeshStandardMaterial({ color: 0x160a0d, roughness: 0.78 })
+      );
+      sanctuaryBackdrop.position.set(0, 3.1, -18.5);
+      const sanctuaryRoof = new THREE.Mesh(
+        new THREE.ConeGeometry(8.8, 2.8, 4),
+        new THREE.MeshStandardMaterial({ color: 0x1e0e14, roughness: 0.7 })
+      );
+      sanctuaryRoof.rotation.y = Math.PI / 4;
+      sanctuaryRoof.position.set(0, 7.5, -18.5);
+      worldGroup.add(sanctuaryBackdrop, sanctuaryRoof);
+
+      // Glowing red paper lanterns & stone lanterns flanking the avenue
+      const lanternGlowMat = new THREE.MeshBasicMaterial({ color: 0xff3b2f });
+      for (let i = 0; i < 6; i++) {
+        const z = 8 - i * 4.5;
+        for (const side of [-1, 1]) {
+          const x = side * 3.8;
+          const sl = fitModel(lanternGltf.scene, 2.4).group;
+          sl.position.set(x, 0, z);
+          worldGroup.add(sl);
+
+          const orb = new THREE.Mesh(new THREE.SphereGeometry(0.18, 12, 12), lanternGlowMat);
+          orb.position.set(x, 1.85, z);
+          worldGroup.add(orb);
+
+          if (i % 2 === 0) {
+            const pl = new THREE.PointLight(0xff4422, 8.5, 11);
+            pl.position.set(x, 2.0, z);
+            worldGroup.add(pl);
+          }
+
+          // Pagoda & decorated pillars inside courtyard
+          const pil = fitModel((i % 2 === 0 ? pagodaGltf : pillarGltf).scene, 5.2).group;
+          pil.position.set(side * 5.6, 0, z - 1.5);
+          worldGroup.add(pil);
+        }
+      }
+
+      // Streetlights along outer street (Shot 1)
+      for (const z of [14, 5]) {
+        for (const side of [-1, 1]) {
+          const st = fitModel(streetLightGltf.scene, 4.8).group;
+          st.position.set(side * 5.2, 0, z);
+          st.rotation.y = side > 0 ? -Math.PI / 2 : Math.PI / 2;
+          worldGroup.add(st);
+          const l = new THREE.PointLight(0xffb86b, 10, 14);
+          l.position.set(side * 4.5, 4.2, z);
+          worldGroup.add(l);
+        }
+      }
+
+      // --- SUIT-CLAD OPERATIVE ---
+      const suitRes = fitModel(suitGltf.scene, 1.82);
+      suitActor = suitRes.group;
+      suitActor.traverse((o) => {
+        if (o.isMesh && o.material) {
+          o.material = o.material.clone();
+          o.material.color.multiplyScalar(0.45);
+          o.material.roughness = 0.65;
+        }
+      });
+      worldGroup.add(suitActor);
+      if (suitGltf.animations && suitGltf.animations.length > 0) {
+        suitMixer = new THREE.AnimationMixer(suitRes.inner);
+        const walkClip = suitGltf.animations.find((a) => /walk/i.test(a.name)) || suitGltf.animations[0];
+        const runClip = suitGltf.animations.find((a) => /run/i.test(a.name)) || walkClip;
+        walkAction = suitMixer.clipAction(walkClip);
+        runAction = suitMixer.clipAction(runClip);
+        walkAction.play();
+      }
+
+      // --- SHOT 5 & 6 PORTRAIT STAGE (LeePerrySmith scanned human face + suit bust + glowing red eyes!) ---
+      const pKey = new THREE.PointLight(0xff4230, 14, 8);
+      pKey.position.set(1.4, -39.4, 2.2);
+      const pRim = new THREE.PointLight(0x6ba8ff, 18, 9);
+      pRim.position.set(-1.8, -39.2, -1.5);
+      const pTop = new THREE.DirectionalLight(0x9fc2ff, 1.8);
+      pTop.position.set(0, -37, 2);
+      portraitGroup.add(pKey, pRim, pTop);
+
+      headBust = new THREE.Group();
+      portraitGroup.add(headBust);
+
+      let colTex = null;
+      try { colTex = await texLoader.loadAsync('/assets/Map-COL.jpg'); } catch (_) {}
+
+      const faceRes = fitModel(faceGltf.scene, 0.34);
+      faceRes.group.position.set(0, -0.17, 0);
+      faceRes.group.traverse((o) => {
+        if (o.isMesh && o.material) {
+          o.material = new THREE.MeshStandardMaterial({
+            map: colTex || o.material.map || null,
+            color: 0xc2937b,
+            roughness: 0.56,
+            metalness: 0.04,
+          });
+        }
+      });
+      headBust.add(faceRes.group);
+
+      // Sculpted dark hair crown + jaw shadow + mafia suit collar/lapels
+      const hairMat = new THREE.MeshStandardMaterial({ color: 0x111318, roughness: 0.85 });
+      const hairCap = new THREE.Mesh(new THREE.SphereGeometry(0.118, 20, 16), hairMat);
+      hairCap.scale.set(0.95, 0.78, 1.06);
+      hairCap.position.set(0, 0.085, -0.02);
+      const suitBust = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.14, 0.25, 0.32, 20),
+        new THREE.MeshStandardMaterial({ color: 0x0b0e14, roughness: 0.62 })
+      );
+      suitBust.position.set(0, -0.28, -0.01);
+      const shirtV = new THREE.Mesh(
+        new THREE.ConeGeometry(0.065, 0.18, 12),
+        new THREE.MeshStandardMaterial({ color: 0xdbeafe, roughness: 0.5 })
+      );
+      shirtV.rotation.z = Math.PI;
+      shirtV.position.set(0, -0.21, 0.11);
+      headBust.add(hairCap, suitBust, shirtV);
+
+      // Glowing crimson irises for Shot 6!
+      eyeLMat = new THREE.MeshBasicMaterial({ color: 0xff1e1e, transparent: true, opacity: 0.0 });
+      eyeRMat = eyeLMat.clone();
+      const eyeL = new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 12), eyeLMat);
+      eyeL.position.set(0.036, 0.012, 0.105);
+      const eyeR = new THREE.Mesh(new THREE.SphereGeometry(0.013, 12, 12), eyeRMat);
+      eyeR.position.set(-0.036, 0.012, 0.105);
+      headBust.add(eyeL, eyeR);
+
+      // Crimson courtyard bokeh orbs behind portrait
+      for (let i = 0; i < 6; i++) {
+        const bk = new THREE.Mesh(
+          new THREE.SphereGeometry(0.12, 12, 12),
+          new THREE.MeshBasicMaterial({ color: i % 2 === 0 ? 0xff2b2b : 0x4b7bec })
+        );
+        bk.position.set((i - 2.5) * 0.65, -0.15 + (i % 3) * 0.28, -3.5 - (i % 2));
+        portraitGroup.add(bk);
+      }
+
+      renderer.render(scene, camera);
+    };
+
+    const lerp = (a, b, u) => a + (b - a) * Math.min(1, Math.max(0, u));
+    const smoothstep = (e0, e1, x) => {
+      const u = Math.min(1, Math.max(0, (x - e0) / (e1 - e0)));
+      return u * u * (3 - 2 * u);
+    };
+
+    window.__MONARCH_FRAME__ = (f) => {
+      const fps = TIMELINE.fps || 24;
+      const t = f / fps;
+
+      rainPts.position.y = -((t * 9.5) % 4.0);
+
+      worldGroup.visible = f < 384;
+      portraitGroup.visible = f >= 384;
+
+      if (f < 96) {
+        // SHOT 1 (0-4s): Rear street walk toward misty crimson Torii gate
+        const u = f / 95;
+        if (suitMixer) { walkAction.enabled = true; if (runAction && runAction !== walkAction) runAction.enabled = false; suitMixer.setTime(t); }
+        const zPos = lerp(12.0, 6.2, u);
+        suitActor.position.set(0, 0, zPos);
+        suitActor.rotation.set(0, Math.PI, 0);
+        camera.position.set(0, 1.62, zPos + 4.4);
+        camera.lookAt(0, 1.45, zPos - 4.0);
+      } else if (f < 216) {
+        // SHOT 2 (4-9s): Locked-off temple gate shot — red lanterns & mist
+        suitActor.visible = false;
+        camera.position.set(0, 1.95, 4.2);
+        camera.lookAt(0, 2.6, -8.0);
+      } else if (f < 312) {
+        // SHOT 3 (9-13s): Aerial crane descent as operative crosses courtyard
+        suitActor.visible = true;
+        const u = (f - 216) / 95;
+        if (suitMixer) suitMixer.setTime(t);
+        const zPos = lerp(2.0, -4.8, u);
+        suitActor.position.set(0, 0, zPos);
+        suitActor.rotation.set(0, Math.PI, 0);
+        camera.position.set(0, lerp(14.5, 8.2, u), lerp(5.5, 2.2, u));
+        camera.lookAt(0, 1.0, zPos - 1.5);
+      } else if (f < 384) {
+        // SHOT 4 (13-16s): Lateral tracking run past temple pillars (pure translation, no pan!)
+        suitActor.visible = true;
+        const u = (f - 312) / 71;
+        if (suitMixer) {
+          if (runAction && runAction !== walkAction) { walkAction.enabled = false; runAction.enabled = true; }
+          suitMixer.setTime(t * 1.45);
+        }
+        const zPos = lerp(-5.0, -11.5, u);
+        suitActor.position.set(0, Math.abs(Math.sin(t * 14)) * 0.06, zPos);
+        suitActor.rotation.set(0.12, Math.PI, 0);
+        camera.position.set(3.4, 1.38, zPos + 0.5);
+        camera.lookAt(0, 1.15, zPos - 0.3);
+      } else if (f < 432) {
+        // SHOT 5 (16-18s): Tight portrait close-up — operative turns slowly toward lens
+        const u = smoothstep(384, 431, f);
+        headBust.rotation.set(0.04, lerp(-0.82, -0.05, u), 0);
+        eyeLMat.opacity = 0.0;
+        eyeRMat.opacity = 0.0;
+        camera.position.set(0, -39.96, lerp(0.88, 0.72, u));
+        camera.lookAt(0, -40.02, 0);
+      } else {
+        // SHOT 6 (18-20s): Extreme push-in — EYES IGNITE GLOWING CRIMSON RED!
+        const u = smoothstep(432, 479, f);
+        headBust.rotation.set(-0.04 * u, lerp(-0.05, 0.02, u), 0);
+        const glow = smoothstep(436, 464, f);
+        eyeLMat.opacity = glow * 0.98;
+        eyeRMat.opacity = glow * 0.98;
+        camera.position.set(0, -39.98, lerp(0.72, 0.48, u));
+        camera.lookAt(0, -39.99, 0.05);
+      }
+
+      renderer.render(scene, camera);
+    };
+  </script>
+</body>
+</html>

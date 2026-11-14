@@ -147,7 +147,7 @@
 
   // --- GLB HELPERS ---
   const loader = new GLTFLoader();
-  async function loadNormalizedGLB(url, targetHeight, targetCenter = false) {
+  async function loadNormalizedGLB(url, targetSize, targetCenter = false, useMaxDim = false) {
     try {
       const gltf = await loader.loadAsync(url);
       const root = gltf.scene;
@@ -157,8 +157,8 @@
       const center = new THREE.Vector3();
       box.getSize(size);
       box.getCenter(center);
-      const h = Math.max(size.y, 0.001);
-      const scale = targetHeight / h;
+      const dim = useMaxDim ? Math.max(size.x, size.y, size.z, 0.001) : Math.max(size.y, 0.001);
+      const scale = targetSize / dim;
       const wrapper = new THREE.Group();
       root.scale.setScalar(scale);
       root.position.set(
@@ -193,15 +193,15 @@
     houseAsset,
     streetLightAsset,
   ] = await Promise.all([
-    loadNormalizedGLB('/assets/bear.glb', 0.96, false),
-    loadNormalizedGLB('/assets/vehicle_pickup.glb', 1.82, false),
-    loadNormalizedGLB('/assets/backpack.glb', 0.42, true),
-    loadNormalizedGLB('/assets/casual_hoodie.glb', 1.78, false),
-    loadNormalizedGLB('/assets/sandwich.glb', 0.16, true),
-    loadNormalizedGLB('/assets/cookie_chocolate.glb', 0.09, true),
-    loadNormalizedGLB('/assets/bag.glb', 0.24, true),
-    loadNormalizedGLB('/assets/building_type_a.glb', 5.8, false),
-    loadNormalizedGLB('/assets/streetlight.glb', 4.8, false),
+    loadNormalizedGLB('/assets/bear.glb', 0.96, false, false),
+    loadNormalizedGLB('/assets/vehicle_pickup.glb', 1.82, false, false),
+    loadNormalizedGLB('/assets/backpack.glb', 0.44, true, true),
+    loadNormalizedGLB('/assets/casual_hoodie.glb', 1.78, false, false),
+    loadNormalizedGLB('/assets/sandwich.glb', 0.22, true, true),
+    loadNormalizedGLB('/assets/cookie_chocolate.glb', 0.11, true, true),
+    loadNormalizedGLB('/assets/bag.glb', 0.26, true, true),
+    loadNormalizedGLB('/assets/building_type_a.glb', 5.8, false, false),
+    loadNormalizedGLB('/assets/streetlight.glb', 4.8, false, false),
   ]);
 
   // --- ENVIRONMENT PLACEMENT ---
@@ -631,26 +631,28 @@
       cabGroup.visible = true;
       dashboard.visible = false;
       cabRoof.visible = false;
+      cabPillarL.visible = false;
+      cabPillarR.visible = false;
       bandit.visible = false;
       prizeGroup.position.set(0.46, 0.98, 0.18);
       if (sandwichObj) {
         const grabU = smoothstep(1.45, 2.30, t);
-        sandwichObj.position.set(lerp(0.0, 0.24, grabU), lerp(0.04, 0.26, grabU), lerp(0.04, 0.30, grabU));
+        sandwichObj.position.set(lerp(0.0, 0.18, grabU), lerp(0.04, 0.22, grabU), lerp(0.04, 0.24, grabU));
         sandwichObj.rotation.z = grabU * 0.35;
       }
       pawGroup.visible = true;
       const reachU = smoothstep(0.65, 1.52, t);
       const pullBackU = smoothstep(1.58, 2.45, t);
       pawGroup.position.set(
-        lerp(1.18, 0.48, reachU) + pullBackU * 0.26,
-        lerp(1.08, 1.04, reachU) + pullBackU * 0.24,
-        lerp(0.72, 0.22, reachU) + pullBackU * 0.34
+        lerp(1.12, 0.48, reachU) + pullBackU * 0.18,
+        lerp(1.08, 1.04, reachU) + pullBackU * 0.20,
+        lerp(0.68, 0.22, reachU) + pullBackU * 0.24
       );
       pawGroup.rotation.set(-0.18, -0.55, lerp(0.25, -0.08, reachU));
 
       const push = smoothstep(0.0, 2.8, t);
-      camera.position.set(lerp(0.95, 0.78, push), lerp(1.52, 1.38, push), lerp(0.95, 0.72, push));
-      camera.lookAt(0.46, 1.00, 0.18);
+      camera.position.set(lerp(0.95, 0.80, push), lerp(1.54, 1.42, push), lerp(0.98, 0.78, push));
+      camera.lookAt(0.46, 0.98, 0.18);
     }
 
     // =========================================================
@@ -690,6 +692,8 @@
       cabGroup.visible = true;
       dashboard.visible = true;
       cabRoof.visible = true;
+      cabPillarL.visible = true;
+      cabPillarR.visible = true;
       prizeGroup.visible = true;
       if (sandwichObj) sandwichObj.visible = false;
       heldSandwich.visible = true;
