@@ -1,0 +1,15 @@
+{
+  "file": "deliverables/MONARCH_Motivation_MainAbhiBhiApniTarafHoon_PanamaPlus_1080x1920.mp4",
+  "size_bytes": 12147109,
+  "size_mb": 11.58,
+  "width": 1080,
+  "height": 1920,
+  "r_frame_rate": "30/1",
+  "duration_sec": 40,
+  "audio_codec": "aac",
+  "audio_sample_rate": "48000",
+  "audio_lufs": -14.5,
+  "audio_true_peak_db": -1.5,
+  "total_frames": 1200,
+  "qc_pass": true
+}
