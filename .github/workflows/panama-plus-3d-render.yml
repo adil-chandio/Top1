@@ -64,6 +64,17 @@ jobs:
       - name: Render 1080x1920 @ 30fps Full 3D Video + Contact Sheet + QC
         run: node panama_plus_3d_kit/render_webgl.mjs
 
+      - name: Commit Failure Diagnostics if Render Failed
+        if: failure()
+        run: |
+          if [ -f panama_plus_3d_kit/qc/render_error.log ]; then
+            git config user.name "MONARCH Render Bot"
+            git config user.email "workadilchandio@gmail.com"
+            git add -f panama_plus_3d_kit/qc/render_error.log
+            git commit -m "debug(panama-plus): capture render_error.log [skip ci]" || true
+            git push origin HEAD:arena/2a8ad29e-top1 || true
+          fi
+
       - name: Commit Deliverable, Contact Sheet & QC Report back to branch
         run: |
           git config user.name "MONARCH Render Bot"

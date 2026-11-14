@@ -136,14 +136,14 @@
   <script type="module">
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
 
     const canvas = document.getElementById('stage');
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.18;
-    renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    renderer.toneMappingExposure = 1.22;
+    renderer.shadowMap.enabled = false;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x031426);
@@ -157,8 +157,6 @@
 
     const sunKey = new THREE.DirectionalLight(0xdff5ff, 3.6);
     sunKey.position.set(8, 26, 10);
-    sunKey.castShadow = true;
-    sunKey.shadow.mapSize.set(1024, 1024);
     scene.add(sunKey);
 
     const rimCyan = new THREE.DirectionalLight(0x38bdf8, 3.8);
@@ -274,9 +272,9 @@
     const mixers = [];
     const loader = new GLTFLoader();
 
-    function normalizeModel(gltfScene, targetLength) {
+    function normalizeModel(gltfScene, targetLength, label) {
       const root = new THREE.Group();
-      const inner = gltfScene.clone();
+      const inner = SkeletonUtils.clone(gltfScene);
       const box = new THREE.Box3().setFromObject(inner);
       const size = new THREE.Vector3();
       const center = new THREE.Vector3();
@@ -286,18 +284,27 @@
       const scale = targetLength / maxDim;
       inner.scale.setScalar(scale);
       inner.position.sub(center.multiplyScalar(scale));
+      // Auto-orient longest horizontal dimension along Z if model was authored along X
+      if (size.x > size.z * 1.15) {
+        const pivot = new THREE.Group();
+        pivot.add(inner);
+        pivot.rotation.y = Math.PI / 2;
+        root.add(pivot);
+      } else {
+        root.add(inner);
+      }
       inner.traverse((o) => {
         if (o.isMesh) {
-          o.castShadow = true;
-          o.receiveShadow = true;
           if (o.material) {
             o.material = o.material.clone();
             o.material.roughness = Math.min(o.material.roughness ?? 0.5, 0.48);
           }
         }
       });
-      root.add(inner);
-      return root;
+      if (label) {
+        console.log(`MODEL ${label}: raw=(${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)})`);
+      }
+      return { root, inner };
     }
 
     async function loadGLTF(url) {
@@ -319,40 +326,35 @@
         loadGLTF('/assets/shark.glb'),
       ]);
 
-      // Build Orca Pod (3 Orcas, ~4.2m scale)
+      // Build Orca Pod (3 Orcas, ~4.2m scale) with native swim animation
       for (let i = 0; i < 3; i++) {
-        const o = normalizeModel(orcaGltf.scene, 4.2);
-        scene.add(o);
-        actors.orcas.push(o);
-      }
-
-      // Build Giant Humpback Whale (~11.5m scale -> massive vs 4.2m Orcas!)
-      const w = normalizeModel(whaleGltf.scene, 11.5);
-      scene.add(w);
-      actors.whale = w;
-
-      // Shark (~3.2m)
-      const sh = normalizeModel(sharkGltf.scene, 3.2);
-      scene.add(sh);
-      actors.shark = sh;
-
-      // School of 16 Animated Fish
-      for (let i = 0; i < 16; i++) {
-        const f = normalizeModel(fishGltf.scene, 0.75);
-        scene.add(f);
-        actors.fishes.push(f);
-        if (fishGltf.animations && fishGltf.animations.length > 0) {
-          const mx = new THREE.AnimationMixer(f.children[0]);
-          const act = mx.clipAction(fishGltf.animations[0]);
+        const { root, inner } = normalizeModel(orcaGltf.scene, 4.2, i === 0 ? 'orca' : null);
+        scene.add(root);
+        actors.orcas.push(root);
+        if (orcaGltf.animations && orcaGltf.animations.length > 0) {
+          const mx = new THREE.AnimationMixer(inner);
+          const act = mx.clipAction(orcaGltf.animations[0]);
           act.play();
-          act.time = (i * 0.23) % 2.0;
+          act.time = i * 0.45;
           mixers.push(mx);
         }
       }
-      if (sharkGltf.animations && sharkGltf.animations.length > 0) {
-        const mx = new THREE.AnimationMixer(sh.children[0]);
-        mx.clipAction(sharkGltf.animations[0]).play();
-        mixers.push(mx);
+
+      // Build Giant Humpback Whale (~11.5m scale -> massive vs 4.2m Orcas!)
+      const whaleRes = normalizeModel(whaleGltf.scene, 11.5, 'whale');
+      scene.add(whaleRes.root);
+      actors.whale = whaleRes.root;
+
+      // Shark (~3.2m)
+      const sharkRes = normalizeModel(sharkGltf.scene, 3.2, 'shark');
+      scene.add(sharkRes.root);
+      actors.shark = sharkRes.root;
+
+      // School of 16 Fish
+      for (let i = 0; i < 16; i++) {
+        const fishRes = normalizeModel(fishGltf.scene, 0.75, i === 0 ? 'fish1' : null);
+        scene.add(fishRes.root);
+        actors.fishes.push(fishRes.root);
       }
 
       renderer.render(scene, camera);

@@ -23,8 +23,14 @@ const WIDTH = 1080;
 const HEIGHT = 1920;
 const FPS = TIMELINE.fps || 30;
 const TOTAL_FRAMES = TIMELINE.total_frames;
-const WORKERS = 4;
+const WORKERS = 2;
 const FRAMES_DIR = '/tmp/panama_plus_frames';
+const ERROR_LOG = path.join(QC_DIR, 'render_error.log');
+const logs = [];
+const logMsg = (m) => {
+  console.log(m);
+  logs.push(m);
+};
 
 fs.rmSync(FRAMES_DIR, { recursive: true, force: true });
 fs.mkdirSync(FRAMES_DIR, { recursive: true });
@@ -88,14 +94,18 @@ async function renderWorker(workerIdx) {
       '--enable-webgl',
       '--ignore-gpu-blocklist',
       '--no-sandbox',
+      '--disable-dev-shm-usage',
     ],
   });
   const page = await browser.newPage({ viewport: { width: WIDTH, height: HEIGHT } });
-  page.on('pageerror', (err) => console.error(`[W${workerIdx}] PAGEERROR:`, err));
+  page.setDefaultTimeout(180000);
+  page.on('pageerror', (err) => logMsg(`[W${workerIdx}] PAGEERROR: ${err.stack || err.message}`));
   page.on('console', (msg) => {
-    if (msg.type() === 'error') console.error(`[W${workerIdx}] CONSOLE:`, msg.text());
+    if (msg.type() === 'error' || msg.text().startsWith('MODEL ')) {
+      logMsg(`[W${workerIdx}] ${msg.type().toUpperCase()}: ${msg.text()}`);
+    }
   });
-  await page.goto(baseUrl, { waitUntil: 'networkidle' });
+  await page.goto(baseUrl, { waitUntil: 'networkidle', timeout: 120000 });
   await page.evaluate((tl) => window.__MONARCH_INIT__(tl), TIMELINE);
 
   for (let i = workerIdx; i < TOTAL_FRAMES; i += WORKERS) {
@@ -103,14 +113,22 @@ async function renderWorker(workerIdx) {
     const framePath = path.join(FRAMES_DIR, `frame_${String(i).padStart(5, '0')}.png`);
     await page.screenshot({ path: framePath, type: 'png' });
     if (i % 150 === 0) {
-      console.log(`  [W${workerIdx}] frame ${i}/${TOTAL_FRAMES}`);
+      logMsg(`  [W${workerIdx}] frame ${i}/${TOTAL_FRAMES}`);
     }
   }
   await browser.close();
 }
 
-await Promise.all(Array.from({ length: WORKERS }, (_, idx) => renderWorker(idx)));
+try {
+  await Promise.all(Array.from({ length: WORKERS }, (_, idx) => renderWorker(idx)));
+} catch (err) {
+  logMsg(`FATAL RENDER ERROR: ${err.stack || err.message}`);
+  fs.writeFileSync(ERROR_LOG, logs.join('\n') + '\n');
+  server.close();
+  throw err;
+}
 server.close();
+if (fs.existsSync(ERROR_LOG)) fs.unlinkSync(ERROR_LOG);
 
 // Encode final 1080x1920 @ 30fps MP4 with mastered -14 LUFS audio
 execFileSync(
