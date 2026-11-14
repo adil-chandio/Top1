@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MONARCH® Studio — B2B 3D Commercial</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 100%; height: 100%; overflow: hidden;
+      background: #05070b;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    }
+    #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #vignette {
+      position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 50% 45%, transparent 40%, rgba(3, 5, 10, 0.78) 100%);
+    }
+    #hud {
+      position: fixed; inset: 0; pointer-events: none;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 88px 54px 235px;
+    }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; }
+    .pill {
+      background: rgba(10, 14, 22, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      color: #f8fafc;
+      padding: 12px 24px; border-radius: 999px;
+      font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+    }
+    .pill.gold { border-color: rgba(245, 188, 66, 0.6); color: #f5bc42; }
+    .center-callout {
+      align-self: center; text-align: center;
+      background: rgba(8, 12, 20, 0.82);
+      border: 1px solid rgba(245, 188, 66, 0.55);
+      padding: 20px 34px; border-radius: 20px;
+      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.75);
+      opacity: 0;
+    }
+    .center-callout.visible { opacity: 1; }
+    .callout-head {
+      color: #f5bc42; font-size: 40px; font-weight: 900;
+      letter-spacing: 0.04em; text-transform: uppercase;
+    }
+    .callout-sub {
+      margin-top: 7px; color: #dbeafe; font-size: 22px;
+      font-weight: 700; letter-spacing: 0.11em;
+    }
+    .captions-wrap {
+      align-self: center; text-align: center; max-width: 940px;
+      padding: 18px 28px; border-radius: 18px;
+      background: rgba(6, 9, 15, 0.74);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+    .captions-text {
+      color: #ffffff; font-size: 46px; font-weight: 900;
+      line-height: 1.18; letter-spacing: -0.01em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
+    }
+    .captions-text .hi { color: #f5bc42; }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div id="vignette"></div>
+  <div id="hud">
+    <div class="top-bar">
+      <div class="pill">MONARCH® STUDIO</div>
+      <div class="pill gold" id="beatTag">STOP BURNING AD SPEND</div>
+    </div>
+    <div class="center-callout" id="callout">
+      <div class="callout-head" id="calloutHead"></div>
+      <div class="callout-sub" id="calloutSub"></div>
+    </div>
+    <div class="captions-wrap" id="captionWrap">
+      <div class="captions-text" id="captionsText"></div>
+    </div>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "/vendor/three/build/three.module.js",
+        "three/addons/": "/vendor/three/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+    const canvas = document.getElementById('stage');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+    renderer.setPixelRatio(1);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.25;
+
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x060911);
+    scene.fog = new THREE.FogExp2(0x060911, 0.032);
+
+    const camera = new THREE.PerspectiveCamera(42, 1080 / 1920, 0.1, 200);
+
+    // Dark-Luxury Studio Lighting
+    scene.add(new THREE.HemisphereLight(0xfde68a, 0x0b1220, 1.0));
+    const keyLight = new THREE.DirectionalLight(0xfff4d6, 3.8);
+    keyLight.position.set(6, 14, 8);
+    scene.add(keyLight);
+
+    const rimGold = new THREE.DirectionalLight(0xf59e0b, 3.4);
+    rimGold.position.set(-8, 4, -8);
+    scene.add(rimGold);
+
+    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 2.8);
+    rimCyan.position.set(8, 2, -9);
+    scene.add(rimCyan);
+
+    // Reflective Obsidian Stage Floor + Subtle Gold Grid
+    const floor = new THREE.Mesh(
+      new THREE.PlaneGeometry(140, 140),
+      new THREE.MeshStandardMaterial({ color: 0x090d16, roughness: 0.28, metalness: 0.65 })
+    );
+    floor.rotation.x = -Math.PI / 2;
+    floor.position.y = -4.2;
+    scene.add(floor);
+
+    const grid = new THREE.GridHelper(90, 45, 0xf5bc42, 0x1e293b);
+    grid.position.y = -4.18;
+    grid.material.opacity = 0.28;
+    grid.material.transparent = true;
+    scene.add(grid);
+
+    // Materials
+    const obsidianMat = new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.22, metalness: 0.85 });
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf5bc42, roughness: 0.2, metalness: 0.92, emissive: 0x3b2604, emissiveIntensity: 0.45 });
+    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, roughness: 0.1, metalness: 0.15, transparent: true, opacity: 0.32 });
+
+    // Architectural Monoliths Ring
+    const pillars = [];
+    const pillarGeo = new THREE.BoxGeometry(1.1, 9.5, 1.1);
+    for (let i = 0; i < 8; i++) {
+      const m = new THREE.Mesh(pillarGeo, i % 2 === 0 ? obsidianMat : goldMat);
+      const ang = (i / 8) * Math.PI * 2;
+      m.position.set(Math.cos(ang) * 7.5, -0.5, Math.sin(ang) * 7.5 - 2);
+      scene.add(m);
+      pillars.push(m);
+    }
+
+    // Gyroscopic Hero Core (Obsidian Icosahedron + 3 Gold Rings)
+    const gyroGroup = new THREE.Group();
+    const coreMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(1.55, 1), obsidianMat);
+    const coreWire = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(1.62, 1),
+      new THREE.MeshBasicMaterial({ color: 0xf5bc42, wireframe: true, transparent: true, opacity: 0.55 })
+    );
+    gyroGroup.add(coreMesh, coreWire);
+
+    const rings = [];
+    for (let i = 0; i < 3; i++) {
+      const ring = new THREE.Mesh(new THREE.TorusGeometry(2.3 + i * 0.55, 0.045, 16, 96), i === 1 ? goldMat : glassMat);
+      gyroGroup.add(ring);
+      rings.push(ring);
+    }
+    scene.add(gyroGroup);
+
+    // Floating Gold Dust Particles
+    const pCount = 380;
+    const pGeo = new THREE.BufferGeometry();
+    const pPos = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount; i++) {
+      pPos[i * 3] = Math.sin(i * 19.1) * 16;
+      pPos[i * 3 + 1] = ((i % 40) / 40) * 14 - 4;
+      pPos[i * 3 + 2] = Math.cos(i * 41.7) * 16 - 2;
+    }
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
+    const dust = new THREE.Points(
+      pGeo,
+      new THREE.PointsMaterial({ color: 0xfde68a, size: 0.085, transparent: true, opacity: 0.72, blending: THREE.AdditiveBlending })
+    );
+    scene.add(dust);
+
+    // Real Verified .glb Showcase Models (Orca + Luxury Cruise Ship)
+    const showcase = { orca: null, ship: null };
+    const mixers = [];
+    const loader = new GLTFLoader();
+
+    function normalizeModel(gltfScene, targetLength) {
+      const root = new THREE.Group();
+      const inner = SkeletonUtils.clone(gltfScene);
+      const box = new THREE.Box3().setFromObject(inner);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      const scale = targetLength / Math.max(size.x, size.y, size.z, 0.001);
+      inner.scale.setScalar(scale);
+      inner.position.sub(center.multiplyScalar(scale));
+      if (size.x > size.z * 1.15) {
+        const pivot = new THREE.Group();
+        pivot.add(inner);
+        pivot.rotation.y = Math.PI / 2;
+        root.add(pivot);
+      } else {
+        root.add(inner);
+      }
+      return { root, inner };
+    }
+
+    let TIMELINE = null;
+
+    window.__MONARCH_INIT__ = async (timeline) => {
+      TIMELINE = timeline;
+      renderer.setSize(1080, 1920, false);
+
+      const [orcaGltf, shipGltf] = await Promise.all([
+        new Promise((res, rej) => loader.load('/assets/orca.glb', res, undefined, rej)),
+        new Promise((res, rej) => loader.load('/assets/cruise_ship.glb', res, undefined, rej)),
+      ]);
+
+      const o = normalizeModel(orcaGltf.scene, 4.6);
+      o.root.visible = false;
+      scene.add(o.root);
+      showcase.orca = o.root;
+      if (orcaGltf.animations?.length) {
+        const mx = new THREE.AnimationMixer(o.inner);
+        mx.clipAction(orcaGltf.animations[0]).play();
+        mixers.push(mx);
+      }
+
+      const sh = normalizeModel(shipGltf.scene, 5.8);
+      sh.root.visible = false;
+      scene.add(sh.root);
+      showcase.ship = sh.root;
+
+      renderer.render(scene, camera);
+    };
+
+    function formatCaption(text, tLocal, dur) {
+      const words = text.split(' ');
+      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.88, 0.2)));
+      const activeIdx = Math.min(words.length - 1, Math.floor(progress * words.length));
+      const winStart = Math.max(0, Math.floor(activeIdx / 6) * 6);
+      const slice = words.slice(winStart, winStart + 6);
+      return slice
+        .map((w, i) => (winStart + i <= activeIdx ? `<span class="hi">${w}</span>` : w))
+        .join(' ');
+    }
+
+    window.__MONARCH_FRAME__ = (frameIdx) => {
+      const fps = TIMELINE.fps || 30;
+      const t = frameIdx / fps;
+
+      for (const mx of mixers) mx.setTime(t);
+      dust.rotation.y = t * 0.08;
+
+      const beats = TIMELINE.beats;
+      let activeBeat = beats[beats.length - 1];
+      let beatIdx = beats.length - 1;
+      for (let i = 0; i < beats.length; i++) {
+        if (t >= beats[i].start && t < beats[i].end) {
+          activeBeat = beats[i];
+          beatIdx = i;
+          break;
+        }
+        if (t < beats[0].start) {
+          activeBeat = beats[0];
+          beatIdx = 0;
+          break;
+        }
+      }
+
+      const bt = Math.max(0, t - activeBeat.start);
+      const bDur = Math.max(0.5, activeBeat.end - activeBeat.start);
+      const u = Math.min(1, bt / bDur);
+
+      document.getElementById('beatTag').textContent = activeBeat.tag;
+      const callout = document.getElementById('callout');
+      if (activeBeat.headline) {
+        document.getElementById('calloutHead').textContent = activeBeat.headline;
+        document.getElementById('calloutSub').textContent = activeBeat.subline || '';
+        callout.classList.add('visible');
+      } else {
+        callout.classList.remove('visible');
+      }
+
+      const capWrap = document.getElementById('captionWrap');
+      if (t >= activeBeat.start && t <= activeBeat.voice_end + 0.35) {
+        capWrap.style.opacity = '1';
+        document.getElementById('captionsText').innerHTML = formatCaption(
+          activeBeat.text,
+          t - activeBeat.start,
+          activeBeat.voice_end - activeBeat.start
+        );
+      } else {
+        capWrap.style.opacity = '0.25';
+      }
+
+      // Animate Gyro Core & Rings
+      gyroGroup.visible = true;
+      showcase.orca.visible = false;
+      showcase.ship.visible = false;
+
+      coreMesh.rotation.set(t * 0.6, t * 0.9, 0);
+      coreWire.rotation.copy(coreMesh.rotation);
+      rings[0].rotation.set(t * 1.1, t * 0.5, 0);
+      rings[1].rotation.set(-t * 0.8, t * 1.2, 0.5);
+      rings[2].rotation.set(0.7, -t * 0.9, t * 0.4);
+
+      pillars.forEach((p, idx) => {
+        p.position.y = -0.8 + Math.sin(t * 1.5 + idx * 0.9) * 0.7;
+      });
+
+      if (beatIdx === 0) {
+        // Beat 1: Low-angle power push into obsidian + gold monoliths
+        gyroGroup.position.set(0, 0.8, -1.5);
+        camera.position.set(Math.sin(t * 0.8) * 1.1, -1.6 + u * 1.8, 12.5 - u * 3.0);
+        camera.lookAt(0, 0.4, -1.5);
+      } else if (beatIdx === 1) {
+        // Beat 2: Orbit around glowing gold gyroscopic hero core
+        gyroGroup.position.set(0, 0.6, 0);
+        const ang = u * 1.4;
+        camera.position.set(Math.sin(ang) * 7.8, 1.2, Math.cos(ang) * 7.8);
+        camera.lookAt(0, 0.5, 0);
+      } else if (beatIdx === 2) {
+        // Beat 3: Precision Telemetry Grid + Core Elevated
+        gyroGroup.position.set(0, 2.2, -2.5);
+        camera.position.set(0, 0.2, 10.5 - u * 1.5);
+        camera.lookAt(0, 0.6, -2.0);
+      } else if (beatIdx === 3) {
+        // Beat 4: Real GLB Showcase (Cruise Ship & Orca floating in dark-luxury gallery)
+        gyroGroup.visible = false;
+        showcase.orca.visible = true;
+        showcase.ship.visible = true;
+        showcase.ship.position.set(0, 2.1 + Math.sin(t * 2) * 0.15, -1.5);
+        showcase.ship.rotation.set(0.08, -0.5 + u * 1.1, 0);
+        showcase.orca.position.set(0, -1.8 + Math.cos(t * 2.4) * 0.15, 0.4);
+        showcase.orca.rotation.set(0, 0.6 + u * 0.9, 0);
+        camera.position.set(2.2 - u * 3.8, 0.4, 9.6 - u * 1.0);
+        camera.lookAt(0, 0.2, -0.5);
+      } else if (beatIdx === 4) {
+        // Beat 5: Private Client Portal Gold Ring Vault
+        gyroGroup.position.set(0, 0.5, -1.0);
+        camera.position.set(-2.5 + u * 3.2, 2.4, 9.2);
+        camera.lookAt(0, 0.5, -1.0);
+      } else {
+        // Beat 6: Hero Closer — MONARCH® STUDIO Ascent
+        gyroGroup.position.set(0, 1.2 + u * 0.6, -0.5);
+        camera.position.set(0, -1.4 + u * 1.6, 8.8 - u * 1.4);
+        camera.lookAt(0, 0.9, -0.5);
+      }
+
+      renderer.render(scene, camera);
+    };
+  </script>
+</body>
+</html>
