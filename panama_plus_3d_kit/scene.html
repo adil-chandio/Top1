@@ -61,8 +61,8 @@
       text-align: center;
       background: rgba(3, 12, 24, 0.78);
       border: 1px solid rgba(255, 209, 102, 0.48);
-      padding: 24px 36px;
-      border-radius: 20px;
+      padding: 18px 28px;
+      border-radius: 18px;
       box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
       opacity: 0;
       transform: translateY(14px) scale(0.96);
@@ -74,15 +74,15 @@
     }
     .callout-head {
       color: #ffd166;
-      font-size: 46px;
+      font-size: 38px;
       font-weight: 900;
       letter-spacing: 0.04em;
       text-transform: uppercase;
     }
     .callout-sub {
-      margin-top: 8px;
+      margin-top: 6px;
       color: #cfefff;
-      font-size: 26px;
+      font-size: 22px;
       font-weight: 700;
       letter-spacing: 0.10em;
     }
@@ -201,13 +201,26 @@
     floor.receiveShadow = true;
     scene.add(floor);
 
-    // Volumetric God-Rays
+    // Volumetric God-Rays with soft radial alpha falloff (zero hard cone edges)
+    const rayCanvas = document.createElement('canvas');
+    rayCanvas.width = 128;
+    rayCanvas.height = 128;
+    const rctx = rayCanvas.getContext('2d');
+    const grad = rctx.createLinearGradient(0, 0, 0, 128);
+    grad.addColorStop(0.0, 'rgba(125, 211, 252, 0.95)');
+    grad.addColorStop(0.55, 'rgba(56, 189, 248, 0.35)');
+    grad.addColorStop(1.0, 'rgba(56, 189, 248, 0.0)');
+    rctx.fillStyle = grad;
+    rctx.fillRect(0, 0, 128, 128);
+    const rayTex = new THREE.CanvasTexture(rayCanvas);
+
     const rayGroup = new THREE.Group();
-    const rayGeo = new THREE.ConeGeometry(4.6, 26, 20, 1, true);
+    const rayGeo = new THREE.ConeGeometry(4.8, 28, 24, 1, true);
     const rayMat = new THREE.MeshBasicMaterial({
-      color: 0x7dd3fc,
+      map: rayTex,
+      color: 0x9be7ff,
       transparent: true,
-      opacity: 0.085,
+      opacity: 0.11,
       blending: THREE.AdditiveBlending,
       depthWrite: false,
       side: THREE.DoubleSide,
@@ -467,22 +480,22 @@
         camera.position.set(-1.8 + u * 1.2, 0.2, 9.2 - u * 1.4);
         camera.lookAt(0.2, 0.1, -3.5);
       } else if (beatIdx === 2) {
-        // Beat 3: Side-by-Side Scale Comparison (Data Card HUD)
-        actors.orcas[0].position.set(-2.5, -2.1 + swim(0), 2.2);
+        // Beat 3: Side-by-Side Scale Comparison — BOTH full creatures framed cleanly!
+        actors.orcas[0].position.set(-0.2, -3.2 + swim(0), 1.5);
         actors.orcas[0].rotation.set(0, Math.PI / 2, 0);
         actors.orcas[1].visible = false;
         actors.orcas[2].visible = false;
-        actors.whale.position.set(0.4, 1.3 + swim(3) * 0.5, -2.5);
+        actors.whale.position.set(0.0, 2.5 + swim(3) * 0.5, -2.5);
         actors.whale.rotation.set(0, Math.PI / 2, 0);
-        camera.position.set(0.2, 0.2, 13.5 - u * 1.5);
-        camera.lookAt(0, 0.2, -1);
+        camera.position.set(0.0, -0.1, 18.2 - u * 1.4);
+        camera.lookAt(0, -0.1, -0.5);
       } else if (beatIdx === 3) {
-        // Beat 4: Weapon Close-Up — Gliding along massive pectoral fin/body
+        // Beat 4: Weapon Close-Up — Full sweeping 5m pectoral fin framed cleanly
         actors.orcas.forEach((o) => (o.visible = false));
-        actors.whale.position.set(0, 0.1 + swim(0) * 0.4, 0);
-        actors.whale.rotation.set(0.1, 0.4 + u * 0.35, -0.15);
-        camera.position.set(3.2 - u * 2.4, -0.8 + u * 1.2, 5.8 - u * 1.6);
-        camera.lookAt(0.4, 0.0, 0.4);
+        actors.whale.position.set(-0.6, 0.4 + swim(0) * 0.4, 0);
+        actors.whale.rotation.set(0.14, 0.55 + u * 0.35, -0.14);
+        camera.position.set(4.8 - u * 1.8, -1.2 + u * 1.0, 9.2 - u * 1.4);
+        camera.lookAt(0.8, -0.2, 0.2);
       } else if (beatIdx === 4) {
         // Beat 5: Sonar + Fish Bait Ball + Shark
         actors.whale.position.set(0, 1.4, -8.5);
@@ -530,23 +543,23 @@
         );
         camera.lookAt(0, 0.1, -1.0);
       } else if (beatIdx === 6) {
-        // Beat 7: Orca Pod Retreat into Fog
-        actors.whale.position.set(0, 0.3 + swim(0) * 0.4, 0.5);
-        actors.whale.rotation.set(0.05, Math.PI * 0.15, 0);
-        actors.orcas[0].position.set(-3.5 - u * 7.0, 1.2 + u * 1.2, -3.5 - u * 6.0);
-        actors.orcas[0].rotation.set(-0.2, -2.2, 0.2);
-        actors.orcas[1].position.set(3.5 + u * 7.0, -0.5 + u * 1.5, -4.0 - u * 6.0);
-        actors.orcas[1].rotation.set(-0.2, 2.2, -0.2);
+        // Beat 7: Orca Pod Retreat into Fog — Orcas visibly fleeing past guardian Humpback
+        actors.whale.position.set(0.2, 0.2 + swim(0) * 0.4, 1.5);
+        actors.whale.rotation.set(0.05, Math.PI * 0.82, 0);
+        actors.orcas[0].position.set(-1.6 - u * 2.0, 1.4 + u * 1.4, -2.5 - u * 11.0);
+        actors.orcas[0].rotation.set(-0.18, Math.PI - 0.35, 0.15);
+        actors.orcas[1].position.set(1.8 + u * 2.2, -0.8 + u * 1.6, -3.0 - u * 11.5);
+        actors.orcas[1].rotation.set(-0.18, Math.PI + 0.35, -0.15);
         actors.orcas[2].visible = false;
-        camera.position.set(1.5 - u * 1.8, 1.8, 9.5);
-        camera.lookAt(0, 0.2, -2.5);
+        camera.position.set(2.4 - u * 1.2, 2.2, 10.4);
+        camera.lookAt(0, 0.4, -4.5);
       } else {
-        // Beat 8: Hero Closer — Guardian Rising Toward Sunlit Surface
+        // Beat 8: Hero Closer — Guardian Rising 3/4 Silhouette Toward Sunlit Surface
         actors.orcas.forEach((o) => (o.visible = false));
-        actors.whale.position.set(0, -1.2 + u * 3.4, -1.0);
-        actors.whale.rotation.set(-0.38, -0.35 + u * 0.4, 0.05);
-        camera.position.set(-2.6, -2.8 + u * 1.2, 8.8 - u * 1.5);
-        camera.lookAt(0, 0.8 + u * 1.5, -1.0);
+        actors.whale.position.set(0, -1.0 + u * 3.0, -1.2);
+        actors.whale.rotation.set(-0.26, -0.55 + u * 0.45, 0.06);
+        camera.position.set(-4.2, 1.4 + u * 0.8, 11.2 - u * 1.4);
+        camera.lookAt(0, 0.4 + u * 1.6, -1.2);
       }
 
       renderer.render(scene, camera);
