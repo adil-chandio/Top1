@@ -140,34 +140,70 @@ function makeCaveFloorTextures() {
   const c = document.createElement('canvas'); c.width = 512; c.height = 512;
   const r = document.createElement('canvas'); r.width = 512; r.height = 512;
   const gc = c.getContext('2d'), gr = r.getContext('2d');
-  gc.fillStyle = '#1d1c1e'; gc.fillRect(0, 0, 512, 512);
-  gr.fillStyle = '#c8c8c8'; gr.fillRect(0, 0, 512, 512); // rough limestone
-  for (let i = 0; i < 1200; i++) {
+  gc.fillStyle = '#1b1917'; gc.fillRect(0, 0, 512, 512);
+  gr.fillStyle = '#d4d4d4'; gr.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 2400; i++) {
     const x = ((Math.sin(i * 19.31) * 9187.13) % 1 + 1) % 1 * 512;
     const y = ((Math.sin(i * 41.17) * 6311.71) % 1 + 1) % 1 * 512;
-    const rad = 2 + (i % 14);
-    gc.fillStyle = i % 2 ? 'rgba(54,49,44,0.22)' : 'rgba(12,13,16,0.28)';
-    gc.beginPath(); gc.arc(x, y, rad, 0, Math.PI * 2); gc.fill();
+    const w = 3 + (i % 18), h = 2 + ((i * 3) % 10);
+    gc.fillStyle = i % 3 === 0 ? 'rgba(58,51,44,0.22)' : (i % 3 === 1 ? 'rgba(11,11,13,0.30)' : 'rgba(42,38,34,0.18)');
+    gc.fillRect(x, y, w, h);
+    gr.fillStyle = i % 4 === 0 ? 'rgba(110,110,110,0.22)' : 'rgba(220,220,220,0.16)';
+    gr.fillRect(x, y, w * 1.4, h * 1.2);
   }
-  // Shiny wet cave puddles (low roughness dark blobs)
-  for (let p = 0; p < 14; p++) {
-    const px = ((Math.sin(p * 7.1) * 999) % 1 + 1) % 1 * 512;
-    const py = ((Math.cos(p * 3.7) * 999) % 1 + 1) % 1 * 512;
-    const rx = 28 + (p % 4) * 16;
-    const grad = gr.createRadialGradient(px, py, 4, px, py, rx);
-    grad.addColorStop(0, '#181818'); // wet mirror-like puddle
-    grad.addColorStop(0.7, '#323232');
-    grad.addColorStop(1, 'rgba(200,200,200,0)');
-    gr.fillStyle = grad;
-    gr.beginPath(); gr.arc(px, py, rx, 0, Math.PI * 2); gr.fill();
-    gc.fillStyle = 'rgba(8,10,14,0.45)';
-    gc.beginPath(); gc.arc(px, py, rx * 0.8, 0, Math.PI * 2); gc.fill();
+  // Organic irregular mineral cracks (no round bright spots)
+  gc.strokeStyle = 'rgba(8,8,10,0.45)';
+  gc.lineWidth = 1.6;
+  for (let p = 0; p < 34; p++) {
+    let px = ((Math.sin(p * 7.1) * 999) % 1 + 1) % 1 * 512;
+    let py = ((Math.cos(p * 3.7) * 999) % 1 + 1) % 1 * 512;
+    gc.beginPath(); gc.moveTo(px, py);
+    for (let s = 0; s < 6; s++) {
+      px += Math.sin(p * 2.1 + s * 1.4) * 22;
+      py += Math.cos(p * 1.7 + s * 1.9) * 18;
+      gc.lineTo(px, py);
+    }
+    gc.stroke();
   }
   const map = new THREE.CanvasTexture(c); map.colorSpace = THREE.SRGBColorSpace;
   const rough = new THREE.CanvasTexture(r);
   map.wrapS = map.wrapT = rough.wrapS = rough.wrapT = THREE.RepeatWrapping;
-  map.repeat.set(6, 10); rough.repeat.set(6, 10);
+  map.repeat.set(5, 5); rough.repeat.set(5, 5);
   return { map, rough };
+}
+
+function makeSnowFloorTextures() {
+  const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+  const gc = c.getContext('2d');
+  gc.fillStyle = '#bccad8'; gc.fillRect(0, 0, 512, 512);
+  for (let i = 0; i < 3200; i++) {
+    const x = ((Math.sin(i * 13.71) * 8431.19) % 1 + 1) % 1 * 512;
+    const y = ((Math.sin(i * 37.93) * 5291.47) % 1 + 1) % 1 * 512;
+    gc.fillStyle = i % 2 ? 'rgba(235,244,255,0.16)' : 'rgba(130,152,175,0.14)';
+    gc.fillRect(x, y, 4 + (i % 16), 2 + (i % 5));
+  }
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(14, 12);
+  return tex;
+}
+
+function makeMolarTexture() {
+  const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+  const g = c.getContext('2d');
+  const gr = g.createLinearGradient(0, 0, 0, 256);
+  gr.addColorStop(0.0, '#735a3c');
+  gr.addColorStop(0.45, '#bfa982');
+  gr.addColorStop(0.75, '#e0d3b6');
+  gr.addColorStop(1.0, '#cdbda0');
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+  for (let i = 0; i < 420; i++) {
+    const x = (i * 47) % 256, y = (i * 89) % 256;
+    g.fillStyle = i % 2 ? 'rgba(65,45,28,0.12)' : 'rgba(245,236,214,0.10)';
+    g.fillRect(x, y, 2, 12 + (i % 24));
+  }
+  const tex = new THREE.CanvasTexture(c); tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
 }
 
 function makeChauvetMuralTexture() {
@@ -226,113 +262,141 @@ function makeChauvetMuralTexture() {
 
 const boneTex = makeBoneTextures();
 const floorTex = makeCaveFloorTextures();
+const snowFloorTex = makeSnowFloorTextures();
+const molarTex = makeMolarTexture();
 const chauvetTex = makeChauvetMuralTexture();
 
-// ------------------------------------------------------------------ PROCEDURAL 15k-TRI ANATOMICAL BEAR SKULL
+// ------------------------------------------------------------------ SCULPTED FOSSIL BEAR SKULL (ORGANIC VERTEX DISPLACEMENT)
 function buildBearSkull(isCaveBear = true) {
   const grp = new THREE.Group();
-  const boneMat = new THREE.MeshPhysicalMaterial({
-    map: boneTex, bumpMap: boneTex, bumpScale: 0.012,
-    color: isCaveBear ? 0xd9cbb0 : 0xc7b494,
-    roughness: 0.56, metalness: 0.02, clearcoat: 0.12, clearcoatRoughness: 0.65,
+  const boneMat = new THREE.MeshStandardMaterial({
+    map: boneTex, bumpMap: boneTex, bumpScale: 0.015,
+    color: isCaveBear ? 0xc8b89a : 0xb39f7e,
+    roughness: 0.78, metalness: 0.03,
   });
-  const darkMat = new THREE.MeshStandardMaterial({ color: 0x0c0907, roughness: 0.95 });
-  const toothMat = new THREE.MeshPhysicalMaterial({
-    color: 0xe9dec3, roughness: 0.28, clearcoat: 0.35, clearcoatRoughness: 0.25,
+  const darkMat = new THREE.MeshStandardMaterial({ color: 0x090705, roughness: 0.96 });
+  const toothMat = new THREE.MeshStandardMaterial({
+    map: molarTex, color: 0xe6dac0, roughness: 0.36, metalness: 0.02,
   });
 
-  // Cranium dome (steep forehead step for Ursus spelaeus!)
-  const cranium = new THREE.Mesh(new THREE.SphereGeometry(0.145, 32, 24), boneMat);
-  cranium.scale.set(0.92, isCaveBear ? 0.96 : 0.78, 1.18);
-  cranium.position.set(0, isCaveBear ? 0.155 : 0.135, -0.08);
-  cranium.castShadow = cranium.receiveShadow = true;
+  // Sculpt single continuous organic cranium + forehead step + tapered muzzle!
+  const geo = new THREE.SphereGeometry(1, 56, 40);
+  const p = geo.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    let x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+    // Elongate along Z (-1 back of cranium -> +1 snout tip)
+    let nx = x * 0.135;
+    let ny = y * 0.125;
+    let nz = z * 0.255;
 
-  // Steep Cave Bear Glabella Forehead Brow Ridge!
-  const brow = new THREE.Mesh(new THREE.SphereGeometry(0.112, 26, 20), boneMat);
-  brow.scale.set(0.94, isCaveBear ? 0.92 : 0.62, 0.92);
-  brow.position.set(0, isCaveBear ? 0.168 : 0.128, 0.045);
-  brow.rotation.x = isCaveBear ? 0.36 : 0.18;
-  brow.castShadow = true;
-
-  // Prominent Sagittal Crest along skull top
-  const crest = new THREE.Mesh(new THREE.BoxGeometry(0.022, isCaveBear ? 0.055 : 0.028, 0.22), boneMat);
-  crest.position.set(0, isCaveBear ? 0.255 : 0.208, -0.095);
-  crest.rotation.x = -0.15;
-
-  // Heavy Snout & Premaxilla
-  const snout = new THREE.Mesh(new THREE.CylinderGeometry(0.058, 0.095, 0.22, 24), boneMat);
-  snout.rotation.x = Math.PI * 0.5;
-  snout.scale.set(0.88, 1.0, 0.78);
-  snout.position.set(0, 0.088, 0.17);
-  snout.castShadow = true;
-
-  // Nasal aperture & deep hollowed eye orbits
-  const nasal = new THREE.Mesh(new THREE.SphereGeometry(0.036, 16, 14), darkMat);
-  nasal.scale.set(0.95, 0.85, 1.3);
-  nasal.position.set(0, 0.095, 0.265);
-
-  for (const s of [-1, 1]) {
-    // Deep recessed eye socket
-    const orbit = new THREE.Mesh(new THREE.SphereGeometry(0.036, 18, 16), darkMat);
-    orbit.scale.set(0.85, 0.92, 0.88);
-    orbit.position.set(s * 0.068, 0.132, 0.078);
-    // Sweeping Zygomatic Cheek Arch
-    const curve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(s * 0.072, 0.095, 0.085),
-      new THREE.Vector3(s * 0.136, 0.092, -0.015),
-      new THREE.Vector3(s * 0.105, 0.108, -0.115),
-    ]);
-    const arch = new THREE.Mesh(new THREE.TubeGeometry(curve, 18, 0.019, 12, false), boneMat);
-    arch.castShadow = true;
-    // Curved Canines (upper + lower)
-    const can = new THREE.Mesh(new THREE.ConeGeometry(0.011, 0.058, 14), toothMat);
-    can.position.set(s * 0.036, 0.042, 0.242);
-    can.rotation.x = Math.PI - 0.18;
-    can.rotation.z = s * -0.08;
-    grp.add(orbit, arch, can);
-  }
-
-  // Broad Flat Grinding Molars (signature cave bear trait!)
-  for (const s of [-1, 1]) {
-    for (let m = 0; m < 4; m++) {
-      const molar = new THREE.Mesh(new THREE.BoxGeometry(0.018, 0.014, 0.024), toothMat);
-      molar.position.set(s * 0.042, 0.052, 0.10 + m * 0.028);
-      grp.add(molar);
+    // Taper forward into bear muzzle (z > 0.15)
+    if (z > 0.05) {
+      const t = (z - 0.05) / 0.95;
+      nx *= (1.0 - 0.56 * Math.pow(t, 0.85));
+      ny *= (1.0 - 0.42 * Math.pow(t, 1.1));
+      // Steep Cave Bear glabella forehead step vs flatter Brown Bear slope!
+      if (isCaveBear) {
+        ny += Math.exp(-Math.pow((z - 0.14) * 3.8, 2)) * 0.048 * Math.max(0, y);
+        ny -= Math.max(0, t - 0.18) * 0.055 * (y > -0.2 ? 1.0 : 0.3);
+      } else {
+        ny -= t * 0.038 * Math.max(0, y + 0.3);
+      }
     }
+    // Pinched temporal fossa behind eye sockets
+    const pinch = Math.exp(-Math.pow((z - 0.02) * 3.5, 2));
+    nx *= (1.0 - 0.22 * pinch * Math.max(0, y + 0.3));
+    // Carve concave orbital hollows on left & right sides
+    const eyeDist = Math.hypot(Math.abs(x) - 0.62, y - 0.12, z - 0.22);
+    if (eyeDist < 0.38 && z > -0.05) {
+      const dent = (1.0 - eyeDist / 0.38) * 0.032;
+      nx -= Math.sign(x) * dent;
+      nz -= dent * 0.4;
+    }
+    // Sagittal crest along rear top midline
+    if (y > 0.55 && z < 0.1) {
+      const crestMask = Math.exp(-Math.pow(x * 4.5, 2)) * Math.max(0, (0.1 - z) * 1.1);
+      ny += crestMask * (isCaveBear ? 0.044 : 0.020);
+    }
+    // Flatten underside palate
+    if (y < -0.35) ny = -0.045 + (ny + 0.045) * 0.35;
+    // Subtle organic bone irregularity
+    const bump = (Math.sin(x * 9 + z * 7) * Math.cos(y * 11)) * 0.004;
+    p.setXYZ(i, nx + bump, ny + 0.125 + bump, nz + 0.03);
   }
+  geo.computeVertexNormals();
+  const cranium = new THREE.Mesh(geo, boneMat);
+  cranium.castShadow = cranium.receiveShadow = true;
+  grp.add(cranium);
 
-  // Lower Mandible Jawbone
+  // Dark hollowed nasal aperture & orbital socket shadow cups
+  const nasal = new THREE.Mesh(new THREE.SphereGeometry(0.034, 16, 12), darkMat);
+  nasal.scale.set(0.9, 0.72, 1.1);
+  nasal.position.set(0, 0.105, 0.268);
+  grp.add(nasal);
+
   for (const s of [-1, 1]) {
-    const jawCurve = new THREE.CatmullRomCurve3([
-      new THREE.Vector3(s * 0.098, 0.092, -0.105),
-      new THREE.Vector3(s * 0.072, 0.018, 0.015),
-      new THREE.Vector3(s * 0.038, 0.014, 0.215),
-      new THREE.Vector3(0, 0.020, 0.258),
+    const orbit = new THREE.Mesh(new THREE.SphereGeometry(0.033, 16, 12), darkMat);
+    orbit.scale.set(0.7, 0.85, 0.85);
+    orbit.position.set(s * 0.072, 0.145, 0.095);
+    // Sweeping organic zygomatic cheek arch
+    const curve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(s * 0.068, 0.105, 0.105),
+      new THREE.Vector3(s * 0.142, 0.102, 0.015),
+      new THREE.Vector3(s * 0.108, 0.115, -0.095),
     ]);
-    const jaw = new THREE.Mesh(new THREE.TubeGeometry(jawCurve, 20, 0.020, 12, false), boneMat);
+    const arch = new THREE.Mesh(new THREE.TubeGeometry(curve, 20, 0.017, 10, false), boneMat);
+    arch.castShadow = true;
+    // Curved paleolithic canines (curved tube instead of straight cone!)
+    const cCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(s * 0.032, 0.075, 0.245),
+      new THREE.Vector3(s * 0.034, 0.048, 0.252),
+      new THREE.Vector3(s * 0.031, 0.022, 0.244),
+    ]);
+    const can = new THREE.Mesh(new THREE.TubeGeometry(cCurve, 10, 0.009, 8, false), toothMat);
+    // Sculpted lower mandible jawbone
+    const jawCurve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(s * 0.098, 0.098, -0.095),
+      new THREE.Vector3(s * 0.070, 0.022, 0.025),
+      new THREE.Vector3(s * 0.038, 0.018, 0.220),
+      new THREE.Vector3(0, 0.024, 0.258),
+    ]);
+    const jaw = new THREE.Mesh(new THREE.TubeGeometry(jawCurve, 22, 0.019, 10, false), boneMat);
     jaw.castShadow = true;
-    grp.add(jaw);
+    grp.add(orbit, arch, can, jaw);
   }
-
-  grp.add(cranium, brow, crest, snout, nasal);
   return grp;
 }
 
-// ------------------------------------------------------------------ PROCEDURAL VERTEBRA FOR HOHLE FELS
+// ------------------------------------------------------------------ SCULPTED FOSSIL VERTEBRA FOR HOHLE FELS
 function buildVertebra() {
   const g = new THREE.Group();
-  const bMat = new THREE.MeshPhysicalMaterial({ map: boneTex, bumpMap: boneTex, bumpScale: 0.014, color: 0xc2b08d, roughness: 0.62 });
-  const centrum = new THREE.Mesh(new THREE.CylinderGeometry(0.11, 0.12, 0.14, 24), bMat);
-  centrum.rotation.x = Math.PI * 0.5;
+  const bMat = new THREE.MeshStandardMaterial({ map: boneTex, bumpMap: boneTex, bumpScale: 0.016, color: 0xbfa982, roughness: 0.78 });
+  // Organic pinched spool-shaped centrum (LatheGeometry instead of toy cylinder!)
+  const pts = [
+    new THREE.Vector2(0.01, -0.08), new THREE.Vector2(0.115, -0.075),
+    new THREE.Vector2(0.088, 0.0), new THREE.Vector2(0.112, 0.075), new THREE.Vector2(0.01, 0.08),
+  ];
+  const centrumGeo = new THREE.LatheGeometry(pts, 28);
+  centrumGeo.rotateX(Math.PI * 0.5);
+  const centrum = new THREE.Mesh(centrumGeo, bMat);
+  centrum.scale.set(1.05, 0.88, 1.0);
   centrum.castShadow = centrum.receiveShadow = true;
-  const spine = new THREE.Mesh(new THREE.BoxGeometry(0.045, 0.26, 0.09), bMat);
-  spine.position.set(0, 0.16, -0.02);
-  spine.rotation.x = -0.32;
+  // Curved organic dorsal spinous process + transverse processes
+  const spineCurve = new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, 0.06, 0.02),
+    new THREE.Vector3(0.01, 0.16, -0.03),
+    new THREE.Vector3(0.015, 0.26, -0.08),
+  ]);
+  const spine = new THREE.Mesh(new THREE.TubeGeometry(spineCurve, 14, 0.028, 10, false), bMat);
+  spine.scale.set(0.65, 1.0, 1.45);
   spine.castShadow = true;
   for (const s of [-1, 1]) {
-    const wing = new THREE.Mesh(new THREE.BoxGeometry(0.16, 0.035, 0.06), bMat);
-    wing.position.set(s * 0.14, 0.04, 0);
-    wing.rotation.z = s * -0.18;
+    const wc = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(s * 0.06, 0.04, 0.0),
+      new THREE.Vector3(s * 0.14, 0.055, -0.015),
+      new THREE.Vector3(s * 0.21, 0.025, -0.03),
+    ]);
+    const wing = new THREE.Mesh(new THREE.TubeGeometry(wc, 12, 0.022, 8, false), bMat);
     wing.castShadow = true;
     g.add(wing);
   }
@@ -422,34 +486,37 @@ const godRayMat = new THREE.ShaderMaterial({
 });
 
 // ------------------------------------------------------------------ SCENE WORLD ARCHITECTURE
-// 1. Wet Limestone Cave Floor (inside + icy snowy steppe outside)
+// 1. Wet Limestone Cave Floor (strictly inside cave Z = -13 -> +5 so it NEVER covers snow!)
 const caveFloor = new THREE.Mesh(
-  new THREE.PlaneGeometry(36, 48, 48, 48),
+  new THREE.PlaneGeometry(18, 18, 32, 32),
   new THREE.MeshStandardMaterial({
     map: floorTex.map, roughnessMap: floorTex.rough, bumpMap: floorTex.rough, bumpScale: 0.04,
-    roughness: 0.88, metalness: 0.05,
+    roughness: 0.90, metalness: 0.04,
   })
 );
 caveFloor.rotation.x = -Math.PI * 0.5;
-caveFloor.position.set(0, 0, -6);
+caveFloor.position.set(0, 0, -4.0);
 caveFloor.receiveShadow = true;
 scene.add(caveFloor);
 
-// Snowy Ice-Age Exterior Ground (Z = +5 -> +65)
-const snowPos = new THREE.PlaneGeometry(90, 70, 64, 48);
+// Snowy Ice-Age Exterior Ground (Z = +4.6 -> +70)
+const snowPos = new THREE.PlaneGeometry(90, 68, 64, 48);
 snowPos.rotateX(-Math.PI * 0.5);
 const spAttr = snowPos.attributes.position;
 for (let i = 0; i < spAttr.count; i++) {
   const x = spAttr.getX(i), z = spAttr.getZ(i);
-  const h = Math.sin(x * 0.14) * Math.cos(z * 0.11) * 0.55 + Math.max(0, (Math.abs(x) - 10) * 0.18);
-  spAttr.setY(i, h - 0.05);
+  const h = Math.sin(x * 0.14) * Math.cos(z * 0.11) * 0.45 + Math.max(0, (Math.abs(x) - 10) * 0.18);
+  spAttr.setY(i, h - 0.02);
 }
 snowPos.computeVertexNormals();
 const snowGround = new THREE.Mesh(
   snowPos,
-  new THREE.MeshStandardMaterial({ color: 0xcbd8e6, roughness: 0.72, metalness: 0.04 })
+  new THREE.MeshStandardMaterial({
+    map: snowFloorTex, bumpMap: snowFloorTex, bumpScale: 0.03,
+    color: 0xd0dce8, roughness: 0.84, metalness: 0.02,
+  })
 );
-snowGround.position.set(0, 0, 36);
+snowGround.position.set(0, -0.02, 38.6);
 snowGround.receiveShadow = true;
 scene.add(snowGround);
 
@@ -636,6 +703,12 @@ macroSpot.castShadow = false;
 scene.add(macroSpot);
 scene.add(macroSpot.target);
 
+const bearKeyLight = new THREE.SpotLight(0xffe6c4, 0.0, 18.0, Math.PI * 0.30, 0.75);
+bearKeyLight.position.set(-2.5, 3.2, 2.0);
+bearKeyLight.castShadow = false;
+scene.add(bearKeyLight);
+scene.add(bearKeyLight.target);
+
 // ------------------------------------------------------------------ LOAD ALL VERIFIED CC0 .GLB MODELS
 const loader = new GLTFLoader();
 function loadGLB(path) {
@@ -697,7 +770,7 @@ async function initAssets() {
   ] = await Promise.all([
     loadGLB('./assets/bear.glb'),
     loadGLB('./assets/wolf.glb'),
-    loadGLB('./assets/barbarian.glb'),
+    loadGLB('./assets/male_walking.glb'),
     loadGLB('./assets/spear.glb'),
     loadGLB('./assets/torch_lit.glb'),
     loadGLB('./assets/boulder_01.glb'),
@@ -725,11 +798,11 @@ async function initAssets() {
     const b = normalizeAndGround(gBear.scene, 2.75, 0);
     b.traverse((o) => {
       if (o.isMesh && o.material) {
-        // Darken slightly to prehistoric Ursus spelaeus deep umber + fur sheen
+        // Rich dark prehistoric Ursus spelaeus umber with visible fur sheen
         o.material = o.material.clone();
-        o.material.color.multiplyScalar(0.72);
-        o.material.roughness = 0.86;
-        o.material.sheen = 0.45;
+        o.material.color.multiplyScalar(1.22);
+        o.material.roughness = 0.78;
+        o.material.sheen = 0.55;
       }
     });
     actors.bearRoot = b;
@@ -761,39 +834,39 @@ async function initAssets() {
     }
   }
 
-  // 3. REAL ANIMATED PALEOLITHIC HUNTER (barbarian + spear + lit torch!)
+  // 3. REALISTIC PROPORTIONED PALEOLITHIC HUNTER (male_walking + leather/fur tones + spear + lit torch!)
   if (gHunter) {
-    const h = normalizeAndGround(gHunter.scene, 1.72, 0);
+    const h = normalizeAndGround(gHunter.scene, 1.76, 0);
     h.traverse((o) => {
       if (o.isMesh && o.material) {
+        const mn = (o.material.name || '').toLowerCase();
         o.material = o.material.clone();
-        o.material.roughness = 0.82;
-        o.material.color.multiplyScalar(0.84);
+        o.material.roughness = 0.86;
+        o.material.metalness = 0.02;
+        if (mn.includes('skin')) o.material.color.setHex(0x8e674d);
+        else if (mn.includes('shirt')) o.material.color.setHex(0x4a3322);
+        else if (mn.includes('pant')) o.material.color.setHex(0x2a2119);
+        else if (mn.includes('shoe')) o.material.color.setHex(0x1b140f);
+        else o.material.color.multiplyScalar(0.55);
       }
     });
     actors.hunter.add(h);
-    if (gHunter.animations && gHunter.animations.length) {
-      actors.hunterMixer = new THREE.AnimationMixer(h);
-      for (const cl of gHunter.animations) {
-        actors.hunterClips[cl.name.toLowerCase()] = actors.hunterMixer.clipAction(cl);
-      }
-    }
     if (gSpear) {
-      const sp = normalizeAndGround(gSpear.scene, 2.05, 0);
-      sp.position.set(0.38, 0.25, 0.22);
-      sp.rotation.set(0.55, 0, -0.15);
+      const sp = normalizeAndGround(gSpear.scene, 2.0, 0);
+      sp.position.set(0.32, 0.22, 0.16);
+      sp.rotation.set(0.42, 0, -0.10);
       actors.hunter.add(sp);
     }
     if (gTorch) {
-      const tr = normalizeAndGround(gTorch.scene, 0.72, 0);
-      tr.position.set(-0.36, 1.05, 0.34);
-      tr.rotation.set(0.32, 0, 0.12);
+      const tr = normalizeAndGround(gTorch.scene, 0.68, 0);
+      tr.position.set(-0.34, 1.02, 0.30);
+      tr.rotation.set(0.30, 0, 0.10);
       actors.hunter.add(tr);
       const tFlame = new THREE.Mesh(new THREE.PlaneGeometry(0.24, 0.36), flameShaderMat);
-      tFlame.position.set(-0.38, 1.75, 0.56);
+      tFlame.position.set(-0.36, 1.68, 0.50);
       actors.hunter.add(tFlame);
-      const tLight = new THREE.PointLight(0xff8424, 4.5, 9.5, 1.6);
-      tLight.position.set(-0.38, 1.78, 0.56);
+      const tLight = new THREE.PointLight(0xff8424, 5.2, 10.5, 1.5);
+      tLight.position.set(-0.36, 1.72, 0.52);
       actors.hunter.add(tLight);
       actors.hunterTorchLight = tLight;
     }
@@ -810,20 +883,20 @@ async function initAssets() {
     scene.add(hPed);
   }
   if (gCliff1 && gCliff2) {
-    // Massive rugged cave mouth framing pillars at Z = +5.6 (5.5m x 3.1m clear doorway!)
+    // Wide rugged cave mouth framing pillars at Z = +5.8 (6.6m x 3.2m clear doorway!)
     const cL = normalizeAndGround(gCliff1.scene, 7.2, -0.4, false);
-    cL.position.set(-5.3, -0.4, 5.8); cL.rotation.y = 0.55;
-    const cR = normalizeAndGround(gCliff2.scene, 7.6, -0.4, false);
-    cR.position.set(5.4, -0.4, 5.6); cR.rotation.y = -0.75;
-    const cTop = normalizeAndGround(gCliff1.scene.clone(), 8.8, 3.15, true);
-    cTop.position.set(0.0, 3.15, 5.4); cTop.rotation.set(0.28, 0.2, 1.48);
+    cL.position.set(-6.2, -0.4, 5.8); cL.rotation.y = 0.55;
+    const cR = normalizeAndGround(gCliff2.scene, 7.4, -0.4, false);
+    cR.position.set(6.4, -0.4, 5.8); cR.rotation.y = -0.75;
+    const cTop = normalizeAndGround(gCliff1.scene.clone(), 9.2, 3.25, true);
+    cTop.position.set(0.0, 3.25, 5.6); cTop.rotation.set(0.28, 0.2, 1.48);
     scene.add(cL, cR, cTop);
   }
   if (gRock1 && gRock2) {
-    // Real scanned cave wall boulders lining left & right walls
+    // Real scanned cave wall boulders well clear of interior camera corridor (X = +-5.8..6.4)
     const placements = [
-      [-4.6, -1.5, 0.5, 5.2], [-4.9, -6.5, 1.8, 5.8], [-4.2, 2.2, 0.2, 4.6],
-      [4.7, -0.8, -0.7, 5.0], [4.9, -9.2, -1.4, 5.6], [4.2, 2.5, -0.4, 4.4],
+      [-5.6, -1.5, 0.5, 5.0], [-5.8, -6.5, 1.8, 5.6], [-5.4, 2.2, 0.2, 4.4],
+      [6.0, -0.8, -0.7, 4.8], [5.8, -9.2, -1.4, 5.4], [5.8, 2.5, -0.4, 4.4],
     ];
     placements.forEach(([x, z, ry, sc], i) => {
       const rk = normalizeAndGround((i % 2 ? gRock2 : gRock1).scene.clone(), sc, -0.2, false);
@@ -880,14 +953,22 @@ async function initAssets() {
 
   // 6. ARCHAEOLOGICAL ARTIFACTS: FLINT POINT IN VERTEBRA + MOLAR TOOTH + BONE SCATTER
   if (gFlint) {
-    const fl = normalizeAndGround(gFlint.scene, 0.22, 0);
-    fl.position.set(0.03, 0.21, 0.02);
+    const fl = normalizeAndGround(gFlint.scene, 0.24, 0);
+    fl.position.set(0.03, 0.19, 0.03);
     fl.rotation.set(0.75, 0.3, -0.45);
     hohleGroup.add(fl);
     actors.flint = fl;
   }
   if (gMolar) {
     const ml = normalizeAndGround(gMolar.scene, 0.24, 0);
+    ml.traverse((o) => {
+      if (o.isMesh) {
+        o.material = new THREE.MeshStandardMaterial({
+          map: molarTex, bumpMap: boneTex, bumpScale: 0.008,
+          color: 0xe6d9bd, roughness: 0.40, metalness: 0.02,
+        });
+      }
+    });
     ml.position.set(0.0, 0.88, -2.15);
     ml.visible = false;
     scene.add(ml);
@@ -1044,9 +1125,10 @@ function renderFrameAt(t) {
   breathPts.visible = false;
   hearthGroup.visible = true;
   macroSpot.intensity = 0.0;
+  bearKeyLight.intensity = 0.0;
   moonDir.color.setHex(0x88b4eb);
   moonDir.intensity = 2.2;
-  hemiLight.intensity = 0.38;
+  hemiLight.intensity = 0.44;
   rimLight.intensity = 5.5;
   fireLight.position.set(-1.75, 0.85, -1.05);
   godRayMat.uniforms.uOpacity.value = 0.16;
@@ -1063,7 +1145,7 @@ function renderFrameAt(t) {
     pos.set(lerp(-0.42, -1.25, u), lerp(1.24, 1.62, u), lerp(-1.55, 0.55, u));
     look.set(lerp(0.0, -0.15, u), lerp(1.12, 1.14, u), lerp(-2.45, -2.40, u));
     caveSkull.rotation.y = 0.22 + u * 0.14;
-    macroSpot.intensity = lerp(0.4, 2.2, u);
+    macroSpot.intensity = lerp(0.8, 2.6, u);
     macroSpot.target.position.copy(caveSkull.getWorldPosition(new THREE.Vector3()));
   }
   // ---------------- BEAT 2: 600 KG DOORWAY REVEAL (12.22 - 24.11s)
@@ -1071,15 +1153,15 @@ function renderFrameAt(t) {
     const u = (t - 12.22) / (24.11 - 12.22);
     actors.bear.visible = true;
     breathPts.visible = true;
-    // Giant Cave Bear lumbers in from snowy cave mouth (Z=8.8 -> Z=4.6), filling the only door!
-    const zWalk = lerp(8.8, 4.6, ease(Math.min(1, u * 1.15)));
+    // Giant Cave Bear lumbers in from snowy cave mouth (Z=8.4 -> Z=4.2), clearly lit in 3/4!
+    const zWalk = lerp(8.4, 4.2, ease(Math.min(1, u * 1.15)));
     const stepOsc = Math.sin(t * 4.2);
     actors.bear.position.set(Math.sin(t * 2.1) * 0.06, Math.abs(stepOsc) * 0.055, zWalk);
-    actors.bear.rotation.set(Math.cos(t * 4.2) * 0.025, Math.PI + Math.sin(t * 1.2) * 0.08, stepOsc * 0.03);
-    // Low-angle camera inside cave looking up at towering doorway bear!
-    pos.set(lerp(-0.45, 0.28, ease(u)), lerp(1.05, 1.28, ease(u)), lerp(0.15, 1.65, ease(u)));
-    look.set(0.0, lerp(1.18, 1.32, ease(u)), zWalk - 0.3);
-    rimLight.position.set(0.8, 3.6, 8.5);
+    actors.bear.rotation.set(Math.cos(t * 4.2) * 0.025, Math.PI + 0.38 + Math.sin(t * 1.2) * 0.08, stepOsc * 0.03);
+    // Low-angle 3/4 camera inside cave looking at towering doorway bear!
+    pos.set(lerp(-2.15, -1.45, ease(u)), lerp(1.12, 1.32, ease(u)), lerp(1.85, 0.55, ease(u)));
+    look.set(0.0, lerp(1.15, 1.25, ease(u)), zWalk - 0.2);
+    rimLight.position.set(1.8, 3.8, 9.2);
     rimLight.target.position.copy(actors.bear.position);
     godRayMat.uniforms.uOpacity.value = 0.24;
   }
@@ -1117,28 +1199,28 @@ function renderFrameAt(t) {
     const u = (t - 34.67) / (45.93 - 34.67);
     actors.bear.visible = true;
     if (u < 0.72) {
-      // Peaceful grazing outside in golden sunlit Ice Age meadow grass
+      // Peaceful grazing outside in sunlit Ice Age meadow grass (full body framed!)
       const gu = ease(u / 0.72);
       moonDir.color.setHex(0xffdfa8);
-      moonDir.intensity = 3.2;
-      hemiLight.intensity = 0.75;
-      actors.bear.position.set(-0.8, 0, 12.2);
-      actors.bear.rotation.set(0.22 + Math.sin(t * 3.0) * 0.05, 0.65, 0);
-      pos.set(lerp(1.4, 0.5, gu), lerp(1.1, 0.85, gu), lerp(15.2, 14.3, gu));
-      look.set(-0.7, 0.62, 12.2);
-      camera.fov = 38;
+      moonDir.intensity = 3.4;
+      hemiLight.intensity = 0.85;
+      actors.bear.position.set(-0.6, 0, 12.2);
+      actors.bear.rotation.set(0.16 + Math.sin(t * 3.0) * 0.04, 0.75, 0);
+      pos.set(lerp(2.85, 1.95, gu), lerp(1.38, 1.24, gu), lerp(15.9, 14.9, gu));
+      look.set(-0.4, 0.82, 12.2);
+      camera.fov = 40;
     } else {
       // SNAP CUT ("THE OPPOSITE."): menacing close-up inside pitch-dark cave!
       const cu = ease((u - 0.72) / 0.28);
       moonDir.color.setHex(0x88b4eb);
       moonDir.intensity = 2.2;
-      hemiLight.intensity = 0.38;
+      hemiLight.intensity = 0.42;
       breathPts.visible = true;
       actors.bear.position.set(0, 0, 1.5);
       actors.bear.rotation.set(0.08, Math.PI, 0);
-      pos.set(lerp(0.18, -0.05, cu), lerp(1.12, 1.18, cu), lerp(-0.85, -0.52, cu));
-      look.set(0, 1.06, 0.8);
-      camera.fov = 34;
+      pos.set(lerp(0.24, -0.05, cu), lerp(1.14, 1.22, cu), lerp(-0.95, -0.62, cu));
+      look.set(0, 1.08, 0.8);
+      camera.fov = 36;
     }
   }
   // ---------------- BEAT 5: PREDATOR CALCULATION - WOLF VS BEAR (45.93 - 58.19s)
@@ -1146,7 +1228,7 @@ function renderFrameAt(t) {
     const u = (t - 45.93) / (58.19 - 45.93);
     moonDir.color.setHex(0x88b4eb);
     moonDir.intensity = 2.6;
-    hemiLight.intensity = 0.52;
+    hemiLight.intensity = 0.56;
     if (u < 0.52) {
       // Animated Wolf stalking & calculating risk in falling snow, then backing off!
       const wu = u / 0.52;
@@ -1173,8 +1255,8 @@ function renderFrameAt(t) {
       actors.bear.visible = true;
       breathPts.visible = true;
       actors.bear.position.set(0.25, Math.sin(t * 2.0) * 0.015, 0.65);
-      actors.bear.rotation.set(0, Math.PI + 0.22, 0);
-      pos.set(lerp(-1.45, -1.05, bu), lerp(1.08, 1.32, bu), lerp(-2.1, -1.3, bu));
+      actors.bear.rotation.set(0, Math.PI + 0.35, 0);
+      pos.set(lerp(-1.65, -1.25, bu), lerp(1.18, 1.38, bu), lerp(-2.2, -1.4, bu));
       look.set(0.25, 1.08, 0.45);
     }
   }
@@ -1185,26 +1267,24 @@ function renderFrameAt(t) {
     actors.bear.visible = true;
     breathPts.visible = true;
     if (u < 0.52) {
-      // Hunter creeps down wet limestone tunnel holding flickering torch & spear!
+      // Hunter creeps down wide wet limestone tunnel holding flickering torch & spear!
       const hu = u / 0.52;
-      setActionAtTime(actors.hunterMixer, actors.hunterClips, /walk/i, t * 0.95);
-      actors.hunter.position.set(-0.35, 0, lerp(3.4, 0.35, hu));
-      actors.hunter.rotation.y = Math.PI;
+      actors.hunter.position.set(0.0, Math.abs(Math.sin(t * 4.0)) * 0.035, lerp(3.4, 0.45, hu));
+      actors.hunter.rotation.set(0.04, Math.PI, Math.sin(t * 4.0) * 0.02);
       actors.bear.position.set(0.15, 0, -4.8);
       actors.bear.rotation.y = 0.1;
-      pos.set(-1.55 + Math.sin(t * 2.6) * 0.04, 1.38 + Math.cos(t * 3.1) * 0.03, lerp(2.6, -0.5, hu));
-      look.set(-0.25, 1.25, lerp(1.8, -0.2, hu));
+      pos.set(-1.35 + Math.sin(t * 2.6) * 0.03, 1.46 + Math.cos(t * 3.1) * 0.02, lerp(3.8, 1.4, hu));
+      look.set(-0.05, 1.15, lerp(2.5, 0.1, hu));
     } else {
-      // POV behind hunter's flickering torch: Bear blocks the ONLY sunlit/moonlit cave doorway!
+      // Clean OTS behind hunter's flickering torch: Bear blocks the ONLY cave doorway!
       const bu = ease((u - 0.52) / 0.48);
-      setActionAtTime(actors.hunterMixer, actors.hunterClips, /idle/i, t);
-      actors.hunter.position.set(-0.55, 0, 0.65);
-      actors.hunter.rotation.y = 0.15;
+      actors.hunter.position.set(-0.72, 0, 0.85);
+      actors.hunter.rotation.set(0, 0.18, 0);
       const bz = lerp(6.2, 4.35, bu);
-      actors.bear.position.set(0.05, Math.abs(Math.sin(t * 4.5)) * 0.04, bz);
-      actors.bear.rotation.y = Math.PI;
-      pos.set(-0.15, lerp(1.22, 1.12, bu), lerp(-0.45, 0.35, bu));
-      look.set(0.0, 1.28, bz);
+      actors.bear.position.set(0.25, Math.abs(Math.sin(t * 4.5)) * 0.04, bz);
+      actors.bear.rotation.y = Math.PI - 0.18;
+      pos.set(-0.12, lerp(1.52, 1.45, bu), lerp(-0.35, 0.45, bu));
+      look.set(0.12, 1.25, bz);
       godRayMat.uniforms.uOpacity.value = 0.28;
     }
   }
@@ -1235,14 +1315,13 @@ function renderFrameAt(t) {
     fireLight.position.set(-1.75, 0.85, -1.05);
     actors.hunter.visible = u < 0.62;
     if (actors.hunter.visible) {
-      setActionAtTime(actors.hunterMixer, actors.hunterClips, /idle/i, t);
-      actors.hunter.position.set(-1.15, 0, -2.25);
-      actors.hunter.rotation.y = Math.PI * 0.42;
+      actors.hunter.position.set(-1.25, 0, -1.75);
+      actors.hunter.rotation.set(0, Math.PI * 0.35, 0);
     }
     if (u < 0.55) {
       const pu = ease(u / 0.55);
-      pos.set(lerp(0.95, 1.45, pu), lerp(1.42, 1.65, pu), lerp(-1.15, 0.35, pu));
-      look.set(-0.25, 1.05, -2.45);
+      pos.set(lerp(1.25, 1.55, pu), lerp(1.48, 1.56, pu), lerp(0.35, 0.85, pu));
+      look.set(-0.45, 1.05, -2.1);
     } else {
       // Final chilling rim-lit skull alone on the rock in the dark!
       const fu = ease((u - 0.55) / 0.45);
@@ -1252,6 +1331,17 @@ function renderFrameAt(t) {
       pos.set(lerp(0.65, 0.22, fu), lerp(1.38, 1.24, fu), lerp(-0.95, -1.42, fu));
       look.set(0, 1.04, -2.5);
     }
+  }
+
+  // Keep front-quarter bear key light locked onto visible bear so 3D fur & anatomy always read!
+  if (actors.bear.visible) {
+    bearKeyLight.intensity = 6.8;
+    bearKeyLight.position.set(
+      actors.bear.position.x - 2.2,
+      actors.bear.position.y + 2.6,
+      actors.bear.position.z - 2.6
+    );
+    bearKeyLight.target.position.copy(actors.bear.position).add(new THREE.Vector3(0, 1.0, 0));
   }
 
   camera.position.copy(pos);

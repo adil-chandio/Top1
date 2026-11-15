@@ -61,7 +61,7 @@ jobs:
             curl -L --fail --retry 3 "$2" -o "$KIT_DIR/assets/$1"
           }
           download_glb "wolf.glb"                   "$BASE/quaternius-ultimateanimatedanimals/models/wolf/wolf.glb"
-          download_glb "barbarian.glb"              "$BASE/kaykit-character-pack-adventures/models/barbarian/barbarian.glb"
+          download_glb "male_walking.glb"           "$BASE/quaternius-backgroundposedhumans/models/male_walking/male_walking.glb"
           download_glb "spear.glb"                  "$BASE/quaternius-medieval-weapons/models/spear/spear.glb"
           download_glb "torch_lit.glb"              "$BASE/kaykit-dungeon-remastered/models/torch_lit/torch_lit.glb"
           download_glb "boulder_01.glb"             "$BASE/polyhaven-nature-rocks/models/boulder_01/boulder_01.glb"

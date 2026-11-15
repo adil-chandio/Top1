@@ -150,8 +150,8 @@ if (!RENDER_ONLY) {
   ], { encoding: 'utf8' }));
   const eb = spawnSync('ffmpeg', ['-i', OUT_MP4, '-af', 'ebur128=peak=true', '-f', 'null', '-'], { encoding: 'utf8' });
   const ebText = (eb.stderr || '') + (eb.stdout || '');
-  const lufsM = ebText.match(/I:\s*(-?\d+\.\d+)\s*LUFS/);
-  const tpM = ebText.match(/Peak:\s*(-?\d+\.\d+)\s*dBFS/);
+  const lufsM = ebText.match(/Summary:[\s\S]*?I:\s*(-?\d+\.\d+)\s*LUFS/);
+  const tpM = ebText.match(/Summary:[\s\S]*?True peak:[\s\S]*?Peak:\s*(-?\d+\.\d+)\s*dBFS/);
   const vs = probe.streams.find((s) => s.codec_type === 'video') || {};
   const as = probe.streams.find((s) => s.codec_type === 'audio') || {};
   const stat = fs.statSync(OUT_MP4);
