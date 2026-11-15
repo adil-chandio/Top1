@@ -10,53 +10,61 @@
     {
       "frame": 43,
       "camDist": 2.58,
-      "srgbLum": 0.31
+      "srgbLum": 0.309
     },
     {
       "frame": 173,
       "camDist": 1.75,
-      "srgbLum": 0.251
+      "srgbLum": 0.246
     },
     {
       "frame": 350,
       "camDist": 3.23,
-      "srgbLum": 0.17
+      "srgbLum": 0.168
     },
     {
       "frame": 517,
       "camDist": 2.17,
-      "srgbLum": 0.42
+      "srgbLum": 0.428
     },
     {
       "frame": 662,
-      "camDist": 0.96,
-      "srgbLum": 0.382
+      "camDist": 1.33,
+      "srgbLum": 0.396
     },
     {
       "frame": 792,
       "camDist": 2.54,
-      "srgbLum": 0.316
+      "srgbLum": 0.3
     },
     {
       "frame": 920,
-      "camDist": 1.6,
-      "srgbLum": 0.37
+      "camDist": 1.75,
+      "srgbLum": 0.332
     },
     {
       "frame": 1052,
       "camDist": 3,
-      "srgbLum": 0.257
+      "srgbLum": 0.258
     },
     {
       "frame": 1142,
-      "camDist": 1.33,
-      "srgbLum": 0.326
+      "camDist": 1.39,
+      "srgbLum": 0.289
     },
     {
       "frame": 1206,
-      "camDist": 0.95,
-      "srgbLum": 0.396
+      "camDist": 1.01,
+      "srgbLum": 0.31
     }
   ],
-  "stripped": []
+  "stripped": [
+    "Pistol/Cube204",
+    "Pistol/Cube204_1",
+    "Pistol/Cube204_2",
+    "Suit_Head/Cube006",
+    "Suit_Head/Cube006_1",
+    "Suit_Head/Cube006_2",
+    "Suit_Head/Cube006_3"
+  ]
 }
