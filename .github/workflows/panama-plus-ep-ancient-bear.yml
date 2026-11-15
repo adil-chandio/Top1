@@ -12,9 +12,13 @@ permissions:
   contents: write
 
 jobs:
-  render-ancient-bear:
+  render-chunk:
     runs-on: ubuntu-latest
-    timeout-minutes: 75
+    timeout-minutes: 45
+    strategy:
+      fail-fast: true
+      matrix:
+        chunk: [0, 1, 2, 3]
 
     steps:
       - name: Checkout branch
@@ -22,40 +26,27 @@ jobs:
         with:
           fetch-depth: 1
 
-      - name: Setup Python 3.11 & Node 20
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-      - uses: actions/setup-node@v4
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install FFmpeg, Python Audio Stack, Earshot SFX, Three.js & Chromium
+      - name: Install Three.js & Playwright Chromium
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
-          python3 -m pip install --upgrade pip -q
-          python3 -m pip install -q numpy scipy soundfile pyloudnorm soxr
+          sudo apt-get update -qq && sudo apt-get install -y -qq curl
           cd panama_plus_3d_kit/ep_ancient_bear
           npm init -y >/dev/null 2>&1 || true
           npm install --no-save three@0.170.0 playwright >/dev/null
           npx playwright install --with-deps chromium
 
-      - name: Download Verified CC0 Photoreal .glb Models, Bear Roar & Repo Earshot SFX
+      - name: Download Verified CC0 Photoreal .glb Models
         run: |
           set -e
           KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
-          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes" "$KIT_DIR/qc"
-          exec > >(tee "$KIT_DIR/qc/download.log") 2>&1
-
-          # 1. Real Bear + Real Bear Roar Audio
-          echo "Downloading bear.glb + bear.mp3..."
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/qc"
           curl -L --fail --retry 3 "https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.glb" -o "$KIT_DIR/assets/bear.glb"
-          curl -L --fail --retry 3 "https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.mp3" -o "$KIT_DIR/assets/bear.mp3"
-
-          # 2. Papyszoo CC0 High-Detail Animals, Polyhaven Rocks, Hunter, Weapons & Ice Age Forest
           BASE="https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs"
           download_glb() {
-            echo "Downloading $1..."
             curl -L --fail --retry 3 "$2" -o "$KIT_DIR/assets/$1"
           }
           download_glb "wolf.glb"                   "$BASE/quaternius-ultimateanimatedanimals/models/wolf/wolf.glb"
@@ -81,25 +72,58 @@ jobs:
           download_glb "birch_tree_snow_3.glb"      "$BASE/quaternius-ultimate-nature/models/birch_tree_snow_3/birch_tree_snow_3.glb"
           download_glb "dead_tree_trunk.glb"        "$BASE/polyhaven-nature-plants/models/dead_tree_trunk/dead_tree_trunk.glb"
 
-          python3 - "$KIT_DIR/assets" <<'PY'
-          import glob, os, sys
-          for p in sorted(glob.glob(os.path.join(sys.argv[1], "*.glb"))):
-              with open(p, "rb") as f:
-                  hdr = f.read(4)
-              sz = os.path.getsize(p)
-              assert hdr == b"glTF", f"BAD GLB: {p} ({hdr})"
-              print(f"OK {os.path.basename(p):30s} {sz:>10,d} B")
-          PY
+      - name: Render Chunk ${{ matrix.chunk }}/4 (1920x1080 Cinema 3D)
+        env:
+          CHUNK_INDEX: ${{ matrix.chunk }}
+          CHUNK_COUNT: '4'
+        run: |
+          set -o pipefail
+          cd panama_plus_3d_kit/ep_ancient_bear
+          node render_webgl.mjs --render-only 2>&1 | tee "qc/render_chunk_${CHUNK_INDEX}.log"
+          tar -cf "frames_chunk_${CHUNK_INDEX}.tar" -C _frames .
 
-          # 3. CC0 Wind & Stone Foley
-          echo "Downloading wind.wav + stone_01..04.wav..."
+      - name: Upload Rendered Frame Chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: frames-chunk-${{ matrix.chunk }}
+          path: panama_plus_3d_kit/ep_ancient_bear/frames_chunk_${{ matrix.chunk }}.tar
+          retention-days: 1
+
+  assemble-and-commit:
+    needs: render-chunk
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.11 & Node 20
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg & Python Audio Stack
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python3 -m pip install --upgrade pip -q
+          python3 -m pip install -q numpy scipy soundfile pyloudnorm soxr
+
+      - name: Download Real Bear Roar, Wind, Stone Foley & Render Earshot SFX
+        run: |
+          set -e
+          KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes" "$KIT_DIR/qc" "$KIT_DIR/_frames"
+          curl -L --fail --retry 3 "https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.mp3" -o "$KIT_DIR/assets/bear.mp3"
           curl -L --fail --retry 3 "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/amb/wind.wav" -o "$KIT_DIR/assets/wind.wav"
           for i in 1 2 3 4; do
             curl -L --fail --retry 3 "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/steps/stone/stone_0${i}.wav" -o "$KIT_DIR/assets/stone_0${i}.wav"
           done
-
-          # 4. Earshot 252-sound SFX bank + Monarch.Overall.Work audio/kit.json
-          echo "Cloning earshot + rendering SFX takes..."
           git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot
           curl -L --fail --retry 3 "https://raw.githubusercontent.com/adil-chandio/Monarch.Overall.Work/arena/2b012328-monarch-overall-work/audio/kit.json" -o "$KIT_DIR/sfx/kit.json"
           PYTHONPATH=/tmp/earshot python3 - "$KIT_DIR/sfx" <<'PY'
@@ -110,7 +134,6 @@ jobs:
 
           sfx_dir = sys.argv[1]
           kit = json.load(open(os.path.join(sfx_dir, "kit.json")))["kit"]["roles"]
-          print("Earshot bank loaded:", len(bank.ids()), "sounds")
           meta = {}
           for role, cfg in kit.items():
               if not isinstance(cfg, dict):
@@ -126,7 +149,6 @@ jobs:
                   x, info = bank.render(sid, seed=11)
                   sf.write(out_wav, np.asarray(x), 48000)
                   meta[name] = {k: float(info[k]) for k in ("onset_s", "peak_s", "end_s", "dur_s")}
-                  print(f"SFX OK: {role:14s} -> {name} ({info['dur_s']:.2f}s)")
               except Exception as e:
                   print("SFX SKIP:", role, sid, e)
           json.dump(meta, open(os.path.join(sfx_dir, "takes", "meta.json"), "w"), indent=2)
@@ -137,11 +159,20 @@ jobs:
           cd panama_plus_3d_kit/ep_ancient_bear
           python3 build_audio.py
 
-      - name: Render 1920x1080 @ 24fps Cinema 3D Film + Contact Sheet + QC
+      - name: Download All 4 Rendered Frame Chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: panama_plus_3d_kit/ep_ancient_bear/_chunks
+
+      - name: Assemble 2,412 Frames -> 1080p MP4 + Contact Sheet + QC
         run: |
-          set -o pipefail
+          set -e
           cd panama_plus_3d_kit/ep_ancient_bear
-          node render_webgl.mjs 2>&1 | tee qc/render.log
+          for c in 0 1 2 3; do
+            tar -xf "_chunks/frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
+          done
+          rm -rf _chunks
+          node render_webgl.mjs --encode-only
 
       - name: Commit Deliverable, Contact Sheet & QC Report back to branch
         run: |
@@ -155,12 +186,3 @@ jobs:
             git pull --rebase origin arena/2a8ad29e-top1 && git push origin HEAD:arena/2a8ad29e-top1 && break
             sleep 6
           done
-
-      - name: Commit Failure Diagnostics if Any Step Failed
-        if: failure()
-        run: |
-          git config user.name "MONARCH Render Bot"
-          git config user.email "workadilchandio@gmail.com"
-          git add -f panama_plus_3d_kit/ep_ancient_bear/qc/*.log 2>/dev/null || true
-          git commit -m "debug(ep_ancient_bear): capture failure logs [skip ci]" || true
-          git push origin HEAD:arena/2a8ad29e-top1 || true

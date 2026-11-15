@@ -41,7 +41,7 @@ const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPrefere
 renderer.setSize(W, H, false);
 renderer.setPixelRatio(1);
 renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.shadowMap.type = THREE.PCFShadowMap;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1.18;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
@@ -54,7 +54,7 @@ const camera = new THREE.PerspectiveCamera(42, W / H, 0.08, 160);
 
 const composer = new EffectComposer(renderer);
 composer.addPass(new RenderPass(scene, camera));
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(W, H), 0.44, 0.55, 0.76);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.44, 0.55, 0.76);
 composer.addPass(bloomPass);
 
 // Cinema Grade Shader: teal/amber split contrast, subtle edge CA, optical vignette, 35mm grain
@@ -613,7 +613,7 @@ scene.add(hemiLight);
 const moonDir = new THREE.DirectionalLight(0x88b4eb, 2.2);
 moonDir.position.set(4.5, 9.0, 22.0);
 moonDir.castShadow = true;
-moonDir.shadow.mapSize.set(2048, 2048);
+moonDir.shadow.mapSize.set(1024, 1024);
 moonDir.shadow.camera.near = 1.0; moonDir.shadow.camera.far = 52;
 moonDir.shadow.camera.left = -12; moonDir.shadow.camera.right = 12;
 moonDir.shadow.camera.top = 10; moonDir.shadow.camera.bottom = -4;
@@ -623,7 +623,7 @@ scene.add(moonDir);
 const fireLight = new THREE.PointLight(0xff7722, 6.5, 13.0, 1.6);
 fireLight.position.set(-1.75, 0.85, -1.05);
 fireLight.castShadow = true;
-fireLight.shadow.mapSize.set(1024, 1024);
+fireLight.shadow.mapSize.set(512, 512);
 fireLight.shadow.bias = -0.001;
 scene.add(fireLight);
 
@@ -634,7 +634,7 @@ scene.add(rimLight.target);
 
 const macroSpot = new THREE.SpotLight(0xffcf99, 0.0, 10.0, Math.PI * 0.22, 0.7);
 macroSpot.position.set(0, 2.8, -0.5);
-macroSpot.castShadow = true;
+macroSpot.castShadow = false;
 scene.add(macroSpot);
 scene.add(macroSpot.target);
 
