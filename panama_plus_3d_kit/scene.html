@@ -2,115 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MONARCH Panama-Plus 3D — Why Orcas Fear Humpbacks</title>
+  <title>MONARCH Cinema 3D — Why Orcas Fear Humpbacks</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      background: #020a14;
+      width: 100%; height: 100%; overflow: hidden; background: #020a14;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     }
-    #stage {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-    #vignette {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      background: radial-gradient(circle at 50% 42%, transparent 45%, rgba(1, 6, 14, 0.72) 100%);
-    }
+    #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
     #hud {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 88px 54px 235px;
+      position: fixed; inset: 0; pointer-events: none; z-index: 10;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 84px 52px 215px;
     }
-    .top-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .top-bar { display: flex; justify-content: space-between; align-items: center; }
     .pill {
-      background: rgba(4, 15, 29, 0.72);
-      border: 1px solid rgba(112, 214, 255, 0.35);
+      background: rgba(3, 14, 28, 0.78);
+      border: 1px solid rgba(112, 214, 255, 0.40);
       color: #e6f6ff;
       padding: 12px 24px;
       border-radius: 999px;
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+      font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.50);
     }
-    .pill.gold {
-      border-color: rgba(255, 209, 102, 0.5);
-      color: #ffd166;
-    }
+    .pill.gold { border-color: rgba(255, 209, 102, 0.58); color: #ffd166; }
     .center-callout {
-      align-self: center;
-      text-align: center;
-      background: rgba(3, 12, 24, 0.78);
-      border: 1px solid rgba(255, 209, 102, 0.48);
-      padding: 18px 28px;
-      border-radius: 18px;
-      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65);
-      opacity: 0;
-      transform: translateY(14px) scale(0.96);
-      transition: none;
+      align-self: center; text-align: center;
+      background: rgba(2, 11, 22, 0.84);
+      border: 1px solid rgba(255, 209, 102, 0.52);
+      padding: 18px 30px; border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.70);
+      opacity: 0; transform: translateY(14px) scale(0.96);
     }
-    .center-callout.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
+    .center-callout.visible { opacity: 1; transform: translateY(0) scale(1); }
     .callout-head {
-      color: #ffd166;
-      font-size: 38px;
-      font-weight: 900;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      color: #ffd166; font-size: 38px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase;
     }
     .callout-sub {
-      margin-top: 6px;
-      color: #cfefff;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 0.10em;
+      margin-top: 6px; color: #cfefff; font-size: 21px; font-weight: 700; letter-spacing: 0.10em;
     }
     .captions-wrap {
-      align-self: center;
-      text-align: center;
-      max-width: 940px;
-      padding: 18px 28px;
-      border-radius: 18px;
-      background: rgba(2, 9, 18, 0.66);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      align-self: center; text-align: center; max-width: 940px;
+      padding: 18px 28px; border-radius: 18px;
+      background: rgba(2, 9, 18, 0.74);
+      border: 1px solid rgba(125, 211, 252, 0.20);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
     }
     .captions-text {
-      color: #ffffff;
-      font-size: 46px;
-      font-weight: 900;
-      line-height: 1.18;
-      letter-spacing: -0.01em;
-      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
+      color: #ffffff; font-size: 44px; font-weight: 900; line-height: 1.20;
+      letter-spacing: -0.01em; text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
     }
-    .captions-text .hi {
-      color: #ffd166;
-    }
+    .captions-text .hi { color: #ffd166; }
   </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
 </head>
 <body>
   <canvas id="stage"></canvas>
-  <div id="vignette"></div>
   <div id="hud">
     <div class="top-bar">
       <div class="pill">MONARCH® 3D</div>
@@ -125,148 +79,253 @@
     </div>
   </div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "/vendor/three/build/three.module.js",
-        "three/addons/": "/vendor/three/examples/jsm/"
-      }
-    }
-  </script>
   <script type="module">
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
+    const W = 1080, H = 1920;
     const canvas = document.getElementById('stage');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+    canvas.width = W; canvas.height = H;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(W, H, false);
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
     renderer.toneMappingExposure = 1.22;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = false;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x031426);
-    scene.fog = new THREE.FogExp2(0x031426, 0.026);
+    scene.background = new THREE.Color(0x021222);
+    scene.fog = new THREE.FogExp2(0x021222, 0.024);
 
-    const camera = new THREE.PerspectiveCamera(44, 1080 / 1920, 0.1, 250);
+    const camera = new THREE.PerspectiveCamera(44, W / H, 0.1, 260);
 
-    // Rich 3-Point Underwater Cinema Lighting
-    const hemi = new THREE.HemisphereLight(0x7dd3fc, 0x020b16, 1.35);
+    // ---------------------------------------------------------------- POST-PROCESSING CINEMA GRADE
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.36, 0.55, 0.78);
+    composer.addPass(bloomPass);
+
+    const OceanCinemaShader = {
+      uniforms: { tDiffuse: { value: null }, uTime: { value: 0.0 } },
+      vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+      fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float uTime;
+        varying vec2 vUv;
+        float hash12(vec2 p) {
+          vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+          p3 += dot(p3, p3.yzx + 33.33);
+          return fract((p3.x + p3.y) * p3.z);
+        }
+        void main() {
+          vec2 d = vUv - 0.5;
+          float r2 = dot(d, d);
+          vec2 shift = d * r2 * 0.0024;
+          float r = texture2D(tDiffuse, vUv + shift).r;
+          float g = texture2D(tDiffuse, vUv).g;
+          float b = texture2D(tDiffuse, vUv - shift).b;
+          vec3 col = vec3(r, g, b);
+          float lum = dot(col, vec3(0.299, 0.587, 0.114));
+          col += mix(vec3(-0.010, 0.004, 0.020), vec3(0.018, 0.012, -0.006), smoothstep(0.10, 0.76, lum));
+          float vig = smoothstep(0.96, 0.24, r2 * 1.40);
+          col *= mix(0.32, 1.0, vig);
+          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 31.0) - 0.5) * 0.020;
+          gl_FragColor = vec4(clamp(col + grain, 0.0, 1.0), 1.0);
+        }
+      `,
+    };
+    const gradePass = new ShaderPass(OceanCinemaShader);
+    composer.addPass(gradePass);
+    composer.addPass(new OutputPass());
+
+    // ---------------------------------------------------------------- PROCEDURAL CAUSTIC & SAND TEXTURES
+    function makeSeabedTextures() {
+      const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+      const g = c.getContext('2d');
+      g.fillStyle = '#071d32'; g.fillRect(0, 0, 512, 512);
+      // Sand ripple ridges
+      for (let y = 0; y < 512; y += 8) {
+        g.strokeStyle = y % 16 === 0 ? 'rgba(56,189,248,0.12)' : 'rgba(2,10,20,0.35)';
+        g.lineWidth = 4;
+        g.beginPath();
+        for (let x = 0; x <= 512; x += 16) {
+          const yy = y + Math.sin(x * 0.04 + y * 0.02) * 5;
+          if (x === 0) g.moveTo(x, yy); else g.lineTo(x, yy);
+        }
+        g.stroke();
+      }
+      // Subtle organic caustic web lines
+      g.strokeStyle = 'rgba(125,211,252,0.14)';
+      g.lineWidth = 1.8;
+      for (let i = 0; i < 48; i++) {
+        let px = ((i * 89) % 512), py = ((i * 157) % 512);
+        g.beginPath(); g.moveTo(px, py);
+        for (let s = 0; s < 5; s++) {
+          px += Math.sin(i * 1.3 + s) * 26;
+          py += Math.cos(i * 0.9 + s * 1.4) * 26;
+          g.lineTo(px, py);
+        }
+        g.stroke();
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(8, 8);
+      return tex;
+    }
+
+    function makeCausticSurfaceTex() {
+      const c = document.createElement('canvas'); c.width = 256; c.height = 256;
+      const g = c.getContext('2d');
+      const gr = g.createRadialGradient(128, 128, 8, 128, 128, 128);
+      gr.addColorStop(0.0, 'rgba(186,230,253,0.95)');
+      gr.addColorStop(0.45, 'rgba(56,189,248,0.38)');
+      gr.addColorStop(1.0, 'rgba(2,18,34,0.0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    }
+
+    // ---------------------------------------------------------------- LIGHTING
+    const hemi = new THREE.HemisphereLight(0x8ae0ff, 0x031120, 1.45);
     scene.add(hemi);
 
-    const sunKey = new THREE.DirectionalLight(0xdff5ff, 3.6);
-    sunKey.position.set(8, 26, 10);
+    const sunKey = new THREE.DirectionalLight(0xe0f7ff, 3.8);
+    sunKey.position.set(8, 28, 10);
     scene.add(sunKey);
 
-    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 3.8);
+    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 4.0);
     rimCyan.position.set(-10, 6, -12);
     scene.add(rimCyan);
 
-    const rimGold = new THREE.DirectionalLight(0xffcf70, 1.8);
+    const rimGold = new THREE.DirectionalLight(0xffcf70, 2.0);
     rimGold.position.set(9, -3, -8);
     scene.add(rimGold);
 
-    // Ocean Ceiling + Caustic Shimmer
-    const surfaceGeo = new THREE.PlaneGeometry(160, 160, 48, 48);
-    const surfaceMat = new THREE.MeshBasicMaterial({
-      color: 0x38bdf8,
-      transparent: true,
-      opacity: 0.24,
-      side: THREE.DoubleSide,
-      wireframe: false,
-    });
-    const surfaceMesh = new THREE.Mesh(surfaceGeo, surfaceMat);
+    const causticSpot = new THREE.PointLight(0x7dd3fc, 22, 34);
+    causticSpot.position.set(0, 10, 0);
+    scene.add(causticSpot);
+
+    // ---------------------------------------------------------------- ANIMATED OCEAN SURFACE & FLOOR
+    const surfaceGeo = new THREE.PlaneGeometry(180, 180, 44, 44);
+    const surfaceBaseZ = new Float32Array(surfaceGeo.attributes.position.count);
+    for (let i = 0; i < surfaceBaseZ.length; i++) surfaceBaseZ[i] = 0;
+    const surfaceMesh = new THREE.Mesh(
+      surfaceGeo,
+      new THREE.MeshBasicMaterial({
+        map: makeCausticSurfaceTex(),
+        color: 0x7dd3fc,
+        transparent: true,
+        opacity: 0.42,
+        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+      })
+    );
     surfaceMesh.rotation.x = Math.PI / 2;
-    surfaceMesh.position.y = 14.0;
+    surfaceMesh.position.y = 14.5;
     scene.add(surfaceMesh);
 
-    // Deep Seabed Floor
-    const floorGeo = new THREE.PlaneGeometry(180, 180, 48, 48);
+    const seabedTex = makeSeabedTextures();
+    const floorGeo = new THREE.PlaneGeometry(180, 180, 56, 56);
     const floorPos = floorGeo.attributes.position;
     for (let i = 0; i < floorPos.count; i++) {
-      const x = floorPos.getX(i);
-      const y = floorPos.getY(i);
-      floorPos.setZ(i, Math.sin(x * 0.14) * 0.65 + Math.cos(y * 0.12) * 0.65);
+      const x = floorPos.getX(i), y = floorPos.getY(i);
+      floorPos.setZ(i, Math.sin(x * 0.14) * 0.72 + Math.cos(y * 0.12) * 0.68 + Math.sin((x + y) * 0.08) * 0.4);
     }
     floorGeo.computeVertexNormals();
-    const floorMat = new THREE.MeshStandardMaterial({
-      color: 0x061b2e,
-      roughness: 0.78,
-      metalness: 0.12,
-    });
-    const floor = new THREE.Mesh(floorGeo, floorMat);
+    const floor = new THREE.Mesh(
+      floorGeo,
+      new THREE.MeshStandardMaterial({
+        map: seabedTex,
+        bumpMap: seabedTex,
+        bumpScale: 0.14,
+        roughness: 0.74,
+        metalness: 0.14,
+      })
+    );
     floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -7.5;
-    floor.receiveShadow = true;
+    floor.position.y = -8.2;
     scene.add(floor);
 
-    // Volumetric God-Rays with soft radial alpha falloff (zero hard cone edges)
+    // ---------------------------------------------------------------- VOLUMETRIC GOD-RAYS
     const rayCanvas = document.createElement('canvas');
-    rayCanvas.width = 128;
-    rayCanvas.height = 128;
+    rayCanvas.width = 128; rayCanvas.height = 128;
     const rctx = rayCanvas.getContext('2d');
     const grad = rctx.createLinearGradient(0, 0, 0, 128);
-    grad.addColorStop(0.0, 'rgba(125, 211, 252, 0.95)');
-    grad.addColorStop(0.55, 'rgba(56, 189, 248, 0.35)');
+    grad.addColorStop(0.0, 'rgba(186, 230, 253, 0.95)');
+    grad.addColorStop(0.55, 'rgba(56, 189, 248, 0.36)');
     grad.addColorStop(1.0, 'rgba(56, 189, 248, 0.0)');
-    rctx.fillStyle = grad;
-    rctx.fillRect(0, 0, 128, 128);
+    rctx.fillStyle = grad; rctx.fillRect(0, 0, 128, 128);
     const rayTex = new THREE.CanvasTexture(rayCanvas);
 
     const rayGroup = new THREE.Group();
-    const rayGeo = new THREE.ConeGeometry(4.8, 28, 24, 1, true);
+    const rayGeo = new THREE.ConeGeometry(4.6, 30, 24, 1, true);
     const rayMat = new THREE.MeshBasicMaterial({
-      map: rayTex,
-      color: 0x9be7ff,
-      transparent: true,
-      opacity: 0.11,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      side: THREE.DoubleSide,
+      map: rayTex, color: 0xa5f3fc, transparent: true, opacity: 0.13,
+      blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide,
     });
     const rays = [];
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 9; i++) {
       const r = new THREE.Mesh(rayGeo, rayMat);
-      r.position.set((i - 3.5) * 4.2, 5.5, -4 - (i % 3) * 5);
-      r.rotation.z = (i - 3.5) * 0.07;
+      r.position.set((i - 4) * 4.0, 6.0, -4 - (i % 3) * 5);
+      r.rotation.z = (i - 4) * 0.07;
       rayGroup.add(r);
       rays.push(r);
     }
     scene.add(rayGroup);
 
-    // 450 Plankton & Bubble Particles
-    const pCount = 450;
+    // ---------------------------------------------------------------- MARINE SNOW & BUBBLE TRAILS
+    const pCount = 650;
     const pGeo = new THREE.BufferGeometry();
     const pArr = new Float32Array(pCount * 3);
     for (let i = 0; i < pCount; i++) {
-      pArr[i * 3] = (Math.sin(i * 12.9898) * 0.5) * 42;
-      pArr[i * 3 + 1] = ((i % 45) / 45) * 20 - 7;
-      pArr[i * 3 + 2] = (Math.cos(i * 78.233) * 0.5) * 42;
+      pArr[i * 3] = Math.sin(i * 12.9898) * 24;
+      pArr[i * 3 + 1] = ((i % 50) / 50) * 22 - 8;
+      pArr[i * 3 + 2] = Math.cos(i * 78.233) * 24;
     }
     pGeo.setAttribute('position', new THREE.BufferAttribute(pArr, 3));
-    const pMat = new THREE.PointsMaterial({
-      color: 0xbfefff,
-      size: 0.11,
-      transparent: true,
-      opacity: 0.55,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-    });
-    const particles = new THREE.Points(pGeo, pMat);
+    const particles = new THREE.Points(
+      pGeo,
+      new THREE.PointsMaterial({
+        color: 0xcffafe, size: 0.11, transparent: true, opacity: 0.62,
+        blending: THREE.AdditiveBlending, depthWrite: false,
+      })
+    );
     scene.add(particles);
 
-    // Sonar Rings (for Beat 5)
+    // Dynamic bubble stream puffs (for tail-slap & charging wake)
+    const bubblePuffs = [];
+    const puffMat = new THREE.MeshStandardMaterial({
+      color: 0xe0f7ff, emissive: 0x38bdf8, emissiveIntensity: 0.35,
+      transparent: true, opacity: 0.55, roughness: 0.1,
+    });
+    const puffGeo = new THREE.SphereGeometry(0.14, 10, 10);
+    for (let i = 0; i < 42; i++) {
+      const m = new THREE.Mesh(puffGeo, puffMat.clone());
+      m.visible = false;
+      scene.add(m);
+      bubblePuffs.push(m);
+    }
+
+    // Sonar Rings + Volumetric Echo Sphere (Beat 5)
     const sonarGroup = new THREE.Group();
     const sonarRings = [];
-    for (let i = 0; i < 3; i++) {
-      const rg = new THREE.RingGeometry(0.95, 1.08, 48);
+    for (let i = 0; i < 4; i++) {
+      const rg = new THREE.RingGeometry(0.92, 1.10, 56);
       const rm = new THREE.MeshBasicMaterial({
-        color: 0x38bdf8,
-        transparent: true,
-        opacity: 0.0,
-        side: THREE.DoubleSide,
-        blending: THREE.AdditiveBlending,
+        color: i % 2 === 0 ? 0x38bdf8 : 0xffd166,
+        transparent: true, opacity: 0.0, side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending, depthWrite: false,
       });
       const ring = new THREE.Mesh(rg, rm);
       ring.rotation.x = Math.PI / 2;
@@ -275,12 +334,46 @@
     }
     scene.add(sonarGroup);
 
-    // Asset holders
+    // Tail-slap Shockwave Torus (Beat 7)
+    const shockTorus = new THREE.Mesh(
+      new THREE.TorusGeometry(1.0, 0.08, 12, 48),
+      new THREE.MeshBasicMaterial({
+        color: 0xbae6fd, transparent: true, opacity: 0.0,
+        blending: THREE.AdditiveBlending, depthWrite: false,
+      })
+    );
+    shockTorus.rotation.x = Math.PI / 2;
+    scene.add(shockTorus);
+
+    // Sculpted Harbor Seals (Beat 6 — "shield panicked seals")
+    function buildHarborSeal() {
+      const g = new THREE.Group();
+      const sealMat = new THREE.MeshStandardMaterial({ color: 0x64748b, roughness: 0.34, metalness: 0.12 });
+      const bellyMat = new THREE.MeshStandardMaterial({ color: 0xcbd5e1, roughness: 0.42 });
+      const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.24, 0.92, 8, 16), sealMat);
+      body.rotation.x = Math.PI / 2;
+      const head = new THREE.Mesh(new THREE.SphereGeometry(0.21, 14, 14), sealMat);
+      head.position.set(0, 0.08, 0.62);
+      const snout = new THREE.Mesh(new THREE.SphereGeometry(0.11, 10, 10), bellyMat);
+      snout.position.set(0, 0.04, 0.78);
+      const flipL = new THREE.Mesh(new THREE.BoxGeometry(0.38, 0.05, 0.20), sealMat);
+      flipL.position.set(0.28, -0.06, 0.25); flipL.rotation.y = -0.45;
+      const flipR = flipL.clone(); flipR.position.x = -0.28; flipR.rotation.y = 0.45;
+      const tailL = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.04, 0.28), sealMat);
+      tailL.position.set(0.10, 0, -0.68); tailL.rotation.y = 0.32;
+      const tailR = tailL.clone(); tailR.position.x = -0.10; tailR.rotation.y = -0.32;
+      g.add(body, head, snout, flipL, flipR, tailL, tailR);
+      return g;
+    }
+
     const actors = {
       orcas: [],
       whale: null,
       shark: null,
+      dolphin: null,
+      manta: null,
       fishes: [],
+      seals: [],
     };
     const mixers = [];
     const loader = new GLTFLoader();
@@ -291,13 +384,11 @@
       const box = new THREE.Box3().setFromObject(inner);
       const size = new THREE.Vector3();
       const center = new THREE.Vector3();
-      box.getSize(size);
-      box.getCenter(center);
+      box.getSize(size); box.getCenter(center);
       const maxDim = Math.max(size.x, size.y, size.z, 0.001);
       const scale = targetLength / maxDim;
       inner.scale.setScalar(scale);
       inner.position.sub(center.multiplyScalar(scale));
-      // Auto-orient longest horizontal dimension along Z if model was authored along X
       if (size.x > size.z * 1.15) {
         const pivot = new THREE.Group();
         pivot.add(inner);
@@ -307,116 +398,128 @@
         root.add(inner);
       }
       inner.traverse((o) => {
-        if (o.isMesh) {
-          if (o.material) {
-            o.material = o.material.clone();
-            o.material.roughness = Math.min(o.material.roughness ?? 0.5, 0.48);
-          }
+        if (o.isMesh && o.material) {
+          o.material = o.material.clone();
+          o.material.roughness = Math.min(o.material.roughness ?? 0.5, 0.42);
         }
       });
-      if (label) {
-        console.log(`MODEL ${label}: raw=(${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)})`);
-      }
+      if (label) console.log(`MODEL ${label}: raw=(${size.x.toFixed(2)}, ${size.y.toFixed(2)}, ${size.z.toFixed(2)})`);
       return { root, inner };
     }
 
-    async function loadGLTF(url) {
-      return new Promise((resolve, reject) => {
-        loader.load(url, resolve, undefined, reject);
-      });
-    }
+    const loadGLTF = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
+    const TIMELINE = await (await fetch('./timeline.json')).json();
 
-    let TIMELINE = null;
-
-    window.__MONARCH_INIT__ = async (timeline) => {
-      TIMELINE = timeline;
-      renderer.setSize(1080, 1920, false);
-
-      const [orcaGltf, whaleGltf, fishGltf, sharkGltf] = await Promise.all([
+    // Load all real CC0 ocean models + seabed rocks
+    const [orcaGltf, whaleGltf, fish1Gltf, fish2Gltf, sharkGltf, dolphinGltf, mantaGltf, boulderGltf, rockGltf] =
+      await Promise.all([
         loadGLTF('/assets/orca.glb'),
         loadGLTF('/assets/whale.glb'),
         loadGLTF('/assets/fish1.glb'),
+        loadGLTF('/assets/fish2.glb'),
         loadGLTF('/assets/shark.glb'),
+        loadGLTF('/assets/dolphin.glb'),
+        loadGLTF('/assets/manta_ray.glb'),
+        loadGLTF('/assets/boulder_01.glb'),
+        loadGLTF('/assets/rock_07.glb'),
       ]);
 
-      // Build Orca Pod (3 Orcas, ~4.2m scale) with native swim animation
-      for (let i = 0; i < 3; i++) {
-        const { root, inner } = normalizeModel(orcaGltf.scene, 4.2, i === 0 ? 'orca' : null);
-        scene.add(root);
-        actors.orcas.push(root);
-        if (orcaGltf.animations && orcaGltf.animations.length > 0) {
-          const mx = new THREE.AnimationMixer(inner);
-          const act = mx.clipAction(orcaGltf.animations[0]);
-          act.play();
-          act.time = i * 0.45;
-          mixers.push(mx);
-        }
+    // Place Abyssal Canyon Boulders across Seabed
+    for (let i = 0; i < 14; i++) {
+      const src = i % 2 === 0 ? boulderGltf.scene : rockGltf.scene;
+      const bRes = normalizeModel(src, 3.2 + (i % 4) * 1.8, null);
+      const ang = (i / 14) * Math.PI * 2;
+      const rad = 11 + (i % 3) * 5;
+      bRes.root.position.set(Math.cos(ang) * rad, -7.8, Math.sin(ang) * rad - 4);
+      bRes.root.rotation.y = i * 1.1;
+      scene.add(bRes.root);
+    }
+
+    // 3 Orcas
+    for (let i = 0; i < 3; i++) {
+      const { root, inner } = normalizeModel(orcaGltf.scene, 4.2, i === 0 ? 'orca' : null);
+      scene.add(root);
+      actors.orcas.push(root);
+      if (orcaGltf.animations?.length) {
+        const mx = new THREE.AnimationMixer(inner);
+        const act = mx.clipAction(orcaGltf.animations[0]);
+        act.play();
+        act.time = i * 0.45;
+        mixers.push(mx);
       }
+    }
 
-      // Build Giant Humpback Whale (~11.5m scale -> massive vs 4.2m Orcas!)
-      const whaleRes = normalizeModel(whaleGltf.scene, 11.5, 'whale');
-      scene.add(whaleRes.root);
-      actors.whale = whaleRes.root;
+    // Giant 40-Ton Humpback Whale
+    actors.whale = normalizeModel(whaleGltf.scene, 11.8, 'whale').root;
+    scene.add(actors.whale);
 
-      // Shark (~3.2m)
-      const sharkRes = normalizeModel(sharkGltf.scene, 3.2, 'shark');
-      scene.add(sharkRes.root);
-      actors.shark = sharkRes.root;
+    // Great White Shark (Beat 1 flee + Beat 5)
+    actors.shark = normalizeModel(sharkGltf.scene, 3.3, 'shark').root;
+    scene.add(actors.shark);
 
-      // School of 16 Fish
-      for (let i = 0; i < 16; i++) {
-        const fishRes = normalizeModel(fishGltf.scene, 0.75, i === 0 ? 'fish1' : null);
-        scene.add(fishRes.root);
-        actors.fishes.push(fishRes.root);
-      }
+    // Dolphin & Manta Ray (ambient ocean majesty)
+    actors.dolphin = normalizeModel(dolphinGltf.scene, 2.2, 'dolphin').root;
+    actors.manta = normalizeModel(mantaGltf.scene, 2.8, 'manta_ray').root;
+    scene.add(actors.dolphin, actors.manta);
 
-      renderer.render(scene, camera);
-    };
+    // 24 Schooling Fish
+    for (let i = 0; i < 24; i++) {
+      const g = i % 2 === 0 ? fish1Gltf.scene : fish2Gltf.scene;
+      const fRes = normalizeModel(g, 0.70, null);
+      scene.add(fRes.root);
+      actors.fishes.push(fRes.root);
+    }
+
+    // 3 Panicked Harbor Seals (Beat 6)
+    for (let i = 0; i < 3; i++) {
+      const s = buildHarborSeal();
+      scene.add(s);
+      actors.seals.push(s);
+    }
 
     function formatCaption(text, tLocal, dur) {
       const words = text.split(' ');
-      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.88, 0.2)));
+      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.90, 0.2)));
       const activeIdx = Math.min(words.length - 1, Math.floor(progress * words.length));
-      // Show rolling 6-word window for clean large readability
       const winStart = Math.max(0, Math.floor(activeIdx / 6) * 6);
       const slice = words.slice(winStart, winStart + 6);
       return slice
-        .map((w, i) => {
-          const globalI = winStart + i;
-          return globalI <= activeIdx ? `<span class="hi">${w}</span>` : w;
-        })
+        .map((w, i) => (winStart + i <= activeIdx ? `<span class="hi">${w}</span>` : w))
         .join(' ');
     }
 
     window.__MONARCH_FRAME__ = (frameIdx) => {
       const fps = TIMELINE.fps || 30;
       const t = frameIdx / fps;
+      gradePass.uniforms.uTime.value = t;
 
-      // Advance fish/shark animation mixers deterministically
-      for (const mx of mixers) {
-        mx.setTime(t);
+      for (const mx of mixers) mx.setTime(t);
+
+      // Animate Ocean Surface & Plankton & God-Rays
+      const sp = surfaceGeo.attributes.position;
+      for (let i = 0; i < sp.count; i++) {
+        const sx = sp.getX(i), sy = sp.getY(i);
+        sp.setZ(i, Math.sin(sx * 0.15 + t * 1.4) * 0.55 + Math.cos(sy * 0.14 + t * 1.1) * 0.45);
       }
-
-      // Subtle plankton & god-ray drift
+      sp.needsUpdate = true;
       particles.position.y = (t * 0.35) % 4.0;
       rays.forEach((r, idx) => {
-        r.rotation.z = (idx - 3.5) * 0.07 + Math.sin(t * 0.6 + idx) * 0.03;
+        r.rotation.z = (idx - 4) * 0.07 + Math.sin(t * 0.65 + idx) * 0.035;
       });
+      causticSpot.position.set(Math.sin(t * 0.5) * 3.5, 11, Math.cos(t * 0.4) * 2.5);
 
-      // Find active beat
       const beats = TIMELINE.beats;
-      let activeBeat = beats[beats.length - 1];
-      let beatIdx = beats.length - 1;
+      let activeBeat = beats[0];
+      let beatIdx = 0;
       for (let i = 0; i < beats.length; i++) {
         if (t >= beats[i].start && t < beats[i].end) {
           activeBeat = beats[i];
           beatIdx = i;
           break;
         }
-        if (t < beats[0].start) {
-          activeBeat = beats[0];
-          beatIdx = 0;
-          break;
+        if (t >= beats[beats.length - 1].start) {
+          activeBeat = beats[beats.length - 1];
+          beatIdx = beats.length - 1;
         }
       }
 
@@ -424,7 +527,6 @@
       const bDur = Math.max(0.5, activeBeat.end - activeBeat.start);
       const u = Math.min(1, bt / bDur);
 
-      // Update HUD Tag & Callout & Captions
       document.getElementById('beatTag').textContent = activeBeat.tag;
       const callout = document.getElementById('callout');
       if (activeBeat.headline) {
@@ -435,70 +537,79 @@
         callout.classList.remove('visible');
       }
 
+      // Always keep caption visible from frame 0 (no blank Frame 1!)
       const capWrap = document.getElementById('captionWrap');
-      if (t >= activeBeat.start && t <= activeBeat.voice_end + 0.35) {
-        capWrap.style.opacity = '1';
-        document.getElementById('captionsText').innerHTML = formatCaption(
-          activeBeat.text,
-          t - activeBeat.start,
-          activeBeat.voice_end - activeBeat.start
-        );
-      } else {
-        capWrap.style.opacity = '0.25';
-      }
+      capWrap.style.opacity = t <= activeBeat.voice_end + 0.45 ? '1' : '0.45';
+      document.getElementById('captionsText').innerHTML = formatCaption(
+        activeBeat.text,
+        Math.max(0, t - activeBeat.start),
+        Math.max(0.5, activeBeat.voice_end - activeBeat.start)
+      );
 
-      // Reset visibility defaults
       actors.orcas.forEach((o) => (o.visible = true));
       actors.whale.visible = true;
       actors.shark.visible = false;
+      actors.dolphin.visible = false;
+      actors.manta.visible = false;
       actors.fishes.forEach((f) => (f.visible = false));
+      actors.seals.forEach((s) => (s.visible = false));
       sonarRings.forEach((r) => (r.material.opacity = 0));
+      shockTorus.material.opacity = 0;
+      bubblePuffs.forEach((p) => (p.visible = false));
 
-      // Gentle breathing swim motion
       const swim = (idx) => Math.sin(t * 3.1 + idx * 1.4) * 0.14;
 
-      // 8 CINEMATIC BEATS CAMERA + STAGING
       if (beatIdx === 0) {
-        // Beat 1: Hook — 3 Orcas gliding cleanly toward lens
+        // Beat 1: 3 Orcas hunting + Great White Shark fleeing in background!
         actors.whale.visible = false;
-        actors.orcas[0].position.set(0, 0.2 + swim(0), -4 + u * 5.2);
+        actors.shark.visible = true;
+        actors.shark.position.set(2.2 + u * 5.0, -2.8, -5.0 - u * 8.0);
+        actors.shark.rotation.set(0.08, Math.PI - 0.35, 0);
+        actors.orcas[0].position.set(0, 0.25 + swim(0), -4.2 + u * 5.4);
         actors.orcas[0].rotation.set(0, 0, Math.sin(t * 2) * 0.04);
-        actors.orcas[1].position.set(-3.2, -0.6 + swim(1), -7.5 + u * 5.0);
-        actors.orcas[1].rotation.set(0, 0.12, 0);
-        actors.orcas[2].position.set(3.4, 0.8 + swim(2), -8.2 + u * 4.8);
-        actors.orcas[2].rotation.set(0, -0.1, 0);
-        camera.position.set(Math.sin(t * 1.1) * 0.35, 1.1 + u * 0.4, 7.2 - u * 1.6);
+        actors.orcas[1].position.set(-3.1, -0.5 + swim(1), -7.4 + u * 5.0);
+        actors.orcas[1].rotation.set(0, 0.14, 0);
+        actors.orcas[2].position.set(3.2, 0.8 + swim(2), -8.0 + u * 4.8);
+        actors.orcas[2].rotation.set(0, -0.12, 0);
+        camera.position.set(Math.sin(t * 1.1) * 0.35, 1.0 + u * 0.35, 7.2 - u * 1.5);
         camera.lookAt(0, 0.1, -1.5);
       } else if (beatIdx === 1) {
-        // Beat 2: Scale Reveal — Giant Whale rises behind lead Orca
+        // Beat 2: 40-Ton Humpback Rises Looming Behind Orca
         actors.orcas[0].position.set(-1.3, -0.4 + swim(0), 1.8);
         actors.orcas[0].rotation.set(0, 0.65, 0);
         actors.orcas[1].visible = false;
         actors.orcas[2].visible = false;
-        actors.whale.position.set(1.2, -3.5 + u * 4.4, -7.5);
+        actors.whale.position.set(1.1, -3.6 + u * 4.5, -7.2);
         actors.whale.rotation.set(-0.18 + u * 0.16, -0.45, 0.06);
         camera.position.set(-1.8 + u * 1.2, 0.2, 9.2 - u * 1.4);
         camera.lookAt(0.2, 0.1, -3.5);
       } else if (beatIdx === 2) {
-        // Beat 3: Side-by-Side Scale Comparison — BOTH full creatures framed cleanly!
+        // Beat 3: 6T vs 40T Scale Comparison
         actors.orcas[0].position.set(-0.2, -3.2 + swim(0), 1.5);
         actors.orcas[0].rotation.set(0, Math.PI / 2, 0);
         actors.orcas[1].visible = false;
         actors.orcas[2].visible = false;
         actors.whale.position.set(0.0, 2.5 + swim(3) * 0.5, -2.5);
         actors.whale.rotation.set(0, Math.PI / 2, 0);
-        camera.position.set(0.0, -0.1, 18.2 - u * 1.4);
+        camera.position.set(0.0, -0.1, 18.4 - u * 1.4);
         camera.lookAt(0, -0.1, -0.5);
       } else if (beatIdx === 3) {
-        // Beat 4: Weapon Close-Up — Full sweeping 5m pectoral fin framed cleanly
+        // Beat 4: 5M Razor-Armored Pectoral Fin + Bubble Wake
         actors.orcas.forEach((o) => (o.visible = false));
         actors.whale.position.set(-0.6, 0.4 + swim(0) * 0.4, 0);
         actors.whale.rotation.set(0.14, 0.55 + u * 0.35, -0.14);
+        bubblePuffs.slice(0, 18).forEach((p, idx) => {
+          p.visible = true;
+          const phase = (t * 0.9 + idx * 0.11) % 1.0;
+          p.position.set(0.6 + Math.sin(idx * 2.1) * 0.9, -0.5 + phase * 3.8, 1.4 - phase * 2.0);
+          p.scale.setScalar(0.5 + phase * 1.2);
+          p.material.opacity = (1.0 - phase) * 0.55;
+        });
         camera.position.set(4.8 - u * 1.8, -1.2 + u * 1.0, 9.2 - u * 1.4);
         camera.lookAt(0.8, -0.2, 0.2);
       } else if (beatIdx === 4) {
-        // Beat 5: Sonar + Fish Bait Ball + Shark
-        actors.whale.position.set(0, 1.4, -8.5);
+        // Beat 5: Orca Sonar + Bait Ball + Shark + Manta
+        actors.whale.position.set(0, 1.5, -8.5);
         actors.whale.rotation.set(0.1, 0.2, 0);
         actors.orcas[0].position.set(-2.8 + u * 1.5, -0.5, -1.5);
         actors.orcas[0].rotation.set(0, 0.9, 0);
@@ -506,64 +617,91 @@
         actors.orcas[1].rotation.set(0, -0.9, 0);
         actors.orcas[2].visible = false;
         actors.shark.visible = true;
-        actors.shark.position.set(-1.5 + u * 3.0, -3.2, 1.0);
+        actors.shark.position.set(-1.5 + u * 3.0, -3.5, 1.0);
         actors.shark.rotation.set(0, Math.PI / 2, 0);
+        actors.manta.visible = true;
+        actors.manta.position.set(-4.0 + u * 2.2, -4.5, -5.0);
+        actors.manta.rotation.set(0.1, 0.6, 0);
 
         actors.fishes.forEach((f, idx) => {
           f.visible = true;
-          const ang = t * 2.4 + (idx / 16) * Math.PI * 2;
-          const rad = 2.1 + (idx % 3) * 0.55;
-          f.position.set(Math.cos(ang) * rad, -0.5 + Math.sin(ang * 2) * 0.6, 1.5 + Math.sin(ang) * rad);
+          const ang = t * 2.4 + (idx / 24) * Math.PI * 2;
+          const rad = 2.0 + (idx % 4) * 0.45;
+          f.position.set(Math.cos(ang) * rad, -0.5 + Math.sin(ang * 2) * 0.7, 1.4 + Math.sin(ang) * rad);
           f.rotation.set(0, -ang, 0);
         });
 
         sonarGroup.position.set(0, 1.2, -7.5);
         sonarRings.forEach((r, idx) => {
-          const p = (t * 0.8 + idx * 0.33) % 1.0;
-          r.scale.setScalar(1.0 + p * 12.0);
-          r.material.opacity = (1.0 - p) * 0.65;
+          const p = (t * 0.85 + idx * 0.25) % 1.0;
+          r.scale.setScalar(1.0 + p * 14.0);
+          r.material.opacity = (1.0 - p) * 0.75;
         });
 
         camera.position.set(Math.sin(t * 0.7) * 1.4, 2.4, 9.6);
         camera.lookAt(0, -0.2, -1.5);
       } else if (beatIdx === 5) {
-        // Beat 6: Intervention Charge — Humpback bursts forward into pod
-        actors.whale.position.set(0, -0.5 + u * 1.1, -9.0 + u * 9.5);
-        actors.whale.rotation.set(-0.15, 0, Math.sin(t * 6) * 0.04);
-        actors.orcas[0].position.set(-2.2 - u * 1.8, 0.6, 0.5);
+        // Beat 6: Humpback Intervention Charge Shielding Panicked Harbor Seals & Dolphin
+        actors.whale.position.set(0, -0.5 + u * 1.1, -9.0 + u * 9.6);
+        actors.whale.rotation.set(-0.14, 0, Math.sin(t * 6) * 0.04);
+        actors.orcas[0].position.set(-2.2 - u * 1.9, 0.6, 0.5);
         actors.orcas[0].rotation.set(0, -0.7, 0.25);
-        actors.orcas[1].position.set(2.3 + u * 1.8, -0.4, 0.2);
+        actors.orcas[1].position.set(2.3 + u * 1.9, -0.4, 0.2);
         actors.orcas[1].rotation.set(0, 0.7, -0.25);
         actors.orcas[2].visible = false;
-        // Handheld adrenaline shake
-        camera.position.set(
-          Math.sin(t * 16) * 0.08,
-          -0.6 + Math.cos(t * 13) * 0.07,
-          8.2 - u * 1.5
-        );
-        camera.lookAt(0, 0.1, -1.0);
+        actors.dolphin.visible = true;
+        actors.dolphin.position.set(1.6, -1.4 + swim(2), 2.8 + u * 2.5);
+        actors.dolphin.rotation.set(-0.08, 0.2, 0);
+
+        actors.seals.forEach((s, idx) => {
+          s.visible = true;
+          s.position.set((idx - 1) * 1.15, -1.6 + Math.sin(t * 7 + idx) * 0.18, 2.6 + u * 3.2);
+          s.rotation.set(-0.08 + Math.sin(t * 6 + idx) * 0.08, 0.1 * (idx - 1), 0);
+        });
+
+        camera.position.set(Math.sin(t * 16) * 0.08, -0.6 + Math.cos(t * 13) * 0.07, 8.6 - u * 1.5);
+        camera.lookAt(0, 0.0, -0.6);
       } else if (beatIdx === 6) {
-        // Beat 7: Orca Pod Retreat into Fog — Orcas visibly fleeing past guardian Humpback
+        // Beat 7: Tail-Slap Shockwave + Orcas Break Formation & Retreat
         actors.whale.position.set(0.2, 0.2 + swim(0) * 0.4, 1.5);
-        actors.whale.rotation.set(0.05, Math.PI * 0.82, 0);
-        actors.orcas[0].position.set(-1.6 - u * 2.0, 1.4 + u * 1.4, -2.5 - u * 11.0);
+        actors.whale.rotation.set(0.05, Math.PI * 0.82, Math.sin(t * 4.5) * 0.06);
+        actors.orcas[0].position.set(-1.6 - u * 2.2, 1.4 + u * 1.4, -2.5 - u * 11.5);
         actors.orcas[0].rotation.set(-0.18, Math.PI - 0.35, 0.15);
-        actors.orcas[1].position.set(1.8 + u * 2.2, -0.8 + u * 1.6, -3.0 - u * 11.5);
+        actors.orcas[1].position.set(1.8 + u * 2.4, -0.8 + u * 1.6, -3.0 - u * 11.5);
         actors.orcas[1].rotation.set(-0.18, Math.PI + 0.35, -0.15);
         actors.orcas[2].visible = false;
+
+        const swU = (t * 0.7) % 1.0;
+        shockTorus.position.set(0.2, 0.2, -1.2);
+        shockTorus.scale.setScalar(1.0 + swU * 9.0);
+        shockTorus.material.opacity = (1.0 - swU) * 0.58;
+
+        bubblePuffs.forEach((p, idx) => {
+          p.visible = true;
+          const ang = idx * 0.7;
+          const r = 1.5 + ((t * 3 + idx * 0.2) % 4.5);
+          p.position.set(Math.cos(ang) * r, -0.8 + ((t * 2 + idx) % 3.5), -1.0 + Math.sin(ang) * r);
+          p.scale.setScalar(0.8 + (idx % 3) * 0.3);
+          p.material.opacity = 0.42;
+        });
+
         camera.position.set(2.4 - u * 1.2, 2.2, 10.4);
         camera.lookAt(0, 0.4, -4.5);
       } else {
-        // Beat 8: Hero Closer — Guardian Rising 3/4 Silhouette Toward Sunlit Surface
+        // Beat 8: Hero Guardian Rising Toward Sunlit Caustic Surface
         actors.orcas.forEach((o) => (o.visible = false));
-        actors.whale.position.set(0, -1.0 + u * 3.0, -1.2);
+        actors.manta.visible = true;
+        actors.manta.position.set(-3.5 + u * 2.5, -2.8, -5.0);
+        actors.whale.position.set(0, -1.0 + u * 3.1, -1.2);
         actors.whale.rotation.set(-0.26, -0.55 + u * 0.45, 0.06);
-        camera.position.set(-4.2, 1.4 + u * 0.8, 11.2 - u * 1.4);
+        camera.position.set(-4.2, 1.4 + u * 0.8, 11.4 - u * 1.4);
         camera.lookAt(0, 0.4 + u * 1.6, -1.2);
       }
 
-      renderer.render(scene, camera);
+      composer.render();
     };
+
+    window.__MONARCH_READY__ = true;
   </script>
 </body>
 </html>
