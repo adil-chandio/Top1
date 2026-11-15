@@ -253,13 +253,18 @@
     const cheeseMat = new THREE.MeshStandardMaterial({ color: 0xfacc15, roughness: 0.50 });
     const pattyMat = new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.78 });
     const sw = new THREE.Group();
-    sw.add(
-      new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.08, 0.46), breadMat),
-      Object.assign(new THREE.Mesh(new THREE.BoxGeometry(0.48, 0.04, 0.48), lettuceMat), { position: new THREE.Vector3(0, 0.06, 0) }),
-      Object.assign(new THREE.Mesh(new THREE.BoxGeometry(0.45, 0.07, 0.45), pattyMat), { position: new THREE.Vector3(0, 0.11, 0) }),
-      Object.assign(new THREE.Mesh(new THREE.BoxGeometry(0.47, 0.03, 0.47), cheeseMat), { position: new THREE.Vector3(0, 0.16, 0) }),
-      Object.assign(new THREE.Mesh(new THREE.BoxGeometry(0.46, 0.08, 0.46), breadMat), { position: new THREE.Vector3(0, 0.21, 0) })
-    );
+    const swLayers = [
+      [0.46, 0.08, 0.46, breadMat, 0.0],
+      [0.48, 0.04, 0.48, lettuceMat, 0.06],
+      [0.45, 0.07, 0.45, pattyMat, 0.11],
+      [0.47, 0.03, 0.47, cheeseMat, 0.16],
+      [0.46, 0.08, 0.46, breadMat, 0.21],
+    ];
+    for (const [lx, ly, lz, mat, py] of swLayers) {
+      const m = new THREE.Mesh(new THREE.BoxGeometry(lx, ly, lz), mat);
+      m.position.y = py;
+      sw.add(m);
+    }
     const chipsBag = new THREE.Mesh(
       new THREE.BoxGeometry(0.34, 0.44, 0.12),
       new THREE.MeshStandardMaterial({ color: 0xef4444, roughness: 0.35, metalness: 0.25 })
