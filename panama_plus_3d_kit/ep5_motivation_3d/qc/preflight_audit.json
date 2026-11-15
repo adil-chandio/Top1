@@ -14,8 +14,8 @@
     },
     {
       "frame": 173,
-      "camDist": 1.75,
-      "srgbLum": 0.246
+      "camDist": 1.88,
+      "srgbLum": 0.261
     },
     {
       "frame": 350,
@@ -40,7 +40,7 @@
     {
       "frame": 920,
       "camDist": 1.75,
-      "srgbLum": 0.332
+      "srgbLum": 0.33
     },
     {
       "frame": 1052,
