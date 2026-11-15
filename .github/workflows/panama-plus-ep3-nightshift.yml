@@ -47,10 +47,10 @@ jobs:
           DEST="$PWD/panama_plus_3d_kit/ep3_nightshift/assets"
           mkdir -p "$DEST" "$PWD/panama_plus_3d_kit/ep3_nightshift/qc"
           curl -L --fail --retry 3 https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.glb -o "$DEST/bear.glb"
-          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-characters/models/casual_hoodie/casual_hoodie.glb -o "$DEST/casual_hoodie.glb"
-          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kenney-car-kit/models/pickup/pickup.glb -o "$DEST/pickup.glb"
-          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kaykit-medieval-hexagon-pack/models/building_home_A_blue/building_home_A_blue.glb -o "$DEST/house.glb"
-          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/poly-pizza-trees/models/pine_tree/pine_tree.glb -o "$DEST/pine_tree.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-ultimatemodularcharacters/models/casual_hoodie/casual_hoodie.glb -o "$DEST/casual_hoodie.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-zombieapocalypsekit/models/vehicle_pickup/vehicle_pickup.glb -o "$DEST/pickup.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kaykit-medieval-hexagon/models/building_home_a_blue/building_home_a_blue.glb -o "$DEST/house.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kaykit-medieval-hexagon/models/tree_single_a/tree_single_a.glb -o "$DEST/pine_tree.glb"
           curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kaykit-city-builder-bits/models/streetlight/streetlight.glb -o "$DEST/streetlight.glb"
 
       - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D)
