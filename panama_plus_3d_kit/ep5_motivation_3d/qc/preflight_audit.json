@@ -1,0 +1,62 @@
+{
+  "ok": true,
+  "issues": [],
+  "report": [
+    {
+      "frame": 0,
+      "camDist": 4.38,
+      "srgbLum": 0.721
+    },
+    {
+      "frame": 43,
+      "camDist": 2.58,
+      "srgbLum": 0.31
+    },
+    {
+      "frame": 173,
+      "camDist": 1.75,
+      "srgbLum": 0.251
+    },
+    {
+      "frame": 350,
+      "camDist": 3.23,
+      "srgbLum": 0.17
+    },
+    {
+      "frame": 517,
+      "camDist": 2.17,
+      "srgbLum": 0.42
+    },
+    {
+      "frame": 662,
+      "camDist": 0.96,
+      "srgbLum": 0.382
+    },
+    {
+      "frame": 792,
+      "camDist": 2.54,
+      "srgbLum": 0.316
+    },
+    {
+      "frame": 920,
+      "camDist": 1.6,
+      "srgbLum": 0.37
+    },
+    {
+      "frame": 1052,
+      "camDist": 3,
+      "srgbLum": 0.257
+    },
+    {
+      "frame": 1142,
+      "camDist": 1.33,
+      "srgbLum": 0.326
+    },
+    {
+      "frame": 1206,
+      "camDist": 0.95,
+      "srgbLum": 0.396
+    }
+  ],
+  "stripped": []
+}
