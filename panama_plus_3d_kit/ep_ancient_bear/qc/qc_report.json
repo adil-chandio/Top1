@@ -1,14 +1,14 @@
 {
   "file": "deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4",
-  "size_bytes": 91097232,
-  "size_mb": 86.88,
+  "size_bytes": 90982242,
+  "size_mb": 86.77,
   "width": 1920,
   "height": 1080,
   "r_frame_rate": "24/1",
   "duration_sec": 100.5,
   "audio_codec": "aac",
   "audio_sample_rate": "48000",
-  "audio_lufs": -70,
+  "audio_lufs": -14.3,
   "audio_true_peak_db": -1,
   "total_frames": 2412,
   "qc_pass": true
