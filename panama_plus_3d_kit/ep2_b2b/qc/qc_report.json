@@ -1,15 +1,15 @@
 {
   "file": "deliverables/MONARCH_Studio_B2B_3D_Commercial_1080x1920.mp4",
-  "size_bytes": 29979448,
-  "size_mb": 28.59,
+  "size_bytes": 39341855,
+  "size_mb": 37.52,
   "width": 1080,
   "height": 1920,
   "r_frame_rate": "30/1",
-  "duration_sec": 34.4,
+  "duration_sec": 43.13,
   "audio_codec": "aac",
   "audio_sample_rate": "48000",
-  "audio_lufs": -14.9,
-  "audio_true_peak_db": -1.5,
-  "total_frames": 1032,
+  "audio_lufs": -14.6,
+  "audio_true_peak_db": -0.6,
+  "total_frames": 1294,
   "qc_pass": true
 }
