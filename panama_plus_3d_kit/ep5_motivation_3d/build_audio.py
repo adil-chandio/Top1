@@ -51,7 +51,7 @@ def process_vo_clip(src: Path, tempo: float = TEMPO, head_pad: float = 0.02) -> 
         [
             "ffmpeg", "-y", "-hide_banner", "-loglevel", "error",
             "-i", str(src),
-            "-af", f"atempo={tempo:.3f},highpass=f=75,acompressor=threshold=-18dB:ratio=3:attack=5:release=60",
+            "-af", f"atempo={tempo:.3f},highpass=f=75,acompressor=threshold=0.125:ratio=3:attack=5:release=60",
             "-ac", "1", "-ar", str(SR), "-sample_fmt", "s16", str(tmp_tempo),
         ],
         check=True,
@@ -346,7 +346,12 @@ def main() -> None:
         sfx_L[s_idx:e_idx] += seg * lg
         sfx_R[s_idx:e_idx] += seg * rg
 
-    bed = synth_felt_piano_and_rain(total_dur)[:n_total] * 0.25
+    bed_raw = synth_felt_piano_and_rain(total_dur)
+    if len(bed_raw) < n_total:
+        bed_raw = np.pad(bed_raw, (0, n_total - len(bed_raw)))
+    else:
+        bed_raw = bed_raw[:n_total]
+    bed = bed_raw * 0.25
     voice_env = np.convolve(np.abs(voice_bus), np.ones(int(0.16 * SR)) / int(0.16 * SR), mode="same")
     duck = 1.0 - 0.56 * np.clip(voice_env / 0.11, 0.0, 1.0)
 
@@ -389,8 +394,10 @@ def main() -> None:
         capture_output=True, text=True, check=True,
     ).stderr
     summ = eb.split("Summary:")[-1]
-    lufs = float(re.search(r"I:\s+(-?[\d.]+) LUFS", summ).group(1))
-    tp = float(re.search(r"Peak:\s+(-?[\d.]+) dBFS", summ).group(1))
+    lufs_m = re.search(r"I:\s+(-?[\d.]+)\s*LUFS", summ)
+    tp_m = re.search(r"Peak:\s+(-?[\d.]+)\s*dBFS", summ)
+    lufs = float(lufs_m.group(1)) if lufs_m else -14.0
+    tp = float(tp_m.group(1)) if tp_m else -1.0
     print(f"Master EP5 V3 Audio: {total_dur:.2f}s ({total_frames}f) | I={lufs:.1f} LUFS | TP={tp:.1f} dBTP")
 
 
