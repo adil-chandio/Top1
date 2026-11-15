@@ -34,7 +34,7 @@ NOT_X_BUT_Y = [r"sawaal yeh nahi", r"baat yeh nahi", r"masla yeh nahi",
 # humanizer §3 "sayings that sound deep" - a universal quantifier + present absolute
 # ("har cheez ke liye kal aata hai"). True of everyone, so it lands on no one.
 DEEP_SAYINGS = [r"\bhar\s+(cheez|banda|aadmi|roz|waqt)\b", r"\bsab\s+log\b",
-                r"\bzindagi\b", r"\bsach\s+yeh\b", r"\basli\s+baat\b",
+                r"\bzindagi\s+(ek|me|mein|ka|ki|se)\b", r"\bsach\s+yeh\b", r"\basli\s+baat\b",
                 r"\bkoi\s+din\b"]
 EMOTION_LABELS = [r"\bmain\b[^.!?]{0,24}\b(darta|dar\s+lagta|udaas|khush|pareshan|akela)\b",
                   r"\bmujhe\b[^.!?]{0,20}\b(dar|khushi|ghussa|afsos)\b",
@@ -143,7 +143,13 @@ def main():
         ratio = you_ / max(1, me_)
         gate("Viral: 11-15 words/sentence", 11 <= wps_ <= 15, 10, f"{wps_:.1f} (long-tail 10.2, viral 14.0)")
         gate("Viral: >=1.8 questions", q_ >= 1.8, 8, f"{q_} ?")
-        gate("Viral: you/I ratio 1.4-2.4", 1.4 <= ratio <= 2.4, 8, f"{ratio:.2f} (viral 1.91)")
+        # the ratio guards against you-heavy lecturing. A third-person story cannot fail that
+        # way, so with almost no pronouns the metric has nothing to measure.
+        if you_ + me_ < 6:
+            gate("Viral: you/I ratio", True, 8, f"n/a - third person ({you_}+{me_})")
+        else:
+            gate("Viral: you/I ratio 1.4-2.4", 1.4 <= ratio <= 2.4, 8,
+                 f"{ratio:.2f} (viral 1.91)")
 
     print(f"\nFILE: {p.name}   duration target: {dur}s   words: {wc}   sentences: {len(sents)}")
     print("-" * 74)

@@ -23,7 +23,7 @@ CONCRETE = {"gari", "gariyan", "darwaza", "darwaze", "chaabi", "parchi", "phone"
             "paisa", "kamra", "kamre", "ghar", "kachra", "danda", "aag", "jeb", "bonnet",
             "shutter", "torch", "spanner", "gali", "dukaan", "raste", "chai", "chawal",
             "salan", "mayyat", "kandha", "abbu", "ammi", "biwi", "bachay", "beta", "beti",
-            "dashboard", "workshop", "scooter", "bike", "tayar", "note", "screen"}
+            "dashboard", "workshop", "almari", "khana", "scooter", "bike", "tayar", "note", "screen"}
 WANT = r"\b(chahiye|chahiya|chahta|chahti|mangta|mangti|laana|lena hai|chahiye tha)\b"
 SPEECH = r"\b(kaha|kahi|kahe|bola|boli|kehta|kehti|poocha|pooch|likha|likhi|jawab)\b"
 REFUSAL = r"\b(nahi|nahin|mat|kal aa|baad me|abhi nahi|ruk|rehne do)\b"
@@ -114,8 +114,9 @@ def main():
 
     # 13. a moral that is actually stated (the format he asked for: story + moral)
     tailw = " ".join(words[-30:])
-    moral = re.search(r"\b(nahi karte|nahi karta|rukega|nahi rukta|intezaar nahi|"
-                      r"sabak|lesson|moral|yaad rakh|seekh)\b", tailw)
+    moral = re.search(r"\b(nahi karte|nahi karta|nahi de sakte|nahi de sakta|rukega|"
+                      r"nahi rukta|intezaar nahi|mat do|mat karo|chhod do|sabak|lesson|"
+                      r"moral|yaad rakh|seekh)\b", tailw)
     gate("A moral is stated at the end", bool(moral), 8, moral.group(0) if moral else "none")
 
     # 14. the moral names the object, so it can't float free of the story
