@@ -73,6 +73,8 @@ if (!ENCODE_ONLY) {
       args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=angle', '--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist'],
     });
     const auditPage = await auditBrowser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
+    auditPage.on('pageerror', (e) => console.error('[AUDIT pageerror]', e.message));
+    auditPage.on('console', (m) => { if (m.type() === 'error') console.error('[AUDIT console]', m.text()); });
     await auditPage.goto(SCENE_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
     await auditPage.waitForFunction(() => window.__MONARCH_READY__ === true, { timeout: 180000 });
     const audit = await auditPage.evaluate(() => window.__MONARCH_AUDIT__());
