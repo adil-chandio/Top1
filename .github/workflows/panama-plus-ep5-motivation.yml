@@ -7,15 +7,9 @@ on:
       - 'panama_plus_3d_kit/ep5_motivation_3d/**'
       - '.github/workflows/panama-plus-ep5-motivation.yml'
   workflow_dispatch:
-    inputs:
-      reuse_run_id:
-        description: 'Optional completed render run ID to reuse frames/audio artifacts without re-rendering'
-        required: false
-        default: ''
 
 permissions:
   contents: write
-  actions: read
 
 concurrency:
   group: panama-ep5-${{ github.ref }}
@@ -23,7 +17,6 @@ concurrency:
 
 jobs:
   prepare-audio:
-    if: ${{ inputs.reuse_run_id == '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -59,7 +52,6 @@ jobs:
           retention-days: 1
 
   render-chunk:
-    if: ${{ inputs.reuse_run_id == '' }}
     needs: prepare-audio
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -124,8 +116,7 @@ jobs:
           retention-days: 1
 
   assemble-and-commit:
-    if: ${{ !cancelled() && (inputs.reuse_run_id != '' || needs.render-chunk.result == 'success') }}
-    needs: [prepare-audio, render-chunk]
+    needs: render-chunk
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -141,19 +132,10 @@ jobs:
       - name: Install FFmpeg
         run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
-      - name: Download Artifacts from Current Run
-        if: ${{ inputs.reuse_run_id == '' }}
+      - name: Download Synced Timeline, Audio & All 6 Frame Chunks
         uses: actions/download-artifact@v4
         with:
           path: panama_plus_3d_kit/ep5_motivation_3d/_chunks
-
-      - name: Download Artifacts from Existing Run (${{ inputs.reuse_run_id }})
-        if: ${{ inputs.reuse_run_id != '' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          mkdir -p panama_plus_3d_kit/ep5_motivation_3d/_chunks
-          gh run download "${{ inputs.reuse_run_id }}" --dir panama_plus_3d_kit/ep5_motivation_3d/_chunks
 
       - name: Encode 1080x1920 Master MP4 + Contact Sheet + QC
         run: |
