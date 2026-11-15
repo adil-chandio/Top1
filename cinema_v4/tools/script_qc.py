@@ -21,6 +21,14 @@ CTA_PATTERNS = [r"\bcomment\s+(karo|karein|karo na)\b", r"\bfollow\s+(karo|karei
 DISFLUENCY = ["main—", "yaar", "matlab", "dekho", "hmm", "uh", "arey", "bas—", " na,", "chalo", "toh ", "haan"]
 ABSTRACT = ["kamyabi", "manzil", "safar", "koshish", "jazba", "himmat",
             "khudi", "shaksiat", "taraqqi", "positive", "energy"]
+# English desk-words that stand in for a real prop. His bar: gari, ghar, snaps,
+# khana, danda, kachra, aag, phone - objects you can point a camera at.
+JARGON = ["doc", "document", "line", "my project", "mindset", "journey",
+          "concept", "content", "my brand", "my goals", "growth", "hustle", "vibe"]
+# "Main darta hoon" = the writer telling you the feeling. Behaviour, not label.
+EMOTION_LABELS = [r"\bmain\b[^.!?]{0,24}\b(darta|dar\s+lagta|udaas|khush|pareshan|akela)\b",
+                  r"\bmujhe\b[^.!?]{0,20}\b(dar|khushi|ghussa|afsos)\b",
+                  r"\bmain\b[^.!?]{0,20}\b(thak|bor|khali)\b\s*(hua)?\s*(hoon|tha)\b"]
 
 
 def sentences(text: str):
@@ -56,23 +64,31 @@ def main():
         if not all(len(words(s)) <= 4 for s in chunk):
             continue
         # anaphora (same opening word 3x) is a device, a slop triad is not
+        # anaphora = the same word repeated at the head of neighbouring lines.
+        # A slop triad needs three *different* parallel items; a run where any two
+        # lines open on the same word is anaphora, which is a device, not a tell.
         firsts = [words(s.lower())[0] if words(s) else "" for s in chunk]
-        if len(set(firsts)) == 1:
+        if len(set(firsts)) < 3:
             continue
         triads.append(" / ".join(chunk))
 
-    fragments = [s for s in sents[1:] if len(words(s)) <= 2]  # hook fragment allowed
+    # A short fragment is HIS device (see SCRIPT_TU_STYLE: "Ammi. Biwi. Bachay. Andar.").
+    # It only reads as slop when the *final* line is a bare fragment - the fake-artistic
+    # closer (humanizer tell #2). So gate the closer, not the device.
+    fragments = [sents[-1]] if sents and len(words(sents[-1])) <= 2 else []
     cliches = [c for c in HARD_CLICHES if c in raw]
     ctas = [pat for pat in CTA_PATTERNS if re.search(pat, raw)]
     abstract = [a for a in ABSTRACT if re.search(rf"\b{a}\b", raw)]
     has_disfluency = any(d in raw for d in DISFLUENCY)
     NUMBER_WORDS = ["ek", "do", "teen", "chaar", "paanch", "che", "saat", "aath",
                     "nau", "das", "bees", "sau", "hazaar", "saal", "minute", "baarah"]
-    numbers = re.findall(r"\b\d+\b", text) + [w for w in NUMBER_WORDS
-               if re.search(rf"\b{w}\b", raw)]
+    numbers = sorted({*re.findall(r"\b\d+\b", text),
+                      *(w for w in NUMBER_WORDS if re.search(rf"\b{w}\b", raw))})
     hooks = len(words(sents[0])) if sents else 0
     variance = statistics.pstdev(lens) if len(lens) > 1 else 0
     shouts = re.findall(r"\b[A-Z]{4,}\b", text)
+    jargon = [j for j in JARGON if re.search(rf"\b{re.escape(j)}\b", raw)]
+    emotion = [e for e in EMOTION_LABELS if re.search(e, raw)]
 
     # --- score -------------------------------------------------------------
     score = 100
@@ -87,7 +103,7 @@ def main():
     gate("Hook <= 6 words", hooks <= 6, 8, f"{hooks} words")
     gate("No forced triads", not triads, 12, triads[0] if triads else "")
     frag_ok = (not fragments) or (len(fragments) == 1 and sents and fragments[0] == sents[0])
-    gate("No fragment closers", frag_ok, 8, fragments[0] if fragments else "")
+    gate("No fragment closer", frag_ok, 8, fragments[0] if fragments else "")
     gate("No banned cliches", not cliches, 12, ", ".join(cliches))
     gate("No CTA bait", not ctas, 10, ", ".join(ctas))
     if register == "voice-note":
@@ -97,6 +113,8 @@ def main():
     gate("Abstract nouns <= 1", len(abstract) <= 1, 8, ", ".join(abstract))
     gate("Pace 2.6-3.6 wps", 2.6 <= paceeya <= 3.6, 6, f"{paceeya:.2f} wps")
     gate("Word count 120-175", 120 <= wc <= 175, 6, f"{wc} words")
+    gate("No desk-word props", len(jargon) <= 1, 12, ", ".join(jargon))
+    gate("Behaviour, not emotion", not emotion, 12, f"{len(emotion)} label(s)")
 
     print(f"\nFILE: {p.name}   duration target: {dur}s   words: {wc}   sentences: {len(sents)}")
     print("-" * 74)
