@@ -114,7 +114,7 @@ def scan(text):
     col = []
     for m in re.finditer(r"([^.!?:]{0,40}):\s*([A-Za-z' ]{1,40})", text):
         head, tail = m.group(1), m.group(2)
-        if re.search(r"\b(bola|boli|kehta|kehti|keh|kahe|kahega|kahegi|kahunga|poocha|pooch|likha|likhi|sawaal)\s*$", head.lower().strip()):
+        if re.search(r"\b(bola|boli|kaha|kahi|kehta|kehti|keh|kahe|kahega|kahegi|kahunga|poocha|pooch|likha|likhi|sawaal)\s*$", head.lower().strip()):
             continue          # dialogue: "Ustaad ne bola: kal aa jana."
         if 0 < len(tail.split()) <= 4:
             col.append(tail.strip())
