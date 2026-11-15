@@ -23,7 +23,7 @@ concurrency:
 
 jobs:
   render-chunk:
-    if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_run_id == '' }}
+    if: ${{ !contains(github.event.head_commit.message, '[assemble-from-run]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -175,7 +175,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: panama_plus_3d_kit/ep_ancient_bear/_chunks
-          run-id: ${{ inputs.source_run_id || github.run_id }}
+          run-id: ${{ contains(github.event.head_commit.message, '[assemble-from-run]') && '43680604956' || github.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Assemble 2,412 Frames -> 1080p MP4 + Contact Sheet + QC
