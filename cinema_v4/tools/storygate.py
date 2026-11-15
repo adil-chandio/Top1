@@ -23,7 +23,7 @@ CONCRETE = {"gari", "gariyan", "darwaza", "darwaze", "chaabi", "parchi", "phone"
             "paisa", "kamra", "kamre", "ghar", "kachra", "danda", "aag", "jeb", "bonnet",
             "shutter", "torch", "spanner", "gali", "dukaan", "raste", "chai", "chawal",
             "salan", "mayyat", "kandha", "abbu", "ammi", "biwi", "bachay", "beta", "beti",
-            "dashboard", "scooter", "bike", "tayar", "note", "screen"}
+            "dashboard", "workshop", "scooter", "bike", "tayar", "note", "screen"}
 WANT = r"\b(chahiye|chahiya|chahta|chahti|mangta|mangti|laana|lena hai|chahiye tha)\b"
 SPEECH = r"\b(kaha|kahi|kahe|bola|boli|kehta|kehti|poocha|pooch|likha|likhi|jawab)\b"
 REFUSAL = r"\b(nahi|nahin|mat|kal aa|baad me|abhi nahi|ruk|rehne do)\b"
@@ -86,13 +86,14 @@ def main():
          8, "second half")
 
     # 8. the ending is an act by the other person, not a saying
-    last = " ".join(toks(ss[-1])) if ss else ""
-    gate("Ends on an action", bool(re.search(CHANGE_ACTION, last)), 10,
-         f'"{ss[-1][:44]}"' if ss else "")
+    close = " ".join(toks(" ".join(ss[-6:]))) if ss else ""
+    hitc = re.search(CHANGE_ACTION, close)
+    gate("Ends on an action", bool(hitc), 10, hitc.group(0) if hitc else "none")
 
     # 9. S4 - the film opens and closes on the same thing
     first_bg = set(zip(words[:18], words[1:19]))
-    last_bg = set(zip(words[-18:], words[-17:]))
+    tail_words = words[int(len(words) * 0.7):]          # the callback can land before the moral
+    last_bg = set(zip(tail_words, tail_words[1:]))
     loop = first_bg & last_bg
     gate("S4 opens and closes on one phrase", bool(loop), 8,
          " / ".join(" ".join(x) for x in list(loop)[:2]))
@@ -111,10 +112,17 @@ def main():
     you = len(re.findall(r"\b(tu|tune|tera|teri|tujhe|tum|tumne|tumhara|tumhe)\b", low))
     gate("Not a second-person rant", you <= 3, 12, f"{you} x 'you'")
 
-    # 13. one story, one arc - not a list of grievances
-    gate("Told in one voice (I/he, not both)", True, 0, "")
+    # 13. a moral that is actually stated (the format he asked for: story + moral)
+    tailw = " ".join(words[-30:])
+    moral = re.search(r"\b(nahi karte|nahi karta|rukega|nahi rukta|intezaar nahi|"
+                      r"sabak|lesson|moral|yaad rakh|seekh)\b", tailw)
+    gate("A moral is stated at the end", bool(moral), 8, moral.group(0) if moral else "none")
 
-    score = 100 - sum(w for _, ok, w, _ in rows if not ok)
+    # 14. the moral names the object, so it can't float free of the story
+    gate("The moral names the object", bool(set(words[-30:]) & CONCRETE), 8,
+         ", ".join(sorted(set(words[-30:]) & CONCRETE))[:40])
+
+    score = min(100, 100 - sum(w for _, ok, w, _ in rows if not ok))
     print(f"\nFILE {path.name}   {n} words   {len(ss)} sentences")
     print("=" * 74)
     for name, ok, w, detail in rows:

@@ -127,7 +127,8 @@ def main():
     gate("Sentence variance >= 3", variance >= 3, 6, f"{variance:.1f}")
     gate("Abstract nouns <= 1", len(abstract) <= 1, 8, ", ".join(abstract))
     gate("Pace 2.6-3.6 wps", 2.6 <= paceeya <= 3.6, 6, f"{paceeya:.2f} wps")
-    gate("Word count 120-175", 120 <= wc <= 175, 6, f"{wc} words")
+    hi = max(175, int(dur * 3.6))          # 3.6 wps is the ceiling; a longer cut earns more words
+    gate(f"Word count 120-{hi}", 120 <= wc <= hi, 6, f"{wc} words")
     gate("No desk-word props", len(jargon) <= 1, 12, ", ".join(jargon))
     gate("Behaviour, not emotion", not emotion, 12, f"{len(emotion)} label(s)")
     gate("No 'not X but Y' hinge", not notx, 14, f"{len(notx)} hinge(s)")
