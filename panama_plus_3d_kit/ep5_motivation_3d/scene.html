@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>MONARCH® Cinema 3D — Main Abhi Bhi Apni Taraf Hoon</title>
+  <title>MONARCH® Cinema 3D — Main Abhi Bhi Apni Taraf Hoon (V2 Masked Monarch)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      width: 100%; height: 100%; overflow: hidden; background: #090d14;
+      width: 100%; height: 100%; overflow: hidden; background: #05070c;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     }
     #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
@@ -17,26 +17,38 @@
     }
     .top-bar { display: flex; justify-content: space-between; align-items: center; }
     .pill {
-      background: rgba(12, 18, 28, 0.82);
-      border: 1px solid rgba(255, 255, 255, 0.20);
+      background: rgba(10, 12, 18, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.18);
       color: #e2e8f0;
       padding: 12px 24px; border-radius: 999px;
-      font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+      font-size: 20px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
     }
-    .pill.amber { border-color: rgba(245, 158, 11, 0.62); color: #fbbf24; }
+    .pill.crimson { border-color: rgba(239, 68, 68, 0.65); color: #fca5a5; }
+    .pill.amber { border-color: rgba(245, 158, 11, 0.65); color: #fbbf24; }
     .captions-wrap {
       align-self: center; text-align: center; max-width: 930px;
       padding: 18px 28px; border-radius: 18px;
-      background: rgba(8, 12, 19, 0.80);
+      background: rgba(6, 8, 14, 0.82);
       border: 1px solid rgba(245, 158, 11, 0.34);
-      box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.72);
     }
     .captions-text {
       color: #f8fafc; font-size: 42px; font-weight: 900; line-height: 1.24;
-      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.94);
+      text-shadow: 0 3px 14px rgba(0, 0, 0, 0.96);
     }
     .captions-text .hi { color: #fbbf24; }
+    .cta-banner {
+      align-self: center; text-align: center;
+      opacity: 0; transform: translateY(12px);
+      background: rgba(10, 8, 12, 0.86);
+      border: 1px solid rgba(239, 68, 68, 0.55);
+      padding: 14px 28px; border-radius: 14px;
+      color: #f8fafc; font-size: 26px; font-weight: 900; letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .cta-banner.visible { opacity: 1; transform: translateY(0); }
+    .cta-banner span { color: #fbbf24; }
   </style>
   <script type="importmap">
     {
@@ -52,8 +64,9 @@
   <div id="hud">
     <div class="top-bar">
       <div class="pill">MONARCH® 3D</div>
-      <div class="pill amber" id="beatTag">KHWAAB</div>
+      <div class="pill crimson" id="beatTag">KHWAAB</div>
     </div>
+    <div class="cta-banner" id="ctaBanner">MAIN ABHI BHI <span>APNI TARAF HOON</span></div>
     <div class="captions-wrap" id="captionWrap">
       <div class="captions-text" id="captionsText"></div>
     </div>
@@ -77,29 +90,30 @@
     renderer.setSize(W, H, false);
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.02;
+    renderer.toneMappingExposure = 1.08;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0b101b);
-    scene.fog = new THREE.FogExp2(0x0b101b, 0.032);
+    scene.background = new THREE.Color(0x06080f);
+    scene.fog = new THREE.FogExp2(0x06080f, 0.032);
 
-    const camera = new THREE.PerspectiveCamera(44, W / H, 0.1, 100);
+    const camera = new THREE.PerspectiveCamera(42, W / H, 0.08, 120);
 
-    // ---------------------------------------------------------------- BALANCED POST-PROCESSING (ZERO WASHOUT)
+    // ---------------------------------------------------------------- POST-PROCESSING CINEMA PIPELINE
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.22, 0.45, 0.90);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.28, 0.48, 0.86);
     composer.addPass(bloomPass);
 
     const CinemaGradeShader = {
-      uniforms: { tDiffuse: { value: null }, uTime: { value: 0.0 } },
+      uniforms: { tDiffuse: { value: null }, uTime: { value: 0.0 }, uWarmth: { value: 0.0 } },
       vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
       fragmentShader: `
         uniform sampler2D tDiffuse;
         uniform float uTime;
+        uniform float uWarmth;
         varying vec2 vUv;
         float hash12(vec2 p) {
           vec3 p3 = fract(vec3(p.xyx) * 0.1031);
@@ -109,16 +123,18 @@
         void main() {
           vec2 d = vUv - 0.5;
           float r2 = dot(d, d);
-          vec2 shift = d * r2 * 0.0020;
+          vec2 shift = d * r2 * 0.0022;
           float r = texture2D(tDiffuse, vUv + shift).r;
           float g = texture2D(tDiffuse, vUv).g;
           float b = texture2D(tDiffuse, vUv - shift).b;
           vec3 col = vec3(r, g, b);
           float lum = dot(col, vec3(0.299, 0.587, 0.114));
-          col += mix(vec3(-0.005, 0.002, 0.015), vec3(0.016, 0.008, -0.008), smoothstep(0.12, 0.74, lum));
-          float vig = smoothstep(0.95, 0.26, r2 * 1.38);
-          col *= mix(0.36, 1.0, vig);
-          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 31.0) - 0.5) * 0.020;
+          vec3 coolSh = vec3(-0.006, 0.002, 0.016);
+          vec3 warmHi = mix(vec3(0.018, 0.004, -0.006), vec3(0.026, 0.012, -0.012), uWarmth);
+          col += mix(coolSh, warmHi, smoothstep(0.10, 0.72, lum));
+          float vig = smoothstep(0.96, 0.25, r2 * 1.40);
+          col *= mix(0.32, 1.0, vig);
+          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 31.0) - 0.5) * 0.022;
           gl_FragColor = vec4(clamp(col + grain, 0.0, 1.0), 1.0);
         }
       `,
@@ -127,238 +143,372 @@
     composer.addPass(gradePass);
     composer.addPass(new OutputPass());
 
-    // ---------------------------------------------------------------- PROCEDURAL WOOD & PLASTER PBR TEXTURES
-    function makeWoodTex() {
-      const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+    // ---------------------------------------------------------------- PROCEDURAL TEXTURES (KNIT, SKIN+BEARD, VENETIAN FILIGREE MASK, ASPHALT, MARBLE)
+    function makeTurtleneckKnitTex() {
+      const c = document.createElement('canvas'); c.width = 256; c.height = 256;
       const g = c.getContext('2d');
-      g.fillStyle = '#332218'; g.fillRect(0, 0, 512, 512);
-      for (let i = 0; i < 160; i++) {
-        g.strokeStyle = i % 2 === 0 ? 'rgba(18,10,6,0.34)' : 'rgba(84,56,36,0.22)';
-        g.lineWidth = 2 + (i % 4);
-        const y = (i / 160) * 512;
-        g.beginPath(); g.moveTo(0, y);
-        for (let x = 0; x <= 512; x += 32) g.lineTo(x, y + Math.sin(x * 0.03 + i) * 4);
-        g.stroke();
+      g.fillStyle = '#090a0e'; g.fillRect(0, 0, 256, 256);
+      for (let x = 0; x < 256; x += 6) {
+        g.fillStyle = x % 12 === 0 ? '#14161e' : '#050609';
+        g.fillRect(x, 0, 3, 256);
+      }
+      for (let y = 0; y < 256; y += 8) {
+        g.fillStyle = 'rgba(255,255,255,0.025)';
+        g.fillRect(0, y, 256, 2);
       }
       const tex = new THREE.CanvasTexture(c);
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(6, 6);
       return tex;
     }
 
-    function makePlasterTex() {
+    function makeFaceSkinBeardTex() {
+      // Equirectangular-like UV for sculpted head sphere: front is center u=0.5!
       const c = document.createElement('canvas'); c.width = 512; c.height = 512;
       const g = c.getContext('2d');
-      g.fillStyle = '#151e2c'; g.fillRect(0, 0, 512, 512);
-      for (let i = 0; i < 1600; i++) {
+      // Warm South-Asian olive skin base
+      const grad = g.createLinearGradient(0, 0, 0, 512);
+      grad.addColorStop(0.0, '#b58462');
+      grad.addColorStop(0.55, '#c28f6c');
+      grad.addColorStop(1.0, '#9c6c4e');
+      g.fillStyle = grad;
+      g.fillRect(0, 0, 512, 512);
+
+      // Subtle cheekbone & nose bridge shading
+      g.fillStyle = 'rgba(85, 52, 34, 0.22)';
+      g.beginPath(); g.ellipse(198, 255, 28, 42, 0.2, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(314, 255, 28, 42, -0.2, 0, Math.PI * 2); g.fill();
+
+      // Groomed Short Beard & Jawline Stubble (matching reference!)
+      const beardGrad = g.createRadialGradient(256, 365, 25, 256, 365, 130);
+      beardGrad.addColorStop(0.0, 'rgba(18, 16, 16, 0.92)');
+      beardGrad.addColorStop(0.65, 'rgba(22, 19, 18, 0.85)');
+      beardGrad.addColorStop(1.0, 'rgba(22, 19, 18, 0.0)');
+      g.fillStyle = beardGrad;
+      g.beginPath();
+      g.moveTo(155, 290);
+      g.quadraticCurveTo(175, 435, 256, 455);
+      g.quadraticCurveTo(337, 435, 357, 290);
+      g.quadraticCurveTo(320, 340, 256, 336);
+      g.quadraticCurveTo(192, 340, 155, 290);
+      g.fill();
+
+      // Mustache
+      g.fillStyle = 'rgba(14, 13, 14, 0.94)';
+      g.beginPath();
+      g.moveTo(214, 332);
+      g.quadraticCurveTo(256, 314, 298, 332);
+      g.quadraticCurveTo(278, 348, 256, 342);
+      g.quadraticCurveTo(234, 348, 214, 332);
+      g.fill();
+
+      // Lips & Soul Patch
+      g.fillStyle = '#8b5446';
+      g.beginPath(); g.ellipse(256, 350, 22, 8, 0, 0, Math.PI * 2); g.fill();
+      g.fillStyle = 'rgba(14, 13, 14, 0.92)';
+      g.beginPath(); g.ellipse(256, 372, 11, 13, 0, 0, Math.PI * 2); g.fill();
+
+      // Fine stubble dots
+      for (let i = 0; i < 1400; i++) {
+        const rx = 165 + ((Math.sin(i * 17.3) * 999) % 1 + 1) % 1 * 182;
+        const ry = 290 + ((Math.cos(i * 31.7) * 999) % 1 + 1) % 1 * 145;
+        g.fillStyle = 'rgba(12,11,12,0.35)';
+        g.fillRect(rx, ry, 1.5, 2.2);
+      }
+
+      // Dark Eyebrows
+      g.fillStyle = '#121113';
+      g.beginPath(); g.ellipse(216, 206, 26, 6, -0.08, 0, Math.PI * 2); g.fill();
+      g.beginPath(); g.ellipse(296, 206, 26, 6, 0.08, 0, Math.PI * 2); g.fill();
+
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      return tex;
+    }
+
+    function makeVenetianFiligreeMaskTextures() {
+      // Symmetrical ornate Venetian filigree lace mask alpha + metallic color + bump!
+      const c = document.createElement('canvas'); c.width = 512; c.height = 256;
+      const a = document.createElement('canvas'); a.width = 512; a.height = 256;
+      const gc = c.getContext('2d'), ga = a.getContext('2d');
+      gc.fillStyle = '#0c0d11'; gc.fillRect(0, 0, 512, 256);
+      ga.fillStyle = '#000000'; ga.fillRect(0, 0, 512, 256);
+
+      const drawHalf = (ctx, color, isAlpha) => {
+        ctx.strokeStyle = color;
+        ctx.fillStyle = color;
+        ctx.lineCap = 'round';
+        // Crown & center nose bridge
+        ctx.lineWidth = 7;
+        ctx.beginPath();
+        ctx.moveTo(256, 34); ctx.quadraticCurveTo(234, 70, 256, 118);
+        ctx.quadraticCurveTo(256, 152, 240, 174);
+        ctx.stroke();
+
+        // Outer ornate frame around eye
+        ctx.lineWidth = 8;
+        ctx.beginPath();
+        ctx.moveTo(256, 64);
+        ctx.bezierCurveTo(215, 52, 145, 58, 92, 92);
+        ctx.bezierCurveTo(64, 112, 74, 154, 118, 174);
+        ctx.bezierCurveTo(165, 195, 224, 180, 246, 152);
+        ctx.stroke();
+
+        // Inner eye ring cutout border
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.ellipse(174, 122, 48, 25, -0.06, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Decorative filigree curls & swirls (forehead, temple, cheekbone)
+        ctx.lineWidth = 5;
+        const curls = [
+          [232, 60, 206, 36, 186, 56],
+          [190, 62, 160, 38, 134, 66],
+          [135, 76, 98, 62, 82, 98],
+          [98, 148, 86, 182, 116, 194],
+          [148, 180, 144, 212, 176, 204],
+          [202, 176, 212, 204, 238, 192],
+        ];
+        for (const [x1, y1, cx, cy, x2, y2] of curls) {
+          ctx.beginPath(); ctx.moveTo(x1, y1); ctx.quadraticCurveTo(cx, cy, x2, y2); ctx.stroke();
+          ctx.beginPath(); ctx.arc(x2, y2, 6, 0, Math.PI * 2); ctx.fill();
+        }
+        // Silver gemstone studs
+        if (!isAlpha) {
+          ctx.fillStyle = '#e2e8f0';
+          for (const [gx, gy] of [[256, 108], [220, 62], [148, 72], [102, 112]]) {
+            ctx.beginPath(); ctx.arc(gx, gy, 3.8, 0, Math.PI * 2); ctx.fill();
+          }
+        }
+      };
+
+      // Left half
+      drawHalf(gc, '#171920', false);
+      drawHalf(ga, '#ffffff', true);
+      // Mirror right half
+      gc.save(); gc.translate(512, 0); gc.scale(-1, 1); drawHalf(gc, '#171920', false); gc.restore();
+      ga.save(); ga.translate(512, 0); ga.scale(-1, 1); drawHalf(ga, '#ffffff', true); ga.restore();
+
+      // Carve clean transparent eye openings in alpha map
+      ga.fillStyle = '#000000';
+      ga.beginPath(); ga.ellipse(174, 122, 41, 19, -0.06, 0, Math.PI * 2); ga.fill();
+      ga.beginPath(); ga.ellipse(338, 122, 41, 19, 0.06, 0, Math.PI * 2); ga.fill();
+
+      const colTex = new THREE.CanvasTexture(c); colTex.colorSpace = THREE.SRGBColorSpace;
+      const alphaTex = new THREE.CanvasTexture(a);
+      return { colTex, alphaTex };
+    }
+
+    function makeAsphaltTex() {
+      const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+      const g = c.getContext('2d');
+      g.fillStyle = '#0f131b'; g.fillRect(0, 0, 512, 512);
+      for (let i = 0; i < 2400; i++) {
         const x = ((Math.sin(i * 19.3) * 9187) % 1 + 1) % 1 * 512;
         const y = ((Math.cos(i * 41.7) * 6311) % 1 + 1) % 1 * 512;
-        g.fillStyle = i % 2 === 0 ? 'rgba(34,47,66,0.22)' : 'rgba(9,13,20,0.26)';
-        g.fillRect(x, y, 4 + (i % 14), 3 + (i % 10));
+        g.fillStyle = i % 2 === 0 ? 'rgba(32,40,56,0.28)' : 'rgba(6,8,12,0.34)';
+        g.fillRect(x, y, 4 + (i % 12), 4 + (i % 8));
       }
       const tex = new THREE.CanvasTexture(c);
       tex.colorSpace = THREE.SRGBColorSpace;
       tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
-      tex.repeat.set(3, 2);
+      tex.repeat.set(8, 8);
       return tex;
     }
 
-    const woodTex = makeWoodTex();
-    const plasterTex = makePlasterTex();
+    const knitTex = makeTurtleneckKnitTex();
+    const faceTex = makeFaceSkinBeardTex();
+    const maskTexs = makeVenetianFiligreeMaskTextures();
+    const asphaltTex = makeAsphaltTex();
 
-    // ---------------------------------------------------------------- BALANCED CINEMA LIGHTING
-    scene.add(new THREE.HemisphereLight(0x94a3b8, 0x0b101b, 0.72));
+    // ---------------------------------------------------------------- LIGHTING RIG (DYNAMICALLY DRIVEN PER SCENE)
+    const hemi = new THREE.HemisphereLight(0x88b4ff, 0x090b12, 0.72);
+    scene.add(hemi);
 
-    const moonSpot = new THREE.DirectionalLight(0x7fb4ff, 1.9);
-    moonSpot.position.set(-4.5, 6.2, -5.0);
-    scene.add(moonSpot);
+    const keyLight = new THREE.SpotLight(0xffdfb0, 14, 24, Math.PI * 0.32, 0.55, 1.2);
+    keyLight.position.set(1.8, 4.2, 3.6);
+    keyLight.castShadow = true;
+    keyLight.shadow.mapSize.set(1024, 1024);
+    scene.add(keyLight);
 
-    const keySpot = new THREE.SpotLight(0xffdfb0, 16, 20, Math.PI * 0.32, 0.60, 1.3);
-    keySpot.position.set(-1.6, 4.6, 3.8);
-    keySpot.castShadow = true;
-    keySpot.shadow.mapSize.set(1024, 1024);
-    scene.add(keySpot);
+    const rimLight = new THREE.DirectionalLight(0x60a5fa, 2.2);
+    rimLight.position.set(-3.5, 3.5, -4.0);
+    scene.add(rimLight);
 
-    const deskKeyLight = new THREE.PointLight(0xffb35c, 2.4, 5.5);
-    deskKeyLight.position.set(0.32, 1.55, 0.85);
-    scene.add(deskKeyLight);
+    const crimsonRimLight = new THREE.PointLight(0xff2a2a, 0.0, 9.0);
+    crimsonRimLight.position.set(0, 1.65, -0.8);
+    scene.add(crimsonRimLight);
 
-    const stairGlowLight = new THREE.PointLight(0xfbbf24, 0.0, 7.0);
-    stairGlowLight.position.set(0.65, 2.2, -1.65);
-    scene.add(stairGlowLight);
-
-    // ---------------------------------------------------------------- NIGHT STUDY ARCHITECTURE
-    const floor = new THREE.Mesh(
-      new THREE.PlaneGeometry(24, 24),
-      new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.78, metalness: 0.06 })
-    );
-    floor.rotation.x = -Math.PI / 2;
-    floor.receiveShadow = true;
-    scene.add(floor);
-
-    const backWall = new THREE.Mesh(
-      new THREE.PlaneGeometry(24, 14),
-      new THREE.MeshStandardMaterial({ map: plasterTex, roughness: 0.88 })
-    );
-    backWall.position.set(0, 6.5, -4.6);
-    backWall.receiveShadow = true;
-    scene.add(backWall);
-
-    // Moon & Volumetric Moonlight Shaft
-    const moonDisc = new THREE.Mesh(
-      new THREE.CircleGeometry(0.95, 32),
-      new THREE.MeshBasicMaterial({ color: 0xcbd5e1 })
-    );
-    moonDisc.position.set(-1.5, 3.9, -4.5);
-    scene.add(moonDisc);
-
-    const rayCanvas = document.createElement('canvas'); rayCanvas.width = 128; rayCanvas.height = 128;
-    const rg = rayCanvas.getContext('2d').createLinearGradient(0, 0, 0, 128);
-    rg.addColorStop(0.0, 'rgba(147, 197, 253, 0.65)');
-    rg.addColorStop(1.0, 'rgba(147, 197, 253, 0.0)');
-    rayCanvas.getContext('2d').fillStyle = rg;
-    rayCanvas.getContext('2d').fillRect(0, 0, 128, 128);
-    const moonShaft = new THREE.Mesh(
-      new THREE.ConeGeometry(2.6, 7.2, 20, 1, true),
-      new THREE.MeshBasicMaterial({
-        map: new THREE.CanvasTexture(rayCanvas),
-        color: 0x93c5fd, transparent: true, opacity: 0.08,
-        blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide,
-      })
-    );
-    moonShaft.position.set(-0.7, 2.7, -2.0);
-    moonShaft.rotation.x = 0.45;
-    scene.add(moonShaft);
-
-    // Compact Oak Study Desk positioned cleanly on RIGHT (x = 0.65, z = 0.62) so Human on LEFT is 100% unobstructed!
-    const deskMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.60, metalness: 0.06 });
-    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(1.38, 0.09, 0.78), deskMat);
-    deskTop.position.set(0.65, 0.78, 0.62);
-    deskTop.castShadow = true; deskTop.receiveShadow = true;
-    scene.add(deskTop);
-    for (const lx of [0.04, 1.26]) {
-      for (const lz of [0.28, 0.96]) {
-        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.78, 0.07), deskMat);
-        leg.position.set(lx, 0.39, lz);
-        leg.castShadow = true;
-        scene.add(leg);
-      }
-    }
-
-    // Elevated Stone Plinth on RIGHT-BACK (x = 0.68, z = -1.75) so ALL 3 Monoliths & Stairs sit above desk line!
-    const plinth = new THREE.Mesh(
-      new THREE.BoxGeometry(1.56, 0.72, 1.85),
-      new THREE.MeshStandardMaterial({ color: 0x1a2230, roughness: 0.82 })
-    );
-    plinth.position.set(0.68, 0.36, -1.75);
-    plinth.receiveShadow = true;
-    scene.add(plinth);
-
-    function makeLabelTex(line) {
-      const c = document.createElement('canvas'); c.width = 512; c.height = 192;
-      const g = c.getContext('2d');
-      g.fillStyle = '#1e293b'; g.fillRect(0, 0, 512, 192);
-      g.strokeStyle = '#94a3b8'; g.lineWidth = 6; g.strokeRect(8, 8, 496, 176);
-      g.fillStyle = '#f8fafc'; g.font = '900 34px Inter, sans-serif';
-      g.textAlign = 'center'; g.textBaseline = 'middle';
-      g.fillText(line, 256, 96);
-      return new THREE.CanvasTexture(c);
-    }
-
-    const blockLabels = ['KAL SE', 'MERE BAS KA NAHI', 'ZIKR BAND'];
-    const blocks = blockLabels.map((lbl, idx) => {
-      const m = new THREE.Mesh(
-        new THREE.BoxGeometry(1.16, 0.42, 0.56),
-        new THREE.MeshStandardMaterial({ map: makeLabelTex(lbl), roughness: 0.65, metalness: 0.12 })
-      );
-      m.position.set(0.68, 5.5, -1.65 + idx * 0.02);
-      m.castShadow = true; m.receiveShadow = true;
-      scene.add(m);
-      return m;
-    });
-
-    const stairGroup = new THREE.Group();
-    stairGroup.visible = false;
-    scene.add(stairGroup);
-    const stairEdges = [];
-    for (let i = 0; i < 5; i++) {
-      const step = new THREE.Mesh(
-        new THREE.BoxGeometry(1.26, 0.22, 0.42),
-        new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.55, metalness: 0.15 })
-      );
-      step.position.set(0.68, 0.84 + i * 0.26, -1.10 - i * 0.36);
-      step.castShadow = true; step.receiveShadow = true;
-      const edgeMat = new THREE.MeshStandardMaterial({ color: 0x475569, emissive: 0x000000, emissiveIntensity: 0 });
-      const edge = new THREE.Mesh(new THREE.BoxGeometry(1.28, 0.045, 0.055), edgeMat);
-      edge.position.set(0.68, 0.95 + i * 0.26, -0.90 - i * 0.36);
-      stairGroup.add(step, edge);
-      stairEdges.push(edgeMat);
-    }
-
-    // ---------------------------------------------------------------- DESK PROPS (MATTE CREAM PAGES, ZERO GLARE)
-    const notebookGroup = new THREE.Group();
-    notebookGroup.position.set(0.52, 0.84, 0.64);
-    scene.add(notebookGroup);
-    const coverMat = new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.58 });
-    const pageMat = new THREE.MeshStandardMaterial({ color: 0xd6c7a8, roughness: 0.94, metalness: 0.0 });
-    const coverL = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.025, 0.44), coverMat);
-    coverL.position.x = -0.16;
-    const pageL = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.02, 0.40), pageMat);
-    pageL.position.set(-0.15, 0.018, 0);
-    const rightCoverPivot = new THREE.Group();
-    const coverR = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.025, 0.44), coverMat);
-    coverR.position.x = 0.16;
-    const pageR = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.02, 0.40), pageMat);
-    pageR.position.set(0.15, 0.018, 0);
-    rightCoverPivot.add(coverR, pageR);
-    notebookGroup.add(coverL, pageL, rightCoverPivot);
-
-    const inkLine = new THREE.Mesh(
-      new THREE.BoxGeometry(0.22, 0.008, 0.022),
-      new THREE.MeshBasicMaterial({ color: 0xd97706 })
-    );
-    inkLine.position.set(0.68, 0.875, 0.62);
-    inkLine.scale.x = 0.001;
-    inkLine.visible = false;
-    scene.add(inkLine);
-
-    const pen = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.011, 0.007, 0.22, 10),
-      new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.75, roughness: 0.25 })
-    );
-    pen.rotation.z = Math.PI / 3;
-    pen.position.set(0.80, 0.875, 0.70);
-    scene.add(pen);
-
-    const phoneGroup = new THREE.Group();
-    phoneGroup.position.set(1.04, 0.84, 0.64);
-    const phoneBody = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.022, 0.36), new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.35, metalness: 0.65 }));
-    const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 0.32), new THREE.MeshBasicMaterial({ color: 0x0284c7 }));
-    phoneScreen.rotation.x = -Math.PI / 2; phoneScreen.position.y = 0.012;
-    phoneGroup.add(phoneBody, phoneScreen);
-    scene.add(phoneGroup);
-
-    // Floating warm dust motes
-    const mCount = 220;
-    const mGeo = new THREE.BufferGeometry();
-    const mArr = new Float32Array(mCount * 3);
-    for (let i = 0; i < mCount; i++) {
-      mArr[i * 3] = Math.sin(i * 19.1) * 4.0;
-      mArr[i * 3 + 1] = 0.4 + ((i % 35) / 35) * 3.6;
-      mArr[i * 3 + 2] = Math.cos(i * 43.7) * 3.0 - 0.5;
-    }
-    mGeo.setAttribute('position', new THREE.BufferAttribute(mArr, 3));
-    const motes = new THREE.Points(mGeo, new THREE.PointsMaterial({
-      color: 0xfde68a, size: 0.024, transparent: true, opacity: 0.45,
-      blending: THREE.AdditiveBlending, depthWrite: false,
-    }));
-    scene.add(motes);
-
-    // ---------------------------------------------------------------- LOAD CC0 HUMAN & PROPORTIONAL FURNITURE
+    // ---------------------------------------------------------------- BUILD 3D MASKED MONARCH CHARACTER
     const loader = new GLTFLoader();
     const loadGLTF = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
     const TIMELINE = await (await fetch('./timeline.json')).json();
 
+    const [humanGltf, streetLightGltf, lampGltf, chairGltf, booksGltf] = await Promise.all([
+      loadGLTF('/assets/casual_hoodie.glb'),
+      loadGLTF('/assets/streetlight.glb'),
+      loadGLTF('/assets/lamp_table.glb'),
+      loadGLTF('/assets/armchair_pillows.glb'),
+      loadGLTF('/assets/book_set.glb'),
+    ]);
+
+    function buildMonarchHero(gltf) {
+      const root = new THREE.Group();
+      const inner = SkeletonUtils.clone(gltf.scene);
+      const box = new THREE.Box3().setFromObject(inner);
+      const sz = new THREE.Vector3(), ct = new THREE.Vector3();
+      box.getSize(sz); box.getCenter(ct);
+      const s = 1.80 / Math.max(sz.y, 0.001);
+      inner.scale.setScalar(s);
+      inner.position.set(-ct.x * s, -box.min.y * s, -ct.z * s);
+      root.add(inner);
+
+      const turtleneckMat = new THREE.MeshStandardMaterial({
+        map: knitTex, bumpMap: knitTex, bumpScale: 0.015,
+        color: 0x0b0c10, roughness: 0.88, metalness: 0.06,
+      });
+      const trousersMat = new THREE.MeshStandardMaterial({ color: 0x0f1218, roughness: 0.80 });
+      const skinMat = new THREE.MeshStandardMaterial({ color: 0xc28f6c, roughness: 0.56 });
+
+      let headBone = null;
+      let neckBone = null;
+
+      inner.traverse((o) => {
+        if (o.isBone) {
+          if (o.name === 'Head') headBone = o;
+          if (o.name === 'Neck') neckBone = o;
+        }
+        if (o.isMesh) {
+          o.castShadow = true; o.receiveShadow = true;
+          if (/Head/i.test(o.name)) {
+            o.visible = false; // Replace stylized low-poly head with bespoke Masked MONARCH Head!
+            return;
+          }
+          if (o.material) {
+            const mName = o.material.name || '';
+            if (mName === 'Skin') o.material = skinMat;
+            else if (mName === 'LightBlue') o.material = trousersMat;
+            else o.material = turtleneckMat;
+          }
+        }
+      });
+
+      // Attach 3D Ribbed Black Turtleneck Collar onto Neck bone
+      const invS = 1 / s;
+      if (neckBone) {
+        const collar = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.088 * invS, 0.096 * invS, 0.11 * invS, 24),
+          turtleneckMat
+        );
+        collar.position.set(0, 0.04 * invS, 0.005 * invS);
+        neckBone.add(collar);
+      }
+
+      // Attach Bespoke Sculpted Masked MONARCH Head onto Head bone
+      const monarchHead = new THREE.Group();
+      monarchHead.scale.setScalar(invS);
+      if (headBone) headBone.add(monarchHead);
+      else root.add(monarchHead);
+
+      // 1. Cranium + Jaw (oriented so UV center u=0.5 faces +Z!)
+      const headGeo = new THREE.SphereGeometry(0.112, 32, 28);
+      headGeo.scale(0.88, 1.12, 0.96);
+      const headMesh = new THREE.Mesh(
+        headGeo,
+        new THREE.MeshStandardMaterial({ map: faceTex, roughness: 0.52, metalness: 0.04 })
+      );
+      headMesh.rotation.y = -Math.PI / 2; // Align sphere front seam (u=0.5) toward +Z!
+      headMesh.position.set(0, 0.115, 0.008);
+      headMesh.castShadow = true;
+      monarchHead.add(headMesh);
+
+      // Subtle 3D Nose Bridge
+      const nose = new THREE.Mesh(
+        new THREE.BoxGeometry(0.022, 0.048, 0.032),
+        new THREE.MeshStandardMaterial({ color: 0xba8663, roughness: 0.55 })
+      );
+      nose.position.set(0, 0.112, 0.106);
+      nose.rotation.x = -0.22;
+      monarchHead.add(nose);
+
+      // 2. Crimson Glowing Eye Visor + Piercing Eyes inside Mask Cutouts
+      const crimsonEyeMat = new THREE.MeshBasicMaterial({
+        color: 0xdc2626, transparent: true, opacity: 0.62,
+      });
+      for (const sx of [-1, 1]) {
+        const glowLens = new THREE.Mesh(new THREE.PlaneGeometry(0.042, 0.022), crimsonEyeMat);
+        glowLens.position.set(sx * 0.036, 0.132, 0.106);
+        glowLens.rotation.y = sx * 0.18;
+        monarchHead.add(glowLens);
+
+        const iris = new THREE.Mesh(
+          new THREE.SphereGeometry(0.011, 12, 12),
+          new THREE.MeshStandardMaterial({ color: 0x110505, roughness: 0.12, emissive: 0x450a0a, emissiveIntensity: 0.5 })
+        );
+        iris.position.set(sx * 0.036, 0.132, 0.098);
+        monarchHead.add(iris);
+      }
+
+      // 3. 3D Curved Ornate Black Venetian Filigree Mask
+      const maskGeo = new THREE.CylinderGeometry(0.109, 0.106, 0.092, 32, 1, true, -Math.PI * 0.36, Math.PI * 0.72);
+      const maskMat = new THREE.MeshStandardMaterial({
+        map: maskTexs.colTex,
+        alphaMap: maskTexs.alphaTex,
+        bumpMap: maskTexs.alphaTex,
+        bumpScale: 0.008,
+        transparent: true,
+        alphaTest: 0.25,
+        side: THREE.DoubleSide,
+        roughness: 0.32,
+        metalness: 0.55,
+      });
+      const maskMesh = new THREE.Mesh(maskGeo, maskMat);
+      maskMesh.position.set(0, 0.132, 0.012);
+      monarchHead.add(maskMesh);
+
+      // 4. Sculpted Center-Parted Dark Black Hair (matching reference!)
+      const hairMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0d, roughness: 0.65, metalness: 0.08 });
+      const crown = new THREE.Mesh(new THREE.SphereGeometry(0.118, 24, 18, 0, Math.PI * 2, 0, Math.PI * 0.56), hairMat);
+      crown.scale.set(0.92, 1.05, 1.02);
+      crown.position.set(0, 0.132, 0.002);
+      monarchHead.add(crown);
+
+      // Swept left & right center-parted front bangs + back volume
+      for (const sx of [-1, 1]) {
+        for (let k = 0; k < 4; k++) {
+          const lock = new THREE.Mesh(new THREE.CapsuleGeometry(0.024 - k * 0.002, 0.075, 6, 10), hairMat);
+          lock.position.set(sx * (0.035 + k * 0.022), 0.205 - k * 0.018, 0.068 - k * 0.016);
+          lock.rotation.set(0.35 + k * 0.12, sx * 0.22, sx * (-0.52 - k * 0.15));
+          monarchHead.add(lock);
+        }
+        const sideBurn = new THREE.Mesh(new THREE.BoxGeometry(0.022, 0.095, 0.055), hairMat);
+        sideBurn.position.set(sx * 0.092, 0.135, 0.018);
+        monarchHead.add(sideBurn);
+      }
+      const backHair = new THREE.Mesh(new THREE.SphereGeometry(0.105, 18, 14), hairMat);
+      backHair.scale.set(0.92, 1.08, 0.85);
+      backHair.position.set(0, 0.135, -0.028);
+      monarchHead.add(backHair);
+
+      const mixer = new THREE.AnimationMixer(inner);
+      const findClip = (re, fb) => gltf.animations.find((a) => re.test(a.name)) || gltf.animations[fb || 0];
+      const acts = {
+        walk: mixer.clipAction(findClip(/^Walk$/i, 0)),
+        idleNeutral: mixer.clipAction(findClip(/Idle_Neutral/i, 0)),
+        interact: mixer.clipAction(findClip(/Interact/i, 0)),
+        idle: mixer.clipAction(findClip(/^Idle$/i, 0)),
+      };
+      Object.values(acts).forEach((a) => a.play());
+
+      return { root, mixer, acts, headBone, monarchHead };
+    }
+
+    const hero = buildMonarchHero(humanGltf);
+    scene.add(hero.root);
+
+    // ---------------------------------------------------------------- 9-SETPIECE STORYTELLING PROPS
     function fitHeight(gltfScene, targetH) {
       const g = new THREE.Group();
       const inner = SkeletonUtils.clone(gltfScene);
@@ -368,75 +518,217 @@
       const s = targetH / Math.max(sz.y, 0.001);
       inner.scale.setScalar(s);
       inner.position.set(-ct.x * s, -box.min.y * s, -ct.z * s);
-      inner.traverse((o) => {
-        if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; }
-      });
+      inner.traverse((o) => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
       g.add(inner);
-      return { g, inner };
+      return g;
     }
 
-    const [humanGltf, lampGltf, chairGltf, booksGltf, rugGltf, shelfGltf] = await Promise.all([
-      loadGLTF('/assets/casual_hoodie.glb'),
-      loadGLTF('/assets/lamp_table.glb'),
-      loadGLTF('/assets/armchair_pillows.glb'),
-      loadGLTF('/assets/book_set.glb'),
-      loadGLTF('/assets/rug_rectangle_a.glb'),
-      loadGLTF('/assets/shelf_b_large_decorated.glb'),
-    ]);
-
-    const rug = fitHeight(rugGltf.scene, 0.04).g;
-    rug.scale.set(2.0, 1.0, 2.0);
-    rug.position.set(-0.1, 0.005, 0.2);
-    scene.add(rug);
-
-    const chair = fitHeight(chairGltf.scene, 0.92).g;
-    chair.position.set(-1.35, 0.0, -0.45);
-    chair.rotation.y = 0.62;
-    scene.add(chair);
-
-    // Correctly proportioned bookshelf tucked nicely on back-left wall!
-    const shelf = fitHeight(shelfGltf.scene, 1.90).g;
-    shelf.position.set(-1.55, 0.0, -3.55);
-    shelf.rotation.y = 0.22;
-    scene.add(shelf);
-
-    // Subtle desk lamp on far-left corner of desk (subdued warm emissive!)
-    const lamp = fitHeight(lampGltf.scene, 0.36).g;
-    lamp.position.set(0.18, 0.825, 0.40);
-    lamp.traverse((o) => {
-      if (o.isMesh && o.material && /shade|lamp|white|light/i.test(o.material.name || o.name)) {
-        o.material = o.material.clone();
-        o.material.emissive = new THREE.Color(0xd97706);
-        o.material.emissiveIntensity = 0.45;
-      }
+    // Shared Reflective Floor
+    const groundMat = new THREE.MeshStandardMaterial({
+      map: asphaltTex, roughness: 0.24, metalness: 0.35,
     });
-    scene.add(lamp);
+    const ground = new THREE.Mesh(new THREE.PlaneGeometry(50, 50), groundMat);
+    ground.rotation.x = -Math.PI / 2;
+    ground.receiveShadow = true;
+    scene.add(ground);
 
-    const books = fitHeight(booksGltf.scene, 0.16).g;
-    books.position.set(1.06, 0.825, 0.36);
-    books.rotation.y = -0.35;
-    scene.add(books);
-
-    // Real Animated CC0 Human Actor standing cleanly on LEFT (x = -0.58, z = 0.48) — 100% VISIBLE HEAD TO TOE!
-    const humanRes = fitHeight(humanGltf.scene, 1.78);
-    const human = humanRes.g;
-    human.traverse((o) => {
-      if (o.isMesh && o.material) {
-        o.material = o.material.clone();
-        if (o.material.name === 'Purple') o.material.color.setHex(0xc2410c); // Rich burnt-copper hoodie!
-        if (o.material.name === 'LightBlue') o.material.color.setHex(0x1e293b); // Slate trousers!
+    // SCENE 1 GROUP: Rainy Midnight Alley (Streetlights + Rain + Wet Reflections)
+    const alleyGroup = new THREE.Group();
+    scene.add(alleyGroup);
+    for (const side of [-1, 1]) {
+      for (const z of [-2.0, -7.5]) {
+        const st = fitHeight(streetLightGltf.scene, 4.4);
+        st.position.set(side * 2.4, 0, z);
+        st.rotation.y = side > 0 ? -Math.PI / 2 : Math.PI / 2;
+        alleyGroup.add(st);
+        const sl = new THREE.PointLight(0x7dd3fc, 6.5, 11);
+        sl.position.set(side * 1.9, 3.8, z);
+        alleyGroup.add(sl);
       }
-    });
-    scene.add(human);
+    }
+    const rainCount = 420;
+    const rainGeo = new THREE.BufferGeometry();
+    const rainPos = new Float32Array(rainCount * 3);
+    for (let i = 0; i < rainCount; i++) {
+      rainPos[i * 3] = Math.sin(i * 19.7) * 5.0;
+      rainPos[i * 3 + 1] = (i % 35) * 0.25;
+      rainPos[i * 3 + 2] = Math.cos(i * 53.1) * 6.0 - 2.0;
+    }
+    rainGeo.setAttribute('position', new THREE.BufferAttribute(rainPos, 3));
+    const rainPts = new THREE.Points(rainGeo, new THREE.PointsMaterial({ color: 0x93c5fd, size: 0.045, transparent: true, opacity: 0.55 }));
+    alleyGroup.add(rainPts);
 
-    const humanMixer = new THREE.AnimationMixer(humanRes.inner);
-    const findClip = (re, fb) => humanGltf.animations.find((a) => re.test(a.name)) || humanGltf.animations[fb || 0];
-    const idleNeutralAct = humanMixer.clipAction(findClip(/Idle_Neutral/i, 0));
-    const interactAct = humanMixer.clipAction(findClip(/Interact/i, 0));
-    const idleProudAct = humanMixer.clipAction(findClip(/^Idle$/i, 0));
-    idleNeutralAct.play();
-    interactAct.play();
-    idleProudAct.play();
+    // SCENE 2 GROUP: Obsidian Mirror Gallery + Shrinking Golden KHWAAB Orb + Crimson Light Bar
+    const galleryGroup = new THREE.Group();
+    galleryGroup.visible = false;
+    scene.add(galleryGroup);
+    const pillarMat = new THREE.MeshStandardMaterial({ color: 0x0b0e16, roughness: 0.22, metalness: 0.65 });
+    for (const side of [-1, 1]) {
+      for (const z of [-1.2, -3.5, -5.8]) {
+        const pil = new THREE.Mesh(new THREE.BoxGeometry(0.45, 5.5, 0.45), pillarMat);
+        pil.position.set(side * 1.65, 2.75, z);
+        galleryGroup.add(pil);
+      }
+    }
+    const khwaabOrb = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(0.32, 2),
+      new THREE.MeshStandardMaterial({ color: 0xfbbf24, emissive: 0xf59e0b, emissiveIntensity: 1.5, wireframe: true })
+    );
+    const khwaabCore = new THREE.Mesh(
+      new THREE.SphereGeometry(0.18, 20, 20),
+      new THREE.MeshBasicMaterial({ color: 0xfde68a })
+    );
+    khwaabOrb.add(khwaabCore);
+    khwaabOrb.position.set(0.55, 1.52, 0.35);
+    galleryGroup.add(khwaabOrb);
+
+    // Signature Crimson Horizontal Light Bar (used in Scene 2 & Scene 9 Hero Portrait!)
+    const crimsonWall = new THREE.Mesh(
+      new THREE.PlaneGeometry(18, 12),
+      new THREE.MeshStandardMaterial({ color: 0x16181e, roughness: 0.92 })
+    );
+    crimsonWall.position.set(0, 3.0, -1.65);
+    const crimsonBar = new THREE.Mesh(
+      new THREE.BoxGeometry(14, 0.24, 0.08),
+      new THREE.MeshBasicMaterial({ color: 0xff3b2f })
+    );
+    crimsonBar.position.set(0, 1.56, -1.55);
+    scene.add(crimsonWall, crimsonBar);
+    crimsonWall.visible = false;
+    crimsonBar.visible = false;
+
+    // SCENE 3 & 5: Crushing Excuse Monoliths -> 5 Golden Ascension Stairs
+    function makeSlabTex(line) {
+      const c = document.createElement('canvas'); c.width = 512; c.height = 192;
+      const g = c.getContext('2d');
+      g.fillStyle = '#0d111a'; g.fillRect(0, 0, 512, 192);
+      g.strokeStyle = '#ef4444'; g.lineWidth = 6; g.strokeRect(8, 8, 496, 176);
+      g.fillStyle = '#f8fafc'; g.font = '900 36px Inter, sans-serif';
+      g.textAlign = 'center'; g.textBaseline = 'middle';
+      g.fillText(line, 256, 96);
+      return new THREE.CanvasTexture(c);
+    }
+    const monolithGroup = new THREE.Group();
+    monolithGroup.visible = false;
+    scene.add(monolithGroup);
+    const monoliths = ['KAL SE', 'MERE BAS KA NAHI', 'ZIKR BAND'].map((lbl, idx) => {
+      const m = new THREE.Mesh(
+        new THREE.BoxGeometry(1.35, 0.56, 0.65),
+        new THREE.MeshStandardMaterial({ map: makeSlabTex(lbl), roughness: 0.45, metalness: 0.3 })
+      );
+      m.position.set((idx - 1) * 1.15, 7.0, -1.1 - (idx === 1 ? 0.55 : 0));
+      m.castShadow = true;
+      monolithGroup.add(m);
+      return m;
+    });
+    const shockRing = new THREE.Mesh(
+      new THREE.RingGeometry(0.8, 1.1, 48),
+      new THREE.MeshBasicMaterial({ color: 0xf87171, transparent: true, opacity: 0.0, side: THREE.DoubleSide })
+    );
+    shockRing.rotation.x = -Math.PI / 2;
+    shockRing.position.y = 0.02;
+    scene.add(shockRing);
+
+    const stairGroup = new THREE.Group();
+    stairGroup.visible = false;
+    scene.add(stairGroup);
+    const stairEdges = [];
+    for (let i = 0; i < 5; i++) {
+      const step = new THREE.Mesh(
+        new THREE.BoxGeometry(1.85, 0.24, 0.52),
+        new THREE.MeshStandardMaterial({ color: 0x0f141e, roughness: 0.35, metalness: 0.4 })
+      );
+      step.position.set(0, 0.12 + i * 0.28, -0.55 - i * 0.48);
+      step.castShadow = true; step.receiveShadow = true;
+      const edgeMat = new THREE.MeshStandardMaterial({ color: 0x475569, emissive: 0x000000, emissiveIntensity: 0 });
+      const edge = new THREE.Mesh(new THREE.BoxGeometry(1.87, 0.045, 0.06), edgeMat);
+      edge.position.set(0, 0.24 + i * 0.28, -0.29 - i * 0.48);
+      stairGroup.add(step, edge);
+      stairEdges.push(edgeMat);
+    }
+
+    // SCENE 4: Penthouse Rain Window + Lonely Armchair
+    const penthouseGroup = new THREE.Group();
+    penthouseGroup.visible = false;
+    scene.add(penthouseGroup);
+    const armchair = fitHeight(chairGltf.scene, 0.96);
+    armchair.position.set(-0.55, 0, -0.15);
+    armchair.rotation.y = 0.65;
+    penthouseGroup.add(armchair);
+    const winFrameMat = new THREE.MeshStandardMaterial({ color: 0x090c12, roughness: 0.4, metalness: 0.6 });
+    for (const wx of [-1.6, 0.0, 1.6]) {
+      const mullion = new THREE.Mesh(new THREE.BoxGeometry(0.10, 5.5, 0.14), winFrameMat);
+      mullion.position.set(wx, 2.75, -1.8);
+      penthouseGroup.add(mullion);
+    }
+    const moonWindow = new THREE.Mesh(new THREE.CircleGeometry(0.95, 32), new THREE.MeshBasicMaterial({ color: 0xdbeafe }));
+    moonWindow.position.set(0.85, 2.85, -5.5);
+    penthouseGroup.add(moonWindow);
+
+    // SCENE 6 & 7: Obsidian Architectural Desk + Open Journal + Pen + Flipping Phone
+    const deskGroup = new THREE.Group();
+    deskGroup.visible = false;
+    scene.add(deskGroup);
+    const darkMarble = new THREE.MeshStandardMaterial({ color: 0x11151e, roughness: 0.22, metalness: 0.45 });
+    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.15, 0.09, 1.05), darkMarble);
+    deskTop.position.set(0, 0.86, 0.55);
+    deskTop.castShadow = true; deskTop.receiveShadow = true;
+    deskGroup.add(deskTop);
+    const lamp = fitHeight(lampGltf.scene, 0.36);
+    lamp.position.set(-0.78, 0.905, 0.35);
+    deskGroup.add(lamp);
+    const books = fitHeight(booksGltf.scene, 0.16);
+    books.position.set(0.75, 0.905, 0.32);
+    deskGroup.add(books);
+
+    const notebookGroup = new THREE.Group();
+    notebookGroup.position.set(-0.12, 0.92, 0.60);
+    deskGroup.add(notebookGroup);
+    const covMat = new THREE.MeshStandardMaterial({ color: 0x5c1d0c, roughness: 0.55 });
+    const pgMat = new THREE.MeshStandardMaterial({ color: 0xd8cab0, roughness: 0.94 });
+    const cL = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.024, 0.44), covMat); cL.position.x = -0.16;
+    const pL = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.020, 0.40), pgMat); pL.position.set(-0.15, 0.018, 0);
+    const rightPivot = new THREE.Group();
+    const cR = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.024, 0.44), covMat); cR.position.x = 0.16;
+    const pR = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.020, 0.40), pgMat); pR.position.set(0.15, 0.018, 0);
+    rightPivot.add(cR, pR);
+    notebookGroup.add(cL, pL, rightPivot);
+
+    const inkLine = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.008, 0.022), new THREE.MeshBasicMaterial({ color: 0xf59e0b }));
+    inkLine.position.set(0.04, 0.955, 0.58);
+    inkLine.scale.x = 0.001; inkLine.visible = false;
+    deskGroup.add(inkLine);
+
+    const pen = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.011, 0.007, 0.22, 10),
+      new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.8, roughness: 0.22 })
+    );
+    pen.rotation.z = Math.PI / 3; pen.position.set(0.16, 0.955, 0.68);
+    deskGroup.add(pen);
+
+    const phoneGroup = new THREE.Group();
+    phoneGroup.position.set(0.45, 0.92, 0.60);
+    const pBody = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.022, 0.36), new THREE.MeshStandardMaterial({ color: 0x090d14, roughness: 0.28, metalness: 0.7 }));
+    const pScr = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 0.32), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
+    pScr.rotation.x = -Math.PI / 2; pScr.position.y = 0.012;
+    phoneGroup.add(pBody, pScr);
+    deskGroup.add(phoneGroup);
+
+    // Floating Golden Embers (Scene 5, 8, 9)
+    const eCount = 240;
+    const eGeo = new THREE.BufferGeometry();
+    const eArr = new Float32Array(eCount * 3);
+    for (let i = 0; i < eCount; i++) {
+      eArr[i * 3] = Math.sin(i * 17.3) * 3.8;
+      eArr[i * 3 + 1] = ((i % 40) / 40) * 4.2;
+      eArr[i * 3 + 2] = Math.cos(i * 41.1) * 3.2 - 0.8;
+    }
+    eGeo.setAttribute('position', new THREE.BufferAttribute(eArr, 3));
+    const embers = new THREE.Points(eGeo, new THREE.PointsMaterial({
+      color: 0xfbbf24, size: 0.032, transparent: true, opacity: 0.0,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    }));
+    scene.add(embers);
 
     const lerp = (a, b, u) => a + (b - a) * Math.min(1, Math.max(0, u));
     const smoothstep = (e0, e1, x) => {
@@ -452,12 +744,20 @@
       return words.slice(winStart, winStart + 6).map((w, i) => (winStart + i <= activeIdx ? `<span class="hi">${w}</span>` : w)).join(' ');
     }
 
+    function setAnimWeights(wWalk, wNeutral, wInteract, wIdle) {
+      hero.acts.walk.setEffectiveWeight(wWalk);
+      hero.acts.idleNeutral.setEffectiveWeight(wNeutral);
+      hero.acts.interact.setEffectiveWeight(wInteract);
+      hero.acts.idle.setEffectiveWeight(wIdle);
+    }
+
     window.__MONARCH_FRAME__ = (f) => {
       const fps = TIMELINE.fps || 30;
       const t = f / fps;
       gradePass.uniforms.uTime.value = t;
-      motes.position.y = Math.sin(t * 0.4) * 0.14;
+      hero.mixer.setTime(t);
 
+      // Update active Beat HUD
       const beats = TIMELINE.beats;
       let b = beats[beats.length - 1];
       for (let i = 0; i < beats.length; i++) {
@@ -465,110 +765,202 @@
       }
       document.getElementById('beatTag').textContent = b.tag;
       document.getElementById('captionsText').innerHTML = formatCaption(b.caption, t - b.start, b.end - b.start);
+      document.getElementById('ctaBanner').classList.toggle('visible', f >= 1060);
 
-      const interactU = smoothstep(640, 710, f) * (1 - smoothstep(940, 990, f));
-      const proudU = smoothstep(963, 1050, f);
-      idleNeutralAct.setEffectiveWeight(Math.max(0, 1 - interactU - proudU));
-      interactAct.setEffectiveWeight(interactU);
-      idleProudAct.setEffectiveWeight(proudU);
-      humanMixer.setTime(t);
+      // Reset setpiece visibility
+      alleyGroup.visible = false;
+      galleryGroup.visible = false;
+      monolithGroup.visible = false;
+      stairGroup.visible = false;
+      penthouseGroup.visible = false;
+      deskGroup.visible = false;
+      crimsonWall.visible = false;
+      crimsonBar.visible = false;
+      ground.visible = true;
+      shockRing.material.opacity = 0;
+      crimsonRimLight.intensity = 0;
+      embers.material.opacity = 0;
+      gradePass.uniforms.uWarmth.value = 0.0;
+      if (hero.headBone) hero.headBone.rotation.set(0, 0, 0);
 
-      // Human stands clearly on left (-0.58) with subtle turning toward desk/camera
-      human.position.set(lerp(-0.62, -0.52, proudU), 0.0, lerp(0.50, 0.60, proudU));
-      human.rotation.y = lerp(0.32, lerp(0.75, 0.14, proudU), Math.max(interactU, proudU));
-
-      // Monolith blocks land cleanly on the 0.72m plinth (so y = 0.93, 1.37, 1.81 — well above desk!)
-      const showStairs = f >= 546;
-      blocks.forEach((blk) => { blk.visible = !showStairs; });
-      stairGroup.visible = showStairs;
-
-      if (!showStairs) {
-        const dropFrames = [279, 314, 363];
-        const targetY = [0.93, 1.37, 1.81];
-        blocks.forEach((blk, idx) => {
-          const df = dropFrames[idx];
-          if (f < df - 12) {
-            blk.position.set(0.68, 6.2, -1.65);
-          } else {
-            const du = smoothstep(df - 12, df, f);
-            const bounce = f >= df && f < df + 8 ? Math.sin(((f - df) / 8) * Math.PI) * 0.05 : 0;
-            blk.position.set(0.68, lerp(5.4, targetY[idx], du) + bounce, -1.65 + idx * 0.02);
+      // ------------------------------------------------ 9-SCENE STORYTELLING CHOREOGRAPHY
+      if (f < 135) {
+        // SCENE 1 (0.0-4.5s): Rainy Midnight Alley — Hero walks forward toward lens!
+        const u = smoothstep(0, 135, f);
+        alleyGroup.visible = true;
+        scene.background.setHex(0x050912);
+        scene.fog.color.setHex(0x050912);
+        rainPts.position.y = -(t * 2.8) % 2.5;
+        setAnimWeights(1, 0, 0, 0);
+        hero.root.position.set(0, 0, lerp(-3.5, 0.2, u));
+        hero.root.rotation.set(0, 0, 0);
+        keyLight.color.setHex(0x93c5fd); keyLight.intensity = 12;
+        keyLight.position.set(1.5, 3.8, 3.2);
+        crimsonRimLight.intensity = 3.5;
+        crimsonRimLight.position.set(0, 1.65, hero.root.position.z - 0.9);
+        camera.position.set(lerp(-0.45, 0.22, u), lerp(1.25, 1.54, u), lerp(2.6, 1.85, u));
+        camera.lookAt(0, lerp(1.15, 1.48, u), hero.root.position.z);
+      } else if (f < 267) {
+        // SCENE 2 (4.5-8.9s): Obsidian Mirror Gallery — Golden KHWAAB orb shrinks as Hero turns away ("nazar chura lete ho")!
+        const u = smoothstep(135, 267, f);
+        galleryGroup.visible = true;
+        crimsonBar.visible = true;
+        crimsonBar.position.set(0, 1.56, -2.5);
+        scene.background.setHex(0x07070c);
+        scene.fog.color.setHex(0x07070c);
+        setAnimWeights(0, 1, 0, 0);
+        hero.root.position.set(-0.22, 0, 0.2);
+        hero.root.rotation.set(0, lerp(0.1, -0.55, u), 0);
+        if (hero.headBone) hero.headBone.rotation.y = lerp(0, -0.45, u);
+        khwaabOrb.scale.setScalar(lerp(1.15, 0.25, u));
+        khwaabOrb.rotation.y = t * 1.4;
+        khwaabOrb.position.set(lerp(0.45, 0.85, u), lerp(1.52, 1.32, u), lerp(0.45, -0.4, u));
+        keyLight.color.setHex(0xfde68a); keyLight.intensity = 13;
+        keyLight.position.set(1.4, 2.8, 2.2);
+        crimsonRimLight.intensity = 6.0;
+        crimsonRimLight.position.set(0, 1.6, -1.2);
+        camera.position.set(lerp(-0.95, 0.65, u), 1.52, lerp(2.15, 1.65, u));
+        camera.lookAt(0.05, 1.46, 0.15);
+      } else if (f < 396) {
+        // SCENE 3 (8.9-13.2s): 3 Colossal Excuse Monoliths crash down at f279, f314, f363 with shockwaves + camera shake!
+        monolithGroup.visible = true;
+        scene.background.setHex(0x08070d);
+        scene.fog.color.setHex(0x08070d);
+        setAnimWeights(0, 1, 0, 0);
+        hero.root.position.set(0, 0, 0.55);
+        hero.root.rotation.set(0, 0, 0);
+        const drops = [279, 314, 363];
+        let shake = 0;
+        monoliths.forEach((m, idx) => {
+          const df = drops[idx];
+          const du = smoothstep(df - 14, df, f);
+          const xPos = (idx - 1) * 0.92;
+          const zPos = idx === 1 ? -1.15 : -0.45;
+          m.position.set(xPos, lerp(6.8, 0.85 + idx * 0.35, du), zPos);
+          if (f >= df && f < df + 12) {
+            const p = (f - df) / 12;
+            shake = Math.sin(p * Math.PI * 4) * (1 - p) * 0.08;
+            shockRing.position.set(xPos, 0.03, zPos);
+            shockRing.scale.setScalar(1.0 + p * 4.2);
+            shockRing.material.opacity = (1 - p) * 0.65;
           }
         });
-        stairGlowLight.intensity = 0;
-      } else {
-        const stepFrames = [662, 674, 687, 700, 712];
-        let totalLit = 0;
-        stairEdges.forEach((em, idx) => {
-          const lit = smoothstep(stepFrames[idx] - 2, stepFrames[idx] + 5, f);
-          totalLit += lit;
-          em.color.setHex(lit > 0.1 ? 0xf59e0b : 0x475569);
-          em.emissive.setHex(0xd97706);
-          em.emissiveIntensity = lit * 0.95;
-        });
-        stairGlowLight.intensity = totalLit * 0.55;
-      }
-
-      // Notebook opens at f=675
-      rightCoverPivot.rotation.z = lerp(Math.PI, 0, smoothstep(665, 690, f));
-
-      // Phone flips screen-down at f=844
-      const flipU = smoothstep(833, 845, f);
-      phoneGroup.rotation.z = lerp(0, Math.PI, flipU);
-      phoneGroup.position.y = 0.84 + Math.sin(flipU * Math.PI) * 0.12;
-
-      // Amber ink writes across page on f=933..975
-      if (f >= 933) {
-        inkLine.visible = true;
-        const wU = smoothstep(933, 975, f);
-        inkLine.scale.x = Math.max(0.01, wU);
-        pen.position.set(0.58 + wU * 0.20, 0.92, 0.62);
-      } else {
-        inkLine.visible = false;
-        pen.position.set(0.80, 0.875, 0.70);
-      }
-
-      // 8-Beat Portrait-Safe Camera Choreography (Human Head-to-Toe + Unobstructed Desk & Stairs!)
-      if (f < 267) {
-        // Beat 1: Full medium-wide portrait of Human on left + desk on right + moonlit room
-        const u = smoothstep(0, 267, f);
-        camera.position.set(lerp(-0.25, -0.40, u), lerp(1.42, 1.38, u), lerp(4.15, 3.55, u));
-        camera.lookAt(-0.32, 1.12, 0.25);
-      } else if (f < 398) {
-        // Beat 2: Wide shot framing Human + all 3 falling Monoliths (KAL SE / MERE BAS / ZIKR BAND)
-        const u = smoothstep(267, 398, f);
-        camera.position.set(lerp(0.05, 0.12, u), 1.48, lerp(4.45, 4.25, u));
-        camera.lookAt(0.10, 1.25, -0.60);
+        keyLight.color.setHex(0xfca5a5); keyLight.intensity = 15;
+        keyLight.position.set(1.2, 4.2, 3.5);
+        camera.position.set(shake, 1.25 + shake * 0.6, 3.85);
+        camera.lookAt(0, 1.15, -0.35);
       } else if (f < 537) {
-        // Beat 3: Contemplation pan back toward Human
-        const u = smoothstep(398, 537, f);
-        camera.position.set(lerp(0.12, -0.35, u), 1.44, lerp(4.25, 3.85, u));
-        camera.lookAt(-0.15, 1.15, -0.20);
-      } else if (f < 706) {
-        // Beat 4: Golden Stairs Reveal behind Human & Desk
-        const u = smoothstep(537, 706, f);
-        camera.position.set(lerp(-0.30, 0.15, u), lerp(1.50, 1.68, u), lerp(4.10, 3.85, u));
-        camera.lookAt(0.18, 1.20, -0.75);
-      } else if (f < 833) {
-        // Beat 5: Desk + Open Notebook close-up (crisp matte paper!)
-        const u = smoothstep(706, 833, f);
-        camera.position.set(lerp(0.15, 0.48, u), lerp(1.68, 1.48, u), lerp(3.85, 2.05, u));
-        camera.lookAt(0.55, 0.86, 0.62);
+        // SCENE 4 (13.2-17.9s): Penthouse Rain Window — Quiet blue moonlight by armchair!
+        const u = smoothstep(396, 537, f);
+        penthouseGroup.visible = true;
+        scene.background.setHex(0x070d19);
+        scene.fog.color.setHex(0x070d19);
+        setAnimWeights(0, 1, 0, 0);
+        hero.root.position.set(0.25, 0, 0.15);
+        hero.root.rotation.set(0, -0.75, 0);
+        if (hero.headBone) hero.headBone.rotation.x = 0.15;
+        keyLight.color.setHex(0x93c5fd); keyLight.intensity = 11;
+        keyLight.position.set(-1.5, 3.2, 2.5);
+        camera.position.set(lerp(-1.15, 0.95, u), 1.48, lerp(2.4, 2.1, u));
+        camera.lookAt(0.05, 1.32, -0.2);
+      } else if (f < 705) {
+        // SCENE 5 (17.9-23.5s): Golden Ascension Stairs ignite step by step at f662..712!
+        const u = smoothstep(537, 705, f);
+        stairGroup.visible = true;
+        embers.material.opacity = 0.65;
+        embers.position.y = (t * 0.4) % 1.2;
+        gradePass.uniforms.uWarmth.value = 0.7;
+        scene.background.setHex(0x0a0910);
+        scene.fog.color.setHex(0x0a0910);
+        const stepFrames = [662, 674, 687, 700, 712];
+        stairEdges.forEach((em, idx) => {
+          const lit = smoothstep(stepFrames[idx] - 4, stepFrames[idx] + 6, f);
+          em.color.setHex(lit > 0.1 ? 0xfbbf24 : 0x475569);
+          em.emissive.setHex(0xf59e0b);
+          em.emissiveIntensity = lit * 1.15;
+        });
+        const walkU = smoothstep(555, 650, f);
+        setAnimWeights(Math.sin(walkU * Math.PI) * 0.85, 0, 0, 1 - Math.sin(walkU * Math.PI) * 0.85);
+        hero.root.position.set(0, 0, lerp(1.35, 0.45, walkU));
+        hero.root.rotation.set(0, Math.PI, 0); // Facing toward the rising golden stairs!
+        keyLight.color.setHex(0xfde68a); keyLight.intensity = 16;
+        keyLight.position.set(1.5, 4.5, 2.8);
+        camera.position.set(lerp(-1.45, 1.15, u), lerp(1.15, 1.85, u), lerp(3.45, 2.75, u));
+        camera.lookAt(0, lerp(1.0, 1.35, u), -0.8);
+      } else if (f < 834) {
+        // SCENE 6 (23.5-27.8s): Obsidian Architectural Desk + Open Journal + Hero Interact!
+        const u = smoothstep(705, 834, f);
+        deskGroup.visible = true;
+        gradePass.uniforms.uWarmth.value = 0.85;
+        scene.background.setHex(0x090b12);
+        scene.fog.color.setHex(0x090b12);
+        rightPivot.rotation.z = lerp(Math.PI, 0, smoothstep(705, 735, f));
+        setAnimWeights(0, 0, 0.75, 0.25);
+        hero.root.position.set(-0.05, 0, -0.15);
+        hero.root.rotation.set(0, 0.08, 0);
+        keyLight.color.setHex(0xffdfb0); keyLight.intensity = 15;
+        keyLight.position.set(0.8, 3.2, 2.4);
+        camera.position.set(lerp(-0.85, 0.35, u), lerp(1.75, 1.56, u), lerp(2.65, 1.95, u));
+        camera.lookAt(-0.05, 1.18, 0.35);
       } else if (f < 933) {
-        // Beat 6: Phone flips screen-down + pen begins
-        const u = smoothstep(833, 933, f);
-        camera.position.set(lerp(0.48, 0.82, u), lerp(1.48, 1.42, u), lerp(2.05, 1.92, u));
-        camera.lookAt(0.84, 0.86, 0.64);
+        // SCENE 7 (27.8-31.1s): Macro Close-Up — Phone Flips Face-Down (f844) + Amber Promise Ink!
+        const u = smoothstep(834, 933, f);
+        deskGroup.visible = true;
+        gradePass.uniforms.uWarmth.value = 1.0;
+        setAnimWeights(0, 0, 1, 0);
+        hero.root.position.set(-0.05, 0, -0.15);
+        rightPivot.rotation.z = 0;
+        const flipU = smoothstep(836, 848, f);
+        phoneGroup.rotation.z = lerp(0, Math.PI, flipU);
+        phoneGroup.position.y = 0.92 + Math.sin(flipU * Math.PI) * 0.12;
+        inkLine.visible = true;
+        const wU = smoothstep(875, 928, f);
+        inkLine.scale.x = Math.max(0.01, wU);
+        pen.position.set(-0.06 + wU * 0.20, 0.98, 0.58);
+        keyLight.color.setHex(0xfde68a); keyLight.intensity = 16;
+        camera.position.set(lerp(0.52, -0.02, u), lerp(1.52, 1.44, u), lerp(1.48, 1.28, u));
+        camera.lookAt(lerp(0.32, 0.02, u), 0.94, 0.60);
       } else if (f < 1125) {
-        // Beat 7: Pull back to Hero standing tall & confident next to desk + glowing stairs behind
+        // SCENE 8 (31.1-37.5s): Hero Ascension on Golden Stairs + Swirling Embers!
         const u = smoothstep(933, 1125, f);
-        camera.position.set(lerp(0.65, -0.12, u), lerp(1.42, 1.45, u), lerp(2.15, 4.05, u));
-        camera.lookAt(lerp(0.20, -0.15, u), lerp(0.95, 1.18, u), 0.15);
+        stairGroup.visible = true;
+        embers.material.opacity = 0.85;
+        embers.position.y = (t * 0.65) % 1.6;
+        gradePass.uniforms.uWarmth.value = 1.0;
+        stairEdges.forEach((em) => {
+          em.color.setHex(0xfbbf24); em.emissive.setHex(0xf59e0b); em.emissiveIntensity = 1.25;
+        });
+        setAnimWeights(0, 0, 0, 1);
+        // Hero stands heroically on top step looking straight at camera!
+        hero.root.position.set(0, 0.82, -1.65);
+        hero.root.rotation.set(0, lerp(0.55, 0.0, u), 0);
+        keyLight.color.setHex(0xffdfb0); keyLight.intensity = 18;
+        keyLight.position.set(1.6, 4.4, 2.2);
+        crimsonRimLight.intensity = 5.5;
+        crimsonRimLight.position.set(0, 2.45, -2.6);
+        camera.position.set(lerp(1.45, 0.0, u), lerp(1.55, 2.38, u), lerp(1.85, 0.85, u));
+        camera.lookAt(0, lerp(1.85, 2.35, u), -1.65);
       } else {
-        // Beat 8: Hero Final Question
+        // SCENE 9 (37.5-40.0s): SIGNATURE ICONIC MONARCH PORTRAIT (Black Turtleneck + Filigree Mask + Crimson Eyes + Red Light Bar!)
         const u = smoothstep(1125, 1200, f);
-        camera.position.set(lerp(-0.12, -0.05, u), 1.45, lerp(4.05, 3.75, u));
-        camera.lookAt(-0.10, 1.18, -0.15);
+        ground.visible = false;
+        crimsonWall.visible = true;
+        crimsonBar.visible = true;
+        crimsonWall.position.set(0, 1.5, -1.1);
+        crimsonBar.position.set(0, 1.62, -1.02);
+        embers.material.opacity = 0.45;
+        scene.background.setHex(0x14161b);
+        scene.fog.color.setHex(0x14161b);
+        setAnimWeights(0, 0, 0, 1);
+        hero.root.position.set(0, 0, 0);
+        hero.root.rotation.set(0, 0, 0);
+        keyLight.color.setHex(0xffffff); keyLight.intensity = 15;
+        keyLight.position.set(0.35, 2.15, 2.4);
+        rimLight.color.setHex(0xef4444); rimLight.intensity = 2.6;
+        crimsonRimLight.intensity = 9.0;
+        crimsonRimLight.position.set(0, 1.62, -0.65);
+        camera.position.set(0, lerp(1.56, 1.61, u), lerp(1.18, 0.88, u));
+        camera.lookAt(0, 1.56, 0.0);
       }
 
       composer.render();

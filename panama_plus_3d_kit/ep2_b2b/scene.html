@@ -2,69 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>MONARCH® Studio — B2B 3D Commercial</title>
+  <title>MONARCH® Studio — B2B 3D Cinema Commercial</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
-      width: 100%; height: 100%; overflow: hidden;
-      background: #05070b;
+      width: 100%; height: 100%; overflow: hidden; background: #04060b;
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
     }
     #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
-    #vignette {
-      position: fixed; inset: 0; pointer-events: none;
-      background: radial-gradient(circle at 50% 45%, transparent 40%, rgba(3, 5, 10, 0.78) 100%);
-    }
     #hud {
-      position: fixed; inset: 0; pointer-events: none;
+      position: fixed; inset: 0; pointer-events: none; z-index: 10;
       display: flex; flex-direction: column; justify-content: space-between;
-      padding: 88px 54px 235px;
+      padding: 84px 52px 210px;
     }
     .top-bar { display: flex; justify-content: space-between; align-items: center; }
     .pill {
-      background: rgba(10, 14, 22, 0.78);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      color: #f8fafc;
+      background: rgba(6, 9, 16, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #e2e8f0;
       padding: 12px 24px; border-radius: 999px;
-      font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+      font-size: 20px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
     }
-    .pill.gold { border-color: rgba(245, 188, 66, 0.6); color: #f5bc42; }
+    .pill.gold { border-color: rgba(245, 196, 81, 0.65); color: #f5c451; }
     .center-callout {
       align-self: center; text-align: center;
-      background: rgba(8, 12, 20, 0.82);
-      border: 1px solid rgba(245, 188, 66, 0.55);
-      padding: 20px 34px; border-radius: 20px;
-      box-shadow: 0 22px 54px rgba(0, 0, 0, 0.75);
-      opacity: 0;
+      background: rgba(6, 9, 16, 0.84);
+      border: 1px solid rgba(245, 196, 81, 0.52);
+      padding: 18px 30px; border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.72);
+      opacity: 0; transform: translateY(14px) scale(0.96);
     }
-    .center-callout.visible { opacity: 1; }
+    .center-callout.visible { opacity: 1; transform: translateY(0) scale(1); }
     .callout-head {
-      color: #f5bc42; font-size: 40px; font-weight: 900;
-      letter-spacing: 0.04em; text-transform: uppercase;
+      color: #f5c451; font-size: 38px; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase;
     }
     .callout-sub {
-      margin-top: 7px; color: #dbeafe; font-size: 22px;
-      font-weight: 700; letter-spacing: 0.11em;
+      margin-top: 6px; color: #cbd5e1; font-size: 21px; font-weight: 700; letter-spacing: 0.10em;
     }
     .captions-wrap {
-      align-self: center; text-align: center; max-width: 940px;
+      align-self: center; text-align: center; max-width: 930px;
       padding: 18px 28px; border-radius: 18px;
-      background: rgba(6, 9, 15, 0.74);
-      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(6, 9, 16, 0.82);
+      border: 1px solid rgba(245, 196, 81, 0.28);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.68);
     }
     .captions-text {
-      color: #ffffff; font-size: 46px; font-weight: 900;
-      line-height: 1.18; letter-spacing: -0.01em;
+      color: #ffffff; font-size: 42px; font-weight: 900; line-height: 1.22;
       text-shadow: 0 4px 16px rgba(0, 0, 0, 0.95);
     }
-    .captions-text .hi { color: #f5bc42; }
+    .captions-text .hi { color: #f5c451; }
   </style>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
 </head>
 <body>
   <canvas id="stage"></canvas>
-  <div id="vignette"></div>
   <div id="hud">
     <div class="top-bar">
       <div class="pill">MONARCH® STUDIO</div>
@@ -79,285 +78,342 @@
     </div>
   </div>
 
-  <script type="importmap">
-    {
-      "imports": {
-        "three": "/vendor/three/build/three.module.js",
-        "three/addons/": "/vendor/three/examples/jsm/"
-      }
-    }
-  </script>
   <script type="module">
     import * as THREE from 'three';
     import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
     import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+    import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
+    import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 
+    const W = 1080, H = 1920;
     const canvas = document.getElementById('stage');
-    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+    canvas.width = W; canvas.height = H;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+    renderer.setSize(W, H, false);
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.25;
+    renderer.toneMappingExposure = 1.15;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.shadowMap.enabled = false;
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x091324);
-    scene.fog = new THREE.FogExp2(0x091324, 0.024);
+    scene.background = new THREE.Color(0x04070d);
+    scene.fog = new THREE.FogExp2(0x04070d, 0.032);
 
-    const camera = new THREE.PerspectiveCamera(42, 1080 / 1920, 0.1, 200);
+    const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 180);
 
-    // Dark-Luxury Studio Lighting (front key + warm gold rim + cool cyan rim + studio fill)
-    scene.add(new THREE.HemisphereLight(0xfff1c9, 0x0e1a2f, 1.45));
-    const keyLight = new THREE.DirectionalLight(0xfff4d6, 4.2);
-    keyLight.position.set(6, 14, 10);
-    scene.add(keyLight);
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.34, 0.50, 0.80);
+    composer.addPass(bloomPass);
 
-    const frontFill = new THREE.PointLight(0xfde68a, 32, 35);
-    frontFill.position.set(2.5, 3.2, 6.5);
-    scene.add(frontFill);
+    const LuxuryGradeShader = {
+      uniforms: { tDiffuse: { value: null }, uTime: { value: 0.0 } },
+      vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+      fragmentShader: `
+        uniform sampler2D tDiffuse;
+        uniform float uTime;
+        varying vec2 vUv;
+        float hash12(vec2 p) {
+          vec3 p3 = fract(vec3(p.xyx) * 0.1031);
+          p3 += dot(p3, p3.yzx + 33.33);
+          return fract((p3.x + p3.y) * p3.z);
+        }
+        void main() {
+          vec2 d = vUv - 0.5;
+          float r2 = dot(d, d);
+          vec2 shift = d * r2 * 0.0022;
+          float r = texture2D(tDiffuse, vUv + shift).r;
+          float g = texture2D(tDiffuse, vUv).g;
+          float b = texture2D(tDiffuse, vUv - shift).b;
+          vec3 col = vec3(r, g, b);
+          float lum = dot(col, vec3(0.299, 0.587, 0.114));
+          col += mix(vec3(-0.008, 0.000, 0.015), vec3(0.024, 0.012, -0.010), smoothstep(0.10, 0.72, lum));
+          float vig = smoothstep(0.96, 0.24, r2 * 1.40);
+          col *= mix(0.32, 1.0, vig);
+          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 29.0) - 0.5) * 0.018;
+          gl_FragColor = vec4(clamp(col + grain, 0.0, 1.0), 1.0);
+        }
+      `,
+    };
+    const gradePass = new ShaderPass(LuxuryGradeShader);
+    composer.addPass(gradePass);
+    composer.addPass(new OutputPass());
 
-    const rimGold = new THREE.DirectionalLight(0xf59e0b, 3.6);
-    rimGold.position.set(-8, 4, -8);
-    scene.add(rimGold);
-
-    const rimCyan = new THREE.DirectionalLight(0x38bdf8, 3.2);
-    rimCyan.position.set(8, 2, -9);
-    scene.add(rimCyan);
-
-    // Reflective Obsidian Stage Floor + Subtle Gold Grid
-    const floor = new THREE.Mesh(
-      new THREE.PlaneGeometry(140, 140),
-      new THREE.MeshStandardMaterial({ color: 0x0b1322, roughness: 0.25, metalness: 0.7 })
-    );
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -4.2;
-    scene.add(floor);
-
-    const grid = new THREE.GridHelper(90, 45, 0xf5bc42, 0x1e3a5f);
-    grid.position.y = -4.18;
-    grid.material.opacity = 0.36;
-    grid.material.transparent = true;
-    scene.add(grid);
-
-    // Materials
-    const obsidianMat = new THREE.MeshStandardMaterial({ color: 0x162238, roughness: 0.2, metalness: 0.82 });
-    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf5bc42, roughness: 0.18, metalness: 0.92, emissive: 0x5c3c08, emissiveIntensity: 0.55 });
-    const glassMat = new THREE.MeshPhysicalMaterial({ color: 0x93c5fd, roughness: 0.1, metalness: 0.15, transparent: true, opacity: 0.4 });
-
-    // Background Architectural Monoliths Crescent (STRICTLY behind Z = -5 so NEVER blocks camera!)
-    const pillars = [];
-    const pillarGeo = new THREE.BoxGeometry(1.0, 9.5, 1.0);
-    for (let i = 0; i < 7; i++) {
-      const m = new THREE.Mesh(pillarGeo, i % 2 === 0 ? obsidianMat : goldMat);
-      const tPos = (i - 3) / 3; // -1 to +1
-      m.position.set(tPos * 7.2, -0.5, -6.5 - (1 - Math.abs(tPos)) * 5.0);
-      scene.add(m);
-      pillars.push(m);
+    // Procedural Brushed Obsidian Marble Floor
+    function makeMarbleTex() {
+      const c = document.createElement('canvas'); c.width = 512; c.height = 512;
+      const g = c.getContext('2d');
+      g.fillStyle = '#080b12'; g.fillRect(0, 0, 512, 512);
+      g.strokeStyle = 'rgba(245, 196, 81, 0.14)'; g.lineWidth = 1.4;
+      for (let i = 0; i < 28; i++) {
+        let px = (i * 83) % 512, py = (i * 137) % 512;
+        g.beginPath(); g.moveTo(px, py);
+        for (let s = 0; s < 6; s++) { px += Math.sin(i + s) * 45; py += Math.cos(i * 1.4 + s) * 40; g.lineTo(px, py); }
+        g.stroke();
+      }
+      const tex = new THREE.CanvasTexture(c);
+      tex.colorSpace = THREE.SRGBColorSpace;
+      tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+      tex.repeat.set(6, 6);
+      return tex;
     }
 
-    // Gyroscopic Hero Core (Obsidian Icosahedron + 3 Gold Rings)
-    const gyroGroup = new THREE.Group();
-    const coreMesh = new THREE.Mesh(new THREE.IcosahedronGeometry(1.55, 1), obsidianMat);
+    // Lighting
+    scene.add(new THREE.HemisphereLight(0x94a3b8, 0x05070c, 0.95));
+    const goldKey = new THREE.DirectionalLight(0xffd27d, 3.2);
+    goldKey.position.set(5, 12, 6);
+    scene.add(goldKey);
+    const cyanRim = new THREE.DirectionalLight(0x38bdf8, 2.8);
+    cyanRim.position.set(-7, 5, -6);
+    scene.add(cyanRim);
+    const coreLight = new THREE.PointLight(0xf59e0b, 14, 18);
+    coreLight.position.set(0, 2.0, 1.2);
+    scene.add(coreLight);
+
+    // Architectural Studio Colonnade + Reflective Marble Floor
+    const studioFloor = new THREE.Mesh(
+      new THREE.PlaneGeometry(60, 60),
+      new THREE.MeshStandardMaterial({ map: makeMarbleTex(), roughness: 0.16, metalness: 0.55 })
+    );
+    studioFloor.rotation.x = -Math.PI / 2;
+    studioFloor.position.y = -3.4;
+    scene.add(studioFloor);
+
+    const colMat = new THREE.MeshStandardMaterial({ color: 0x0c111d, roughness: 0.28, metalness: 0.70 });
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xf5c451, roughness: 0.20, metalness: 0.92, emissive: 0x3b2200, emissiveIntensity: 0.35 });
+    for (let i = 0; i < 6; i++) {
+      const ang = (i / 6) * Math.PI * 2;
+      const pil = new THREE.Mesh(new THREE.BoxGeometry(0.45, 14, 0.45), colMat);
+      pil.position.set(Math.cos(ang) * 7.8, 3.5, Math.sin(ang) * 7.8 - 2.0);
+      const trim = new THREE.Mesh(new THREE.BoxGeometry(0.49, 0.14, 0.49), goldMat);
+      trim.position.set(pil.position.x, -3.2, pil.position.z);
+      scene.add(pil, trim);
+    }
+
+    // 1. Beat 1: Flat 2D Template Cards Shattering/Falling
+    const templateGroup = new THREE.Group();
+    const flatCards = [];
+    for (let i = 0; i < 6; i++) {
+      const card = new THREE.Mesh(
+        new THREE.BoxGeometry(1.15, 1.85, 0.04),
+        new THREE.MeshStandardMaterial({ color: 0x334155, roughness: 0.6, metalness: 0.1 })
+      );
+      card.position.set((i - 2.5) * 1.05, 0.6 + (i % 2) * 0.5, -1.5 - (i % 3) * 0.8);
+      templateGroup.add(card);
+      flatCards.push(card);
+    }
+    scene.add(templateGroup);
+
+    // 2. MONARCH Obsidian-and-Gold Studio Monument Core
+    const coreGroup = new THREE.Group();
+    const coreCrystal = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(1.45, 1),
+      new THREE.MeshStandardMaterial({ color: 0x090c14, roughness: 0.14, metalness: 0.90, flatShading: true })
+    );
     const coreWire = new THREE.Mesh(
-      new THREE.IcosahedronGeometry(1.62, 1),
-      new THREE.MeshBasicMaterial({ color: 0xf5bc42, wireframe: true, transparent: true, opacity: 0.55 })
+      new THREE.IcosahedronGeometry(1.48, 1),
+      new THREE.MeshBasicMaterial({ color: 0xf5c451, wireframe: true, transparent: true, opacity: 0.72 })
     );
-    gyroGroup.add(coreMesh, coreWire);
-
-    const rings = [];
-    for (let i = 0; i < 3; i++) {
-      const ring = new THREE.Mesh(new THREE.TorusGeometry(2.3 + i * 0.55, 0.045, 16, 96), i === 1 ? goldMat : glassMat);
-      gyroGroup.add(ring);
-      rings.push(ring);
-    }
-    scene.add(gyroGroup);
-
-    // Floating Gold Dust Particles
-    const pCount = 380;
-    const pGeo = new THREE.BufferGeometry();
-    const pPos = new Float32Array(pCount * 3);
-    for (let i = 0; i < pCount; i++) {
-      pPos[i * 3] = Math.sin(i * 19.1) * 16;
-      pPos[i * 3 + 1] = ((i % 40) / 40) * 14 - 4;
-      pPos[i * 3 + 2] = Math.cos(i * 41.7) * 16 - 2;
-    }
-    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-    const dust = new THREE.Points(
-      pGeo,
-      new THREE.PointsMaterial({ color: 0xfde68a, size: 0.085, transparent: true, opacity: 0.72, blending: THREE.AdditiveBlending })
+    const ringA = new THREE.Mesh(new THREE.TorusGeometry(2.35, 0.045, 16, 96), goldMat);
+    const ringB = new THREE.Mesh(
+      new THREE.TorusGeometry(2.85, 0.032, 16, 96),
+      new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0284c7, emissiveIntensity: 0.65, metalness: 0.8 })
     );
-    scene.add(dust);
+    const ringC = new THREE.Mesh(new THREE.TorusGeometry(3.35, 0.024, 16, 96), goldMat);
+    coreGroup.add(coreCrystal, coreWire, ringA, ringB, ringC);
+    scene.add(coreGroup);
 
-    // Real Verified .glb Showcase Models (Orca + Luxury Cruise Ship)
-    const showcase = { orca: null, ship: null };
-    const mixers = [];
+    // 3. Beat 3: Broadcast Waveform Equalizer Bars + 3D Precision Telemetry
+    const eqGroup = new THREE.Group();
+    eqGroup.visible = false;
+    const eqBars = [];
+    for (let i = 0; i < 16; i++) {
+      const bar = new THREE.Mesh(
+        new THREE.BoxGeometry(0.18, 1.0, 0.18),
+        i % 3 === 0 ? goldMat : new THREE.MeshStandardMaterial({ color: 0x38bdf8, emissive: 0x0369a1, emissiveIntensity: 0.6 })
+      );
+      bar.position.set((i - 7.5) * 0.34, -2.0, 0);
+      eqGroup.add(bar);
+      eqBars.push(bar);
+    }
+    scene.add(eqGroup);
+
+    // 4. Beat 4: Custom 3D Worlds Pedestals (Orca + Ancient Bear + Cruise Ship!)
+    const worldsGroup = new THREE.Group();
+    worldsGroup.visible = false;
+    scene.add(worldsGroup);
+    for (const px of [-2.4, 0, 2.4]) {
+      const ped = new THREE.Mesh(new THREE.CylinderGeometry(1.05, 1.25, 0.4, 32), colMat);
+      ped.position.set(px, -2.4, 0);
+      const rim = new THREE.Mesh(new THREE.TorusGeometry(1.06, 0.03, 12, 48), goldMat);
+      rim.rotation.x = Math.PI / 2;
+      rim.position.set(px, -2.2, 0);
+      worldsGroup.add(ped, rim);
+    }
+
+    // 5. Beat 5: Private Client Portal Glass Frame
+    const portalGroup = new THREE.Group();
+    portalGroup.visible = false;
+    const portalFrame = new THREE.Mesh(new THREE.BoxGeometry(3.4, 5.2, 0.12), colMat);
+    const portalBorder = new THREE.Mesh(new THREE.BoxGeometry(3.52, 5.32, 0.08), goldMat);
+    const portalScreen = new THREE.Mesh(
+      new THREE.PlaneGeometry(3.15, 4.95),
+      new THREE.MeshBasicMaterial({ color: 0x0c4a6e, transparent: true, opacity: 0.45 })
+    );
+    portalScreen.position.z = 0.08;
+    const portalWire = new THREE.Mesh(
+      new THREE.OctahedronGeometry(1.05, 1),
+      new THREE.MeshBasicMaterial({ color: 0xf5c451, wireframe: true })
+    );
+    portalWire.position.z = 0.55;
+    portalGroup.add(portalBorder, portalFrame, portalScreen, portalWire);
+    scene.add(portalGroup);
+
+    // Floating Gold Embers
+    const eCount = 340;
+    const eGeo = new THREE.BufferGeometry();
+    const ePos = new Float32Array(eCount * 3);
+    for (let i = 0; i < eCount; i++) {
+      ePos[i * 3] = Math.sin(i * 17.3) * 7.5;
+      ePos[i * 3 + 1] = ((i % 45) / 45) * 14 - 4;
+      ePos[i * 3 + 2] = Math.cos(i * 41.7) * 7.5;
+    }
+    eGeo.setAttribute('position', new THREE.BufferAttribute(ePos, 3));
+    const embers = new THREE.Points(eGeo, new THREE.PointsMaterial({
+      color: 0xfde68a, size: 0.055, transparent: true, opacity: 0.62,
+      blending: THREE.AdditiveBlending, depthWrite: false,
+    }));
+    scene.add(embers);
+
+    // Load Real CC0 .glb Hero Showcase Models (Orca + Ancient Bear + Cruise Ship)
     const loader = new GLTFLoader();
+    const loadGLTF = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
+    const TIMELINE = await (await fetch('./timeline.json')).json();
 
-    function normalizeModel(gltfScene, targetLength) {
+    function fitModel(gltfScene, targetMax) {
       const root = new THREE.Group();
       const inner = SkeletonUtils.clone(gltfScene);
       const box = new THREE.Box3().setFromObject(inner);
-      const size = new THREE.Vector3();
-      const center = new THREE.Vector3();
-      box.getSize(size);
-      box.getCenter(center);
-      const scale = targetLength / Math.max(size.x, size.y, size.z, 0.001);
-      inner.scale.setScalar(scale);
-      inner.position.sub(center.multiplyScalar(scale));
-      if (size.x > size.z * 1.15) {
-        const pivot = new THREE.Group();
-        pivot.add(inner);
-        pivot.rotation.y = Math.PI / 2;
-        root.add(pivot);
-      } else {
-        root.add(inner);
-      }
-      return { root, inner };
+      const sz = new THREE.Vector3(), ct = new THREE.Vector3();
+      box.getSize(sz); box.getCenter(ct);
+      const s = targetMax / Math.max(sz.x, sz.y, sz.z, 0.001);
+      inner.scale.setScalar(s);
+      inner.position.sub(ct.multiplyScalar(s));
+      root.add(inner);
+      return root;
     }
 
-    let TIMELINE = null;
+    const [orcaGltf, bearGltf, shipGltf] = await Promise.all([
+      loadGLTF('/assets/orca.glb'),
+      loadGLTF('/assets/bear.glb'),
+      loadGLTF('/assets/cruise_ship.glb'),
+    ]);
 
-    window.__MONARCH_INIT__ = async (timeline) => {
-      TIMELINE = timeline;
-      renderer.setSize(1080, 1920, false);
-
-      const [orcaGltf, shipGltf] = await Promise.all([
-        new Promise((res, rej) => loader.load('/assets/orca.glb', res, undefined, rej)),
-        new Promise((res, rej) => loader.load('/assets/cruise_ship.glb', res, undefined, rej)),
-      ]);
-
-      const o = normalizeModel(orcaGltf.scene, 4.6);
-      o.root.visible = false;
-      scene.add(o.root);
-      showcase.orca = o.root;
-      if (orcaGltf.animations?.length) {
-        const mx = new THREE.AnimationMixer(o.inner);
-        mx.clipAction(orcaGltf.animations[0]).play();
-        mixers.push(mx);
-      }
-
-      const sh = normalizeModel(shipGltf.scene, 5.8);
-      sh.root.visible = false;
-      scene.add(sh.root);
-      showcase.ship = sh.root;
-
-      renderer.render(scene, camera);
-    };
+    const orcaHero = fitModel(orcaGltf.scene, 2.5);
+    const bearHero = fitModel(bearGltf.scene, 2.2);
+    const shipHero = fitModel(shipGltf.scene, 2.8);
+    orcaHero.position.set(-2.3, -1.0, 0.2);
+    bearHero.position.set(0.0, -0.8, 0.4);
+    shipHero.position.set(2.3, -1.0, 0.2);
+    worldsGroup.add(orcaHero, bearHero, shipHero);
 
     function formatCaption(text, tLocal, dur) {
       const words = text.split(' ');
-      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.88, 0.2)));
+      const progress = Math.min(1, Math.max(0, tLocal / Math.max(dur * 0.90, 0.2)));
       const activeIdx = Math.min(words.length - 1, Math.floor(progress * words.length));
       const winStart = Math.max(0, Math.floor(activeIdx / 6) * 6);
-      const slice = words.slice(winStart, winStart + 6);
-      return slice
-        .map((w, i) => (winStart + i <= activeIdx ? `<span class="hi">${w}</span>` : w))
-        .join(' ');
+      return words.slice(winStart, winStart + 6).map((w, i) => (winStart + i <= activeIdx ? `<span class="hi">${w}</span>` : w)).join(' ');
     }
 
-    window.__MONARCH_FRAME__ = (frameIdx) => {
+    window.__MONARCH_FRAME__ = (f) => {
       const fps = TIMELINE.fps || 30;
-      const t = frameIdx / fps;
-
-      for (const mx of mixers) mx.setTime(t);
-      dust.rotation.y = t * 0.08;
+      const t = f / fps;
+      gradePass.uniforms.uTime.value = t;
+      embers.position.y = (t * 0.35) % 4.0;
 
       const beats = TIMELINE.beats;
-      let activeBeat = beats[beats.length - 1];
-      let beatIdx = beats.length - 1;
+      let b = beats[0], bIdx = 0;
       for (let i = 0; i < beats.length; i++) {
-        if (t >= beats[i].start && t < beats[i].end) {
-          activeBeat = beats[i];
-          beatIdx = i;
-          break;
-        }
-        if (t < beats[0].start) {
-          activeBeat = beats[0];
-          beatIdx = 0;
-          break;
-        }
+        if (t >= beats[i].start && t < beats[i].end) { b = beats[i]; bIdx = i; break; }
+        if (t >= beats[beats.length - 1].start) { b = beats[beats.length - 1]; bIdx = beats.length - 1; }
       }
+      const u = Math.min(1, Math.max(0, t - b.start) / Math.max(0.5, b.end - b.start));
 
-      const bt = Math.max(0, t - activeBeat.start);
-      const bDur = Math.max(0.5, activeBeat.end - activeBeat.start);
-      const u = Math.min(1, bt / bDur);
-
-      document.getElementById('beatTag').textContent = activeBeat.tag;
+      document.getElementById('beatTag').textContent = b.tag;
       const callout = document.getElementById('callout');
-      if (activeBeat.headline) {
-        document.getElementById('calloutHead').textContent = activeBeat.headline;
-        document.getElementById('calloutSub').textContent = activeBeat.subline || '';
+      if (b.headline) {
+        document.getElementById('calloutHead').textContent = b.headline;
+        document.getElementById('calloutSub').textContent = b.subline || '';
         callout.classList.add('visible');
       } else {
         callout.classList.remove('visible');
       }
+      document.getElementById('captionsText').innerHTML = formatCaption(b.text, Math.max(0, t - b.start), Math.max(0.5, b.voice_end - b.start));
 
-      const capWrap = document.getElementById('captionWrap');
-      if (t >= activeBeat.start && t <= activeBeat.voice_end + 0.35) {
-        capWrap.style.opacity = '1';
-        document.getElementById('captionsText').innerHTML = formatCaption(
-          activeBeat.text,
-          t - activeBeat.start,
-          activeBeat.voice_end - activeBeat.start
-        );
+      // Rotate Studio Core Rings
+      coreCrystal.rotation.set(t * 0.35, t * 0.55, 0);
+      coreWire.rotation.copy(coreCrystal.rotation);
+      ringA.rotation.set(t * 0.9, t * 0.4, 0.4);
+      ringB.rotation.set(-t * 0.6, t * 0.8, -0.5);
+      ringC.rotation.set(0.7, -t * 0.7, t * 0.5);
+
+      templateGroup.visible = bIdx === 0;
+      coreGroup.visible = bIdx !== 3 && bIdx !== 4;
+      eqGroup.visible = bIdx === 2;
+      worldsGroup.visible = bIdx === 3;
+      portalGroup.visible = bIdx === 4;
+
+      if (bIdx === 0) {
+        // Flat 2D templates fall away while 3D core rises
+        flatCards.forEach((c, idx) => {
+          c.position.y = 0.8 - u * (2.5 + idx * 0.4);
+          c.rotation.x = u * (0.6 + idx * 0.2);
+        });
+        coreGroup.position.set(0, -1.5 + u * 2.0, -0.5);
+        camera.position.set(Math.sin(t * 0.6) * 0.4, 0.5, 9.2 - u * 1.4);
+        camera.lookAt(0, 0.2, 0);
+      } else if (bIdx === 1) {
+        coreGroup.position.set(0, 0.5, 0);
+        camera.position.set(Math.sin(u * Math.PI) * 1.8, 0.8 - u * 0.4, 7.6 - u * 1.6);
+        camera.lookAt(0, 0.4, 0);
+      } else if (bIdx === 2) {
+        coreGroup.position.set(0, 1.4, -0.5);
+        eqBars.forEach((bar, idx) => {
+          const h = 0.6 + Math.abs(Math.sin(t * 7.5 + idx * 0.55)) * 2.4;
+          bar.scale.y = h;
+          bar.position.y = -2.4 + h * 0.5;
+        });
+        camera.position.set(-1.2 + u * 2.4, 0.2, 8.6);
+        camera.lookAt(0, 0.1, 0);
+      } else if (bIdx === 3) {
+        // 3 Real CC0 Worlds orbiting on gold pedestals!
+        orcaHero.rotation.y = t * 0.8;
+        bearHero.rotation.y = -0.3 + Math.sin(t * 1.2) * 0.4;
+        shipHero.rotation.y = -t * 0.7;
+        camera.position.set(Math.sin(u * Math.PI * 0.8) * 1.6, 0.4, 8.8 - u * 1.2);
+        camera.lookAt(0, -0.8, 0);
+      } else if (bIdx === 4) {
+        // Client Portal Glass Stage
+        portalGroup.rotation.y = -0.35 + u * 0.7;
+        portalWire.rotation.set(t * 1.1, t * 0.9, 0);
+        camera.position.set(0, 0.2, 8.6 - u * 1.3);
+        camera.lookAt(0, 0.1, 0);
       } else {
-        capWrap.style.opacity = '0.25';
+        // Monumental Hero Closer
+        coreGroup.position.set(0, 0.4, 0);
+        camera.position.set(Math.sin(t * 0.7) * 0.5, 0.4 + u * 0.4, 8.4 - u * 1.6);
+        camera.lookAt(0, 0.4, 0);
       }
 
-      // Animate Gyro Core & Rings
-      gyroGroup.visible = true;
-      showcase.orca.visible = false;
-      showcase.ship.visible = false;
-
-      coreMesh.rotation.set(t * 0.6, t * 0.9, 0);
-      coreWire.rotation.copy(coreMesh.rotation);
-      rings[0].rotation.set(t * 1.1, t * 0.5, 0);
-      rings[1].rotation.set(-t * 0.8, t * 1.2, 0.5);
-      rings[2].rotation.set(0.7, -t * 0.9, t * 0.4);
-
-      pillars.forEach((p, idx) => {
-        p.position.y = -0.8 + Math.sin(t * 1.5 + idx * 0.9) * 0.7;
-      });
-
-      if (beatIdx === 0) {
-        // Beat 1: Low-angle power push into obsidian + gold monoliths
-        gyroGroup.position.set(0, 0.8, -1.5);
-        camera.position.set(Math.sin(t * 0.8) * 1.1, -1.6 + u * 1.8, 12.5 - u * 3.0);
-        camera.lookAt(0, 0.4, -1.5);
-      } else if (beatIdx === 1) {
-        // Beat 2: Orbit around glowing gold gyroscopic hero core
-        gyroGroup.position.set(0, 0.6, 0);
-        const ang = u * 1.4;
-        camera.position.set(Math.sin(ang) * 7.8, 1.2, Math.cos(ang) * 7.8);
-        camera.lookAt(0, 0.5, 0);
-      } else if (beatIdx === 2) {
-        // Beat 3: Precision Telemetry Grid + Core Elevated
-        gyroGroup.position.set(0, 2.2, -2.5);
-        camera.position.set(0, 0.2, 10.5 - u * 1.5);
-        camera.lookAt(0, 0.6, -2.0);
-      } else if (beatIdx === 3) {
-        // Beat 4: Real GLB Showcase (Cruise Ship & Orca floating in dark-luxury gallery)
-        gyroGroup.visible = false;
-        showcase.orca.visible = true;
-        showcase.ship.visible = true;
-        showcase.ship.position.set(0, 2.1 + Math.sin(t * 2) * 0.15, -1.5);
-        showcase.ship.rotation.set(0.08, -0.5 + u * 1.1, 0);
-        showcase.orca.position.set(0, -1.8 + Math.cos(t * 2.4) * 0.15, 0.4);
-        showcase.orca.rotation.set(0, 0.6 + u * 0.9, 0);
-        camera.position.set(2.2 - u * 3.8, 0.4, 9.6 - u * 1.0);
-        camera.lookAt(0, 0.2, -0.5);
-      } else if (beatIdx === 4) {
-        // Beat 5: Private Client Portal Gold Ring Vault
-        gyroGroup.position.set(0, 0.5, -1.0);
-        camera.position.set(-2.5 + u * 3.2, 2.4, 9.2);
-        camera.lookAt(0, 0.5, -1.0);
-      } else {
-        // Beat 6: Hero Closer — MONARCH® STUDIO Ascent
-        gyroGroup.position.set(0, 1.2 + u * 0.6, -0.5);
-        camera.position.set(0, -1.4 + u * 1.6, 8.8 - u * 1.4);
-        camera.lookAt(0, 0.9, -0.5);
-      }
-
-      renderer.render(scene, camera);
+      composer.render();
     };
+
+    window.__MONARCH_READY__ = true;
   </script>
 </body>
 </html>

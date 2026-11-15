@@ -1,24 +1,77 @@
-name: Panama-Plus EP2 B2B 3D Commercial Render
+name: Panama-Plus EP2 B2B Cinema 3D Render
 
 on:
   push:
-    branches:
-      - main
-      - arena/2a8ad29e-top1
+    branches: [arena/2a8ad29e-top1]
     paths:
-      - 'panama_plus_3d_kit/ep2_b2b/build_audio.py'
-      - 'panama_plus_3d_kit/ep2_b2b/scene.html'
-      - 'panama_plus_3d_kit/ep2_b2b/render_webgl.mjs'
+      - 'panama_plus_3d_kit/ep2_b2b/**'
       - '.github/workflows/panama-plus-ep2-b2b.yml'
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: panama-ep2-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  render-ep2-b2b:
+  render-chunk:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    strategy:
+      fail-fast: true
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Three.js & Playwright Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq curl
+          cd panama_plus_3d_kit/ep2_b2b
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save three@0.170.0 playwright >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Download Verified CC0 Hero Showcase .glb Models
+        run: |
+          set -e
+          DEST="$PWD/panama_plus_3d_kit/ep2_b2b/assets"
+          mkdir -p "$DEST" "$PWD/panama_plus_3d_kit/ep2_b2b/qc"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Edu-Art-3D/Eduart-orca-3D/main/orca.glb -o "$DEST/orca.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.glb -o "$DEST/bear.glb"
+          curl -L --fail --retry 3 https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-ships/models/cruise_ship/cruise_ship.glb -o "$DEST/cruise_ship.glb"
+
+      - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D)
+        env:
+          CHUNK_INDEX: ${{ matrix.chunk }}
+          CHUNK_COUNT: '6'
+        run: |
+          set -o pipefail
+          cd panama_plus_3d_kit/ep2_b2b
+          node render_webgl.mjs --render-only 2>&1 | tee "qc/render_chunk_${CHUNK_INDEX}.log"
+          tar -cf "frames_chunk_${CHUNK_INDEX}.tar" -C _frames .
+
+      - name: Upload Rendered Frame Chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: ep2-frames-chunk-${{ matrix.chunk }}
+          path: panama_plus_3d_kit/ep2_b2b/frames_chunk_${{ matrix.chunk }}.tar
+          retention-days: 1
+
+  assemble-and-commit:
+    needs: render-chunk
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,61 +84,52 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install FFmpeg, Python Audio Stack, Three.js & Chromium
+      - name: Install FFmpeg, Audio Stack & Earshot SFX
         run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl
-          python -m pip install --upgrade pip -q
-          python -m pip install -q numpy scipy edge-tts piper-tts gTTS
-          npm install --no-save playwright three
-          npx playwright install --with-deps chromium
-
-      - name: Download Verified CC0 .glb Showcase Models
-        run: |
-          mkdir -p panama_plus_3d_kit/ep2_b2b/assets
-          curl -L --fail https://raw.githubusercontent.com/Edu-Art-3D/Eduart-orca-3D/main/orca.glb -o panama_plus_3d_kit/ep2_b2b/assets/orca.glb
-          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-ships/models/cruise_ship/cruise_ship.glb -o panama_plus_3d_kit/ep2_b2b/assets/cruise_ship.glb
-          python3 -c "
-          from pathlib import Path
-          for p in ['orca.glb', 'cruise_ship.glb']:
-              f = Path('panama_plus_3d_kit/ep2_b2b/assets') / p
-              assert f.read_bytes()[:4] == b'glTF', f'{p} invalid glTF'
-              print(f'Verified {p}: {f.stat().st_size} bytes')
-          "
-
-      - name: Build Neural Narration + Dark-Luxury SFX (-14 LUFS)
-        run: python3 panama_plus_3d_kit/ep2_b2b/build_audio.py
-
-      - name: Render 1080x1920 @ 30fps B2B 3D Commercial + Contact Sheet + QC
-        run: node panama_plus_3d_kit/ep2_b2b/render_webgl.mjs
-
-      - name: Commit Failure Diagnostics if Render Failed
-        if: failure()
-        run: |
-          if [ -f panama_plus_3d_kit/ep2_b2b/qc/render_error.log ]; then
-            git config user.name "MONARCH Render Bot"
-            git config user.email "workadilchandio@gmail.com"
-            git add -f panama_plus_3d_kit/ep2_b2b/qc/render_error.log
-            git commit -m "debug(ep2-b2b): capture render_error.log [skip ci]" || true
-            git push origin HEAD:arena/2a8ad29e-top1 || true
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python3 -m pip install --upgrade pip -q
+          python3 -m pip install -q numpy scipy
+          mkdir -p panama_plus_3d_kit/ep2_b2b/assets panama_plus_3d_kit/ep2_b2b/_frames panama_plus_3d_kit/ep2_b2b/qc
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot || true
+          if [ -d /tmp/earshot/takes ]; then
+            cp -r /tmp/earshot/takes panama_plus_3d_kit/ep2_b2b/assets/earshot_takes
           fi
 
-      - name: Commit EP2 B2B 3D Deliverable & QC back to branch
+      - name: Master Arena Commercial VO + Earshot + Luxury Pulse (-14 LUFS)
+        run: python3 panama_plus_3d_kit/ep2_b2b/build_audio.py
+
+      - name: Download All 6 Frame Chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: panama_plus_3d_kit/ep2_b2b/_chunks
+
+      - name: Encode 1080x1920 Master MP4 + Contact Sheet + QC
         run: |
+          set -e
+          cd panama_plus_3d_kit/ep2_b2b
+          for c in 0 1 2 3 4 5; do
+            tar -xf "_chunks/ep2-frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
+          done
+          rm -rf _chunks
+          node render_webgl.mjs --encode-only
+          ls -lh ../../deliverables/MONARCH_Studio_B2B_3D_Commercial_1080x1920.mp4 qc/
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          set -e
           git config user.name "MONARCH Render Bot"
           git config user.email "workadilchandio@gmail.com"
-          git add -f deliverables/MONARCH_Studio_B2B_3D_Commercial_1080x1920.mp4 panama_plus_3d_kit/ep2_b2b/qc/contact_sheet.png panama_plus_3d_kit/ep2_b2b/qc/qc_report.json
-          git commit -m "build(ep2-b2b): deliver MONARCH Studio B2B 3D Commercial + QC [skip ci]"
-          git push origin HEAD:arena/2a8ad29e-top1
-
-      - name: Publish Release Asset
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: panama-plus-latest
-          name: MONARCH Panama-Plus 3D Render
-          files: |
-            deliverables/MONARCH_Studio_B2B_3D_Commercial_1080x1920.mp4
-            panama_plus_3d_kit/ep2_b2b/qc/contact_sheet.png
-            panama_plus_3d_kit/ep2_b2b/qc/qc_report.json
-          prerelease: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git add -f deliverables/MONARCH_Studio_B2B_3D_Commercial_1080x1920.mp4 \
+                     panama_plus_3d_kit/ep2_b2b/qc/contact_sheet.png \
+                     panama_plus_3d_kit/ep2_b2b/qc/qc_report.json
+          git commit -m "render(ep2-b2b-cinema): 1080x1920 cinema 3D commercial + QC [skip ci]"
+          PUSHED=0
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin arena/2a8ad29e-top1
+            if git push origin HEAD:arena/2a8ad29e-top1; then
+              PUSHED=1
+              break
+            fi
+            sleep 6
+          done
+          [ "$PUSHED" = "1" ] || exit 1

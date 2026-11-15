@@ -53,6 +53,7 @@ jobs:
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/book_set/book_set.glb" -o "$DEST/book_set.glb"
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/rug_rectangle_a/rug_rectangle_a.glb" -o "$DEST/rug_rectangle_a.glb"
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/shelf_b_large_decorated/shelf_b_large_decorated.glb" -o "$DEST/shelf_b_large_decorated.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-city-builder-bits/models/streetlight/streetlight.glb" -o "$DEST/streetlight.glb"
 
       - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D)
         env:
