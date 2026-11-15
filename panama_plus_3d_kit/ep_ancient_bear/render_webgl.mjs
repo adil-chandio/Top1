@@ -48,8 +48,8 @@ const server = http.createServer((req, res) => {
 
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const PORT = server.address().port;
-const URL = `http://127.0.0.1:${PORT}/scene.html`;
-console.log(`Serving ${HERE} at ${URL} | Rendering ${TOTAL_FRAMES} frames (${W}x${H} @ ${FPS}fps)`);
+const SCENE_URL = `http://127.0.0.1:${PORT}/scene.html`;
+console.log(`Serving ${HERE} at ${SCENE_URL} | Rendering ${TOTAL_FRAMES} frames (${W}x${H} @ ${FPS}fps)`);
 
 const WORKERS = Math.min(2, Math.max(1, os.cpus().length));
 let nextFrame = 0;
@@ -72,7 +72,7 @@ async function workerLoop(wid) {
   const page = await context.newPage();
   page.on('pageerror', (e) => console.error(`[W${wid} pageerror]`, e.message));
   page.on('console', (m) => { if (m.type() === 'error') console.error(`[W${wid} console]`, m.text()); });
-  await page.goto(URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
+  await page.goto(SCENE_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
   await page.waitForFunction(() => window.__PANAMA_READY__ === true, { timeout: 180000 });
   console.log(`Worker ${wid} WebGL + all GLB assets ready!`);
 
