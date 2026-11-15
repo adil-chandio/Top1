@@ -303,13 +303,13 @@
     );
     scene.add(particles);
 
-    // Dynamic bubble stream puffs (for tail-slap & charging wake)
+    // Dynamic bubble stream puffs (delicate sparkling bubbles for tail-slap & charging wake)
     const bubblePuffs = [];
     const puffMat = new THREE.MeshStandardMaterial({
-      color: 0xe0f7ff, emissive: 0x38bdf8, emissiveIntensity: 0.35,
-      transparent: true, opacity: 0.55, roughness: 0.1,
+      color: 0xe0f7ff, emissive: 0x38bdf8, emissiveIntensity: 0.25,
+      transparent: true, opacity: 0.42, roughness: 0.08,
     });
-    const puffGeo = new THREE.SphereGeometry(0.14, 10, 10);
+    const puffGeo = new THREE.SphereGeometry(0.052, 10, 10);
     for (let i = 0; i < 42; i++) {
       const m = new THREE.Mesh(puffGeo, puffMat.clone());
       m.visible = false;
@@ -672,17 +672,17 @@
         actors.orcas[2].visible = false;
 
         const swU = (t * 0.7) % 1.0;
-        shockTorus.position.set(0.2, 0.2, -1.2);
-        shockTorus.scale.setScalar(1.0 + swU * 9.0);
-        shockTorus.material.opacity = (1.0 - swU) * 0.58;
+        shockTorus.position.set(0.2, 0.55, -1.6);
+        shockTorus.scale.setScalar(0.8 + swU * 4.5);
+        shockTorus.material.opacity = (1.0 - swU) * 0.42;
 
         bubblePuffs.forEach((p, idx) => {
           p.visible = true;
           const ang = idx * 0.7;
-          const r = 1.5 + ((t * 3 + idx * 0.2) % 4.5);
-          p.position.set(Math.cos(ang) * r, -0.8 + ((t * 2 + idx) % 3.5), -1.0 + Math.sin(ang) * r);
-          p.scale.setScalar(0.8 + (idx % 3) * 0.3);
-          p.material.opacity = 0.42;
+          const r = 1.4 + ((t * 2.6 + idx * 0.2) % 4.2);
+          p.position.set(Math.cos(ang) * r, -0.5 + ((t * 1.8 + idx) % 3.2), -1.0 + Math.sin(ang) * r);
+          p.scale.setScalar(0.65 + (idx % 3) * 0.28);
+          p.material.opacity = 0.36;
         });
 
         camera.position.set(2.4 - u * 1.2, 2.2, 10.4);

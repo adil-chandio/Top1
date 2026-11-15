@@ -17,8 +17,8 @@
     }
     .top-bar { display: flex; justify-content: space-between; align-items: center; }
     .pill {
-      background: rgba(12, 18, 28, 0.80);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(12, 18, 28, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.20);
       color: #e2e8f0;
       padding: 12px 24px; border-radius: 999px;
       font-size: 21px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
@@ -28,8 +28,8 @@
     .captions-wrap {
       align-self: center; text-align: center; max-width: 930px;
       padding: 18px 28px; border-radius: 18px;
-      background: rgba(8, 12, 19, 0.78);
-      border: 1px solid rgba(245, 158, 11, 0.30);
+      background: rgba(8, 12, 19, 0.80);
+      border: 1px solid rgba(245, 158, 11, 0.34);
       box-shadow: 0 18px 44px rgba(0, 0, 0, 0.65);
     }
     .captions-text {
@@ -77,21 +77,21 @@
     renderer.setSize(W, H, false);
     renderer.setPixelRatio(1);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.22;
+    renderer.toneMappingExposure = 1.02;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
     renderer.shadowMap.enabled = true;
     renderer.shadowMap.type = THREE.PCFShadowMap;
 
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x0b101b);
-    scene.fog = new THREE.FogExp2(0x0b101b, 0.036);
+    scene.fog = new THREE.FogExp2(0x0b101b, 0.032);
 
     const camera = new THREE.PerspectiveCamera(44, W / H, 0.1, 100);
 
-    // ---------------------------------------------------------------- POST-PROCESSING CINEMA GRADE
+    // ---------------------------------------------------------------- BALANCED POST-PROCESSING (ZERO WASHOUT)
     const composer = new EffectComposer(renderer);
     composer.addPass(new RenderPass(scene, camera));
-    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.42, 0.55, 0.74);
+    const bloomPass = new UnrealBloomPass(new THREE.Vector2(W / 2, H / 2), 0.22, 0.45, 0.90);
     composer.addPass(bloomPass);
 
     const CinemaGradeShader = {
@@ -109,17 +109,16 @@
         void main() {
           vec2 d = vUv - 0.5;
           float r2 = dot(d, d);
-          vec2 shift = d * r2 * 0.0022;
+          vec2 shift = d * r2 * 0.0020;
           float r = texture2D(tDiffuse, vUv + shift).r;
           float g = texture2D(tDiffuse, vUv).g;
           float b = texture2D(tDiffuse, vUv - shift).b;
           vec3 col = vec3(r, g, b);
           float lum = dot(col, vec3(0.299, 0.587, 0.114));
-          // Deep indigo shadows, warm amber key highlights
-          col += mix(vec3(-0.006, 0.002, 0.016), vec3(0.024, 0.010, -0.012), smoothstep(0.10, 0.74, lum));
-          float vig = smoothstep(0.95, 0.24, r2 * 1.42);
-          col *= mix(0.30, 1.0, vig);
-          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 31.0) - 0.5) * 0.022;
+          col += mix(vec3(-0.005, 0.002, 0.015), vec3(0.016, 0.008, -0.008), smoothstep(0.12, 0.74, lum));
+          float vig = smoothstep(0.95, 0.26, r2 * 1.38);
+          col *= mix(0.36, 1.0, vig);
+          float grain = (hash12(vUv * vec2(1080.0, 1920.0) + uTime * 31.0) - 0.5) * 0.020;
           gl_FragColor = vec4(clamp(col + grain, 0.0, 1.0), 1.0);
         }
       `,
@@ -132,9 +131,9 @@
     function makeWoodTex() {
       const c = document.createElement('canvas'); c.width = 512; c.height = 512;
       const g = c.getContext('2d');
-      g.fillStyle = '#3b281c'; g.fillRect(0, 0, 512, 512);
+      g.fillStyle = '#332218'; g.fillRect(0, 0, 512, 512);
       for (let i = 0; i < 160; i++) {
-        g.strokeStyle = i % 2 === 0 ? 'rgba(20,12,8,0.32)' : 'rgba(92,62,40,0.22)';
+        g.strokeStyle = i % 2 === 0 ? 'rgba(18,10,6,0.34)' : 'rgba(84,56,36,0.22)';
         g.lineWidth = 2 + (i % 4);
         const y = (i / 160) * 512;
         g.beginPath(); g.moveTo(0, y);
@@ -150,11 +149,11 @@
     function makePlasterTex() {
       const c = document.createElement('canvas'); c.width = 512; c.height = 512;
       const g = c.getContext('2d');
-      g.fillStyle = '#182232'; g.fillRect(0, 0, 512, 512);
+      g.fillStyle = '#151e2c'; g.fillRect(0, 0, 512, 512);
       for (let i = 0; i < 1600; i++) {
         const x = ((Math.sin(i * 19.3) * 9187) % 1 + 1) % 1 * 512;
         const y = ((Math.cos(i * 41.7) * 6311) % 1 + 1) % 1 * 512;
-        g.fillStyle = i % 2 === 0 ? 'rgba(38,52,72,0.22)' : 'rgba(10,14,22,0.25)';
+        g.fillStyle = i % 2 === 0 ? 'rgba(34,47,66,0.22)' : 'rgba(9,13,20,0.26)';
         g.fillRect(x, y, 4 + (i % 14), 3 + (i % 10));
       }
       const tex = new THREE.CanvasTexture(c);
@@ -167,31 +166,31 @@
     const woodTex = makeWoodTex();
     const plasterTex = makePlasterTex();
 
-    // ---------------------------------------------------------------- CINEMA LIGHTING
-    scene.add(new THREE.HemisphereLight(0x94a3b8, 0x0b101b, 0.85));
+    // ---------------------------------------------------------------- BALANCED CINEMA LIGHTING
+    scene.add(new THREE.HemisphereLight(0x94a3b8, 0x0b101b, 0.72));
 
-    const moonSpot = new THREE.DirectionalLight(0x7fb4ff, 2.8);
+    const moonSpot = new THREE.DirectionalLight(0x7fb4ff, 1.9);
     moonSpot.position.set(-4.5, 6.2, -5.0);
     scene.add(moonSpot);
 
-    const keySpot = new THREE.SpotLight(0xffdfb0, 48, 22, Math.PI * 0.30, 0.55, 1.3);
-    keySpot.position.set(1.8, 5.2, 3.6);
+    const keySpot = new THREE.SpotLight(0xffdfb0, 16, 20, Math.PI * 0.32, 0.60, 1.3);
+    keySpot.position.set(-1.6, 4.6, 3.8);
     keySpot.castShadow = true;
     keySpot.shadow.mapSize.set(1024, 1024);
     scene.add(keySpot);
 
-    const lampLight = new THREE.PointLight(0xffa94d, 9.5, 7.5);
-    lampLight.position.set(-0.82, 1.55, 0.60);
-    scene.add(lampLight);
+    const deskKeyLight = new THREE.PointLight(0xffb35c, 2.4, 5.5);
+    deskKeyLight.position.set(0.32, 1.55, 0.85);
+    scene.add(deskKeyLight);
 
-    const stairGlowLight = new THREE.PointLight(0xfbbf24, 0.0, 9.0);
-    stairGlowLight.position.set(0.55, 2.4, -1.55);
+    const stairGlowLight = new THREE.PointLight(0xfbbf24, 0.0, 7.0);
+    stairGlowLight.position.set(0.65, 2.2, -1.65);
     scene.add(stairGlowLight);
 
-    // ---------------------------------------------------------------- ARCHITECTURAL NIGHT STUDY ROOM
+    // ---------------------------------------------------------------- NIGHT STUDY ARCHITECTURE
     const floor = new THREE.Mesh(
       new THREE.PlaneGeometry(24, 24),
-      new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.72, metalness: 0.08 })
+      new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.78, metalness: 0.06 })
     );
     floor.rotation.x = -Math.PI / 2;
     floor.receiveShadow = true;
@@ -199,55 +198,62 @@
 
     const backWall = new THREE.Mesh(
       new THREE.PlaneGeometry(24, 14),
-      new THREE.MeshStandardMaterial({ map: plasterTex, roughness: 0.86 })
+      new THREE.MeshStandardMaterial({ map: plasterTex, roughness: 0.88 })
     );
-    backWall.position.set(0, 6.5, -4.4);
+    backWall.position.set(0, 6.5, -4.6);
     backWall.receiveShadow = true;
     scene.add(backWall);
 
-    // Glowing Night Moon + Rain Outside Window
+    // Moon & Volumetric Moonlight Shaft
     const moonDisc = new THREE.Mesh(
-      new THREE.CircleGeometry(1.15, 32),
-      new THREE.MeshBasicMaterial({ color: 0xe2e8f0 })
+      new THREE.CircleGeometry(0.95, 32),
+      new THREE.MeshBasicMaterial({ color: 0xcbd5e1 })
     );
-    moonDisc.position.set(-1.4, 3.8, -5.8);
+    moonDisc.position.set(-1.5, 3.9, -4.5);
     scene.add(moonDisc);
 
-    // Volumetric Moonlight Shaft
     const rayCanvas = document.createElement('canvas'); rayCanvas.width = 128; rayCanvas.height = 128;
     const rg = rayCanvas.getContext('2d').createLinearGradient(0, 0, 0, 128);
-    rg.addColorStop(0.0, 'rgba(147, 197, 253, 0.80)');
+    rg.addColorStop(0.0, 'rgba(147, 197, 253, 0.65)');
     rg.addColorStop(1.0, 'rgba(147, 197, 253, 0.0)');
     rayCanvas.getContext('2d').fillStyle = rg;
     rayCanvas.getContext('2d').fillRect(0, 0, 128, 128);
     const moonShaft = new THREE.Mesh(
-      new THREE.ConeGeometry(2.8, 7.5, 20, 1, true),
+      new THREE.ConeGeometry(2.6, 7.2, 20, 1, true),
       new THREE.MeshBasicMaterial({
         map: new THREE.CanvasTexture(rayCanvas),
-        color: 0x93c5fd, transparent: true, opacity: 0.10,
+        color: 0x93c5fd, transparent: true, opacity: 0.08,
         blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide,
       })
     );
-    moonShaft.position.set(-0.6, 2.8, -1.8);
+    moonShaft.position.set(-0.7, 2.7, -2.0);
     moonShaft.rotation.x = 0.45;
     scene.add(moonShaft);
 
-    // Solid Timber Study Desk (Foreground Focal Zone: z = 0.75, width 2.55, height 0.92)
-    const deskMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.55, metalness: 0.08 });
-    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(2.65, 0.12, 1.15), deskMat);
-    deskTop.position.set(-0.05, 0.88, 0.75);
+    // Compact Oak Study Desk positioned cleanly on RIGHT (x = 0.65, z = 0.62) so Human on LEFT is 100% unobstructed!
+    const deskMat = new THREE.MeshStandardMaterial({ map: woodTex, roughness: 0.60, metalness: 0.06 });
+    const deskTop = new THREE.Mesh(new THREE.BoxGeometry(1.38, 0.09, 0.78), deskMat);
+    deskTop.position.set(0.65, 0.78, 0.62);
     deskTop.castShadow = true; deskTop.receiveShadow = true;
     scene.add(deskTop);
-    for (const lx of [-1.22, 1.12]) {
-      for (const lz of [0.28, 1.22]) {
-        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.09, 0.88, 0.09), deskMat);
-        leg.position.set(lx, 0.44, lz);
+    for (const lx of [0.04, 1.26]) {
+      for (const lz of [0.28, 0.96]) {
+        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.07, 0.78, 0.07), deskMat);
+        leg.position.set(lx, 0.39, lz);
         leg.castShadow = true;
         scene.add(leg);
       }
     }
 
-    // ---------------------------------------------------------------- 3 SLATE MONOLITH BLOCKS -> 5 GOLDEN STAIRS (MID-BACKSTAGE: x = 0.55, z = -1.65)
+    // Elevated Stone Plinth on RIGHT-BACK (x = 0.68, z = -1.75) so ALL 3 Monoliths & Stairs sit above desk line!
+    const plinth = new THREE.Mesh(
+      new THREE.BoxGeometry(1.56, 0.72, 1.85),
+      new THREE.MeshStandardMaterial({ color: 0x1a2230, roughness: 0.82 })
+    );
+    plinth.position.set(0.68, 0.36, -1.75);
+    plinth.receiveShadow = true;
+    scene.add(plinth);
+
     function makeLabelTex(line) {
       const c = document.createElement('canvas'); c.width = 512; c.height = 192;
       const g = c.getContext('2d');
@@ -262,10 +268,10 @@
     const blockLabels = ['KAL SE', 'MERE BAS KA NAHI', 'ZIKR BAND'];
     const blocks = blockLabels.map((lbl, idx) => {
       const m = new THREE.Mesh(
-        new THREE.BoxGeometry(1.18, 0.44, 0.58),
-        new THREE.MeshStandardMaterial({ map: makeLabelTex(lbl), roughness: 0.58, metalness: 0.15 })
+        new THREE.BoxGeometry(1.16, 0.42, 0.56),
+        new THREE.MeshStandardMaterial({ map: makeLabelTex(lbl), roughness: 0.65, metalness: 0.12 })
       );
-      m.position.set(0.58, 5.2, -1.55 + idx * 0.03);
+      m.position.set(0.68, 5.5, -1.65 + idx * 0.02);
       m.castShadow = true; m.receiveShadow = true;
       scene.add(m);
       return m;
@@ -277,78 +283,78 @@
     const stairEdges = [];
     for (let i = 0; i < 5; i++) {
       const step = new THREE.Mesh(
-        new THREE.BoxGeometry(1.30, 0.24, 0.46),
-        new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.48, metalness: 0.18 })
+        new THREE.BoxGeometry(1.26, 0.22, 0.42),
+        new THREE.MeshStandardMaterial({ color: 0x1e293b, roughness: 0.55, metalness: 0.15 })
       );
-      step.position.set(0.58, 0.24 + i * 0.30, -1.25 - i * 0.40);
+      step.position.set(0.68, 0.84 + i * 0.26, -1.10 - i * 0.36);
       step.castShadow = true; step.receiveShadow = true;
       const edgeMat = new THREE.MeshStandardMaterial({ color: 0x475569, emissive: 0x000000, emissiveIntensity: 0 });
-      const edge = new THREE.Mesh(new THREE.BoxGeometry(1.32, 0.05, 0.06), edgeMat);
-      edge.position.set(0.58, 0.36 + i * 0.30, -1.02 - i * 0.40);
+      const edge = new THREE.Mesh(new THREE.BoxGeometry(1.28, 0.045, 0.055), edgeMat);
+      edge.position.set(0.68, 0.95 + i * 0.26, -0.90 - i * 0.36);
       stairGroup.add(step, edge);
       stairEdges.push(edgeMat);
     }
 
-    // ---------------------------------------------------------------- DESK PROPS: NOTEBOOK + AMBER INK + PEN + FLIPPING PHONE
+    // ---------------------------------------------------------------- DESK PROPS (MATTE CREAM PAGES, ZERO GLARE)
     const notebookGroup = new THREE.Group();
-    notebookGroup.position.set(-0.08, 0.96, 0.78);
+    notebookGroup.position.set(0.52, 0.84, 0.64);
     scene.add(notebookGroup);
-    const coverMat = new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.52 });
-    const pageMat = new THREE.MeshStandardMaterial({ color: 0xfef3c7, roughness: 0.85 });
-    const coverL = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.03, 0.56), coverMat);
-    coverL.position.x = -0.21;
-    const pageL = new THREE.Mesh(new THREE.BoxGeometry(0.39, 0.025, 0.52), pageMat);
-    pageL.position.set(-0.20, 0.02, 0);
+    const coverMat = new THREE.MeshStandardMaterial({ color: 0x7c2d12, roughness: 0.58 });
+    const pageMat = new THREE.MeshStandardMaterial({ color: 0xd6c7a8, roughness: 0.94, metalness: 0.0 });
+    const coverL = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.025, 0.44), coverMat);
+    coverL.position.x = -0.16;
+    const pageL = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.02, 0.40), pageMat);
+    pageL.position.set(-0.15, 0.018, 0);
     const rightCoverPivot = new THREE.Group();
-    const coverR = new THREE.Mesh(new THREE.BoxGeometry(0.42, 0.03, 0.56), coverMat);
-    coverR.position.x = 0.21;
-    const pageR = new THREE.Mesh(new THREE.BoxGeometry(0.39, 0.025, 0.52), pageMat);
-    pageR.position.set(0.20, 0.02, 0);
+    const coverR = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.025, 0.44), coverMat);
+    coverR.position.x = 0.16;
+    const pageR = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.02, 0.40), pageMat);
+    pageR.position.set(0.15, 0.018, 0);
     rightCoverPivot.add(coverR, pageR);
     notebookGroup.add(coverL, pageL, rightCoverPivot);
 
     const inkLine = new THREE.Mesh(
-      new THREE.BoxGeometry(0.28, 0.008, 0.024),
-      new THREE.MeshBasicMaterial({ color: 0xfbbf24 })
+      new THREE.BoxGeometry(0.22, 0.008, 0.022),
+      new THREE.MeshBasicMaterial({ color: 0xd97706 })
     );
-    inkLine.position.set(0.14, 1.00, 0.76);
+    inkLine.position.set(0.68, 0.875, 0.62);
     inkLine.scale.x = 0.001;
     inkLine.visible = false;
     scene.add(inkLine);
 
     const pen = new THREE.Mesh(
-      new THREE.CylinderGeometry(0.012, 0.008, 0.24, 10),
-      new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.8, roughness: 0.2 })
+      new THREE.CylinderGeometry(0.011, 0.007, 0.22, 10),
+      new THREE.MeshStandardMaterial({ color: 0xf59e0b, metalness: 0.75, roughness: 0.25 })
     );
     pen.rotation.z = Math.PI / 3;
-    pen.position.set(0.30, 1.00, 0.84);
+    pen.position.set(0.80, 0.875, 0.70);
     scene.add(pen);
 
     const phoneGroup = new THREE.Group();
-    phoneGroup.position.set(0.56, 0.96, 0.78);
-    const phoneBody = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.024, 0.42), new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.28, metalness: 0.7 }));
-    const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.19, 0.37), new THREE.MeshBasicMaterial({ color: 0x38bdf8 }));
-    phoneScreen.rotation.x = -Math.PI / 2; phoneScreen.position.y = 0.013;
+    phoneGroup.position.set(1.04, 0.84, 0.64);
+    const phoneBody = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.022, 0.36), new THREE.MeshStandardMaterial({ color: 0x0f172a, roughness: 0.35, metalness: 0.65 }));
+    const phoneScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 0.32), new THREE.MeshBasicMaterial({ color: 0x0284c7 }));
+    phoneScreen.rotation.x = -Math.PI / 2; phoneScreen.position.y = 0.012;
     phoneGroup.add(phoneBody, phoneScreen);
     scene.add(phoneGroup);
 
-    // Floating warm golden dust motes
-    const mCount = 260;
+    // Floating warm dust motes
+    const mCount = 220;
     const mGeo = new THREE.BufferGeometry();
     const mArr = new Float32Array(mCount * 3);
     for (let i = 0; i < mCount; i++) {
-      mArr[i * 3] = Math.sin(i * 19.1) * 4.2;
-      mArr[i * 3 + 1] = 0.3 + ((i % 35) / 35) * 3.8;
-      mArr[i * 3 + 2] = Math.cos(i * 43.7) * 3.2 - 0.5;
+      mArr[i * 3] = Math.sin(i * 19.1) * 4.0;
+      mArr[i * 3 + 1] = 0.4 + ((i % 35) / 35) * 3.6;
+      mArr[i * 3 + 2] = Math.cos(i * 43.7) * 3.0 - 0.5;
     }
     mGeo.setAttribute('position', new THREE.BufferAttribute(mArr, 3));
     const motes = new THREE.Points(mGeo, new THREE.PointsMaterial({
-      color: 0xfde68a, size: 0.032, transparent: true, opacity: 0.58,
+      color: 0xfde68a, size: 0.024, transparent: true, opacity: 0.45,
       blending: THREE.AdditiveBlending, depthWrite: false,
     }));
     scene.add(motes);
 
-    // ---------------------------------------------------------------- LOAD CC0 REAL HUMAN + FURNITURE ASSETS
+    // ---------------------------------------------------------------- LOAD CC0 HUMAN & PROPORTIONAL FURNITURE
     const loader = new GLTFLoader();
     const loadGLTF = (url) => new Promise((res, rej) => loader.load(url, res, undefined, rej));
     const TIMELINE = await (await fetch('./timeline.json')).json();
@@ -378,45 +384,46 @@
       loadGLTF('/assets/shelf_b_large_decorated.glb'),
     ]);
 
-    // Furnish Study Room cleanly (zero overlaps!)
-    const rug = fitHeight(rugGltf.scene, 0.05).g;
-    rug.scale.set(2.2, 1.0, 2.2);
-    rug.position.set(-0.2, 0.005, 0.2);
+    const rug = fitHeight(rugGltf.scene, 0.04).g;
+    rug.scale.set(2.0, 1.0, 2.0);
+    rug.position.set(-0.1, 0.005, 0.2);
     scene.add(rug);
 
-    const chair = fitHeight(chairGltf.scene, 1.05).g;
-    chair.position.set(-1.35, 0.0, -0.35);
-    chair.rotation.y = 0.55;
+    const chair = fitHeight(chairGltf.scene, 0.92).g;
+    chair.position.set(-1.35, 0.0, -0.45);
+    chair.rotation.y = 0.62;
     scene.add(chair);
 
-    const shelf = fitHeight(shelfGltf.scene, 2.35).g;
-    shelf.position.set(-1.85, 0.0, -3.55);
-    shelf.rotation.y = 0.15;
+    // Correctly proportioned bookshelf tucked nicely on back-left wall!
+    const shelf = fitHeight(shelfGltf.scene, 1.90).g;
+    shelf.position.set(-1.55, 0.0, -3.55);
+    shelf.rotation.y = 0.22;
     scene.add(shelf);
 
-    const lamp = fitHeight(lampGltf.scene, 0.52).g;
-    lamp.position.set(-0.88, 0.94, 0.52);
+    // Subtle desk lamp on far-left corner of desk (subdued warm emissive!)
+    const lamp = fitHeight(lampGltf.scene, 0.36).g;
+    lamp.position.set(0.18, 0.825, 0.40);
     lamp.traverse((o) => {
       if (o.isMesh && o.material && /shade|lamp|white|light/i.test(o.material.name || o.name)) {
         o.material = o.material.clone();
-        o.material.emissive = new THREE.Color(0xffb347);
-        o.material.emissiveIntensity = 1.4;
+        o.material.emissive = new THREE.Color(0xd97706);
+        o.material.emissiveIntensity = 0.45;
       }
     });
     scene.add(lamp);
 
-    const books = fitHeight(booksGltf.scene, 0.24).g;
-    books.position.set(0.82, 0.94, 0.52);
+    const books = fitHeight(booksGltf.scene, 0.16).g;
+    books.position.set(1.06, 0.825, 0.36);
     books.rotation.y = -0.35;
     scene.add(books);
 
-    // Real Animated CC0 Human Actor (replaces stickman!)
-    const humanRes = fitHeight(humanGltf.scene, 1.76);
+    // Real Animated CC0 Human Actor standing cleanly on LEFT (x = -0.58, z = 0.48) — 100% VISIBLE HEAD TO TOE!
+    const humanRes = fitHeight(humanGltf.scene, 1.78);
     const human = humanRes.g;
     human.traverse((o) => {
       if (o.isMesh && o.material) {
         o.material = o.material.clone();
-        if (o.material.name === 'Purple') o.material.color.setHex(0xd97706); // Warm copper-amber hoodie!
+        if (o.material.name === 'Purple') o.material.color.setHex(0xc2410c); // Rich burnt-copper hoodie!
         if (o.material.name === 'LightBlue') o.material.color.setHex(0x1e293b); // Slate trousers!
       }
     });
@@ -459,7 +466,6 @@
       document.getElementById('beatTag').textContent = b.tag;
       document.getElementById('captionsText').innerHTML = formatCaption(b.caption, t - b.start, b.end - b.start);
 
-      // Human animation blending + staging (zero clipping!)
       const interactU = smoothstep(640, 710, f) * (1 - smoothstep(940, 990, f));
       const proudU = smoothstep(963, 1050, f);
       idleNeutralAct.setEffectiveWeight(Math.max(0, 1 - interactU - proudU));
@@ -467,26 +473,26 @@
       idleProudAct.setEffectiveWeight(proudU);
       humanMixer.setTime(t);
 
-      // Human stands beside/behind desk on left (-0.82, 0.0, 0.08), turning toward desk then tall toward lens
-      human.position.set(lerp(-0.88, -0.78, proudU), 0.0, lerp(0.12, 0.28, proudU));
-      human.rotation.y = lerp(0.55, lerp(0.85, 0.16, proudU), Math.max(interactU, proudU));
+      // Human stands clearly on left (-0.58) with subtle turning toward desk/camera
+      human.position.set(lerp(-0.62, -0.52, proudU), 0.0, lerp(0.50, 0.60, proudU));
+      human.rotation.y = lerp(0.32, lerp(0.75, 0.14, proudU), Math.max(interactU, proudU));
 
-      // Slate blocks slam down cleanly in mid-background, then transform into 5 golden stairs!
+      // Monolith blocks land cleanly on the 0.72m plinth (so y = 0.93, 1.37, 1.81 — well above desk!)
       const showStairs = f >= 546;
       blocks.forEach((blk) => { blk.visible = !showStairs; });
       stairGroup.visible = showStairs;
 
       if (!showStairs) {
         const dropFrames = [279, 314, 363];
-        const targetY = [0.22, 0.67, 1.12];
+        const targetY = [0.93, 1.37, 1.81];
         blocks.forEach((blk, idx) => {
           const df = dropFrames[idx];
           if (f < df - 12) {
-            blk.position.set(0.58, 6.2, -1.55);
+            blk.position.set(0.68, 6.2, -1.65);
           } else {
             const du = smoothstep(df - 12, df, f);
-            const bounce = f >= df && f < df + 8 ? Math.sin(((f - df) / 8) * Math.PI) * 0.06 : 0;
-            blk.position.set(0.58, lerp(5.4, targetY[idx], du) + bounce, -1.55 + idx * 0.02);
+            const bounce = f >= df && f < df + 8 ? Math.sin(((f - df) / 8) * Math.PI) * 0.05 : 0;
+            blk.position.set(0.68, lerp(5.4, targetY[idx], du) + bounce, -1.65 + idx * 0.02);
           }
         });
         stairGlowLight.intensity = 0;
@@ -496,11 +502,11 @@
         stairEdges.forEach((em, idx) => {
           const lit = smoothstep(stepFrames[idx] - 2, stepFrames[idx] + 5, f);
           totalLit += lit;
-          em.color.setHex(lit > 0.1 ? 0xfbbf24 : 0x475569);
-          em.emissive.setHex(0xf59e0b);
-          em.emissiveIntensity = lit * 2.2;
+          em.color.setHex(lit > 0.1 ? 0xf59e0b : 0x475569);
+          em.emissive.setHex(0xd97706);
+          em.emissiveIntensity = lit * 0.95;
         });
-        stairGlowLight.intensity = totalLit * 2.8;
+        stairGlowLight.intensity = totalLit * 0.55;
       }
 
       // Notebook opens at f=675
@@ -509,57 +515,60 @@
       // Phone flips screen-down at f=844
       const flipU = smoothstep(833, 845, f);
       phoneGroup.rotation.z = lerp(0, Math.PI, flipU);
-      phoneGroup.position.y = 0.96 + Math.sin(flipU * Math.PI) * 0.14;
+      phoneGroup.position.y = 0.84 + Math.sin(flipU * Math.PI) * 0.12;
 
       // Amber ink writes across page on f=933..975
       if (f >= 933) {
         inkLine.visible = true;
         const wU = smoothstep(933, 975, f);
         inkLine.scale.x = Math.max(0.01, wU);
-        pen.position.set(0.02 + wU * 0.26, 1.07, 0.76);
+        pen.position.set(0.58 + wU * 0.20, 0.92, 0.62);
       } else {
         inkLine.visible = false;
-        pen.position.set(0.30, 1.00, 0.84);
+        pen.position.set(0.80, 0.875, 0.70);
       }
 
-      // 8-Beat Portrait-Safe Camera Choreography (zero edge clipping!)
+      // 8-Beat Portrait-Safe Camera Choreography (Human Head-to-Toe + Unobstructed Desk & Stairs!)
       if (f < 267) {
+        // Beat 1: Full medium-wide portrait of Human on left + desk on right + moonlit room
         const u = smoothstep(0, 267, f);
-        camera.position.set(lerp(-0.4, -0.55, u), lerp(1.65, 1.55, u), lerp(3.85, 3.05, u));
-        camera.lookAt(-0.55, 1.25, 0.15);
+        camera.position.set(lerp(-0.25, -0.40, u), lerp(1.42, 1.38, u), lerp(4.15, 3.55, u));
+        camera.lookAt(-0.32, 1.12, 0.25);
       } else if (f < 398) {
-        // Bahaanay: Wide enough to keep BOTH human + all 3 blocks inside 1080x1920!
+        // Beat 2: Wide shot framing Human + all 3 falling Monoliths (KAL SE / MERE BAS / ZIKR BAND)
         const u = smoothstep(267, 398, f);
-        camera.position.set(lerp(0.1, 0.25, u), 1.65, lerp(4.15, 3.95, u));
-        camera.lookAt(0.15, 1.05, -0.55);
+        camera.position.set(lerp(0.05, 0.12, u), 1.48, lerp(4.45, 4.25, u));
+        camera.lookAt(0.10, 1.25, -0.60);
       } else if (f < 537) {
+        // Beat 3: Contemplation pan back toward Human
         const u = smoothstep(398, 537, f);
-        camera.position.set(lerp(0.25, -0.65, u), 1.60, lerp(3.95, 3.55, u));
-        camera.lookAt(-0.15, 1.15, -0.35);
+        camera.position.set(lerp(0.12, -0.35, u), 1.44, lerp(4.25, 3.85, u));
+        camera.lookAt(-0.15, 1.15, -0.20);
       } else if (f < 706) {
-        // Golden Stairs Reveal
+        // Beat 4: Golden Stairs Reveal behind Human & Desk
         const u = smoothstep(537, 706, f);
-        camera.position.set(lerp(-0.5, 0.2, u), lerp(1.70, 1.95, u), lerp(3.85, 3.65, u));
-        camera.lookAt(0.22, 1.15, -0.85);
+        camera.position.set(lerp(-0.30, 0.15, u), lerp(1.50, 1.68, u), lerp(4.10, 3.85, u));
+        camera.lookAt(0.18, 1.20, -0.75);
       } else if (f < 833) {
-        // Desk + Notebook close-up
+        // Beat 5: Desk + Open Notebook close-up (crisp matte paper!)
         const u = smoothstep(706, 833, f);
-        camera.position.set(lerp(0.2, 0.05, u), lerp(1.95, 1.72, u), lerp(3.65, 2.35, u));
-        camera.lookAt(0.02, 1.02, 0.72);
+        camera.position.set(lerp(0.15, 0.48, u), lerp(1.68, 1.48, u), lerp(3.85, 2.05, u));
+        camera.lookAt(0.55, 0.86, 0.62);
       } else if (f < 933) {
-        // Phone flip face-down
+        // Beat 6: Phone flips screen-down + pen begins
         const u = smoothstep(833, 933, f);
-        camera.position.set(lerp(0.05, 0.38, u), lerp(1.72, 1.62, u), lerp(2.35, 2.15, u));
-        camera.lookAt(0.32, 0.98, 0.76);
+        camera.position.set(lerp(0.48, 0.82, u), lerp(1.48, 1.42, u), lerp(2.05, 1.92, u));
+        camera.lookAt(0.84, 0.86, 0.64);
       } else if (f < 1125) {
-        // Hero stands proud + amber stairs glow behind
+        // Beat 7: Pull back to Hero standing tall & confident next to desk + glowing stairs behind
         const u = smoothstep(933, 1125, f);
-        camera.position.set(lerp(0.32, -0.25, u), lerp(1.62, 1.72, u), lerp(2.25, 3.75, u));
-        camera.lookAt(lerp(-0.10, -0.28, u), lerp(1.05, 1.32, u), 0.10);
+        camera.position.set(lerp(0.65, -0.12, u), lerp(1.42, 1.45, u), lerp(2.15, 4.05, u));
+        camera.lookAt(lerp(0.20, -0.15, u), lerp(0.95, 1.18, u), 0.15);
       } else {
+        // Beat 8: Hero Final Question
         const u = smoothstep(1125, 1200, f);
-        camera.position.set(lerp(-0.25, -0.10, u), 1.72, lerp(3.75, 3.45, u));
-        camera.lookAt(-0.12, 1.32, -0.20);
+        camera.position.set(lerp(-0.12, -0.05, u), 1.45, lerp(4.05, 3.75, u));
+        camera.lookAt(-0.10, 1.18, -0.15);
       }
 
       composer.render();
