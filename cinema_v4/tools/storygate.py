@@ -23,7 +23,8 @@ CONCRETE = {"gari", "gariyan", "darwaza", "darwaze", "chaabi", "parchi", "phone"
             "paisa", "kamra", "kamre", "ghar", "kachra", "danda", "aag", "jeb", "bonnet",
             "shutter", "torch", "spanner", "gali", "dukaan", "raste", "chai", "chawal",
             "salan", "mayyat", "kandha", "abbu", "ammi", "biwi", "bachay", "beta", "beti",
-            "dashboard", "workshop", "almari", "khana", "scooter", "bike", "tayar", "note", "screen"}
+            "dashboard", "workshop", "almari", "khana", "scooter", "bike", "tayar", "note", "screen",
+            "kaaghaz", "kaagaz", "pencil", "lifafa", "card"}
 WANT = r"\b(chahiye|chahiya|chahta|chahti|mangta|mangti|laana|lena hai|chahiye tha)\b"
 SPEECH = r"\b(kaha|kahi|kahe|bola|boli|kehta|kehti|poocha|pooch|likha|likhi|jawab)\b"
 REFUSAL = r"\b(nahi|nahin|mat|kal aa|baad me|abhi nahi|ruk|rehne do)\b"
