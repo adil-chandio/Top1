@@ -134,6 +134,17 @@ def main():
     gate("No 'not X but Y' hinge", not notx, 14, f"{len(notx)} hinge(s)")
     gate("No fortune-cookie line", not deep, 10, f"{len(deep)} saying(s)")
 
+    # --- VIRAL DNA (thecontentlabs, 3,633 transcripts / 165 at 1M+) ----------------
+    if "--tier" in sys.argv and sys.argv[sys.argv.index("--tier") + 1] == "viral":
+        wps_ = statistics.mean(lens) if lens else 0
+        q_ = text.count("?")
+        you_ = len(re.findall(r"\b(tu|tum|tera|teri|tujhe|tumne|tumhara|tumhe|aap)\b", raw))
+        me_ = len(re.findall(r"\b(main|maine|mujhe|meri|mera|hum|humne)\b", raw))
+        ratio = you_ / max(1, me_)
+        gate("Viral: 11-15 words/sentence", 11 <= wps_ <= 15, 10, f"{wps_:.1f} (long-tail 10.2, viral 14.0)")
+        gate("Viral: >=1.8 questions", q_ >= 1.8, 8, f"{q_} ?")
+        gate("Viral: you/I ratio 1.4-2.4", 1.4 <= ratio <= 2.4, 8, f"{ratio:.2f} (viral 1.91)")
+
     print(f"\nFILE: {p.name}   duration target: {dur}s   words: {wc}   sentences: {len(sents)}")
     print("-" * 74)
     for name, st, w, detail in rows:
