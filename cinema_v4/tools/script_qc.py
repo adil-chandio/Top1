@@ -67,8 +67,11 @@ def main():
         # anaphora = the same word repeated at the head of neighbouring lines.
         # A slop triad needs three *different* parallel items; a run where any two
         # lines open on the same word is anaphora, which is a device, not a tell.
+        # anaphora repeats the head word, epiphora repeats the tail ("Kaam kal.
+        # Call kal. Maafi kal."). Both are devices. A slop triad has neither.
         firsts = [words(s.lower())[0] if words(s) else "" for s in chunk]
-        if len(set(firsts)) < 3:
+        lasts = [words(s.lower())[-1] if words(s) else "" for s in chunk]
+        if len(set(firsts)) < 3 or len(set(lasts)) < 3:
             continue
         triads.append(" / ".join(chunk))
 
