@@ -319,12 +319,18 @@
     function makeTenMinCanvasTex() {
       const c = document.createElement('canvas'); c.width = 512; c.height = 256;
       const g = c.getContext('2d');
-      g.clearRect(0, 0, 512, 256);
-      g.strokeStyle = '#fbbf24'; g.lineWidth = 10; g.lineCap = 'round';
-      g.beginPath(); g.moveTo(48, 178); g.quadraticCurveTo(256, 146, 464, 178); g.stroke();
-      g.fillStyle = '#fef08a'; g.font = '900 102px Inter, sans-serif';
+      g.fillStyle = '#c4a87e'; g.fillRect(0, 0, 512, 256);
+      // Subtle ruled notebook lines
+      g.strokeStyle = 'rgba(92, 64, 38, 0.22)'; g.lineWidth = 2;
+      for (let y = 36; y < 240; y += 28) {
+        g.beginPath(); g.moveTo(24, y); g.lineTo(488, y); g.stroke();
+      }
+      // Bold gold-amber underline arc + high-contrast 10:00 ink
+      g.strokeStyle = '#92400e'; g.lineWidth = 10; g.lineCap = 'round';
+      g.beginPath(); g.moveTo(56, 186); g.quadraticCurveTo(256, 154, 456, 186); g.stroke();
+      g.fillStyle = '#1e1b18'; g.font = '900 106px Inter, sans-serif';
       g.textAlign = 'center'; g.textBaseline = 'middle';
-      g.fillText('10:00', 256, 104);
+      g.fillText('10:00', 256, 108);
       const tex = new THREE.CanvasTexture(c);
       tex.colorSpace = THREE.SRGBColorSpace;
       return tex;
@@ -421,14 +427,15 @@
           if (o.name === 'Head') headBone = o;
           if (o.name === 'Neck') neckBone = o;
           if (o.name === 'Chest') chestBone = o;
+          return;
+        }
+        const selfOrParent = `${o.name || ''} ${o.parent?.name || ''}`;
+        if (/pistol|gun|weapon|briefcase|bag|holster|suit_head|cube\.?204|cube\.?006/i.test(selfOrParent)) {
+          o.visible = false;
+          if (o.isMesh) strippedNames.push(`${o.parent?.name || ''}/${o.name}`);
+          return;
         }
         if (o.isMesh) {
-          // STRIP PISTOL, BRIEFCASE, WEAPON & LOW-POLY SUIT_HEAD COMPLETELY!
-          if (/pistol|gun|weapon|briefcase|bag|holster|suit_head|head/i.test(o.name)) {
-            o.visible = false;
-            strippedNames.push(o.name);
-            return;
-          }
           o.castShadow = true; o.receiveShadow = true;
           if (o.geometry) o.geometry.computeVertexNormals();
           if (o.material) {
@@ -681,9 +688,9 @@
     scene.add(galleryGroup);
     const pillarMat = new THREE.MeshStandardMaterial({ color: 0x101624, roughness: 0.20, metalness: 0.70 });
     for (const side of [-1, 1]) {
-      for (const z of [-1.2, -3.5, -5.8]) {
+      for (const z of [-1.8, -4.0, -6.2]) {
         const pil = new THREE.Mesh(new THREE.BoxGeometry(0.45, 5.5, 0.45), pillarMat);
-        pil.position.set(side * 1.68, 2.75, z);
+        pil.position.set(side * 2.45, 2.75, z);
         galleryGroup.add(pil);
       }
     }
@@ -790,10 +797,10 @@
     deskGroup.add(books);
 
     const notebookGroup = new THREE.Group();
-    notebookGroup.position.set(-0.12, 0.92, 0.60);
+    notebookGroup.position.set(-0.18, 0.92, 0.60);
     deskGroup.add(notebookGroup);
     const covMat = new THREE.MeshStandardMaterial({ color: 0x6b210c, roughness: 0.52 });
-    const pgMat = new THREE.MeshStandardMaterial({ color: 0xe6dac3, roughness: 0.90 });
+    const pgMat = new THREE.MeshStandardMaterial({ color: 0xc4a87e, roughness: 0.94 });
     const cL = new THREE.Mesh(new THREE.BoxGeometry(0.32, 0.024, 0.44), covMat); cL.position.x = -0.16;
     const pL = new THREE.Mesh(new THREE.BoxGeometry(0.30, 0.020, 0.40), pgMat); pL.position.set(-0.15, 0.018, 0);
     const rightPivot = new THREE.Group();
@@ -807,18 +814,18 @@
       new THREE.MeshBasicMaterial({ map: tenMinTex, transparent: true, opacity: 0.0 })
     );
     tenMinPlane.rotation.x = -Math.PI / 2;
-    tenMinPlane.position.set(0.03, 0.946, 0.59);
+    tenMinPlane.position.set(-0.03, 0.946, 0.60);
     deskGroup.add(tenMinPlane);
 
     const pen = new THREE.Mesh(
       new THREE.CylinderGeometry(0.011, 0.007, 0.22, 12),
       new THREE.MeshStandardMaterial({ color: 0xfbbf24, metalness: 0.85, roughness: 0.18 })
     );
-    pen.rotation.z = Math.PI / 3; pen.position.set(0.16, 0.955, 0.68);
+    pen.rotation.z = Math.PI / 3; pen.position.set(0.08, 0.955, 0.68);
     deskGroup.add(pen);
 
     const phoneGroup = new THREE.Group();
-    phoneGroup.position.set(0.45, 0.92, 0.60);
+    phoneGroup.position.set(0.26, 0.92, 0.62);
     const pBody = new THREE.Mesh(new THREE.BoxGeometry(0.18, 0.022, 0.36), new THREE.MeshStandardMaterial({ color: 0x0d111a, roughness: 0.24, metalness: 0.72 }));
     const pScrMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
     const pScr = new THREE.Mesh(new THREE.PlaneGeometry(0.15, 0.32), pScrMat);
@@ -1072,9 +1079,9 @@
         hero.root.rotation.set(0, lerp(-0.72, 0.0, smoothstep(0.0, 0.4, uLocal)), 0);
         keyLight.color.setHex(shatterU > 0.35 ? 0xfde68a : 0x93c5fd);
         keyLight.intensity = lerp(14, 20, shatterU);
-        camera.fov = lerp(42, 34, smoothstep(0.0, 0.45, uLocal));
-        camera.position.set(lerp(0.85, 0.25, smoothstep(0.0, 0.45, uLocal)), 1.38, lerp(2.05, 1.05, smoothstep(0.0, 0.45, uLocal)));
-        camera.lookAt(0.25, 1.32, 0.15);
+        camera.fov = lerp(42, 36, smoothstep(0.0, 0.45, uLocal));
+        camera.position.set(lerp(0.85, 0.25, smoothstep(0.0, 0.45, uLocal)), 1.38, lerp(2.05, 1.44, smoothstep(0.0, 0.45, uLocal)));
+        camera.lookAt(0.25, 1.24, 0.15);
       } else if (bIdx === 5) {
         // BEAT 5: OBSIDIAN DESK — LAMP SNAPS ON WITH WARM VOLUMETRIC AMBER LIGHT
         deskGroup.visible = true;
@@ -1089,11 +1096,11 @@
         setAnimWeights(0, 0, 0.72, 0.28);
         hero.root.position.set(-0.05, 0, -0.15);
         hero.root.rotation.set(0, 0.08, 0);
-        keyLight.color.setHex(0xffdfb0); keyLight.intensity = 17;
+        keyLight.color.setHex(0xffdfb0); keyLight.intensity = 10.5;
         keyLight.position.set(0.8, 3.2, 2.4);
         rimLight.color.setHex(0xf59e0b); rimLight.intensity = 2.6;
         camera.position.set(lerp(-0.88, 0.36, uLocal), lerp(1.78, 1.54, uLocal), lerp(2.68, 1.92, uLocal));
-        camera.lookAt(-0.04, 1.18, 0.35);
+        camera.lookAt(-0.02, 1.16, 0.38);
       } else if (bIdx === 6) {
         // BEAT 6: HYPER-LITERAL DESK ACTION — PHONE FLIPS FACE-DOWN + JOURNAL + 10:00 INK!
         deskGroup.visible = true;
@@ -1109,13 +1116,13 @@
         phoneGroup.position.y = 0.92 + Math.sin(flipU * Math.PI) * 0.14;
         pScrMat.color.setHex(flipU > 0.5 ? 0x0f172a : 0x38bdf8);
 
-        const inkU = smoothstep(df[2] - 6, b.end_frame - 6, f);
-        tenMinPlane.material.opacity = inkU;
-        pen.position.set(-0.08 + inkU * 0.22, 0.98, 0.58 + Math.sin(inkU * 12) * 0.015);
-        keyLight.color.setHex(0xfde68a); keyLight.intensity = 18;
+        const inkU = smoothstep(df[2] - 8, b.end_frame - 6, f);
+        tenMinPlane.material.opacity = Math.max(0.15, inkU);
+        pen.position.set(-0.14 + inkU * 0.22, 0.98, 0.58 + Math.sin(inkU * 12) * 0.015);
+        keyLight.color.setHex(0xfde68a); keyLight.intensity = 9.5;
         rimLight.color.setHex(0xfbbf24); rimLight.intensity = 2.8;
-        camera.position.set(lerp(0.56, -0.02, uLocal), lerp(1.52, 1.44, uLocal), lerp(1.48, 1.24, uLocal));
-        camera.lookAt(lerp(0.36, 0.02, uLocal), 0.94, 0.60);
+        camera.position.set(lerp(0.54, 0.04, uLocal), lerp(1.56, 1.48, uLocal), lerp(1.62, 1.38, uLocal));
+        camera.lookAt(lerp(0.20, 0.04, uLocal), 0.94, 0.60);
       } else if (bIdx === 7) {
         // BEAT 7: HERO ASCENDING 5 GOLDEN STAIRS + RISING AMBER EMBERS
         stairGroup.visible = true;
@@ -1154,7 +1161,7 @@
         setAnimWeights(0, 0, 0, 1);
         hero.root.position.set(0, 0, 0);
         hero.root.rotation.set(0, 0, 0);
-        keyLight.color.setHex(0xffffff); keyLight.intensity = 17;
+        keyLight.color.setHex(0xffffff); keyLight.intensity = 12.5;
         keyLight.position.set(0.38, 2.15, 2.4);
         rimLight.color.setHex(0xef4444); rimLight.intensity = 3.2;
         crimsonRimLight.intensity = 10.5;
@@ -1162,12 +1169,12 @@
 
         if (bIdx === 8) {
           camera.fov = 34;
-          camera.position.set(0, lerp(1.56, 1.60, uLocal), lerp(1.38, 1.05, uLocal));
-          camera.lookAt(0, 1.57, 0.0);
+          camera.position.set(0, lerp(1.56, 1.60, uLocal), lerp(1.45, 1.12, uLocal));
+          camera.lookAt(0, 1.56, 0.0);
         } else {
           camera.fov = lerp(34, 28, uLocal);
-          camera.position.set(0, lerp(1.60, 1.63, uLocal), lerp(1.05, 0.72, easeOutCubic(uLocal)));
-          camera.lookAt(0, 1.61, 0.0);
+          camera.position.set(0, lerp(1.60, 1.63, uLocal), lerp(1.12, 0.80, easeOutCubic(uLocal)));
+          camera.lookAt(0, 1.60, 0.0);
         }
       }
 
@@ -1178,12 +1185,16 @@
     // ---------------------------------------------------------------- AUTOMATED PRE-FLIGHT SIGHT-LINE & LUMINANCE QC
     window.__MONARCH_AUDIT__ = () => {
       const issues = [];
-      // 1. Verify Pistol/Weapon stripped
+      // 1. Verify Pistol/Weapon AND Suit_Head stripped!
+      if (hero.strippedNames.length < 4) {
+        issues.push(`CRITICAL: Expected Pistol + Suit_Head stripped, got only ${hero.strippedNames.length}`);
+      }
       let pistolVisible = false;
       hero.inner.traverse((o) => {
-        if (o.isMesh && /pistol|gun|weapon|briefcase/i.test(o.name) && o.visible) pistolVisible = true;
+        const nm = `${o.name || ''} ${o.parent?.name || ''}`;
+        if (o.isMesh && /pistol|gun|weapon|briefcase|suit_head|cube\.?204|cube\.?006/i.test(nm) && o.visible) pistolVisible = true;
       });
-      if (pistolVisible) issues.push('CRITICAL: Unwanted weapon/pistol mesh is visible on hero rig!');
+      if (pistolVisible) issues.push('CRITICAL: Unwanted weapon/pistol/Suit_Head mesh is visible on hero rig!');
 
       // 2. Check hero sight-line + non-black pixel luminance at midpoint of EVERY beat
       const testFrames = beats.map((bt) => Math.floor((bt.start_frame + bt.end_frame) * 0.5));
