@@ -113,6 +113,8 @@ jobs:
           print("Earshot bank loaded:", len(bank.ids()), "sounds")
           meta = {}
           for role, cfg in kit.items():
+              if not isinstance(cfg, dict):
+                  continue
               sid = cfg.get("sound")
               if not sid:
                   continue
