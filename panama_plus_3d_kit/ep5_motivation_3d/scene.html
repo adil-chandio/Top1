@@ -39,7 +39,7 @@
     }
     .captions-text .hi { color: #fbbf24; }
     .cta-banner {
-      align-self: center; text-align: center;
+      align-self: center; text-align: center; margin-bottom: 14px;
       opacity: 0; transform: translateY(12px);
       background: rgba(10, 8, 12, 0.86);
       border: 1px solid rgba(239, 68, 68, 0.55);
@@ -49,6 +49,7 @@
     }
     .cta-banner.visible { opacity: 1; transform: translateY(0); }
     .cta-banner span { color: #fbbf24; }
+    .bottom-stack { display: flex; flex-direction: column; align-items: center; }
   </style>
   <script type="importmap">
     {
@@ -66,9 +67,11 @@
       <div class="pill">MONARCH® 3D</div>
       <div class="pill crimson" id="beatTag">KHWAAB</div>
     </div>
-    <div class="cta-banner" id="ctaBanner">MAIN ABHI BHI <span>APNI TARAF HOON</span></div>
-    <div class="captions-wrap" id="captionWrap">
-      <div class="captions-text" id="captionsText"></div>
+    <div class="bottom-stack">
+      <div class="cta-banner" id="ctaBanner">MAIN ABHI BHI <span>APNI TARAF HOON</span></div>
+      <div class="captions-wrap" id="captionWrap">
+        <div class="captions-text" id="captionsText"></div>
+      </div>
     </div>
   </div>
 
@@ -347,7 +350,7 @@
     const TIMELINE = await (await fetch('./timeline.json')).json();
 
     const [humanGltf, streetLightGltf, lampGltf, chairGltf, booksGltf] = await Promise.all([
-      loadGLTF('/assets/casual_hoodie.glb'),
+      loadGLTF('/assets/suit.glb'),
       loadGLTF('/assets/streetlight.glb'),
       loadGLTF('/assets/lamp_table.glb'),
       loadGLTF('/assets/armchair_pillows.glb'),
@@ -468,27 +471,29 @@
       maskMesh.position.set(0, 0.132, 0.012);
       monarchHead.add(maskMesh);
 
-      // 4. Sculpted Center-Parted Dark Black Hair (matching reference!)
-      const hairMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0d, roughness: 0.65, metalness: 0.08 });
-      const crown = new THREE.Mesh(new THREE.SphereGeometry(0.118, 24, 18, 0, Math.PI * 2, 0, Math.PI * 0.56), hairMat);
-      crown.scale.set(0.92, 1.05, 1.02);
-      crown.position.set(0, 0.132, 0.002);
+      // 4. Smooth Sculpted Center-Parted Dark Black Hair (matching reference!)
+      const hairMat = new THREE.MeshStandardMaterial({ color: 0x090a0e, roughness: 0.72, metalness: 0.06 });
+      const crown = new THREE.Mesh(new THREE.SphereGeometry(0.118, 28, 22, 0, Math.PI * 2, 0, Math.PI * 0.54), hairMat);
+      crown.scale.set(0.92, 0.96, 1.02);
+      crown.position.set(0, 0.136, 0.002);
       monarchHead.add(crown);
 
-      // Swept left & right center-parted front bangs + back volume
+      // Swept smooth center-parted front curtains + side temple sweep + back volume
       for (const sx of [-1, 1]) {
-        for (let k = 0; k < 4; k++) {
-          const lock = new THREE.Mesh(new THREE.CapsuleGeometry(0.024 - k * 0.002, 0.075, 6, 10), hairMat);
-          lock.position.set(sx * (0.035 + k * 0.022), 0.205 - k * 0.018, 0.068 - k * 0.016);
-          lock.rotation.set(0.35 + k * 0.12, sx * 0.22, sx * (-0.52 - k * 0.15));
-          monarchHead.add(lock);
-        }
-        const sideBurn = new THREE.Mesh(new THREE.BoxGeometry(0.022, 0.095, 0.055), hairMat);
-        sideBurn.position.set(sx * 0.092, 0.135, 0.018);
-        monarchHead.add(sideBurn);
+        const sweep = new THREE.Mesh(new THREE.SphereGeometry(0.068, 22, 18), hairMat);
+        sweep.scale.set(1.05, 0.56, 1.35);
+        sweep.position.set(sx * 0.052, 0.195, 0.042);
+        sweep.rotation.set(0.28, sx * 0.25, sx * -0.44);
+        monarchHead.add(sweep);
+
+        const temple = new THREE.Mesh(new THREE.SphereGeometry(0.056, 18, 14), hairMat);
+        temple.scale.set(0.55, 1.15, 0.95);
+        temple.position.set(sx * 0.088, 0.155, 0.012);
+        temple.rotation.z = sx * -0.15;
+        monarchHead.add(temple);
       }
-      const backHair = new THREE.Mesh(new THREE.SphereGeometry(0.105, 18, 14), hairMat);
-      backHair.scale.set(0.92, 1.08, 0.85);
+      const backHair = new THREE.Mesh(new THREE.SphereGeometry(0.108, 22, 16), hairMat);
+      backHair.scale.set(0.92, 1.05, 0.88);
       backHair.position.set(0, 0.135, -0.028);
       monarchHead.add(backHair);
 

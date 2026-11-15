@@ -378,52 +378,53 @@
         camera.position.set(3.8 - u * 1.1, 1.85, 6.2 - u * 3.8);
         camera.lookAt(0.5, 1.05, 0.4);
       } else if (b.id === 'jackpot_freeze') {
-        // Beat 3: Bear dining inside cab / side of truck; Homeowner steps onto porch & freezes!
+        // Beat 3: Bear dining beside cab; Homeowner steps cleanly onto illuminated driveway facing bear!
         snackGroup.visible = true;
-        snackGroup.position.set(0.85, 1.20, 0.4);
-        bear.position.set(1.35, 0.02, 0.5);
+        snackGroup.position.set(1.15, 1.15, 0.3);
+        bear.position.set(1.75, 0.02, 0.4);
         bear.rotation.y = -0.9;
         human.visible = true;
-        human.position.set(-1.9, 0.02, -4.5 + u * 3.8);
-        human.rotation.y = 0.35;
+        human.position.set(0.25, 0.02, -5.2 + u * 2.2);
+        human.rotation.y = 0.25;
         setHumanPose(u < 0.55 ? 'walk' : 'idle', t);
-        camera.position.set(-3.2 + u * 0.6, 1.78, 4.2);
-        camera.lookAt(0.1, 1.25, -0.3);
+        camera.position.set(3.8 - u * 0.4, 2.05, 3.6);
+        camera.lookAt(0.7, 1.25, -1.5);
       } else if (b.id === 'flash_plank') {
-        // Beat 4: Homeowner snaps a bright flash photo, then swings a wood plank (zero truck clipping!)
+        // Beat 4: Homeowner in full view beside truck bed snaps bright flash photo, then swings wooden plank!
         snackGroup.visible = true;
-        snackGroup.position.set(0.85, 1.20, 0.4);
-        bear.position.set(1.45, 0.02, 0.5);
-        bear.rotation.y = -0.8;
+        snackGroup.position.set(1.15, 1.15, 0.3);
+        bear.position.set(1.85, 0.02, 0.5);
+        bear.rotation.y = -0.75;
         human.visible = true;
-        human.position.set(-2.35, 0.02, 0.6);
-        human.rotation.y = Math.PI * 0.48;
+        human.position.set(-0.35, 0.02, 3.6);
+        human.rotation.y = Math.PI * 0.72;
         phoneProp.visible = u < 0.52;
         plankProp.visible = u >= 0.52;
         setHumanPose('interact', t);
         if (u > 0.16 && u < 0.25) flashEl.style.opacity = String(Math.sin(((u - 0.16) / 0.09) * Math.PI) * 0.88);
-        camera.position.set(-0.6, 1.65, 5.2 - u * 0.6);
-        camera.lookAt(-0.4, 1.25, 0.5);
+        camera.position.set(2.4, 1.72, 7.8 - u * 0.6);
+        camera.lookAt(0.5, 1.18, 2.2);
       } else if (b.id === 'dignity_exit') {
-        // Beat 5: Bear casually backs out the driver's side with full dignity!
+        // Beat 5: Bear casually walks away past homeowner with full dignity!
         snackGroup.visible = false;
         human.visible = true;
-        human.position.set(-2.45, 0.02, 0.6);
-        human.rotation.y = Math.PI * 0.48;
+        human.position.set(-0.55, 0.02, 3.2);
+        human.rotation.y = Math.PI * 0.6;
         plankProp.visible = true;
         setHumanPose('idle', t);
-        bear.position.set(1.4 + u * 1.4, 0.02 + Math.abs(Math.sin(t * 5.2)) * 0.05, 0.8 + u * 4.2);
-        bear.rotation.y = 0.25;
-        camera.position.set(3.2, 1.70, 7.6 - u * 1.0);
-        camera.lookAt(bear.position.x, 1.0, bear.position.z);
+        bear.position.set(1.4 + u * 0.8, 0.02 + Math.abs(Math.sin(t * 5.2)) * 0.05, 1.2 + u * 4.5);
+        bear.rotation.y = 0.15;
+        camera.position.set(3.2, 1.75, 8.2);
+        camera.lookAt(bear.position.x * 0.5, 1.05, bear.position.z);
       } else if (b.id === 'worth_it') {
-        // Beat 6: Hero close-up on the bear winking/nodding under warm sodium streetlight!
+        // Beat 6: Front-lit hero close-up on the bear's face under warm sodium streetlight!
         snackGroup.visible = false;
         human.visible = false;
         bear.position.set(-1.6, 0.02, 4.8);
-        bear.rotation.y = 0.55;
-        camera.position.set(0.4, 1.55, 7.4 - u * 0.7);
-        camera.lookAt(-1.4, 1.05, 4.8);
+        bear.rotation.y = 0.42;
+        truckDomeLight.position.set(-1.1, 2.1, 6.2);
+        camera.position.set(-0.6, 1.55, 7.6 - u * 0.7);
+        camera.lookAt(-1.5, 1.12, 4.8);
       } else {
         // Beat 7: Cinematic Suburban Night Crane-Out past house, trees & moon!
         snackGroup.visible = false;
