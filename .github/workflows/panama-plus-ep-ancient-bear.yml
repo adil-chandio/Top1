@@ -11,14 +11,18 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ancient-bear-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   render-chunk:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
     strategy:
       fail-fast: true
       matrix:
-        chunk: [0, 1, 2, 3]
+        chunk: [0, 1, 2, 3, 4, 5]
 
     steps:
       - name: Checkout branch
@@ -72,10 +76,10 @@ jobs:
           download_glb "birch_tree_snow_3.glb"      "$BASE/quaternius-ultimate-nature/models/birch_tree_snow_3/birch_tree_snow_3.glb"
           download_glb "dead_tree_trunk.glb"        "$BASE/polyhaven-nature-plants/models/dead_tree_trunk/dead_tree_trunk.glb"
 
-      - name: Render Chunk ${{ matrix.chunk }}/4 (1920x1080 Cinema 3D)
+      - name: Render Chunk ${{ matrix.chunk }}/6 (1920x1080 Cinema 3D)
         env:
           CHUNK_INDEX: ${{ matrix.chunk }}
-          CHUNK_COUNT: '4'
+          CHUNK_COUNT: '6'
         run: |
           set -o pipefail
           cd panama_plus_3d_kit/ep_ancient_bear
@@ -168,7 +172,7 @@ jobs:
         run: |
           set -e
           cd panama_plus_3d_kit/ep_ancient_bear
-          for c in 0 1 2 3; do
+          for c in 0 1 2 3 4 5; do
             tar -xf "_chunks/frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
           done
           rm -rf _chunks

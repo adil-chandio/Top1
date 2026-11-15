@@ -62,7 +62,7 @@ if (!ENCODE_ONLY) {
     `Serving ${HERE} at ${SCENE_URL} | Chunk ${CHUNK_INDEX + 1}/${CHUNK_COUNT}: frames ${START_FRAME}..${END_FRAME - 1} (${CHUNK_TOTAL} frames, ${W}x${H} @ ${FPS}fps)`
   );
 
-  const WORKERS = Math.min(3, Math.max(1, os.cpus().length));
+  const WORKERS = Math.min(2, Math.max(1, os.cpus().length));
   let nextFrame = START_FRAME;
   let doneFrames = 0;
   const tStart = Date.now();

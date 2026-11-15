@@ -622,9 +622,7 @@ scene.add(moonDir);
 
 const fireLight = new THREE.PointLight(0xff7722, 6.5, 13.0, 1.6);
 fireLight.position.set(-1.75, 0.85, -1.05);
-fireLight.castShadow = true;
-fireLight.shadow.mapSize.set(512, 512);
-fireLight.shadow.bias = -0.001;
+fireLight.castShadow = false;
 scene.add(fireLight);
 
 const rimLight = new THREE.SpotLight(0x7cb4f5, 5.5, 18.0, Math.PI * 0.28, 0.65);
@@ -649,7 +647,7 @@ function loadGLB(path) {
   });
 }
 
-function normalizeAndGround(root, targetMaxDim, yFloor = 0) {
+function normalizeAndGround(root, targetMaxDim, yFloor = 0, castsShadow = true) {
   const box = new THREE.Box3().setFromObject(root);
   const sz = new THREE.Vector3(); box.getSize(sz);
   const maxD = Math.max(sz.x, sz.y, sz.z, 0.001);
@@ -663,7 +661,7 @@ function normalizeAndGround(root, targetMaxDim, yFloor = 0) {
   root.position.y += yFloor - b2.min.y;
   root.traverse((o) => {
     if (o.isMesh) {
-      o.castShadow = true;
+      o.castShadow = castsShadow;
       o.receiveShadow = true;
       if (o.material) {
         o.material.envMapIntensity = 0.7;
@@ -813,11 +811,11 @@ async function initAssets() {
   }
   if (gCliff1 && gCliff2) {
     // Massive rugged cave mouth framing pillars at Z = +5.6 (5.5m x 3.1m clear doorway!)
-    const cL = normalizeAndGround(gCliff1.scene, 7.2, -0.4);
+    const cL = normalizeAndGround(gCliff1.scene, 7.2, -0.4, false);
     cL.position.set(-5.3, -0.4, 5.8); cL.rotation.y = 0.55;
-    const cR = normalizeAndGround(gCliff2.scene, 7.6, -0.4);
+    const cR = normalizeAndGround(gCliff2.scene, 7.6, -0.4, false);
     cR.position.set(5.4, -0.4, 5.6); cR.rotation.y = -0.75;
-    const cTop = normalizeAndGround(gCliff1.scene.clone(), 8.8, 3.15);
+    const cTop = normalizeAndGround(gCliff1.scene.clone(), 8.8, 3.15, true);
     cTop.position.set(0.0, 3.15, 5.4); cTop.rotation.set(0.28, 0.2, 1.48);
     scene.add(cL, cR, cTop);
   }
@@ -828,7 +826,7 @@ async function initAssets() {
       [4.7, -0.8, -0.7, 5.0], [4.9, -9.2, -1.4, 5.6], [4.2, 2.5, -0.4, 4.4],
     ];
     placements.forEach(([x, z, ry, sc], i) => {
-      const rk = normalizeAndGround((i % 2 ? gRock2 : gRock1).scene.clone(), sc, -0.2);
+      const rk = normalizeAndGround((i % 2 ? gRock2 : gRock1).scene.clone(), sc, -0.2, false);
       rk.position.set(x, -0.2, z); rk.rotation.y = ry;
       scene.add(rk);
     });
@@ -837,30 +835,30 @@ async function initAssets() {
     // Hearth ring stones around campfire + foreground cave rubble
     for (let i = 0; i < 8; i++) {
       const ang = (i / 8) * Math.PI * 2;
-      const st = normalizeAndGround((i % 2 ? gStone1 : gRock7).scene.clone(), 0.42, 0);
+      const st = normalizeAndGround((i % 2 ? gStone1 : gRock7).scene.clone(), 0.42, 0, false);
       st.position.set(Math.cos(ang) * 0.58, 0, Math.sin(ang) * 0.58);
       st.rotation.y = ang;
       hearthGroup.add(st);
     }
   }
   if (gMountain) {
-    const mt1 = normalizeAndGround(gMountain.scene, 48, -1.5);
+    const mt1 = normalizeAndGround(gMountain.scene, 48, -1.5, false);
     mt1.position.set(-14, -1.5, 42);
-    const mt2 = normalizeAndGround(gMountain.scene.clone(), 54, -1.5);
+    const mt2 = normalizeAndGround(gMountain.scene.clone(), 54, -1.5, false);
     mt2.position.set(16, -1.5, 48); mt2.rotation.y = 1.9;
     scene.add(mt1, mt2);
   }
 
   // 5. FIREWOOD, GRASS & SNOWY ICE AGE FOREST
   if (gFirewood) {
-    const fw = normalizeAndGround(gFirewood.scene, 0.95, 0);
+    const fw = normalizeAndGround(gFirewood.scene, 0.95, 0, false);
     fw.rotation.y = 0.4;
     hearthGroup.add(fw);
   }
   if (gGrass) {
-    for (let i = 0; i < 18; i++) {
-      const gr = normalizeAndGround(gGrass.scene.clone(), 0.85 + (i % 3) * 0.25, 0);
-      gr.position.set(-4.5 + (i % 6) * 1.8, 0, 10.5 + Math.floor(i / 6) * 2.2);
+    for (let i = 0; i < 6; i++) {
+      const gr = normalizeAndGround(gGrass.scene.clone(), 0.9 + (i % 3) * 0.25, 0, false);
+      gr.position.set(-3.2 + (i % 3) * 3.1, 0, 11.0 + Math.floor(i / 3) * 2.8);
       gr.rotation.y = i * 1.1;
       actors.meadowGroup.add(gr);
     }
@@ -871,11 +869,11 @@ async function initAssets() {
       [-5.4, 24.5, 5.8, 0], [5.8, 25.0, 6.4, 1], [-12.0, 29.0, 7.0, 1], [11.5, 31.0, 6.8, 0],
     ];
     treeSpots.forEach(([x, z, sc, kind], i) => {
-      const tr = normalizeAndGround((kind ? gSnowBirch3 : gSnowBirch1).scene.clone(), sc, 0);
+      const tr = normalizeAndGround((kind ? gSnowBirch3 : gSnowBirch1).scene.clone(), sc, 0, i < 4);
       tr.position.set(x, 0, z); tr.rotation.y = i * 1.3;
       scene.add(tr);
     });
-    const dead = normalizeAndGround(gDeadTrunk.scene, 2.8, 0);
+    const dead = normalizeAndGround(gDeadTrunk.scene, 2.8, 0, false);
     dead.position.set(-3.8, 0, 9.8); dead.rotation.z = 0.14;
     scene.add(dead);
   }
@@ -897,8 +895,8 @@ async function initAssets() {
   }
   if (gBoneA && gBoneB && gBoneC) {
     const bones = [gBoneA.scene, gBoneB.scene, gBoneC.scene];
-    for (let i = 0; i < 24; i++) {
-      const bn = normalizeAndGround(bones[i % 3].clone(), 0.38 + (i % 3) * 0.14, 0.02);
+    for (let i = 0; i < 14; i++) {
+      const bn = normalizeAndGround(bones[i % 3].clone(), 0.38 + (i % 3) * 0.14, 0.02, false);
       const bx = -2.8 + ((i * 1.73) % 5.6);
       const bz = -6.8 + ((i * 2.19) % 7.5);
       bn.position.set(bx, 0.02, bz);
