@@ -814,7 +814,7 @@
       new THREE.MeshBasicMaterial({ map: tenMinTex, transparent: true, opacity: 0.0 })
     );
     tenMinPlane.rotation.x = -Math.PI / 2;
-    tenMinPlane.position.set(-0.03, 0.946, 0.60);
+    tenMinPlane.position.set(-0.03, 0.952, 0.60);
     deskGroup.add(tenMinPlane);
 
     const pen = new THREE.Mesh(
@@ -987,9 +987,9 @@
         if (hero.headBone) hero.headBone.rotation.y = lerp(0, -0.42, headTurn);
 
         const shrink = smoothstep(0.32, 0.95, uLocal);
-        khwaabOrb.scale.setScalar(lerp(1.20, 0.24, shrink));
+        khwaabOrb.scale.setScalar(lerp(1.05, 0.24, shrink));
         khwaabOrb.rotation.y = t * 1.6;
-        khwaabOrb.position.set(lerp(0.45, 0.85, shrink), lerp(1.52, 1.28, shrink), lerp(0.45, -0.35, shrink));
+        khwaabOrb.position.set(lerp(0.32, 0.66, shrink), lerp(1.50, 1.28, shrink), lerp(0.28, -0.32, shrink));
         crystalCage.material.opacity = shrink * 0.85;
         crystalCage.scale.setScalar(lerp(2.4, 1.15, shrink));
 
@@ -997,8 +997,8 @@
         keyLight.position.set(1.4, 2.8, 2.2);
         crimsonRimLight.intensity = 6.5;
         crimsonRimLight.position.set(0, 1.6, -1.2);
-        camera.position.set(lerp(-0.92, 0.62, uLocal), 1.52, lerp(2.15, 1.62, uLocal));
-        camera.lookAt(0.05, 1.46, 0.15);
+        camera.position.set(lerp(-0.68, 0.48, uLocal), 1.52, lerp(2.28, 1.76, uLocal));
+        camera.lookAt(lerp(0.02, -0.10, uLocal), 1.46, 0.18);
       } else if (bIdx === 2) {
         // BEAT 2: 3 EXCUSE MONOLITHS SLAM ON EXACT SPOKEN PHRASE FRAMES!
         monolithGroup.visible = true;
