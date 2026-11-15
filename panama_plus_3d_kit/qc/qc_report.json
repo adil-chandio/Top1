@@ -1,15 +1,15 @@
 {
   "file": "deliverables/MONARCH_Why_Orcas_Fear_Humpbacks_PanamaPlus_1080x1920.mp4",
-  "size_bytes": 23444405,
-  "size_mb": 22.36,
+  "size_bytes": 52898021,
+  "size_mb": 50.45,
   "width": 1080,
   "height": 1920,
   "r_frame_rate": "30/1",
-  "duration_sec": 48.8,
+  "duration_sec": 58.07,
   "audio_codec": "aac",
   "audio_sample_rate": "48000",
-  "audio_lufs": -14.8,
-  "audio_true_peak_db": -1.5,
-  "total_frames": 1464,
+  "audio_lufs": -14.3,
+  "audio_true_peak_db": -1,
+  "total_frames": 1742,
   "qc_pass": true
 }
