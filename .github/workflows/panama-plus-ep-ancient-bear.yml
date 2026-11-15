@@ -44,7 +44,8 @@ jobs:
         run: |
           set -e
           KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
-          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes"
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes" "$KIT_DIR/qc"
+          exec > >(tee "$KIT_DIR/qc/download.log") 2>&1
 
           # 1. Real Bear + Real Bear Roar Audio
           echo "Downloading bear.glb + bear.mp3..."
@@ -137,7 +138,16 @@ jobs:
       - name: Render 1920x1080 @ 24fps Cinema 3D Film + Contact Sheet + QC
         run: |
           cd panama_plus_3d_kit/ep_ancient_bear
-          node render_webgl.mjs
+          node render_webgl.mjs 2>&1 | tee qc/render.log
+
+      - name: Commit Failure Diagnostics if Any Step Failed
+        if: failure()
+        run: |
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f panama_plus_3d_kit/ep_ancient_bear/qc/*.log 2>/dev/null || true
+          git commit -m "debug(ep_ancient_bear): capture failure logs [skip ci]" || true
+          git push origin HEAD:arena/2a8ad29e-top1 || true
 
       - name: Commit Deliverable, Contact Sheet & QC Report back to branch
         run: |
