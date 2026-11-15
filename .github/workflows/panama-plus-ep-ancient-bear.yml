@@ -1,0 +1,150 @@
+name: Panama-Plus EP01 Ancient Bear Cinema 3D Render
+
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - 'panama_plus_3d_kit/ep_ancient_bear/**'
+      - '.github/workflows/panama-plus-ep-ancient-bear.yml'
+  workflow_dispatch:
+
+jobs:
+  render-ancient-bear:
+    runs-on: ubuntu-latest
+    timeout-minutes: 75
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python 3.11 & Node 20
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg, Python Audio Stack, Earshot SFX, Three.js & Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64 || sudo apt-get install -y -qq ffmpeg libasound2
+          python3 -m pip install --quiet numpy scipy soundfile
+          cd panama_plus_3d_kit/ep_ancient_bear
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save three@0.170.0 playwright >/dev/null
+          npx playwright install chromium
+
+      - name: Download Verified CC0 Photoreal .glb Models, Bear Roar & Repo Earshot SFX
+        run: |
+          set -e
+          KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes"
+
+          # 1. Real Bear + Real Bear Roar Audio
+          curl -fsSL "https://github.com/Edu-Art-3D/Eduart-bear-3D/raw/main/bear.glb" -o "$KIT_DIR/assets/bear.glb"
+          curl -fsSL "https://github.com/Edu-Art-3D/Eduart-bear-3D/raw/main/bear.mp3" -o "$KIT_DIR/assets/bear.mp3"
+
+          # 2. Papyszoo CC0 High-Detail Animals, Polyhaven Rocks, Hunter, Weapons & Ice Age Forest
+          BASE="https://github.com/Papyszoo/CC0-Public-Domain-Models/raw/main/packs"
+          declare -A MODELS=(
+            ["wolf.glb"]="$BASE/quaternius-ultimateanimatedanimals/models/wolf/wolf.glb"
+            ["barbarian.glb"]="$BASE/kaykit-character-pack-adventures/models/barbarian/barbarian.glb"
+            ["spear.glb"]="$BASE/quaternius-medieval-weapons/models/spear/spear.glb"
+            ["torch_lit.glb"]="$BASE/kaykit-dungeon-remastered/models/torch_lit/torch_lit.glb"
+            ["boulder_01.glb"]="$BASE/polyhaven-nature-rocks/models/boulder_01/boulder_01.glb"
+            ["rock_face_01.glb"]="$BASE/polyhaven-nature-rocks/models/rock_face_01/rock_face_01.glb"
+            ["rock_face_02.glb"]="$BASE/polyhaven-nature-rocks/models/rock_face_02/rock_face_02.glb"
+            ["namaqualand_cliff_01.glb"]="$BASE/polyhaven-nature-rocks/models/namaqualand_cliff_01/namaqualand_cliff_01.glb"
+            ["namaqualand_cliff_02.glb"]="$BASE/polyhaven-nature-rocks/models/namaqualand_cliff_02/namaqualand_cliff_02.glb"
+            ["mountainside.glb"]="$BASE/polyhaven-nature-rocks/models/mountainside/mountainside.glb"
+            ["stone_01.glb"]="$BASE/polyhaven-nature-rocks/models/stone_01/stone_01.glb"
+            ["rock_07.glb"]="$BASE/polyhaven-nature-rocks/models/rock_07/rock_07.glb"
+            ["flint_tool.glb"]="$BASE/the-base-mesh/models/flint_tool/flint_tool.glb"
+            ["tooth_molar.glb"]="$BASE/the-base-mesh/models/tooth_molar/tooth_molar.glb"
+            ["bone_a.glb"]="$BASE/kaykit-halloween-bits/models/bone_a/bone_a.glb"
+            ["bone_b.glb"]="$BASE/kaykit-halloween-bits/models/bone_b/bone_b.glb"
+            ["bone_c.glb"]="$BASE/kaykit-halloween-bits/models/bone_c/bone_c.glb"
+            ["dry_branches_medium_01.glb"]="$BASE/polyhaven-nature-plants/models/dry_branches_medium_01/dry_branches_medium_01.glb"
+            ["grass_medium_01.glb"]="$BASE/polyhaven-nature-plants/models/grass_medium_01/grass_medium_01.glb"
+            ["birch_tree_snow_1.glb"]="$BASE/quaternius-ultimate-nature/models/birch_tree_snow_1/birch_tree_snow_1.glb"
+            ["birch_tree_snow_3.glb"]="$BASE/quaternius-ultimate-nature/models/birch_tree_snow_3/birch_tree_snow_3.glb"
+            ["dead_tree_trunk.glb"]="$BASE/polyhaven-nature-plants/models/dead_tree_trunk/dead_tree_trunk.glb"
+          )
+          for k in "${!MODELS[@]}"; do
+            curl -fsSL "${MODELS[$k]}" -o "$KIT_DIR/assets/$k"
+          done
+
+          # Verify glTF magic bytes on every downloaded .glb
+          python3 - "$KIT_DIR/assets" <<'PY'
+          import glob, os, sys
+          for p in sorted(glob.glob(os.path.join(sys.argv[1], "*.glb"))):
+              with open(p, "rb") as f:
+                  hdr = f.read(4)
+              sz = os.path.getsize(p)
+              assert hdr == b"glTF", f"BAD GLB: {p} ({hdr})"
+              print(f"OK {os.path.basename(p):30s} {sz:>10,d} B")
+          PY
+
+          # 3. CC0 Wind & Stone Foley
+          curl -fsSL "https://github.com/evanlin23/blocky-stories/raw/main/assets/audio/amb/wind.wav" -o "$KIT_DIR/assets/wind.wav"
+          for i in 1 2 3 4; do
+            curl -fsSL "https://github.com/evanlin23/blocky-stories/raw/main/assets/audio/steps/stone/stone_0${i}.wav" -o "$KIT_DIR/assets/stone_0${i}.wav"
+          done
+
+          # 4. Earshot 252-sound SFX bank + Monarch.Overall.Work audio/kit.json
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot
+          curl -fsSL "https://github.com/adil-chandio/Monarch.Overall.Work/raw/arena/2b012328-monarch-overall-work/audio/kit.json" -o "$KIT_DIR/sfx/kit.json"
+          PYTHONPATH=/tmp/earshot python3 - "$KIT_DIR/sfx" <<'PY'
+          import json, os, sys
+          import numpy as np
+          import soundfile as sf
+          from earshot.forge import bank
+
+          sfx_dir = sys.argv[1]
+          kit = json.load(open(os.path.join(sfx_dir, "kit.json")))["kit"]["roles"]
+          print("Earshot bank loaded:", len(bank.ids()), "sounds")
+          meta = {}
+          for role, cfg in kit.items():
+              sid = cfg.get("sound")
+              if not sid:
+                  continue
+              name = sid.replace("/", "_")
+              out_wav = os.path.join(sfx_dir, "takes", name + ".wav")
+              if os.path.exists(out_wav):
+                  continue
+              try:
+                  x, info = bank.render(sid, seed=11)
+                  sf.write(out_wav, np.asarray(x), 48000)
+                  meta[name] = {k: float(info[k]) for k in ("onset_s", "peak_s", "end_s", "dur_s")}
+                  print(f"SFX OK: {role:14s} -> {name} ({info['dur_s']:.2f}s)")
+              except Exception as e:
+                  print("SFX SKIP:", role, sid, e)
+          json.dump(meta, open(os.path.join(sfx_dir, "takes", "meta.json"), "w"), indent=2)
+          PY
+
+      - name: Build Arena Agent VO + Bear Roar + Earshot SFX + Score Master (-14 LUFS)
+        run: |
+          cd panama_plus_3d_kit/ep_ancient_bear
+          python3 build_audio.py
+
+      - name: Render 1920x1080 @ 24fps Cinema 3D Film + Contact Sheet + QC
+        run: |
+          cd panama_plus_3d_kit/ep_ancient_bear
+          node render_webgl.mjs
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -f deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4 \
+                     panama_plus_3d_kit/ep_ancient_bear/qc/contact_sheet.png \
+                     panama_plus_3d_kit/ep_ancient_bear/qc/qc_report.json
+          git commit -m "render(ep_ancient_bear): 1920x1080 cinema 3D master + QC [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase origin arena/2a8ad29e-top1 && git push origin arena/2a8ad29e-top1 && break
+            sleep 5
+          done
