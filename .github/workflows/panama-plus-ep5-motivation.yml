@@ -1,4 +1,4 @@
-name: Panama-Plus EP5 Motivation Cinema 3D Render
+name: Panama-Plus EP5 Motivation Cinema 3D V3 Render
 
 on:
   push:
@@ -16,7 +16,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  prepare-audio:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install FFmpeg, Audio Stack & Earshot SFX
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg git
+          python3 -m pip install --upgrade pip -q
+          python3 -m pip install -q numpy scipy
+          mkdir -p panama_plus_3d_kit/ep5_motivation_3d/assets panama_plus_3d_kit/ep5_motivation_3d/qc
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot || true
+          if [ -d /tmp/earshot/takes ]; then
+            cp -r /tmp/earshot/takes panama_plus_3d_kit/ep5_motivation_3d/assets/earshot_takes
+          fi
+
+      - name: Master Beat-Locked Narration + Felt Piano + Rain + Foley (-14 LUFS)
+        run: python3 panama_plus_3d_kit/ep5_motivation_3d/build_audio.py
+
+      - name: Upload Synced Timeline & Master Audio
+        uses: actions/upload-artifact@v4
+        with:
+          name: ep5-audio-timeline
+          path: |
+            panama_plus_3d_kit/ep5_motivation_3d/timeline_synced.json
+            panama_plus_3d_kit/ep5_motivation_3d/master_audio.m4a
+          retention-days: 1
+
   render-chunk:
+    needs: prepare-audio
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -32,6 +68,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
+
+      - name: Download Synced Timeline
+        uses: actions/download-artifact@v4
+        with:
+          name: ep5-audio-timeline
+          path: panama_plus_3d_kit/ep5_motivation_3d
 
       - name: Install Three.js & Playwright Chromium
         run: |
@@ -51,11 +93,9 @@ jobs:
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/lamp_table/lamp_table.glb" -o "$DEST/lamp_table.glb"
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/armchair_pillows/armchair_pillows.glb" -o "$DEST/armchair_pillows.glb"
           curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/book_set/book_set.glb" -o "$DEST/book_set.glb"
-          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/rug_rectangle_a/rug_rectangle_a.glb" -o "$DEST/rug_rectangle_a.glb"
-          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/shelf_b_large_decorated/shelf_b_large_decorated.glb" -o "$DEST/shelf_b_large_decorated.glb"
           curl -L --fail --retry 3 "$BASE/kaykit-city-builder-bits/models/streetlight/streetlight.glb" -o "$DEST/streetlight.glb"
 
-      - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D)
+      - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D V3)
         env:
           CHUNK_INDEX: ${{ matrix.chunk }}
           CHUNK_COUNT: '6'
@@ -69,7 +109,10 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: ep5-frames-chunk-${{ matrix.chunk }}
-          path: panama_plus_3d_kit/ep5_motivation_3d/frames_chunk_${{ matrix.chunk }}.tar
+          path: |
+            panama_plus_3d_kit/ep5_motivation_3d/frames_chunk_${{ matrix.chunk }}.tar
+            panama_plus_3d_kit/ep5_motivation_3d/qc/preflight_audit.json
+          if-no-files-found: ignore
           retention-days: 1
 
   assemble-and-commit:
@@ -82,28 +125,14 @@ jobs:
         with:
           fetch-depth: 1
 
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install FFmpeg, Audio Stack & Earshot SFX
-        run: |
-          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
-          python3 -m pip install --upgrade pip -q
-          python3 -m pip install -q numpy scipy
-          mkdir -p panama_plus_3d_kit/ep5_motivation_3d/assets panama_plus_3d_kit/ep5_motivation_3d/_frames panama_plus_3d_kit/ep5_motivation_3d/qc
-          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot || true
-          if [ -d /tmp/earshot/takes ]; then
-            cp -r /tmp/earshot/takes panama_plus_3d_kit/ep5_motivation_3d/assets/earshot_takes
-          fi
+      - name: Install FFmpeg
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
 
-      - name: Master Narration + Felt Piano + Rain + Earshot SFX (-14 LUFS)
-        run: python3 panama_plus_3d_kit/ep5_motivation_3d/build_audio.py
-
-      - name: Download All 6 Frame Chunks
+      - name: Download Synced Timeline, Audio & All 6 Frame Chunks
         uses: actions/download-artifact@v4
         with:
           path: panama_plus_3d_kit/ep5_motivation_3d/_chunks
@@ -112,6 +141,10 @@ jobs:
         run: |
           set -e
           cd panama_plus_3d_kit/ep5_motivation_3d
+          mkdir -p _frames qc
+          cp _chunks/ep5-audio-timeline/timeline_synced.json .
+          cp _chunks/ep5-audio-timeline/master_audio.m4a .
+          cp _chunks/ep5-frames-chunk-0/preflight_audit.json qc/ || true
           for c in 0 1 2 3 4 5; do
             tar -xf "_chunks/ep5-frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
           done
@@ -126,8 +159,9 @@ jobs:
           git config user.email "workadilchandio@gmail.com"
           git add -f deliverables/MONARCH_Motivation_MainAbhiBhiApniTarafHoon_PanamaPlus_1080x1920.mp4 \
                      panama_plus_3d_kit/ep5_motivation_3d/qc/contact_sheet.png \
-                     panama_plus_3d_kit/ep5_motivation_3d/qc/qc_report.json
-          git commit -m "render(ep5-motivation-cinema): 1080x1920 cinema 3D master + QC [skip ci]"
+                     panama_plus_3d_kit/ep5_motivation_3d/qc/qc_report.json \
+                     panama_plus_3d_kit/ep5_motivation_3d/qc/preflight_audit.json
+          git commit -m "render(ep5-motivation-v3): 1080x1920 Tabahi V3 cinema 3D master + QC [skip ci]"
           PUSHED=0
           for i in 1 2 3 4; do
             git pull --rebase --autostash origin arena/2a8ad29e-top1

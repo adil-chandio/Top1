@@ -7,7 +7,10 @@ import { execFileSync, spawnSync } from 'node:child_process';
 
 const HERE = path.dirname(new URL(import.meta.url).pathname);
 const ROOT = path.resolve(HERE, '..', '..');
-const TIMELINE = JSON.parse(fs.readFileSync(path.join(HERE, 'timeline.json'), 'utf8'));
+const TL_PATH = fs.existsSync(path.join(HERE, 'timeline_synced.json'))
+  ? path.join(HERE, 'timeline_synced.json')
+  : path.join(HERE, 'timeline.json');
+const TIMELINE = JSON.parse(fs.readFileSync(TL_PATH, 'utf8'));
 const W = TIMELINE.width || 1080;
 const H = TIMELINE.height || 1920;
 const FPS = TIMELINE.fps || 30;
@@ -63,6 +66,25 @@ if (!ENCODE_ONLY) {
     `Serving ${HERE} at ${SCENE_URL} | Chunk ${CHUNK_INDEX + 1}/${CHUNK_COUNT}: frames ${START_FRAME}..${END_FRAME - 1} (${CHUNK_TOTAL} frames, ${W}x${H} @ ${FPS}fps)`
   );
 
+  // Run automated Pre-Flight Audit on Chunk 0 BEFORE rendering frames!
+  if (CHUNK_INDEX === 0) {
+    const auditBrowser = await chromium.launch({
+      headless: true,
+      args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=angle', '--use-angle=swiftshader', '--enable-webgl', '--ignore-gpu-blocklist'],
+    });
+    const auditPage = await auditBrowser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
+    await auditPage.goto(SCENE_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
+    await auditPage.waitForFunction(() => window.__MONARCH_READY__ === true, { timeout: 180000 });
+    const audit = await auditPage.evaluate(() => window.__MONARCH_AUDIT__());
+    await auditBrowser.close();
+    fs.writeFileSync(path.join(QC_DIR, 'preflight_audit.json'), JSON.stringify(audit, null, 2));
+    console.log('PREFLIGHT AUDIT:', JSON.stringify(audit));
+    if (!audit.ok) {
+      server.close();
+      throw new Error('PREFLIGHT AUDIT FAILED: ' + audit.issues.join(' | '));
+    }
+  }
+
   const WORKERS = Math.min(2, Math.max(1, os.cpus().length));
   let nextFrame = START_FRAME;
   let doneFrames = 0;
@@ -86,7 +108,6 @@ if (!ENCODE_ONLY) {
     page.on('console', (m) => { if (m.type() === 'error') console.error(`[W${wid} console]`, m.text()); });
     await page.goto(SCENE_URL, { waitUntil: 'domcontentloaded', timeout: 120000 });
     await page.waitForFunction(() => window.__MONARCH_READY__ === true, { timeout: 180000 });
-    console.log(`Worker ${wid} WebGL + all GLB assets ready!`);
 
     while (true) {
       const f = nextFrame++;
@@ -124,14 +145,14 @@ if (!RENDER_ONLY) {
     '-framerate', String(FPS),
     '-i', path.join(FRAMES_DIR, 'f_%05d.jpg'),
     '-i', AUDIO_M4A,
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '19', '-maxrate', '7000k', '-bufsize', '14000k', '-pix_fmt', 'yuv420p',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-maxrate', '8000k', '-bufsize', '16000k', '-pix_fmt', 'yuv420p',
     '-c:a', 'copy', '-movflags', '+faststart', '-shortest',
     OUT_MP4,
   ], { stdio: 'inherit' });
 
   const sheetFrames = [];
   for (let i = 0; i < 16; i++) {
-    const idx = Math.min(TOTAL_FRAMES - 1, Math.round((0.02 + (i / 15) * 0.96) * TOTAL_FRAMES));
+    const idx = Math.min(TOTAL_FRAMES - 1, Math.round((0.01 + (i / 15) * 0.98) * (TOTAL_FRAMES - 1)));
     sheetFrames.push(path.join(FRAMES_DIR, `f_${String(idx).padStart(5, '0')}.jpg`));
   }
   const tileList = path.join(QC_DIR, '_tiles.txt');

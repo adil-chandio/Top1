@@ -1,18 +1,78 @@
 {
-  "title": "Main Abhi Bhi Apni Taraf Hoon — Cinema 3D",
+  "title": "Main Abhi Bhi Apni Taraf Hoon — Cinema 3D V3 (Tabahi Edition)",
   "width": 1080,
   "height": 1920,
   "fps": 30,
-  "duration_sec": 40.0,
-  "total_frames": 1200,
   "beats": [
-    {"start": 0.00, "end": 8.90, "tag": "KHWAAB", "caption": "Sabse khaufnaak cheez haarna nahi. Khaufnaak woh din hai jab tum apne hi khwaab ko chhota sa khwaab keh kar us se nazar chura lete ho."},
-    {"start": 8.90, "end": 13.20, "tag": "BAHAANAY", "caption": "Pehle kehte ho, kal se. Phir kehte ho, mere bas ka nahi. Phir us khwaab ka zikr hi band."},
-    {"start": 13.20, "end": 17.90, "tag": "SUKOON YA RUKAWAT", "caption": "Aur duniya samajhti hai, tum theek ho. Haan, thakay ho to aaram karo."},
-    {"start": 17.90, "end": 23.53, "tag": "PEHLA QADAM", "caption": "Magar apne khwaab ko dafan karke uska naam sukoon mat rakhna."},
-    {"start": 23.53, "end": 27.76, "tag": "EK WAADA", "caption": "Aaj poori zindagi nahi badalni. Bas ek waada nibhana hai."},
-    {"start": 27.76, "end": 31.10, "tag": "10 MINUTE", "caption": "Phone side par rakho, woh kaam kholo, das minute usay do."},
-    {"start": 31.10, "end": 37.50, "tag": "APNI TARAF", "caption": "Kisi ko prove karne ke liye nahi. Khud ko yaad dilane ke liye: main abhi bhi apni taraf hoon."},
-    {"start": 37.50, "end": 40.00, "tag": "AAJ KA WAADA", "caption": "Aaj ka waada kya hai?"}
+    {
+      "id": "hook_shatter",
+      "vo_file": "vo/beat_01.wav",
+      "tag": "HAAR NAHI",
+      "caption": "Tumhari haar tab nahi hoti jab tum girte ho.",
+      "pause_after": 0.06
+    },
+    {
+      "id": "khwaab_fade",
+      "vo_file": "vo/beat_02.wav",
+      "tag": "KHWAAB",
+      "caption": "Balki us din hoti hai jab tum apne hi khwaab ko chhota keh kar nazar chura lete ho.",
+      "pause_after": 0.08
+    },
+    {
+      "id": "excuse_monoliths",
+      "vo_file": "vo/beat_03.wav",
+      "tag": "BAHAANAY",
+      "caption": "Pehle kehte ho: Kal se. Phir: Mere bas ka nahi. Aur phir uska zikr hi band.",
+      "pause_after": 0.10
+    },
+    {
+      "id": "sukoon_trap",
+      "vo_file": "vo/beat_04.wav",
+      "tag": "SUKOON YA RUKAWAT",
+      "caption": "Bahar se sab ko lagta hai tum theek ho. Thakay ho, thoda aaram kar lo.",
+      "pause_after": 0.08
+    },
+    {
+      "id": "xray_ignition",
+      "vo_file": "vo/beat_05.wav",
+      "tag": "DAFAN MAT KARNA",
+      "caption": "Magar apne khwaab ko dafan karke uska naam sukoon mat rakhna!",
+      "pause_after": 0.10
+    },
+    {
+      "id": "micro_promise",
+      "vo_file": "vo/beat_06.wav",
+      "tag": "EK WAADA",
+      "caption": "Aaj poori zindagi nahi badalni, bas ek chhota sa waada nibhana hai.",
+      "pause_after": 0.06
+    },
+    {
+      "id": "desk_ten_min",
+      "vo_file": "vo/beat_07.wav",
+      "tag": "10 MINUTE",
+      "caption": "Phone ulta rakho, woh kaam kholo, aur sirf das minute usay do.",
+      "pause_after": 0.08
+    },
+    {
+      "id": "stairs_ascent",
+      "vo_file": "vo/beat_08.wav",
+      "tag": "KHUD KO YAAD",
+      "caption": "Kisi duniya ko prove karne ke liye nahi, balki khud ko yaad dilane ke liye:",
+      "pause_after": 0.08
+    },
+    {
+      "id": "monarch_portrait",
+      "vo_file": "vo/beat_09.wav",
+      "tag": "APNI TARAF",
+      "caption": "Main abhi bhi apni taraf hoon.",
+      "pause_after": 0.12
+    },
+    {
+      "id": "loop_question",
+      "vo_file": "vo/beat_10.wav",
+      "tag": "AAJ KA WAADA",
+      "caption": "Aaj ka woh das minute wala waada kya hai?",
+      "pause_after": 0.35
+    }
   ]
 }
