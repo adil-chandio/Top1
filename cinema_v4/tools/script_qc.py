@@ -26,6 +26,16 @@ ABSTRACT = ["kamyabi", "manzil", "safar", "koshish", "jazba", "himmat",
 JARGON = ["doc", "document", "line", "my project", "mindset", "journey",
           "concept", "content", "my brand", "my goals", "growth", "hustle", "vibe"]
 # "Main darta hoon" = the writer telling you the feeling. Behaviour, not label.
+# humanizer §1 "Not X but Y" - the single most-flagged AI tell. Its Urdu form is the
+# "Sawaal yeh nahi ke X. Sawaal yeh hai ke Y." hinge, which sounds profound and says nothing.
+NOT_X_BUT_Y = [r"sawaal yeh nahi", r"baat yeh nahi", r"masla yeh nahi",
+               r"\bsirf\b[^.!?]{0,30}\bnahi\b", r"\bnahi\b[^.!?]{0,20}\bbalki\b",
+               r"\bnahi\b[^.!?]{0,20}\bbalke\b", r"\byeh\b[^.!?]{0,18}\bnahi\b[^.!?]{0,12}\byeh\b"]
+# humanizer §3 "sayings that sound deep" - a universal quantifier + present absolute
+# ("har cheez ke liye kal aata hai"). True of everyone, so it lands on no one.
+DEEP_SAYINGS = [r"\bhar\s+(cheez|banda|aadmi|roz|waqt)\b", r"\bsab\s+log\b",
+                r"\bzindagi\b", r"\bsach\s+yeh\b", r"\basli\s+baat\b",
+                r"\bkoi\s+din\b"]
 EMOTION_LABELS = [r"\bmain\b[^.!?]{0,24}\b(darta|dar\s+lagta|udaas|khush|pareshan|akela)\b",
                   r"\bmujhe\b[^.!?]{0,20}\b(dar|khushi|ghussa|afsos)\b",
                   r"\bmain\b[^.!?]{0,20}\b(thak|bor|khali)\b\s*(hua)?\s*(hoon|tha)\b"]
@@ -92,6 +102,8 @@ def main():
     shouts = re.findall(r"\b[A-Z]{4,}\b", text)
     jargon = [j for j in JARGON if re.search(rf"\b{re.escape(j)}\b", raw)]
     emotion = [e for e in EMOTION_LABELS if re.search(e, raw)]
+    notx = [n for n in NOT_X_BUT_Y if re.search(n, raw)]
+    deep = [d for d in DEEP_SAYINGS if re.search(d, raw)]
 
     # --- score -------------------------------------------------------------
     score = 100
@@ -118,6 +130,8 @@ def main():
     gate("Word count 120-175", 120 <= wc <= 175, 6, f"{wc} words")
     gate("No desk-word props", len(jargon) <= 1, 12, ", ".join(jargon))
     gate("Behaviour, not emotion", not emotion, 12, f"{len(emotion)} label(s)")
+    gate("No 'not X but Y' hinge", not notx, 14, f"{len(notx)} hinge(s)")
+    gate("No fortune-cookie line", not deep, 10, f"{len(deep)} saying(s)")
 
     print(f"\nFILE: {p.name}   duration target: {dur}s   words: {wc}   sentences: {len(sents)}")
     print("-" * 74)
