@@ -139,17 +139,9 @@ jobs:
 
       - name: Render 1920x1080 @ 24fps Cinema 3D Film + Contact Sheet + QC
         run: |
+          set -o pipefail
           cd panama_plus_3d_kit/ep_ancient_bear
           node render_webgl.mjs 2>&1 | tee qc/render.log
-
-      - name: Commit Failure Diagnostics if Any Step Failed
-        if: failure()
-        run: |
-          git config user.name "MONARCH Render Bot"
-          git config user.email "workadilchandio@gmail.com"
-          git add -f panama_plus_3d_kit/ep_ancient_bear/qc/*.log 2>/dev/null || true
-          git commit -m "debug(ep_ancient_bear): capture failure logs [skip ci]" || true
-          git push origin HEAD:arena/2a8ad29e-top1 || true
 
       - name: Commit Deliverable, Contact Sheet & QC Report back to branch
         run: |
@@ -163,3 +155,12 @@ jobs:
             git pull --rebase origin arena/2a8ad29e-top1 && git push origin HEAD:arena/2a8ad29e-top1 && break
             sleep 6
           done
+
+      - name: Commit Failure Diagnostics if Any Step Failed
+        if: failure()
+        run: |
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f panama_plus_3d_kit/ep_ancient_bear/qc/*.log 2>/dev/null || true
+          git commit -m "debug(ep_ancient_bear): capture failure logs [skip ci]" || true
+          git push origin HEAD:arena/2a8ad29e-top1 || true
