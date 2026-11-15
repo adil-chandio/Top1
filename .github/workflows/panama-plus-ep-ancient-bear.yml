@@ -7,9 +7,15 @@ on:
       - 'panama_plus_3d_kit/ep_ancient_bear/**'
       - '.github/workflows/panama-plus-ep-ancient-bear.yml'
   workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Optional existing run ID containing frames-chunk-0..5 artifacts to assemble without re-rendering'
+        required: false
+        default: ''
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: ancient-bear-${{ github.ref }}
@@ -17,6 +23,7 @@ concurrency:
 
 jobs:
   render-chunk:
+    if: ${{ github.event_name != 'workflow_dispatch' || inputs.source_run_id == '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     strategy:
@@ -95,6 +102,7 @@ jobs:
 
   assemble-and-commit:
     needs: render-chunk
+    if: ${{ always() && (needs.render-chunk.result == 'success' || needs.render-chunk.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 25
 
@@ -163,10 +171,12 @@ jobs:
           cd panama_plus_3d_kit/ep_ancient_bear
           python3 build_audio.py
 
-      - name: Download All 4 Rendered Frame Chunks
+      - name: Download All 6 Rendered Frame Chunks
         uses: actions/download-artifact@v4
         with:
           path: panama_plus_3d_kit/ep_ancient_bear/_chunks
+          run-id: ${{ inputs.source_run_id || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Assemble 2,412 Frames -> 1080p MP4 + Contact Sheet + QC
         run: |
@@ -177,16 +187,24 @@ jobs:
           done
           rm -rf _chunks
           node render_webgl.mjs --encode-only
+          ls -lh ../../deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4 qc/
 
       - name: Commit Deliverable, Contact Sheet & QC Report back to branch
         run: |
+          set -e
           git config user.name "MONARCH Render Bot"
           git config user.email "workadilchandio@gmail.com"
           git add -f deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4 \
                      panama_plus_3d_kit/ep_ancient_bear/qc/contact_sheet.png \
                      panama_plus_3d_kit/ep_ancient_bear/qc/qc_report.json
           git commit -m "render(ep_ancient_bear): 1920x1080 cinema 3D master + QC [skip ci]"
+          PUSHED=0
           for i in 1 2 3 4; do
-            git pull --rebase origin arena/2a8ad29e-top1 && git push origin HEAD:arena/2a8ad29e-top1 && break
+            git pull --rebase --autostash origin arena/2a8ad29e-top1
+            if git push origin HEAD:arena/2a8ad29e-top1; then
+              PUSHED=1
+              break
+            fi
             sleep 6
           done
+          [ "$PUSHED" = "1" ] || exit 1

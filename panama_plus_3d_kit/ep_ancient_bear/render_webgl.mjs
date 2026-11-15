@@ -123,7 +123,7 @@ if (!RENDER_ONLY) {
     '-framerate', String(FPS),
     '-i', path.join(FRAMES_DIR, 'f_%05d.jpg'),
     '-i', AUDIO_M4A,
-    '-c:v', 'libx264', '-preset', 'medium', '-crf', '18', '-pix_fmt', 'yuv420p',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-maxrate', '7000k', '-bufsize', '14000k', '-pix_fmt', 'yuv420p',
     '-c:a', 'copy', '-movflags', '+faststart', '-shortest',
     OUT_MP4,
   ], { stdio: 'inherit' });
