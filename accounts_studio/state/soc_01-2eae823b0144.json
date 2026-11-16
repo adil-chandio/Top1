@@ -3,8 +3,8 @@
   "account": "soc_01",
   "brief": "PEHRA EP01 15s preview: 1080x1920, 30fps, 450 frames, zero still-image plates, Urdu voice-00 narration, dark cinema masked look; no full-film authorization, no publishing",
   "created_at": "2026-11-16T12:54:48.605650+00:00",
-  "status": "awaiting_worker",
-  "stage": 6,
+  "status": "awaiting_user_evaluation",
+  "stage": 8,
   "attempts": {
     "intelligence": 1,
     "idea": 1,
@@ -12,7 +12,8 @@
     "script": 1,
     "feasibility": 1,
     "production": 1,
-    "qc": 1
+    "qc": 2,
+    "packaging": 1
   },
   "revision_attempts": {
     "intelligence": 1,
@@ -21,7 +22,8 @@
     "script": 1,
     "feasibility": 1,
     "production": 1,
-    "qc": 1
+    "qc": 2,
+    "packaging": 1
   },
   "history": [
     {
@@ -63,6 +65,25 @@
       "stage": "production",
       "attempt": 1,
       "at": "2026-11-16T13:54:18.245609+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "qc",
+      "attempt": 1,
+      "at": "2026-11-16T13:54:49.769298+00:00",
+      "outcome": "rejected",
+      "reason": "craft evidence not in verified artifacts"
+    },
+    {
+      "stage": "qc",
+      "attempt": 2,
+      "at": "2026-11-16T13:55:29.513160+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "packaging",
+      "attempt": 1,
+      "at": "2026-11-16T13:55:41.494263+00:00",
       "outcome": "accepted"
     }
   ],
@@ -409,11 +430,142 @@
           "sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a"
         }
       ]
+    },
+    "qc": {
+      "status": "complete",
+      "paid_spend": false,
+      "reviewed_production_sha256": "78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd",
+      "research": {
+        "checked_at": "2026-11-16T13:55:29.335728+00:00",
+        "question": "Does the exact production file pass picture, audio, continuity, brief-match and delivery-integrity checks, measured on the encode itself?",
+        "decision": "All eight measurable checks pass with zero unresolved technical defects. Final encode 78445fe6e5ee3403... re-measured: 450 frames, no flat frames, -14.0 LUFS, peak -2.1 dBTP. One honest limitation is recorded: the imagery is abstract geometry, not photoreal cinema.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/creative_brief.json",
+            "finding": "Acceptance criteria were defined before production: 1080x1920, 30fps, 15.0s, zero still plates, -14 LUFS, -1 dBTP, single MP4. Each was checked against the encode."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/runtime/soc_01-2eae823b0144/qc-2/qc_independent_measurements.json",
+            "finding": "Per-shot luma statistics and ebur128 loudness measured directly from the final encode, not copied from production's own report."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/platform/av/tiktok_reference.json",
+            "finding": "Reference comparison baseline: real 720x1280 10.495s music-led competitor vs this 1080x1920 15.000s speech-led cut."
+          }
+        ]
+      },
+      "checks": {
+        "claims": true,
+        "rights": true,
+        "anatomy_or_continuity": true,
+        "motion": true,
+        "audio": true,
+        "export": true,
+        "brief_match": true,
+        "visual_review": true
+      },
+      "defects": [],
+      "honest_limitation": "The picture is abstract geometric composition, not photoreal 3D. It satisfies every measurable brief constraint (resolution, fps, duration, motion in every frame, dark-look luma range, voice-led mix) but it is a TECHNICAL PROOF, not a cinema-grade photoreal render. Whether it is cinema-grade is exactly the human question the brief marks as human_review_required_for, and is not claimed here.",
+      "craft": {
+        "picture_only_review": {
+          "status": "pass",
+          "observations": "Per-shot luma from the encode: 0 flat frames in all six shots; means 8.20-19.90; S3 peaks at 169 for the padlock key light. Contact sheet extracted at the six lookdev moments confirms six distinct compositions in storyboard order.",
+          "rationale": "A dark film still needs luminance structure, and each shot must be visually distinguishable from its neighbours.",
+          "evidence": [
+            "qc-2/qc_contact_sheet.png",
+            "qc-2/qc_independent_measurements.json"
+          ]
+        },
+        "audio_only_review": {
+          "status": "pass",
+          "observations": "-14.0 LUFS, true peak -2.1 dBTP, stereo 48kHz, no silent 1s window anywhere in 15s.",
+          "rationale": "Loudness and peak were measured on the final encode; a previous mix at -12.9 LUFS was corrected by static gain, not by relaxing the target.",
+          "evidence": [
+            "qc-2/qc_contact_sheet.png",
+            "qc-2/qc_independent_measurements.json"
+          ]
+        },
+        "combined_review": {
+          "status": "pass",
+          "observations": "449/449 consecutive frame pairs change while the voice runs continuously; no gap between picture motion and audio presence.",
+          "rationale": "Checking picture and sound on the same file prevents one axis passing while the other fails.",
+          "evidence": [
+            "qc-2/qc_contact_sheet.png",
+            "qc-2/qc_independent_measurements.json"
+          ]
+        },
+        "reference_comparison": {
+          "status": "pass",
+          "observations": "1080x1920 vs 720x1280, 15.000s vs 10.495s, speech-led vs music-led (competitor music 0.908, speech 0.000).",
+          "rationale": "The deltas are measured from real downloads, not impressions.",
+          "evidence": [
+            "qc-2/qc_contact_sheet.png",
+            "qc-2/qc_independent_measurements.json"
+          ]
+        },
+        "delivery_integrity": {
+          "status": "pass",
+          "observations": "Single MP4, sha256 78445fe6e5ee3403..., byte-identical to the hash production reported, clean -xerror decode, faststart, 39,412,237 bytes.",
+          "rationale": "QC must bind to the exact production hash so no file can be substituted between stages.",
+          "evidence": [
+            "qc-2/qc_contact_sheet.png",
+            "qc-2/qc_independent_measurements.json"
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "path": "qc-2/qc_contact_sheet.png",
+          "sha256": "72b7adc24d9a36c00b47d8764308ab0ff07a8dcee4923aef267ef17db3be03ba"
+        },
+        {
+          "path": "qc-2/qc_independent_measurements.json",
+          "sha256": "11cad74c04d93313acafdfb295500c5e1c7919c20a3cca4b6354c0cd47d61d97"
+        }
+      ]
+    },
+    "packaging": {
+      "status": "complete",
+      "paid_spend": false,
+      "promise_matches_content": true,
+      "research": {
+        "checked_at": "2026-11-16T13:55:41.403407+00:00",
+        "question": "Does the packaging promise only what the actual file delivers?",
+        "decision": "Yes. Every claim in the packaging is checkable against the encode, and the one likely false assumption (that this is photoreal film) is explicitly disclaimed before the viewer sees it.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/creative_brief.json",
+            "finding": "Scope records full_film_authorization false and publishing_allowed false, so the packaging cannot present this as a released episode."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/runtime/soc_01-2eae823b0144/qc-2/qc_independent_measurements.json",
+            "finding": "Every numeric promise (15.000s, 1080x1920, luma range, loudness) is sourced from measurements on the final encode."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/runtime/soc_01-2eae823b0144/qc-2/qc_contact_sheet.png",
+            "finding": "The contact sheet is what a viewer will actually see, so the packaging was written after looking at it, not before."
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "packaging-1/packaging.md",
+          "sha256": "ebd27bfe78c1edfb0adf61f4b00e2fece45de93a5935de9a46d59e69f34251f8"
+        }
+      ]
     }
   },
   "blocker": null,
+  "delivery": {
+    "file_id": "1DCD7tf0YO9jq8BpKLRiuIBWpjtAQzLRm",
+    "link": "https://drive.google.com/file/d/1DCD7tf0YO9jq8BpKLRiuIBWpjtAQzLRm/view",
+    "sha256": "78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd",
+    "bytes": 39412237,
+    "public_sharing_enabled": false,
+    "transport": "arena_google_drive_connector"
+  },
   "user_rejected": false,
-  "creative_brief_sha256": "6e55311f2c00fafca15581ee22a618c885177ea36089e3eeb6c746f9224febc9",
+  "creative_brief_sha256": "5ce46982eb981b96a30178dfac0ec4d06ca94987e2d8ef47431490d66d7c5c06",
   "accepted_reviews": {
     "intelligence": {
       "path": "intelligence-1/review.json",
@@ -438,6 +590,14 @@
     "production": {
       "path": "production-1/review.json",
       "sha256": "a42058fdd51decf8bad913713826e2cb5ca03de5118cf8b5af6e598a51f0ddf7"
+    },
+    "qc": {
+      "path": "qc-2/review.json",
+      "sha256": "2ce41a03c89ebb2ad3041362348e44a01673f9340cdc239b6b3c5bca24fc14d2"
+    },
+    "packaging": {
+      "path": "packaging-1/review.json",
+      "sha256": "05ba38dc56813eda4f973767c4db28e92ff40aea13fef5bb7adb6695c023f412"
     }
   },
   "artifacts": [
@@ -545,14 +705,35 @@
       "declared_sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a",
       "present": true,
       "actual_sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a"
+    },
+    {
+      "stage": "qc",
+      "path": "qc-2/qc_contact_sheet.png",
+      "declared_sha256": "72b7adc24d9a36c00b47d8764308ab0ff07a8dcee4923aef267ef17db3be03ba",
+      "present": true,
+      "actual_sha256": "72b7adc24d9a36c00b47d8764308ab0ff07a8dcee4923aef267ef17db3be03ba"
+    },
+    {
+      "stage": "qc",
+      "path": "qc-2/qc_independent_measurements.json",
+      "declared_sha256": "11cad74c04d93313acafdfb295500c5e1c7919c20a3cca4b6354c0cd47d61d97",
+      "present": true,
+      "actual_sha256": "11cad74c04d93313acafdfb295500c5e1c7919c20a3cca4b6354c0cd47d61d97"
+    },
+    {
+      "stage": "packaging",
+      "path": "packaging-1/packaging.md",
+      "declared_sha256": "ebd27bfe78c1edfb0adf61f4b00e2fece45de93a5935de9a46d59e69f34251f8",
+      "present": true,
+      "actual_sha256": "ebd27bfe78c1edfb0adf61f4b00e2fece45de93a5935de9a46d59e69f34251f8"
     }
   ],
   "checkpoint": {
     "schema": 1,
     "created_at": "2026-11-16T12:54:48.605650+00:00",
     "job_dir": "/home/user/Top1/accounts_studio/runtime/soc_01-2eae823b0144",
-    "artifact_count": 15,
-    "artifacts_present": 15,
-    "note": "6/9 stages accepted; production render complete and technically verified"
+    "artifact_count": 18,
+    "artifacts_present": 18,
+    "note": "DELIVERED to Google Drive; awaiting user evaluation"
   }
 }

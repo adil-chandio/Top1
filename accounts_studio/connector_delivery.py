@@ -39,7 +39,7 @@ def prepare(job):
         if not brief_path.is_file():
             raise ValueError('creative_brief.json with drive_folder_id required')
         brief = json.loads(brief_path.read_text(encoding='utf-8'))
-        folder = brief.get('drive_folder_id')
+        folder = brief.get('drive_folder_id') or (brief.get('scope') or {}).get('drive_folder_id')
         if not folder:
             raise ValueError('creative_brief.json has no drive_folder_id')
         item = next(a for a in state['outputs']['production']['artifacts']
@@ -112,7 +112,8 @@ def finalize(job, metadata, permissions):
                      if a['path'].lower().endswith('.mp4'))
         if task['sha256'] != video['sha256']:
             raise ValueError('stale delivery task')
-        if task['folder'] != brief.get('drive_folder_id'):
+        folder = brief.get('drive_folder_id') or (brief.get('scope') or {}).get('drive_folder_id')
+        if task['folder'] != folder:
             raise ValueError('stale delivery task')
         if metadata.get('name') != task['name']:
             raise ValueError('wrong destination/name')
