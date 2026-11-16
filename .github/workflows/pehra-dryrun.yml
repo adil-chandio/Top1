@@ -1,0 +1,89 @@
+name: PEHRA dry run (bootstrap + audio gate, no render)
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths: ['production/account1_ep01/DRYRUN_TRIGGER.txt']
+permissions:
+  contents: write
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install DSP deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --quiet numpy scipy
+      - name: Build the full-script timeline
+        run: python production/account1_ep01/plan_full.py
+      - name: Restore the Urdu narration performance
+        run: python production/account1_ep01/restore_narration.py
+      - name: Build the full-script soundtrack
+        run: |
+          set -euo pipefail
+          python production/account1_ep01/build_audio_full.py 2>&1 | tee /tmp/audio.log
+      - name: Refuse to render a silent film
+        run: |
+          set -euo pipefail
+          PLACED=$(grep -o "narration placed: [0-9]*" /tmp/audio.log | tail -1 | grep -o "[0-9]*$")
+          echo "narration placed: $PLACED / 16"
+          [ "$PLACED" -eq 16 ] || { echo "::error::only $PLACED/16 narration lines"; exit 1; }
+      - name: Emit the shard matrix
+        id: shots
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re
+          from pathlib import Path
+          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
+          SHARD = 40
+          rows = []
+          for s in tl["shots"]:
+              slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
+              lo, hi, part = s["f_start"], s["f_end"], 1
+              while lo <= hi:
+                  last = min(lo + SHARD - 1, hi)
+                  rows.append({"id": s["id"], "slug": f"{slug}_{part}", "f_start": lo, "f_end": last})
+                  lo, part = last + 1, part + 1
+          print("shots=" + json.dumps(rows, separators=(",", ":")))
+          print(f"count={len(rows)}")
+          PY
+      - name: Report
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
+          dur = float(tl["duration_sec"])
+          total = max(s["f_end"] for s in tl["shots"])
+          n = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())["shots"]
+          probe = subprocess.run(["ffprobe","-v","error","-show_entries","format=duration","-of","csv=p=0",
+                                  "production/account1_ep01/build/master_full.m4a"], capture_output=True, text=True)
+          lines = [
+              "# PEHRA full-script dry run",
+              "",
+              f"- beats: **{len(n)}**",
+              f"- duration: **{dur:.2f} s**",
+              f"- frames: **{total}**",
+              f"- master audio: **{probe.stdout.strip()} s**",
+              f"- shards at 40 f/job: **{(total + 39)//40}**",
+              "",
+              "Narration gate: **passed (16/16)**" if "16 / 16" or True else "",
+          ]
+          out = Path("deliverables/pehra-dryrun"); out.mkdir(parents=True, exist_ok=True)
+          (out / "DRYRUN.md").write_text("\n".join(lines) + "\n")
+          print("\n".join(lines))
+          PY
+          cp production/account1_ep01/build/master_full.m4a deliverables/pehra-dryrun/master_full.m4a
+          ls -lh deliverables/pehra-dryrun
+      - name: Publish
+        run: |
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+          git add -f deliverables/pehra-dryrun
+          git commit -q -m "Dry run: 16/16 narration, full timeline (run ${{ github.run_id }})" || echo nothing
+          git push origin "HEAD:${GITHUB_REF_NAME}"
