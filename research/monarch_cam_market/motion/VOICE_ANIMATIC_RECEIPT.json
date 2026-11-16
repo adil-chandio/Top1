@@ -1,0 +1,60 @@
+{
+  "type": "voice_only_proxy_animatic_NOT_creative_release",
+  "duration_seconds": 6.25,
+  "frames": 150,
+  "fps": 24,
+  "resolution": [
+    960,
+    540
+  ],
+  "original_voice_duration": 17.72,
+  "original_voice_sample_rate": 24000,
+  "voice_source_git_blob": "c3c8a13f12c532e32ffc4c27ba82e571cfd187bf",
+  "voice_sha256": "ed564baafb631f4599ebb09e0dc61f9d2fd7108304809efb90ba3de3dbe45e37",
+  "layout_sha256": "a6f03a388924a58291232c5c4d0e8f4f6f9dfc6719d8c96dfc925e6f5d304448",
+  "output_sha256": "ab2a44015fff49b84635ce5dab08d2fcbd32dd41688b8feab304e36ab11916aa",
+  "bytes": 171698,
+  "detected_quiet_intervals": [
+    [
+      0.0,
+      0.307125
+    ],
+    [
+      1.878167,
+      2.075125
+    ],
+    [
+      3.920375,
+      4.409083
+    ],
+    [
+      6.048167,
+      6.304458
+    ],
+    [
+      9.478875,
+      9.779
+    ],
+    [
+      17.343542,
+      17.72
+    ]
+  ],
+  "end_in_detected_quiet_interval": true,
+  "speed_change": false,
+  "pitch_change": false,
+  "music": false,
+  "sfx": false,
+  "actual_listening_review": false,
+  "independent_review": false,
+  "stage_advanced": false,
+  "technical_checks": {
+    "full_decode": true,
+    "frame_count": true
+  },
+  "limitations": [
+    "Quiet interval is signal measurement, not verified sentence boundary or word alignment",
+    "Rough original vector proxies, not finished animal animation",
+    "No sound-design/mix/reference-AV/independent-quality gate cleared"
+  ]
+}

@@ -19,7 +19,11 @@
     "Candidate evidence validated and submitted for independent review",
     "Original 6-second silent proxy spatial study actually rendered: 144 frames, 960x540, 24 fps",
     "Author inspected sample images and internally corrected contrast, entry and prey readability",
-    "Full video decode and numerical trajectory checks executed"
+    "Full video decode and numerical trajectory checks executed",
+    "Recovered existing original 17.72s narration from recorded GitHub blob, not newly generated voice",
+    "Rendered and muxed 6.25s voice-only proxy animatic, decoded all 150 frames",
+    "Recovered pinned whale/orca assets with hash checks",
+    "Evaluated native orca 12-joint skin at 9 time samples; caught implausible bounds and withheld compatibility pass"
   ],
   "durable_work_product": "research/monarch_cam_market/OPENING_REDESIGN_EXECUTION_ROMAN_URDU.md",
   "not_claimed": [
@@ -32,11 +36,12 @@
   ],
   "background_service_started": false,
   "work_in_progress": {
-    "kind": "preproduction_spatial_layout_only",
-    "receipt": "research/monarch_cam_market/motion/LAYOUT_STUDY_RECEIPT.json",
-    "source": "research/monarch_cam_market/motion/layout_study.py",
-    "media_ignored_path": "research/monarch_cam_market/motion/out/layout-v2/SPATIAL_LAYOUT_6S_INTERNAL.mp4",
+    "kind": "voice_only_proxy_animatic_and_asset_RD",
+    "voice_receipt": "research/monarch_cam_market/motion/VOICE_ANIMATIC_RECEIPT.json",
+    "rig_audit": "research/monarch_cam_market/motion/NATIVE_ORCA_RIG_AUDIT.json",
+    "media_ignored_path": "research/monarch_cam_market/motion/out/voice-animatic-v1/VOICE_LAYOUT_INTERNAL.mp4",
     "av_feasibility_passed": false,
-    "user_approval_requested": false
+    "user_approval_requested": false,
+    "rig_crosscheck_required": true
   }
 }

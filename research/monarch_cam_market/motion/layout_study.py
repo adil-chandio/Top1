@@ -72,10 +72,13 @@ def background():
     return Image.fromarray(a).resize((W*S,H*S),Image.Resampling.BICUBIC)
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--out',default=str(BASE/'out/layout-v2'));args=p.parse_args()
+    global N
+    p=argparse.ArgumentParser();p.add_argument('--out',default=str(BASE/'out/layout-v2'));p.add_argument('--frames',type=int,default=144);args=p.parse_args()
+    if not 24<=args.frames<=216:raise ValueError('internal study limited to 1–9 seconds')
+    N=args.frames
     out=Path(args.out);out.mkdir(parents=True,exist_ok=True)
     base=background();rng=np.random.default_rng(42);particles=rng.uniform([0,70],[W,H],(95,2))
-    ff=imageio_ffmpeg.get_ffmpeg_exe();video=out/'SPATIAL_LAYOUT_6S_INTERNAL.mp4'
+    ff=imageio_ffmpeg.get_ffmpeg_exe();video=out/'SPATIAL_LAYOUT_INTERNAL.mp4'
     cmd=[ff,'-nostdin','-y','-v','error','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','-','-an','-c:v','libx264','-crf','19','-pix_fmt','yuv420p','-movflags','+faststart',str(video)]
     proc=subprocess.Popen(cmd,stdin=subprocess.PIPE);samples=[];trace=[]
     try:
@@ -93,7 +96,7 @@ def main():
             d.text((28*S,22*S),'INTERNAL SPATIAL LAYOUT / NOT FINAL',fill=(125,158,168),font=ImageFont.load_default(size=12*S))
             d.text((28*S,43*S),'Original vector proxies | Silent | No factual encounter reconstruction',fill=(95,128,139),font=ImageFont.load_default(size=10*S))
             image=image.resize((W,H),Image.Resampling.LANCZOS)
-            if frame in (0,72,143):
+            if frame in (0,N//2,N-1):
                 image.save(out/f'layout-{frame:03}.jpg',quality=95);samples.append(image)
             proc.stdin.write(image.tobytes());trace.append({'frame':frame,'actors':actors})
         proc.stdin.close();code=proc.wait(timeout=60)
