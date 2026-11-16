@@ -1,0 +1,32 @@
+name: Recover existing visual acquisition receipt
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [.github/workflows/visual-receipt-recovery.yml]
+permissions:
+  contents: read
+  actions: read
+  checks: write
+jobs:
+  recover:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: visual-reference-evidence
+          github-token: '${{ github.token }}'
+          run-id: 43950178266
+          path: evidence
+      - name: Preserve only receipt in check output
+        env:
+          GH_TOKEN: '${{ github.token }}'
+        run: |
+          python3 - <<'PY'
+          import json,os,urllib.request
+          from pathlib import Path
+          results=json.loads(Path('evidence/receipt.json').read_text())
+          body={'name':'recovered-visual-acquisition-receipt','head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':'Existing run receipt, no repeated downloads','summary':json.dumps(results)}}
+          request=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/check-runs',data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
+          with urllib.request.urlopen(request,timeout=30) as response: print(json.load(response)['id'])
+          PY
