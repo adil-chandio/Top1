@@ -75,10 +75,11 @@ jobs:
               "Narration gate: **passed (16/16)**" if "16 / 16" or True else "",
           ]
           out = Path("deliverables/pehra-dryrun"); out.mkdir(parents=True, exist_ok=True)
-          (out / "DRYRUN.md").write_text("\n".join(lines) + "\n")
+          (out / "DRYRUN.md").write_text("\n".join(l for l in lines if l) + "\n")
           print("\n".join(lines))
           PY
           cp production/account1_ep01/build/master_full.m4a deliverables/pehra-dryrun/master_full.m4a
+          grep -q "narration placed: 16/16" /tmp/audio.log || { echo "::error::audio gate not 16/16"; tail -5 /tmp/audio.log; exit 1; }
           ls -lh deliverables/pehra-dryrun
       - name: Publish
         run: |
