@@ -878,6 +878,7 @@ def build_material_library():
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
         "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.115, 0.074, 0.050), 0.0, 0.58, coat=0.10, noise=140, bump=0.05, bump_dist=0.0015),
+        "stone": make_principled_mat("MAT_WEATHERED_LIMESTONE", (0.34, 0.33, 0.30), 0.0, 0.82, noise=90, bump=0.30, bump_dist=0.012),
         "guard_coat": make_principled_mat("MAT_ROYAL_GUARD_CHARCOAL", (0.030, 0.036, 0.048), 0.12, 0.52, coat=0.35, noise=10),
         "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
@@ -2290,6 +2291,7 @@ def shot_b11(mats, s, e):
             obj.scale = obj.scale * 0.94 if hasattr(obj, "scale") else obj.scale
 
     add_spot("B11_SUNSET_BACK", (2.4, 5.6, 3.2), (0.0, 2.4, 1.2), 300, C_AMBER, 0.30)
+    add_area("B11_KEY", (-1.9, -1.5, 2.0), (0.1, 2.45, 1.2), 180, (0.52, 0.52, 0.60), 2.4, 1.8)
     add_area("B11_AMBER_HORIZON", (0.0, 6.4, 1.4), (0, 2.5, 1.0), 210, C_AMBER, 6.0, 2.6)
     add_area("B11_TEAL_FILL", (-2.8, -1.8, 2.2), (0, 2.4, 1.1), 70, C_TEAL, 3.0, 2.0)
     set_volume_density(s, 0.044)
@@ -2300,9 +2302,9 @@ def shot_b11(mats, s, e):
     animate_particles(motes, s, e, lift=0.26, seed=152)
 
     cam = make_camera("B11_TWO_SHOT")
-    key_camera(cam, s, (-1.55, -2.05, 1.28), (0.10, 2.45, 1.16), lens=52, focus=3.40)
-    key_camera(cam, s + (e - s) // 2, (-1.32, -2.18, 1.26), (0.10, 2.45, 1.16), lens=56, focus=3.30)
-    key_camera(cam, e, (-1.12, -2.28, 1.25), (0.10, 2.45, 1.16), lens=60, focus=3.20)
+    key_camera(cam, s, (-0.95, -2.30, 1.32), (0.12, 2.45, 1.12), lens=48, focus=3.10)
+    key_camera(cam, s + (e - s) // 2, (-0.80, -2.45, 1.30), (0.12, 2.45, 1.12), lens=52, focus=2.95)
+    key_camera(cam, e, (-0.68, -2.55, 1.29), (0.12, 2.45, 1.12), lens=56, focus=2.85)
     return cam
 
 
@@ -2373,8 +2375,9 @@ def shot_b13(mats, s, e):
         set_scale(sack, s, (0.55, 0.55, 0.45))
         set_scale(sack, e, (1.0, 1.0, 0.92))
 
-    add_area("B13_MOON_KEY", (-2.5, 5.0, 6.5), (0, 2.6, 0.4), 230, (0.22, 0.44, 0.94), 6.0, 4.0)
-    add_area("B13_COLD_FRONT", (0.0, -2.8, 1.8), (0, 2.5, 0.6), 70, (0.26, 0.40, 0.72), 3.6, 2.0)
+    add_area("B13_MOON_KEY", (-1.2, 4.2, 5.0), (0, 2.6, 0.4), 420, (0.34, 0.56, 1.0), 7.0, 4.6)
+    add_area("B13_COLD_FRONT", (0.0, -2.8, 1.8), (0, 2.5, 0.6), 190, (0.34, 0.50, 0.84), 4.0, 2.4)
+    add_area("B13_WALL_RIM", (2.6, 1.2, 1.6), (0, 1.9, 0.7), 120, C_TEAL, 2.6, 1.6)
     add_point("B13_DISTANT_WINDOW", (2.9, 5.2, 1.6), 22, C_AMBER, 0.20)
     set_volume_density(s, 0.038)
     set_volume_density(e, 0.030)
@@ -2434,22 +2437,26 @@ def shot_b15(mats, s, e):
     """Beat 15 — Parmentier's grave, ringed with living potato plants."""
     _b_stage(mats, ground="dry_mud_field_001", size=18, repeat=3.8, wet=0.50, darken=0.70,
              backdrop_y=6.0, backdrop_z=2.6)
-    # Weathered headstone: real beveled geometry, not a card.
-    stone = make_box("B15_HEADSTONE", (0.92, 0.24, 1.35), (0, 2.15, 0.70), mats["earth"], bevel=0.10)
-    make_box("B15_PLINTH", (1.30, 0.62, 0.16), (0, 2.15, 0.08), mats["earth"], bevel=0.03)
-    make_box("B15_STONE_CAP", (1.02, 0.30, 0.09), (0, 2.15, 1.40), mats["earth"], bevel=0.04)
+    # Weathered limestone: pale, diffuse, chipped — never the mud material.
+    stone = make_box("B15_HEADSTONE", (0.86, 0.26, 1.28), (0, 2.15, 0.66), mats["stone"], bevel=0.12)
+    stone.rotation_euler = (math.radians(-2.5), 0, math.radians(1.5))
+    make_box("B15_PLINTH", (1.24, 0.58, 0.18), (0, 2.15, 0.09), mats["stone"], bevel=0.04)
+    cap = make_box("B15_STONE_CAP", (0.96, 0.32, 0.10), (0, 2.15, 1.34), mats["stone"], bevel=0.05)
+    # Carved recess: a dark inset where an inscription would be.
+    make_box("B15_INSCRIPTION", (0.56, 0.02, 0.30), (0, 2.15 - 0.135, 0.86), mats["obsidian"], bevel=0.01)
 
     # Potato plants ringing the grave — the actual historical detail.
     rng = random.Random(191)
-    for i in range(16):
-        ang = i * (math.tau / 16)
-        px = math.sin(ang) * 1.15
-        py = 2.15 + math.cos(ang) * 0.85
+    for i in range(20):
+        ang = i * (math.tau / 20)
+        px = math.sin(ang) * 1.55
+        py = 2.15 + math.cos(ang) * 1.05
         plant = make_procedural_plant(f"B15_PLANT_{i}", (px, py, 0.0), mats,
                                       height=0.42 + rng.uniform(0, 0.16))
         animate_swing(plant, s, e, amp=0.05, period=52 + i * 2, axis=1, step=6)
 
-    add_area("B15_MIST_KEY", (-2.6, 3.6, 3.2), (0, 2.15, 0.8), 190, (0.44, 0.52, 0.72), 4.0, 2.6)
+    add_area("B15_MIST_KEY", (-2.6, 3.6, 3.2), (0, 2.15, 0.8), 320, (0.52, 0.60, 0.80), 4.0, 2.6)
+    add_area("B15_FRONT_FILL", (0.0, -2.4, 1.8), (0, 2.15, 0.75), 150, (0.46, 0.52, 0.68), 3.0, 2.0)
     add_area("B15_WARM_EDGE", (2.8, 1.2, 1.9), (0, 2.15, 0.7), 70, C_GOLD, 2.2, 1.4)
     set_volume_density(s, 0.056)
     set_volume_density(e, 0.046)
@@ -2472,7 +2479,9 @@ def shot_b16(mats, s, e):
              backdrop_y=5.5, backdrop_z=2.4)
     head, bust, _, _, mask, eye_light = make_monarch_setup(mats)
 
-    gate = make_gate("B16_FINAL_GATE", mats, y=-0.35, width=3.4, height=2.45)
+    # Gate sits *behind* him in this shot: he is in front of the bars, so the
+    # slam reads as closing him in without ever hiding his face.
+    gate = make_gate("B16_FINAL_GATE", mats, y=1.05, width=3.4, height=2.45)
     # Gates start wide, then slam on the last spoken word.
     slam = e - 24
     set_rot(gate["left"], s, (0, 0, math.radians(72)))
@@ -2491,7 +2500,7 @@ def shot_b16(mats, s, e):
     set_light_energy(flash, slam + 4, 26)
     set_light_energy(flash, e, 4)
 
-    add_area("B16_FACE_FILL", (0.0, -2.6, 1.60), (0, -0.30, 1.02), 70, (0.50, 0.54, 0.64), 2.2, 1.5)
+    add_area("B16_FACE_FILL", (0.0, -2.8, 1.75), (0, -0.30, 1.02), 130, (0.54, 0.58, 0.68), 2.6, 1.8)
     add_area("B16_CRIMSON_RIM", (0.0, -1.8, 1.10), (0, -0.30, 1.02), 30, C_CRIMSON, 1.5, 0.9)
     add_area("B16_COLD_EDGE", (-2.6, 1.4, 2.0), (0, -0.30, 1.0), 70, C_TEAL, 2.4, 2.0)
     add_area("B16_GOLD_HAIR", (2.3, 1.7, 1.9), (0, -0.30, 1.05), 46, C_GOLD, 1.6, 1.0)
@@ -2501,10 +2510,10 @@ def shot_b16(mats, s, e):
     animate_emission(mats["crimson"], s, e, 2.3, 0.6, seed=196, step=6)
 
     cam = make_camera("B16_FINAL_HOLD")
-    key_camera(cam, s, (0.00, -4.10, 1.24), (0.00, -0.30, 1.02), lens=50, focus=3.95)
-    key_camera(cam, slam - 10, (0.02, -3.70, 1.23), (0.00, -0.30, 1.02), lens=55, focus=3.55)
-    key_camera(cam, slam, (0.03, -3.55, 1.22), (0.00, -0.30, 1.02), lens=58, focus=3.40)
-    key_camera(cam, e, (0.04, -3.45, 1.22), (0.00, -0.30, 1.02), lens=60, focus=3.30)
+    key_camera(cam, s, (0.00, -3.95, 1.55), (0.00, 0.10, 1.30), lens=52, focus=4.05)
+    key_camera(cam, slam - 10, (0.02, -3.55, 1.54), (0.00, 0.10, 1.30), lens=56, focus=3.65)
+    key_camera(cam, slam, (0.03, -3.42, 1.53), (0.00, 0.10, 1.30), lens=59, focus=3.50)
+    key_camera(cam, e, (0.04, -3.34, 1.53), (0.00, 0.10, 1.30), lens=61, focus=3.42)
     return cam
 
 

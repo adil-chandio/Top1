@@ -46,10 +46,7 @@ jobs:
         run: |
           set -uo pipefail
           mkdir -p production/account1_ep01/frames_lookdev
-          for SHOT in B01_AERIAL_FIELD B02_GUARDED_FIELD B03_MASKED_TITLE B04_HUNGRY_PARIS \
-                      B05_POTATO_PROMISE B06_POISONED_MIND B07_FREE_BASKETS B08_SILENT_PIVOT \
-                      B09_FORTY_ACRES B10_WHISPERS B11_LAST_ORDER B12_SUNSET_WITHDRAWAL \
-                      B13_NIGHT_THEFT B14_EMPTY_FIELD_DAWN B15_GRAVE_200_YEARS B16_FINAL_MONARCH; do
+          for SHOT in B11_LAST_ORDER B13_NIGHT_THEFT B15_GRAVE_200_YEARS B16_FINAL_MONARCH; do
             echo "=== $SHOT ==="
             "$BLENDER_BIN" -b --factory-startup \
               --python production/account1_ep01/render_scene.py -- \
