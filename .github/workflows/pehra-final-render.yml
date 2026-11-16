@@ -188,11 +188,6 @@ jobs:
           pattern: pehra-final-frames-*-${{ github.run_id }}
           path: production/account1_ep01/frames
           merge-multiple: true
-      - name: Merge any frames already committed to the branch
-        continue-on-error: true
-        run: |
-          git fetch origin "$GITHUB_REF_NAME"
-          git checkout "origin/$GITHUB_REF_NAME" -- production/account1_ep01/frames 2>/dev/null || true
       - name: Count the frame set
         run: |
           N=$(find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l)
