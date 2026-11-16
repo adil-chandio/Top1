@@ -1,0 +1,12 @@
+[Unit]
+Description=Resume bounded Monarch Cam jobs on persistent host
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=5min
+RandomizedDelaySec=30
+Unit=monarch-studio.service
+Persistent=true
+
+[Install]
+WantedBy=timers.target

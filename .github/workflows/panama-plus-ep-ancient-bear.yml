@@ -1,0 +1,210 @@
+name: Panama-Plus EP01 Ancient Bear Cinema 3D Render
+
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - 'panama_plus_3d_kit/ep_ancient_bear/**'
+      - '.github/workflows/panama-plus-ep-ancient-bear.yml'
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: 'Optional existing run ID containing frames-chunk-0..5 artifacts to assemble without re-rendering'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  actions: read
+
+concurrency:
+  group: ancient-bear-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-chunk:
+    if: ${{ !contains(github.event.head_commit.message, '[assemble-from-run]') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: true
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5]
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Three.js & Playwright Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq curl
+          cd panama_plus_3d_kit/ep_ancient_bear
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save three@0.170.0 playwright >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Download Verified CC0 Photoreal .glb Models
+        run: |
+          set -e
+          KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/qc"
+          curl -L --fail --retry 3 "https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.glb" -o "$KIT_DIR/assets/bear.glb"
+          BASE="https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs"
+          download_glb() {
+            curl -L --fail --retry 3 "$2" -o "$KIT_DIR/assets/$1"
+          }
+          download_glb "wolf.glb"                   "$BASE/quaternius-ultimateanimatedanimals/models/wolf/wolf.glb"
+          download_glb "male_walking.glb"           "$BASE/quaternius-backgroundposedhumans/models/male_walking/male_walking.glb"
+          download_glb "spear.glb"                  "$BASE/quaternius-medieval-weapons/models/spear/spear.glb"
+          download_glb "torch_lit.glb"              "$BASE/kaykit-dungeon-remastered/models/torch_lit/torch_lit.glb"
+          download_glb "boulder_01.glb"             "$BASE/polyhaven-nature-rocks/models/boulder_01/boulder_01.glb"
+          download_glb "rock_face_01.glb"           "$BASE/polyhaven-nature-rocks/models/rock_face_01/rock_face_01.glb"
+          download_glb "rock_face_02.glb"           "$BASE/polyhaven-nature-rocks/models/rock_face_02/rock_face_02.glb"
+          download_glb "namaqualand_cliff_01.glb"   "$BASE/polyhaven-nature-rocks/models/namaqualand_cliff_01/namaqualand_cliff_01.glb"
+          download_glb "namaqualand_cliff_02.glb"   "$BASE/polyhaven-nature-rocks/models/namaqualand_cliff_02/namaqualand_cliff_02.glb"
+          download_glb "mountainside.glb"           "$BASE/polyhaven-nature-rocks/models/mountainside/mountainside.glb"
+          download_glb "stone_01.glb"               "$BASE/polyhaven-nature-rocks/models/stone_01/stone_01.glb"
+          download_glb "rock_07.glb"                "$BASE/polyhaven-nature-rocks/models/rock_07/rock_07.glb"
+          download_glb "flint_tool.glb"             "$BASE/the-base-mesh/models/flint_tool/flint_tool.glb"
+          download_glb "tooth_molar.glb"            "$BASE/the-base-mesh/models/tooth_molar/tooth_molar.glb"
+          download_glb "bone_a.glb"                 "$BASE/kaykit-halloween-bits/models/bone_a/bone_a.glb"
+          download_glb "bone_b.glb"                 "$BASE/kaykit-halloween-bits/models/bone_b/bone_b.glb"
+          download_glb "bone_c.glb"                 "$BASE/kaykit-halloween-bits/models/bone_c/bone_c.glb"
+          download_glb "dry_branches_medium_01.glb" "$BASE/polyhaven-nature-plants/models/dry_branches_medium_01/dry_branches_medium_01.glb"
+          download_glb "grass_medium_01.glb"        "$BASE/polyhaven-nature-plants/models/grass_medium_01/grass_medium_01.glb"
+          download_glb "birch_tree_snow_1.glb"      "$BASE/quaternius-ultimate-nature/models/birch_tree_snow_1/birch_tree_snow_1.glb"
+          download_glb "birch_tree_snow_3.glb"      "$BASE/quaternius-ultimate-nature/models/birch_tree_snow_3/birch_tree_snow_3.glb"
+          download_glb "dead_tree_trunk.glb"        "$BASE/polyhaven-nature-plants/models/dead_tree_trunk/dead_tree_trunk.glb"
+
+      - name: Render Chunk ${{ matrix.chunk }}/6 (1920x1080 Cinema 3D)
+        env:
+          CHUNK_INDEX: ${{ matrix.chunk }}
+          CHUNK_COUNT: '6'
+        run: |
+          set -o pipefail
+          cd panama_plus_3d_kit/ep_ancient_bear
+          node render_webgl.mjs --render-only 2>&1 | tee "qc/render_chunk_${CHUNK_INDEX}.log"
+          tar -cf "frames_chunk_${CHUNK_INDEX}.tar" -C _frames .
+
+      - name: Upload Rendered Frame Chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: frames-chunk-${{ matrix.chunk }}
+          path: panama_plus_3d_kit/ep_ancient_bear/frames_chunk_${{ matrix.chunk }}.tar
+          retention-days: 1
+
+  assemble-and-commit:
+    needs: render-chunk
+    if: ${{ always() && (needs.render-chunk.result == 'success' || needs.render-chunk.result == 'skipped') }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.11 & Node 20
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg & Python Audio Stack
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python3 -m pip install --upgrade pip -q
+          python3 -m pip install -q numpy scipy soundfile pyloudnorm soxr
+
+      - name: Download Real Bear Roar, Wind, Stone Foley & Render Earshot SFX
+        run: |
+          set -e
+          KIT_DIR="$PWD/panama_plus_3d_kit/ep_ancient_bear"
+          mkdir -p "$KIT_DIR/assets" "$KIT_DIR/sfx/takes" "$KIT_DIR/qc" "$KIT_DIR/_frames"
+          curl -L --fail --retry 3 "https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.mp3" -o "$KIT_DIR/assets/bear.mp3"
+          curl -L --fail --retry 3 "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/amb/wind.wav" -o "$KIT_DIR/assets/wind.wav"
+          for i in 1 2 3 4; do
+            curl -L --fail --retry 3 "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/steps/stone/stone_0${i}.wav" -o "$KIT_DIR/assets/stone_0${i}.wav"
+          done
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot
+          curl -L --fail --retry 3 "https://raw.githubusercontent.com/adil-chandio/Monarch.Overall.Work/arena/2b012328-monarch-overall-work/audio/kit.json" -o "$KIT_DIR/sfx/kit.json"
+          PYTHONPATH=/tmp/earshot python3 - "$KIT_DIR/sfx" <<'PY'
+          import json, os, sys
+          import numpy as np
+          import soundfile as sf
+          from earshot.forge import bank
+
+          sfx_dir = sys.argv[1]
+          kit = json.load(open(os.path.join(sfx_dir, "kit.json")))["kit"]["roles"]
+          meta = {}
+          for role, cfg in kit.items():
+              if not isinstance(cfg, dict):
+                  continue
+              sid = cfg.get("sound")
+              if not sid:
+                  continue
+              name = sid.replace("/", "_")
+              out_wav = os.path.join(sfx_dir, "takes", name + ".wav")
+              if os.path.exists(out_wav):
+                  continue
+              try:
+                  x, info = bank.render(sid, seed=11)
+                  sf.write(out_wav, np.asarray(x), 48000)
+                  meta[name] = {k: float(info[k]) for k in ("onset_s", "peak_s", "end_s", "dur_s")}
+              except Exception as e:
+                  print("SFX SKIP:", role, sid, e)
+          json.dump(meta, open(os.path.join(sfx_dir, "takes", "meta.json"), "w"), indent=2)
+          PY
+
+      - name: Build Arena Agent VO + Bear Roar + Earshot SFX + Score Master (-14 LUFS)
+        run: |
+          cd panama_plus_3d_kit/ep_ancient_bear
+          python3 build_audio.py
+
+      - name: Download All 6 Rendered Frame Chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: panama_plus_3d_kit/ep_ancient_bear/_chunks
+          run-id: ${{ contains(github.event.head_commit.message, '[assemble-from-run]') && '43680604956' || github.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Assemble 2,412 Frames -> 1080p MP4 + Contact Sheet + QC
+        run: |
+          set -e
+          cd panama_plus_3d_kit/ep_ancient_bear
+          for c in 0 1 2 3 4 5; do
+            tar -xf "_chunks/frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
+          done
+          rm -rf _chunks
+          node render_webgl.mjs --encode-only
+          ls -lh ../../deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4 qc/
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          set -e
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f deliverables/MONARCH_AncientBear_EP01_3D_Cinema_1920x1080.mp4 \
+                     panama_plus_3d_kit/ep_ancient_bear/qc/contact_sheet.png \
+                     panama_plus_3d_kit/ep_ancient_bear/qc/qc_report.json
+          git commit -m "render(ep_ancient_bear): 1920x1080 cinema 3D master + QC [skip ci]"
+          PUSHED=0
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin arena/2a8ad29e-top1
+            if git push origin HEAD:arena/2a8ad29e-top1; then
+              PUSHED=1
+              break
+            fi
+            sleep 6
+          done
+          [ "$PUSHED" = "1" ] || exit 1

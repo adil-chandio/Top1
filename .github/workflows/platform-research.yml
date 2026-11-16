@@ -1,0 +1,120 @@
+name: Public YouTube research tools
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [studio/platform_probe_trigger.json]
+  workflow_dispatch:
+    inputs:
+      video_id:
+        description: Public YouTube video ID (11 characters)
+        required: true
+        type: string
+      mode:
+        description: Metadata probe or permitted short reference acquisition
+        required: true
+        default: inspect
+        type: choice
+        options: [inspect, acquire]
+      start:
+        description: Segment start in seconds (acquire only)
+        default: '0'
+        type: string
+      duration:
+        description: Segment duration, at most 60 seconds (acquire only)
+        default: '15'
+        type: string
+      rights_basis:
+        description: Actual lawful acquisition basis; mandatory for acquire, not a production reuse licence
+        default: ''
+        type: string
+permissions:
+  contents: read
+  checks: write
+  actions: read
+jobs:
+  public-reference:
+    # Public repository: standard runner, no paid services or account cookies.
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Read optional evidence recovery task
+        id: task
+        run: |
+          python - <<'PYTASK'
+          import json,os
+          from pathlib import Path
+          recover=json.loads(Path('studio/platform_probe_trigger.json').read_text()).get('recover_run','') if os.environ['GITHUB_EVENT_NAME']=='push' else ''
+          if recover and not str(recover).isdigit():raise ValueError('invalid recovery run')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as out:out.write('recover_run='+str(recover)+'\n')
+          PYTASK
+      - name: Recover preceding run report without repeating platform request
+        if: steps.task.outputs.recover_run != ''
+        uses: actions/download-artifact@v4
+        with:
+          github-token: '${{ github.token }}'
+          run-id: '${{ steps.task.outputs.recover_run }}'
+          name: public-youtube-reference
+          path: studio/runtime/cloud-platform/
+      - uses: actions/setup-node@v4
+        if: steps.task.outputs.recover_run == ''
+        with:
+          node-version: '22'
+      - name: Install public extractor and FFmpeg
+        if: steps.task.outputs.recover_run == ''
+        run: python -m pip install -r studio/requirements-platforms.txt imageio-ffmpeg
+      - name: Run bounded public access task
+        if: steps.task.outputs.recover_run == ''
+        env:
+          VIDEO_ID: '${{ inputs.video_id }}'
+          MODE: '${{ inputs.mode }}'
+          SEGMENT_START: '${{ inputs.start }}'
+          SEGMENT_DURATION: '${{ inputs.duration }}'
+          RIGHTS_BASIS: '${{ inputs.rights_basis }}'
+        run: |
+          python - <<'PY'
+          import json,os,re
+          from pathlib import Path
+          from studio.platform_research import inspect_video,acquire,write,now
+          out=Path('studio/runtime/cloud-platform');out.mkdir(parents=True,exist_ok=True)
+          config=json.loads(Path('studio/platform_probe_trigger.json').read_text())
+          vid=os.environ.get('VIDEO_ID') or config['video_id']
+          mode=os.environ.get('MODE') or 'inspect'
+          if not re.fullmatch(r'[A-Za-z0-9_-]{11}',vid):raise ValueError('invalid public video ID')
+          try:
+              if mode=='inspect':
+                  result=inspect_video(vid)
+              else:
+                  result=acquire(vid,out/'segment',float(os.environ['SEGMENT_START']),float(os.environ['SEGMENT_DURATION']),os.environ['RIGHTS_BASIS'])
+              write(out/'result.json',result)
+              print(json.dumps(result,indent=2))
+          except Exception as exc:
+              write(out/'result.json',{'status':'public_access_failed','checked_at':now(),'error':str(exc),'viewed_video':False,'listened_audio':False})
+              raise
+          PY
+      - name: Publish small access report through GitHub API
+        if: always()
+        env:
+          GH_TOKEN: '${{ github.token }}'
+        run: |
+          python - <<'PYREPORT'
+          import json,os,urllib.request
+          from pathlib import Path
+          p=Path('studio/runtime/cloud-platform/result.json')
+          result=json.loads(p.read_text()) if p.exists() else {'status':'no_result'}
+          summary=json.dumps(result,indent=2)[:45000]
+          payload={'name':'platform-access-evidence','head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':'Actual public-platform access result','summary':'```json\n'+summary+'\n```'}}
+          req=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/check-runs',data=json.dumps(payload).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},method='POST')
+          with urllib.request.urlopen(req,timeout=30) as response:print('Evidence check created',json.load(response)['id'])
+          PYREPORT
+      - name: Preserve actual result, including access failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-youtube-reference
+          path: studio/runtime/cloud-platform/
+          retention-days: 3
+          if-no-files-found: warn

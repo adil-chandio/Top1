@@ -1,0 +1,49 @@
+{
+  "source": "https://static-content.springer.com/esm/art%3A10.1038%2Fs41559-024-02525-2/MediaObjects/41559_2024_2525_MOESM7_ESM.mp4",
+  "paper": "10.1038/s41559-024-02525-2",
+  "source_type": "primary_scientific_supplement_NOT_youtube_editorial_reference",
+  "license": "CC BY 4.0 per publisher rights section, subject to any clip-specific credit exceptions",
+  "attribution": "Sampaio et al. (2024), Nature Ecology & Evolution, doi:10.1038/s41559-024-02525-2. Supplementary Video 4. Sampled/scaled frames for research. https://creativecommons.org/licenses/by/4.0/",
+  "moving_picture_review": false,
+  "audio_listening_review": false,
+  "ffmpeg_executable": "/usr/bin/ffmpeg",
+  "acquisition_returncode": 0,
+  "bytes": 1361031,
+  "sha256": "319682ef96cc71cebf1837242deabf139bacd0f06552e79616097b2fc978f765",
+  "acquired_segment_seconds": 6,
+  "source_full_download": false,
+  "source_full_decode": false,
+  "full_decode_passed": true,
+  "frames_extracted": 30,
+  "status": "acquired_decoded_sampled_NOT_reviewed",
+  "successful_run": "https://github.com/adil-chandio/Top1/actions/runs/43924667057",
+  "cloud_source_metadata": {
+    "duration_seconds": 45.96,
+    "video_resolution": [
+      3840,
+      2160
+    ],
+    "fps": 25,
+    "audio": "AAC 48kHz stereo",
+    "note": "input metadata reported by native FFmpeg, not full source review"
+  },
+  "inspection": {
+    "method": "author opened all 5 sheets containing 30 chronological samples at 5fps from first 6 seconds",
+    "sheet_visual_review": true,
+    "realtime_playback": false,
+    "actual_audio_listening": false,
+    "independent_review": false,
+    "confirmed_contact_or_fish_species": false,
+    "youtube_editorial_reference_requirement_complete": false
+  },
+  "sample_sheets": [
+    {
+      "path": "evidence/sheet-00.jpg",
+      "sha256": "dcae9192cdbebb0ad1931c72f20a36b0fa18e4b4b2aa42dd8d84fe3d6204a3f5"
+    },
+    {
+      "path": "evidence/sheet-04.jpg",
+      "sha256": "0fa2420b361d2061dfa5896b5c4081ef92571585d9d76db7f2db18568784510c"
+    }
+  ]
+}

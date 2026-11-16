@@ -1,0 +1,185 @@
+{
+  "scope": "20 one-second mesh samples; relative to frame0 pose, not rest mesh; camera fixed in renderer; does not prove biological accuracy",
+  "samples": [
+    {
+      "frame": 0,
+      "finite": true,
+      "edge_length_ratio_p01": 1.0,
+      "edge_length_ratio_p99": 1.0,
+      "edge_length_ratio_min": 1.0,
+      "edge_length_ratio_max": 1.0,
+      "max_displacement_from_frame0_m": 0.0
+    },
+    {
+      "frame": 12,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9906673431396484,
+      "edge_length_ratio_p99": 1.0091147422790527,
+      "edge_length_ratio_min": 0.981400191783905,
+      "edge_length_ratio_max": 1.0233004093170166,
+      "max_displacement_from_frame0_m": 0.34801504015922546
+    },
+    {
+      "frame": 24,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9814271330833435,
+      "edge_length_ratio_p99": 1.0238566398620605,
+      "edge_length_ratio_min": 0.910835862159729,
+      "edge_length_ratio_max": 1.1043936014175415,
+      "max_displacement_from_frame0_m": 0.5661903023719788
+    },
+    {
+      "frame": 36,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9727005958557129,
+      "edge_length_ratio_p99": 1.0383327007293701,
+      "edge_length_ratio_min": 0.8780162334442139,
+      "edge_length_ratio_max": 1.138152003288269,
+      "max_displacement_from_frame0_m": 0.8587538599967957
+    },
+    {
+      "frame": 48,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9788255095481873,
+      "edge_length_ratio_p99": 1.02742600440979,
+      "edge_length_ratio_min": 0.9275760650634766,
+      "edge_length_ratio_max": 1.086256742477417,
+      "max_displacement_from_frame0_m": 0.6716874241828918
+    },
+    {
+      "frame": 60,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9951353073120117,
+      "edge_length_ratio_p99": 1.0049647092819214,
+      "edge_length_ratio_min": 0.9906829595565796,
+      "edge_length_ratio_max": 1.0094565153121948,
+      "max_displacement_from_frame0_m": 0.43117740750312805
+    },
+    {
+      "frame": 72,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9902117252349854,
+      "edge_length_ratio_p99": 1.0092401504516602,
+      "edge_length_ratio_min": 0.9837279319763184,
+      "edge_length_ratio_max": 1.0170711278915405,
+      "max_displacement_from_frame0_m": 0.7621296048164368
+    },
+    {
+      "frame": 84,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9836057424545288,
+      "edge_length_ratio_p99": 1.0188511610031128,
+      "edge_length_ratio_min": 0.9278241991996765,
+      "edge_length_ratio_max": 1.0860965251922607,
+      "max_displacement_from_frame0_m": 0.8943958878517151
+    },
+    {
+      "frame": 96,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9737493991851807,
+      "edge_length_ratio_p99": 1.0369937419891357,
+      "edge_length_ratio_min": 0.8780162334442139,
+      "edge_length_ratio_max": 1.138152003288269,
+      "max_displacement_from_frame0_m": 0.8032938838005066
+    },
+    {
+      "frame": 108,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9760127663612366,
+      "edge_length_ratio_p99": 1.0320836305618286,
+      "edge_length_ratio_min": 0.9105256795883179,
+      "edge_length_ratio_max": 1.1045467853546143,
+      "max_displacement_from_frame0_m": 0.7724910974502563
+    },
+    {
+      "frame": 120,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9918204545974731,
+      "edge_length_ratio_p99": 1.0097016096115112,
+      "edge_length_ratio_min": 0.981152355670929,
+      "edge_length_ratio_max": 1.0237371921539307,
+      "max_displacement_from_frame0_m": 0.23582632839679718
+    },
+    {
+      "frame": 132,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9927603602409363,
+      "edge_length_ratio_p99": 1.006860375404358,
+      "edge_length_ratio_min": 0.988661527633667,
+      "edge_length_ratio_max": 1.0112038850784302,
+      "max_displacement_from_frame0_m": 0.30632904171943665
+    },
+    {
+      "frame": 144,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9858927726745605,
+      "edge_length_ratio_p99": 1.014960765838623,
+      "edge_length_ratio_min": 0.9457099437713623,
+      "edge_length_ratio_max": 1.065743327140808,
+      "max_displacement_from_frame0_m": 0.5481054186820984
+    },
+    {
+      "frame": 156,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9759294986724854,
+      "edge_length_ratio_p99": 1.0340526103973389,
+      "edge_length_ratio_min": 0.8832334280014038,
+      "edge_length_ratio_max": 1.1327539682388306,
+      "max_displacement_from_frame0_m": 0.7136912941932678
+    },
+    {
+      "frame": 168,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9739379286766052,
+      "edge_length_ratio_p99": 1.035569190979004,
+      "edge_length_ratio_min": 0.8960211277008057,
+      "edge_length_ratio_max": 1.1199077367782593,
+      "max_displacement_from_frame0_m": 0.8416774272918701
+    },
+    {
+      "frame": 180,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9873784184455872,
+      "edge_length_ratio_p99": 1.0152359008789062,
+      "edge_length_ratio_min": 0.9664732813835144,
+      "edge_length_ratio_max": 1.041609287261963,
+      "max_displacement_from_frame0_m": 0.3777054250240326
+    },
+    {
+      "frame": 192,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9930129051208496,
+      "edge_length_ratio_p99": 1.006914734840393,
+      "edge_length_ratio_min": 0.9844505786895752,
+      "edge_length_ratio_max": 1.0162559747695923,
+      "max_displacement_from_frame0_m": 0.7271883487701416
+    },
+    {
+      "frame": 204,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9866725206375122,
+      "edge_length_ratio_p99": 1.0128884315490723,
+      "edge_length_ratio_min": 0.9630283713340759,
+      "edge_length_ratio_max": 1.0457329750061035,
+      "max_displacement_from_frame0_m": 0.8908658623695374
+    },
+    {
+      "frame": 216,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9786691665649414,
+      "edge_length_ratio_p99": 1.0299307107925415,
+      "edge_length_ratio_min": 0.8932760953903198,
+      "edge_length_ratio_max": 1.1227197647094727,
+      "max_displacement_from_frame0_m": 0.8085961937904358
+    },
+    {
+      "frame": 228,
+      "finite": true,
+      "edge_length_ratio_p01": 0.9726964831352234,
+      "edge_length_ratio_p99": 1.0378190279006958,
+      "edge_length_ratio_min": 0.8850838541984558,
+      "edge_length_ratio_max": 1.1310631036758423,
+      "max_displacement_from_frame0_m": 0.8737872242927551
+    }
+  ]
+}

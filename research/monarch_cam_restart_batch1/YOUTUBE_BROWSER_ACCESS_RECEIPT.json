@@ -1,0 +1,23 @@
+{
+  "url": "https://www.youtube.com/watch?v=WqRpgJZeCPU",
+  "success": false,
+  "http_status": 200,
+  "first": {
+    "time": 0,
+    "readyState": 0,
+    "videoWidth": 0
+  },
+  "second": {
+    "time": 0,
+    "readyState": 0,
+    "videoWidth": 0
+  },
+  "raw_output_parseable": false,
+  "playability": {
+    "status": "LOGIN_REQUIRED",
+    "reason": "Sign in to confirm you\u2019re not a bot"
+  },
+  "public_page_message": "Sign in to confirm you\u2019re not a bot. This helps protect our community.",
+  "workflow_run": "https://github.com/adil-chandio/Top1/actions/runs/43936597609",
+  "interpretation": "Browser installed and page reached, but YouTube refused video playback. HTTP 200 and successful diagnostic job are not playback success."
+}

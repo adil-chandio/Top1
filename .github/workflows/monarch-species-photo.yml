@@ -1,0 +1,19 @@
+name: Monarch bounded species photo
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_discovery_2026_11/acquire_species_photo.py]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  photo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Acquire single bounded attributed anatomy reference
+        env:
+          GH_TOKEN: '${{ github.token }}'
+        run: python research/monarch_cam_discovery_2026_11/acquire_species_photo.py

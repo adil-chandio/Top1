@@ -1,0 +1,25 @@
+name: YouTube public browser access
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/youtube_browser_probe.py]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  public-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install standard browser
+        run: |
+          python -m pip install playwright==1.56.0
+          python -m playwright install --with-deps chromium
+      - name: Test ordinary public player
+        env:
+          GH_TOKEN: '${{ github.token }}'
+        run: python research/monarch_cam_restart_batch1/youtube_browser_probe.py

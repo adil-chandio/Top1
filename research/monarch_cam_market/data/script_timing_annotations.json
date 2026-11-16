@@ -1,0 +1,90 @@
+[
+  {
+    "video_id": "Tm8PtCTt2j8",
+    "annotation": "contradiction_to_first_named_candidate",
+    "start_s": 24,
+    "end_s": 97,
+    "elapsed_s": 73,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "Tm8PtCTt2j8",
+    "annotation": "humpback_section_to_sperm_whale_reveal",
+    "start_s": 97,
+    "end_s": 227,
+    "elapsed_s": 130,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "Tm8PtCTt2j8",
+    "annotation": "sperm_section_to_pilot_reveal",
+    "start_s": 227,
+    "end_s": 338,
+    "elapsed_s": 111,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "Tm8PtCTt2j8",
+    "annotation": "sperm_case_start_to_late_counteroutcome",
+    "start_s": 289,
+    "end_s": 538,
+    "elapsed_s": 249,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "49_Ph2q6uIM",
+    "annotation": "skeleton_setup_to_identity_reversal",
+    "start_s": 64,
+    "end_s": 114,
+    "elapsed_s": 50,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "49_Ph2q6uIM",
+    "annotation": "scepticism_to_named_food_hours_number",
+    "start_s": 224,
+    "end_s": 271,
+    "elapsed_s": 47,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "49_Ph2q6uIM",
+    "annotation": "first_daily_routine_to_farming_transition",
+    "start_s": 157,
+    "end_s": 517,
+    "elapsed_s": 360,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "foi5WtXV7E0",
+    "annotation": "contradiction_to_named_identity",
+    "start_s": 19,
+    "end_s": 71,
+    "elapsed_s": 52,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "foi5WtXV7E0",
+    "annotation": "calf_vulnerability_question_to_answer",
+    "start_s": 157,
+    "end_s": 163,
+    "elapsed_s": 6,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "leLeWBxhNa0",
+    "annotation": "opening_seventeen_sharks_to_departure_payoff",
+    "start_s": 18,
+    "end_s": 251,
+    "elapsed_s": 233,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  },
+  {
+    "video_id": "ZQvfHyfgBtA",
+    "annotation": "published_start_to_first_mechanism_chapter",
+    "start_s": 0,
+    "end_s": 14,
+    "elapsed_s": 14,
+    "precision": "caption/chapter anchor; not frame exact; not retention measurement"
+  }
+]

@@ -1,0 +1,70 @@
+{
+  "ok": true,
+  "issues": [],
+  "report": [
+    {
+      "frame": 0,
+      "camDist": 4.38,
+      "srgbLum": 0.721
+    },
+    {
+      "frame": 43,
+      "camDist": 2.58,
+      "srgbLum": 0.309
+    },
+    {
+      "frame": 173,
+      "camDist": 1.88,
+      "srgbLum": 0.261
+    },
+    {
+      "frame": 350,
+      "camDist": 3.23,
+      "srgbLum": 0.168
+    },
+    {
+      "frame": 517,
+      "camDist": 2.17,
+      "srgbLum": 0.428
+    },
+    {
+      "frame": 662,
+      "camDist": 1.33,
+      "srgbLum": 0.396
+    },
+    {
+      "frame": 792,
+      "camDist": 2.54,
+      "srgbLum": 0.3
+    },
+    {
+      "frame": 920,
+      "camDist": 1.75,
+      "srgbLum": 0.33
+    },
+    {
+      "frame": 1052,
+      "camDist": 3,
+      "srgbLum": 0.258
+    },
+    {
+      "frame": 1142,
+      "camDist": 1.39,
+      "srgbLum": 0.289
+    },
+    {
+      "frame": 1206,
+      "camDist": 1.01,
+      "srgbLum": 0.31
+    }
+  ],
+  "stripped": [
+    "Pistol/Cube204",
+    "Pistol/Cube204_1",
+    "Pistol/Cube204_2",
+    "Suit_Head/Cube006",
+    "Suit_Head/Cube006_1",
+    "Suit_Head/Cube006_2",
+    "Suit_Head/Cube006_3"
+  ]
+}

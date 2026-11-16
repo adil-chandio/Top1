@@ -1,0 +1,37 @@
+{
+  "beneath.mp3": {
+    "repository": "farmmer938-lgtm/aeris-cc0-music",
+    "path": "tracks/beneath.mp3",
+    "commit": "51ab767ca32558ae5686344fc3b29c7a4498b145",
+    "sha256": "e9e7fc1f9e788e4a837d9e125485b2bc4cee341ae438ee3d7e8e8d51c9786654",
+    "bytes": 3202604
+  },
+  "AERIS-LICENSE.txt": {
+    "repository": "farmmer938-lgtm/aeris-cc0-music",
+    "path": "LICENSE",
+    "commit": "51ab767ca32558ae5686344fc3b29c7a4498b145",
+    "sha256": "170e3b177791614567a81679ad1e20ee0197c57377cbff7f8d52030d1e8abfe9",
+    "bytes": 455
+  },
+  "under_reef.ogg": {
+    "repository": "dgreenheck/tidewater",
+    "path": "public/audio/under_reef.ogg",
+    "commit": "4811ba48d795197de5621985f404e765c0b7c0ef",
+    "sha256": "121952cc2e09a3a30712e2d1038a00366e2cbad3dccf1fa2388261487028249f",
+    "bytes": 412371
+  },
+  "uw_swim.ogg": {
+    "repository": "dgreenheck/tidewater",
+    "path": "public/audio/uw_swim.ogg",
+    "commit": "4811ba48d795197de5621985f404e765c0b7c0ef",
+    "sha256": "b52eae0e40747edb6f84e12f0bf62674e667004204cc35929182c73abd98b00f",
+    "bytes": 37646
+  },
+  "FIELD-CREDITS.md": {
+    "repository": "dgreenheck/tidewater",
+    "path": "public/audio/CREDITS.md",
+    "commit": "4811ba48d795197de5621985f404e765c0b7c0ef",
+    "sha256": "1ce3b28a2a36237bb3ab101bd0e7e2accff37475e95d16f8e27d420b11605207",
+    "bytes": 10394
+  }
+}

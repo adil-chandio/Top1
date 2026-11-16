@@ -1,0 +1,38 @@
+{
+  "file": "MONARCH_CAM_OPENING_20S_REVIEW.mp4",
+  "duration_s": 20,
+  "frames": 480,
+  "fps": 24,
+  "resolution": [
+    768,
+    432
+  ],
+  "audio": "stereo AAC 48k, recorded generated narration plus externally sourced CC0 music/field recordings",
+  "voice_id": "voice-07",
+  "source_narration_s": 17.72,
+  "voice_tempo_factor": 0.93,
+  "voice_delay_s": 0.6,
+  "rendered_frames": 480,
+  "narration_scope": "original v2 opening through record kiya gaya hai; no condensed ending",
+  "sha256": "f79e2b7ad77be58f8801fc22f2e9039ff3b1fdd80e3c8f69fcb2fac8e6a9e904",
+  "bytes": 1324022,
+  "full_decode": "pass",
+  "review_status": "review cut; actual listening and independent artistic validation not established",
+  "drive": {
+    "file_id": "1wiKvEak90pb7Co7WSZQ1xiEzrIxSwC0a",
+    "url": "https://drive.google.com/file/d/1wiKvEak90pb7Co7WSZQ1xiEzrIxSwC0a/view",
+    "folder_id": "1a2C3rWC1rwiz_2TNFAmpEndc3xKkETyF",
+    "credits_file_id": "1U_Wii3FaPSu3jDrGJ4ecyurpK0G205Sa",
+    "mit_notice_file_id": "1fks2mVukhCopTg6MSS7qJdIvIKori6gA"
+  },
+  "cloud_runs": {
+    "frames": 43847040736,
+    "assembly": 43848854318
+  },
+  "measured_audio": {
+    "integrated_lufs": -16.22,
+    "true_peak_dbtp": -4.52,
+    "lra_lu": 1.9,
+    "note": "FFmpeg analysis of exported AAC, not listening/creative approval"
+  }
+}

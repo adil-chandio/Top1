@@ -1,0 +1,153 @@
+{
+  "title": "MONARCH Studio B2B 3D Commercial",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 43.133,
+  "total_frames": 1294,
+  "beats": [
+    {
+      "id": "scroll_death",
+      "tag": "STOP BURNING AD SPEND",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_01_scroll_death.wav",
+      "text": "Most brands burn ad spend on flat templates that die in the first three seconds.",
+      "sfx": [
+        [
+          "sub_boom",
+          0.08,
+          0.8
+        ],
+        [
+          "whoosh",
+          0.65,
+          0.48
+        ]
+      ],
+      "start": 0.2,
+      "voice_end": 5.181,
+      "end": 5.631
+    },
+    {
+      "id": "attention_shift",
+      "tag": "AUTHORITY IN MOTION",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_02_attention_shift.wav",
+      "text": "Real three-D cinema stops the thumb instantly and commands unmistakable category authority.",
+      "sfx": [
+        [
+          "riser",
+          -0.6,
+          0.6
+        ],
+        [
+          "sub_boom",
+          0.0,
+          0.86
+        ]
+      ],
+      "start": 5.631,
+      "voice_end": 12.364,
+      "end": 12.814
+    },
+    {
+      "id": "metrics_proof",
+      "tag": "BROADCAST PRECISION",
+      "headline": "48H DELIVERY  \u00b7  -14 LUFS",
+      "subline": "1080\u00d71920 NATIVE 3D PIPELINE",
+      "wav": "vo/beat_03_metrics_proof.wav",
+      "text": "Frame-accurate ten-eighty-p visuals and broadcast-calibrated audio, delivered in forty-eight hours.",
+      "sfx": [
+        [
+          "impact_tick",
+          0.1,
+          0.62
+        ],
+        [
+          "impact_tick",
+          0.55,
+          0.62
+        ],
+        [
+          "whoosh",
+          0.9,
+          0.45
+        ]
+      ],
+      "start": 12.814,
+      "voice_end": 21.301,
+      "end": 21.751
+    },
+    {
+      "id": "real_worlds",
+      "tag": "CUSTOM 3D WORLDS",
+      "headline": "ZERO STOCK TEMPLATES",
+      "subline": "BUILT FOR BRANDS THAT LEAD",
+      "wav": "vo/beat_04_real_worlds.wav",
+      "text": "From ocean giants to ancient predators and obsidian shrines, every launch film is custom-engineered.",
+      "sfx": [
+        [
+          "riser",
+          -0.5,
+          0.58
+        ],
+        [
+          "sub_boom",
+          0.0,
+          0.84
+        ]
+      ],
+      "start": 21.751,
+      "voice_end": 29.507,
+      "end": 29.957
+    },
+    {
+      "id": "zero_risk",
+      "tag": "ZERO-RISK PORTAL",
+      "headline": "PREVIEW BEFORE YOU PAY",
+      "subline": "PRIVATE CLIENT PORTAL STAGING",
+      "wav": "vo/beat_05_zero_risk.wav",
+      "text": "Preview your full watermarked cut inside our private Client Portal before you pay a single dollar.",
+      "sfx": [
+        [
+          "impact_tick",
+          0.15,
+          0.58
+        ],
+        [
+          "whoosh",
+          0.5,
+          0.46
+        ]
+      ],
+      "start": 29.957,
+      "voice_end": 37.457,
+      "end": 37.907
+    },
+    {
+      "id": "closer",
+      "tag": "MONARCH\u00ae STUDIO",
+      "headline": "LAUNCH WITH MONARCH\u00ae",
+      "subline": "48H COMMERCIAL & INTERACTIVE BUILDS",
+      "wav": "vo/beat_06_closer.wav",
+      "text": "Stop blending in. Launch with Monarch Studio.",
+      "sfx": [
+        [
+          "sub_boom",
+          0.0,
+          0.94
+        ],
+        [
+          "impact_tick",
+          0.35,
+          0.52
+        ]
+      ],
+      "start": 37.907,
+      "voice_end": 41.657,
+      "end": 43.133
+    }
+  ]
+}
