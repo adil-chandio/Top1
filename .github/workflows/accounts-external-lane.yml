@@ -6,7 +6,7 @@ name: Accounts external lane
 on:
   push:
     paths:
-      - 'external_lane_trigger/**'
+      - 'external_lane_trigger/run.txt'
   workflow_dispatch:
 
 permissions:
@@ -27,6 +27,7 @@ jobs:
         with: {python-version: '3.11'}
 
       - name: Install system + python deps
+        if: contains(github.event.head_commit.message, '[run-lane]')
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
@@ -36,6 +37,7 @@ jobs:
           python -c "import faster_whisper, torch, transformers; print('deps ok')"
 
       - name: A. Real ASR transcript of the PEHRA deliverable
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         run: |
           mkdir -p external_evidence/asr
@@ -75,6 +77,7 @@ jobs:
           PY
 
       - name: B. Different language model reviews measured artifact facts
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         run: |
           mkdir -p external_evidence/review
@@ -153,6 +156,7 @@ jobs:
           PY
 
       - name: B2. Vision-language model actually looks at the real keyframes
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         run: |
           mkdir -p external_evidence/vision
@@ -213,6 +217,7 @@ jobs:
           PY
 
       - name: B3. Audio-event model actually analyses the real soundtrack
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         run: |
           mkdir -p external_evidence/audio
@@ -265,6 +270,7 @@ jobs:
           PY
 
       - name: C. Platform reference AV probe, trying several YouTube clients
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         run: |
           mkdir -p external_evidence/platform
@@ -319,6 +325,7 @@ jobs:
           PY
 
       - name: D. Durable artifact store, verified by round-trip
+        if: contains(github.event.head_commit.message, '[run-lane]')
         continue-on-error: true
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -353,7 +360,7 @@ jobs:
           PY
 
       - name: Commit all evidence back to the branch
-        if: always()
+        if: always() && contains(github.event.head_commit.message, '[run-lane]')
         run: |
           git config user.name 'accounts-lane-bot'
           git config user.email 'accounts-lane@users.noreply.github.com'
