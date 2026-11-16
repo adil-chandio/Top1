@@ -1,5 +1,10 @@
 name: Three-channel studio coordinator
 on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - 'studio/**'
+      - '.github/workflows/studio-coordinator.yml'
   workflow_dispatch:
 permissions:
   contents: read
