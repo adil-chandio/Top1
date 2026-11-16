@@ -15,16 +15,15 @@ def check(name,payload):
 def main():
     report={'source':URL,'paper':'10.1038/s41559-024-02525-2','source_type':'primary_scientific_supplement_NOT_youtube_editorial_reference','license':'CC BY 4.0 per publisher rights section, subject to any clip-specific credit exceptions','attribution':'Sampaio et al. (2024), Nature Ecology & Evolution, doi:10.1038/s41559-024-02525-2. Supplementary Video 4. Sampled/scaled frames for research. https://creativecommons.org/licenses/by/4.0/','moving_picture_review':False,'audio_listening_review':False}
     try:
-        path=OUT/'source.mp4';size=0
-        with urllib.request.urlopen(URL,timeout=60) as r,path.open('wb') as f:
-            while True:
-                data=r.read(65536)
-                if not data:break
-                size+=len(data)
-                if size>80*1024*1024:raise ValueError('source exceeds 80MB research limit')
-                f.write(data)
-        report.update(bytes=size,sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+        path=OUT/'segment.mp4'
         ff=imageio_ffmpeg.get_ffmpeg_exe()
+        # Prior run established a >80MB source; acquire only a bounded excerpt.
+        # FFmpeg performs HTTP range/stream reads; output cap is not a guarantee
+        # of network transfer size. Global subprocess deadline limits exposure.
+        acquire=subprocess.run([ff,'-nostdin','-y','-v','error','-rw_timeout','15000000','-ss','0','-i',URL,'-t','6','-vf','scale=640:-2','-c:v','libx264','-crf','26','-c:a','aac','-b:a','64k','-fs','12000000','-movflags','+faststart',str(path)],capture_output=True,text=True,timeout=120)
+        if acquire.returncode:raise ValueError('bounded FFmpeg acquisition failed: '+acquire.stderr[-500:])
+        size=path.stat().st_size
+        report.update(bytes=size,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),acquired_segment_seconds=6,source_full_download=False,source_full_decode=False)
         r=subprocess.run([ff,'-nostdin','-v','info','-xerror','-i',str(path),'-f','null','-'],capture_output=True,text=True,timeout=180)
         report['full_decode_passed']=r.returncode==0
         report['stream_report_tail']=r.stderr[-7000:]
