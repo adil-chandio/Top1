@@ -1,25 +1,128 @@
-19:55:35 | INFO: Data are loaded, start creating Blender stuff
-19:55:35 | INFO: Blender create Mesh node yumao3_low_lambert4_0
-19:55:35 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert4_0
-19:55:35 | INFO: Blender create Mesh node yumao3_low_lambert3_0
-19:55:35 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert3_0
-19:55:35 | INFO: Blender create Mesh node yumao3_low_lambert2_0
-19:55:35 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert2_0
-19:55:35 | INFO: Blender create Mesh node yumao3_low_lambert1_0
-19:55:35 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert1_0
-19:55:35 | INFO: Blender create Mesh node zhu_low_lambert5_0
-19:55:35 | INFO: Draco Decoder: Decode primitive zhu_low_lambert5_0
-19:55:35 | INFO: glTF import finished in 0.43s
 Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
-DracoDecoder | Decoded 37053 vertices, 197685 indices
-DracoDecoder | Decoded 35303 vertices, 185229 indices
-DracoDecoder | Decoded 77573 vertices, 388236 indices
-DracoDecoder | Decoded 10585 vertices, 59058 indices
-DracoDecoder | Decoded 13362 vertices, 56592 indices
-[TRACE] S5_MASKED_MONARCH: scene built OK
-19:55:37 | INFO: Data are loaded, start creating Blender stuff
-19:55:37 | INFO: Blender create Mesh node vanguard_Mesh
-19:55:37 | INFO: Blender create Mesh node vanguard_visor
-19:55:37 | INFO: glTF import finished in 0.14s
+[TRACE] B01_AERIAL_FIELD: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B01_AERIAL_FIELD'
+
 Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
-[TRACE] S4_UNGUARDED_GATE: scene built OK
+[TRACE] B02_GUARDED_FIELD: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B02_GUARDED_FIELD'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B03_MASKED_TITLE: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B03_MASKED_TITLE'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B04_HUNGRY_PARIS: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B04_HUNGRY_PARIS'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B05_POTATO_PROMISE: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B05_POTATO_PROMISE'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B06_POISONED_MIND: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B06_POISONED_MIND'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B07_FREE_BASKETS: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B07_FREE_BASKETS'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B08_SILENT_PIVOT: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B08_SILENT_PIVOT'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B09_FORTY_ACRES: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B09_FORTY_ACRES'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B10_WHISPERS: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B10_WHISPERS'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B11_LAST_ORDER: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B11_LAST_ORDER'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B12_SUNSET_WITHDRAWAL: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B12_SUNSET_WITHDRAWAL'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B13_NIGHT_THEFT: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B13_NIGHT_THEFT'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B14_EMPTY_FIELD_DAWN: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B14_EMPTY_FIELD_DAWN'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B15_GRAVE_200_YEARS: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B15_GRAVE_200_YEARS'
+
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+[TRACE] B16_FINAL_MONARCH: FAILED
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 42, in main
+    rs.SHOT_BUILDERS[args.shot](mats, s, e)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'B16_FINAL_MONARCH'
+
