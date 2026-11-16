@@ -1,0 +1,37 @@
+name: Two-account studio verify
+
+on:
+  push:
+    branches:
+      - arena/944c619c-top1
+    paths:
+      - 'accounts_studio/**'
+      - '.github/workflows/accounts-studio-verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: accounts-studio-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run two-account studio safety tests
+        run: python -m unittest discover -s accounts_studio/tests -v
+      - name: Configuration status (not a production render)
+        run: python -m accounts_studio.pipeline doctor
+
+# No cron or render trigger until a real worker runtime, persistent storage,
+# and unattended Drive credentials are configured and a complete pilot passes.
+# Fully isolated from the three-channel studio system: separate package
+# (accounts_studio/), separate env vars (ACCOUNTS_*), separate state dir,
+# separate Drive dedupe key (accounts_job), separate workflow and concurrency
+# group. This workflow never reads or writes the studio/ system.
