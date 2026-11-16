@@ -878,6 +878,7 @@ def build_material_library():
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
         "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.115, 0.074, 0.050), 0.0, 0.58, coat=0.10, noise=140, bump=0.05, bump_dist=0.0015),
+        "monarch_marble": make_principled_mat("MAT_MONARCH_DARK_MARBLE", (0.028, 0.024, 0.023), 0.0, 0.30, coat=0.45, noise=22, bump=0.10, bump_dist=0.004),
         "guard_coat": make_principled_mat("MAT_ROYAL_GUARD_CHARCOAL", (0.030, 0.036, 0.048), 0.12, 0.52, coat=0.35, noise=10),
         "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
@@ -1399,37 +1400,55 @@ def make_basket_setup(mats, loc=(1.35, 1.15, 0.02), procedural_only=False):
 
 
 def make_monarch_setup(mats, procedural_only=True):
-    """A 3D MONARCH bust: head, masked face, turtleneck, crimson signature band.
+    """The MONARCH: real marble bust + the scanned Venetian mask sitting on its face.
 
-    Head is centred on the root empty, so the mask empty is placed on the
-    face plane (front of the skull) and the bust sits below the jaw.
+    Returns (head, bust, shoulders, neck, mask, bar).  Every element is a real
+    imported CC0 mesh when available; the procedural rig is the last resort.
     """
     skin = mats.get("monarch_skin", mats["obsidian"])
-    height = 0.44
-    hw, hd, hh = height * 0.235, height * 0.255, height * 0.315
-    head = make_procedural_head("MONARCH_3D_HEAD", (0, 0.34, 1.22), mats, height=height)
-    # Bust: broad trapezoid torso, not a sphere.
-    bust = make_box(
-        "MONARCH_WARM_BUST", (0.62, 0.30, 0.42),
-        (0, 0.42, 0.86), skin, bevel=0.10,
-    )
+
+    # --- torso: real photogrammetry marble bust (Poly Haven, CC0) -----------
+    bust = try_append_blend("marble_bust_01", "PH_MARBLE_BUST")
+    if bust:
+        fit_group(bust, 0.92, use="z", center_xy=(0, 0), bottom_z=0.50)
+        override_material_recursive(bust, mats.get("monarch_marble", mats["black"]))
+        bpy.context.view_layer.update()
+        lo, hi = bbox_group(bust)
+        head_z = hi.z - 0.10           # top of the bust = the head
+        head_y = (lo.y + hi.y) * 0.5
+        head_w = max((hi.z - lo.z) * 0.30, 1e-3)   # head, not the shoulder span
+    else:
+        bust = make_box("MONARCH_WARM_BUST", (0.62, 0.30, 0.42), (0, 0.42, 0.86), skin, bevel=0.10)
+        head_z, head_y, head_w = 1.22, 0.34, 0.21
+
     shoulders = make_box(
-        "MONARCH_TURTLENECK_SHOULDERS", (0.74, 0.36, 0.20),
-        (0, 0.44, 0.76), mats["black"], bevel=0.07,
+        "MONARCH_TURTLENECK_SHOULDERS", (0.80, 0.38, 0.20),
+        (0, head_y + 0.02, 0.66), mats["black"], bevel=0.07,
     )
     neck = make_cylinder(
-        "MONARCH_TURTLENECK", 0.088, 0.26, (0, 0.40, 1.03),
+        "MONARCH_TURTLENECK", 0.10, 0.24, (0, head_y, head_z - 0.30),
         mats["black"], vertices=32, bevel=0.020,
     )
-    # Mask sits on the face plane: front of the skull (y = 0.34 - hd*0.72),
-    # at ~85% of head height (brow line), so shell overlaps the skull.
-    face_y = 0.34 - hd * 0.72
-    mask = make_procedural_mask(
-        "MONARCH_3D_VENICE_MASK", (0, face_y, 1.22 + hh * 0.10), mats, width=hw * 2.06,
-    )
+
+    # --- the mask: real scanned Venetian half-mask --------------------------
+    mask = try_append_glb("venice_mask.glb", "MONARCH_VENICE_MASK")
+    if mask:
+        fit_group(mask, head_w * 1.06, use="xy", center_xy=(0, 0), bottom_z=0.0)
+        bpy.context.view_layer.update()
+        mlo, mhi = bbox_group(mask)
+        mask.location = Vector(mask.location) + Vector((
+            0.0, head_y - (mhi.y - mlo.y) * 0.52, head_z - (mhi.z - mlo.z) * 0.30,
+        ))
+        bpy.context.view_layer.update()
+    else:
+        mask = make_procedural_mask(
+            "MONARCH_3D_VENICE_MASK", (0, head_y - head_w * 0.55, head_z), mats, width=head_w * 2.0,
+        )
+
+    head = new_empty("MONARCH_HEAD_REF", (0, head_y, head_z))
     bar = make_box(
-        "MONARCH_CRIMSON_LIGHT_BAR", (hw * 1.75, 0.008, 0.010),
-        (0, face_y - hd * 0.16, 1.22 + hh * 0.10), mats["crimson"], bevel=0.004,
+        "MONARCH_CRIMSON_LIGHT_BAR", (head_w * 0.80, 0.008, 0.009),
+        (0, head_y - head_w * 0.62, head_z + 0.045), mats["crimson"], bevel=0.004,
     )
     return head, bust, shoulders, neck, mask, bar
 
