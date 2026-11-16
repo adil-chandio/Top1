@@ -53,16 +53,19 @@ jobs:
           set -euo pipefail
           python production/account1_ep01/fetch_assets.py
           ls -la production/account1_ep01/assets | head -20
-      - name: Measure S5 monarch + render one debug frame
+      - name: Final-quality probe (4 samples, 100%) + measure
         run: |
           set -euo pipefail
           mkdir -p production/account1_ep01/frames
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
-          blender -b --factory-startup --python production/account1_ep01/debug_s5_measure.py -- \
+          mkdir -p production/account1_ep01/frames_debug
+          blender -b --factory-startup --python production/account1_ep01/render_scene.py -- \
+            --shot S5_MASKED_MONARCH --mode lookdev --samples 4 --res-pct 100 \
             --timeline production/account1_ep01/build/timeline_15s.json \
-            --assets production/account1_ep01/assets > /tmp/blender.log 2>&1 || true
-          grep MEASURE /tmp/blender.log || true
+            --assets production/account1_ep01/assets \
+            --out production/account1_ep01/frames_debug > /tmp/blender.log 2>&1 || true
+          grep -E "Render complete|Saved:" /tmp/blender.log || tail -20 /tmp/blender.log
           echo "=== exit summary ==="
           tail -40 /tmp/blender.log || true
           cp /tmp/blender.log /tmp/smoke_blender.log
