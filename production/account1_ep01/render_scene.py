@@ -876,14 +876,15 @@ def build_material_library():
         "gold": make_principled_mat("MAT_ROYAL_GOLD", (0.95, 0.57, 0.14), 0.86, 0.19, coat=0.35),
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
-        "monarch_skin": make_principled_mat("MAT_MONARCH_OBSIDIAN_SKIN", (0.038, 0.042, 0.052), 0.28, 0.30, coat=0.55, noise=18),
+        "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.105, 0.068, 0.046), 0.0, 0.46, coat=0.18, noise=10),
+        "guard_coat": make_principled_mat("MAT_ROYAL_GUARD_CHARCOAL", (0.030, 0.036, 0.048), 0.12, 0.52, coat=0.35, noise=10),
         "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
         "potato": make_principled_mat("MAT_EARTHY_TUBER", (0.30, 0.16, 0.065), 0.0, 0.82, noise=28),
         "wicker": make_principled_mat("MAT_WICKER", (0.31, 0.16, 0.065), 0.0, 0.72, noise=30),
-        "crimson": make_emission_mat("MAT_CRIMSON_EYE_BAND", C_CRIMSON, 9.0),
+        "crimson": make_emission_mat("MAT_CRIMSON_EYE_BAND", C_CRIMSON, 4.0),
         "amber": make_emission_mat("MAT_PRACTICAL_FLAME", C_AMBER, 14.0),
-        "gold_emit": make_emission_mat("MAT_GOLD_DUST", C_GOLD, 4.0),
+        "gold_emit": make_emission_mat("MAT_GOLD_DUST", C_GOLD, 1.4),
         "godray": make_transparent_emission_mat("MAT_GODRAY_SHAFT", C_GOLD, 1.6, 0.045),
         "glass": make_principled_mat("MAT_SMOKE_GLASS", (0.15, 0.19, 0.23), 0.0, 0.06, coat=0.9, transmission=0.82),
     }
@@ -955,11 +956,12 @@ def make_tricorn(name, loc, mats, parent=None):
 
 def make_procedural_guard(name, loc, mats, height=1.82):
     root = new_empty(name, loc)
-    make_cylinder(name + "_torso", 0.20, 0.72, (0, 0, height * 0.56), mats["black"], parent=root, vertices=16)
-    make_sphere(name + "_head", (0.13, 0.12, 0.16), (0, 0, height * 0.89), mats["black"], parent=root)
+    coat = mats["guard_coat"]
+    make_cylinder(name + "_torso", 0.20, 0.72, (0, 0, height * 0.56), coat, parent=root, vertices=16)
+    make_sphere(name + "_head", (0.13, 0.12, 0.16), (0, 0, height * 0.89), coat, parent=root)
     for sx in (-1, 1):
-        make_cylinder(name + f"_leg_{sx}", 0.075, 0.78, (sx * 0.10, 0, height * 0.22), mats["black"], parent=root, vertices=12)
-        make_cylinder(name + f"_arm_{sx}", 0.055, 0.62, (sx * 0.25, 0, height * 0.56), mats["black"], parent=root, vertices=10, rotation=(0, 0, sx * 0.12))
+        make_cylinder(name + f"_leg_{sx}", 0.075, 0.78, (sx * 0.10, 0, height * 0.22), coat, parent=root, vertices=12)
+        make_cylinder(name + f"_arm_{sx}", 0.055, 0.62, (sx * 0.25, 0, height * 0.56), coat, parent=root, vertices=10, rotation=(0, 0, sx * 0.12))
     make_tricorn(name + "_tricorn", (0, 0, height * 1.01), mats, parent=root)
     for i in range(4):
         make_sphere(name + f"_button_{i}", (0.018, 0.018, 0.018), (0, -0.19, height * (0.66 - i * 0.075)), mats["brass"], parent=root, segments=10, rings=6)
@@ -1088,15 +1090,34 @@ def make_procedural_head(name, loc, mats, height=0.44):
 
 
 def make_procedural_mask(name, loc, mats, width=0.42):
+    """A wide Venetian half-mask: flat black shell, eye slots, gold filigree."""
     root = new_empty(name, loc)
-    skin = mats.get("monarch_skin", mats["obsidian"])
-    make_sphere(name + "_shell", (width / 2, 0.055, 0.23), (0, 0, 0), skin, parent=root, segments=24, rings=14)
+    make_sphere(
+        name + "_shell", (width / 2, 0.045, 0.115), (0, 0, 0),
+        mats["obsidian"], parent=root, segments=32, rings=18,
+    )
+    rim = make_torus(
+        name + "_gold_rim", width * 0.47, 0.006, (0, -0.048, 0),
+        mats["gold"], parent=root, rotation=(math.pi / 2, 0, 0),
+    )
+    rim.scale = (1.0, 0.55, 1.0)
+    make_box(
+        name + "_brow_filigree", (width * 0.72, 0.010, 0.010),
+        (0, -0.056, 0.082), mats["gold"], parent=root, bevel=0.004,
+    )
+    make_cylinder(
+        name + "_nose", 0.016, 0.085, (0, -0.056, -0.025),
+        mats["obsidian"], parent=root, vertices=12, bevel=0.006,
+    )
     for sx in (-1, 1):
-        make_box(name + f"_eye_{sx}", (0.105, 0.018, 0.035), (sx * 0.105, -0.052, 0.035), mats["black"], parent=root, bevel=0.012)
-        for i in range(4):
+        make_box(
+            name + f"_eye_{sx}", (0.095, 0.018, 0.032),
+            (sx * 0.095, -0.052, 0.020), mats["black"], parent=root, bevel=0.010,
+        )
+        for i in range(5):
             make_sphere(
-                name + f"_stud_{sx}_{i}", (0.009, 0.009, 0.009),
-                (sx * (0.055 + i * 0.035), -0.055, 0.16 - i * 0.02),
+                name + f"_stud_{sx}_{i}", (0.008, 0.008, 0.008),
+                (sx * (0.045 + i * 0.034), -0.057, 0.095 - i * 0.009),
                 mats["gold"], parent=root, segments=8, rings=5,
             )
     return root
@@ -1137,7 +1158,7 @@ def make_particles(name, mat, *, count=44, center=(0, 0, 0.3), spread=1.0, seed=
             rng.uniform(-spread, spread),
             rng.uniform(-0.05, spread * 0.8),
         )
-        base_radius = 0.012
+        base_radius = 0.009
         obj.scale = (rng.uniform(0.5, 1.8) * base_radius,) * 3
         objs.append(obj)
     return root, objs
@@ -1251,7 +1272,7 @@ def make_guard_rig(mats, name, loc, *, with_rifle=True, use_soldier=True):
     soldier = try_append_glb("Soldier.glb", name + "_SOLDIER") if use_soldier else None
     if soldier:
         fit_group(soldier, 1.82, use="z", center_xy=(0, 0), bottom_z=0.0)
-        override_material_recursive(soldier, mats["black"])
+        override_material_recursive(soldier, mats["guard_coat"])
         soldier.parent = rig
     else:
         proc = make_procedural_guard(name + "_PROC_GUARD", (0, 0, 0), mats)
@@ -1360,8 +1381,12 @@ def make_monarch_setup(mats, procedural_only=True):
     """A guaranteed-visible 3D MONARCH bust/head/mask with crimson signature."""
     skin = mats.get("monarch_skin", mats["obsidian"])
     head = make_procedural_head("MONARCH_3D_HEAD", (0, 0.42, 0.92), mats, height=0.48)
+    make_sphere(
+        "MONARCH_CHIN_AND_BEARD", (0.125, 0.095, 0.085),
+        (0, 0.36, 1.00), mats["black"], segments=20, rings=12,
+    )
     bust = make_sphere(
-        "MONARCH_OBSIDIAN_BUST", (0.38, 0.22, 0.30),
+        "MONARCH_WARM_BUST", (0.38, 0.22, 0.30),
         (0, 0.68, 0.72), skin, segments=28, rings=16,
     )
     shoulders = make_sphere(
@@ -1374,20 +1399,9 @@ def make_monarch_setup(mats, procedural_only=True):
     )
     mask = make_procedural_mask("MONARCH_3D_VENICE_MASK", (0, 0.18, 1.18), mats, width=0.46)
     bar = make_box(
-        "MONARCH_CRIMSON_LIGHT_BAR", (0.42, 0.022, 0.032),
-        (0, 0.105, 1.18), mats["crimson"], bevel=0.008,
+        "MONARCH_CRIMSON_LIGHT_BAR", (0.36, 0.014, 0.018),
+        (0, 0.102, 1.18), mats["crimson"], bevel=0.006,
     )
-    for sx in (-1, 1):
-        make_sphere(
-            f"MONARCH_CRIMSON_EYE_{sx}", (0.032, 0.018, 0.018),
-            (sx * 0.09, 0.085, 1.18), mats["crimson"], segments=12, rings=8,
-        )
-        for i in range(4):
-            make_sphere(
-                f"MONARCH_MASK_STUD_{sx}_{i}", (0.010, 0.010, 0.010),
-                (sx * (0.07 + i * 0.036), 0.075, 1.30 - i * 0.025),
-                mats["gold"], segments=8, rings=5,
-            )
     return head, bust, shoulders, neck, mask, bar
 
 
@@ -1600,6 +1614,7 @@ def shot_s2(mats, s, e):
     set_rot(guard_c, e, (0, 0, math.pi + 0.05))
 
     add_area("TEAL_RIM_LEFT", (-4.0, 0.8, 2.4), (0, 1.4, 1.1), 165, C_TEAL, 3.0, 4.0)
+    add_area("S2_GUARD_FRONT_FILL", (0.0, -2.5, 2.0), (0, 1.2, 1.0), 120, (0.28, 0.42, 0.68), 3.0, 2.0)
     add_area("TEAL_RIM_RIGHT", (4.0, 1.0, 2.2), (0, 1.4, 1.1), 115, C_BLUE, 2.4, 3.8)
     add_spot("GUARD_FACE_KICK", (0.0, -2.3, 2.8), (0, 1.4, 1.2), 85, (0.55, 0.68, 1.0), 0.75)
     set_volume_density(s, 0.020)
@@ -1684,13 +1699,10 @@ def shot_s4(mats, s, e):
     set_scale(guard, s, (0.78, 0.78, 0.78))
     set_scale(guard, e, (0.74, 0.74, 0.74))
 
-    add_area("S4_GOLDEN_GATE_BACKLIGHT", (0.0, 4.2, 2.7), (0, 0, 0.9), 420, C_GOLD, 4.5, 3.0)
-    add_spot("S4_GOLDEN_GODRAY_SPOT", (0.0, 3.6, 3.2), (0, -1.0, 0.4), 260, C_GOLD, 0.72)
-    add_area("S4_COOL_FRONT_FILL", (-3.0, -2.5, 2.0), (0, 0, 1.0), 70, C_TEAL, 3.0, 2.0)
-    god_root, cones = make_godray_cones("S4_VOLUMETRIC_GODRAYS", mats, count=5)
-    for i, cone in enumerate(cones):
-        set_rot(cone, s, cone.rotation_euler.copy())
-        set_rot(cone, e, (cone.rotation_euler.x, cone.rotation_euler.y, cone.rotation_euler.z + math.radians(2.0 + i)))
+    add_area("S4_GOLDEN_GATE_BACKLIGHT", (0.0, 4.2, 2.7), (0, 0, 0.9), 260, C_GOLD, 4.5, 3.0)
+    add_spot("S4_GOLDEN_GODRAY_SPOT", (0.0, 3.6, 3.2), (0, -1.0, 0.4), 150, C_GOLD, 0.72)
+    add_area("S4_COOL_FRONT_FILL", (-3.0, -2.5, 2.0), (0, 0, 1.0), 100, C_TEAL, 3.0, 2.0)
+    add_area("S4_GUARD_FRONT_RIM", (-2.0, -1.8, 1.8), (0, 2.0, 1.0), 90, (0.35, 0.50, 0.80), 2.2, 1.6)
     set_volume_density(s, 0.026)
     set_volume_density(s + 28, 0.020)
     set_volume_density(e, 0.014)
@@ -1723,10 +1735,10 @@ def shot_s5(mats, s, e):
     animate_flicker(light_a, s, e, 36, 10, seed=51, step=3)
     animate_flicker(light_b, s, e, 24, 8, seed=52, step=3)
     animate_emission(mats["amber"], s, e, 14, 5, seed=53, step=3)
-    animate_emission(mats["crimson"], s, e, 9, 3.4, seed=54, step=3)
+    animate_emission(mats["crimson"], s, e, 4.0, 1.2, seed=54, step=3)
 
     add_area("MONARCH_FRONT_FILL", (0.0, -2.4, 1.9), (0, 0.35, 1.16), 90, (0.42, 0.56, 0.88), 2.2, 1.5)
-    add_area("MONARCH_CRIMSON_RIM", (0.0, -1.6, 1.45), (0, 0.3, 1.15), 105, C_CRIMSON, 1.8, 1.0)
+    add_area("MONARCH_CRIMSON_RIM", (0.0, -1.6, 1.45), (0, 0.3, 1.15), 65, C_CRIMSON, 1.8, 1.0)
     add_area("MONARCH_COLD_EDGE", (-2.4, 1.2, 2.3), (0, 0.4, 1.1), 75, C_TEAL, 2.5, 2.0)
     add_area("MONARCH_GOLD_HAIRLIGHT", (2.1, 1.5, 2.2), (0, 0.4, 1.2), 48, C_GOLD, 1.8, 1.0)
     set_volume_density(s, 0.030)
@@ -1785,8 +1797,8 @@ def shot_s6(mats, s, e):
     set_scale(shock, e, (1.12, 1.12, 1.12))
     set_emission(shock_mat, s, 0.0)
     set_emission(shock_mat, 360, 0.0)
-    set_emission(shock_mat, 361, 9.0)
-    set_emission(shock_mat, 386, 2.5)
+    set_emission(shock_mat, 361, 3.0)
+    set_emission(shock_mat, 386, 1.0)
     set_emission(shock_mat, e, 0.0)
 
     dust, motes = make_particles("S6_GOLDEN_IMPACT_DUST", mats["gold_emit"], count=64, center=(0.34, 0.24, 0.22), spread=0.42, seed=91)
