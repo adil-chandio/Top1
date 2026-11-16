@@ -155,6 +155,50 @@ def set_volume_density(frame: int, density: float) -> None:
         pass
 
 
+def rebalance_scene(light_scale=0.55, volume_scale=0.18) -> None:
+    """Tame CI exposure: scale all practical lights and volumetric fog after scene build."""
+    for light in bpy.data.lights:
+        try:
+            light.energy *= light_scale
+        except Exception:
+            pass
+        action = None
+        try:
+            action = light.animation_data.action
+        except Exception:
+            action = None
+        if action:
+            for fc in action.fcurves:
+                for kp in fc.keyframe_points:
+                    try:
+                        kp.co[1] *= light_scale
+                        kp.handle_left[1] *= light_scale
+                        kp.handle_right[1] *= light_scale
+                    except Exception:
+                        pass
+    global VOLUME_NODE
+    if VOLUME_NODE is not None:
+        try:
+            VOLUME_NODE.inputs["Density"].default_value *= volume_scale
+        except Exception:
+            pass
+        try:
+            action = VOLUME_NODE.id_data.animation_data.action
+        except Exception:
+            action = None
+        if action:
+            for fc in action.fcurves:
+                if "Density" not in fc.data_path:
+                    continue
+                for kp in fc.keyframe_points:
+                    try:
+                        kp.co[1] *= volume_scale
+                        kp.handle_left[1] *= volume_scale
+                        kp.handle_right[1] *= volume_scale
+                    except Exception:
+                        pass
+
+
 def smooth_all_fcurves() -> None:
     for action in bpy.data.actions:
         try:
@@ -248,10 +292,17 @@ def append_blend(asset_id: str, name: str | None = None):
     group = new_empty(name or f"ASSET_{asset_id}")
     with bpy.data.libraries.load(str(path), link=False) as (data_from, data_to):
         data_to.objects = list(data_from.objects)
-    appended = [
-        obj for obj in data_to.objects
-        if obj is not None and obj.type not in {"LIGHT", "CAMERA"}
-    ]
+    skip_tokens = ("backdrop", "shadow", "floor", "ground", "stage", "preview_plane")
+    appended = []
+    for obj in data_to.objects:
+        if obj is None or obj.type in {"LIGHT", "CAMERA"}:
+            continue
+        name = obj.name.lower()
+        if any(token in name for token in skip_tokens) or name.startswith("plane"):
+            continue
+        if obj.type == "MESH" and max(obj.dimensions) > 12.0:
+            continue
+        appended.append(obj)
     appended_set = set(appended)
     for obj in appended:
         try:
@@ -404,9 +455,24 @@ def override_material_recursive(group, mat) -> None:
     if group is None or mat is None:
         return
     for obj in group.children_recursive:
-        if obj.type == "MESH":
+        if obj.type != "MESH":
+            continue
+        try:
             obj.data.materials.clear()
             obj.data.materials.append(mat)
+        except Exception:
+            pass
+        # glTF skinned meshes can use OBJECT-linked material slots; force DATA links.
+        for slot in obj.material_slots:
+            try:
+                slot.link = "DATA"
+                slot.material = mat
+            except Exception:
+                pass
+        try:
+            obj.active_material = mat
+        except Exception:
+            pass
 
 
 # ---------------------------------------------------------------------------
@@ -481,7 +547,7 @@ def make_transparent_emission_mat(name, color, strength=1.0, alpha=0.05):
     return mat
 
 
-def make_pbr_material(name, asset_id: str, *, repeat=4.0, wet=1.0):
+def make_pbr_material(name, asset_id: str, *, repeat=4.0, wet=1.0, darken=1.0):
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
     nt = mat.node_tree
@@ -520,7 +586,15 @@ def make_pbr_material(name, asset_id: str, *, repeat=4.0, wet=1.0):
     diff_path = find_tex(asset_id, "diff")
     if diff_path:
         diff = image_node(-540, 260, diff_path, non_color=False)
-        nt.links.new(diff.outputs["Color"], bsdf.inputs["Base Color"])
+        if darken < 0.999:
+            tint = nt.nodes.new("ShaderNodeMixRGB")
+            tint.blend_type = "MULTIPLY"
+            tint.inputs[0].default_value = 1.0
+            tint.inputs[2].default_value = (darken, darken * 0.96, darken * 1.05, 1.0)
+            nt.links.new(diff.outputs["Color"], tint.inputs[1])
+            nt.links.new(tint.outputs["Color"], bsdf.inputs["Base Color"])
+        else:
+            nt.links.new(diff.outputs["Color"], bsdf.inputs["Base Color"])
     else:
         safe_input(bsdf, "Base Color", (0.055, 0.045, 0.038, 1.0))
 
@@ -644,11 +718,13 @@ def make_torus(name, major_radius, minor_radius, location, mat, *, parent=None, 
     return obj
 
 
-def make_pbr_ground(name, asset_id, *, size=24.0, repeat=4.0, disp_strength=0.35, wet=1.0):
+def make_pbr_ground(name, asset_id, *, size=24.0, repeat=4.0, disp_strength=0.35, wet=1.0, darken=1.0):
     bpy.ops.mesh.primitive_grid_add(x_subdivisions=110, y_subdivisions=110, size=size)
     obj = bpy.context.object
     obj.name = name
-    obj.data.materials.append(make_pbr_material(f"MAT_{name}", asset_id, repeat=repeat, wet=wet))
+    obj.data.materials.append(
+        make_pbr_material(f"MAT_{name}", asset_id, repeat=repeat, wet=wet, darken=darken)
+    )
     disp = find_tex(asset_id, "disp")
     if disp:
         tex = bpy.data.textures.new(f"TEX_{name}_DISP", type="IMAGE")
@@ -662,6 +738,17 @@ def make_pbr_ground(name, asset_id, *, size=24.0, repeat=4.0, disp_strength=0.35
         mod.texture_coords = "UV"
         mod.strength = disp_strength
         mod.mid_level = 0.5
+    return obj
+
+
+def make_dark_backdrop(name, mats, *, y=7.0, z=3.0, width=20.0, height=9.0):
+    """A real 3D midnight wall; prevents over-bright volume fog from washing out the frame."""
+    bpy.ops.mesh.primitive_plane_add(size=2.0, location=(0, y, z))
+    obj = bpy.context.object
+    obj.name = name
+    obj.rotation_euler = (math.pi / 2.0, 0, 0)
+    obj.scale = (width / 2.0, height / 2.0, 1.0)
+    obj.data.materials.append(mats["backdrop"])
     return obj
 
 
@@ -772,6 +859,8 @@ def build_material_library():
         "gold": make_principled_mat("MAT_ROYAL_GOLD", (0.95, 0.57, 0.14), 0.86, 0.19, coat=0.35),
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
+        "monarch_skin": make_principled_mat("MAT_MONARCH_OBSIDIAN_SKIN", (0.038, 0.042, 0.052), 0.28, 0.30, coat=0.55, noise=18),
+        "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
         "potato": make_principled_mat("MAT_EARTHY_TUBER", (0.30, 0.16, 0.065), 0.0, 0.82, noise=28),
         "wicker": make_principled_mat("MAT_WICKER", (0.31, 0.16, 0.065), 0.0, 0.72, noise=30),
@@ -929,7 +1018,7 @@ def make_gate(name, mats, *, y=0.0, width=2.8, height=2.2):
 def make_procedural_board(name, mats, size=2.4):
     root = new_empty(name, (0, 0, 0.12))
     dark = make_principled_mat("MAT_MIRROR_BOARD_DARK", (0.008, 0.010, 0.014), 0.72, 0.09, coat=0.9)
-    light = make_principled_mat("MAT_MIRROR_BOARD_LIGHT", (0.16, 0.13, 0.10), 0.62, 0.12, coat=0.7)
+    light = make_principled_mat("MAT_MIRROR_BOARD_LIGHT", (0.075, 0.062, 0.048), 0.62, 0.12, coat=0.7)
     sq = size / 8.0
     for row in range(8):
         for col in range(8):
@@ -974,7 +1063,8 @@ def make_procedural_candle(name, loc, mats, height=0.34):
 
 def make_procedural_head(name, loc, mats, height=0.44):
     root = new_empty(name, loc)
-    make_sphere(name + "_skull", (0.16, 0.14, height / 2), (0, 0, height / 2), mats["obsidian"], parent=root)
+    skin = mats.get("monarch_skin", mats["obsidian"])
+    make_sphere(name + "_skull", (0.16, 0.14, height / 2), (0, 0, height / 2), skin, parent=root)
     make_sphere(name + "_hair", (0.168, 0.145, height * 0.27), (0, 0.018, height * 0.78), mats["black"], parent=root)
     make_box(name + "_part", (0.008, 0.12, 0.015), (0, -0.075, height * 0.88), mats["crimson"], parent=root)
     return root
@@ -982,7 +1072,8 @@ def make_procedural_head(name, loc, mats, height=0.44):
 
 def make_procedural_mask(name, loc, mats, width=0.42):
     root = new_empty(name, loc)
-    make_sphere(name + "_shell", (width / 2, 0.055, 0.23), (0, 0, 0), mats["obsidian"], parent=root, segments=24, rings=14)
+    skin = mats.get("monarch_skin", mats["obsidian"])
+    make_sphere(name + "_shell", (width / 2, 0.055, 0.23), (0, 0, 0), skin, parent=root, segments=24, rings=14)
     for sx in (-1, 1):
         make_box(name + f"_eye_{sx}", (0.105, 0.018, 0.035), (sx * 0.105, -0.052, 0.035), mats["black"], parent=root, bevel=0.012)
         for i in range(4):
@@ -1167,7 +1258,13 @@ def make_guard_rig(mats, name, loc, *, with_rifle=True, use_soldier=True):
     return rig
 
 
-def make_chess_setup(mats):
+def make_chess_setup(mats, procedural_only=False):
+    if procedural_only:
+        board = make_procedural_board("PROC_CHESS_BOARD_CINEMA", mats, size=2.65)
+        knight_rig, knight_head = make_procedural_knight(
+            "BLACK_MARBLE_KNIGHT", (0, 0, 0), mats, height=0.38
+        )
+        return board, knight_rig, knight_head, 0.20
     board = try_append_blend("chess_set", "PH_CHESS_SET")
     if board:
         fit_group(board, 2.65, use="xy", center_xy=(0, 0), bottom_z=0.16, rotation=(0, 0, 0))
@@ -1204,7 +1301,22 @@ def make_chess_setup(mats):
     return board, knight_rig, knight_head, knight_base_z
 
 
-def make_basket_setup(mats, loc=(1.35, 1.15, 0.02)):
+def make_basket_setup(mats, loc=(1.35, 1.15, 0.02), procedural_only=False):
+    if procedural_only:
+        basket = make_procedural_basket("PROC_WICKER_BASKET_CINEMA", loc, mats)
+        rng = random.Random(707)
+        for i in range(12):
+            pos = (
+                loc[0] + rng.uniform(-0.30, 0.30),
+                loc[1] + rng.uniform(-0.25, 0.25),
+                loc[2] + 0.28 + rng.uniform(0.0, 0.18),
+            )
+            make_procedural_potato(
+                f"BASKET_POTATO_{i:02d}", pos, mats,
+                scale=rng.uniform(0.10, 0.16),
+                rotation=(rng.uniform(-0.5, 0.5), rng.uniform(-0.4, 0.4), rng.uniform(0, math.pi * 2)),
+            )
+        return basket
     basket = try_append_blend("wicker_basket_01", "PH_WICKER_BASKET")
     if basket:
         fit_group(basket, 0.88, use="xy", center_xy=(loc[0], loc[1]), bottom_z=loc[2])
@@ -1233,36 +1345,32 @@ def make_basket_setup(mats, loc=(1.35, 1.15, 0.02)):
     return basket
 
 
-def make_monarch_setup(mats):
-    # A real 3D head + real imported Venetian mask + procedural couture silhouette.
-    head = try_append_glb("LeePerrySmith.glb", "LEE_PERRY_SMITH_HEAD")
-    if head:
-        fit_group(head, 0.48, use="z", center_xy=(0, 0.42), bottom_z=0.92)
-        override_material_recursive(head, mats["obsidian"])
-    else:
-        head = make_procedural_head("PROC_MONARCH_HEAD", (0, 0.42, 0.92), mats, height=0.48)
-
-    bust = try_append_blend("marble_bust_01", "PH_MARBLE_BUST")
-    if bust:
-        fit_group(bust, 0.72, use="z", center_xy=(0, 0.78), bottom_z=0.46, rotation=(0, 0, math.pi))
-        override_material_recursive(bust, mats["obsidian"])
-
-    shoulders = make_sphere("MONARCH_TURTLENECK_SHOULDERS", (0.46, 0.24, 0.18), (0, 0.55, 0.66), mats["black"], segments=28, rings=16)
-    neck = make_cylinder("MONARCH_TURTLENECK", 0.17, 0.24, (0, 0.45, 0.83), mats["black"], vertices=24, bevel=0.025)
-
-    mask = try_append_glb("venice_mask.glb", "VENICE_MASK_3D")
-    if mask:
-        fit_group(mask, 0.46, use="max", center_xy=(0, 0.18), bottom_z=0.98, rotation=(0, 0, 0))
-        # Preserve ornate geometry, but force the MONARCH black/gold palette.
-        mask_mat = make_principled_mat("MAT_MASKED_MONARCH_FILIGREE", (0.012, 0.011, 0.014), 0.72, 0.22, coat=0.55, noise=42)
-        override_material_recursive(mask, mask_mat)
-    else:
-        mask = make_procedural_mask("PROC_VENICE_MASK", (0, 0.18, 1.18), mats, width=0.46)
-
-    # Crimson horizontal eye band + eye cores + tiny silver/gold studs.
-    bar = make_box("MONARCH_CRIMSON_LIGHT_BAR", (0.42, 0.022, 0.032), (0, 0.105, 1.18), mats["crimson"], bevel=0.008)
+def make_monarch_setup(mats, procedural_only=True):
+    """A guaranteed-visible 3D MONARCH bust/head/mask with crimson signature."""
+    skin = mats.get("monarch_skin", mats["obsidian"])
+    head = make_procedural_head("MONARCH_3D_HEAD", (0, 0.42, 0.92), mats, height=0.48)
+    bust = make_sphere(
+        "MONARCH_OBSIDIAN_BUST", (0.38, 0.22, 0.30),
+        (0, 0.68, 0.72), skin, segments=28, rings=16,
+    )
+    shoulders = make_sphere(
+        "MONARCH_TURTLENECK_SHOULDERS", (0.46, 0.24, 0.18),
+        (0, 0.55, 0.66), mats["black"], segments=28, rings=16,
+    )
+    neck = make_cylinder(
+        "MONARCH_TURTLENECK", 0.17, 0.24, (0, 0.45, 0.83),
+        mats["black"], vertices=24, bevel=0.025,
+    )
+    mask = make_procedural_mask("MONARCH_3D_VENICE_MASK", (0, 0.18, 1.18), mats, width=0.46)
+    bar = make_box(
+        "MONARCH_CRIMSON_LIGHT_BAR", (0.42, 0.022, 0.032),
+        (0, 0.105, 1.18), mats["crimson"], bevel=0.008,
+    )
     for sx in (-1, 1):
-        make_sphere(f"MONARCH_CRIMSON_EYE_{sx}", (0.032, 0.018, 0.018), (sx * 0.09, 0.085, 1.18), mats["crimson"], segments=12, rings=8)
+        make_sphere(
+            f"MONARCH_CRIMSON_EYE_{sx}", (0.032, 0.018, 0.018),
+            (sx * 0.09, 0.085, 1.18), mats["crimson"], segments=12, rings=8,
+        )
         for i in range(4):
             make_sphere(
                 f"MONARCH_MASK_STUD_{sx}_{i}", (0.010, 0.010, 0.010),
@@ -1270,6 +1378,8 @@ def make_monarch_setup(mats):
                 mats["gold"], segments=8, rings=5,
             )
     return head, bust, shoulders, neck, mask, bar
+
+
 
 
 # ---------------------------------------------------------------------------
@@ -1332,7 +1442,7 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
                 break
     except Exception:
         pass
-    safe_set(SCENE.view_settings, "exposure", -0.12)
+    safe_set(SCENE.view_settings, "exposure", 0.25)
     safe_set(SCENE.view_settings, "gamma", 1.0)
     safe_set(SCENE.display_settings, "display_device", "sRGB")
 
@@ -1344,11 +1454,11 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
     out = nt.nodes.new("ShaderNodeOutputWorld")
     bg = nt.nodes.new("ShaderNodeBackground")
     bg.inputs["Color"].default_value = C_MIDNIGHT
-    bg.inputs["Strength"].default_value = 0.42
+    bg.inputs["Strength"].default_value = 0.18
     vol = nt.nodes.new("ShaderNodeVolumeScatter")
     vol.name = "Animated_Volume_Fog"
     vol.inputs["Color"].default_value = (0.09, 0.18, 0.27, 1.0)
-    vol.inputs["Density"].default_value = 0.018
+    vol.inputs["Density"].default_value = 0.006
     vol.inputs["Anisotropy"].default_value = 0.55
     nt.links.new(bg.outputs["Background"], out.inputs["Surface"])
     nt.links.new(vol.outputs["Volume"], out.inputs["Volume"])
@@ -1399,7 +1509,8 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
 # Six animated shots
 # ---------------------------------------------------------------------------
 def shot_s1(mats, s, e):
-    make_pbr_ground("WET_MUD_FURROWS", "dry_mud_field_001", size=24, repeat=5.5, disp_strength=0.34, wet=0.72)
+    make_pbr_ground("WET_MUD_FURROWS", "dry_mud_field_001", size=24, repeat=5.5, disp_strength=0.34, wet=0.72, darken=0.82)
+    make_dark_backdrop("S1_MIDNIGHT_BACKDROP", mats, y=7.0, z=3.0)
     # Raised furrow ridges — real geometry, not a texture-only trick.
     rng = random.Random(101)
     for i in range(9):
@@ -1426,6 +1537,8 @@ def shot_s1(mats, s, e):
     bg_lantern, _ = make_lantern(mats, (-1.75, 2.2, 0.75), height=0.58, use_glb=True)
     add_point("DISTANT_LANTERN_GLOW", (-1.75, 2.2, 1.15), 18, C_AMBER, 0.22)
     add_area("MOONLIT_BLUE_TOP", (-3.0, 1.0, 4.2), (0, 0, 0.1), 120, (0.22, 0.42, 0.85), 5.0, 3.0)
+    add_area("S1_WARM_MACRO_FILL", (0.0, -2.2, 1.6), (0.0, 0.45, 0.18), 88, C_AMBER, 2.6, 1.4)
+    add_area("S1_COOL_POTATO_RIM", (2.2, 1.4, 1.8), (0.0, 0.4, 0.2), 55, (0.30, 0.52, 0.95), 2.0, 1.2)
     add_area("WARM_EDGE_KICK", (2.8, 1.6, 1.6), (0, 0, 0.25), 42, C_AMBER, 2.4, 1.2)
     set_volume_density(s, 0.016)
     set_volume_density((s + e) // 2, 0.024)
@@ -1435,15 +1548,16 @@ def shot_s1(mats, s, e):
     animate_particles(motes, s, e, lift=0.28, seed=13)
 
     cam = make_camera("S1_MACRO_DOLLY")
-    key_camera(cam, s, (0.00, -3.55, 0.43), (0.00, 0.55, 0.20), lens=40, focus=3.25)
-    key_camera(cam, s + 24, (0.10, -3.05, 0.40), (0.06, 0.62, 0.22), lens=42, focus=2.95)
-    key_camera(cam, s + 48, (0.16, -2.62, 0.37), (0.12, 0.72, 0.23), lens=45, focus=2.55)
-    key_camera(cam, e, (0.22, -2.36, 0.36), (0.16, 0.80, 0.24), lens=47, focus=2.35)
+    key_camera(cam, s, (0.00, -3.85, 0.72), (0.00, 0.55, 0.20), lens=38, focus=3.55)
+    key_camera(cam, s + 24, (0.10, -3.35, 0.68), (0.06, 0.62, 0.22), lens=40, focus=3.20)
+    key_camera(cam, s + 48, (0.16, -2.92, 0.64), (0.12, 0.72, 0.23), lens=42, focus=2.85)
+    key_camera(cam, e, (0.22, -2.62, 0.62), (0.16, 0.80, 0.24), lens=44, focus=2.60)
     return cam
 
 
 def shot_s2(mats, s, e):
-    make_pbr_ground("WET_COBBLESTONE_YARD", "cobblestone_floor_06", size=26, repeat=6.0, disp_strength=0.16, wet=0.38)
+    make_pbr_ground("WET_COBBLESTONE_YARD", "cobblestone_floor_06", size=26, repeat=6.0, disp_strength=0.16, wet=0.38, darken=0.38)
+    make_dark_backdrop("S2_NIGHT_BACKDROP", mats, y=7.0, z=3.2)
     fence = make_fence("FOREGROUND_IRON_SPEARS", mats, y=-1.05, width=5.8, height=2.15, count=17)
     fence.location.x = 0.0
 
@@ -1493,7 +1607,8 @@ def shot_s2(mats, s, e):
 
 
 def shot_s3(mats, s, e):
-    make_pbr_ground("S3_WET_COBBLE", "cobblestone_floor_06", size=14, repeat=3.0, disp_strength=0.10, wet=0.42)
+    make_pbr_ground("S3_WET_COBBLE", "cobblestone_floor_06", size=14, repeat=3.0, disp_strength=0.10, wet=0.42, darken=0.42)
+    make_dark_backdrop("S3_IRON_BACKDROP", mats, y=5.5, z=2.5)
     gate = make_gate("S3_LOCKED_IRON_GATE", mats, y=0.0, width=2.8, height=2.2)
     set_rot(gate["left"], s, (0, 0, 0))
     set_rot(gate["right"], s, (0, 0, 0))
@@ -1511,6 +1626,7 @@ def shot_s3(mats, s, e):
 
     add_area("S3_COLD_KEY", (-2.3, -2.2, 2.6), (0, 0, 1.1), 155, (0.30, 0.52, 0.92), 2.6, 2.0)
     add_area("S3_BRASS_KICK", (2.0, -1.2, 1.5), (0, 0, 1.0), 46, C_AMBER, 1.4, 1.0)
+    add_point("S3_PADLOCK_WARM_PRACTICAL", (0.0, -0.9, 1.22), 38, C_AMBER, 0.12)
     flash = add_point("S3_PADLOCK_SNAP_FLASH", (0, -0.7, 1.18), 1, C_GOLD, 0.14)
     set_light_energy(flash, s, 1)
     set_light_energy(flash, 205, 2)
@@ -1531,7 +1647,8 @@ def shot_s3(mats, s, e):
 
 
 def shot_s4(mats, s, e):
-    make_pbr_ground("S4_GOLDEN_WET_COBBLE", "cobblestone_floor_06", size=20, repeat=4.5, disp_strength=0.15, wet=0.28)
+    make_pbr_ground("S4_GOLDEN_WET_COBBLE", "cobblestone_floor_06", size=20, repeat=4.5, disp_strength=0.15, wet=0.28, darken=0.34)
+    make_dark_backdrop("S4_GOLDEN_FOG_BACKDROP", mats, y=8.0, z=3.2)
     gate = make_gate("S4_UNGUARDED_GATE", mats, y=0.0, width=2.9, height=2.25)
     # Chain and open padlock have already fallen; gates now swing toward the golden fog.
     set_loc(gate["chain"], s, (-0.15, -0.18, 0.08))
@@ -1548,13 +1665,13 @@ def shot_s4(mats, s, e):
     set_rot(gate["left"], e, (0, 0, math.radians(72)))
     set_rot(gate["right"], e, (0, 0, math.radians(-72)))
 
-    guard = make_guard_rig(mats, "S4_GUARD_LEAVING", (0.0, 2.2, 0.0), with_rifle=False)
+    guard = make_guard_rig(mats, "S4_GUARD_LEAVING", (0.0, 3.35, 0.0), with_rifle=False)
     set_rot(guard, s, (0, 0, math.pi))
-    set_loc(guard, s, (0.0, 2.2, 0.0))
-    set_loc(guard, s + 28, (0.18, 3.05, 0.0))
-    set_loc(guard, e, (0.42, 4.15, 0.0))
-    set_scale(guard, s, (1.0, 1.0, 1.0))
-    set_scale(guard, e, (0.96, 0.96, 0.96))
+    set_loc(guard, s, (0.0, 3.35, 0.0))
+    set_loc(guard, s + 28, (0.18, 4.15, 0.0))
+    set_loc(guard, e, (0.42, 5.25, 0.0))
+    set_scale(guard, s, (0.78, 0.78, 0.78))
+    set_scale(guard, e, (0.74, 0.74, 0.74))
 
     add_area("S4_GOLDEN_GATE_BACKLIGHT", (0.0, 4.2, 2.7), (0, 0, 0.9), 420, C_GOLD, 4.5, 3.0)
     add_spot("S4_GOLDEN_GODRAY_SPOT", (0.0, 3.6, 3.2), (0, -1.0, 0.4), 260, C_GOLD, 0.72)
@@ -1571,23 +1688,25 @@ def shot_s4(mats, s, e):
     animate_particles(motes, s, e, lift=0.75, seed=42)
 
     cam = make_camera("S4_DOLLY_THROUGH_OPEN_GATE")
-    key_camera(cam, s, (0.00, -3.45, 1.12), (0.00, 1.20, 1.10), lens=40, focus=3.35)
-    key_camera(cam, s + 22, (0.04, -2.78, 1.08), (0.02, 1.55, 1.05), lens=42, focus=2.95)
-    key_camera(cam, s + 44, (0.06, -2.12, 1.04), (0.05, 2.00, 1.00), lens=44, focus=2.55)
-    key_camera(cam, e, (0.08, -1.62, 1.00), (0.08, 2.45, 0.95), lens=46, focus=2.30)
+    key_camera(cam, s, (0.00, -3.85, 1.28), (0.00, 1.35, 1.08), lens=36, focus=3.70)
+    key_camera(cam, s + 22, (0.04, -3.15, 1.22), (0.02, 1.70, 1.05), lens=38, focus=3.25)
+    key_camera(cam, s + 44, (0.06, -2.48, 1.16), (0.05, 2.15, 1.02), lens=40, focus=2.85)
+    key_camera(cam, e, (0.08, -1.95, 1.12), (0.08, 2.60, 0.98), lens=42, focus=2.55)
     return cam
 
 
 def shot_s5(mats, s, e):
-    head, bust, shoulders, neck, mask, bar = make_monarch_setup(mats)
+    head, bust, shoulders, neck, mask, bar = make_monarch_setup(mats, procedural_only=True)
+    make_dark_backdrop("S5_MONARCH_SMOKE_WALL", mats, y=4.8, z=2.6)
     make_cylinder("MONARCH_OBSIDIAN_PEDESTAL", 0.62, 0.48, (0, 0.65, 0.24), mats["obsidian"], vertices=48, bevel=0.035)
 
     # Foreground practical candles create real depth-of-field bokeh.
-    candle_a, flame_a = make_candle(mats, (1.28, -1.05, 0.34), height=0.38)
-    candle_b, flame_b = make_candle(mats, (-1.32, -0.92, 0.30), height=0.32)
-    holder = try_append_glb("GlassHurricaneCandleHolder.glb", "GLASS_HURRICANE_HOLDER")
-    if holder:
-        fit_group(holder, 0.52, use="z", center_xy=(-1.32, -0.92), bottom_z=0.30)
+    candle_a, flame_a = make_procedural_candle("S5_CANDLE_A", (1.28, -1.05, 0.34), mats, height=0.38)
+    candle_b, flame_b = make_procedural_candle("S5_CANDLE_B", (-1.32, -0.92, 0.30), mats, height=0.32)
+    make_cylinder(
+        "S5_GLASS_HURRICANE_HOLDER", 0.16, 0.44,
+        (-1.32, -0.92, 0.52), mats["glass"], vertices=24,
+    )
     light_a = add_point("MONARCH_CANDLE_A", (1.28, -1.05, 0.78), 36, C_AMBER, 0.10)
     light_b = add_point("MONARCH_CANDLE_B", (-1.32, -0.92, 0.68), 24, C_AMBER, 0.12)
     animate_flicker(light_a, s, e, 36, 10, seed=51, step=3)
@@ -1595,6 +1714,7 @@ def shot_s5(mats, s, e):
     animate_emission(mats["amber"], s, e, 14, 5, seed=53, step=3)
     animate_emission(mats["crimson"], s, e, 9, 3.4, seed=54, step=3)
 
+    add_area("MONARCH_FRONT_FILL", (0.0, -2.4, 1.9), (0, 0.35, 1.16), 90, (0.42, 0.56, 0.88), 2.2, 1.5)
     add_area("MONARCH_CRIMSON_RIM", (0.0, -1.6, 1.45), (0, 0.3, 1.15), 105, C_CRIMSON, 1.8, 1.0)
     add_area("MONARCH_COLD_EDGE", (-2.4, 1.2, 2.3), (0, 0.4, 1.1), 75, C_TEAL, 2.5, 2.0)
     add_area("MONARCH_GOLD_HAIRLIGHT", (2.1, 1.5, 2.2), (0, 0.4, 1.2), 48, C_GOLD, 1.8, 1.0)
@@ -1606,18 +1726,19 @@ def shot_s5(mats, s, e):
     animate_particles(motes, s, e, lift=0.30, seed=62)
 
     cam = make_camera("S5_MASKED_MONARCH_PUSH")
-    key_camera(cam, s, (0.00, -3.20, 1.22), (0.00, 0.42, 1.13), lens=49, focus=3.05)
-    key_camera(cam, s + 14, (0.04, -2.92, 1.20), (0.00, 0.40, 1.15), lens=53, focus=2.78)
-    key_camera(cam, s + 28, (0.07, -2.68, 1.18), (0.00, 0.38, 1.17), lens=57, focus=2.55)
-    key_camera(cam, e, (0.09, -2.50, 1.17), (0.00, 0.36, 1.18), lens=60, focus=2.42)
+    key_camera(cam, s, (0.00, -3.30, 1.25), (0.00, 0.40, 1.15), lens=45, focus=3.15)
+    key_camera(cam, s + 14, (0.04, -3.02, 1.23), (0.00, 0.39, 1.16), lens=48, focus=2.90)
+    key_camera(cam, s + 28, (0.07, -2.78, 1.21), (0.00, 0.38, 1.17), lens=51, focus=2.68)
+    key_camera(cam, e, (0.09, -2.60, 1.20), (0.00, 0.37, 1.18), lens=54, focus=2.52)
     return cam
 
 
 def shot_s6(mats, s, e):
-    board, knight, knight_head, knight_base_z = make_chess_setup(mats)
-    basket = make_basket_setup(mats, loc=(1.34, 1.12, 0.02))
-    candle_a, flame_a = make_candle(mats, (1.78, 0.78, 0.18), height=0.30)
-    candle_b, flame_b = make_candle(mats, (0.92, 1.55, 0.18), height=0.27)
+    board, knight, knight_head, knight_base_z = make_chess_setup(mats, procedural_only=True)
+    basket = make_basket_setup(mats, loc=(1.34, 1.12, 0.02), procedural_only=True)
+    candle_a, flame_a = make_procedural_candle("S6_CANDLE_A", (1.78, 0.78, 0.18), mats, height=0.30)
+    candle_b, flame_b = make_procedural_candle("S6_CANDLE_B", (0.92, 1.55, 0.18), mats, height=0.27)
+    make_dark_backdrop("S6_CHESS_BACKDROP", mats, y=6.0, z=2.8)
     light_a = add_point("S6_BASKET_CANDLE_A", (1.78, 0.78, 0.55), 32, C_AMBER, 0.10)
     light_b = add_point("S6_BASKET_CANDLE_B", (0.92, 1.55, 0.50), 24, C_AMBER, 0.12)
     animate_flicker(light_a, s, e, 32, 8, seed=81, step=4)
@@ -1668,12 +1789,12 @@ def shot_s6(mats, s, e):
     set_volume_density(e, 0.013)
 
     cam = make_camera("S6_ANAMORPHIC_TRACK_RACK_FOCUS")
-    key_camera(cam, s, (-0.55, -2.55, 0.86), (-0.10, 0.05, 0.24), lens=48, focus=2.55)
-    key_camera(cam, 340, (-0.30, -2.38, 0.84), (0.02, 0.10, 0.25), lens=50, focus=2.38)
-    key_camera(cam, 361, (0.02, -2.20, 0.82), (0.32, 0.22, 0.25), lens=53, focus=2.18)
-    key_camera(cam, 390, (0.42, -2.02, 0.88), (0.82, 0.78, 0.36), lens=55, focus=2.25)
-    key_camera(cam, 420, (0.72, -1.88, 0.94), (1.28, 1.10, 0.42), lens=57, focus=2.42)
-    key_camera(cam, e, (0.86, -1.78, 0.98), (1.38, 1.18, 0.44), lens=60, focus=2.48)
+    key_camera(cam, s, (-0.55, -2.80, 1.10), (-0.10, 0.05, 0.24), lens=42, focus=2.80)
+    key_camera(cam, 340, (-0.30, -2.62, 1.08), (0.02, 0.10, 0.25), lens=44, focus=2.62)
+    key_camera(cam, 361, (0.02, -2.42, 1.05), (0.32, 0.22, 0.25), lens=46, focus=2.42)
+    key_camera(cam, 390, (0.42, -2.22, 1.08), (0.82, 0.78, 0.36), lens=48, focus=2.48)
+    key_camera(cam, 420, (0.72, -2.02, 1.12), (1.28, 1.10, 0.42), lens=50, focus=2.62)
+    key_camera(cam, e, (0.86, -1.90, 1.15), (1.38, 1.18, 0.44), lens=52, focus=2.68)
     return cam
 
 
@@ -1738,6 +1859,7 @@ def main():
     except Exception:
         warn(f"Shot builder raised an exception; scene still contains fallback geometry:\n{traceback.format_exc()}")
         raise
+    rebalance_scene()
     smooth_all_fcurves()
 
     out_dir = Path(args.out).resolve()
