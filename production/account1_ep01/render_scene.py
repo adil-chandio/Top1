@@ -1903,6 +1903,10 @@ def parse_args():
     parser.add_argument("--timeline", default=str(BASE / "build" / "timeline_15s.json"))
     parser.add_argument("--assets", default=str(BASE / "assets"))
     parser.add_argument("--out", default=str(BASE / "frames"))
+    parser.add_argument(
+        "--frames", default=None,
+        help="Optional frame subset, e.g. 311-350. Defaults to the whole shot.",
+    )
     return parser.parse_args(argv)
 
 
@@ -1926,6 +1930,15 @@ def main():
     else:
         render_start, render_end = shot_start, shot_end
         samples = int(args.samples)
+
+    if args.frames:
+        lo_s, _, hi_s = args.frames.partition("-")
+        render_start = max(shot_start, int(lo_s))
+        render_end = min(shot_end, int(hi_s or lo_s))
+        if render_end < render_start:
+            raise SystemExit(
+                f"--frames {args.frames} lies outside {args.shot} ({shot_start}-{shot_end})"
+            )
 
     info(
         f"Building {args.shot}: full shot {shot_start}-{shot_end}, "

@@ -1,0 +1,243 @@
+name: "PEHRA 15s — Final 3D Cinema Render (450 frames)"
+
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths:
+      - 'production/account1_ep01/FINAL_TRIGGER.txt'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pehra-final-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+  SAMPLES: "4"
+
+jobs:
+  bootstrap:
+    name: "Prepare assets + soundtrack"
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    outputs:
+      shots: ${{ steps.shots.outputs.shots }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install FFmpeg + DSP deps
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --quiet requests numpy scipy soundfile pydub
+      - name: Build frame-locked Urdu soundtrack
+        run: python production/account1_ep01/build_audio_15s.py
+      - name: Fetch verified CC0 / MIT 3D assets
+        run: python production/account1_ep01/fetch_assets.py
+      - name: Verify prepared bundle
+        run: |
+          set -euo pipefail
+          test -f production/account1_ep01/build/timeline_15s.json
+          test -f production/account1_ep01/build/master_15s.m4a
+          test -f production/account1_ep01/assets/manifest.json
+          du -sh production/account1_ep01/assets production/account1_ep01/build
+      - name: Emit shot matrix
+        id: shots
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+          tl = json.loads(Path("production/account1_ep01/build/timeline_15s.json").read_text())
+          names = {"S1_MIDNIGHT_FURROW":"s1","S2_ROYAL_GUARDS":"s2","S3_LOCKED_IRON":"s3",
+                   "S4_UNGUARDED_GATE":"s4","S5_MASKED_MONARCH":"s5","S6_MASTER_MOVE":"s6"}
+          rows = [{"id": s["id"], "slug": names.get(s["id"], s["id"].lower()),
+                   "f_start": s["f_start"], "f_end": s["f_end"]} for s in tl["shots"]]
+          print("shots=" + json.dumps(rows, separators=(",", ":")))
+          PY
+      - name: Upload render bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-final-bundle-${{ github.run_id }}
+          path: |
+            production/account1_ep01/assets
+            production/account1_ep01/build/timeline_15s.json
+            production/account1_ep01/build/master_15s.m4a
+            production/account1_ep01/render_scene.py
+            production/account1_ep01/assemble_preview.py
+            production/account1_ep01/ASSET_CREDITS.md
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 1
+
+  render:
+    name: "Render ${{ matrix.shot.id }}"
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 175
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        shot: ${{ fromJSON(needs.bootstrap.outputs.shots) }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - name: Install Blender runtime libraries
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends \
+            xz-utils libgl1 libegl1 libglu1-mesa libx11-6 libxcb1 libxi6 \
+            libxrender1 libxfixes3 libxkbcommon0 libxrandr2 libxinerama1 \
+            libxxf86vm1 libsm6 libice6 libfontconfig1 libgomp1
+      - name: Install Blender 4.2.15 LTS
+        run: |
+          set -euo pipefail
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
+          if [ ! -x "$BIN" ]; then
+            mkdir -p "$HOME/blender4215"
+            curl -fsSL --retry 3 -o /tmp/blender.tar.xz \
+              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/blender.tar.xz
+          fi
+          chmod +x "$BIN"
+          "$BIN" --version | head -3
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+      - name: Download render bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: pehra-final-bundle-${{ github.run_id }}
+          path: production/account1_ep01
+      - name: Render frames (rolling push every 40 frames)
+        env:
+          SLUG: ${{ matrix.shot.slug }}
+          F_START: ${{ matrix.shot.f_start }}
+          F_END: ${{ matrix.shot.f_end }}
+          SHOT_ID: ${{ matrix.shot.id }}
+        run: |
+          set -euo pipefail
+          mkdir -p production/account1_ep01/frames
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+
+          checkpoint() {
+            local n
+            n=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" | wc -l)
+            echo "[checkpoint] $SHOT_ID: $n frames on disk"
+            [ "$n" -ge 1 ] || return 0
+            git add -f production/account1_ep01/frames
+            if ! git diff --cached --quiet; then
+              git commit -q -m "render[$SLUG]: $n/${F_END} frames (run ${{ github.run_id }})"
+              git push -q origin "HEAD:${GITHUB_REF_NAME}" || echo "[checkpoint] push failed, keeping local"
+            fi
+          }
+
+          chmod +x "$BLENDER_BIN"
+          # Render in chunks so partial progress survives a timeout.
+          FRAME=$F_START
+          CHUNK=40
+          while [ "$FRAME" -le "$F_END" ]; do
+            LAST=$((FRAME + CHUNK - 1)); [ "$LAST" -gt "$F_END" ] && LAST=$F_END
+            "$BLENDER_BIN" -b --factory-startup \
+              --python production/account1_ep01/render_scene.py -- \
+              --shot "$SHOT_ID" --mode final --samples "$SAMPLES" --res-pct 100 \
+              --frames "$FRAME-$LAST" \
+              --timeline production/account1_ep01/build/timeline_15s.json \
+              --assets production/account1_ep01/assets \
+              --out production/account1_ep01/frames 2>&1 | tail -5
+            checkpoint
+            FRAME=$((LAST + 1))
+          done
+          SPEC=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" -newermt '-6 hours' | wc -l)
+          echo "[done] $SHOT_ID produced $SPEC frames this job"
+      - name: Upload shot frames
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-final-frames-${{ matrix.shot.slug }}-${{ github.run_id }}
+          path: production/account1_ep01/frames
+          if-no-files-found: warn
+          retention-days: 7
+          compression-level: 0
+
+  assemble:
+    name: "Assemble, grade, mux, QC"
+    needs: [bootstrap, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install FFmpeg + fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends ffmpeg fonts-dejavu-core
+          python -m pip install --quiet pillow
+      - name: Download render bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: pehra-final-bundle-${{ github.run_id }}
+          path: production/account1_ep01
+      - name: Download all rendered frames
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pehra-final-frames-*-${{ github.run_id }}
+          path: production/account1_ep01/frames
+          merge-multiple: true
+      - name: Fetch any frames committed by the render shards
+        continue-on-error: true
+        run: |
+          git fetch origin "$GITHUB_REF_NAME"
+          git checkout "origin/$GITHUB_REF_NAME" -- production/account1_ep01/frames 2>/dev/null || true
+      - name: Count the frame set
+        run: |
+          N=$(find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l)
+          echo "frames: $N / 450"
+          [ "$N" -eq 450 ] || { echo "::error::expected 450 frames, found $N"; exit 1; }
+          python - <<'PY'
+          from pathlib import Path
+          d = Path("production/account1_ep01/frames")
+          got = sorted(int(p.stem.split("_")[1]) for p in d.glob("f_*.png"))
+          missing = [f for f in range(1, 451) if f not in set(got)]
+          assert not missing, f"missing frames: {missing[:20]}"
+          print("all 450 frames present, contiguous 1..450")
+          PY
+      - name: Assemble the 15s film
+        run: |
+          set -euo pipefail
+          python production/account1_ep01/assemble_preview.py \
+            --mode final \
+            --frames-dir production/account1_ep01/frames \
+            --timeline production/account1_ep01/build/timeline_15s.json \
+            --audio production/account1_ep01/build/master_15s.m4a \
+            --out-dir production/account1_ep01/renders
+          ls -lh production/account1_ep01/renders
+      - name: Publish deliverables to the branch
+        run: |
+          set -euo pipefail
+          DEST="deliverables/pehra-cinema"
+          mkdir -p "$DEST"
+          cp -a production/account1_ep01/renders/. "$DEST/"
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+          git add -f "$DEST"
+          git commit -q -m "Publish PEHRA 15s 3D cinema film (run ${{ github.run_id }})" || echo "nothing to commit"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Upload preview package
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-final-film-${{ github.run_id }}
+          path: production/account1_ep01/renders
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 1
