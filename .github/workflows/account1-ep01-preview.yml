@@ -29,7 +29,7 @@ on:
         type: string
 
 permissions:
-  contents: read
+  contents: write
   actions: read
 
 concurrency:
@@ -264,6 +264,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 35
     steps:
+      - name: Checkout branch for deliverable publish
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 0
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -318,6 +324,24 @@ jobs:
           if-no-files-found: error
           retention-days: 14
           compression-level: 1
+
+      - name: Publish deliverables to branch
+        env:
+          MODE: ${{ needs.bootstrap.outputs.mode }}
+        run: |
+          set -euo pipefail
+          DEST="deliverables/pehra-${MODE}"
+          mkdir -p "$DEST"
+          cp -a production/account1_ep01/renders/. "$DEST/"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f "$DEST"
+          if git diff --cached --quiet; then
+            echo "No deliverable changes to commit."
+          else
+            git commit -m "Publish PEHRA ${MODE} preview deliverables (run ${{ github.run_id }})"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
 
       - name: Write run summary
         run: |
