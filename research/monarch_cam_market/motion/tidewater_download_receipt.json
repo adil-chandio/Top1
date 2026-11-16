@@ -1,0 +1,26 @@
+{
+  "humpback.bin": {
+    "bytes": 3469416,
+    "sha256": "b3a31801a393489331bc3dd4fd5be64cbad32ac4e159f5180e0eb028d489a92d"
+  },
+  "humpback.json": {
+    "bytes": 4106,
+    "sha256": "c47390c365da1c8c6fa73bea4996bf51073a973770c1942e8993f545e283a354"
+  },
+  "humpback_albedo.png": {
+    "bytes": 4289686,
+    "sha256": "5daaa6727f5304aaa3b6f6ef86cedcebc7cf922376a5c0e7caad66c4f4a5efe1"
+  },
+  "humpback_height.png": {
+    "bytes": 12896017,
+    "sha256": "5e18fbff0aa0034519d149c245d515f75011e7dd4f626dbd1a5e97eea79b66b5"
+  },
+  "LICENSE": {
+    "bytes": 1083,
+    "sha256": "413204504456b6b29e99d565629023e9aeee5916907e41fe8ffe8549219348ec"
+  },
+  "CREDITS.md": {
+    "bytes": 5148,
+    "sha256": "49706aaa01bc73b678bed06aaa456e01924299e6ee109a5cdccd2e6a07fe5fcd"
+  }
+}
