@@ -44,7 +44,24 @@ def api(endpoint, **params):
   report['errors'].append({'endpoint':endpoint,'reason':'network_timeout_or_error'});return {}
  finally:time.sleep(.15)
 if not key:
- report['status']='blocked_no_configured_secret';save();raise SystemExit(0)
+ import subprocess
+ import concurrent.futures
+ report['lane']='keyless_yt_dlp_public_search'
+ def discover(pair):
+  lane,q=pair
+  try:
+   r=subprocess.run(['yt-dlp','--flat-playlist','--dump-single-json','--skip-download','--no-warnings','--socket-timeout','12','--retries','0','ytsearch25:'+q],capture_output=True,text=True,timeout=55)
+   if r.returncode: return {'lane':lane,'query':q,'status':'failed','reason':'public_search_unavailable_or_verification_required','entries':[]}
+   d=json.loads(r.stdout)
+   return {'lane':lane,'query':q,'status':'success','entries':d.get('entries',[])}
+  except (subprocess.TimeoutExpired,ValueError):return {'lane':lane,'query':q,'status':'failed','reason':'timeout_or_invalid_json','entries':[]}
+ with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:
+  for row in pool.map(discover,QUERIES):
+   report['searches'].append(row);save()
+ success=sum(x['status']=='success' for x in report['searches'])
+ report['status']='partial_keyless_collection' if success else 'blocked_no_key_public_search_failed'
+ report['successful_searches']=success
+ save();print(json.dumps({'status':report['status'],'successful_searches':success}));raise SystemExit(0)
 try:
  # Cheap key check: avoid wasting searches when key/quota is unavailable.
  check=api('videos',part='snippet',id='X0whihfTI0Y')

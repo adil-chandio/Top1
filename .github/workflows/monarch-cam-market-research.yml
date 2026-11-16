@@ -6,7 +6,7 @@ on:
       - research/monarch_cam_market/collect.py
       - .github/workflows/monarch-cam-market-research.yml
 permissions:
-  contents: read
+  contents: write
 jobs:
   research:
     runs-on: ubuntu-latest
@@ -16,6 +16,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Install public metadata extractor
+        run: python -m pip install --quiet yt-dlp
       - name: Collect public evidence without printing credentials
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
@@ -30,3 +32,12 @@ jobs:
           name: monarch-cam-market-evidence
           path: research/monarch_cam_market/data/
           retention-days: 14
+      - name: Preserve public snapshot on this session branch only
+        if: always()
+        run: |
+          git config user.name monarch-research-bot
+          git config user.email research-bot@users.noreply.github.com
+          git add research/monarch_cam_market/data/snapshot.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "research: preserve public market collection receipt [skip ci]"
+          git push origin HEAD:arena/2a8ad29e-top1
