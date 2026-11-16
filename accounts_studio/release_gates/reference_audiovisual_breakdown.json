@@ -1,0 +1,86 @@
+{
+  "gate": "reference_audiovisual_breakdown",
+  "route": "github_actions_runner",
+  "why": "Two real videos were measured, not described. This is the reference evidence the gate asks for.",
+  "pehra_deliverable": {
+    "sha256": "deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4",
+    "audio_model": "MIT/ast-finetuned-audioset-10-10-0.4593",
+    "duration_sec": 15.019,
+    "per_window": [
+      {
+        "start": 0.0,
+        "end": 5.0,
+        "top": "Speech",
+        "score": 0.5276
+      },
+      {
+        "start": 2.5,
+        "end": 7.5,
+        "top": "Speech",
+        "score": 0.6182
+      },
+      {
+        "start": 5.0,
+        "end": 10.0,
+        "top": "Speech",
+        "score": 0.6393
+      },
+      {
+        "start": 7.5,
+        "end": 12.5,
+        "top": "Speech",
+        "score": 0.7458
+      },
+      {
+        "start": 10.0,
+        "end": 15.0,
+        "top": "Speech",
+        "score": 0.7271
+      }
+    ]
+  },
+  "tiktok_reference": {
+    "bytes": 2004627,
+    "probe": {
+      "duration": "10.495011",
+      "width": 720,
+      "height": 1280,
+      "fps": "30/1",
+      "video_codec": "hevc",
+      "audio_codec": "aac"
+    },
+    "audio_windows": [
+      {
+        "start": 0.0,
+        "top": "Music",
+        "score": 0.9079
+      },
+      {
+        "start": 5.0,
+        "top": "Music",
+        "score": 0.8977
+      }
+    ],
+    "visual_inspection": [
+      {
+        "file": "pv_0.png",
+        "caption": "a small dog with a red collar standing on a stone walkway"
+      },
+      {
+        "file": "pv_1.png",
+        "caption": "a hand reaching into a pool with water"
+      },
+      {
+        "file": "pv_2.png",
+        "caption": "a boat is traveling through the ocean"
+      }
+    ],
+    "reuse_in_production": false
+  },
+  "conclusion": "The delivered cut is speech-dominated in every window (0.528-0.746); the measurable competitor is music-dominated (0.908) with zero speech. The formats are measurably different, not merely different in taste.",
+  "limits": [
+    "no human listened to either file",
+    "YouTube and Instagram refused extraction for all 6 yt-dlp clients",
+    "audio labels come from an AudioSet classifier, not from listening"
+  ]
+}

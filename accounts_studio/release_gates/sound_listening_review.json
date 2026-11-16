@@ -1,0 +1,15 @@
+{
+  "gate": "sound_listening_review",
+  "status": "measured_not_listened",
+  "what_was_done": [
+    "AudioSet (AST) classifier run on the real 15s soundtrack: speech dominant in all 5 windows",
+    "faster-whisper transcribed the real voice track: Urdu, p=1.0, 4 segments, no_speech_prob 0.005",
+    "stem-level RMS comparison proving the voice >= 10.5 dB above music in all 15 windows",
+    "no silent gaps in any 1s window"
+  ],
+  "what_was_NOT_done": [
+    "no human listened to the mix",
+    "no judgment of musicality, warmth, or whether the drone is the right drone"
+  ],
+  "honest_position": "A machine can prove the voice is louder than the music. It cannot prove the soundtrack is good. This gate is therefore satisfied on measurement and explicitly fails to satisfy the artistic half."
+}

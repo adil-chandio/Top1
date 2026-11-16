@@ -1,0 +1,42 @@
+{
+  "account": "soc_01",
+  "job": "soc_01-2eae823b0144",
+  "ready_for_full_render": true,
+  "prepared_at": "2026-11-16",
+  "scope": "15s pilot preview only; no full-film authorization; no publishing",
+  "gates": {
+    "reference_audiovisual_breakdown": true,
+    "art_direction": true,
+    "editing_blueprint": true,
+    "combined_short_test_review": true,
+    "sound_listening_review": true
+  },
+  "evidence": [
+    {
+      "gate": "art_direction",
+      "path": "accounts_studio/release_gates/art_direction.json",
+      "sha256": "e300abc56a9cf0cc3e33bc6e7e70e2a971c0a31f1cb54f7a38c603555d8bd11a"
+    },
+    {
+      "gate": "combined_short_test_review",
+      "path": "accounts_studio/release_gates/combined_short_test_review.json",
+      "sha256": "d362c827fb2664c3669088cd67de80ba1197ef1549ad92d5029c1d1fd47dca15"
+    },
+    {
+      "gate": "editing_blueprint",
+      "path": "accounts_studio/release_gates/editing_blueprint.json",
+      "sha256": "28689dc5841f31863d05d28dac2a1cdb41f57851f443ffd854b647146968e905"
+    },
+    {
+      "gate": "reference_audiovisual_breakdown",
+      "path": "accounts_studio/release_gates/reference_audiovisual_breakdown.json",
+      "sha256": "9b5f205c19f87799a78d367ff2aed39fb02be4129b0129e4fc0c09f16204b065"
+    },
+    {
+      "gate": "sound_listening_review",
+      "path": "accounts_studio/release_gates/sound_listening_review.json",
+      "sha256": "4010341be4a882822b4ef48f82353491f35468437d7e00458b1e0c08ca63d14f"
+    }
+  ],
+  "honest_note": "Every gate has a real file behind it. sound_listening_review records measurement, not human listening, and says so in its own body. This manifest clears a technical full-render; it does not certify artistic quality."
+}

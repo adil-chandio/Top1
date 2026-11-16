@@ -1,0 +1,76 @@
+{
+  "gate": "editing_blueprint",
+  "total_frames": 450,
+  "fps": 30,
+  "duration_sec": 15.0,
+  "shots": [
+    {
+      "id": "S1_MIDNIGHT_FURROW",
+      "f": [
+        1,
+        72
+      ],
+      "t": [
+        0.0,
+        2.4
+      ]
+    },
+    {
+      "id": "S2_ROYAL_GUARDS",
+      "f": [
+        73,
+        156
+      ],
+      "t": [
+        2.4,
+        5.2
+      ]
+    },
+    {
+      "id": "S3_LOCKED_IRON",
+      "f": [
+        157,
+        207
+      ],
+      "t": [
+        5.2,
+        6.9
+      ]
+    },
+    {
+      "id": "S4_UNGUARDED_GATE",
+      "f": [
+        208,
+        270
+      ],
+      "t": [
+        6.9,
+        9.0
+      ]
+    },
+    {
+      "id": "S5_MASKED_MONARCH",
+      "f": [
+        271,
+        310
+      ],
+      "t": [
+        9.0,
+        10.35
+      ]
+    },
+    {
+      "id": "S6_MASTER_MOVE",
+      "f": [
+        311,
+        450
+      ],
+      "t": [
+        10.35,
+        15.0
+      ]
+    }
+  ],
+  "cut_rules": "no transition longer than 6 frames; every cut lands on a narration word boundary",
+  "note": "Frame counts are the ones actually used by the existing delivered timeline, not an aspiration."
+}

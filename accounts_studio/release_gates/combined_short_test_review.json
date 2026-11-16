@@ -1,0 +1,13 @@
+{
+  "gate": "combined_short_test_review",
+  "artifact": "feasibility-1/integrated_motion_audio_test.mp4",
+  "artifact_sha256": "67c7584ee66169f7c72599fce33e3b3d0c5cdf865bd7ef088dd324897393c086",
+  "duration_sec": 15.0,
+  "decoded_frames": 450,
+  "every_frame_pair_changes": true,
+  "min_changed_pixels": 361138,
+  "min_voice_over_music_db": 10.5,
+  "voice_silent_windows": [],
+  "method_note": "GROUND TRUTH stem comparison: voice and music were mixed from known arrays, so each 1s window compares the exact RMS of each stem. No spectral separation, no inference.",
+  "limit": "This is a technical combined test, not an artistic review. No human watched or listened to it."
+}

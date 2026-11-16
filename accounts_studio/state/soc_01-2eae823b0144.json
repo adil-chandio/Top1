@@ -4,20 +4,24 @@
   "brief": "PEHRA EP01 15s preview: 1080x1920, 30fps, 450 frames, zero still-image plates, Urdu voice-00 narration, dark cinema masked look; no full-film authorization, no publishing",
   "created_at": "2026-11-16T12:54:48.605650+00:00",
   "status": "awaiting_worker",
-  "stage": 4,
+  "stage": 6,
   "attempts": {
     "intelligence": 1,
     "idea": 1,
     "story": 1,
     "script": 1,
-    "feasibility": 1
+    "feasibility": 1,
+    "production": 1,
+    "qc": 1
   },
   "revision_attempts": {
     "intelligence": 1,
     "idea": 1,
     "story": 1,
     "script": 1,
-    "feasibility": 1
+    "feasibility": 1,
+    "production": 1,
+    "qc": 1
   },
   "history": [
     {
@@ -47,6 +51,18 @@
       "stage": "script",
       "attempt": 1,
       "at": "2026-11-16T13:47:13.740649+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "feasibility",
+      "attempt": 1,
+      "at": "2026-11-16T13:49:58.123305+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "production",
+      "attempt": 1,
+      "at": "2026-11-16T13:54:18.245609+00:00",
       "outcome": "accepted"
     }
   ],
@@ -197,9 +213,206 @@
           "sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4"
         }
       ]
+    },
+    "feasibility": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:49:57.714394+00:00",
+        "question": "Is the hardest shot renderable, and can the voice stay dominant over the music for a full 15.000s?",
+        "decision": "Yes. The S6 pull-out renders 158 continuous frames with every one of 449 frame pairs changing (min 361138 px). The voice sits at least 10.5 dB above the music in all 15 one-second windows with zero silent gaps, measured by comparing the two known stems directly.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/production/account1_ep01/ASSET_CREDITS.md",
+            "finding": "Existing asset credits for the account; used to establish that voice clips are original generated work, not third-party audio."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/audio/audio_event_analysis.json",
+            "finding": "Speech dominance measured on the delivered cut informed the >10dB margin rule; the feasibility test then verified the rule is achievable."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/deliverables/pehra-final/timeline_15s.json",
+            "finding": "S6 occupies frames 293-450 (5.27s) making it the hardest and longest shot; it was therefore the correct feasibility target."
+          }
+        ]
+      },
+      "checks": {
+        "asset_rights": true,
+        "hardest_shot_test": true,
+        "actual_motion": true,
+        "reference_fidelity": true
+      },
+      "craft": {
+        "art_direction": {
+          "status": "pass",
+          "observations": "S6 key light falls from full to 8% across the shot, subject shrinks by 1.35x scale, background held near-black with real grain.",
+          "rationale": "The payoff shot must visibly darken as the line lands, so the image itself performs the reveal alongside the voice.",
+          "evidence": [
+            "feasibility-1/hardest_shot_S6.mp4"
+          ]
+        },
+        "integrated_motion_test": {
+          "status": "pass",
+          "observations": "Real MP4 with real voice and real music, 15.000s, 450 frames, every frame pair changes (min 361138 px), voice >= 10.5 dB over music in all 15 windows, no silent gaps.",
+          "rationale": "Motion and audio had to be proven together, not separately, because the format depends on the voice carrying a moving image.",
+          "evidence": [
+            "feasibility-1/integrated_motion_audio_test.mp4",
+            "feasibility-1/av_motion_report.json",
+            "feasibility-1/voice_dominance.json"
+          ]
+        },
+        "asset_provenance": {
+          "status": "pass",
+          "observations": "Per-asset table with licence position; voice and music are original generated work; reference media explicitly excluded from production.",
+          "rationale": "A repo licence must never be stretched over an asset, so each item is judged alone and blocked items are named as blocked.",
+          "evidence": [
+            "feasibility-1/provenance.md"
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "path": "feasibility-1/integrated_motion_audio_test.mp4",
+          "sha256": "67c7584ee66169f7c72599fce33e3b3d0c5cdf865bd7ef088dd324897393c086"
+        },
+        {
+          "path": "feasibility-1/hardest_shot_S6.mp4",
+          "sha256": "17560e3734a5a56e203d994c02679ea750fcb1091579bf70b1d51e6c8479969a"
+        },
+        {
+          "path": "feasibility-1/voice_dominance.json",
+          "sha256": "9274dce29e17d93ddd888b73f14427eb182a97462fac5e9ba7ba3ceb0986daf3"
+        },
+        {
+          "path": "feasibility-1/av_motion_report.json",
+          "sha256": "02c99f5876d5faeedcb57708c7d65d06f9319f93f17cb24a2c66ebc9d2f57193"
+        },
+        {
+          "path": "feasibility-1/provenance.md",
+          "sha256": "420dbf92f77a4997f7e7c5822db993336fadb87502cba70158fe23f1c7be3fd3"
+        }
+      ]
+    },
+    "production": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:54:17.031976+00:00",
+        "question": "Does the assembled film actually meet the measured acceptance spec, and is every shot moving rather than a still plate?",
+        "decision": "Yes, verified on the final file itself: 450 frames, 15.0s, 1080x1920, all 449/449 frame pairs change (min 1080520 px), -14.0 LUFS, peak -2.1 dBTP, clean decode.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/active_release.json",
+            "finding": "All five creative gates had real evidence files before production was allowed to run; release_gate.check returned True."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/rc/feasibility-1/voice_dominance.json",
+            "finding": "Stem-level measurement showed the voice at least 10.5 dB above the music in all 15 windows, so the production mix replicated that ratio."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/deliverables/pehra-final/PEHRA_15s_QC.json",
+            "finding": "Previous delivered cut's measured spec (450 frames, 1080x1920, 30fps, 15.000s) was used as the target, and the new file matches it exactly."
+          }
+        ]
+      },
+      "attribution": "Original work: procedural picture (numpy->rawvideo->x264), voice-00 narration from production/account1_ep01/vo, synthesised 55/110Hz music bed, deterministic film grain. No third-party footage, music or samples. The TikTok reference measured this session is explicitly NOT used (reuse_in_production=false), and no YouTube/Instagram media was obtained.",
+      "craft": {
+        "editing": {
+          "status": "pass",
+          "observations": "Six shots cut on the measured frame board; 449 cuts/pairs none longer than 6 frames.",
+          "rationale": "The board is the delivered timeline, so edit rhythm is inherited not invented.",
+          "evidence": [
+            "production-1/PEHRA_15s_FINAL_1080x1920.mp4"
+          ]
+        },
+        "animation": {
+          "status": "pass",
+          "observations": "450 procedurally generated frames, every consecutive pair differs by >= 1080520 px.",
+          "rationale": "Motion is generated per frame, so no still plate can occur by construction, and it was re-verified on the final encode.",
+          "evidence": [
+            "production-1/PEHRA_15s_FINAL_1080x1920.mp4",
+            "production-1/technical_qc.json"
+          ]
+        },
+        "motion_design": {
+          "status": "pass",
+          "observations": "S1 dolly band, S2 guard drift, S3 push-in, S4 sine float, S5 breathe cycle, S6 1.35x pull-out with key fall to 8%.",
+          "rationale": "Each shot's move is distinct so the film reads as six beats rather than one long pan.",
+          "evidence": [
+            "production-1/PEHRA_15s_FINAL_1080x1920.mp4"
+          ]
+        },
+        "typography": {
+          "status": "not_applicable",
+          "observations": "No burned-in captions in this render.",
+          "rationale": "Captions are delivered as separate editorial copy in the story document, so no type is rendered into the picture and none can obscure a subject's face.",
+          "evidence": []
+        },
+        "compositing": {
+          "status": "pass",
+          "observations": "Single full-frame layer, no alpha compositing; grain added pre-encode at sigma 2.6.",
+          "rationale": "A flat plate avoids matte artifacts on the near-black tones this look depends on.",
+          "evidence": [
+            "production-1/PEHRA_15s_FINAL_1080x1920.mp4"
+          ]
+        },
+        "sound_design": {
+          "status": "pass",
+          "observations": "Music bed fades to zero by 13.6s so the payoff is voice-only; no SFX layer in this pass.",
+          "rationale": "The measurement says the reveal is verbal, so the last 1.4s is deliberately bare.",
+          "evidence": [
+            "production-1/master_15s_stereo_48k.wav"
+          ]
+        },
+        "music": {
+          "status": "pass",
+          "observations": "Synthesised 55Hz + 110Hz pair, fixed absolute level 0.045, ramped out before the final line.",
+          "rationale": "A harmonically simple drone cannot compete with speech intelligibility at these levels.",
+          "evidence": [
+            "production-1/master_15s_stereo_48k.wav"
+          ]
+        },
+        "mix": {
+          "status": "pass",
+          "observations": "Voice retimed 1.3338x into 14.81s; final master -14.0 LUFS, peak -2.1 dBTP, stereo 48kHz.",
+          "rationale": "Loudness was measured with ebur128 then corrected by static gain, not guessed.",
+          "evidence": [
+            "production-1/master_15s_stereo_48k.wav",
+            "production-1/technical_qc.json"
+          ]
+        },
+        "finishing": {
+          "status": "pass",
+          "observations": "h264 High, yuv420p, faststart, 39412237 bytes, clean decode with -xerror.",
+          "rationale": "The delivered file must decode without a single error before QC may inspect it.",
+          "evidence": [
+            "production-1/PEHRA_15s_FINAL_1080x1920.mp4",
+            "production-1/technical_qc.json"
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "path": "production-1/PEHRA_15s_FINAL_1080x1920.mp4",
+          "sha256": "78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd"
+        },
+        {
+          "path": "production-1/technical_qc.json",
+          "sha256": "5179c62426ce64934882e6882605459c78d4db23e7d78d1c98387e4851a5b493"
+        },
+        {
+          "path": "production-1/master_15s_stereo_48k.wav",
+          "sha256": "d6ab51fee43f45871a27e84fb95d5ecb416b3553023ac8bf6048521da5a9d4a4"
+        },
+        {
+          "path": "production-1/attribution.txt",
+          "sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a"
+        }
+      ]
     }
   },
   "blocker": null,
+  "user_rejected": false,
   "creative_brief_sha256": "6e55311f2c00fafca15581ee22a618c885177ea36089e3eeb6c746f9224febc9",
   "accepted_reviews": {
     "intelligence": {
@@ -217,6 +430,14 @@
     "script": {
       "path": "script-1/review.json",
       "sha256": "ba25072db8b3d3f3429f48673d42f50a4190a72ed4cc1687a4a3e2849aff88b4"
+    },
+    "feasibility": {
+      "path": "feasibility-1/review.json",
+      "sha256": "38f9feee42344d729a94bb98eaf3d2240883f54b973cdf7075c5b6dbd97100e5"
+    },
+    "production": {
+      "path": "production-1/review.json",
+      "sha256": "a42058fdd51decf8bad913713826e2cb5ca03de5118cf8b5af6e598a51f0ddf7"
     }
   },
   "artifacts": [
@@ -261,14 +482,77 @@
       "declared_sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4",
       "present": true,
       "actual_sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4"
+    },
+    {
+      "stage": "feasibility",
+      "path": "feasibility-1/integrated_motion_audio_test.mp4",
+      "declared_sha256": "67c7584ee66169f7c72599fce33e3b3d0c5cdf865bd7ef088dd324897393c086",
+      "present": true,
+      "actual_sha256": "67c7584ee66169f7c72599fce33e3b3d0c5cdf865bd7ef088dd324897393c086"
+    },
+    {
+      "stage": "feasibility",
+      "path": "feasibility-1/hardest_shot_S6.mp4",
+      "declared_sha256": "17560e3734a5a56e203d994c02679ea750fcb1091579bf70b1d51e6c8479969a",
+      "present": true,
+      "actual_sha256": "17560e3734a5a56e203d994c02679ea750fcb1091579bf70b1d51e6c8479969a"
+    },
+    {
+      "stage": "feasibility",
+      "path": "feasibility-1/voice_dominance.json",
+      "declared_sha256": "9274dce29e17d93ddd888b73f14427eb182a97462fac5e9ba7ba3ceb0986daf3",
+      "present": true,
+      "actual_sha256": "9274dce29e17d93ddd888b73f14427eb182a97462fac5e9ba7ba3ceb0986daf3"
+    },
+    {
+      "stage": "feasibility",
+      "path": "feasibility-1/av_motion_report.json",
+      "declared_sha256": "02c99f5876d5faeedcb57708c7d65d06f9319f93f17cb24a2c66ebc9d2f57193",
+      "present": true,
+      "actual_sha256": "02c99f5876d5faeedcb57708c7d65d06f9319f93f17cb24a2c66ebc9d2f57193"
+    },
+    {
+      "stage": "feasibility",
+      "path": "feasibility-1/provenance.md",
+      "declared_sha256": "420dbf92f77a4997f7e7c5822db993336fadb87502cba70158fe23f1c7be3fd3",
+      "present": true,
+      "actual_sha256": "420dbf92f77a4997f7e7c5822db993336fadb87502cba70158fe23f1c7be3fd3"
+    },
+    {
+      "stage": "production",
+      "path": "production-1/PEHRA_15s_FINAL_1080x1920.mp4",
+      "declared_sha256": "78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd",
+      "present": true,
+      "actual_sha256": "78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd"
+    },
+    {
+      "stage": "production",
+      "path": "production-1/technical_qc.json",
+      "declared_sha256": "5179c62426ce64934882e6882605459c78d4db23e7d78d1c98387e4851a5b493",
+      "present": true,
+      "actual_sha256": "5179c62426ce64934882e6882605459c78d4db23e7d78d1c98387e4851a5b493"
+    },
+    {
+      "stage": "production",
+      "path": "production-1/master_15s_stereo_48k.wav",
+      "declared_sha256": "d6ab51fee43f45871a27e84fb95d5ecb416b3553023ac8bf6048521da5a9d4a4",
+      "present": true,
+      "actual_sha256": "d6ab51fee43f45871a27e84fb95d5ecb416b3553023ac8bf6048521da5a9d4a4"
+    },
+    {
+      "stage": "production",
+      "path": "production-1/attribution.txt",
+      "declared_sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a",
+      "present": true,
+      "actual_sha256": "7c77e82120c8d3a0352b3cf5968db3a37dff06d7b63862c55ffcd7a102fc128a"
     }
   ],
   "checkpoint": {
     "schema": 1,
     "created_at": "2026-11-16T12:54:48.605650+00:00",
     "job_dir": "/home/user/Top1/accounts_studio/runtime/soc_01-2eae823b0144",
-    "artifact_count": 6,
-    "artifacts_present": 6,
-    "note": "4/9 stages accepted"
+    "artifact_count": 15,
+    "artifacts_present": 15,
+    "note": "6/9 stages accepted; production render complete and technically verified"
   }
 }

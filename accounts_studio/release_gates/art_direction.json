@@ -1,0 +1,7 @@
+{
+  "gate": "art_direction",
+  "look": "masked cinema: near-black base (values 6-20 of 255), one warm key, heavy negative space, real film grain",
+  "measured_on": "feasibility-1/hardest_shot_S6.mp4",
+  "key_curve": "key falls to 8% across the 5.27s shot",
+  "evidence_sha256": "17560e3734a5a56e203d994c02679ea750fcb1091579bf70b1d51e6c8479969a"
+}
