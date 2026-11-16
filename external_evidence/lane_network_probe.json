@@ -1,0 +1,15 @@
+{
+  "measured_by": "github_actions_runner",
+  "runner": "ubuntu-latest",
+  "results": [
+    {"url": "https://www.youtube.com", "http": "200"},
+    {"url": "https://youtu.be", "http": "303"},
+    {"url": "https://www.instagram.com", "http": "200"},
+    {"url": "https://www.tiktok.com", "http": "200"},
+    {"url": "https://huggingface.co", "http": "200"},
+    {"url": "https://cdn-lfs.huggingface.co", "http": "000000"},
+    {"url": "https://raw.githubusercontent.com", "http": "301"},
+    {"url": "https://yt-dlp.org", "http": "302"},
+    {"url": "https://pypi.org", "http": "200"}
+  ]
+}
