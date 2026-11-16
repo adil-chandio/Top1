@@ -1,0 +1,22 @@
+{
+  "url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Alpheus_heterochaelis_%28I0651%29_%2813048410675%29.jpg",
+  "bytes": 107169,
+  "sha256": "b7c7b3f0ee35edb7175425a0f52ecc2ab6328800d31b400944dc9049eb487681",
+  "credit": "Robert Aguilar / Smithsonian Environmental Research Center",
+  "license": "CC BY 2.0",
+  "visual_inspection": true,
+  "dimensions": [
+    2048,
+    880
+  ],
+  "visual_inspection_scope": "Whole source photograph opened; asymmetric enlarged claw and lateral body visible. Transparent hood boundary not securely distinguishable.",
+  "source_page": "https://commons.wikimedia.org/wiki/File:Alpheus_heterochaelis_(I0651)_(13048410675).jpg",
+  "license_url": "https://creativecommons.org/licenses/by/2.0/",
+  "run": "https://github.com/adil-chandio/Top1/actions/runs/43928544502",
+  "modifications": {
+    "alpheus-heterochaelis-i0651-original.jpg": "none; original bytes",
+    "alpheus-heterochaelis-head-reference.jpg": "rectangular crop (480,30,1150,460), JPEG re-encoding; no anatomy added"
+  },
+  "hood_geometry_approved": false,
+  "hero_rig_approved": false
+}

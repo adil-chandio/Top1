@@ -74,7 +74,7 @@ https://commons.wikimedia.org/wiki/File:Alpheus_heterochaelis_(I0651)_(130484106
 - Page identifies **Alpheus heterochaelis**, photo credit **Robert Aguilar / Smithsonian Environmental Research Center**.
 - Original listing2048x880, ~105KB. Displayed **CC BY2.0**, with Flickr licence-review record. Not assumed public domain because Smithsonian.
 - Potential permitted uses include credited sharing/adaptation under stated licence; indicate cropping/modification and no endorsement. This is rights availability, not a downloaded/rigged production asset.
-- Exact-image search returned120px thumbnail; it was actually opened. Fine animal silhouette visible but head/hood detail inadequate. **Do not upscale it as hero plate or use it to certify hood geometry.** Original full-resolution file acquisition and visual check pending.
+- Exact-image search returned120px thumbnail; it was actually opened. Fine animal silhouette visible but head/hood detail inadequate. **Do not upscale it as hero plate or use it to certify hood geometry.** Original full-resolution file acquisition aur visual check ab complete hain: neeche continuation dekhein. Hood geometry phir bhi verified nahi.
 - Date metadata conflicts: table date2006 vs description specimen context2013. Neither used as reliable capture date in narration.
 - Suggested attribution for eventual authorized use: 'Robert Aguilar / Smithsonian Environmental Research Center, Alpheus heterochaelis (I0651), via Wikimedia Commons, CC BY2.0, https://creativecommons.org/licenses/by/2.0/ . Changes: [actual modifications only].' No usage/modifications claimed yet.
 
@@ -97,3 +97,16 @@ https://commons.wikimedia.org/wiki/File:Alpheus_heterochaelis_(I0651)_(130484106
 ## Next internal proof, no extra user approval required
 
 Resolve correct species/head/hood visual source; build original macro/cutaway anatomy check; record narration only with an already-approved/appropriate voice route; then test short combined motion+sound passage. No full-length placeholder render to manufacture completion. If a required capability remains missing, keep its gate false rather than use worksheet/test totals as quality approval.
+
+
+## Continuation: asli resolution par anatomy check
+
+- Native cloud acquisition successful: run43928544502. Original **2048x880, 107169 bytes** JPEG mila, hash verify hua, aur image actually kholi gayi. `SPECIES_PHOTO_RECEIPT.json` machine receipt hai.
+- Original aur clearly identified head crop `assets/` mein attribution ke saath saved hain. Thumbnail upscale nahi kiya.
+- Asymmetric bara panja, lateral shell/body segmentation aur front appendages reference ke liye readable hain. Photo specimen-style white surface par hai; isay natural underwater shot nahi kahenge.
+- **Hood ki exact transparent boundary is lateral photo se certify nahi hui.** Is liye is crop par arbitrary helmet outline, visible brain ya guessed cross-section add nahi kiya. Original photo rigged hero nahi ban gayi.
+- JEB2025 publisher chunk2 actually padha: Fig1 caption intact aur surgically removed hood ke head views batata hai; text hoods ko eyes ke upar rakhta hai. Ab yeh abstract-only access nahi, is specific introduction/caption passage ki direct reading hai. Figure image itself acquire/open nahi hui; geometry phir bhi unapproved.
+- Usi passage mein living hood transparency aur optical trade-off explain hua. Story mein additional percentages nahi jore; caption ki 1mm scale ko Commons photo par transfer nahi kiya.
+- Agla unresolved visual: correctly sourced close head view / independent geometry verification. Final motion production ka gate abhi false hai, lekin full-species reference acquisition wala blocker resolve ho gaya.
+
+JEB passage: https://journals.biologists.com/jeb/article/228/12/jeb250592/368407/Shock-wave-damping-orbital-hoods-cover-the-eyes-of (chunk2: introduction + Fig1 caption; koi figure reuse licence assume nahi).
