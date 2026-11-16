@@ -878,7 +878,7 @@ def build_material_library():
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
         "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.115, 0.074, 0.050), 0.0, 0.58, coat=0.10, noise=140, bump=0.05, bump_dist=0.0015),
-        "stone": make_principled_mat("MAT_WEATHERED_LIMESTONE", (0.34, 0.33, 0.30), 0.0, 0.82, noise=90, bump=0.30, bump_dist=0.012),
+        "stone": make_principled_mat("MAT_WEATHERED_LIMESTONE", (0.20, 0.19, 0.175), 0.0, 0.66, coat=0.06, noise=60, bump=0.45, bump_dist=0.020),
         "guard_coat": make_principled_mat("MAT_ROYAL_GUARD_CHARCOAL", (0.030, 0.036, 0.048), 0.12, 0.52, coat=0.35, noise=10),
         "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
@@ -2353,29 +2353,29 @@ def shot_b13(mats, s, e):
     _b_potato_field(mats, count=30, seed=172, center=(0.0, 2.8), spread=(2.4, 1.8))
 
     # The wall they come over, and the gate standing open — no guards.
-    make_box("B13_LOW_WALL", (7.0, 0.36, 1.05), (0.0, -0.55, 0.52), mats["earth"], bevel=0.03)
-    gate = make_gate("B13_OPEN_GATE", mats, y=0.55, width=3.0, height=2.2)
+    make_box("B13_LOW_WALL", (7.4, 0.38, 1.02), (0.0, 4.35, 0.51), mats["earth"], bevel=0.03)
+    gate = make_gate("B13_OPEN_GATE", mats, y=3.10, width=3.0, height=2.2)
     set_rot(gate["left"], s, (0, 0, math.radians(68)))
     set_rot(gate["right"], s, (0, 0, math.radians(-68)))
 
     # Three figures climbing and dropping into the field, staggered.
     for i, drop in enumerate((6, 18, 30)):
-        thief = make_guard_rig(mats, f"B13_THIEF_{i}", (-1.5 + i * 1.5, -0.2, 1.05), with_rifle=False)
-        set_loc(thief, s, (-1.5 + i * 1.5, -0.2, 1.05))
-        set_loc(thief, s + drop, (-1.5 + i * 1.5, 0.35, 1.35))
-        set_loc(thief, s + drop + 8, (-1.5 + i * 1.5, 0.95, 0.0))
-        set_loc(thief, e, (-1.5 + i * 1.5 + 0.25, 2.35, 0.0))
+        thief = make_guard_rig(mats, f"B13_THIEF_{i}", (-1.5 + i * 1.5, 4.30, 1.08), with_rifle=False)
+        set_loc(thief, s, (-1.5 + i * 1.5, 4.30, 1.08))
+        set_loc(thief, s + drop, (-1.5 + i * 1.5, 4.05, 1.42))
+        set_loc(thief, s + drop + 8, (-1.5 + i * 1.5, 3.30, 0.0))
+        set_loc(thief, e, (-1.5 + i * 1.5 + 0.25, 1.95, 0.0))
         set_rot(thief, s, (0, 0, math.pi))
         set_rot(thief, e, (0, 0, math.pi + 0.08))
 
     # Sacks filling up on the ground.
     for i in range(3):
         sack = make_sphere(f"B13_SACK_{i}", (0.22, 0.18, 0.16),
-                           (-1.1 + i * 1.15, 2.15, 0.16), mats["earth"], segments=16, rings=10)
+                           (-1.1 + i * 1.15, 2.55, 0.16), mats["earth"], segments=16, rings=10)
         set_scale(sack, s, (0.55, 0.55, 0.45))
         set_scale(sack, e, (1.0, 1.0, 0.92))
 
-    add_area("B13_MOON_KEY", (-1.2, 4.2, 5.0), (0, 2.6, 0.4), 420, (0.34, 0.56, 1.0), 7.0, 4.6)
+    add_area("B13_MOON_KEY", (-1.2, 6.8, 5.2), (0, 2.6, 0.4), 420, (0.34, 0.56, 1.0), 7.0, 4.6)
     add_area("B13_COLD_FRONT", (0.0, -2.8, 1.8), (0, 2.5, 0.6), 190, (0.34, 0.50, 0.84), 4.0, 2.4)
     add_area("B13_WALL_RIM", (2.6, 1.2, 1.6), (0, 1.9, 0.7), 120, C_TEAL, 2.6, 1.6)
     add_point("B13_DISTANT_WINDOW", (2.9, 5.2, 1.6), 22, C_AMBER, 0.20)
@@ -2387,9 +2387,9 @@ def shot_b13(mats, s, e):
     animate_particles(motes, s, e, lift=0.30, seed=174)
 
     cam = make_camera("B13_VAULT_PUSH")
-    key_camera(cam, s, (0.35, -3.10, 0.92), (0.00, 1.60, 0.72), lens=40, focus=3.85)
-    key_camera(cam, (s + e) // 2, (0.15, -2.60, 0.86), (0.00, 2.10, 0.55), lens=43, focus=3.40)
-    key_camera(cam, e, (0.02, -2.25, 0.82), (0.00, 2.45, 0.42), lens=46, focus=3.05)
+    key_camera(cam, s, (0.35, -3.30, 0.98), (0.00, 2.20, 0.80), lens=40, focus=4.30)
+    key_camera(cam, (s + e) // 2, (0.15, -2.85, 0.92), (0.00, 2.45, 0.62), lens=43, focus=3.70)
+    key_camera(cam, e, (0.02, -2.50, 0.88), (0.00, 2.65, 0.48), lens=46, focus=3.30)
     return cam
 
 
@@ -2443,7 +2443,7 @@ def shot_b15(mats, s, e):
     make_box("B15_PLINTH", (1.24, 0.58, 0.18), (0, 2.15, 0.09), mats["stone"], bevel=0.04)
     cap = make_box("B15_STONE_CAP", (0.96, 0.32, 0.10), (0, 2.15, 1.34), mats["stone"], bevel=0.05)
     # Carved recess: a dark inset where an inscription would be.
-    make_box("B15_INSCRIPTION", (0.56, 0.02, 0.30), (0, 2.15 - 0.135, 0.86), mats["obsidian"], bevel=0.01)
+    make_box("B15_INSCRIPTION", (0.56, 0.03, 0.30), (0, 2.15 - 0.145, 0.86), mats["earth"], bevel=0.01)
 
     # Potato plants ringing the grave — the actual historical detail.
     rng = random.Random(191)
@@ -2455,8 +2455,9 @@ def shot_b15(mats, s, e):
                                       height=0.42 + rng.uniform(0, 0.16))
         animate_swing(plant, s, e, amp=0.05, period=52 + i * 2, axis=1, step=6)
 
-    add_area("B15_MIST_KEY", (-2.6, 3.6, 3.2), (0, 2.15, 0.8), 320, (0.52, 0.60, 0.80), 4.0, 2.6)
-    add_area("B15_FRONT_FILL", (0.0, -2.4, 1.8), (0, 2.15, 0.75), 150, (0.46, 0.52, 0.68), 3.0, 2.0)
+    add_area("B15_MIST_KEY", (-2.6, 3.6, 3.2), (0, 2.15, 0.8), 210, (0.50, 0.58, 0.78), 3.4, 2.2)
+    add_area("B15_FRONT_FILL", (0.0, -2.4, 1.6), (0, 2.15, 0.75), 95, (0.42, 0.48, 0.64), 2.6, 1.8)
+    add_area("B15_WARM_RIM", (1.9, 3.4, 1.5), (0, 2.15, 0.9), 90, C_AMBER, 1.8, 1.2)
     add_area("B15_WARM_EDGE", (2.8, 1.2, 1.9), (0, 2.15, 0.7), 70, C_GOLD, 2.2, 1.4)
     set_volume_density(s, 0.056)
     set_volume_density(e, 0.046)
