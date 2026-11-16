@@ -1,0 +1,15 @@
+{
+  "batch": 1,
+  "status": "incomplete",
+  "prior_shrimp_pick_carried_forward_as_approved": false,
+  "entries": [
+    {"topic":"decorator crab", "url":"https://www.youtube.com/shorts/WPvO6qaa2M8", "format":"short", "title":"Diver helps decorator crab with stuck claw", "channel":"ABC7", "upload_date":"2025-07-27", "views_display":"13K", "views_exact":null, "likes_display":"425", "access":"page_text_only", "playback_review":false, "warning":"401 malformed; do not retry same request", "role":"discovery lead, rescue framing not clean proof of decoration mechanism"},
+    {"topic":"decorator crab", "url":"https://www.youtube.com/watch?v=tVxJ55mlmaI", "format":"long", "title":"Decorator Crab #asmrvideo | Beast challenge Stories", "channel":"ISOKORIGARI Stories Lovers TV", "upload_date":"2025-10-14", "duration_seconds":261, "views":24, "likes":1, "access":"page_text_and_transcript", "playback_review":false, "role":"not an established viral benchmark; transcript facts unverified", "search_page_title_differs_from_fetched_title":true},
+    {"topic":"bombardier beetle", "url":"https://www.youtube.com/shorts/N6DM_2xlx5o", "format":"short", "channel":"fact1facto", "upload_date":"2025-07-14", "views_display":"27K", "views_exact":null, "likes_display":"268", "access":"page_text_only", "playback_review":false, "warning":"401 malformed; do not retry same request", "role":"myth-screen lead; fire-breathing/acid description is uploader claim, not accepted science"},
+    {"topic":"bombardier beetle", "url":"https://www.youtube.com/shorts/Lpr4lZIK5pY", "format":"short", "upload_date_search_only":"2025-05-02", "access":"search_snippet_only", "playback_review":false, "role":"excluded as natural-behaviour evidence: description explicitly says AI"},
+    {"topic":"sailfish colour changes during hunting", "url":"https://www.youtube.com/watch?v=WqRpgJZeCPU", "format":"unconfirmed", "upload_date_search_only":"2026-04-18", "access":"search_snippet_only", "playback_review":false, "role":"fresh 2026 discovery lead; causal explanation unverified"},
+    {"topic":"broadclub cuttlefish hunting displays", "url":"https://esajournals.onlinelibrary.wiley.com/doi/10.1002/ecy.70021?af=R", "access":"primary_publisher_search_extract_only", "playback_review":false, "role":"primary-source lead, not YouTube demand proof"},
+    {"topic":"broadclub cuttlefish hunting displays", "url":"https://www.theinertia.com/video/cuttlefish-hunting-methods/", "access":"article_text_only", "playback_review":false, "warning":"embedded player error 232011", "role":"secondary coverage and primary-link discovery, not actual video inspection"}
+  ],
+  "notes":["All metrics are observed snapshots, not live certified counters.","Search results and publisher claims remain distinguished from independent verification.","No comparable-channel median or view velocity computed from these entries.","Old topics may re-enter the pool, but have no reserved top-three slot."]
+}
