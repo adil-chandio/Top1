@@ -1,0 +1,75 @@
+{
+  "source_access": "fetched public YouTube page metadata and transcripts, NOT AV",
+  "channel": "BBC Earth",
+  "series": "20 Years of Planet Earth",
+  "as_of_date": "2026-11-14",
+  "date_basis": "session instruction date, not runner clock",
+  "selection": "Search-discovered single-sequence standard videos in same anniversary series, Mar-May 2026. Nonrandom convenience sample; channel listing inaccessible.",
+  "excluded_formats": [
+    "Shorts",
+    "hour-long compilations",
+    "livestreams",
+    "reaction videos"
+  ],
+  "comparable_n": 5,
+  "comparable_median_views": 156489,
+  "target_ratio": 1.007572417230604,
+  "ratio_age_adjusted": false,
+  "current_view_velocity_known": false,
+  "items": [
+    {
+      "url": "https://www.youtube.com/watch?v=WqRpgJZeCPU",
+      "topic": "Sailfish",
+      "upload_date": "2026-04-18",
+      "age_days": 210,
+      "duration_seconds": 190,
+      "views": 157674,
+      "target": true
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=d-Kri0vGf2c",
+      "topic": "Wolf/caribou",
+      "upload_date": "2026-03-26",
+      "age_days": 233,
+      "duration_seconds": 215,
+      "views": 227946,
+      "target": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Lt_lMOnzDNg",
+      "topic": "Lions/elephant",
+      "upload_date": "2026-05-16",
+      "age_days": 182,
+      "duration_seconds": 236,
+      "views": 156489,
+      "target": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=5JYKvA6_3bI",
+      "topic": "Kangaroo heat",
+      "upload_date": "2026-05-15",
+      "age_days": 183,
+      "duration_seconds": 253,
+      "views": 64744,
+      "target": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=7_H8QMWYIxU",
+      "topic": "Bird courtship",
+      "upload_date": "2026-04-02",
+      "age_days": 226,
+      "duration_seconds": 208,
+      "views": 236894,
+      "target": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2FgHLrlHNeg",
+      "topic": "Penguin chicks",
+      "upload_date": "2026-04-04",
+      "age_days": 224,
+      "duration_seconds": 263,
+      "views": 72315,
+      "target": false
+    }
+  ]
+}
