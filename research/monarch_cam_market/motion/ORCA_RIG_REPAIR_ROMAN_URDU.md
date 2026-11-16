@@ -43,3 +43,21 @@ Python render requires existing `requirements-layout.txt` dependencies. Generate
 ## Execution boundary
 
 This repair is a testable rig candidate for upcoming native-mesh staging. It does not advance coordinator stages or clear actual reference AV, integrated short-test, listening or independent-review gates. No user approval requested. Original broken clip remains intact for rollback/comparison. Neither distorted native skin nor flat CPU diagnostic is promoted as final animation.
+
+## Animated asset export continuation
+
+Candidate now exports `out/orca/orca_metric_rig.glb`, retaining original embedded source images, material, UV and geometry. Original metric skeleton/weights and a six-second sampled clip replace incompatible legacy animation. Reimport through actual Three.js loader evaluates 144 frames; max vertex disagreement below 1e-4. Original source GLB unchanged.
+
+Official Khronos validator added (`gltf-validator@2.0.0-dev.3.10`, npm lifecycle scripts disabled). Initial schema findings—empty children arrays, nonzero joint indices at zero weights and mesh-root structure—were corrected. Latest result: zero errors, zero warnings, 11 informational unused old-accessor notices. Old unused buffer/accessor data retained; not hidden as a clean/no-notices result.
+
+Actual six-second textured motion diagnostic rendered from evaluated skin geometry at 24fps. CPU rasterizer now interpolates texture UVs per pixel with a depth buffer, instead of coloring each face from one texture sample. Simple lighting remains diagnostic, not cinematic lookdev. Fixed-camera sample stills actually opened. No audio or independent full-motion review claimed.
+
+Reproduce additions:
+```
+node research/monarch_cam_market/motion/test_metric_orca_rig.mjs
+npm install --prefix research/monarch_cam_market/motion/out/tools --ignore-scripts --no-audit --no-fund --save-exact gltf-validator@2.0.0-dev.3.10
+node research/monarch_cam_market/motion/validate_metric_asset.mjs
+PYTHONPATH=.local-motion python3 research/monarch_cam_market/motion/render_metric_motion.py
+```
+
+Latest structured receipt: `ORCA_ANIMATED_ASSET_RECEIPT.json`. Generated GLB/video and dense pose arrays remain ignored. Integrated animal-scene/audio proof and independent review remain separate from this engineering result.
