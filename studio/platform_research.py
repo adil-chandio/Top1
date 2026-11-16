@@ -2,7 +2,7 @@
 Discovery/metadata are NOT viewing/listening. Media extracts are reference-only.
 All generated files default to ignored studio/runtime, never source control.
 """
-import argparse,datetime as dt,hashlib,json,os,re,statistics,subprocess,sys
+import argparse,datetime as dt,hashlib,json,os,re,shutil,statistics,subprocess,sys
 from pathlib import Path
 from urllib.parse import urlparse,parse_qs
 
@@ -51,7 +51,8 @@ def channel_url(value,tab='videos'):
 def ytdlp(args,timeout=90):
  env=os.environ.copy();local=ROOT/'.local-motion'
  env['PYTHONPATH']=str(local)+(os.pathsep+env['PYTHONPATH'] if env.get('PYTHONPATH') else '')
- command=[sys.executable,'-m','yt_dlp','--ignore-config','--no-cache-dir','--socket-timeout','12','--retries','0','--extractor-retries','0',*args]
+ runtime=['--js-runtimes','node'] if shutil.which('node') else []
+ command=[sys.executable,'-m','yt_dlp',*runtime,'--ignore-config','--no-cache-dir','--socket-timeout','12','--retries','0','--extractor-retries','0',*args]
  proc=subprocess.run(command,capture_output=True,text=True,env=env,timeout=timeout)
  if proc.returncode:raise RuntimeError('public_platform_access_failed: '+proc.stderr[-1800:])
  return json.loads(proc.stdout)
@@ -126,7 +127,7 @@ def sample(media,out,url,start,duration,rights_basis):
  if out.exists() and any(out.iterdir()):raise ValueError('new empty segment folder required')
  out.mkdir(parents=True,exist_ok=True)
  # One frame/second for orientation only; motion requires actual clip inspection.
- prefix=[ffmpeg,'-nostdin','-v','error','-xerror','-ss',str(start),'-i',str(media),'-t',str(duration)]
+ prefix=[ffmpeg,'-nostdin','-v','error','-xerror','-protocol_whitelist','file,pipe,crypto','-ss',str(start),'-i',str(media),'-t',str(duration)]
  subprocess.run(prefix+['-map','0:v:0','-vf','fps=1,scale=640:-2','-frames:v',str(max(1,int(duration)) ),str(out/'frame-%03d.jpg')],check=True,timeout=120,capture_output=True)
  subprocess.run(prefix+['-map','0:v:0','-map','0:a?','-vf','scale=640:-2','-c:v','libx264','-preset','fast','-crf','23','-c:a','aac',str(out/'segment.mp4')],check=True,timeout=180,capture_output=True)
  probe=subprocess.run([ffmpeg,'-nostdin','-v','error','-i',str(out/'segment.mp4'),'-progress','pipe:1','-f','null','-'],check=True,timeout=120,capture_output=True,text=True)

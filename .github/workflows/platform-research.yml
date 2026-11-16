@@ -59,6 +59,10 @@ jobs:
           run-id: '${{ steps.task.outputs.recover_run }}'
           name: public-youtube-reference
           path: studio/runtime/cloud-platform/
+      - uses: actions/setup-node@v4
+        if: steps.task.outputs.recover_run == ''
+        with:
+          node-version: '22'
       - name: Install public extractor and FFmpeg
         if: steps.task.outputs.recover_run == ''
         run: python -m pip install -r studio/requirements-platforms.txt imageio-ffmpeg

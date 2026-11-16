@@ -1,2 +1,3 @@
 # Optional public-platform execution tools. Keep media in ignored runtime storage.
 yt-dlp==2026.10.26
+yt-dlp-ejs==0.8.0
