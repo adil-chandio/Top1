@@ -1,0 +1,39 @@
+{
+  "route": "github_actions_runner",
+  "engine": "faster-whisper",
+  "source": "deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4",
+  "source_sha256": "5d10a7494cee1fb00dad7ef25e9c532de336ac821c6dc9ce3d96ae33ec1c053b",
+  "model": "small",
+  "language_requested": "ur",
+  "language_detected": "ur",
+  "language_probability": 1,
+  "audio_duration": 15.019,
+  "segment_count": 4,
+  "segments": [
+    {
+      "start": 0.0,
+      "end": 5.0,
+      "text": "اس آدمی نے کھیت میں آلو گائے اور بہر بندوک فوجی کھڑے کر دیئے",
+      "no_speech_prob": 0.0053
+    },
+    {
+      "start": 5.0,
+      "end": 9.0,
+      "text": "چوری روکنے کے لیے نہیں تاکہ لوگ خود آ کر چھوڑا لیں",
+      "no_speech_prob": 0.0053
+    },
+    {
+      "start": 9.0,
+      "end": 10.0,
+      "text": "عجیب لگا نا",
+      "no_speech_prob": 0.0053
+    },
+    {
+      "start": 10.0,
+      "end": 14.0,
+      "text": "مگر اس ایک چال نے پورے ملک کی جان بچا لی",
+      "no_speech_prob": 0.0053
+    }
+  ],
+  "transcript": "اس آدمی نے کھیت میں آلو گائے اور بہر بندوک فوجی کھڑے کر دیئے چوری روکنے کے لیے نہیں تاکہ لوگ خود آ کر چھوڑا لیں عجیب لگا نا مگر اس ایک چال نے پورے ملک کی جان بچا لی"
+}

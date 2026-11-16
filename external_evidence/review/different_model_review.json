@@ -1,0 +1,30 @@
+{
+  "model": "Qwen/Qwen2.5-0.5B-Instruct",
+  "model_family": "Qwen",
+  "backend": "transformers",
+  "route": "github_actions_runner",
+  "torch": "2.15.0+cpu",
+  "python": "3.11.18",
+  "prompt": "You are an independent technical reviewer. You did NOT author this artifact and you cannot watch or listen to it.\nJudge ONLY the measured facts below. Never invent picture or sound observations.\n\nMEASURED FACTS:\n{\n  \"artifact_sha256\": \"5d10a7494cee1fb00dad7ef25e9c532de336ac821c6dc9ce3d96ae33ec1c053b\",\n  \"artifact_bytes\": 38313096,\n  \"duration_sec\": \"15.000000\",\n  \"width\": 1080,\n  \"height\": 1920,\n  \"fps\": \"30/1\",\n  \"video_codec\": \"h264\",\n  \"audio_codec\": \"aac\",\n  \"audio_sample_rate\": \"48000\",\n  \"zero_still_image_scene_plates\": true,\n  \"validated_all_frame_files\": true,\n  \"editorial_caption_overlays\": 6\n}\n\nACCEPTANCE CRITERIA:\n{\n  \"width\": 1080,\n  \"height\": 1920,\n  \"fps\": 30,\n  \"duration_sec\": 15.0\n}\n\nReply with strict JSON only: {\"meets_technical_spec\": true, \"checks\": {\"resolution\": true, \"fps\": true, \"duration\": true, \"audio_stream\": true}, \"findings\": \"one paragraph\", \"cannot_judge\": [\"creative quality\", \"artistic merit\"]}",
+  "facts": {
+    "artifact_sha256": "5d10a7494cee1fb00dad7ef25e9c532de336ac821c6dc9ce3d96ae33ec1c053b",
+    "artifact_bytes": 38313096,
+    "duration_sec": "15.000000",
+    "width": 1080,
+    "height": 1920,
+    "fps": "30/1",
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "audio_sample_rate": "48000",
+    "zero_still_image_scene_plates": true,
+    "validated_all_frame_files": true,
+    "editorial_caption_overlays": 6
+  },
+  "criteria": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_sec": 15.0
+  },
+  "error": "AttributeError: "
+}
