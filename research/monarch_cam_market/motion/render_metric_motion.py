@@ -9,15 +9,15 @@ import imageio_ffmpeg
 from test_native_orca_rig import load,accessor
 BASE=Path(__file__).parent;OUT=BASE/'out/orca';W,H=720,405
 
-def render(p,faces,uv,texture):
- eye=np.array([.35,.25,1.]);eye/=np.linalg.norm(eye);right=np.cross([0,1,0],eye);right/=np.linalg.norm(right);up=np.cross(eye,right)
- xy=np.c_[p@right*82+W*.50,-p@up*82+H*.54];depth=p@eye
+def render(p,faces,uv,texture,*,camera=(.35,.25,1.),scale=82,canvas=None,zbuffer=None,draw_labels=True):
+ eye=np.array(camera,dtype=float);eye/=np.linalg.norm(eye);right=np.cross([0,1,0],eye);right/=np.linalg.norm(right);up=np.cross(eye,right)
+ xy=np.c_[p@right*scale+W*.50,-p@up*scale+H*.54];depth=p@eye
  n=np.cross(p[faces[:,1]]-p[faces[:,0]],p[faces[:,2]]-p[faces[:,0]])
  vn=np.zeros_like(p)
  for k in range(3):np.add.at(vn,faces[:,k],n)
  vn/=np.maximum(np.linalg.norm(vn,axis=1,keepdims=True),1e-8)
  light=np.array([.1,1,.8]);light/=np.linalg.norm(light);shade=.30+.70*np.maximum(0,vn@light)
- pixels=np.empty((H,W,3),dtype='uint8');pixels[:]=(17,27,36);zbuf=np.full((H,W),-np.inf)
+ pixels=canvas if canvas is not None else np.full((H,W,3),(17,27,36),dtype='uint8');zbuf=zbuffer if zbuffer is not None else np.full((H,W),-np.inf)
  for indices in faces:
   q=xy[indices];x0=max(0,int(np.floor(q[:,0].min())));x1=min(W-1,int(np.ceil(q[:,0].max())));y0=max(0,int(np.floor(q[:,1].min())));y1=min(H-1,int(np.ceil(q[:,1].max())))
   if x1<x0 or y1<y0:continue
@@ -35,7 +35,9 @@ def render(p,faces,uv,texture):
   intensity=u*shade[indices[0]]+v*shade[indices[1]]+w*shade[indices[2]]
   color=np.clip(texture[ty,tx]*intensity[:,:,None],0,255).astype('uint8')
   pixels[y0:y1+1,x0:x1+1][mask]=color[mask];region[mask]=z[mask]
- image=Image.fromarray(pixels);d=ImageDraw.Draw(image);d.text((15,12),'INTERNAL RIG MOTION / NOT FINAL LOOKDEV',fill=(155,177,190));d.text((15,H-20),'Killer Whale: Abner Wu / Trouvaille, CC BY 4.0 | Original metric rig',fill=(130,151,166))
+ image=Image.fromarray(pixels)
+ if not draw_labels:return image
+ d=ImageDraw.Draw(image);d.text((15,12),'INTERNAL RIG MOTION / NOT FINAL LOOKDEV',fill=(155,177,190));d.text((15,H-20),'Killer Whale: Abner Wu / Trouvaille, CC BY 4.0 | Original metric rig',fill=(130,151,166))
  return image
 
 def main():

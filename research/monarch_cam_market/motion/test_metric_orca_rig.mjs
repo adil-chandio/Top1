@@ -113,3 +113,8 @@ const roundtrip={type:'actual_animated_GLB_export_and_supported_loader_reimport'
 fs.writeFileSync(path.join(base,'out/orca/metric_rig_roundtrip.json'),JSON.stringify(roundtrip,null,2)+'\n');
 fs.writeFileSync(path.join(base,'out/orca/metric_rig_dense_poses.json'),JSON.stringify(dense));
 console.log(JSON.stringify(roundtrip,null,2));
+// Separate longer scene-study sampling; exported GLB/roundtrip scope remains six seconds.
+const scenePoses=Array.from({length:150},(_,f)=>({time:f/24,positions:pose(f/24)}));
+fs.writeFileSync(path.join(base,'out/orca/metric_rig_scene_poses.json'),JSON.stringify(scenePoses));
+const farScenePoses=Array.from({length:150},(_,f)=>({time:f/24,phase_offset_seconds:.85,positions:pose(f/24+.85)}));
+fs.writeFileSync(path.join(base,'out/orca/metric_rig_far_scene_poses.json'),JSON.stringify(farScenePoses));

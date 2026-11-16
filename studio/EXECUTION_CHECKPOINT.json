@@ -31,7 +31,11 @@
     "Exported reusable animated metric-rig GLB with original geometry, two embedded source images and material preserved",
     "Reimported GLB through supported loader and evaluated 144 frames, sub-1e-4 vertex roundtrip error",
     "Fixed actual validator findings; final official glTF validation 0 errors/0 warnings with 11 unused-accessor informational notices",
-    "Rendered actual 6s UV-textured skinned-geometry motion diagnostic, decoded full file and inspected three still samples"
+    "Rendered actual 6s UV-textured skinned-geometry motion diagnostic, decoded full file and inspected three still samples",
+    "Rendered actual two-species scene: two textured repaired orcas + native-tag-deformed humpback in shared depth-buffer space",
+    "Assembled 6.25s original-voice native-mesh blocking, 150 frames decoded",
+    "Producer inspected initial scene stills; corrected cloned orca motion with distinct phase/scale",
+    "Actual near/far surface and draw-order-invariance raster checks passed"
   ],
   "durable_work_product": "research/monarch_cam_market/OPENING_REDESIGN_EXECUTION_ROMAN_URDU.md",
   "not_claimed": [
@@ -44,14 +48,14 @@
   ],
   "background_service_started": false,
   "work_in_progress": {
-    "kind": "reusable_animated_orca_metric_asset",
-    "receipt": "research/monarch_cam_market/motion/ORCA_ANIMATED_ASSET_RECEIPT.json",
-    "source": "research/monarch_cam_market/motion/test_metric_orca_rig.mjs",
-    "glb_ignored_path": "research/monarch_cam_market/motion/out/orca/orca_metric_rig.glb",
-    "motion_ignored_path": "research/monarch_cam_market/motion/out/orca/METRIC_RIG_MOTION_INTERNAL.mp4",
+    "kind": "combined_native_mesh_scene_voice_blocking",
+    "receipt": "research/monarch_cam_market/motion/NATIVE_SCENE_STUDY_RECEIPT.json",
+    "source": "research/monarch_cam_market/motion/render_native_scene_study.py",
+    "media_ignored_path": "research/monarch_cam_market/motion/out/native-scene-v2/NATIVE_SCENE_VOICE_INTERNAL.mp4",
     "asset_schema_validated": true,
     "av_feasibility_passed": false,
     "independent_review_passed": false,
-    "user_approval_requested": false
+    "user_approval_requested": false,
+    "known_editorial_defect": "No vetted prey asset yet; hunt target unclear. Low-LOD diagnostic is not final art direction."
   }
 }

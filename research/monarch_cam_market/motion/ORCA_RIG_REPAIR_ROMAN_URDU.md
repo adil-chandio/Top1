@@ -61,3 +61,17 @@ PYTHONPATH=.local-motion python3 research/monarch_cam_market/motion/render_metri
 ```
 
 Latest structured receipt: `ORCA_ANIMATED_ASSET_RECEIPT.json`. Generated GLB/video and dense pose arrays remain ignored. Integrated animal-scene/audio proof and independent review remain separate from this engineering result.
+
+## Shared native scene continuation
+
+`render_native_scene_study.py` renders two repaired native orca meshes and the pinned Tidewater humpback in one world, with shared depth buffer and independent trajectories. Humpback native part/span tags drive restrained pectoral and vertical caudal deformation; low LOD deliberately limits diagnostic cost. Original recovered narration attached unchanged for 6.25-second working timing. No background score/effects added. Full decode passed.
+
+Producer actually opened v1 still sheet: opposite movement readable, but hunt target absent and cloned orca poses too synchronized. V2 uses .85-second offset evaluated continuously (no modulo wrap), smaller far individual and different trajectory. Missing prey and non-final lighting remain explicit defects; cannot approve complete hunt storytelling from this render. No claim of actual listening or independent review.
+
+Reproduce after asset recovery/tool setup and original voice recovery:
+```
+node research/monarch_cam_market/motion/test_metric_orca_rig.mjs
+PYTHONPATH=.local-motion python3 research/monarch_cam_market/motion/render_native_scene_study.py
+```
+
+Renderer-specific actual checks: draw order does not change occlusion, nearer surface wins. Current tracked receipt `NATIVE_SCENE_STUDY_RECEIPT.json`; generated media/trajectories/attribution copies in ignored `out/native-scene-v2`.
