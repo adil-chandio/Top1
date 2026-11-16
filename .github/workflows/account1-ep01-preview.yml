@@ -1,6 +1,12 @@
 name: "Account 1 EP01 — PEHRA 15s True 3D Preview"
 
 on:
+  push:
+    branches:
+      - arena/944c619c-top1
+    paths:
+      - ".github/workflows/account1-ep01-preview.yml"
+      - "production/account1_ep01/**"
   workflow_dispatch:
     inputs:
       mode:
@@ -39,9 +45,38 @@ jobs:
     name: "Prepare assets, audio, and Blender"
     runs-on: ubuntu-latest
     timeout-minutes: 35
+    outputs:
+      mode: ${{ steps.config.outputs.mode }}
+      samples: ${{ steps.config.outputs.samples }}
+      res_pct: ${{ steps.config.outputs.res_pct }}
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
+
+      - name: Resolve render configuration
+        id: config
+        run: |
+          set -euo pipefail
+          EVENT="${{ github.event_name }}"
+          if [ "$EVENT" = "workflow_dispatch" ]; then
+            MODE="${{ github.event.inputs.mode }}"
+            SAMPLES="${{ github.event.inputs.samples }}"
+            RES_PCT="${{ github.event.inputs.res_pct }}"
+          else
+            MODE="$(tr -d '\r\n' < production/account1_ep01/RENDER_MODE.txt)"
+            if [ "$MODE" = "lookdev" ]; then
+              SAMPLES=18
+              RES_PCT=75
+            else
+              MODE=final
+              SAMPLES=12
+              RES_PCT=100
+            fi
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "samples=$SAMPLES" >> "$GITHUB_OUTPUT"
+          echo "res_pct=$RES_PCT" >> "$GITHUB_OUTPUT"
+          echo "Resolved: mode=$MODE samples=$SAMPLES res_pct=$RES_PCT"
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -198,9 +233,9 @@ jobs:
 
       - name: Render true animated 3D frames
         env:
-          MODE: ${{ github.event.inputs.mode }}
-          SAMPLES: ${{ github.event.inputs.samples }}
-          RES_PCT: ${{ github.event.inputs.res_pct }}
+          MODE: ${{ needs.bootstrap.outputs.mode }}
+          SAMPLES: ${{ needs.bootstrap.outputs.samples }}
+          RES_PCT: ${{ needs.bootstrap.outputs.res_pct }}
         run: |
           set -euo pipefail
           "$BLENDER_BIN" -b --factory-startup \
@@ -264,7 +299,7 @@ jobs:
 
       - name: Assemble preview
         env:
-          MODE: ${{ github.event.inputs.mode }}
+          MODE: ${{ needs.bootstrap.outputs.mode }}
         run: |
           set -euo pipefail
           python production/account1_ep01/assemble_preview.py \
@@ -278,7 +313,7 @@ jobs:
       - name: Upload preview package
         uses: actions/upload-artifact@v4
         with:
-          name: pehra-preview-${{ github.event.inputs.mode }}-${{ github.run_id }}
+          name: pehra-preview-${{ needs.bootstrap.outputs.mode }}-${{ github.run_id }}
           path: production/account1_ep01/renders
           if-no-files-found: error
           retention-days: 14
@@ -287,10 +322,10 @@ jobs:
       - name: Write run summary
         run: |
           {
-            echo "## PEHRA 15s preview — ${{ github.event.inputs.mode }}"
+            echo "## PEHRA 15s preview — ${{ needs.bootstrap.outputs.mode }}"
             echo ""
             echo "- Resolution: 1080×1920 @ 30fps"
             echo "- Picture: 100% animated Blender Cycles 3D renders (zero still-image plates)"
             echo "- Audio: voice-00 Urdu VO + frame-locked foley, mastered to -14 LUFS"
-            echo "- Artifact: \`pehra-preview-${{ github.event.inputs.mode }}-${{ github.run_id }}\`"
+            echo "- Artifact: \`pehra-preview-${{ needs.bootstrap.outputs.mode }}-${{ github.run_id }}\`"
           } >> "$GITHUB_STEP_SUMMARY"
