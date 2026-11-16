@@ -1,6 +1,8 @@
 # NAAM // PRIME — 48 s · 1080×1920 · 24 fps
 
 **Deliverable:** `deliverables/MONARCH_NAAM_PRIME_1080x1920.mp4`
+**Drive (public):** https://drive.google.com/file/d/1GAkpA1qiF-xsqFYGFXAjEwn1QGZHJ8z-/view
+**Cover (public):** https://drive.google.com/file/d/1tMm5l2cQUIZCq0Rl_rP1ozwVCDLB_GtR/view
 **Branch:** `arena/2a8ad29e-top1`
 
 ---
@@ -62,3 +64,28 @@ LD_LIBRARY_PATH=/tmp/xstub /tmp/venv/bin/python scene3d.py all build 0.72 44
 ```
 
 Timing (2 CPU cores): Cycles stills 18–70 s each; comp 2.4 s/frame; full film ≈ 46 min.
+
+
+---
+
+## QC (measured on the delivered file)
+
+| Gate | Value | |
+|---|---|---|
+| Duration | 48.00 s (1152 frames) | PASS |
+| Resolution / fps | 1080×1920 · 24 fps CFR | PASS |
+| Codec | H.264 High L4.2 · yuv420p · AAC 48 kHz | PASS |
+| Size | 74.3 MB (12.2 Mbps) | PASS |
+| Black frames | 1 / 96 sampled (the intentional fade) | PASS |
+| Frozen pairs (repetition) | **0 / 95** | PASS |
+| Motion (mean frame delta) | 0.035, min 0.006 — never static | PASS |
+| Audio | mean −16.5 dB · peak −1.0 dB · 48.000 s | PASS |
+| Unique visuals | 8 / 8 (no plate reused) | PASS |
+
+## Notes / known limits
+
+- Shot 02 (CG gold stack) is the weakest frame of the eight — geometry reads as a gold
+  block rather than individual cards. Fix path: subdivide the stack and add a
+  card-edge normal map before P1.
+- 24 fps was chosen over 30 so the slow camera moves stay judder-free at 2 cores of compute.
+- Master (CRF 21, 137 MB) is not committed; regenerate with the rebuild command above.

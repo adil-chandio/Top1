@@ -304,7 +304,7 @@ def shot_defs():
     S.append(dict(name="edge", dur=6.0, src=B("edge_beauty.png"), z=B("edge_z.png"),
                   kind="cg", cam=[dict(dolly=0.0, px=0.0, py=0.0, zoom=1.00),
                                   dict(dolly=0.075, px=0.028, py=-0.014, zoom=1.03)],
-                  focus=0.55, sweep=0.10, dust=0.70, dof=0.9,
+                  focus=0.55, sweep=0.10, dust=0.70, dof=0.9, expo=0.62, bloom=0.26,
                   type=[dict(text="44 NAMES. ONE PRICE.", size=27, x=90, y=1738,
                              tracking=4, color=(226, 214, 198), alpha=120, font=MONOB)]))
 
@@ -324,7 +324,7 @@ def shot_defs():
     S.append(dict(name="shards", dur=6.0, src=B("shards_beauty.png"), z=B("shards_z.png"),
                   kind="cg", cam=[dict(dolly=0.10, px=-0.020, py=0.010, zoom=1.10, roll=1.2),
                                   dict(dolly=-0.02, px=0.020, py=-0.010, zoom=1.00, roll=-0.6)],
-                  focus=0.50, sweep=0.08, dust=0.9, dof=1.0, flash=True,
+                  focus=0.50, sweep=0.08, dust=0.9, dof=1.0, flash=True, expo=0.90, bloom=0.42,
                   type=[dict(text="", size=1, x=0, y=0)]))
 
     S.append(dict(name="mask", dur=6.0, src=P("plate_mask.png"), kind="plate",
@@ -343,7 +343,7 @@ def shot_defs():
     S.append(dict(name="type", dur=6.0, src=B("type_beauty.png"), z=B("type_z.png"),
                   kind="cg", cam=[dict(dolly=0.0, px=0.0, py=0.0, zoom=1.00),
                                   dict(dolly=0.05, px=0.0, py=0.0, zoom=1.02)],
-                  focus=0.55, sweep=0.09, dust=0.55, dof=0.6, expo=0.95, bloom=0.34,
+                  focus=0.55, sweep=0.09, dust=0.55, dof=0.6, expo=0.72, bloom=0.24,
                   type=[dict(text="JINKE NAAM TUM NAHI LE SAKTE", size=27, x=W / 2, y=1560,
                              center=True, tracking=4, color=(226, 216, 202), alpha=210,
                              delay=1.50, font=MONOB),
@@ -553,6 +553,9 @@ def main():
         preview = float(args[args.index("--preview") + 1])
     if "--out" in args:
         out = args[args.index("--out") + 1]
+    only = None
+    if "--shots" in args:
+        only = {int(x) for x in args[args.index("--shots") + 1].split(",")}
     build_shots()
     total = sum(s["dur"] for s in SHOTS)
     print(f"shots {len(SHOTS)} total {total:.2f}s frames {int(total * FPS)}")
@@ -565,6 +568,26 @@ def main():
             p = os.path.join(BUILD, f"prev_{i}_{s['name']}.png")
             Image.fromarray((img * 255).astype(np.uint8)).save(p)
             print("PREV", p)
+        return
+
+    if only is not None:
+        from imageio_ffmpeg import get_ffmpeg_exe
+        ff = get_ffmpeg_exe()
+        sel = [s for i, s in enumerate(SHOTS) if i in only]
+        tot = sum(s["dur"] for s in sel)
+        cmd = [ff, "-y", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}",
+               "-r", str(FPS), "-i", "-", "-c:v", "libx264", "-preset", "slow",
+               "-crf", "19", "-pix_fmt", "yuv420p", "-profile:v", "high",
+               "-level", "4.2", "-an", out]
+        pr = subprocess.Popen(cmd, stdin=subprocess.PIPE,
+                              stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        for s in sel:
+            nf = int(round(s["dur"] * FPS))
+            for f in range(nf):
+                pr.stdin.write((render_frame(s, f / FPS, 0) * 255).astype(np.uint8).tobytes())
+            print("  done", s["name"], flush=True)
+        pr.stdin.close(); pr.wait()
+        print("WROTE", out, f"{tot:.2f}s")
         return
 
     from imageio_ffmpeg import get_ffmpeg_exe

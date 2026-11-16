@@ -13,8 +13,8 @@ import bpy, math, os, sys, random
 
 random.seed(7)
 
-GOLD = (0.78, 0.60, 0.22)
-RED = (0.72, 0.045, 0.03)
+GOLD = (0.62, 0.44, 0.13)
+RED = (0.40, 0.022, 0.016)
 
 
 def clean():
@@ -190,8 +190,11 @@ def setup(scale=1.0, spp=32, exposure=0.0, res=(1080, 1920)):
 
 def shot_edge():
     """Macro: gold slab edge, red string binding, hard raking key."""
-    gold = mat("gold", GOLD, rough=0.22)
-    gold_r = mat("goldr", GOLD, rough=0.42)
+    gold = mat("gold", GOLD, rough=0.46)
+    gold_r = mat("goldr", GOLD, rough=0.60)
+    ff = bpy.data.materials.get("flagf")
+    if ff:
+        ff.node_tree.nodes["Principled BSDF"].inputs["Emission Strength"].default_value = 0.06
     red = mat("redstr", RED, rough=0.55, metal=0.0)
     # card stack: 30 thin slabs with jitter
     for i in range(64):
@@ -213,10 +216,10 @@ def shot_edge():
     # a second stack behind, out of focus
     for i in range(40):
         box(f"b{i}", (0.11, 0.08, 0.0021), (0.24, 0.05, i * 0.0021), m=gold_r)
-    fog_cube(0.014, loc=(0, 0, 0.05), scale=(9.0, 9.0, 7.0))
+    fog_cube(0.020, loc=(0, 0, 0.05), scale=(9.0, 9.0, 7.0))
     dust(120, spread=(0.16, 0.16, 0.10), origin=(0.0, -0.02, 0.05))
     light("key", 'AREA', (-0.46, -0.22, 0.26), (math.radians(66), 0, math.radians(-52)),
-          energy=46, size=0.26, color=(1.0, 0.74, 0.44))
+          energy=26, size=0.20, color=(1.0, 0.70, 0.38))
     light("rim", 'AREA', (0.34, 0.20, 0.16), (math.radians(-84), 0, math.radians(48)),
           energy=10, size=0.14, color=(1.0, 0.24, 0.12))
     camera((-0.19, -0.42, 0.17), (0.0, 0.0, 0.065), lens=72, fstop=4.0, focus=0.47)
