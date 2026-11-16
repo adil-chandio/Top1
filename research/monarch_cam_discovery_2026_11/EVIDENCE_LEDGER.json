@@ -167,5 +167,35 @@
       "doi": "10.1038/s41559-024-02525-2",
       "read": "publisher chunk 0, abstract and main opening"
     }
-  ]
+  ],
+  "followup": {
+    "report": "GITHUB_MEDIA_FOLLOWUP_ROMAN_URDU.md",
+    "actual_source_video_acquired": true,
+    "kind": "scientific_torque_reversal_simulation_not_wildlife_or_competitor",
+    "source": "https://github.com/RobotFormAndFunction/SnappingShrimp_TorqueReversal",
+    "commit": "cd5434b6f25df09ef01a2c130cf7256c2d3a2a98",
+    "blob": "6433dcbe78dd608e7421a0e764f3f52ba79d7b7f",
+    "sha256": "45bb8cfb576a0efb6509d2f540cc7033ee7218d27bdc4ae8aed774033f2c74c4",
+    "bytes": 5379915,
+    "full_decode_frames": 1157,
+    "source_time_samples_visually_inspected_seconds": [
+      0,
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      35
+    ],
+    "audio_mean_db_ffmpeg": -91.0,
+    "audio_max_db_ffmpeg": -91.0,
+    "actual_audio_listening": false,
+    "reuse_rights_cleared": false,
+    "source_repo_license": null,
+    "competitor_release_download": "failed_redirect_EOF_no_media_acquired",
+    "octopus_primary_supplement_entries_found": true,
+    "octopus_article_displayed_license": "CC BY 4.0 subject to media-specific exceptions",
+    "youtube_av_requirement_completed": false
+  }
 }

@@ -92,3 +92,7 @@ TikTok: Natural Habitat pistol shrimp indexed post https://www.tiktok.com/@natur
 ## Next production boundary — approval trap nahi
 
 Recommendation shrimp protective hood hai. Topic research complete shortlist ke level par, AV/production-readiness level par nahi. Next internal work actual reference AV access + scientific species/anatomy board + exact asset/media rights feasibility hai, immediate full render nahi. No new stage accepted, no independent reviewer fabricated, no video produced/uploaded is batch mein.
+
+## GitHub/media follow-up
+
+GITHUB_MEDIA_FOLLOWUP_ROMAN_URDU.md mein actual pinned scientific video recovery, full decode aur time-sampled visual inspection documented hai. Noise repo ko authentic audio source samajhna reject hua; independent editorial release download fail hua; octopus primary supplementary MP4 entries aur CC BY4.0 route found. Yeh changes technical feasibility ko narrow karte hain, YouTube moving-video/audio review ka pass nahi.
