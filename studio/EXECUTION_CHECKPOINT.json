@@ -2,7 +2,7 @@
   "job_id": "monarch_cam-4f4f68fd7693",
   "channel": "monarch_cam",
   "scope": "original_script_continuous_opening_20_seconds",
-  "status": "awaiting_reviewer",
+  "status": "paused_user_changed_topic",
   "stage": "intelligence",
   "stage_accepted": false,
   "pending_role": "reviewer",
@@ -57,5 +57,11 @@
     "independent_review_passed": false,
     "user_approval_requested": false,
     "known_editorial_defect": "No vetted prey asset yet; hunt target unclear. Low-LOD diagnostic is not final art direction."
+  },
+  "user_scope_change": {
+    "instruction": "Orca topic chorde; fresh Monarch Cam topic discovery from scratch",
+    "new_research": "research/monarch_cam_discovery_2026_11/TOPIC_SHORTLIST_ROMAN_URDU.md",
+    "recommendation_not_user_approved": "shrimp_orbital_hood",
+    "production_ready": false
   }
 }

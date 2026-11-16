@@ -1,0 +1,171 @@
+{
+  "checked_date": "2026-11-14",
+  "date_basis": "authoritative_session_date_not_machine_clock",
+  "metrics_kind": "retrieved_public_page_snapshot_not_authenticated_live_analytics",
+  "references": [
+    {
+      "url": "https://www.youtube.com/watch?v=L8Df7QKMTNw",
+      "channel": "Natural Habitat Shorts",
+      "reported_upload_date": "2025-01-09",
+      "duration_seconds": 19,
+      "reported_views": 61039646,
+      "reported_likes": 2439729,
+      "cohort": "short_animation_comedy",
+      "topic": "shrimp",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ScW4_YOJjmE",
+      "channel": "Natural Habitat Shorts",
+      "reported_upload_date": "2025-02-06",
+      "duration_seconds": 34,
+      "reported_views": 96519821,
+      "reported_likes": 3197723,
+      "cohort": "short_animation_comedy",
+      "topic": "same_channel_control",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=eXR--I99S60",
+      "channel": "Ant Lab",
+      "reported_upload_date": "2022-08-03",
+      "duration_seconds": 148,
+      "reported_views": 121087,
+      "reported_likes": 2849,
+      "cohort": "long_educational",
+      "topic": "shrimp",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=jW-DLxze1IA",
+      "channel": "Crazy Creatures",
+      "reported_upload_date": "2021-09-22",
+      "duration_seconds": 299,
+      "reported_views": 57366,
+      "reported_likes": 726,
+      "cohort": "long_educational",
+      "topic": "shrimp",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=S4G_MeUUZlI",
+      "channel": "BBC Earth",
+      "reported_upload_date": "2011-06-28",
+      "duration_seconds": 207,
+      "reported_views": 672644,
+      "reported_likes": 3777,
+      "cohort": "long_multi_animal",
+      "topic": "archerfish",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=0Q3jIXpeae4",
+      "channel": "Yuksel Gunal",
+      "reported_upload_date": "2014-11-17",
+      "duration_seconds": 191,
+      "reported_views": 68121,
+      "reported_likes": 759,
+      "cohort": "long_third_party_excerpt",
+      "topic": "archerfish",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=XE-SVbXUGY8",
+      "channel": "NBC News",
+      "reported_upload_date": "2024-09-24",
+      "duration_seconds": 12,
+      "reported_views": 7650,
+      "reported_likes": 100,
+      "cohort": "short_news",
+      "topic": "octopus",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-vJ5jfh5asQ",
+      "channel": "OceanX",
+      "reported_upload_date": "2024-11-11",
+      "duration_seconds": 27,
+      "reported_views": 12928,
+      "reported_likes": 671,
+      "cohort": "short_science",
+      "topic": "octopus",
+      "access": "fetch_page_metadata_and_available_text_only",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    },
+    {
+      "url": "https://www.youtube.com/shorts/Ulai42m02nw",
+      "channel": "Velour Garage",
+      "reported_views": 6,
+      "reported_likes": 1,
+      "topic": "archerfish",
+      "cohort": "short_ai_labeled_negative_example",
+      "date_conflict": "search 2026-10-24; page 2026-10-23",
+      "access": "error_shell_with_some_visible_metadata",
+      "moving_picture_inspected": false,
+      "audio_listened": false,
+      "reuse_rights_cleared": false
+    }
+  ],
+  "same_channel_pair_ratio": 0.6324052963173232,
+  "channel_baseline_established": false,
+  "recent_view_velocity_established": false,
+  "short_vs_long_comparison_permitted": false,
+  "recommendation": "shrimp_orbital_hood_research_candidate",
+  "production_ready": false,
+  "independent_review": false,
+  "primary_sources": [
+    {
+      "doi": "10.1038/s41598-026-77517-2",
+      "published": "2026-10-29",
+      "read": "returned abstract, rights, publication metadata; full methods not returned",
+      "license_displayed": "CC BY-NC-ND 4.0",
+      "media_reuse_cleared": false
+    },
+    {
+      "doi": "10.1098/rsif.2025.0769",
+      "published_online": "2026-02-11",
+      "read": "publisher chunks 0,1,9; metadata abstract discussion",
+      "model_results_not_human_tests": true
+    },
+    {
+      "doi": "10.1242/jeb.250592",
+      "read": "publisher chunks 0,1 including abstract",
+      "version_of_record": "2025-06-26"
+    },
+    {
+      "doi": "10.1016/j.cub.2022.06.042",
+      "read": "search-extracted primary summary and university reporting; direct fetch ad shell"
+    },
+    {
+      "doi": "10.1016/j.cub.2014.07.059",
+      "read": "search-extracted primary summary/results and secondary corroboration; direct fetch ad shell"
+    },
+    {
+      "doi": "10.1038/s41559-024-02525-2",
+      "read": "publisher chunk 0, abstract and main opening"
+    }
+  ]
+}

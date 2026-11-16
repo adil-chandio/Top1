@@ -1,7 +1,7 @@
 {
   "channel": "monarch_cam",
   "scope": "original_script_opening_20_seconds",
-  "status": "research_and_redesign",
+  "status": "paused_user_changed_topic",
   "previous_cut": "rejected_by_user",
   "ready_for_full_render": false,
   "gates": {
@@ -12,5 +12,5 @@
     "sound_listening_review": false
   },
   "evidence": [],
-  "note": "Process/case-study text research started. No reference playback/listening or redesigned integrated proof claimed. Old cut and its mix are not accepted evidence."
+  "note": "Orca production paused per explicit user scope change. Fresh discovery in research/monarch_cam_discovery_2026_11; no new release or gate acceptance. Original scope retained here only as historical release record."
 }
