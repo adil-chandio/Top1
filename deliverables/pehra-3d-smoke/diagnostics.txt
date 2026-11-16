@@ -1,12 +1,14 @@
 --- assets ---
 total 28
-drwxr-xr-x  5 runner runner 4096 Nov 16 14:17 .
-drwxr-xr-x  5 runner runner 4096 Nov 16 14:17 ..
-drwxr-xr-x  2 runner runner 4096 Nov 16 14:17 glb
--rw-r--r--  1 runner runner 4512 Nov 16 14:17 manifest.json
-drwxr-xr-x 10 runner runner 4096 Nov 16 14:17 ph_models
-drwxr-xr-x  4 runner runner 4096 Nov 16 14:17 ph_textures
+drwxr-xr-x  5 runner runner 4096 Nov 16 14:19 .
+drwxr-xr-x  6 runner runner 4096 Nov 16 14:19 ..
+drwxr-xr-x  2 runner runner 4096 Nov 16 14:19 glb
+-rw-r--r--  1 runner runner 4512 Nov 16 14:19 manifest.json
+drwxr-xr-x 10 runner runner 4096 Nov 16 14:19 ph_models
+drwxr-xr-x  4 runner runner 4096 Nov 16 14:19 ph_textures
 --- frames dir ---
-total 8
-drwxr-xr-x 2 runner runner 4096 Nov 16 14:17 .
-drwxr-xr-x 5 runner runner 4096 Nov 16 14:17 ..
+total 532
+drwxr-xr-x 2 runner runner   4096 Nov 16 14:20 .
+drwxr-xr-x 6 runner runner   4096 Nov 16 14:19 ..
+-rw-r--r-- 1 runner runner 530753 Nov 16 14:20 f_000372.png
+-rw-r--r-- 1 runner runner    367 Nov 16 14:19 render_info_S6_MASTER_MOVE.json
