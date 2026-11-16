@@ -1,5 +1,7 @@
 # Actual GitHub/media follow-up — shortlist ki missing feasibility par kaam
 
+**Later evidence:** section 3 ka local EOF result historical hai. Native cloud FFmpeg se actual editorial clip/audio ab recover hua; `EDITORIAL_AUDIO_BREAKDOWN_ROMAN_URDU.md` aur `EDITORIAL_AUDIO_RECEIPT.json` dekhein. Biological supplement acquisition ka later result `ACTUAL_FOOTAGE_FINDINGS_ROMAN_URDU.md` mein hai. Naya access result perceptual listening ya viral-reference approval nahi.
+
 Yeh original discovery ka continuation hai, naya final acceptance nahi. Public GitHub milna reuse licence nahi. Koi downloaded repository code execute nahi kiya; no cookies, auth bypass, paid spend or public publishing.
 
 ## 1. Actual downloadable scientific video recovered
