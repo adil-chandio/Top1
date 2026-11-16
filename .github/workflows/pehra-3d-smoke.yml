@@ -66,12 +66,14 @@ jobs:
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
           mkdir -p production/account1_ep01/frames_debug
-          "$BLENDER_BIN" -b --factory-startup --python production/account1_ep01/render_scene.py -- \
-            --shot S6_MASTER_MOVE --mode lookdev --samples 4 --res-pct 100 \
-            --timeline production/account1_ep01/build/timeline_15s.json \
-            --assets production/account1_ep01/assets \
-            --out production/account1_ep01/frames_debug > /tmp/blender.log 2>&1 || true
-          grep -E "Render complete|Saved:" /tmp/blender.log || tail -20 /tmp/blender.log
+          for SHOT in S5_MASKED_MONARCH S4_UNGUARDED_GATE; do
+            "$BLENDER_BIN" -b --factory-startup \
+              --python production/account1_ep01/debug_shot_trace.py -- \
+              --shot "$SHOT" \
+              --timeline production/account1_ep01/build/timeline_15s.json \
+              --assets production/account1_ep01/assets >> /tmp/blender.log 2>&1 || true
+          done
+          grep -A 25 "TRACE" /tmp/blender.log | head -80
           echo "=== exit summary ==="
           tail -40 /tmp/blender.log || true
           cp /tmp/blender.log /tmp/smoke_blender.log
