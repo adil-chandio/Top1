@@ -2,7 +2,7 @@
 """Persistent, fail-closed production coordinator. Real external workers required.
 Commands are trusted operator configuration, never generated from research content.
 """
-import argparse, datetime as dt, hashlib, json, os, shlex, subprocess, sys, uuid
+import argparse, datetime as dt, hashlib, json, os, shlex, shutil, subprocess, sys, uuid
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 CONFIG=json.loads((ROOT/'studio/config.json').read_text())
@@ -106,7 +106,16 @@ def main():
     if args.cmd=='enqueue':print(create(base,args.channel,args.brief));return
     if args.cmd=='doctor':
         checks={k:bool(os.getenv(v)) for k,v in [('worker',CONFIG['worker_command_env']),('reviewer',CONFIG['reviewer_command_env']),('drive_credentials','STUDIO_DRIVE_CREDENTIALS_FILE'),('drive_folder','STUDIO_DRIVE_FOLDER_ID')]}
-        print(json.dumps({'configured':checks,'ready':all(checks.values()),'note':'presence checks only; no execution/quality/permission guarantee'},indent=2));return
+        executables={}
+        for role,key in [('worker',CONFIG['worker_command_env']),('reviewer',CONFIG['reviewer_command_env'])]:
+            try:
+                argv=shlex.split(os.getenv(key,''));executables[role]=bool(argv and shutil.which(argv[0]))
+            except ValueError:executables[role]=False
+        credential_path=os.getenv('STUDIO_DRIVE_CREDENTIALS_FILE')
+        checks['credentials_file_exists']=bool(credential_path and Path(credential_path).is_file())
+        checks['ffmpeg']=bool(shutil.which('ffmpeg'))
+        checks['worker_executable']=executables['worker'];checks['reviewer_executable']=executables['reviewer']
+        print(json.dumps({'configured':checks,'ready':all(checks.values()),'note':'local configuration checks only; live worker/reviewer, Drive permissions and full pilot still require verification'},indent=2));return
     if args.cmd=='resume':
         job=owned(base,args.job);state=json.loads((job/'state.json').read_text());state['status']='queued';state['attempts'][CONFIG['stages'][state['stage']]]=0;save(job/'state.json',state);return
     from concurrent.futures import ThreadPoolExecutor
