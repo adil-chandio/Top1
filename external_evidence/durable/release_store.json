@@ -1,0 +1,9 @@
+{
+  "route": "github_release",
+  "tag": "accounts-durable-store",
+  "local_sha256": "5d10a7494cee1fb00dad7ef25e9c532de336ac821c6dc9ce3d96ae33ec1c053b",
+  "restored_sha256": "5d10a7494cee1fb00dad7ef25e9c532de336ac821c6dc9ce3d96ae33ec1c053b",
+  "local_bytes": 38313096,
+  "restored_bytes": 38313096,
+  "verified_roundtrip": true
+}

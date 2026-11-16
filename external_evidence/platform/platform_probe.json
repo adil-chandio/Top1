@@ -2,18 +2,6 @@
   "route": "github_actions_runner",
   "results": [
     {
-      "platform": "youtube",
-      "url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
-      "metadata_ok": false,
-      "error": "ERROR: [youtube] aqz-KE-bpKQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
-    },
-    {
-      "platform": "instagram",
-      "url": "https://www.instagram.com/p/CqNyqZPLLZ9/",
-      "metadata_ok": false,
-      "error": "t is accessible in your browser without being logged-in. If it is not, then use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Otherwise, if the post is accessible in browser without being logged-in, please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U\n"
-    },
-    {
       "platform": "tiktok",
       "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
       "metadata_ok": true,
@@ -23,6 +11,18 @@
       "height": 1280,
       "fps": null,
       "extractor": "TikTok"
+    },
+    {
+      "platform": "youtube",
+      "url": "https://www.youtube.com/watch?v=aqz-KE-bpKQ",
+      "metadata_ok": false,
+      "error": "ERROR: [youtube] aqz-KE-bpKQ: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Also see  https://github.com/yt-dlp/yt-dlp/wiki/Extractors#exporting-youtube-cookies  for tips on effectively exporting YouTube cookies\n"
+    },
+    {
+      "platform": "instagram",
+      "url": "https://www.instagram.com/p/CqNyqZPLLZ9/",
+      "metadata_ok": false,
+      "error": "er or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies. Otherwise, if the post is accessible in browser without being logged-in, please report this issue on  https://github.com/yt-dlp/yt-dlp/issues?q= , filling out the appropriate issue template. Confirm you are on the latest version using  yt-dlp -U\n"
     }
   ]
 }
