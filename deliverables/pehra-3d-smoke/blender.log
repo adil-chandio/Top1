@@ -1,1 +1,208 @@
-no blender log
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Traceback (most recent call last):
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 51, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/debug_shot_trace.py", line 27, in main
+    import render_scene as rs
+  File "/home/runner/work/Top1/Top1/production/account1_ep01/render_scene.py", line 2461, in <module>
+    **FULL_SHOT_BUILDERS,
+      ^^^^^^^^^^^^^^^^^^
+NameError: name 'FULL_SHOT_BUILDERS' is not defined
+
+Blender quit
