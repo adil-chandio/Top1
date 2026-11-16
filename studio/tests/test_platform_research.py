@@ -77,3 +77,14 @@ class PlatformTests(unittest.TestCase):
   self.test_valid_synthetic_bundle_contract();p=self.root/'observations.json';p.write_text('[]')
   r={'platform_references':[{'lane':'topic_winner','format':'youtube_long','selection_reason':'Fixture','applied_decision':'Fixture','media_manifest':'media_evidence.json','observations':'observations.json'}],'artifacts':[{'path':p.name,'sha256':digest(p)} for p in self.root.iterdir() if p.is_file()]}
   with self.assertRaises(ValueError):verify_bundle(self.root,'production',r)
+
+ def test_observation_rejects_path_escape(self):
+  n=self.fixture();p=self.root/'media_evidence.json';m=json.loads(p.read_text());m['files'][0]['path']='../outside';p.write_text(json.dumps(m))
+  with self.assertRaises(ValueError):observation(self.root,n)
+ def test_new_worker_request_includes_platform_tools(self):
+  from studio.pipeline import create
+  from studio.session import step
+  job=create(self.root/'jobs','monarch_cam','Synthetic platform packet fixture')
+  self.assertEqual(step(job),'awaiting_worker')
+  r=json.loads((job/'intelligence-1/request.json').read_text())
+  self.assertIn('acquire',r['platform_research']['tools']);self.assertTrue(r['creative_brief']['platform_reference_policy']['require_av_before_production'])

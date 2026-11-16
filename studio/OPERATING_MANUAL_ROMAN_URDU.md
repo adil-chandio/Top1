@@ -65,3 +65,7 @@ Code implementation verified != autonomous deployment verified != creative produ
 ## Active-session alternative (new)
 
 External daemon configuration above applies only to unattended service. Active Arena session can now use `python -m studio.session step JOB_DIRECTORY` and connected Drive delivery without exporting credentials. See `SESSION_EXECUTION_ROMAN_URDU.md` for actual operator flow, identity/review rules and live evidence. This route does not invent external agents or autonomous off-chat execution.
+
+## YouTube-first agent tools
+
+New worker requests include platform discovery/inspection tasks and executable commands. `YOUTUBE_AGENT_PLAYBOOK_ROMAN_URDU.md` describes research lanes, actual AV inspection, stage handoffs and media provenance. New Monarch brief snapshots require verified AV reference bundles at feasibility/production/QC; old snapshots are not silently upgraded. `PLATFORM_ACCESS_EVIDENCE_ROMAN_URDU.md` distinguishes real public-page access, direct-player access failures, actual synthetic decoder tests and the 96-test suite. No playback/listening inferred from metadata or successful infrastructure runs.

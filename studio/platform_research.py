@@ -122,7 +122,13 @@ def sample(media,out,url,start,duration,rights_basis):
  if start<0 or not 0<duration<=60:raise ValueError('segment must be 0–60 seconds with nonnegative start')
  media=Path(media).resolve();out=Path(out).resolve()
  if not media.is_file() or not media.stat().st_size:raise ValueError('actual local media file required')
- url=video_url(url);ffmpeg=ffmpeg_command()
+ url=video_url(url);source_origin=0
+ acquisition=media.parent/'acquisition.json'
+ if acquisition.exists():
+  acquired=json.loads(acquisition.read_text())
+  if acquired.get('url')!=url or not any(x['path']==media.name and x['sha256']==digest(media) for x in acquired.get('files',[])):raise ValueError('source acquisition provenance mismatch')
+  source_origin=acquired['source_start']
+ ffmpeg=ffmpeg_command()
  if not ffmpeg:raise ValueError('FFmpeg required')
  if out.exists() and any(out.iterdir()):raise ValueError('new empty segment folder required')
  out.mkdir(parents=True,exist_ok=True)
@@ -139,14 +145,15 @@ def sample(media,out,url,start,duration,rights_basis):
  if audio.returncode:
   (out/'audio.wav').unlink(missing_ok=True)
  files=[{'path':p.name,'sha256':digest(p)} for p in sorted(out.iterdir()) if p.is_file()]
- record={'url':url,'source_sha256':digest(media),'checked_at':now(),'source_start':start,'duration_requested':duration,'duration_actual':actual,'rights_basis':rights_basis,'reuse_in_production':False,'audio_extracted':audio.returncode==0,'files':files,'viewed_video':False,'listened_audio':False,'note':'Extraction only. Open actual clip for motion and actually hear audio before recording observations. Frames alone are not motion review.'}
+ record={'url':url,'source_sha256':digest(media),'checked_at':now(),'source_start':source_origin+start,'source_media_offset':start,'duration_requested':duration,'duration_actual':actual,'rights_basis':rights_basis,'reuse_in_production':False,'audio_extracted':audio.returncode==0,'files':files,'viewed_video':False,'listened_audio':False,'note':'Extraction only. Open actual clip for motion and actually hear audio before recording observations. Frames alone are not motion review.'}
  write(out/'media_evidence.json',record);return record
 
 def observation(out,record):
  """Timestamped human/equipped-agent observation tied to unchanged captured media."""
  out=Path(out);manifest=json.loads((out/'media_evidence.json').read_text())
  for item in manifest['files']:
-  path=out/item['path']
+  path=(out/item['path']).resolve()
+  if not path.is_relative_to(out.resolve()):raise ValueError('reference evidence path escape')
   if not path.is_file() or digest(path)!=item['sha256']:raise ValueError('reference evidence changed')
  required=('executor','mode','start','end','observation','interpretation','application','do_not_copy','method')
  if any(not str(record.get(k,'' )).strip() for k in required):raise ValueError('complete specific breakdown required')
@@ -161,7 +168,7 @@ def observation(out,record):
 
 def packet(stage,job=None):
  if stage not in STAGE_QUESTIONS:raise ValueError('unknown stage')
- return {'stage':stage,'question':STAGE_QUESTIONS[stage],'priority':['youtube_long','youtube_shorts','instagram_reels','tiktok'],'lanes':list(LANES),'tools':{'discover':'python -m studio.platform_research discover QUERY --out FILE','video':'python -m studio.platform_research inspect URL --out FILE','channel':'python -m studio.platform_research channel URL --tab videos --out FILE','capture':'python -m studio.platform_research capture URL --content ACTUAL_TOOL_CAPTURE --kind page_text --method fetch_page --lane topic_winner --out FOLDER','acquire':'python -m studio.platform_research acquire URL --start 0 --duration 15 --rights-basis ACTUAL_BASIS --out FOLDER','sample':'python -m studio.platform_research sample LOCAL_PERMITTED_MEDIA --url URL --start 0 --duration 15 --rights-basis ACTUAL_BASIS --out FOLDER','observe':'python -m studio.platform_research observe FOLDER --record ACTUAL_BREAKDOWN.json'},'fallback':'If direct public extractor fails, use available web_search/fetch_page for discovery/text and preserve exact access labels. Move AV task to an authorized media-capable runner; never forge playback or use bypass proxies. IG/TikTok are secondary manual/browser research lanes, not implemented downloader adapters.','stopping_rule':'Bound search to a specific unresolved question; shortlist relevant evidence, make a decision and test it. No endless feed browsing.','artifact_requirement':'Attach platform evidence and timestamped findings as ordinary verified artifacts; text cannot clear audiovisual release gates.','job_directory':str(job) if job else None}
+ return {'stage':stage,'question':STAGE_QUESTIONS[stage],'priority':['youtube_long','youtube_shorts','instagram_reels','tiktok'],'lanes':list(LANES),'tools':{'discover':'python -m studio.platform_research discover QUERY --out FILE','video':'python -m studio.platform_research inspect URL --out FILE','channel':'python -m studio.platform_research channel URL --tab videos --out FILE','baseline':'python -m studio.platform_research baseline --target TARGET.json --comparables COMPARABLES.json --out FILE','capture':'python -m studio.platform_research capture URL --content ACTUAL_TOOL_CAPTURE --kind page_text --method fetch_page --lane topic_winner --out FOLDER','acquire':'python -m studio.platform_research acquire URL --start 0 --duration 15 --rights-basis ACTUAL_BASIS --out FOLDER','sample':'python -m studio.platform_research sample LOCAL_PERMITTED_MEDIA --url URL --start 0 --duration 15 --rights-basis ACTUAL_BASIS --out FOLDER','observe':'python -m studio.platform_research observe FOLDER --record ACTUAL_BREAKDOWN.json'},'fallback':'If direct public extractor fails, use available web_search/fetch_page for discovery/text and preserve exact access labels. Move AV task to an authorized media-capable runner; never forge playback or use bypass proxies. IG/TikTok are secondary manual/browser research lanes, not implemented downloader adapters.','stopping_rule':'Bound search to a specific unresolved question; shortlist relevant evidence, make a decision and test it. No endless feed browsing.','artifact_requirement':'Attach platform evidence and timestamped findings as ordinary verified artifacts; text cannot clear audiovisual release gates.','job_directory':str(job) if job else None}
 
 def verify_bundle(job,stage,result):
  """Enforce AV evidence at proof/production/QC for briefs opting into this policy.
@@ -175,7 +182,7 @@ def verify_bundle(job,stage,result):
  if not refs:raise ValueError('YouTube-first audiovisual reference bundle required')
  artifacts={x['path']:x['sha256'] for x in result['artifacts']}
  for ref in refs:
-  if ref.get('lane') not in LANES or ref.get('format') not in ('youtube_long','youtube_shorts','instagram_reels','tiktok'):raise ValueError('reference lane/format required')
+  if ref.get('lane') not in LANES or ref.get('format') not in ('youtube_long','youtube_shorts'):raise ValueError('reference lane/format required')
   if not ref.get('selection_reason') or not ref.get('applied_decision'):raise ValueError('reference must influence a specific decision')
   mp=ref['media_manifest'];op=ref['observations']
   for path in (mp,op):
