@@ -1,0 +1,21 @@
+{
+  "counting": "Unicode word tokens; exclude headings, bracketed stage notes and QA; not spoken syllables",
+  "narration_word_tokens": {
+    "v1": 851,
+    "v2": 677
+  },
+  "change_tokens": -174,
+  "change_percent": -20.4,
+  "checks_passed": [
+    "six editorial sections present",
+    "explicit narration boundaries",
+    "expected factual trace IDs present"
+  ],
+  "limits": [
+    "No audio generated or timed",
+    "No retention measurement",
+    "Citation presence is not verification of truth",
+    "Token reduction is not proof of better script",
+    "No automated semantic originality certification"
+  ]
+}
