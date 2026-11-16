@@ -1,0 +1,22 @@
+{
+  "channel": "monarch_cam",
+  "working_direction": "Alpheus heterochaelis orbital hood protection",
+  "stage": "story_script_edit_sound_work_in_progress",
+  "original_narration_file": "SHRIMP_NARRATION_DRAFT_V1_ROMAN_URDU.txt",
+  "story_packet": "SHRIMP_STORY_EDIT_SOUND_V1_ROMAN_URDU.md",
+  "narration_whitespace_words": 115,
+  "planned_duration_seconds_range": [45, 60],
+  "duration_is_measured": false,
+  "old_orca_assets_or_voice_reused": false,
+  "source_claim_mapping_written": true,
+  "specific_species_photo_license_page_checked": true,
+  "full_resolution_photo_acquired": false,
+  "vetted_animated_hero_asset": false,
+  "sound_design_blueprint_written": true,
+  "sound_design_produced_or_listened": false,
+  "viral_youtube_reference_av_gate": false,
+  "independent_review": false,
+  "production_release": false,
+  "user_acceptance": false,
+  "routine_user_approval_requested": false
+}
