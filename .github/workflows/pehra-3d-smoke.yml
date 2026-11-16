@@ -1,0 +1,69 @@
+name: PEHRA 3D smoke test (one shot, few frames)
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths:
+      - '.github/workflows/pehra-3d-smoke.yml'
+      - 'production/account1_ep01/pehra_smoke_trigger.txt'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pehra-3d-smoke-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install Blender 4.2 LTS + runtime libs
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libxi6 libxxf86vm1 libxfixes3 libxrender1 \
+            libgl1 libglu1-mesa libsm6 libice6 libxkbcommon0 libgomp1
+          if [ ! -x "$HOME/blender4215/$BLENDER_DIR/blender" ]; then
+            mkdir -p "$HOME/blender4215"
+            curl -fsSL -o /tmp/blender.tar.xz \
+              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/blender.tar.xz
+          fi
+          echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
+          "$HOME/blender4215/$BLENDER_DIR/blender" --version | head -3
+      - name: Fetch the real CC0/MIT 3D assets
+        run: |
+          set -euo pipefail
+          python -m pip install --quiet requests
+          python production/account1_ep01/fetch_assets.py || \
+            echo "asset fetch reported a problem; continuing to see what renders"
+          ls -la production/account1_ep01/assets 2>/dev/null | head -20 || true
+      - name: Render 4 frames of S6 (low cost, real Cycles)
+        run: |
+          set -euo pipefail
+          mkdir -p production/account1_ep01/frames
+          blender -b --factory-startup --python production/account1_ep01/render_scene.py -- \
+            --shot S6_MASTER_MOVE --mode lookdev --samples 18 --res-pct 50 \
+            --out production/account1_ep01/frames 2>&1 | tail -40
+          ls -la production/account1_ep01/frames | head
+      - name: Commit the smoke frames so they can be inspected
+        if: always()
+        run: |
+          set -euo pipefail
+          DEST=deliverables/pehra-3d-smoke
+          mkdir -p "$DEST"
+          cp -a production/account1_ep01/frames/*.png "$DEST"/ 2>/dev/null || true
+          ls -la "$DEST" || true
+          git config user.name 'pehra-render-bot'
+          git config user.email 'pehra-render@users.noreply.github.com'
+          git add -f "$DEST" || true
+          if git diff --cached --quiet; then echo 'no frames produced'; else
+            git commit -m "PEHRA 3D smoke frames (run ${{ github.run_id }})"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
