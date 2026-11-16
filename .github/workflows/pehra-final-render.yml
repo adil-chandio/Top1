@@ -47,7 +47,7 @@ jobs:
       - name: Refuse to render a silent film
         run: |
           set -euo pipefail
-          PLACED=$(grep -o "narration placed: [0-9]*" /tmp/audio.log | tail -1 | grep -o "[0-9]*$")
+          PLACED=$(grep -o "narration placed: [0-9]*/" /tmp/audio.log | tail -1 | grep -o "[0-9]*")
           echo "narration placed: $PLACED / 16"
           [ "$PLACED" -eq 16 ] || { echo "::error::only $PLACED/16 narration lines — not rendering"; exit 1; }
       - name: Verify prepared bundle
