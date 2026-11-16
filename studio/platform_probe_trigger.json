@@ -1,5 +1,6 @@
 {
   "video_id": "W9KfHky9sMo",
-  "purpose": "Public metadata-only network probe; no download, no playback/listening claim",
-  "attempt": 1
+  "purpose": "Recover preceding access report into readable GitHub check; do not repeat YouTube request",
+  "attempt": 2,
+  "recover_run": "43859084580"
 }

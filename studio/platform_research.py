@@ -201,6 +201,7 @@ def main():
   a=s.add_parser(name);a.add_argument('target');a.add_argument('--out',required=True)
   if name in ('discover','channel'):a.add_argument('--limit',type=int,default=10)
   if name=='channel':a.add_argument('--tab',choices=['videos','shorts'],default='videos')
+ a=s.add_parser('baseline');a.add_argument('--target',required=True);a.add_argument('--comparables',required=True);a.add_argument('--out',required=True)
  a=s.add_parser('packet');a.add_argument('stage');a.add_argument('--out',required=True)
  a=s.add_parser('capture');a.add_argument('url');a.add_argument('--content',required=True);a.add_argument('--kind',required=True);a.add_argument('--method',required=True);a.add_argument('--lane',required=True);a.add_argument('--out',required=True)
  a=s.add_parser('sample');a.add_argument('media');a.add_argument('--url',required=True);a.add_argument('--start',type=float,default=0);a.add_argument('--duration',type=float,default=15);a.add_argument('--rights-basis',required=True);a.add_argument('--out',required=True)
@@ -211,6 +212,7 @@ def main():
   if a.cmd=='discover':result=discover(a.target,a.limit)
   elif a.cmd=='inspect':result=inspect_video(a.target)
   elif a.cmd=='channel':result=inspect_channel(a.target,a.tab,a.limit)
+  elif a.cmd=='baseline':result=baseline(json.loads(Path(a.target).read_text()),json.loads(Path(a.comparables).read_text()))
   elif a.cmd=='packet':result=packet(a.stage)
   elif a.cmd=='capture':result=import_evidence(a.out,a.url,a.content,a.kind,a.method,a.lane)
   elif a.cmd=='acquire':result=acquire(a.url,a.out,a.start,a.duration,a.rights_basis)
@@ -218,8 +220,8 @@ def main():
   else:result=observation(a.folder,json.loads(Path(a.record).read_text()))
  except (ValueError,RuntimeError,subprocess.SubprocessError) as exc:
   result={'status':'access_or_validation_failed','checked_at':now(),'error':str(exc),'viewed_video':False,'listened_audio':False}
-  if hasattr(a,'out'):write(Path(a.out) if a.cmd in ('discover','inspect','channel','packet') else Path(a.out)/'failure.json',result)
+  if hasattr(a,'out'):write(Path(a.out) if a.cmd in ('discover','inspect','channel','packet','baseline') else Path(a.out)/'failure.json',result)
   print(json.dumps(result,indent=2));raise SystemExit(2)
- if a.cmd in ('discover','inspect','channel','packet'):write(a.out,result)
+ if a.cmd in ('discover','inspect','channel','packet','baseline'):write(a.out,result)
  print(json.dumps(result,indent=2))
 if __name__=='__main__':main()
