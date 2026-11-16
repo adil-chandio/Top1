@@ -23,7 +23,11 @@
     "Recovered existing original 17.72s narration from recorded GitHub blob, not newly generated voice",
     "Rendered and muxed 6.25s voice-only proxy animatic, decoded all 150 frames",
     "Recovered pinned whale/orca assets with hash checks",
-    "Evaluated native orca 12-joint skin at 9 time samples; caught implausible bounds and withheld compatibility pass"
+    "Evaluated native orca 12-joint skin at 9 time samples; caught implausible bounds and withheld compatibility pass",
+    "Supported Three.js GLTFLoader reproduced native skin distortion; cross-implementation displacement disagreement below 0.001 model units",
+    "Read upstream loader; corrected assumption that leftover animation was intended usable rig",
+    "Built original eight-bone metric rig; zero-pose bind error below 1e-5 and bounded deformation across nine samples",
+    "Rendered three actual textured-mesh pose diagnostics and visually inspected stills"
   ],
   "durable_work_product": "research/monarch_cam_market/OPENING_REDESIGN_EXECUTION_ROMAN_URDU.md",
   "not_claimed": [
@@ -36,12 +40,13 @@
   ],
   "background_service_started": false,
   "work_in_progress": {
-    "kind": "voice_only_proxy_animatic_and_asset_RD",
-    "voice_receipt": "research/monarch_cam_market/motion/VOICE_ANIMATIC_RECEIPT.json",
-    "rig_audit": "research/monarch_cam_market/motion/NATIVE_ORCA_RIG_AUDIT.json",
-    "media_ignored_path": "research/monarch_cam_market/motion/out/voice-animatic-v1/VOICE_LAYOUT_INTERNAL.mp4",
+    "kind": "original_metric_rig_candidate",
+    "receipt": "research/monarch_cam_market/motion/ORCA_RIG_REPAIR_RECEIPT.json",
+    "source": "research/monarch_cam_market/motion/test_metric_orca_rig.mjs",
+    "native_crosscheck_completed": true,
+    "rig_numerical_sanity_passed": true,
+    "rig_visual_motion_approval": false,
     "av_feasibility_passed": false,
-    "user_approval_requested": false,
-    "rig_crosscheck_required": true
+    "user_approval_requested": false
   }
 }

@@ -1,0 +1,218 @@
+{
+  "source_asset_sha256": "105ece638fcd9e47fe9d984116ce829dc22fe685c59155eebe7b3297050abfe1",
+  "supported_loader_crosscheck": {
+    "type": "supported_ThreeJS_GLTFLoader_AnimationMixer_crosscheck",
+    "three_revision": "180",
+    "source_asset_unchanged": true,
+    "node_materials_disabled_for_decoder_only": true,
+    "skinned_meshes": 1,
+    "joints": 12,
+    "clip": "Take 001",
+    "samples": [
+      {
+        "time": 0.041666666666666664,
+        "bbox_extent": [
+          22.02880729597687,
+          324.0298565895631,
+          99.02474117880108
+        ],
+        "max_vertex_displacement_from_start": 0,
+        "vertices": 1656
+      },
+      {
+        "time": 0.290624996026357,
+        "bbox_extent": [
+          27.205107619981128,
+          211.04460765446464,
+          44.41672258876494
+        ],
+        "max_vertex_displacement_from_start": 125.44939840390578,
+        "vertices": 1656
+      },
+      {
+        "time": 0.5395833253860474,
+        "bbox_extent": [
+          39.43961504408165,
+          185.18062011123354,
+          19.82649745107902
+        ],
+        "max_vertex_displacement_from_start": 395.40058744099207,
+        "vertices": 1656
+      },
+      {
+        "time": 0.7885416547457377,
+        "bbox_extent": [
+          51.75803617106753,
+          425.61662440404257,
+          70.26484236258517
+        ],
+        "max_vertex_displacement_from_start": 651.6278962527771,
+        "vertices": 1656
+      },
+      {
+        "time": 1.037499984105428,
+        "bbox_extent": [
+          57.49203268764364,
+          524.3057870545235,
+          138.42055693466014
+        ],
+        "max_vertex_displacement_from_start": 763.4531332216578,
+        "vertices": 1656
+      },
+      {
+        "time": 1.2864583134651184,
+        "bbox_extent": [
+          51.49897426825612,
+          431.72187267603454,
+          73.6629256145462
+        ],
+        "max_vertex_displacement_from_start": 658.3353911574005,
+        "vertices": 1656
+      },
+      {
+        "time": 1.5354166428248088,
+        "bbox_extent": [
+          37.946480860201525,
+          194.26247588819825,
+          19.498268833455366
+        ],
+        "max_vertex_displacement_from_start": 405.0423663938319,
+        "vertices": 1656
+      },
+      {
+        "time": 1.784374972184499,
+        "bbox_extent": [
+          24.242670721858083,
+          205.3999493162284,
+          41.51249991139763
+        ],
+        "max_vertex_displacement_from_start": 132.97789283597498,
+        "vertices": 1656
+      },
+      {
+        "time": 2.0333333015441895,
+        "bbox_extent": [
+          18.429874936628924,
+          325.6152206264784,
+          98.3303555701684
+        ],
+        "max_vertex_displacement_from_start": 4.045106203493293,
+        "vertices": 1656
+      }
+    ],
+    "creative_approval": false
+  },
+  "max_evaluator_vs_supported_loader_displacement_error_model_units": 0.0001136420580394315,
+  "candidate_metric_rig": {
+    "type": "original_metric_rig_ThreeJS_skinning_test",
+    "source_geometry_unchanged": true,
+    "bind_max_error": 9.303580895386623e-08,
+    "bones": 8,
+    "vertices": 1656,
+    "technical_size_sanity_passed": true,
+    "original_native_clip_used": false,
+    "biomechanics_validated": false,
+    "independent_review": false,
+    "limitation": "Artist-designed eight-bone rig, not measured cetacean skeletal anatomy. Source rig incompatibility confirmed by supported-loader comparison; mesh remains CC-BY derivative.",
+    "samples": [
+      {
+        "time": 0,
+        "bbox_extent": [
+          7.123257227126637,
+          2.783789875912176,
+          3.68079207202475
+        ],
+        "max_displacement_from_bind_metres": 0.2608381806986261,
+        "max_extent_ratio": 1.0176081753038053
+      },
+      {
+        "time": 0.25,
+        "bbox_extent": [
+          7.080909712798292,
+          2.7887734549480356,
+          3.6893513657832826
+        ],
+        "max_displacement_from_bind_metres": 0.1334617725495558,
+        "max_extent_ratio": 1.0115585303997559
+      },
+      {
+        "time": 0.5,
+        "bbox_extent": [
+          7.0088047720583795,
+          2.793768809137855,
+          3.6961330235927647
+        ],
+        "max_displacement_from_bind_metres": 0.0769909132359282,
+        "max_extent_ratio": 1.005636453563255
+      },
+      {
+        "time": 0.75,
+        "bbox_extent": [
+          6.925113246472416,
+          2.797414458469945,
+          3.7010361421182867
+        ],
+        "max_displacement_from_bind_metres": 0.18880514897255968,
+        "max_extent_ratio": 1.00697048420932
+      },
+      {
+        "time": 1,
+        "bbox_extent": [
+          6.858281896991624,
+          2.7988032081284278,
+          3.704137312696975
+        ],
+        "max_displacement_from_bind_metres": 0.28580463905245723,
+        "max_extent_ratio": 1.0078142444751816
+      },
+      {
+        "time": 1.25,
+        "bbox_extent": [
+          6.833337516466621,
+          2.7976103551721616,
+          3.705573397604419
+        ],
+        "max_displacement_from_bind_metres": 0.30343155003990724,
+        "max_extent_ratio": 1.0082049715740495
+      },
+      {
+        "time": 1.5,
+        "bbox_extent": [
+          6.858773097298235,
+          2.7941140786827585,
+          3.7054371598735907
+        ],
+        "max_displacement_from_bind_metres": 0.23788518843567003,
+        "max_extent_ratio": 1.0081679042857248
+      },
+      {
+        "time": 1.75,
+        "bbox_extent": [
+          6.923175516036892,
+          2.789178912188213,
+          3.703718895954448
+        ],
+        "max_displacement_from_bind_metres": 0.10809430043059268,
+        "max_extent_ratio": 1.007700402487791
+      },
+      {
+        "time": 2,
+        "bbox_extent": [
+          7.002388235974015,
+          2.784140248143152,
+          3.700312281197074
+        ],
+        "max_displacement_from_bind_metres": 0.09047149239317963,
+        "max_extent_ratio": 1.006773537582931
+      }
+    ]
+  },
+  "visual_inspection": {
+    "actual_still_opened": "research/monarch_cam_market/motion/out/orca/metric-rig-poses.jpg",
+    "observations": "Overall body proportions retained in three samples; tail bends without giant scaling. Flat CPU face-colour rendering shows coarse texture sampling and is not final shading. Stills do not establish full motion or anatomy quality.",
+    "independent": false
+  },
+  "source_loader_read": "https://github.com/GilRaitses/orcastrike/blob/eb23633cb6779c0d81198fcd91d994b7c18653c3/lib/scene/orca/loadOrcaMesh.ts",
+  "source_loader_finding": "Upstream describes centered world-baked static geometry with rig added separately. Removing legacy skin is not by itself a defect; treating leftover native clip as usable was an unsupported assumption.",
+  "production_release": false
+}
