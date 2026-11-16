@@ -1,0 +1,13 @@
+{
+  "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11939058/",
+  "source_type": "official scientific Movie S1, NOT YouTube editorial reference",
+  "credit": "Santon, Troscianko, Heatubun and How (2025), Science Advances, doi:10.1126/sciadv.adr3686, Movie S1",
+  "rights": "Article CC BY4.0 verified at PMC; inspect member-specific credits before production reuse.",
+  "full_realtime_review": false,
+  "actual_listening": false,
+  "sampled_frames_opened": false,
+  "success": false,
+  "error": "Server did not honor byte ranges; refusing full archive",
+  "temporary_media_deleted": true,
+  "workflow_run": "https://github.com/adil-chandio/Top1/actions/runs/43942287122"
+}
