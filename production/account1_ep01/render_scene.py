@@ -1400,57 +1400,67 @@ def make_basket_setup(mats, loc=(1.35, 1.15, 0.02), procedural_only=False):
 
 
 def make_monarch_setup(mats, procedural_only=True):
-    """The MONARCH: real marble bust + the scanned Venetian mask sitting on its face.
+    """The MONARCH: real marble bust wearing the scanned Venetian mask.
 
-    Returns (head, bust, shoulders, neck, mask, bar).  Every element is a real
-    imported CC0 mesh when available; the procedural rig is the last resort.
+    Returns (head, bust, shoulders, neck, mask, eye_light).  All hero elements
+    are real imported CC0 meshes; the procedural rig is only a fallback.
     """
     skin = mats.get("monarch_skin", mats["obsidian"])
+    bust_h = 0.92
 
-    # --- torso: real photogrammetry marble bust (Poly Haven, CC0) -----------
+    # --- torso/head: real photogrammetry marble bust (Poly Haven, CC0) ------
     bust = try_append_blend("marble_bust_01", "PH_MARBLE_BUST")
     if bust:
-        fit_group(bust, 0.92, use="z", center_xy=(0, 0), bottom_z=0.50)
+        fit_group(bust, bust_h, use="z", center_xy=(0, 0), bottom_z=0.50)
         override_material_recursive(bust, mats.get("monarch_marble", mats["black"]))
         bpy.context.view_layer.update()
-        lo, hi = bbox_group(bust)
-        head_z = hi.z - 0.10           # top of the bust = the head
-        head_y = (lo.y + hi.y) * 0.5
-        head_w = max((hi.z - lo.z) * 0.30, 1e-3)   # head, not the shoulder span
+        blo, bhi = bbox_group(bust)
+        bust_top = bhi.z
+        bust_front_y = blo.y
+        head_w = (bhi.z - blo.z) * 0.155      # face width on a bust this size
     else:
         bust = make_box("MONARCH_WARM_BUST", (0.62, 0.30, 0.42), (0, 0.42, 0.86), skin, bevel=0.10)
-        head_z, head_y, head_w = 1.22, 0.34, 0.21
+        bust_top, bust_front_y, head_w = 1.42, 0.27, 0.14
+
+    # chin sits ~35% down from the crown on a bust
+    chin_z = bust_top - bust_h * 0.35
 
     shoulders = make_box(
         "MONARCH_TURTLENECK_SHOULDERS", (0.80, 0.38, 0.20),
-        (0, head_y + 0.02, 0.66), mats["black"], bevel=0.07,
+        (0, 0.44, 0.62), mats["black"], bevel=0.07,
     )
     neck = make_cylinder(
-        "MONARCH_TURTLENECK", 0.10, 0.24, (0, head_y, head_z - 0.30),
+        "MONARCH_TURTLENECK", 0.10, 0.22, (0, 0.40, chin_z - 0.10),
         mats["black"], vertices=32, bevel=0.020,
     )
 
-    # --- the mask: real scanned Venetian half-mask --------------------------
+    # --- the mask: real scanned Venetian half-mask, worn on the face --------
     mask = try_append_glb("venice_mask.glb", "MONARCH_VENICE_MASK")
     if mask:
-        fit_group(mask, head_w * 1.06, use="xy", center_xy=(0, 0), bottom_z=0.0)
+        # bbox includes the plumed crest, so fit generously then seat the chin.
+        fit_group(mask, head_w * 3.4, use="xy", center_xy=(0, 0), bottom_z=0.0)
         bpy.context.view_layer.update()
         mlo, mhi = bbox_group(mask)
         mask.location = Vector(mask.location) + Vector((
-            0.0, head_y - (mhi.y - mlo.y) * 0.52, head_z - (mhi.z - mlo.z) * 0.30,
+            0.0,
+            (bust_front_y - 0.02) - mlo.y,
+            chin_z - mlo.z,
         ))
         bpy.context.view_layer.update()
     else:
         mask = make_procedural_mask(
-            "MONARCH_3D_VENICE_MASK", (0, head_y - head_w * 0.55, head_z), mats, width=head_w * 2.0,
+            "MONARCH_3D_VENICE_MASK",
+            (0, bust_front_y - head_w * 1.1, chin_z + head_w * 1.2),
+            mats, width=head_w * 2.0,
         )
 
-    head = new_empty("MONARCH_HEAD_REF", (0, head_y, head_z))
-    bar = make_box(
-        "MONARCH_CRIMSON_LIGHT_BAR", (head_w * 0.80, 0.008, 0.009),
-        (0, head_y - head_w * 0.62, head_z + 0.045), mats["crimson"], bevel=0.004,
+    head = new_empty("MONARCH_HEAD_REF", (0, bust_front_y, bust_top))
+    # crimson signature: a light burning *behind* the mask so it leaks
+    # through the eye slots instead of a bar floating in mid-air.
+    eye_light = add_point(
+        "MONARCH_EYE_GLOW", (0, bust_front_y + 0.02, chin_z + head_w * 1.15), 26, C_CRIMSON, 0.035,
     )
-    return head, bust, shoulders, neck, mask, bar
+    return head, bust, shoulders, neck, mask, eye_light
 
 
 # ---------------------------------------------------------------------------
@@ -1796,11 +1806,13 @@ def shot_s5(mats, s, e):
     smoke, motes = make_particles("S5_DARK_SMOKE_MOTES", mats["gold_emit"], count=18, center=(0, 0.7, 1.35), spread=0.9, seed=61)
     animate_particles(motes, s, e, lift=0.30, seed=62)
 
+    # The bust sits on a 0.48 m pedestal and is 0.92 m tall, so the masked
+    # face lives around z = 1.28. Hold the camera at eye level and push in.
     cam = make_camera("S5_MASKED_MONARCH_PUSH")
-    key_camera(cam, s, (0.00, -3.30, 1.25), (0.00, 0.40, 1.15), lens=45, focus=3.15)
-    key_camera(cam, s + 14, (0.04, -3.02, 1.23), (0.00, 0.39, 1.16), lens=48, focus=2.90)
-    key_camera(cam, s + 28, (0.07, -2.78, 1.21), (0.00, 0.38, 1.17), lens=51, focus=2.68)
-    key_camera(cam, e, (0.09, -2.60, 1.20), (0.00, 0.37, 1.18), lens=54, focus=2.52)
+    key_camera(cam, s, (0.00, -3.30, 1.34), (0.00, 0.36, 1.24), lens=48, focus=3.15)
+    key_camera(cam, s + 14, (0.04, -3.02, 1.32), (0.00, 0.35, 1.25), lens=51, focus=2.90)
+    key_camera(cam, s + 28, (0.07, -2.78, 1.30), (0.00, 0.34, 1.26), lens=55, focus=2.68)
+    key_camera(cam, e, (0.09, -2.60, 1.29), (0.00, 0.33, 1.27), lens=58, focus=2.52)
     return cam
 
 
