@@ -63,7 +63,8 @@ def invoke(command,request,response):
     if command in COMMANDS:return exchange(command,request,response)
     argv=shlex.split(command)+['--request',str(request),'--response',str(response)]
     # Logs may include tool diagnostics; never print/store command or secret environment.
-    subprocess.run(argv,check=True,timeout=CONFIG['worker_timeout_seconds'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,cwd=ROOT)
+    from studio.processes import run_command
+    run_command(argv,cwd=ROOT,timeout=CONFIG['worker_timeout_seconds'])
     return json.loads(response.read_text())
 
 def _tick(job):
