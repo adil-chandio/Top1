@@ -1,0 +1,224 @@
+{
+  "route": "github_actions_runner",
+  "artifact_source": "deliverables/pehra-final/keyframes/*.png (extracted from the committed 15s MP4)",
+  "frame_count": 6,
+  "captioner": "Salesforce/blip-image-captioning-base",
+  "vqa": "dandelin/vilt-b32-finetuned-vqa",
+  "cannot": [
+    "subjective taste",
+    "cinematic quality judgements",
+    "human emotional response"
+  ],
+  "frames": [
+    {
+      "file": "01_S1_MIDNIGHT_FURROW_f038.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a pot of flowers sitting on a table",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 0.9999
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "no",
+          "confidence": 0.9829
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "yes",
+          "confidence": 0.8537
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "no",
+          "confidence": 0.9994
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "indoors",
+          "confidence": 0.9965
+        }
+      ]
+    },
+    {
+      "file": "02_S2_ROYAL_GUARDS_f116.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a group of people standing in a room",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 0.9999
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "yes",
+          "confidence": 0.552
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "no",
+          "confidence": 0.9873
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "no",
+          "confidence": 0.9951
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "indoors",
+          "confidence": 0.9945
+        }
+      ]
+    },
+    {
+      "file": "03_S3_LOCKED_IRON_f196.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a metal padlock with a chain and a key",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 0.979
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "no",
+          "confidence": 0.9999
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "no",
+          "confidence": 0.9941
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "no",
+          "confidence": 0.9998
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "indoors",
+          "confidence": 0.9258
+        }
+      ]
+    },
+    {
+      "file": "04_S4_UNGUARDED_GATE_f248.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a man in a hat and a hat on a desert",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 1.0
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "yes",
+          "confidence": 0.9891
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "no",
+          "confidence": 0.8156
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "no",
+          "confidence": 0.9963
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "outdoors",
+          "confidence": 0.9701
+        }
+      ]
+    },
+    {
+      "file": "05_S5_MASKED_MONARCH_f292.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a black background",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 0.9993
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "no",
+          "confidence": 0.9358
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "yes",
+          "confidence": 0.6568
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "yes",
+          "confidence": 0.996
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "indoors",
+          "confidence": 0.9702
+        }
+      ]
+    },
+    {
+      "file": "06_S6_MASTER_MOVE_f372.png",
+      "size": [
+        1080,
+        1920
+      ],
+      "caption": "a clock with a candle on it",
+      "vqa": [
+        {
+          "question": "Is the image dark?",
+          "answer": "yes",
+          "confidence": 0.9999
+        },
+        {
+          "question": "Is there a person?",
+          "answer": "no",
+          "confidence": 0.8912
+        },
+        {
+          "question": "Is this a photograph?",
+          "answer": "no",
+          "confidence": 0.8828
+        },
+        {
+          "question": "Is there text in the image?",
+          "answer": "no",
+          "confidence": 0.9974
+        },
+        {
+          "question": "Is the scene indoors or outdoors?",
+          "answer": "indoors",
+          "confidence": 0.9873
+        }
+      ]
+    }
+  ]
+}
