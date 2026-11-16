@@ -874,7 +874,7 @@ def build_material_library():
 
 def make_procedural_potato(name, loc, mats, scale=0.20, rotation=(0, 0, 0)):
     root = new_empty(name, loc)
-    make_sphere(name + "_body", (scale, scale * 0.62, scale * 0.55), (0, 0, 0), mats["potato"], parent=root, rotation=rotation)
+    make_sphere(name + "_body", (scale, scale * 0.62, scale * 0.55), (0, 0, 0), mats["potato"], parent=root)
     root.rotation_euler = rotation
     return root
 
