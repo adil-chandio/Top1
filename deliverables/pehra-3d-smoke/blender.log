@@ -1,139 +1,105 @@
-15:00:30 | INFO: Data are loaded, start creating Blender stuff
-15:00:30 | INFO: Blender create Mesh node yumao3_low_lambert4_0
-15:00:30 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert4_0
-15:00:30 | INFO: Blender create Mesh node yumao3_low_lambert3_0
-15:00:30 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert3_0
-15:00:30 | INFO: Blender create Mesh node yumao3_low_lambert2_0
-15:00:30 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert2_0
-15:00:30 | INFO: Blender create Mesh node yumao3_low_lambert1_0
-15:00:30 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert1_0
-15:00:30 | INFO: Blender create Mesh node zhu_low_lambert5_0
-15:00:30 | INFO: Draco Decoder: Decode primitive zhu_low_lambert5_0
-15:00:30 | INFO: glTF import finished in 0.46s
-[MEASURE] BUST: x -0.243..+0.243 (w 0.486)  y -0.268..+0.268 (d 0.535)  z +0.500..+1.420 (h 0.920)
-[MEASURE] MASK: x -0.131..+0.131 (w 0.262)  y -0.395..-0.253 (d 0.142)  z +1.015..+1.532 (h 0.517)
-[MEASURE] SHOULDERS: MISSING
-[MASK-CHILD] yumao3_low_lambert1_0 type=MESH scale=(0.01, 0.01, 0.01)
-[MASK-CHILD] yumao3_low_lambert2_0 type=MESH scale=(0.01, 0.01, 0.01)
-[MASK-CHILD] yumao3_low_lambert3_0 type=MESH scale=(0.01, 0.01, 0.01)
-[MASK-CHILD] yumao3_low_lambert4_0 type=MESH scale=(0.01, 0.01, 0.01)
-[MASK-CHILD] zhu_low_lambert5_0 type=MESH scale=(0.01, 0.01, 0.01)
-15:00:31 | INFO: Data are loaded, start creating Blender stuff
-15:00:31 | INFO: Blender create Mesh node yumao3_low_lambert4_0
-15:00:31 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert4_0
-15:00:31 | INFO: Blender create Mesh node yumao3_low_lambert3_0
-15:00:31 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert3_0
-15:00:31 | INFO: Blender create Mesh node yumao3_low_lambert2_0
-15:00:31 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert2_0
-15:00:32 | INFO: Blender create Mesh node yumao3_low_lambert1_0
-15:00:32 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert1_0
-15:00:32 | INFO: Blender create Mesh node zhu_low_lambert5_0
-15:00:32 | INFO: Draco Decoder: Decode primitive zhu_low_lambert5_0
-15:00:32 | INFO: glTF import finished in 0.48s
+[PEHRA] Building S5_MASKED_MONARCH: full shot 271-310, render 292-292, 18 samples @ 100%
+15:03:54 | INFO: Data are loaded, start creating Blender stuff
+15:03:54 | INFO: Blender create Mesh node yumao3_low_lambert4_0
+15:03:54 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert4_0
+15:03:54 | INFO: Blender create Mesh node yumao3_low_lambert3_0
+15:03:54 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert3_0
+15:03:54 | INFO: Blender create Mesh node yumao3_low_lambert2_0
+15:03:54 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert2_0
+15:03:54 | INFO: Blender create Mesh node yumao3_low_lambert1_0
+15:03:54 | INFO: Draco Decoder: Decode primitive yumao3_low_lambert1_0
+15:03:54 | INFO: Blender create Mesh node zhu_low_lambert5_0
+15:03:54 | INFO: Draco Decoder: Decode primitive zhu_low_lambert5_0
+15:03:54 | INFO: glTF import finished in 0.25s
+[PEHRA] Rendering single lookdev frame -> /home/runner/work/Top1/Top1/production/account1_ep01/frames_debug/f_000292.png
 Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
 DracoDecoder | Decoded 37053 vertices, 197685 indices
 DracoDecoder | Decoded 35303 vertices, 185229 indices
 DracoDecoder | Decoded 77573 vertices, 388236 indices
 DracoDecoder | Decoded 10585 vertices, 59058 indices
 DracoDecoder | Decoded 13362 vertices, 56592 indices
-DracoDecoder | Decoded 37053 vertices, 197685 indices
-DracoDecoder | Decoded 35303 vertices, 185229 indices
-DracoDecoder | Decoded 77573 vertices, 388236 indices
-DracoDecoder | Decoded 10585 vertices, 59058 indices
-DracoDecoder | Decoded 13362 vertices, 56592 indices
-Fra:292 Mem:98.44M (Peak 98.44M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | marble_bust_01
-Fra:292 Mem:98.64M (Peak 98.64M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert4_0
-Fra:292 Mem:101.41M (Peak 101.41M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_DARK_SMOKE_MOTES_mote_0
-Fra:292 Mem:101.41M (Peak 101.41M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_GLASS_HURRICANE_HOLDER
-Fra:292 Mem:101.42M (Peak 101.42M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_B_flame
-Fra:292 Mem:101.45M (Peak 101.45M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_B_holder
-Fra:292 Mem:101.46M (Peak 101.46M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_B_wax
-Fra:292 Mem:101.46M (Peak 101.46M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_A_flame
-Fra:292 Mem:101.46M (Peak 101.46M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_A_holder
-Fra:292 Mem:101.47M (Peak 101.47M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_CANDLE_A_wax
-Fra:292 Mem:101.64M (Peak 101.64M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | MONARCH_OBSIDIAN_PEDESTAL
-Fra:292 Mem:101.70M (Peak 101.70M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | S5_MONARCH_SMOKE_WALL
-Fra:292 Mem:101.70M (Peak 101.70M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | zhu_low_lambert5_0.001
-Fra:292 Mem:104.26M (Peak 104.26M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert3_0
-Fra:292 Mem:105.13M (Peak 105.13M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert2_0
-Fra:292 Mem:131.93M (Peak 131.93M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert1_0.001
-Fra:292 Mem:149.74M (Peak 149.74M) | Time:00:00.06 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert2_0.001
-Fra:292 Mem:186.62M (Peak 194.57M) | Time:00:00.17 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert1_0
-Fra:292 Mem:180.39M (Peak 194.57M) | Time:00:00.19 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | zhu_low_lambert5_0
-Fra:292 Mem:183.73M (Peak 194.57M) | Time:00:00.20 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | marble_bust_01.001
-Fra:292 Mem:195.85M (Peak 195.85M) | Time:00:00.21 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert4_0.001
-Fra:292 Mem:219.82M (Peak 219.82M) | Time:00:00.25 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Synchronizing object | yumao3_low_lambert3_0.001
-Fra:292 Mem:194.49M (Peak 240.74M) | Time:00:00.40 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Initializing
-Fra:292 Mem:194.26M (Peak 240.74M) | Time:00:00.40 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Images | Loading Image_14.001
-Fra:292 Mem:194.26M (Peak 240.74M) | Time:00:00.40 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Images | Loading Image_1
-Fra:292 Mem:194.26M (Peak 240.74M) | Time:00:00.40 | Mem:0.00M, Peak:0.00M | Scene, ViewLayer | Updating Images | Loading Image_2
-Fra:292 Mem:210.28M (Peak 240.74M) | Time:00:00.42 | Mem:4.00M, Peak:4.00M | Scene, ViewLayer | Updating Images | Loading Image_13.001
-Fra:292 Mem:214.28M (Peak 240.74M) | Time:00:00.42 | Mem:8.00M, Peak:8.00M | Scene, ViewLayer | Updating Images | Loading Image_3
-Fra:292 Mem:218.28M (Peak 240.74M) | Time:00:00.43 | Mem:12.00M, Peak:12.00M | Scene, ViewLayer | Updating Images | Loading Image_12.001
-Fra:292 Mem:226.28M (Peak 240.74M) | Time:00:00.44 | Mem:16.00M, Peak:16.00M | Scene, ViewLayer | Updating Images | Loading Image_4
-Fra:292 Mem:234.28M (Peak 242.29M) | Time:00:00.44 | Mem:20.00M, Peak:20.00M | Scene, ViewLayer | Updating Images | Loading Image_5
-Fra:292 Mem:226.28M (Peak 242.29M) | Time:00:00.44 | Mem:24.00M, Peak:24.00M | Scene, ViewLayer | Updating Images | Loading Image_6
-Fra:292 Mem:234.28M (Peak 242.29M) | Time:00:00.45 | Mem:28.00M, Peak:28.00M | Scene, ViewLayer | Updating Images | Loading Image_11.001
-Fra:292 Mem:238.28M (Peak 246.29M) | Time:00:00.46 | Mem:32.00M, Peak:32.00M | Scene, ViewLayer | Updating Images | Loading Image_10.001
-Fra:292 Mem:242.28M (Peak 250.29M) | Time:00:00.47 | Mem:36.00M, Peak:36.00M | Scene, ViewLayer | Updating Images | Loading Image_7
-Fra:292 Mem:254.28M (Peak 262.29M) | Time:00:00.48 | Mem:40.00M, Peak:40.00M | Scene, ViewLayer | Updating Images | Loading Image_8
-Fra:292 Mem:250.28M (Peak 262.29M) | Time:00:00.48 | Mem:44.00M, Peak:44.00M | Scene, ViewLayer | Updating Images | Loading Image_9.001
-Fra:292 Mem:254.28M (Peak 262.29M) | Time:00:00.48 | Mem:48.00M, Peak:48.00M | Scene, ViewLayer | Updating Images | Loading Image_9
-Fra:292 Mem:258.28M (Peak 266.29M) | Time:00:00.49 | Mem:52.00M, Peak:52.00M | Scene, ViewLayer | Updating Images | Loading Image_10
-Fra:292 Mem:262.28M (Peak 270.29M) | Time:00:00.50 | Mem:56.00M, Peak:56.00M | Scene, ViewLayer | Updating Images | Loading Image_11
-Fra:292 Mem:266.28M (Peak 274.29M) | Time:00:00.50 | Mem:60.00M, Peak:60.00M | Scene, ViewLayer | Updating Images | Loading Image_12
-Fra:292 Mem:270.28M (Peak 278.29M) | Time:00:00.51 | Mem:64.00M, Peak:64.00M | Scene, ViewLayer | Updating Images | Loading Image_13
-Fra:292 Mem:274.28M (Peak 282.29M) | Time:00:00.51 | Mem:68.00M, Peak:68.00M | Scene, ViewLayer | Updating Images | Loading Image_8.001
-Fra:292 Mem:278.28M (Peak 286.29M) | Time:00:00.52 | Mem:72.00M, Peak:72.00M | Scene, ViewLayer | Updating Images | Loading Image_14
-Fra:292 Mem:282.28M (Peak 290.29M) | Time:00:00.52 | Mem:76.00M, Peak:76.00M | Scene, ViewLayer | Updating Images | Loading Image_0.001
-Fra:292 Mem:286.28M (Peak 294.29M) | Time:00:00.53 | Mem:80.00M, Peak:80.00M | Scene, ViewLayer | Updating Images | Loading Image_1.001
-Fra:292 Mem:290.28M (Peak 298.29M) | Time:00:00.54 | Mem:84.00M, Peak:84.00M | Scene, ViewLayer | Updating Images | Loading Image_2.001
-Fra:292 Mem:294.28M (Peak 302.29M) | Time:00:00.54 | Mem:88.00M, Peak:88.00M | Scene, ViewLayer | Updating Images | Loading Image_3.001
-Fra:292 Mem:310.29M (Peak 318.30M) | Time:00:00.56 | Mem:92.00M, Peak:92.00M | Scene, ViewLayer | Updating Images | Loading Image_4.001
-Fra:292 Mem:310.29M (Peak 318.30M) | Time:00:00.56 | Mem:96.00M, Peak:96.00M | Scene, ViewLayer | Updating Images | Loading Image_5.001
-Fra:292 Mem:302.28M (Peak 318.30M) | Time:00:00.56 | Mem:100.00M, Peak:100.00M | Scene, ViewLayer | Updating Images | Loading Image_7.001
-Fra:292 Mem:310.28M (Peak 318.30M) | Time:00:00.57 | Mem:104.00M, Peak:104.00M | Scene, ViewLayer | Updating Images | Loading Image_6.001
-Fra:292 Mem:311.90M (Peak 322.29M) | Time:00:00.59 | Mem:120.00M, Peak:120.00M | Scene, ViewLayer | Waiting for render to start
-Fra:292 Mem:311.90M (Peak 322.29M) | Time:00:00.59 | Mem:120.00M, Peak:120.00M | Scene, ViewLayer | Loading render kernels (may take a few minutes the first time)
-Fra:292 Mem:311.90M (Peak 322.29M) | Time:00:00.59 | Mem:120.00M, Peak:120.00M | Scene, ViewLayer | Updating Scene
-Fra:292 Mem:311.90M (Peak 322.29M) | Time:00:00.59 | Mem:120.00M, Peak:120.00M | Scene, ViewLayer | Updating Shaders
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Procedurals
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Background
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Camera
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Meshes Flags
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Objects
-Fra:292 Mem:311.99M (Peak 322.29M) | Time:00:00.59 | Mem:120.01M, Peak:120.01M | Scene, ViewLayer | Updating Objects | Copying Transformations to device
-Fra:292 Mem:312.00M (Peak 322.29M) | Time:00:00.59 | Mem:120.02M, Peak:120.02M | Scene, ViewLayer | Updating Objects | Applying Static Transformations
-Fra:292 Mem:312.00M (Peak 322.29M) | Time:00:00.60 | Mem:120.02M, Peak:120.02M | Scene, ViewLayer | Updating Particle Systems
-Fra:292 Mem:312.00M (Peak 322.29M) | Time:00:00.60 | Mem:120.02M, Peak:120.02M | Scene, ViewLayer | Updating Particle Systems | Copying Particles to device
-Fra:292 Mem:312.00M (Peak 322.29M) | Time:00:00.60 | Mem:120.02M, Peak:120.02M | Scene, ViewLayer | Updating Meshes
-Fra:292 Mem:321.58M (Peak 322.29M) | Time:00:00.61 | Mem:120.02M, Peak:120.02M | Scene, ViewLayer | Updating Mesh | Computing attributes
-Fra:292 Mem:366.37M (Peak 366.37M) | Time:00:00.62 | Mem:120.03M, Peak:120.03M | Scene, ViewLayer | Updating Mesh | Copying Attributes to device
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.62 | Mem:164.81M, Peak:164.81M | Scene, ViewLayer | Updating Geometry BVH Sphere 1/1 | Building BVH
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.62 | Mem:164.81M, Peak:164.81M | Scene, ViewLayer | Updating Geometry BVH Sphere 1/1 | Building BVH 0%
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.62 | Mem:164.82M, Peak:164.82M | Scene, ViewLayer | Updating Scene BVH | Building
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.62 | Mem:164.82M, Peak:164.82M | Scene, ViewLayer | Updating Scene BVH | Building BVH
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.73 | Mem:202.79M, Peak:221.94M | Scene, ViewLayer | Updating Scene BVH | Copying BVH to device
-Fra:292 Mem:366.36M (Peak 366.37M) | Time:00:00.73 | Mem:202.79M, Peak:221.94M | Scene, ViewLayer | Updating Mesh | Computing normals
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:202.79M, Peak:221.94M | Scene, ViewLayer | Updating Mesh | Copying Mesh to device
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:225.93M, Peak:225.93M | Scene, ViewLayer | Updating Objects Flags
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:225.93M, Peak:225.93M | Scene, ViewLayer | Updating Primitive Offsets
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:225.93M, Peak:225.93M | Scene, ViewLayer | Updating Images
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:225.93M, Peak:225.93M | Scene, ViewLayer | Updating Camera Volume
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:225.93M, Peak:225.93M | Scene, ViewLayer | Updating Lookup Tables
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:226.01M, Peak:226.01M | Scene, ViewLayer | Updating Lights
-Fra:292 Mem:389.50M (Peak 389.50M) | Time:00:00.74 | Mem:226.01M, Peak:226.01M | Scene, ViewLayer | Updating Lights | Computing tree
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Updating Integrator
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Updating Film
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:225.97M, Peak:226.05M | Scene, ViewLayer | Updating Lookup Tables
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Updating Baking
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Updating Device | Writing constant memory
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
-Fra:292 Mem:389.54M (Peak 389.54M) | Time:00:00.74 | Mem:226.05M, Peak:226.05M | Scene, ViewLayer | Sample 0/10
-Fra:292 Mem:419.99M (Peak 419.99M) | Time:00:01.65 | Remaining:00:08.24 | Mem:256.50M, Peak:256.50M | Scene, ViewLayer | Sample 1/10
-Fra:292 Mem:432.81M (Peak 452.03M) | Time:00:12.84 | Mem:256.50M, Peak:256.50M | Scene, ViewLayer | Sample 10/10
-Fra:292 Mem:432.81M (Peak 452.03M) | Time:00:12.84 | Mem:256.50M, Peak:256.50M | Scene, ViewLayer | Finished
-Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames_debug/s5_debug_.png'
-Time: 00:12.98 (Saving: 00:00.14)
+Fra:292 Mem:56.35M (Peak 56.35M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | marble_bust_01
+Fra:292 Mem:56.35M (Peak 56.35M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | yumao3_low_lambert4_0
+Fra:292 Mem:59.21M (Peak 59.21M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_DARK_SMOKE_MOTES_mote_0
+Fra:292 Mem:59.32M (Peak 59.32M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_GLASS_HURRICANE_HOLDER
+Fra:292 Mem:59.33M (Peak 59.33M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_B_flame
+Fra:292 Mem:59.33M (Peak 59.33M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_B_holder
+Fra:292 Mem:59.33M (Peak 59.33M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_B_wax
+Fra:292 Mem:59.34M (Peak 59.34M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_A_flame
+Fra:292 Mem:59.34M (Peak 59.34M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_A_holder
+Fra:292 Mem:59.35M (Peak 59.35M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_CANDLE_A_wax
+Fra:292 Mem:59.35M (Peak 59.35M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | MONARCH_OBSIDIAN_PEDESTAL
+Fra:292 Mem:59.44M (Peak 59.44M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S5_MONARCH_SMOKE_WALL
+Fra:292 Mem:59.44M (Peak 59.44M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | zhu_low_lambert5_0
+Fra:292 Mem:62.94M (Peak 62.94M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | yumao3_low_lambert3_0
+Fra:292 Mem:63.06M (Peak 63.06M) | Time:00:00.00 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | yumao3_low_lambert2_0
+Fra:292 Mem:86.55M (Peak 87.42M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | yumao3_low_lambert1_0
+Fra:292 Mem:105.43M (Peak 132.00M) | Time:00:00.09 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:292 Mem:105.42M (Peak 132.00M) | Time:00:00.09 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_14
+Fra:292 Mem:105.42M (Peak 132.00M) | Time:00:00.09 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_2
+Fra:292 Mem:121.44M (Peak 132.00M) | Time:00:00.10 | Mem:4.00M, Peak:4.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_13
+Fra:292 Mem:125.44M (Peak 133.45M) | Time:00:00.10 | Mem:8.00M, Peak:8.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_3
+Fra:292 Mem:129.44M (Peak 137.45M) | Time:00:00.11 | Mem:12.00M, Peak:12.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_12
+Fra:292 Mem:137.45M (Peak 145.46M) | Time:00:00.11 | Mem:16.00M, Peak:16.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_4
+Fra:292 Mem:137.44M (Peak 145.46M) | Time:00:00.11 | Mem:20.00M, Peak:20.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_5
+Fra:292 Mem:141.44M (Peak 149.45M) | Time:00:00.12 | Mem:24.00M, Peak:24.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_6
+Fra:292 Mem:145.44M (Peak 153.45M) | Time:00:00.12 | Mem:28.00M, Peak:28.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_11
+Fra:292 Mem:149.44M (Peak 157.45M) | Time:00:00.13 | Mem:32.00M, Peak:32.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_10
+Fra:292 Mem:153.44M (Peak 161.45M) | Time:00:00.13 | Mem:36.00M, Peak:36.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_7
+Fra:292 Mem:157.44M (Peak 165.45M) | Time:00:00.13 | Mem:40.00M, Peak:40.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_9
+Fra:292 Mem:161.44M (Peak 169.45M) | Time:00:00.14 | Mem:44.00M, Peak:44.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading Image_8
+Fra:292 Mem:165.44M (Peak 173.45M) | Time:00:00.15 | Mem:60.00M, Peak:60.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:292 Mem:165.44M (Peak 173.45M) | Time:00:00.15 | Mem:60.00M, Peak:60.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:292 Mem:165.44M (Peak 173.45M) | Time:00:00.15 | Mem:60.00M, Peak:60.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:292 Mem:165.44M (Peak 173.45M) | Time:00:00.15 | Mem:60.00M, Peak:60.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Procedurals
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:292 Mem:165.53M (Peak 173.45M) | Time:00:00.15 | Mem:60.01M, Peak:60.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:292 Mem:165.54M (Peak 173.45M) | Time:00:00.15 | Mem:60.02M, Peak:60.02M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:292 Mem:165.54M (Peak 173.45M) | Time:00:00.15 | Mem:60.02M, Peak:60.02M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:292 Mem:165.54M (Peak 173.45M) | Time:00:00.15 | Mem:60.02M, Peak:60.02M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:292 Mem:165.54M (Peak 173.45M) | Time:00:00.15 | Mem:60.02M, Peak:60.02M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:292 Mem:170.34M (Peak 173.45M) | Time:00:00.16 | Mem:60.02M, Peak:60.02M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:292 Mem:192.75M (Peak 192.75M) | Time:00:00.16 | Mem:60.03M, Peak:60.03M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.16 | Mem:82.42M, Peak:82.42M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere 1/1 | Building BVH
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.16 | Mem:82.42M, Peak:82.42M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere 1/1 | Building BVH 0%
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.16 | Mem:82.43M, Peak:82.43M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.16 | Mem:82.43M, Peak:82.43M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.18 | Mem:102.46M, Peak:112.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:292 Mem:192.74M (Peak 192.75M) | Time:00:00.18 | Mem:102.46M, Peak:112.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:102.46M, Peak:112.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.05M, Peak:114.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.05M, Peak:114.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.05M, Peak:114.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.05M, Peak:114.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.05M, Peak:114.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.13M, Peak:114.13M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:292 Mem:204.33M (Peak 204.33M) | Time:00:00.18 | Mem:114.14M, Peak:114.14M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:292 Mem:204.36M (Peak 204.36M) | Time:00:00.18 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:292 Mem:204.36M (Peak 204.36M) | Time:00:00.18 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:292 Mem:204.37M (Peak 204.37M) | Time:00:00.18 | Mem:114.09M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:292 Mem:204.37M (Peak 204.37M) | Time:00:00.18 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:292 Mem:204.37M (Peak 204.37M) | Time:00:00.18 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:292 Mem:204.37M (Peak 204.37M) | Time:00:00.18 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:292 Mem:204.37M (Peak 204.37M) | Time:00:00.19 | Mem:114.17M, Peak:114.17M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/18
+Fra:292 Mem:354.68M (Peak 354.68M) | Time:00:03.99 | Remaining:01:04.61 | Mem:264.48M, Peak:264.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/18
+Fra:292 Mem:354.68M (Peak 354.68M) | Time:00:35.10 | Remaining:00:34.91 | Mem:264.48M, Peak:264.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 9/18
+Fra:292 Mem:354.68M (Peak 354.68M) | Time:01:01.39 | Remaining:00:07.65 | Mem:264.48M, Peak:264.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 16/18
+Fra:292 Mem:417.96M (Peak 512.88M) | Time:01:09.75 | Mem:264.48M, Peak:264.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 18/18
+Fra:292 Mem:417.96M (Peak 512.88M) | Time:01:09.75 | Mem:264.48M, Peak:264.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:292 Mem:417.96M (Peak 512.88M) | Time:01:09.75 | Compositing
+Fra:292 Mem:417.96M (Peak 512.88M) | Time:01:09.75 | Compositing | Initializing execution
+Fra:292 Mem:449.67M (Peak 512.88M) | Time:01:09.76 | Compositing | Operation 2-7
+Fra:292 Mem:481.31M (Peak 512.88M) | Time:01:09.76 | Compositing | Operation 3-7
+Fra:292 Mem:481.31M (Peak 512.95M) | Time:01:09.92 | Compositing | Operation 4-7
+Fra:292 Mem:481.31M (Peak 512.95M) | Time:01:09.92 | Compositing | Operation 5-7
+Fra:292 Mem:481.31M (Peak 512.95M) | Time:01:09.92 | Compositing | Operation 6-7
+Fra:292 Mem:449.67M (Peak 512.95M) | Time:01:09.93 | Compositing | Operation 7-7
+Fra:292 Mem:449.67M (Peak 512.95M) | Time:01:09.93 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames_debug/f_000292.png'
+Time: 01:10.16 (Saving: 00:00.22)
 
-[MEASURE] done
+[PEHRA] Render complete in 70.2s
