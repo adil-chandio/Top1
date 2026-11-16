@@ -1,4 +1,4 @@
-name: "PEHRA 15s — Final 3D Cinema Render (450 frames)"
+name: "PEHRA 15s — Final 3D Cinema Render (8 shards)"
 
 on:
   push:
@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: pehra-final-${{ github.ref }}
+  group: pehra-final8-${{ github.ref }}
   cancel-in-progress: false
 
 env:
@@ -57,8 +57,16 @@ jobs:
           tl = json.loads(Path("production/account1_ep01/build/timeline_15s.json").read_text())
           names = {"S1_MIDNIGHT_FURROW":"s1","S2_ROYAL_GUARDS":"s2","S3_LOCKED_IRON":"s3",
                    "S4_UNGUARDED_GATE":"s4","S5_MASKED_MONARCH":"s5","S6_MASTER_MOVE":"s6"}
-          rows = [{"id": s["id"], "slug": names.get(s["id"], s["id"].lower()),
-                   "f_start": s["f_start"], "f_end": s["f_end"]} for s in tl["shots"]]
+          SHARD = 26          # ~26 frames per shard at 70 s/frame ≈ 30 min
+          rows = []
+          for s in tl["shots"]:
+              slug = names.get(s["id"], s["id"].lower())
+              lo, hi, part = s["f_start"], s["f_end"], 1
+              while lo <= hi:
+                  last = min(lo + SHARD - 1, hi)
+                  rows.append({"id": s["id"], "slug": f"{slug}_{part}",
+                               "f_start": lo, "f_end": last})
+                  lo, part = last + 1, part + 1
           print("shots=" + json.dumps(rows, separators=(",", ":")))
           PY
       - name: Upload render bundle
@@ -77,13 +85,13 @@ jobs:
           compression-level: 1
 
   render:
-    name: "Render ${{ matrix.shot.id }}"
+    name: "Render ${{ matrix.shot.id }} @ ${{ matrix.shot.f_start }}-${{ matrix.shot.f_end }}"
     needs: bootstrap
     runs-on: ubuntu-latest
     timeout-minutes: 175
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 18
       matrix:
         shot: ${{ fromJSON(needs.bootstrap.outputs.shots) }}
     steps:
@@ -116,7 +124,7 @@ jobs:
         with:
           name: pehra-final-bundle-${{ github.run_id }}
           path: production/account1_ep01
-      - name: Render frames (rolling push every 40 frames)
+      - name: Render frames for this shard
         env:
           SLUG: ${{ matrix.shot.slug }}
           F_START: ${{ matrix.shot.f_start }}
@@ -125,25 +133,10 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p production/account1_ep01/frames
-          git config user.name "pehra-render-bot"
-          git config user.email "pehra-render@users.noreply.github.com"
-
-          checkpoint() {
-            local n
-            n=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" | wc -l)
-            echo "[checkpoint] $SHOT_ID: $n frames on disk"
-            [ "$n" -ge 1 ] || return 0
-            git add -f production/account1_ep01/frames
-            if ! git diff --cached --quiet; then
-              git commit -q -m "render[$SLUG]: $n/${F_END} frames (run ${{ github.run_id }})"
-              git push -q origin "HEAD:${GITHUB_REF_NAME}" || echo "[checkpoint] push failed, keeping local"
-            fi
-          }
-
           chmod +x "$BLENDER_BIN"
           # Render in chunks so partial progress survives a timeout.
           FRAME=$F_START
-          CHUNK=40
+          CHUNK=13
           while [ "$FRAME" -le "$F_END" ]; do
             LAST=$((FRAME + CHUNK - 1)); [ "$LAST" -gt "$F_END" ] && LAST=$F_END
             "$BLENDER_BIN" -b --factory-startup \
@@ -153,11 +146,12 @@ jobs:
               --timeline production/account1_ep01/build/timeline_15s.json \
               --assets production/account1_ep01/assets \
               --out production/account1_ep01/frames 2>&1 | tail -5
-            checkpoint
+            echo "[chunk] $SLUG: rendered $FRAME-$LAST"
             FRAME=$((LAST + 1))
           done
-          SPEC=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" -newermt '-6 hours' | wc -l)
-          echo "[done] $SHOT_ID produced $SPEC frames this job"
+          N=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" | wc -l)
+          echo "[done] $SLUG produced $N frames"
+          [ "$N" -ge 1 ] || { echo "::error::$SLUG produced no frames"; exit 1; }
       - name: Upload shot frames
         if: always()
         uses: actions/upload-artifact@v4
@@ -194,7 +188,7 @@ jobs:
           pattern: pehra-final-frames-*-${{ github.run_id }}
           path: production/account1_ep01/frames
           merge-multiple: true
-      - name: Fetch any frames committed by the render shards
+      - name: Merge any frames already committed to the branch
         continue-on-error: true
         run: |
           git fetch origin "$GITHUB_REF_NAME"
