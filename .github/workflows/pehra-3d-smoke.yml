@@ -37,13 +37,22 @@ jobs:
           fi
           echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
           "$HOME/blender4215/$BLENDER_DIR/blender" --version | head -3
+      - name: Install DSP deps
+        run: |
+          set -euo pipefail
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --quiet requests numpy scipy soundfile pydub
+      - name: Build frame-locked Urdu soundtrack (writes build/timeline_15s.json)
+        run: |
+          set -euo pipefail
+          python production/account1_ep01/build_audio_15s.py
+          ls -la production/account1_ep01/build/
+          python -c "import json;d=json.load(open('production/account1_ep01/build/timeline_15s.json'));print('shots:',[s['id'] for s in d['shots']])"
       - name: Fetch the real CC0/MIT 3D assets
         run: |
           set -euo pipefail
-          python -m pip install --quiet requests
-          python production/account1_ep01/fetch_assets.py || \
-            echo "asset fetch reported a problem; continuing to see what renders"
-          ls -la production/account1_ep01/assets 2>/dev/null | head -20 || true
+          python production/account1_ep01/fetch_assets.py
+          ls -la production/account1_ep01/assets | head -20
       - name: Render one lookdev frame of S6 (low cost, real Cycles)
         run: |
           set -euo pipefail
