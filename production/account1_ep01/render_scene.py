@@ -2458,7 +2458,6 @@ def shot_b16(mats, s, e):
 
 
 FULL_SHOT_BUILDERS = {
-    **FULL_SHOT_BUILDERS,
     "B01_AERIAL_FIELD": shot_b01,
     "B02_GUARDED_FIELD": shot_b02,
     "B03_MASKED_TITLE": shot_b03,
