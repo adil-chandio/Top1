@@ -29,9 +29,14 @@ jobs:
       - name: Refuse to render a silent film
         run: |
           set -euo pipefail
-          PLACED=$(grep -o "narration placed: [0-9]*/" /tmp/audio.log | tail -1 | grep -o "[0-9]*")
+          PLACED=$(sed -n 's/.*narration placed: \([0-9]*\)\/.*/\1/p' /tmp/audio.log | tail -1)
+          PLACED=${PLACED:-0}
           echo "narration placed: $PLACED / 16"
-          [ "$PLACED" -eq 16 ] || { echo "::error::only $PLACED/16 narration lines"; exit 1; }
+          if [ "$PLACED" -ne 16 ]; then
+            echo "::error::only $PLACED/16 narration lines — not rendering"
+            grep "skip" /tmp/audio.log || true
+            exit 1
+          fi
       - name: Emit the shard matrix
         id: shots
         run: |
