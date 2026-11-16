@@ -1,3 +1,19 @@
+# Updated operating rule: ek waqt mein ek channel
+
+User ki latest instruction purane parallel-channel design ko supersede karti hai.
+
+- Active channel: **Monarch Cam**. Doosre channels par research/production jobs start nahi hongi.
+- Isi channel ki video research se production, internal corrections aur Drive delivery tak complete hogi.
+- Drive upload quality approval nahi hai. User video dekh kar satisfactory/perfect kahe aur explicitly next channel par jaane ko bole, tabhi active channel change karna hai.
+- Delivery ya automated QC pass ke baad automatic channel switch nahi.
+- Current 20-second diagnostic ko final channel video approval nahi maana gaya.
+- Routine intermediate approvals nahi; user ka final channel-switch gate retained.
+- `config.json` active_channel ko operator sirf explicit user instruction ke baad badlega. `tick`, batch runner aur service doosre channel ko skip karte hain.
+
+Neeche historical implementation notes mein parallel scheduling ka zikr superseded hai.
+
+---
+
 # Three-channel production coordinator
 
 ## Sachchi current state

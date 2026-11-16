@@ -62,6 +62,7 @@ def tick(job):
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:return 'locked'
         state=json.loads((job/'state.json').read_text())
+        if state['channel'] != CONFIG['active_channel']:return 'paused_other_channel'
         if state['status'] in ['delivered','blocked']:return state['status']
         stage=CONFIG['stages'][state['stage']]
         if stage=='delivery':
@@ -125,7 +126,7 @@ def main():
         active={}
         for job in jobs:
             state=json.loads((job/'state.json').read_text())
-            if state['status']=='queued':active.setdefault(state['channel'],job)
+            if state['status']=='queued' and state['channel']==CONFIG['active_channel']:active.setdefault(state['channel'],job)
         with ThreadPoolExecutor(max_workers=3) as pool:
             for job,status in zip(active.values(),pool.map(tick,active.values())):print(job.name,status)
     else:

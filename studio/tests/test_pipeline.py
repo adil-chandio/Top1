@@ -10,6 +10,11 @@ class PipelineTests(unittest.TestCase):
   self.p=self.job/'evidence.md';self.p.write_text('real evidence')
  def result(self):
   return {'status':'complete','paid_spend':False,'research':{'checked_at':NOW().isoformat(),'question':'Which model?','decision':'Reject unlicensed asset','sources':[{'url':'https://github.com/example/source','finding':'test fixture, not real research'}]},'artifacts':[{'path':'evidence.md','sha256':hashlib.sha256(self.p.read_bytes()).hexdigest()}]}
+ def test_other_channel_paused(self):
+  other=create(self.temp.name,'extinct_life','do not start before user approves channel switch')
+  self.assertEqual(tick(other),'paused_other_channel')
+  state=json.loads((other/'state.json').read_text())
+  self.assertEqual(state['stage'],0);self.assertEqual(state['attempts'],{})
  def test_valid_research(self):validate(self.job,'story',self.result())
  def test_missing_research(self):
   r=self.result();r['research']['sources']=[]

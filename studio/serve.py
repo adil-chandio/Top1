@@ -17,7 +17,7 @@ def main():
   active={}
   for p in sorted(base.glob('*/state.json')):
    s=json.loads(p.read_text())
-   if s['status']=='queued':active.setdefault(s['channel'],p.parent)
+   if s['status']=='queued' and s['channel']==CONFIG['active_channel']:active.setdefault(s['channel'],p.parent)
   with ThreadPoolExecutor(max_workers=3) as pool:
    for result in pool.map(tick,active.values()):print(result,flush=True)
   for _ in range(30):
