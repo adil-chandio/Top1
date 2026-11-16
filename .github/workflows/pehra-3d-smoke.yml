@@ -22,26 +22,21 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
-      - name: Install Blender runtime libs
+      - name: Install Blender 4.2 LTS + runtime libs
         run: |
           set -euo pipefail
           sudo apt-get update -qq
           sudo apt-get install -y -qq libxi6 libxxf86vm1 libxfixes3 libxrender1 \
             libgl1 libglu1-mesa libsm6 libice6 libxkbcommon0 libgomp1
-      - name: Install Blender 4.2.15 LTS (same path the final shards use)
-        run: |
-          set -euo pipefail
-          mkdir -p "$HOME/blender4215"
           if [ ! -x "$HOME/blender4215/$BLENDER_DIR/blender" ]; then
-            curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors -o /tmp/b.tar.xz \
+            mkdir -p "$HOME/blender4215"
+            curl -fsSL -o /tmp/blender.tar.xz \
               "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
-            tar -xf /tmp/b.tar.xz -C "$HOME/blender4215"
-            rm -f /tmp/b.tar.xz
+            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/blender.tar.xz
           fi
-          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
-          chmod +x "$BIN"
-          "$BIN" --version | head -3
-          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+          echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
+          "$HOME/blender4215/$BLENDER_DIR/blender" --version | head -3
       - name: Install DSP deps
         run: |
           set -euo pipefail
@@ -53,10 +48,9 @@ jobs:
           python production/account1_ep01/plan_full.py
           python -c "import json;d=json.load(open('production/account1_ep01/build/timeline_full.json'));print('beats:',len(d['shots']),'frames:',d['total_frames'])"
       - name: Fetch the real CC0/MIT 3D assets
-        continue-on-error: true
         run: |
           set -euo pipefail
-          python production/account1_ep01/fetch_assets.py 2>&1 | tee /tmp/fetch.log
+          python production/account1_ep01/fetch_assets.py
           ls -la production/account1_ep01/assets | head -20
       - name: Trace every full-script beat for construction errors
         run: |
@@ -64,7 +58,6 @@ jobs:
           mkdir -p production/account1_ep01/frames
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
-          mkdir -p production/account1_ep01/frames_debug
           for SHOT in B01_AERIAL_FIELD B02_GUARDED_FIELD B03_MASKED_TITLE \
                       B04_HUNGRY_PARIS B05_POTATO_PROMISE B06_POISONED_MIND \
                       B07_FREE_BASKETS B08_SILENT_PIVOT B09_FORTY_ACRES \
@@ -83,19 +76,29 @@ jobs:
           echo "=== exit summary ==="
           tail -40 /tmp/blender.log || true
           cp /tmp/blender.log /tmp/smoke_blender.log
-          find production/account1_ep01/frames_debug -maxdepth 1 -name '*.png' | sort | head -20
+          find production/account1_ep01/frames -maxdepth 1 -name '*.png' | sort | head -20
+      - name: Render one lookdev frame of the new title beat
+        run: |
+          set -euo pipefail
+          "$BLENDER_BIN" -b --factory-startup \
+            --python production/account1_ep01/render_scene.py -- \
+            --shot B03_MASKED_TITLE --mode lookdev --samples 12 --res-pct 70 \
+            --timeline production/account1_ep01/build/timeline_full.json \
+            --assets production/account1_ep01/assets \
+            --out production/account1_ep01/frames >> /tmp/blender.log 2>&1 || true
+          grep -E "Render complete|Saved:" /tmp/blender.log | tail -3 || true
+
       - name: Commit the smoke frames so they can be inspected
         if: always()
         run: |
           set -euo pipefail
           DEST=deliverables/pehra-3d-smoke
           mkdir -p "$DEST"
-          cp -a production/account1_ep01/frames_debug/*.png "$DEST"/ 2>/dev/null || true
+          cp -a production/account1_ep01/frames/*.png "$DEST"/ 2>/dev/null || true
           cp /tmp/smoke_blender.log "$DEST/blender.log" 2>/dev/null || echo 'no blender log' > "$DEST/blender.log"
-          find production/account1_ep01/frames_debug -maxdepth 1 -type f | sort > "$DEST/frames_manifest.txt" || true
-          cp /tmp/fetch.log "$DEST/fetch.log" 2>/dev/null || echo 'no fetch log' > "$DEST/fetch.log"
+          find production/account1_ep01/frames -maxdepth 1 -type f | sort > "$DEST/frames_manifest.txt" || true
           { echo '--- assets ---'; ls -la production/account1_ep01/assets 2>/dev/null || echo 'no assets dir';
-            echo '--- frames dir ---'; ls -la production/account1_ep01/frames_debug 2>/dev/null || echo 'no frames dir'; } > "$DEST/diagnostics.txt"
+            echo '--- frames dir ---'; ls -la production/account1_ep01/frames 2>/dev/null || echo 'no frames dir'; } > "$DEST/diagnostics.txt"
           ls -la "$DEST" || true
           git config user.name 'pehra-render-bot'
           git config user.email 'pehra-render@users.noreply.github.com'

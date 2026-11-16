@@ -112,56 +112,37 @@ def draw_highlighted_caption(draw, text, highlight, center, font, base_fill, hi_
 
 
 def make_caption_png(shot: dict, width: int, height: int, out_path: Path, index: int) -> None:
+    """Minimal editorial lower-third: one line of Urdu, nothing else.
+
+    No brand mark, no shot counter, no eyebrow, no timecode — the previous
+    version drew five competing elements across the top of every frame and
+    they read as clutter over the picture.
+    """
     img = Image.new("RGBA", (width, height), (0, 0, 0, 0))
     draw = ImageDraw.Draw(img, "RGBA")
 
-    font_micro = load_font(25, bold=False)
-    font_eyebrow = load_font(31, bold=True)
-    font_caption = load_font(58, bold=True)
-    font_num = load_font(24, bold=False)
+    font = load_font(56, bold=True)
+    text = shot.get("caption", "").strip()
+    if not text:
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        img.save(out_path, "PNG", optimize=True)
+        return
 
-    off_white = (238, 240, 242, 238)
-    dim_white = (190, 198, 208, 165)
-    gold = (238, 184, 82, 255)
-    crimson = (245, 42, 62, 255)
-    hi_color = crimson if index in (4, 5) else gold
-
-    # Discreet brand mark and timecode — editorial graphics, never a still plate.
-    draw.text((70, 74), "MONARCH  /  EP01", font=font_micro, fill=dim_white)
-    draw.text((70, 108), "PEHRA · 1786", font=load_font(20), fill=(150, 160, 175, 130))
-    draw_centered(draw, f"{index + 1:02d} / 06", (width - 105, 88), font_num, dim_white)
-
-    # Eyebrow with fine rules.
-    eyebrow = shot["eyebrow"].upper()
-    draw_centered(draw, eyebrow, (width // 2, 290), font_eyebrow, hi_color, stroke=1)
-    draw.line((width // 2 - 250, 322, width // 2 - 95, 322), fill=(*hi_color[:3], 130), width=2)
-    draw.line((width // 2 + 95, 322, width // 2 + 250, 322), fill=(*hi_color[:3], 130), width=2)
-    draw.ellipse((width // 2 - 6, 316, width // 2 + 6, 328), fill=(*hi_color[:3], 210))
-
-    # Lower-third caption plate.
-    plate = (78, height - 350, width - 78, height - 175)
+    highlight = shot.get("highlight", "")
+    cy = height - 236
+    # A soft scrim only behind the words, so the frame stays clean.
+    bbox = draw.textbbox((0, 0), text, font=font, anchor="lt")
+    tw = bbox[2] - bbox[0]
+    pad_x, pad_y = 34, 20
+    left = (width - tw) / 2 - pad_x
+    right = (width + tw) / 2 + pad_x
     draw.rounded_rectangle(
-        plate, radius=28, fill=(4, 7, 12, 132), outline=(*hi_color[:3], 85), width=2
-    )
-    draw.line(
-        (width // 2 - 120, height - 332, width // 2 + 120, height - 332),
-        fill=(*hi_color[:3], 170), width=3,
+        (left, cy - pad_y, right, cy + (bbox[3] - bbox[1]) + pad_y),
+        radius=14, fill=(0, 0, 0, 118),
     )
     draw_highlighted_caption(
-        draw,
-        shot["caption"],
-        shot.get("highlight", ""),
-        (width // 2, height - 255),
-        font_caption,
-        off_white,
-        hi_color,
-    )
-    draw.text(
-        (width // 2, height - 200),
-        f"{shot['t_start']:.2f}s — {shot['t_end']:.2f}s",
-        font=font_num,
-        fill=(170, 178, 190, 130),
-        anchor="mm",
+        draw, text, highlight, (width // 2, cy), font,
+        (246, 246, 248, 255), (236, 176, 74, 255),
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
     img.save(out_path, "PNG", optimize=True)
@@ -340,7 +321,8 @@ def main() -> None:
     copy_keyframes(lookdev_paths, shots, keyframe_dir)
 
     if args.mode == "lookdev":
-        sheet = out_dir / "PEHRA_15s_LOOKDEV_CONTACT_SHEET.jpg"
+        tag = timeline.get("tag", "15s")
+        sheet = out_dir / f"PEHRA_{tag}_LOOKDEV_CONTACT_SHEET.jpg"
         make_contact_sheet(lookdev_paths, shots, sheet)
         qc = {
             "mode": "lookdev",
@@ -350,11 +332,12 @@ def main() -> None:
             "keyframes": str(keyframe_dir),
             "note": "Six single-frame Cycles lookdev renders for visual approval; not the delivered video.",
         }
-        (out_dir / "PEHRA_15s_LOOKDEV_QC.json").write_text(json.dumps(qc, indent=2), encoding="utf-8")
+        (out_dir / f"PEHRA_{tag}_LOOKDEV_QC.json").write_text(json.dumps(qc, indent=2), encoding="utf-8")
         print(f"=== LOOKDEV CONTACT SHEET -> {sheet} ===")
         return
 
-    # Final: every one of the 450 frames must be present and unique in time.
+    tag = timeline.get("tag", "15s")
+    # Final: every frame must be present and unique in time.
     all_paths = expected_frame_paths(frames_dir, list(range(1, total_frames + 1)))
     if len(all_paths) != total_frames:
         raise RuntimeError(f"Expected {total_frames} frames, got {len(all_paths)}")
@@ -367,13 +350,14 @@ def main() -> None:
         make_caption_png(shot, width, height, cap_path, i - 1)
         caption_paths.append(cap_path)
 
-    sheet = out_dir / "PEHRA_15s_CONTACT_SHEET.jpg"
+    sheet = out_dir / f"PEHRA_{tag}_CONTACT_SHEET.jpg"
     make_contact_sheet(lookdev_paths, shots, sheet)
 
     audio_path = Path(args.audio).resolve()
     if not audio_path.exists():
         raise FileNotFoundError(f"Master audio missing: {audio_path}")
-    out_mp4 = out_dir / "PEHRA_15s_PREVIEW_1080x1920.mp4"
+    out_name = timeline.get("output_name", f"PEHRA_{tag}_PREVIEW_1080x1920.mp4")
+    out_mp4 = out_dir / out_name
     build_video(
         frames_dir, caption_paths, shots, audio_path, out_mp4,
         width=width, height=height, fps=fps, duration=duration,
@@ -400,11 +384,11 @@ def main() -> None:
         "ffprobe": probe,
         "file_size_bytes": out_mp4.stat().st_size,
     }
-    (out_dir / "PEHRA_15s_QC.json").write_text(json.dumps(qc, indent=2), encoding="utf-8")
+    (out_dir / f"PEHRA_{tag}_QC.json").write_text(json.dumps(qc, indent=2), encoding="utf-8")
 
     # Bundle the exact timeline, master audio, and CC0 credits beside the video.
-    shutil.copy2(timeline_path, out_dir / "timeline_15s.json")
-    shutil.copy2(audio_path, out_dir / "master_15s.m4a")
+    shutil.copy2(timeline_path, out_dir / f"timeline_{tag}.json")
+    shutil.copy2(audio_path, out_dir / f"master_{tag}.m4a")
     credits = BASE / "ASSET_CREDITS.md"
     if credits.exists():
         shutil.copy2(credits, out_dir / "ASSET_CREDITS.md")
