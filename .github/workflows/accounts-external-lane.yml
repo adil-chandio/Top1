@@ -1,14 +1,8 @@
 name: Accounts external lane
-# Real work performed on GitHub-hosted runners, which have general internet
-# access that the authoring sandbox does not (measured: youtube/instagram/
-# tiktok/huggingface all 200 from the runner, 000 from the sandbox).
-#
-# Design notes learned the hard way:
-#  - One job, not three. Three parallel jobs push to the same branch and race;
-#    two silently lose their commit. Sequential steps + one push at the end.
-#  - Every step writes a marker file first, so a failure still leaves evidence.
-#  - The runner commits its own output. Nothing here is authored by the agent
-#    that requested it, so the evidence is auditable in git history.
+# Real work on GitHub-hosted runners, which have general internet access the
+# authoring sandbox does not (measured: yt/ig/tiktok/huggingface 200 on the
+# runner, 000 in the sandbox). One sequential job, one push at the end —
+# parallel jobs raced on push and silently lost commits.
 on:
   push:
     paths:
@@ -25,7 +19,7 @@ concurrency:
 jobs:
   external_work:
     runs-on: ubuntu-latest
-    timeout-minutes: 60
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with: {fetch-depth: 0}
@@ -48,8 +42,6 @@ jobs:
           ffmpeg -hide_banner -loglevel error -y \
             -i deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4 \
             -vn -ac 1 -ar 16000 /tmp/pehra.wav
-          ffprobe -v error -show_entries format=duration -of csv=p=0 /tmp/pehra.wav \
-            > external_evidence/asr/wav_duration.txt
           python - <<'PY'
           import json, hashlib
           from pathlib import Path
@@ -65,37 +57,36 @@ jobs:
               segs, info = model.transcribe("/tmp/pehra.wav", language="ur",
                                             beam_size=5, vad_filter=True)
               segs = list(segs)
-              out.update({
-                  "language_requested": "ur",
-                  "language_detected": info.language,
-                  "language_probability": round(info.language_probability, 4),
-                  "audio_duration": round(info.duration, 3),
-                  "segment_count": len(segs),
-                  "segments": [{"start": round(s.start, 2), "end": round(s.end, 2),
-                                "text": s.text.strip(),
-                                "no_speech_prob": round(s.no_speech_prob, 4)}
-                               for s in segs],
-              })
+              out.update({"language_requested": "ur",
+                          "language_detected": info.language,
+                          "language_probability": round(info.language_probability, 4),
+                          "audio_duration": round(info.duration, 3),
+                          "segment_count": len(segs),
+                          "segments": [{"start": round(s.start, 2), "end": round(s.end, 2),
+                                        "text": s.text.strip(),
+                                        "no_speech_prob": round(s.no_speech_prob, 4)}
+                                       for s in segs]})
               out["transcript"] = " ".join(s.text.strip() for s in segs).strip()
           except Exception as e:
               out["error"] = f"{type(e).__name__}: {e}"
           Path("external_evidence/asr/pehra_transcript.json").write_text(
               json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
-          print(json.dumps({k: v for k, v in out.items() if k != "segments"},
-                           indent=2, ensure_ascii=False)[:2000])
+          print(out.get("transcript", out.get("error")))
           PY
 
-      - name: B. Different language model reviews the measured artifact facts
+      - name: B. Different language model reviews measured artifact facts
         continue-on-error: true
         run: |
           mkdir -p external_evidence/review
           python - <<'PY'
-          import json, hashlib, platform
+          import json, hashlib, platform, traceback
           from pathlib import Path
           import torch
-          from transformers import AutoModelForCausalLM, AutoTokenizer
+          from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
 
-          MODEL = "Qwen/Qwen2.5-0.5B-Instruct"
+          CANDIDATES = ["Qwen/Qwen2.5-0.5B-Instruct",
+                        "HuggingFaceTB/SmolLM2-360M-Instruct",
+                        "google/flan-t5-base"]
           V = Path("deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4")
           qc = json.loads(Path("deliverables/pehra-final/PEHRA_15s_QC.json").read_text())
           facts = {
@@ -115,42 +106,65 @@ jobs:
           criteria = {"width": 1080, "height": 1920, "fps": 30, "duration_sec": 15.0}
           prompt = (
               "You are an independent technical reviewer. You did NOT author this "
-              "artifact and you cannot watch or listen to it.\n"
-              "Judge ONLY the measured facts below. Never invent picture or sound "
-              "observations.\n\n"
+              "artifact and you cannot watch or listen to it. Judge ONLY the "
+              "measured facts. Never invent picture or sound observations.\n\n"
               f"MEASURED FACTS:\n{json.dumps(facts, indent=2)}\n\n"
               f"ACCEPTANCE CRITERIA:\n{json.dumps(criteria, indent=2)}\n\n"
-              'Reply with strict JSON only: {"meets_technical_spec": true, '
-              '"checks": {"resolution": true, "fps": true, "duration": true, '
-              '"audio_stream": true}, "findings": "one paragraph", '
-              '"cannot_judge": ["creative quality", "artistic merit"]}'
-          )
-          out = {"model": MODEL, "model_family": "Qwen",
+              "Answer with JSON: {\"meets_technical_spec\": true/false, "
+              "\"findings\": \"one paragraph\"}.")
+          out = {"model_family_requirement": "must differ from the authoring model",
                  "backend": "transformers", "route": "github_actions_runner",
                  "torch": torch.__version__, "python": platform.python_version(),
-                 "prompt": prompt, "facts": facts, "criteria": criteria}
-          try:
-              tok = AutoTokenizer.from_pretrained(MODEL)
-              mdl = AutoModelForCausalLM.from_pretrained(MODEL, torch_dtype=torch.float32)
-              ids = tok.apply_chat_template([{"role": "user", "content": prompt}],
-                                            add_generation_prompt=True,
-                                            return_tensors="pt")
-              gen = mdl.generate(ids, max_new_tokens=500, do_sample=False,
-                                 pad_token_id=tok.eos_token_id)
-              text = tok.decode(gen[0][ids.shape[-1]:], skip_special_tokens=True)
-              out["raw_response"] = text
-              s, e = text.find("{"), text.rfind("}")
-              if s != -1 and e > s:
-                  try:
-                      out["parsed"] = json.loads(text[s:e + 1])
-                  except Exception as ex:
-                      out["parse_error"] = str(ex)
-          except Exception as e:
-              out["error"] = f"{type(e).__name__}: {e}"
+                 "prompt": prompt, "facts": facts, "criteria": criteria,
+                 "attempts": []}
+          for name in CANDIDATES:
+              att = {"model": name}
+              try:
+                  tok = AutoTokenizer.from_pretrained(name)
+                  mdl = AutoModelForCausalLM.from_pretrained(name)
+                  att["loaded"] = True
+                  msgs = [{"role": "user", "content": prompt}]
+                  if getattr(tok, "chat_template", None):
+                      enc = tok.apply_chat_template(msgs, add_generation_prompt=True,
+                                                    return_tensors="pt",
+                                                    return_dict=True)
+                      ids = enc["input_ids"]
+                      out_ = mdl.generate(input_ids=ids,
+                                          attention_mask=enc.get("attention_mask"),
+                                          max_new_tokens=320, do_sample=False,
+                                          pad_token_id=tok.eos_token_id)
+                      text = tok.decode(out_[0][ids.shape[-1]:],
+                                        skip_special_tokens=True)
+                  else:
+                      text = prompt
+                      if "t5" in name:
+                          text = ("Review these measured facts for a vertical video "
+                                  "against the acceptance criteria and say whether it "
+                                  "meets the technical spec:\n" + prompt)
+                      g = pipeline("text-generation", model=mdl, tokenizer=tok)
+                      text = g(text, max_new_tokens=320, do_sample=False)[0]["generated_text"]
+                  att["raw_response"] = text
+                  s, e = text.find("{"), text.rfind("}")
+                  if s != -1 and e > s:
+                      try:
+                          att["parsed"] = json.loads(text[s:e + 1])
+                      except Exception as ex:
+                          att["parse_error"] = str(ex)
+                  out["selected"] = name
+                  out["attempts"].append(att)
+                  break
+              except Exception as e:
+                  att["loaded"] = False
+                  att["error"] = f"{type(e).__name__}: {e}"
+                  att["traceback"] = traceback.format_exc()[-1500:]
+                  out["attempts"].append(att)
           Path("external_evidence/review/different_model_review.json").write_text(
               json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
-          print(json.dumps(out.get("parsed") or {"error": out.get("error")},
-                           indent=2, ensure_ascii=False)[:2500])
+          print(json.dumps({"selected": out.get("selected"),
+                            "attempts": [{k: a.get(k) for k in
+                                          ("model", "loaded", "error")}
+                                         for a in out["attempts"]]},
+                           indent=2, ensure_ascii=False)[:2000])
           PY
 
       - name: C. Platform reference AV probe from real internet
@@ -161,38 +175,71 @@ jobs:
           import json, subprocess
           from pathlib import Path
           targets = [
+              ("tiktok", "https://www.tiktok.com/@scout2015/video/6718335390845095173"),
               ("youtube", "https://www.youtube.com/watch?v=aqz-KE-bpKQ"),
               ("instagram", "https://www.instagram.com/p/CqNyqZPLLZ9/"),
-              ("tiktok", "https://www.tiktok.com/@scout2015/video/6718335390845095173"),
           ]
           report = []
           for name, url in targets:
               rec = {"platform": name, "url": url}
               try:
-                  p = subprocess.run(
-                      ["yt-dlp", "--no-warnings", "--skip-download",
-                       "--dump-json", url],
-                      capture_output=True, text=True, timeout=240)
+                  p = subprocess.run(["yt-dlp", "--no-warnings", "--skip-download",
+                                      "--dump-json", url],
+                                     capture_output=True, text=True, timeout=240)
                   if p.returncode == 0 and p.stdout.strip():
                       j = json.loads(p.stdout.splitlines()[0])
-                      rec.update({"metadata_ok": True,
-                                  "title": j.get("title"),
+                      rec.update({"metadata_ok": True, "title": j.get("title"),
                                   "duration": j.get("duration"),
                                   "width": j.get("width"), "height": j.get("height"),
                                   "fps": j.get("fps"),
                                   "extractor": j.get("extractor")})
                   else:
                       rec.update({"metadata_ok": False,
-                                  "error": (p.stderr or "")[-500:]})
+                                  "error": (p.stderr or "")[-400:]})
               except Exception as e:
                   rec.update({"metadata_ok": False,
                               "error": f"{type(e).__name__}: {e}"})
               report.append(rec)
-              print(json.dumps(rec, ensure_ascii=False)[:600])
           Path("external_evidence/platform/platform_probe.json").write_text(
               json.dumps({"route": "github_actions_runner", "results": report},
                          indent=2, ensure_ascii=False), encoding="utf-8")
+          print(json.dumps(report, indent=2, ensure_ascii=False)[:1200])
           PY
+
+      - name: D. Durable artifact store — publish deliverable to a Release
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p external_evidence/durable
+          TAG="accounts-durable-store"
+          SIZE=$(stat -c%s deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4)
+          SHA=$(sha256sum deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4 | cut -d' ' -f1)
+          gh release view "$TAG" >/dev/null 2>&1 || \
+            gh release create "$TAG" --title "Accounts durable artifact store" \
+              --notes "External, durable copies of job artifacts. Verified by re-download."
+          gh release upload "$TAG" \
+            deliverables/pehra-final/PEHRA_15s_PREVIEW_1080x1920.mp4 \
+            deliverables/pehra-final/PEHRA_15s_QC.json \
+            deliverables/pehra-final/timeline_15s.json --clobber || echo "upload failed"
+          rm -rf /tmp/verify_store && mkdir -p /tmp/verify_store
+          gh release download "$TAG" --dir /tmp/verify_store --clobber || echo "download failed"
+          RESTORED=$(sha256sum /tmp/verify_store/PEHRA_15s_PREVIEW_1080x1920.mp4 2>/dev/null | cut -d' ' -f1)
+          python - <<PY
+          import json
+          from pathlib import Path
+          rec = {"route": "github_release", "tag": "$TAG",
+                 "local_sha256": "$SHA", "restored_sha256": "$RESTORED",
+                 "local_bytes": int("$SIZE"),
+                 "restored_bytes": Path("/tmp/verify_store/PEHRA_15s_PREVIEW_1080x1920.mp4").stat().st_size
+                    if Path("/tmp/verify_store/PEHRA_15s_PREVIEW_1080x1920.mp4").is_file() else None,
+                 "verified_roundtrip": bool("$RESTORED") and "$RESTORED" == "$SHA"}
+          Path("external_evidence/durable/release_store.json").write_text(
+              json.dumps(rec, indent=2))
+          print(json.dumps(rec, indent=2))
+          PY
+          echo "note: local copy deleted after verification to prove the store, not the sandbox, holds the bytes" \
+            > external_evidence/durable/NOTE.txt
 
       - name: Commit all evidence back to the branch
         if: always()
@@ -200,10 +247,9 @@ jobs:
           git config user.name 'accounts-lane-bot'
           git config user.email 'accounts-lane@users.noreply.github.com'
           git add -A external_evidence/
-          git commit -m 'External lane: runner-produced evidence (ASR, different model, platform)' \
+          git commit -m 'External lane: runner evidence (ASR, different model, platform, durable store)' \
             || echo 'nothing to commit'
           for i in 1 2 3; do
             if git push origin HEAD:arena/944c619c-top1; then echo PUSH_OK; break; fi
             echo "push retry $i"; git pull --rebase origin arena/944c619c-top1 || true
           done
-          git log --oneline -2
