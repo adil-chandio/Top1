@@ -37,7 +37,7 @@ Download artifact `pehra-preview-lookdev-<run_id>` and inspect `PEHRA_15s_LOOKDE
 gh workflow run account1-ep01-preview.yml \
   --ref arena/944c619c-top1 \
   -f mode=final \
-  -f samples=12 \
+  -f samples=4 \
   -f res_pct=100
 ```
 
