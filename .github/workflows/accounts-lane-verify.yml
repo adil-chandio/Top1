@@ -31,7 +31,10 @@ jobs:
       - name: Install deps
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
-          python -m pip install --quiet pillow
+          python -m pip install --quiet pillow yt-dlp numpy
+          python -m pip install --quiet --index-url https://download.pytorch.org/whl/cpu torch
+          python -m pip install --quiet transformers
+          python -c "import yt_dlp, torch, transformers; print('deps ok')"
 
       - name: Durable store — fetch and verify from a different machine
         continue-on-error: true
