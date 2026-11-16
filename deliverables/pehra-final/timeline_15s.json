@@ -1,0 +1,76 @@
+{
+  "title": "MONARCH \u00b7 EP01 \u2014 PEHRA (15s Dark 3D Cinema Preview)",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 15.0,
+  "total_frames": 450,
+  "shots": [
+    {
+      "id": "S1_MIDNIGHT_FURROW",
+      "f_start": 1,
+      "f_end": 72,
+      "t_start": 0.0,
+      "t_end": 2.4,
+      "lookdev_frame": 38,
+      "eyebrow": "PARIS \u00b7 1786",
+      "caption": "Khet me sirf aaloo ugaye",
+      "highlight": "aaloo"
+    },
+    {
+      "id": "S2_ROYAL_GUARDS",
+      "f_start": 73,
+      "f_end": 156,
+      "t_start": 2.4,
+      "t_end": 5.2,
+      "lookdev_frame": 116,
+      "eyebrow": "SHAHI PEHRA",
+      "caption": "Bahar bandook wale fauji",
+      "highlight": "fauji"
+    },
+    {
+      "id": "S3_LOCKED_IRON",
+      "f_start": 157,
+      "f_end": 207,
+      "t_start": 5.2,
+      "t_end": 6.9,
+      "lookdev_frame": 196,
+      "eyebrow": "ASLI WAJAH?",
+      "caption": "Chori rokne ke liye nahi",
+      "highlight": "nahi"
+    },
+    {
+      "id": "S4_UNGUARDED_GATE",
+      "f_start": 208,
+      "f_end": 270,
+      "t_start": 6.9,
+      "t_end": 9.0,
+      "lookdev_frame": 248,
+      "eyebrow": "THE TWIST",
+      "caption": "Taake log khud CHURA lein.",
+      "highlight": "CHURA"
+    },
+    {
+      "id": "S5_MASKED_MONARCH",
+      "f_start": 271,
+      "f_end": 310,
+      "t_start": 9.0,
+      "t_end": 10.35,
+      "lookdev_frame": 292,
+      "eyebrow": "MONARCH",
+      "caption": "Ajeeb laga na?",
+      "highlight": "Ajeeb"
+    },
+    {
+      "id": "S6_MASTER_MOVE",
+      "f_start": 311,
+      "f_end": 450,
+      "t_start": 10.35,
+      "t_end": 15.0,
+      "lookdev_frame": 372,
+      "eyebrow": "EK CHAAL",
+      "caption": "Poore mulk ki jaan bacha li.",
+      "highlight": "jaan"
+    }
+  ]
+}
