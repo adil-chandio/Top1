@@ -30,3 +30,14 @@ jobs:
         env:
           GH_TOKEN: '${{ github.token }}'
         run: python research/monarch_cam_discovery_2026_11/source_media_probe.py
+      - name: Preserve bounded source excerpt and attribution for research
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: attributed-scientific-reference-excerpt
+          path: |
+            studio/runtime/primary-media/segment.mp4
+            studio/runtime/primary-media/receipt.json
+            studio/runtime/primary-media/sheet-*.jpg
+          retention-days: 3
+          if-no-files-found: error
