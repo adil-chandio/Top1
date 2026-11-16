@@ -9,7 +9,7 @@ import imageio_ffmpeg
 from test_native_orca_rig import load,accessor
 BASE=Path(__file__).parent;OUT=BASE/'out/orca';W,H=720,405
 
-def render(p,faces,uv,texture,*,camera=(.35,.25,1.),scale=82,canvas=None,zbuffer=None,draw_labels=True):
+def render(p,faces,uv,texture,*,camera=(.35,.25,1.),scale=82,canvas=None,zbuffer=None,draw_labels=True,water_look=False):
  eye=np.array(camera,dtype=float);eye/=np.linalg.norm(eye);right=np.cross([0,1,0],eye);right/=np.linalg.norm(right);up=np.cross(eye,right)
  xy=np.c_[p@right*scale+W*.50,-p@up*scale+H*.54];depth=p@eye
  n=np.cross(p[faces[:,1]]-p[faces[:,0]],p[faces[:,2]]-p[faces[:,0]])
@@ -34,6 +34,21 @@ def render(p,faces,uv,texture,*,camera=(.35,.25,1.),scale=82,canvas=None,zbuffer
   tx=np.clip((tu*(texture.shape[1]-1)).astype(int),0,texture.shape[1]-1);ty=np.clip((tv*(texture.shape[0]-1)).astype(int),0,texture.shape[0]-1)
   intensity=u*shade[indices[0]]+v*shade[indices[1]]+w*shade[indices[2]]
   color=np.clip(texture[ty,tx]*intensity[:,:,None],0,255).astype('uint8')
+  if water_look:
+   # Shade in linear light; a broad wet-skin lobe, skylight and wavelength
+   # dependent extinction. This is lookdev, not a physical path tracer.
+   normal=u[:,:,None]*vn[indices[0]]+v[:,:,None]*vn[indices[1]]+w[:,:,None]*vn[indices[2]]
+   normal/=np.maximum(np.linalg.norm(normal,axis=2,keepdims=True),1e-8)
+   ndl=np.maximum(0,normal@light);halfway=light+eye;halfway/=np.linalg.norm(halfway)
+   spec=np.maximum(0,normal@halfway)**48*.28
+   fresnel=(1-np.maximum(0,normal@eye))**5*.12
+   albedo=(texture[ty,tx]/255.)**2.2
+   linear=albedo*(.09+ndl[:,:,None]*.72)*np.array([.60,.86,1.0])
+   linear+=(spec+fresnel)[:,:,None]*np.array([.40,.70,.82])
+   distance=np.maximum(1.,26.-z)
+   transmission=np.exp(-distance[:,:,None]*np.array([.062,.025,.017]))
+   linear=linear*transmission+np.array([.008,.050,.070])*(1-transmission)
+   color=np.clip(linear**(1/2.2)*255,0,255).astype('uint8')
   pixels[y0:y1+1,x0:x1+1][mask]=color[mask];region[mask]=z[mask]
  image=Image.fromarray(pixels)
  if not draw_labels:return image
