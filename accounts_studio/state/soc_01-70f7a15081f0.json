@@ -1,0 +1,27 @@
+{
+  "id": "soc_01-70f7a15081f0",
+  "account": "soc_01",
+  "brief": "checkpoint receipt fixture",
+  "created_at": "2026-11-16T13:47:27.911749+00:00",
+  "status": "queued",
+  "stage": 0,
+  "attempts": {},
+  "history": [],
+  "outputs": {},
+  "blocker": null,
+  "accepted_reviews": {
+    "intelligence": {
+      "path": "review.json",
+      "sha256": "34b6eadc3e5673f135d9e24dfbde95249858bca07be49b36b01a98db289af0ac"
+    }
+  },
+  "artifacts": [],
+  "checkpoint": {
+    "schema": 1,
+    "created_at": "2026-11-16T13:47:27.911749+00:00",
+    "job_dir": "/tmp/tmpeil2shli/soc_01-70f7a15081f0",
+    "artifact_count": 0,
+    "artifacts_present": 0,
+    "note": "State only. Artifact bytes live outside git; `present` reflects the moment of checkpointing."
+  }
+}

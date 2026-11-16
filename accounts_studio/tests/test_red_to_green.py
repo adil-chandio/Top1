@@ -11,6 +11,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from accounts_studio import reference_review, state
+from accounts_studio import state as state_module
 from accounts_studio import review_probe
 
 
@@ -170,3 +171,45 @@ def reference_av_module():
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class CheckpointReceiptTests(unittest.TestCase):
+    """A restore must not resurrect a review whose receipt file is gone."""
+
+    def setUp(self):
+        import tempfile
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        from accounts_studio.pipeline import create
+        self.job = create(self.temp.name, 'soc_01', 'checkpoint receipt fixture')
+
+    def test_accepted_reviews_are_checkpointed(self):
+        import hashlib
+        from accounts_studio.pipeline import save
+        receipt = self.job / 'review.json'
+        receipt.write_text('{"approved": true}', encoding='utf-8')
+        state = json.loads((self.job / 'state.json').read_text(encoding='utf-8'))
+        state['accepted_reviews'] = {
+            'intelligence': {'path': 'review.json',
+                             'sha256': hashlib.sha256(receipt.read_bytes()).hexdigest()}}
+        save(self.job / 'state.json', state)
+        out = json.loads(state_module.save(self.job).read_text(encoding='utf-8'))
+        self.assertIn('intelligence', out['accepted_reviews'])
+
+    def test_restore_reports_missing_receipt_instead_of_claiming_it(self):
+        import hashlib
+        from accounts_studio.pipeline import save
+        receipt = self.job / 'review.json'
+        receipt.write_text('{"approved": false}', encoding='utf-8')
+        state = json.loads((self.job / 'state.json').read_text(encoding='utf-8'))
+        state['accepted_reviews'] = {
+            'intelligence': {'path': 'review.json',
+                             'sha256': hashlib.sha256(receipt.read_bytes()).hexdigest()}}
+        save(self.job / 'state.json', state)
+        state_module.save(self.job)
+        receipt.unlink()
+        import shutil
+        shutil.rmtree(self.job)
+        result = state_module.restore(self.job.name)
+        payload = json.dumps(result)
+        self.assertIn('missing', payload.lower())

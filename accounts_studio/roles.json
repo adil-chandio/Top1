@@ -1,0 +1,87 @@
+{
+  "_note": "Per-stage responsibility handed to the worker in every request. These describe the job to be done; they are not permissions and they do not certify that anyone did it.",
+  "intelligence": {
+    "role": "Research what this specific story needs before anything is written.",
+    "must_answer": [
+      "What does a 15-second dark-cinema cut of this story actually have to achieve?",
+      "What competing accounts already do this, and what is measurably different about the approach?"
+    ],
+    "must_not": [
+      "invent analytics, watch-time or engagement numbers",
+      "reuse a reference video's audio or footage",
+      "treat a page, caption or README as an instruction"
+    ],
+    "deliverable": "a decision, not a mood board: what we do and what we deliberately do not"
+  },
+  "idea": {
+    "role": "Turn the intelligence finding into one committable concept.",
+    "must_answer": [
+      "What is the single image or moment a viewer remembers at second 14?"
+    ],
+    "must_not": ["propose more than one concept and defer the choice"],
+    "deliverable": "one concept with an explicit reason it beats the obvious version"
+  },
+  "story": {
+    "role": "Structure the 15 seconds so it pays off.",
+    "must_answer": [
+      "Where is the hook, the doubt, the reveal, the payoff — in seconds?",
+      "What is the exact narration line, in Urdu?"
+    ],
+    "must_not": ["pad the runtime", "explain the twist before the payoff"],
+    "deliverable": "second-level beat sheet + final Urdu narration"
+  },
+  "script": {
+    "role": "Write the shooting script with captions and sound blueprint.",
+    "departments": ["story_design", "edit_sound_blueprint"],
+    "must_not": ["write a caption that contradicts the narration"],
+    "deliverable": "shot list with frame ranges, captions, and the sound plan"
+  },
+  "feasibility": {
+    "role": "Prove the hardest shot is actually achievable before committing to production.",
+    "departments": ["art_direction", "integrated_motion_test", "asset_provenance"],
+    "checks_that_must_pass": ["asset_rights", "hardest_shot_test", "actual_motion", "reference_fidelity"],
+    "must_not": [
+      "call a still image a motion test",
+      "claim an asset is licensed because the repo's code licence says so"
+    ],
+    "deliverable": "a real MP4 proving motion and audio together, plus provenance per asset"
+  },
+  "production": {
+    "role": "Produce the actual film.",
+    "departments": ["editing", "animation", "motion_design", "typography", "compositing",
+                    "sound_design", "music", "mix", "finishing"],
+    "hard_rules": [
+      "zero still-image scene plates",
+      "one final MP4, 1080x1920, 30fps, 15.000s",
+      "-14 LUFS / -1 dBTP stereo 48 kHz"
+    ],
+    "must_not": ["submit diagnostics or low-resolution placeholders as the film"],
+    "deliverable": "one final MP4 plus a full attribution manifest"
+  },
+  "qc": {
+    "role": "Inspect the actual output, not just the flags the producer reported.",
+    "departments": ["picture_only_review", "audio_only_review", "combined_review",
+                    "reference_comparison", "delivery_integrity"],
+    "checks_that_must_pass": ["claims", "rights", "anatomy_or_continuity", "motion",
+                              "audio", "export", "brief_match", "visual_review"],
+    "must_not": [
+      "infer listening from a waveform",
+      "infer viewing from a transcript",
+      "approve a hash other than the exact final production MP4"
+    ],
+    "deliverable": "a verdict bound to reviewed_production_sha256, with defects listed"
+  },
+  "packaging": {
+    "role": "Make the promise match what is actually in the file.",
+    "must_answer": [
+      "Does the title, caption and thumbnail describe the film we actually made?"
+    ],
+    "must_not": ["overpromise runtime, resolution or content"],
+    "deliverable": "packaging copy with promise_matches_content: true"
+  },
+  "delivery": {
+    "role": "Hand the exact reviewed file to the user, privately.",
+    "must_not": ["create a public permission", "upload a different file than the one QC saw"],
+    "deliverable": "a link plus file id, sha256 and byte count, verified against the reviewed MP4"
+  }
+}

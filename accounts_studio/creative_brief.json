@@ -1,0 +1,86 @@
+{
+  "schema": 1,
+  "brief_id": "pehra-ep01-15s-v1",
+  "account": "soc_01",
+  "account_name": "Account 1 — PEHRA dark cinema",
+  "title": "MONARCH · EP01 — PEHRA",
+  "format": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "duration_sec": 15.0,
+    "total_frames": 450,
+    "aspect": "9:16 vertical"
+  },
+  "scope": {
+    "pilot_only": true,
+    "full_film_authorization": false,
+    "publishing_allowed": false,
+    "paid_spend_allowed": false,
+    "drive_folder_id": "18LcoXRRRQdygyBX4l3FzeHCK-3esZZqR"
+  },
+  "creative_direction": {
+    "genre": "dark 3D cinema, historical true-story reconstruction",
+    "look": "masked cinema: deep blacks, single warm key, heavy negative space, film grain, shallow depth of field",
+    "hard_rules": [
+      "zero still-image scene plates — every shot must be actual generated or shot motion",
+      "vertical 9:16 blocking, subjects centred for phone viewing",
+      "no logos, no watermarks, no stock-footage look",
+      "no on-screen text except the approved editorial captions"
+    ],
+    "rejected_traits": [
+      "slideshow of stills",
+      "flat lighting",
+      "generic stock B-roll",
+      "caption text covering the subject's face"
+    ]
+  },
+  "language": {
+    "narration": "ur",
+    "captions": "roman_urdu",
+    "voice": "voice-00",
+    "voice_policy": "one consistent narrator across the series; never a synthetic accent that reads as non-native Urdu",
+    "delivery": "intimate, low, unhurried — as if telling a secret"
+  },
+  "story": {
+    "logline": "A farmer plants potatoes, not to stop thieves, but so the thieves come out and get seen — and that one trick saves a country.",
+    "act_structure": "hook (0-2.4s) → doubt (2.4-6.9s) → reveal (6.9-10.5s) → payoff (10.5-15s)",
+    "grounding": "production/account1_ep01/EP01_PEHRA_PRODUCTION_BIBLE.md"
+  },
+  "shots": [
+    {"id": "S1_MIDNIGHT_FURROW", "t": [0.0, 2.4], "eyebrow": "PARIS · 1786", "caption": "Khet me sirf aaloo ugaye", "highlight": "aaloo"},
+    {"id": "S2_ROYAL_GUARDS", "t": [2.4, 5.2], "eyebrow": "SHAHI PEHRA", "caption": "Bahar bandook wale fauji", "highlight": "fauji"},
+    {"id": "S3_LOCKED_IRON", "t": [5.2, 6.9], "eyebrow": "ASLI WAJAH?", "caption": "Chori rokne ke liye nahi", "highlight": "nahi"},
+    {"id": "S4_UNGUARDED_GATE", "t": [6.9, 8.3], "eyebrow": "KHULA DARWAZA", "caption": "Balki khud aane ke liye", "highlight": "khud"},
+    {"id": "S5_MASKED_MONARCH", "t": [8.3, 9.7], "eyebrow": "EK CHAAL", "caption": "Ek chalak", "highlight": "chalak"},
+    {"id": "S6_MASTER_MOVE", "t": [9.7, 15.0], "eyebrow": "NATEeJA", "caption": "Poora mulk bach gaya", "highlight": "mulk"}
+  ],
+  "acceptance": {
+    "technical": {"width": 1080, "height": 1920, "fps": 30, "duration_sec": 15.0, "must_decode_fully": true},
+    "audio": {"lufs": -14, "true_peak_db": -1, "sample_rate": 48000, "channels": 2},
+    "must_all_be_true": [
+      "zero_still_image_scene_plates",
+      "actual_motion_in_every_shot",
+      "captions_match_narration",
+      "single_final_mp4"
+    ],
+    "human_review_required_for": [
+      "artistic quality",
+      "whether the story actually lands emotionally",
+      "whether the narrator's voice fits the film"
+    ],
+    "not_automatable_note": "Technical acceptance can be measured. Whether this is cinema-grade cannot be certified by a test suite, a model or a coordinator."
+  },
+  "platform_reference_policy": {
+    "require_av_before_production": true,
+    "no_metric_invention": true,
+    "no_reference_reuse_without_separate_rights": true,
+    "reference_inspection_is_not_licence": true,
+    "blocked_platforms_must_be_reported_as_blocked": true
+  },
+  "provenance": {
+    "created_at": "2026-11-16",
+    "derived_from": "production/account1_ep01/ + deliverables/pehra-final/timeline_15s.json",
+    "note": "Only facts that already exist in this repository. Unfilled fields are absent, not permissive."
+  }
+}

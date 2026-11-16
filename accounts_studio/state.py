@@ -23,9 +23,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 STATE_DIR = ROOT / 'accounts_studio' / 'state'
 TRACKED_KEYS = ('id', 'account', 'brief', 'created_at', 'status', 'stage',
-                'attempts', 'history', 'outputs', 'blocker', 'delivery',
-                'user_rejected', 'rejected_video_hashes', 'revisions',
-                'creative_brief_sha256')
+                'attempts', 'revision_attempts', 'history', 'outputs', 'blocker',
+                'delivery', 'user_rejected', 'rejected_video_hashes', 'revisions',
+                'creative_brief_sha256', 'accepted_reviews')
+
+#: Restoring these from a checkpoint without their files would let a job claim a
+#: review that no longer exists on disk, so restore re-verifies them explicitly.
+RECEIPT_KEYS = ('accepted_reviews',)
 
 
 def _digest(path):

@@ -3,19 +3,272 @@
   "account": "soc_01",
   "brief": "PEHRA EP01 15s preview: 1080x1920, 30fps, 450 frames, zero still-image plates, Urdu voice-00 narration, dark cinema masked look; no full-film authorization, no publishing",
   "created_at": "2026-11-16T12:54:48.605650+00:00",
-  "status": "queued",
-  "stage": 0,
-  "attempts": {},
-  "history": [],
-  "outputs": {},
+  "status": "awaiting_worker",
+  "stage": 4,
+  "attempts": {
+    "intelligence": 1,
+    "idea": 1,
+    "story": 1,
+    "script": 1,
+    "feasibility": 1
+  },
+  "revision_attempts": {
+    "intelligence": 1,
+    "idea": 1,
+    "story": 1,
+    "script": 1,
+    "feasibility": 1
+  },
+  "history": [
+    {
+      "at": "2026-11-16T13:43:43.905866+00:00",
+      "outcome": "session_transport_attached",
+      "note": "Existing user-authorized scope; no creative or reviewer approval implied"
+    },
+    {
+      "stage": "intelligence",
+      "attempt": 1,
+      "at": "2026-11-16T13:44:25.025956+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "idea",
+      "attempt": 1,
+      "at": "2026-11-16T13:45:07.525597+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "story",
+      "attempt": 1,
+      "at": "2026-11-16T13:45:20.522195+00:00",
+      "outcome": "accepted"
+    },
+    {
+      "stage": "script",
+      "attempt": 1,
+      "at": "2026-11-16T13:47:13.740649+00:00",
+      "outcome": "accepted"
+    }
+  ],
+  "outputs": {
+    "intelligence": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:44:09.680030+00:00",
+        "question": "What does a 15s dark-cinema cut of PEHRA have to achieve, and what do competing accounts measurably do differently?",
+        "decision": "Keep the reveal verbal: hold speech dominant over music, spend picture budget on the final 3 seconds, and differentiate from the one measurable competitor (TikTok: 0.000 speech / 0.908 music) by being voice-led at 1080x1920 for 15.000s.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/audio/audio_event_analysis.json",
+            "finding": "AST AudioSet classifier over the real 15s soundtrack: speech 0.528-0.746 across all five windows, music 0.020-0.184. Voice is load-bearing."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/asr/pehra_transcript.json",
+            "finding": "faster-whisper small, Urdu p=1.0, 4 segments, no_speech_prob 0.005. Structure is a planted line resolved at the end."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/platform/av/tiktok_reference.json",
+            "finding": "Real 2,004,627-byte TikTok download, 720x1280 HEVC, 10.495s: speech 0.000, music 0.908. Music-led competitor, no narration."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/platform/platform_probe.json",
+            "finding": "YouTube and Instagram extraction refused for all 6 yt-dlp player clients (bot-check). No claim made about them."
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "intelligence-1/intelligence_finding.md",
+          "sha256": "f77a13cc02430216a34b0f8ad99576048670ba9d9870918b139a1be3e5926412"
+        }
+      ]
+    },
+    "idea": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:44:48.981185+00:00",
+        "question": "Which single concept earns the 15 seconds, and why does it beat the obvious montage version?",
+        "decision": "Hold the masked figure still at the end and let the narration carry the reveal, because the measured audio profile of this cut is speech-dominant (0.528-0.746) while the only measurable competitor is music-led (0.908 music, 0.000 speech).",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/audio/audio_event_analysis.json",
+            "finding": "Speech dominates all five windows of the delivered cut; music stays 0.020-0.184, so a music-drop reveal would fight the mechanism."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/platform/av/tiktok_reference.json",
+            "finding": "Measured competitor is music-led (0.908) with zero speech; copying it would discard our differentiator."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/accounts_studio/runtime/soc_01-2eae823b0144/intelligence-1/intelligence_finding.md",
+            "finding": "Upstream decision: the reveal must be verbal, so the concept must be built around a held consequence shot."
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "idea-1/idea.md",
+          "sha256": "aee411bbff42117f4cbb0be4c6b70b034d729d07dd6b06a38212c69e8077db0f"
+        }
+      ]
+    },
+    "story": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:45:20.446746+00:00",
+        "question": "What beat structure and exact Urdu narration make the reveal land inside 15.000 seconds?",
+        "decision": "Four acts at 2.4/5.2/6.9/8.3/9.7/15.0, with S4 re-purposed as an unlocked gate (the turn) and S6 extended to 5.3s; narration kept to 4 short Urdu lines, line 4 lengthened to cover the longer payoff.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/asr/pehra_transcript.json",
+            "finding": "Delivered narration is 4 segments spanning 0.00-14.00s with no_speech_prob 0.005 and Urdu p=1.0; it is continuous with no dead air, so it is re-timed rather than rewritten."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/deliverables/pehra-final/timeline_15s.json",
+            "finding": "Existing six-shot board with frame-exact ranges 1-72, 73-156, 157-207, 208-248, 249-292, 293-450; story beats are aligned to these, not invented."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/audio/audio_event_analysis.json",
+            "finding": "Speech dominance rises to 0.746 in 7.5-12.5s, which supports lengthening the payoff shot where the final line lands."
+          }
+        ]
+      },
+      "artifacts": [
+        {
+          "path": "story-1/story.md",
+          "sha256": "dfdb28132dc34eecfdc651e083cd37bc4eafacdce44570a29290ef02e57573e5"
+        }
+      ]
+    },
+    "script": {
+      "status": "complete",
+      "paid_spend": false,
+      "research": {
+        "checked_at": "2026-11-16T13:47:13.274477+00:00",
+        "question": "Can the script's six camera moves actually be rendered, and does every shot contain real motion rather than a still plate?",
+        "decision": "Yes, and it was proven by building a real 450-frame animatic: every consecutive frame pair differs in at least 455,481 pixels. The S6 pull-out at 5.3s renders without stutter, so the story's lengthened payoff is feasible.",
+        "sources": [
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/deliverables/pehra-final/timeline_15s.json",
+            "finding": "Frame-exact six-shot board (1-72, 73-156, 157-207, 208-248, 249-292, 293-450) used verbatim; the animatic reproduces those exact frame counts."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/audio/audio_event_analysis.json",
+            "finding": "Speech dominance 0.528-0.746 measured on the delivered cut justifies the sound blueprint's rule that music never approaches voice level."
+          },
+          {
+            "url": "https://github.com/adil-chandio/Top1/blob/arena/944c619c-top1/external_evidence/asr/pehra_transcript.json",
+            "finding": "Narration split into four segments with no_speech_prob 0.005; caption words are taken from what was actually spoken, not invented."
+          }
+        ]
+      },
+      "craft": {
+        "story_design": {
+          "status": "pass",
+          "observations": "Six beats map 1:1 onto the existing frame board; S4 is re-purposed from a second threat shot to an unlocked gate, which is the turn the idea stage requires. Captions taken from the measured transcript.",
+          "rationale": "The measurement says the reveal is verbal, so the beat structure must place the turn where narration can carry it (6.90-9.73s), not where action can.",
+          "evidence": [
+            "script-1/script.md"
+          ]
+        },
+        "edit_sound_blueprint": {
+          "status": "pass",
+          "observations": "Cut rules, six captions with safe-margin placement, full sound bed spec, and an explicit S6 silence decision. Voice stays dominant by rule: music capped at -18 LUFS under narration.",
+          "rationale": "The blueprint encodes the measured audio finding as a constraint instead of a preference, so a later mix cannot accidentally invert it.",
+          "evidence": [
+            "script-1/animatic/animatic_15s_540x960.mp4",
+            "script-1/animatic/motion_report.json"
+          ]
+        }
+      },
+      "artifacts": [
+        {
+          "path": "script-1/script.md",
+          "sha256": "c18a854c3374d123493aa25f576c8d0c79300adbca7deddee2bc34673daab28c"
+        },
+        {
+          "path": "script-1/animatic/animatic_15s_540x960.mp4",
+          "sha256": "03d2a43b610342c0456d5477181c90f657cf9bbbc7787094c55aacb0525486cb"
+        },
+        {
+          "path": "script-1/animatic/motion_report.json",
+          "sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4"
+        }
+      ]
+    }
+  },
   "blocker": null,
-  "artifacts": [],
+  "creative_brief_sha256": "6e55311f2c00fafca15581ee22a618c885177ea36089e3eeb6c746f9224febc9",
+  "accepted_reviews": {
+    "intelligence": {
+      "path": "intelligence-1/review.json",
+      "sha256": "cde466edd4b9d44ce5590570318fc0bd8d3a6ebd49d0696a97272fa335ae29d8"
+    },
+    "idea": {
+      "path": "idea-1/review.json",
+      "sha256": "500cb3a98201074c4efed34a215b4570931c0ef7fee4b37dbb4de0c455d55579"
+    },
+    "story": {
+      "path": "story-1/review.json",
+      "sha256": "f75ff81791ccbbee76e0bc222eb2beef8372cb53897dbc9c480e8c3d5881e105"
+    },
+    "script": {
+      "path": "script-1/review.json",
+      "sha256": "ba25072db8b3d3f3429f48673d42f50a4190a72ed4cc1687a4a3e2849aff88b4"
+    }
+  },
+  "artifacts": [
+    {
+      "stage": "intelligence",
+      "path": "intelligence-1/intelligence_finding.md",
+      "declared_sha256": "f77a13cc02430216a34b0f8ad99576048670ba9d9870918b139a1be3e5926412",
+      "present": true,
+      "actual_sha256": "f77a13cc02430216a34b0f8ad99576048670ba9d9870918b139a1be3e5926412"
+    },
+    {
+      "stage": "idea",
+      "path": "idea-1/idea.md",
+      "declared_sha256": "aee411bbff42117f4cbb0be4c6b70b034d729d07dd6b06a38212c69e8077db0f",
+      "present": true,
+      "actual_sha256": "aee411bbff42117f4cbb0be4c6b70b034d729d07dd6b06a38212c69e8077db0f"
+    },
+    {
+      "stage": "story",
+      "path": "story-1/story.md",
+      "declared_sha256": "dfdb28132dc34eecfdc651e083cd37bc4eafacdce44570a29290ef02e57573e5",
+      "present": true,
+      "actual_sha256": "dfdb28132dc34eecfdc651e083cd37bc4eafacdce44570a29290ef02e57573e5"
+    },
+    {
+      "stage": "script",
+      "path": "script-1/script.md",
+      "declared_sha256": "c18a854c3374d123493aa25f576c8d0c79300adbca7deddee2bc34673daab28c",
+      "present": true,
+      "actual_sha256": "c18a854c3374d123493aa25f576c8d0c79300adbca7deddee2bc34673daab28c"
+    },
+    {
+      "stage": "script",
+      "path": "script-1/animatic/animatic_15s_540x960.mp4",
+      "declared_sha256": "03d2a43b610342c0456d5477181c90f657cf9bbbc7787094c55aacb0525486cb",
+      "present": true,
+      "actual_sha256": "03d2a43b610342c0456d5477181c90f657cf9bbbc7787094c55aacb0525486cb"
+    },
+    {
+      "stage": "script",
+      "path": "script-1/animatic/motion_report.json",
+      "declared_sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4",
+      "present": true,
+      "actual_sha256": "2fdbed0d0869f3ef7c747c564c616b307e416259fd1d5749c7ea0f2ed34c9ae4"
+    }
+  ],
   "checkpoint": {
     "schema": 1,
     "created_at": "2026-11-16T12:54:48.605650+00:00",
     "job_dir": "/home/user/Top1/accounts_studio/runtime/soc_01-2eae823b0144",
-    "artifact_count": 0,
-    "artifacts_present": 0,
-    "note": "PEHRA job blocked on runtime; checkpointed to survive sandbox reset"
+    "artifact_count": 6,
+    "artifacts_present": 6,
+    "note": "4/9 stages accepted"
   }
 }
