@@ -1809,6 +1809,94 @@ SHOT_BUILDERS = {
 
 
 # ---------------------------------------------------------------------------
+# CI diagnostics
+# ---------------------------------------------------------------------------
+def material_base_color(mat):
+    try:
+        for node in mat.node_tree.nodes:
+            if node.type == "BSDF_PRINCIPLED":
+                value = node.inputs.get("Base Color")
+                if value is not None:
+                    return tuple(round(float(v), 4) for v in value.default_value)
+    except Exception:
+        pass
+    return None
+
+
+def debug_scene(label):
+    """Print enough scene truth to diagnose blank/overexposed CI frames."""
+    try:
+        cam = SCENE.camera
+        world = SCENE.world
+        bg = None
+        if world and world.use_nodes:
+            for node in world.node_tree.nodes:
+                if node.type == "BACKGROUND":
+                    bg = node
+                    break
+        if bg is not None:
+            print(
+                f"[PEHRA][DEBUG] {label} world bg color="
+                f"{tuple(round(float(v), 4) for v in bg.inputs['Color'].default_value)} "
+                f"strength={float(bg.inputs['Strength'].default_value):.4f}",
+                flush=True,
+            )
+        if cam is not None:
+            print(
+                f"[PEHRA][DEBUG] {label} camera loc="
+                f"{tuple(round(float(v), 3) for v in cam.matrix_world.translation)}",
+                flush=True,
+            )
+            depsgraph = bpy.context.evaluated_depsgraph_get()
+            basis = cam.matrix_world.to_3x3()
+            for tag, offset in (
+                ("center", (0.0, 0.0)),
+                ("top", (0.0, 0.32)),
+                ("bottom", (0.0, -0.32)),
+                ("left", (-0.18, 0.0)),
+                ("right", (0.18, 0.0)),
+            ):
+                local_dir = Vector((offset[0], offset[1], -1.0)).normalized()
+                direction = (basis @ local_dir).normalized()
+                hit = SCENE.ray_cast(depsgraph, cam.matrix_world.translation, direction)
+                ok, loc, normal, index, obj, matrix = hit
+                if not ok or obj is None:
+                    print(f"[PEHRA][DEBUG] {label} ray {tag}: WORLD / no geometry", flush=True)
+                    continue
+                mats = []
+                try:
+                    for slot in obj.material_slots:
+                        mat = slot.material
+                        if mat:
+                            mats.append((mat.name, material_base_color(mat)))
+                except Exception:
+                    pass
+                print(
+                    f"[PEHRA][DEBUG] {label} ray {tag}: object={obj.name!r} "
+                    f"type={obj.type} loc={tuple(round(float(v), 3) for v in loc)} "
+                    f"dimensions={tuple(round(float(v), 3) for v in obj.dimensions)} "
+                    f"materials={mats}",
+                    flush=True,
+                )
+        largest = []
+        for obj in SCENE.objects:
+            try:
+                dims = tuple(float(v) for v in obj.dimensions)
+                largest.append((max(dims) if dims else 0.0, obj.name, obj.type, dims))
+            except Exception:
+                pass
+        largest.sort(reverse=True)
+        for size, name, otype, dims in largest[:10]:
+            print(
+                f"[PEHRA][DEBUG] {label} largest: {name!r} {otype} "
+                f"max={size:.2f} dims={tuple(round(v, 2) for v in dims)}",
+                flush=True,
+            )
+    except Exception:
+        print(f"[PEHRA][DEBUG] diagnostic failed:\n{traceback.format_exc()}", flush=True)
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 def parse_args():
@@ -1868,6 +1956,7 @@ def main():
     SCENE.frame_end = render_end
     SCENE.frame_set(render_start)
     bpy.context.view_layer.update()
+    debug_scene(args.shot)
 
     (out_dir / f"render_info_{args.shot}.json").write_text(
         json.dumps(
