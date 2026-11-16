@@ -1,0 +1,28 @@
+name: Lane write test
+on:
+  push:
+    paths:
+      - 'external_lane_trigger/**'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  writetest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Report network reality from a real runner
+        run: |
+          for u in https://www.youtube.com https://www.instagram.com https://www.tiktok.com https://huggingface.co https://raw.githubusercontent.com https://registry.ollama.ai; do
+            c=$(curl -sS -m 20 -o /dev/null -w '%{http_code}' -A 'Mozilla/5.0' "$u" 2>/dev/null || echo 000)
+            echo "$u -> $c"
+          done
+      - name: Try to write back
+        run: |
+          mkdir -p external_evidence
+          echo '{"lane":"writetest","ok":true}' > external_evidence/_writetest.json
+          git config user.name 'accounts-lane-bot'
+          git config user.email 'accounts-lane@users.noreply.github.com'
+          git add external_evidence/_writetest.json
+          git commit -m 'lane writetest' || echo 'nothing to commit'
+          git push origin HEAD:arena/944c619c-top1 && echo PUSH_OK || echo PUSH_FAIL
