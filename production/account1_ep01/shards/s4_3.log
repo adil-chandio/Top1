@@ -1,0 +1,900 @@
+[PEHRA] Building S4_UNGUARDED_GATE: full shot 208-270, render 260-270, 4 samples @ 100%
+17:43:13 | INFO: Data are loaded, start creating Blender stuff
+17:43:13 | INFO: Blender create Mesh node vanguard_Mesh
+17:43:13 | INFO: Blender create Mesh node vanguard_visor
+17:43:14 | INFO: glTF import finished in 0.13s
+[PEHRA] Rendering animation sequence -> /home/runner/work/Top1/Top1/production/account1_ep01/frames/f_######
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+Fra:260 Mem:42.12M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GOLDEN_WET_COBBLE
+Fra:260 Mem:42.12M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GOLDEN_FOG_BACKDROP
+Fra:260 Mem:42.40M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_0
+Fra:260 Mem:42.41M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_0
+Fra:260 Mem:42.41M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_1
+Fra:260 Mem:42.42M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_1
+Fra:260 Mem:43.00M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_2
+Fra:260 Mem:43.01M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_2
+Fra:260 Mem:43.01M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_3
+Fra:260 Mem:43.20M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_3
+Fra:260 Mem:43.20M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_4
+Fra:260 Mem:43.20M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_4
+Fra:260 Mem:43.21M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_5
+Fra:260 Mem:43.21M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_5
+Fra:260 Mem:43.35M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_bar_6
+Fra:260 Mem:43.35M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_spear_6
+Fra:260 Mem:43.36M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_rail_38
+Fra:260 Mem:43.37M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_rail_108
+Fra:260 Mem:43.57M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GOLDEN_DUST_mote_0
+Fra:260 Mem:43.57M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GUARD_LEAVING_BRASS_BUTTON_3
+Fra:260 Mem:43.58M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GUARD_LEAVING_BRASS_BUTTON_2
+Fra:260 Mem:43.59M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GUARD_LEAVING_BRASS_BUTTON_1
+Fra:260 Mem:43.59M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GUARD_LEAVING_BRASS_BUTTON_0
+Fra:260 Mem:43.60M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_L_rail_178
+Fra:260 Mem:43.60M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_GUARD_LEAVING_TRICORN_brim
+Fra:260 Mem:43.82M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:260 Mem:43.82M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_0
+Fra:260 Mem:45.82M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_0
+Fra:260 Mem:45.83M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_1
+Fra:260 Mem:45.83M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_1
+Fra:260 Mem:45.83M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_2
+Fra:260 Mem:45.83M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_2
+Fra:260 Mem:45.84M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_3
+Fra:260 Mem:45.84M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_3
+Fra:260 Mem:45.84M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_4
+Fra:260 Mem:45.85M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_4
+Fra:260 Mem:45.94M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_5
+Fra:260 Mem:45.94M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_5
+Fra:260 Mem:45.95M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_bar_6
+Fra:260 Mem:46.50M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_spear_6
+Fra:260 Mem:46.50M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_rail_38
+Fra:260 Mem:46.52M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_rail_108
+Fra:260 Mem:46.55M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_R_rail_178
+Fra:260 Mem:46.57M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:260 Mem:46.59M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_1
+Fra:260 Mem:46.59M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:260 Mem:46.64M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:260 Mem:46.78M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:260 Mem:46.80M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:260 Mem:47.34M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:260 Mem:47.36M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_6
+Fra:260 Mem:47.38M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:260 Mem:48.52M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:260 Mem:48.54M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:260 Mem:48.65M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:260 Mem:48.67M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:260 Mem:48.70M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:260 Mem:48.72M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:260 Mem:48.74M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:260 Mem:48.77M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:260 Mem:48.79M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:260 Mem:48.82M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:260 Mem:48.84M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:260 Mem:48.86M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:260 Mem:48.89M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:260 Mem:48.91M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:260 Mem:48.94M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:260 Mem:48.96M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:260 Mem:48.99M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:260 Mem:49.00M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:260 Mem:49.02M (Peak 58.83M) | Time:00:00.01 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:260 Mem:49.99M (Peak 58.83M) | Time:00:00.03 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:260 Mem:49.70M (Peak 58.83M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:260 Mem:49.70M (Peak 58.83M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Loading render kernels (may take a few minutes the first time)
+Fra:260 Mem:49.70M (Peak 58.83M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:260 Mem:49.70M (Peak 58.83M) | Time:00:00.04 | Mem:0.00M, Peak:0.00M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Procedurals
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:260 Mem:49.79M (Peak 58.83M) | Time:00:00.04 | Mem:0.01M, Peak:0.01M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:260 Mem:49.84M (Peak 58.83M) | Time:00:00.04 | Mem:0.05M, Peak:0.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:260 Mem:49.84M (Peak 58.83M) | Time:00:00.04 | Mem:0.05M, Peak:0.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:260 Mem:49.84M (Peak 58.83M) | Time:00:00.04 | Mem:0.05M, Peak:0.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems | Copying Particles to device
+Fra:260 Mem:49.84M (Peak 58.83M) | Time:00:00.04 | Mem:0.05M, Peak:0.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:260 Mem:50.55M (Peak 58.83M) | Time:00:00.04 | Mem:0.05M, Peak:0.05M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:260 Mem:52.90M (Peak 58.83M) | Time:00:00.04 | Mem:0.07M, Peak:0.07M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.36M, Peak:2.36M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere.005 43/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.36M, Peak:2.36M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder 1/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.36M, Peak:2.36M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone 2/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.37M, Peak:2.37M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone 2/43 | Building BVH 0%
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.37M, Peak:2.37M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.001 3/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.37M, Peak:2.37M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.001 4/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.37M, Peak:2.37M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.002 5/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.38M, Peak:2.38M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.002 6/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.38M, Peak:2.39M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.003 8/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.40M, Peak:2.40M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.004 9/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.40M, Peak:2.40M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere.004 42/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.40M, Peak:2.40M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.004 10/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.41M, Peak:2.41M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.005 11/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.41M, Peak:2.41M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.005 12/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.42M, Peak:2.42M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.006 13/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.42M, Peak:2.42M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere.003 41/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.42M, Peak:2.42M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.006 14/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.43M, Peak:2.43M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube 15/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.43M, Peak:2.43M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube.001 16/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.48M, Peak:2.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere.002 40/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.47M, Peak:2.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube.002 17/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.47M, Peak:2.48M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.007 18/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.49M, Peak:2.50M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.007 19/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.50M, Peak:2.50M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Sphere.001 39/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.51M, Peak:2.51M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.008 20/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.51M, Peak:2.51M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.008 21/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.51M, Peak:2.52M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.014 38/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.52M, Peak:2.52M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.014 37/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.52M, Peak:2.52M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.009 22/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.52M, Peak:2.52M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.009 23/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.54M, Peak:2.54M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.010 25/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.55M, Peak:2.55M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 36/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.55M, Peak:2.55M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.011 26/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.55M, Peak:2.55M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.011 27/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.57M, Peak:2.57M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.012 28/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.57M, Peak:2.57M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.012 29/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.58M, Peak:2.58M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cylinder.013 30/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.58M, Peak:2.58M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cone.013 31/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.58M, Peak:2.59M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube.003 32/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.59M, Peak:2.59M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube.004 33/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.62M, Peak:2.63M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH Cube.005 34/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.04 | Mem:2.64M, Peak:2.66M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 35/43 | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.05 | Mem:3.74M, Peak:4.75M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.05 | Mem:3.74M, Peak:4.75M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.06 | Mem:5.87M, Peak:6.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:260 Mem:52.86M (Peak 58.83M) | Time:00:00.06 | Mem:5.87M, Peak:6.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:5.87M, Peak:6.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading cobblestone_floor_06_disp.jpg
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading cobblestone_floor_06_rough.jpg
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading cobblestone_floor_06_diff.jpg
+Fra:260 Mem:54.52M (Peak 58.83M) | Time:00:00.06 | Mem:7.53M, Peak:7.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images | Loading cobblestone_floor_06_nor_gl.jpg
+Fra:260 Mem:94.54M (Peak 94.54M) | Time:00:00.16 | Mem:47.53M, Peak:47.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:260 Mem:94.54M (Peak 94.54M) | Time:00:00.16 | Mem:47.53M, Peak:47.53M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:260 Mem:94.54M (Peak 94.54M) | Time:00:00.16 | Mem:47.61M, Peak:47.61M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:260 Mem:94.54M (Peak 94.54M) | Time:00:00.16 | Mem:47.62M, Peak:47.62M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:260 Mem:94.56M (Peak 94.56M) | Time:00:00.16 | Mem:47.64M, Peak:47.64M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:260 Mem:94.56M (Peak 94.56M) | Time:00:00.16 | Mem:47.64M, Peak:47.64M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:260 Mem:94.57M (Peak 94.57M) | Time:00:00.16 | Mem:47.56M, Peak:47.64M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:260 Mem:94.57M (Peak 94.57M) | Time:00:00.16 | Mem:47.65M, Peak:47.65M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:260 Mem:94.57M (Peak 94.57M) | Time:00:00.16 | Mem:47.65M, Peak:47.65M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:260 Mem:94.57M (Peak 94.57M) | Time:00:00.16 | Mem:47.65M, Peak:47.65M | PEHRA_DARK_3D_CINEMA, ViewLayer | Loading denoising kernels (may take a few minutes the first time)
+Fra:260 Mem:94.57M (Peak 94.57M) | Time:00:00.16 | Mem:47.65M, Peak:47.65M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:260 Mem:244.88M (Peak 244.88M) | Time:00:08.92 | Remaining:00:26.29 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:260 Mem:308.16M (Peak 403.09M) | Time:00:43.56 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:260 Mem:308.16M (Peak 403.09M) | Time:00:43.56 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:260 Mem:308.17M (Peak 403.09M) | Time:00:43.56 | Compositing
+Fra:260 Mem:308.17M (Peak 403.09M) | Time:00:43.56 | Compositing | Initializing execution
+Fra:260 Mem:339.87M (Peak 403.09M) | Time:00:43.57 | Compositing | Operation 2-7
+Fra:260 Mem:371.51M (Peak 403.09M) | Time:00:43.58 | Compositing | Operation 3-7
+Fra:260 Mem:371.51M (Peak 403.15M) | Time:00:43.82 | Compositing | Operation 4-7
+Fra:260 Mem:371.51M (Peak 403.15M) | Time:00:43.82 | Compositing | Operation 5-7
+Fra:260 Mem:371.51M (Peak 403.15M) | Time:00:43.82 | Compositing | Operation 6-7
+Fra:260 Mem:339.87M (Peak 403.15M) | Time:00:43.82 | Compositing | Operation 7-7
+Fra:260 Mem:339.87M (Peak 403.15M) | Time:00:43.83 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000260.png'
+Time: 00:44.17 (Saving: 00:00.33)
+
+Fra:261 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_1
+Fra:261 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:261 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:261 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:261 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:261 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:261 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:261 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:261 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:261 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:261 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:261 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:261 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:261 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:261 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:261 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:261 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:261 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:261 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:261 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:261 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:261 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:261 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:261 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:261 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:261 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:261 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:261 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:261 Mem:244.88M (Peak 403.15M) | Time:00:07.42 | Remaining:00:22.21 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:261 Mem:308.16M (Peak 403.15M) | Time:00:42.12 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:261 Mem:308.16M (Peak 403.15M) | Time:00:42.12 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:261 Mem:308.17M (Peak 403.15M) | Time:00:42.12 | Compositing
+Fra:261 Mem:308.17M (Peak 403.15M) | Time:00:42.12 | Compositing | Initializing execution
+Fra:261 Mem:339.87M (Peak 403.15M) | Time:00:42.13 | Compositing | Operation 2-7
+Fra:261 Mem:371.51M (Peak 403.15M) | Time:00:42.14 | Compositing | Operation 3-7
+Fra:261 Mem:371.51M (Peak 403.15M) | Time:00:42.38 | Compositing | Operation 4-7
+Fra:261 Mem:371.51M (Peak 403.15M) | Time:00:42.38 | Compositing | Operation 5-7
+Fra:261 Mem:371.51M (Peak 403.15M) | Time:00:42.38 | Compositing | Operation 6-7
+Fra:261 Mem:339.87M (Peak 403.15M) | Time:00:42.39 | Compositing | Operation 7-7
+Fra:261 Mem:339.87M (Peak 403.15M) | Time:00:42.40 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000261.png'
+Time: 00:42.67 (Saving: 00:00.27)
+
+Fra:262 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_1
+Fra:262 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:262 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_6
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:262 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:262 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:262 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:262 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:262 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:262 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:262 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:262 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:262 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:262 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:262 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:262 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:262 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:262 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:262 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:262 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:262 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:262 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:262 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:262 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:262 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:262 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:262 Mem:244.88M (Peak 403.15M) | Time:00:07.59 | Remaining:00:22.69 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:262 Mem:308.16M (Peak 403.15M) | Time:00:41.94 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:262 Mem:308.16M (Peak 403.15M) | Time:00:41.94 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:262 Mem:308.17M (Peak 403.15M) | Time:00:41.94 | Compositing
+Fra:262 Mem:308.17M (Peak 403.15M) | Time:00:41.95 | Compositing | Initializing execution
+Fra:262 Mem:339.87M (Peak 403.15M) | Time:00:41.95 | Compositing | Operation 2-7
+Fra:262 Mem:371.51M (Peak 403.15M) | Time:00:41.96 | Compositing | Operation 3-7
+Fra:262 Mem:371.51M (Peak 403.15M) | Time:00:42.18 | Compositing | Operation 4-7
+Fra:262 Mem:371.51M (Peak 403.15M) | Time:00:42.18 | Compositing | Operation 5-7
+Fra:262 Mem:371.51M (Peak 403.15M) | Time:00:42.18 | Compositing | Operation 6-7
+Fra:262 Mem:339.87M (Peak 403.15M) | Time:00:42.19 | Compositing | Operation 7-7
+Fra:262 Mem:339.87M (Peak 403.15M) | Time:00:42.19 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000262.png'
+Time: 00:42.46 (Saving: 00:00.26)
+
+Fra:263 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:263 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:263 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:263 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:263 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:263 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:263 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:263 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:263 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:263 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:263 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:263 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:263 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:263 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:263 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:263 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:263 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:263 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:263 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:263 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:263 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:263 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:263 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:263 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:263 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:263 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:263 Mem:244.88M (Peak 403.15M) | Time:00:07.30 | Remaining:00:21.84 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:263 Mem:308.16M (Peak 403.15M) | Time:00:41.36 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:263 Mem:308.16M (Peak 403.15M) | Time:00:41.36 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:263 Mem:308.17M (Peak 403.15M) | Time:00:41.36 | Compositing
+Fra:263 Mem:308.17M (Peak 403.15M) | Time:00:41.36 | Compositing | Initializing execution
+Fra:263 Mem:339.87M (Peak 403.15M) | Time:00:41.37 | Compositing | Operation 2-7
+Fra:263 Mem:371.51M (Peak 403.15M) | Time:00:41.38 | Compositing | Operation 3-7
+Fra:263 Mem:371.51M (Peak 403.15M) | Time:00:41.61 | Compositing | Operation 4-7
+Fra:263 Mem:371.51M (Peak 403.15M) | Time:00:41.61 | Compositing | Operation 5-7
+Fra:263 Mem:371.51M (Peak 403.15M) | Time:00:41.61 | Compositing | Operation 6-7
+Fra:263 Mem:339.87M (Peak 403.15M) | Time:00:41.62 | Compositing | Operation 7-7
+Fra:263 Mem:339.87M (Peak 403.15M) | Time:00:41.62 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000263.png'
+Time: 00:41.89 (Saving: 00:00.26)
+
+Fra:264 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:264 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:264 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:264 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:264 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:264 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:264 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:264 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:264 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:264 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:264 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:264 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:264 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:264 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:264 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:264 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:264 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:264 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:264 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:264 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:264 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:264 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:264 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:264 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:264 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:264 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:264 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:264 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:264 Mem:244.88M (Peak 403.15M) | Time:00:07.30 | Remaining:00:21.84 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:264 Mem:308.16M (Peak 403.15M) | Time:00:41.84 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:264 Mem:308.16M (Peak 403.15M) | Time:00:41.84 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:264 Mem:308.17M (Peak 403.15M) | Time:00:41.84 | Compositing
+Fra:264 Mem:308.17M (Peak 403.15M) | Time:00:41.84 | Compositing | Initializing execution
+Fra:264 Mem:339.87M (Peak 403.15M) | Time:00:41.85 | Compositing | Operation 2-7
+Fra:264 Mem:371.51M (Peak 403.15M) | Time:00:41.86 | Compositing | Operation 3-7
+Fra:264 Mem:371.51M (Peak 403.15M) | Time:00:42.11 | Compositing | Operation 4-7
+Fra:264 Mem:371.51M (Peak 403.15M) | Time:00:42.11 | Compositing | Operation 5-7
+Fra:264 Mem:371.51M (Peak 403.15M) | Time:00:42.11 | Compositing | Operation 6-7
+Fra:264 Mem:339.87M (Peak 403.15M) | Time:00:42.12 | Compositing | Operation 7-7
+Fra:264 Mem:339.87M (Peak 403.15M) | Time:00:42.12 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000264.png'
+Time: 00:42.40 (Saving: 00:00.27)
+
+Fra:265 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:265 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:265 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:265 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:265 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_6
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:265 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:265 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:265 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:265 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:265 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:265 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:265 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:265 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:265 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:265 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:265 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:265 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:265 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:265 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:265 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:265 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:265 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:265 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:265 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:265 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:265 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:265 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:265 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:265 Mem:244.88M (Peak 403.15M) | Time:00:07.44 | Remaining:00:22.26 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:265 Mem:308.16M (Peak 403.15M) | Time:00:41.67 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:265 Mem:308.16M (Peak 403.15M) | Time:00:41.67 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:265 Mem:308.17M (Peak 403.15M) | Time:00:41.67 | Compositing
+Fra:265 Mem:308.17M (Peak 403.15M) | Time:00:41.67 | Compositing | Initializing execution
+Fra:265 Mem:339.87M (Peak 403.15M) | Time:00:41.67 | Compositing | Operation 2-7
+Fra:265 Mem:371.51M (Peak 403.15M) | Time:00:41.68 | Compositing | Operation 3-7
+Fra:265 Mem:371.51M (Peak 403.15M) | Time:00:41.91 | Compositing | Operation 4-7
+Fra:265 Mem:371.51M (Peak 403.15M) | Time:00:41.91 | Compositing | Operation 5-7
+Fra:265 Mem:371.51M (Peak 403.15M) | Time:00:41.91 | Compositing | Operation 6-7
+Fra:265 Mem:339.87M (Peak 403.15M) | Time:00:41.92 | Compositing | Operation 7-7
+Fra:265 Mem:339.87M (Peak 403.15M) | Time:00:41.92 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000265.png'
+Time: 00:42.20 (Saving: 00:00.27)
+
+Fra:266 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:266 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:266 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:266 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_6
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:266 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:266 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:266 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:266 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:266 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:266 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:266 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:266 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:266 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:266 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:266 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:266 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:266 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:266 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:266 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:266 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:266 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:266 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:266 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:266 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:266 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:266 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:266 Mem:244.88M (Peak 403.15M) | Time:00:07.45 | Remaining:00:22.29 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:266 Mem:308.16M (Peak 403.15M) | Time:00:41.61 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:266 Mem:308.16M (Peak 403.15M) | Time:00:41.61 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:266 Mem:308.17M (Peak 403.15M) | Time:00:41.61 | Compositing
+Fra:266 Mem:308.17M (Peak 403.15M) | Time:00:41.61 | Compositing | Initializing execution
+Fra:266 Mem:339.87M (Peak 403.15M) | Time:00:41.61 | Compositing | Operation 2-7
+Fra:266 Mem:371.51M (Peak 403.15M) | Time:00:41.62 | Compositing | Operation 3-7
+Fra:266 Mem:371.51M (Peak 403.15M) | Time:00:41.86 | Compositing | Operation 4-7
+Fra:266 Mem:371.51M (Peak 403.15M) | Time:00:41.86 | Compositing | Operation 5-7
+Fra:266 Mem:371.51M (Peak 403.15M) | Time:00:41.86 | Compositing | Operation 6-7
+Fra:266 Mem:339.87M (Peak 403.15M) | Time:00:41.86 | Compositing | Operation 7-7
+Fra:266 Mem:339.87M (Peak 403.15M) | Time:00:41.87 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000266.png'
+Time: 00:42.13 (Saving: 00:00.26)
+
+Fra:267 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:267 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:267 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:267 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_6
+Fra:267 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:267 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:267 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:267 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:267 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:267 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:267 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:267 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:267 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:267 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:267 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:267 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:267 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:267 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:267 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:267 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:267 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:267 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:267 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:267 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:267 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:267 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:267 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:267 Mem:244.88M (Peak 403.15M) | Time:00:07.36 | Remaining:00:22.03 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:267 Mem:308.16M (Peak 403.15M) | Time:00:41.73 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:267 Mem:308.16M (Peak 403.15M) | Time:00:41.73 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:267 Mem:308.17M (Peak 403.15M) | Time:00:41.73 | Compositing
+Fra:267 Mem:308.17M (Peak 403.15M) | Time:00:41.73 | Compositing | Initializing execution
+Fra:267 Mem:339.87M (Peak 403.15M) | Time:00:41.73 | Compositing | Operation 2-7
+Fra:267 Mem:371.51M (Peak 403.15M) | Time:00:41.74 | Compositing | Operation 3-7
+Fra:267 Mem:371.51M (Peak 403.15M) | Time:00:41.97 | Compositing | Operation 4-7
+Fra:267 Mem:371.51M (Peak 403.15M) | Time:00:41.97 | Compositing | Operation 5-7
+Fra:267 Mem:371.51M (Peak 403.15M) | Time:00:41.97 | Compositing | Operation 6-7
+Fra:267 Mem:339.87M (Peak 403.15M) | Time:00:41.98 | Compositing | Operation 7-7
+Fra:267 Mem:339.87M (Peak 403.15M) | Time:00:41.98 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000267.png'
+Time: 00:42.25 (Saving: 00:00.27)
+
+Fra:268 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:268 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:268 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:268 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:268 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:268 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:268 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:268 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:268 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:268 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:268 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:268 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:268 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_16
+Fra:268 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:268 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:268 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:268 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:268 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:268 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:268 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:268 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_Mesh
+Fra:268 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:268 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:268 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:268 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:268 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.18M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:268 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.18M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.18M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:268 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:268 Mem:244.88M (Peak 403.15M) | Time:00:07.37 | Remaining:00:22.05 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:268 Mem:308.16M (Peak 403.15M) | Time:00:41.78 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:268 Mem:308.16M (Peak 403.15M) | Time:00:41.78 | Mem:197.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:268 Mem:308.17M (Peak 403.15M) | Time:00:41.78 | Compositing
+Fra:268 Mem:308.17M (Peak 403.15M) | Time:00:41.78 | Compositing | Initializing execution
+Fra:268 Mem:339.87M (Peak 403.15M) | Time:00:41.79 | Compositing | Operation 2-7
+Fra:268 Mem:371.51M (Peak 403.15M) | Time:00:41.80 | Compositing | Operation 3-7
+Fra:268 Mem:371.51M (Peak 403.15M) | Time:00:42.08 | Compositing | Operation 4-7
+Fra:268 Mem:371.51M (Peak 403.15M) | Time:00:42.08 | Compositing | Operation 5-7
+Fra:268 Mem:371.51M (Peak 403.15M) | Time:00:42.08 | Compositing | Operation 6-7
+Fra:268 Mem:339.87M (Peak 403.15M) | Time:00:42.09 | Compositing | Operation 7-7
+Fra:268 Mem:339.87M (Peak 403.15M) | Time:00:42.09 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000268.png'
+Time: 00:42.37 (Saving: 00:00.27)
+
+Fra:269 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:269 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:269 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_3
+Fra:269 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:269 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:269 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:269 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:269 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_11
+Fra:269 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:269 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:269 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:269 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:269 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:269 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:269 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:269 Mem:244.80M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:269 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:269 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:269 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:269 Mem:244.77M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:269 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:269 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:269 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:269 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:269 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.85M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:269 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:269 Mem:244.88M (Peak 403.15M) | Time:00:07.40 | Remaining:00:22.13 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:269 Mem:308.16M (Peak 403.15M) | Time:00:41.72 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:269 Mem:308.16M (Peak 403.15M) | Time:00:41.72 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:269 Mem:308.17M (Peak 403.15M) | Time:00:41.72 | Compositing
+Fra:269 Mem:308.17M (Peak 403.15M) | Time:00:41.72 | Compositing | Initializing execution
+Fra:269 Mem:339.87M (Peak 403.15M) | Time:00:41.72 | Compositing | Operation 2-7
+Fra:269 Mem:371.51M (Peak 403.15M) | Time:00:41.73 | Compositing | Operation 3-7
+Fra:269 Mem:371.51M (Peak 403.15M) | Time:00:41.96 | Compositing | Operation 4-7
+Fra:269 Mem:371.51M (Peak 403.15M) | Time:00:41.96 | Compositing | Operation 5-7
+Fra:269 Mem:371.51M (Peak 403.15M) | Time:00:41.96 | Compositing | Operation 6-7
+Fra:269 Mem:339.87M (Peak 403.15M) | Time:00:41.97 | Compositing | Operation 7-7
+Fra:269 Mem:339.87M (Peak 403.15M) | Time:00:41.97 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000269.png'
+Time: 00:42.24 (Saving: 00:00.26)
+
+Fra:270 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_0
+Fra:270 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_2
+Fra:270 Mem:244.89M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_4
+Fra:270 Mem:244.90M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_5
+Fra:270 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_7
+Fra:270 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_8
+Fra:270 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_9
+Fra:270 Mem:244.86M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_10
+Fra:270 Mem:244.85M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_12
+Fra:270 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_13
+Fra:270 Mem:244.84M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_14
+Fra:270 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_15
+Fra:270 Mem:244.83M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_17
+Fra:270 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_18
+Fra:270 Mem:244.82M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_19
+Fra:270 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_20
+Fra:270 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_21
+Fra:270 Mem:244.81M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_22
+Fra:270 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_HEAVY_CHAIN_link_23
+Fra:270 Mem:244.79M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_body
+Fra:270 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_shackle
+Fra:270 Mem:244.78M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | S4_UNGUARDED_GATE_BRASS_PADLOCK_keyhole
+Fra:270 Mem:244.76M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Synchronizing object | vanguard_visor
+Fra:270 Mem:244.87M (Peak 403.15M) | Time:00:00.00 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Initializing
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Waiting for render to start
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Shaders
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Background
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes Flags
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Copying Transformations to device
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects | Applying Static Transformations
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Particle Systems
+Fra:270 Mem:244.58M (Peak 403.15M) | Time:00:00.01 | Mem:195.82M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Meshes
+Fra:270 Mem:240.91M (Peak 403.15M) | Time:00:00.01 | Mem:191.85M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing attributes
+Fra:270 Mem:243.26M (Peak 403.15M) | Time:00:00.01 | Mem:191.87M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Attributes to device
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_visor 2/2 | Building BVH 0%
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Geometry BVH vanguard_Mesh 1/2 | Building BVH
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.01 | Mem:194.16M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Building BVH
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Scene BVH | Copying BVH to device
+Fra:270 Mem:243.22M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Computing normals
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:196.29M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Mesh | Copying Mesh to device
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Objects Flags
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Primitive Offsets
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Images
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Camera Volume
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights
+Fra:270 Mem:244.85M (Peak 403.15M) | Time:00:00.02 | Mem:197.92M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lights | Computing tree
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Integrator
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Film
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Lookup Tables
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Baking
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Updating Device | Writing constant memory
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:00.02 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 0/4
+Fra:270 Mem:244.88M (Peak 403.15M) | Time:00:07.39 | Remaining:00:22.11 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 1/4
+Fra:270 Mem:308.16M (Peak 403.15M) | Time:00:41.73 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Sample 4/4
+Fra:270 Mem:308.16M (Peak 403.15M) | Time:00:41.73 | Mem:197.95M, Peak:197.95M | PEHRA_DARK_3D_CINEMA, ViewLayer | Finished
+Fra:270 Mem:308.17M (Peak 403.15M) | Time:00:41.73 | Compositing
+Fra:270 Mem:308.17M (Peak 403.15M) | Time:00:41.73 | Compositing | Initializing execution
+Fra:270 Mem:339.87M (Peak 403.15M) | Time:00:41.74 | Compositing | Operation 2-7
+Fra:270 Mem:371.51M (Peak 403.15M) | Time:00:41.75 | Compositing | Operation 3-7
+Fra:270 Mem:371.51M (Peak 403.15M) | Time:00:41.99 | Compositing | Operation 4-7
+Fra:270 Mem:371.51M (Peak 403.15M) | Time:00:41.99 | Compositing | Operation 5-7
+Fra:270 Mem:371.51M (Peak 403.15M) | Time:00:41.99 | Compositing | Operation 6-7
+Fra:270 Mem:339.87M (Peak 403.15M) | Time:00:41.99 | Compositing | Operation 7-7
+Fra:270 Mem:339.87M (Peak 403.15M) | Time:00:42.00 | Compositing | Operation 8-7
+Saved: '/home/runner/work/Top1/Top1/production/account1_ep01/frames/f_000270.png'
+Time: 00:42.27 (Saving: 00:00.26)
+
+[PEHRA] Render complete in 467.1s
