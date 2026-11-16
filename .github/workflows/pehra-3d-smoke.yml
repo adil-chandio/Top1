@@ -53,30 +53,31 @@ jobs:
           set -euo pipefail
           python production/account1_ep01/fetch_assets.py
           ls -la production/account1_ep01/assets | head -20
-      - name: Render one lookdev frame of S6 (low cost, real Cycles)
+      - name: Measure S5 monarch + render one debug frame
         run: |
           set -euo pipefail
           mkdir -p production/account1_ep01/frames
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
-          blender -b --factory-startup --python production/account1_ep01/render_scene.py -- \
-            --shot S6_MASTER_MOVE --mode lookdev --samples 18 --res-pct 50 \
-            --out production/account1_ep01/frames > /tmp/blender.log 2>&1 || true
+          blender -b --factory-startup --python production/account1_ep01/debug_s5_measure.py -- \
+            --timeline production/account1_ep01/build/timeline_15s.json \
+            --assets production/account1_ep01/assets > /tmp/blender.log 2>&1 || true
+          grep MEASURE /tmp/blender.log || true
           echo "=== exit summary ==="
           tail -40 /tmp/blender.log || true
           cp /tmp/blender.log /tmp/smoke_blender.log
-          find production/account1_ep01/frames -maxdepth 1 -name '*.png' | sort | head -20
+          find production/account1_ep01/frames_debug -maxdepth 1 -name '*.png' | sort | head -20
       - name: Commit the smoke frames so they can be inspected
         if: always()
         run: |
           set -euo pipefail
           DEST=deliverables/pehra-3d-smoke
           mkdir -p "$DEST"
-          cp -a production/account1_ep01/frames/*.png "$DEST"/ 2>/dev/null || true
+          cp -a production/account1_ep01/frames_debug/*.png "$DEST"/ 2>/dev/null || true
           cp /tmp/smoke_blender.log "$DEST/blender.log" 2>/dev/null || echo 'no blender log' > "$DEST/blender.log"
-          find production/account1_ep01/frames -maxdepth 1 -type f | sort > "$DEST/frames_manifest.txt" || true
+          find production/account1_ep01/frames_debug -maxdepth 1 -type f | sort > "$DEST/frames_manifest.txt" || true
           { echo '--- assets ---'; ls -la production/account1_ep01/assets 2>/dev/null || echo 'no assets dir';
-            echo '--- frames dir ---'; ls -la production/account1_ep01/frames 2>/dev/null || echo 'no frames dir'; } > "$DEST/diagnostics.txt"
+            echo '--- frames dir ---'; ls -la production/account1_ep01/frames_debug 2>/dev/null || echo 'no frames dir'; } > "$DEST/diagnostics.txt"
           ls -la "$DEST" || true
           git config user.name 'pehra-render-bot'
           git config user.email 'pehra-render@users.noreply.github.com'
