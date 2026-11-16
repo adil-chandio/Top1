@@ -1,0 +1,2 @@
+production/account1_ep01/frames/f_000383.png
+production/account1_ep01/frames/render_info_B03_MASKED_TITLE.json
