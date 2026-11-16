@@ -1,0 +1,16 @@
+{
+  "channel": "monarch_cam",
+  "scope": "original_script_opening_20_seconds",
+  "status": "research_and_redesign",
+  "previous_cut": "rejected_by_user",
+  "ready_for_full_render": false,
+  "gates": {
+    "reference_audiovisual_breakdown": false,
+    "art_direction": false,
+    "editing_blueprint": false,
+    "combined_short_test_review": false,
+    "sound_listening_review": false
+  },
+  "evidence": [],
+  "note": "Process/case-study text research started. No reference playback/listening or redesigned integrated proof claimed. Old cut and its mix are not accepted evidence."
+}

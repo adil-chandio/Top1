@@ -14,6 +14,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with: {python-version: '3.11'}
+      - name: Check creative evidence before full production
+        run: python -m studio.release_gate
       - name: Dependencies
         run: python -m pip install pillow numpy imageio-ffmpeg
       - uses: actions/download-artifact@v4

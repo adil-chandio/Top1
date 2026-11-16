@@ -3,7 +3,7 @@ import hashlib
 DEPARTMENTS={
  'script':('story_design','edit_sound_blueprint'),
  'feasibility':('art_direction','integrated_motion_test','asset_provenance'),
- 'production':('animation','motion_design','typography','compositing','sound_design','music','mix','finishing'),
+ 'production':('editing','animation','motion_design','typography','compositing','sound_design','music','mix','finishing'),
  'qc':('picture_only_review','audio_only_review','combined_review','reference_comparison','delivery_integrity')
 }
 

@@ -28,6 +28,8 @@ jobs:
         with: {python-version: '3.11'}
       - uses: actions/setup-node@v4
         with: {node-version: '22'}
+      - name: Check creative evidence before full production
+        run: python -m studio.release_gate
       - name: Install render dependencies
         run: |
           sudo apt-get update -qq
