@@ -23,3 +23,7 @@ cinema_v4/prime/build/
 *.mov
 *.mkv
 *.webm
+
+# Local motion dependencies and generated frames
+.local-motion/
+research/monarch_cam_market/motion/out/
