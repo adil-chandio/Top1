@@ -1,2 +1,0 @@
-production/account1_ep01/frames_debug/f_000292.png
-production/account1_ep01/frames_debug/render_info_S5_MASKED_MONARCH.json

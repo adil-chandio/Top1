@@ -1,14 +1,4 @@
 --- assets ---
-total 28
-drwxr-xr-x  5 runner runner 4096 Nov 16 15:03 .
-drwxr-xr-x  7 runner runner 4096 Nov 16 15:03 ..
-drwxr-xr-x  2 runner runner 4096 Nov 16 15:03 glb
--rw-r--r--  1 runner runner 4512 Nov 16 15:03 manifest.json
-drwxr-xr-x 10 runner runner 4096 Nov 16 15:03 ph_models
-drwxr-xr-x  4 runner runner 4096 Nov 16 15:03 ph_textures
+no assets dir
 --- frames dir ---
-total 1912
-drwxr-xr-x 2 runner runner    4096 Nov 16 15:05 .
-drwxr-xr-x 7 runner runner    4096 Nov 16 15:03 ..
--rw-r--r-- 1 runner runner 1943713 Nov 16 15:05 f_000292.png
--rw-r--r-- 1 runner runner     371 Nov 16 15:03 render_info_S5_MASKED_MONARCH.json
+no frames dir
