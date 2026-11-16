@@ -5,6 +5,7 @@ import os
 import urllib.request
 from playwright.async_api import async_playwright
 
+# Fixed supported runner OS avoids ubuntu-latest browser-library drift.
 URL='https://www.youtube.com/watch?v=WqRpgJZeCPU'
 
 async def main():
