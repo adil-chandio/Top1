@@ -2,7 +2,9 @@
 import base64, hashlib, json, os, shutil, subprocess, tempfile, urllib.request
 from pathlib import Path
 from PIL import Image, ImageDraw
-URL='https://esajournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fecy.70021&file=ecy70021-sup-0002-VideoS1.mp4'
+# Publisher supplement denied HTTP403; do not bypass or retry it.
+# This separately accessible creator test is NOT a viral benchmark or cuttlefish footage.
+URL='https://github.com/jonaslacandola0617/curio-bureau/releases/download/visual-test-pistol-shrimp-v2-20261020/Curio-Test-03-Pistol-Shrimp-12s-v2.mp4'
 CAP=40_000_000
 
 def publish(name, report, text=''):
@@ -12,9 +14,9 @@ def publish(name, report, text=''):
     with urllib.request.urlopen(req,timeout=30) as response: json.load(response)
 
 def main():
-    report={'url':URL,'source_type':'official scientific supplement, NOT YouTube editorial version',
-            'paper':'10.1002/ecy.70021','credit':'How et al. (2025), Ecology, Video S1; underlying footage credited to Matteo Santon where specified',
-            'rights':'Publisher page CC BY 4.0, clip-specific exceptions not yet independently inspected',
+    report={'url':URL,'source_type':'creator GitHub editorial test, NOT viral/approved reference',
+            'credit':'Curio Bureau creator test, GitHub release visual-test-pistol-shrimp-v2-20261020',
+            'rights':'No reuse licence established. Internal research only; not cleared for production footage.',
             'full_realtime_review':False,'actual_listening':False,'sampled_frames_opened':False,'success':False}
     with tempfile.TemporaryDirectory(prefix='monarch-one-reference-') as tmp:
         root=Path(tmp); source=root/'source.mp4'
@@ -46,13 +48,13 @@ def main():
             for start in range(0,len(frames),6):
                 images=[Image.open(p).convert('RGB') for p in frames[start:start+6]]
                 h=images[0].height; sheet=Image.new('RGB',(720,2*(h+20)+32),'#101820'); draw=ImageDraw.Draw(sheet)
-                draw.text((5,4),'How et al. 2025 Ecology | Video S1 | research samples, not YouTube',fill='white')
+                draw.text((5,4),'Curio Bureau creator test | internal research, NOT viral benchmark',fill='white')
                 for i,im in enumerate(images):
                     x=(i%3)*240;y=32+(i//3)*(h+20);sheet.paste(im,(x,y));draw.text((x+3,y+h+2),f'~{(start+i+.5)*interval:.2f}s',fill='white')
                 path=root/'sheet.jpg';sheet.save(path,quality=38);raw=path.read_bytes()
                 if len(raw)>42000: sheet.save(path,quality=22);raw=path.read_bytes()
                 if len(raw)>42000: raise ValueError('Evidence sheet cap exceeded')
-                publish(f'cuttlefish-source-sheet-{start//6:02d}',{'sha256':hashlib.sha256(raw).hexdigest(),'credit':report['credit'],'approximate_sample_interval_seconds':interval},base64.b64encode(raw).decode())
+                publish(f'media-lifecycle-sheet-{start//6:02d}',{'sha256':hashlib.sha256(raw).hexdigest(),'credit':report['credit'],'approximate_sample_interval_seconds':interval},base64.b64encode(raw).decode())
             report['success']=True
         except Exception as exc:
             report['error']=str(exc)[:1500]
@@ -61,7 +63,7 @@ def main():
             for path in root.iterdir():
                 if path.is_file(): path.unlink()
             report['temporary_media_deleted']=not any(root.iterdir())
-            publish('cuttlefish-source-media-receipt',report)
+            publish('media-lifecycle-receipt',report)
     print(json.dumps(report,indent=2))
 
 if __name__=='__main__': main()
