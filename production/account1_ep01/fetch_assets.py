@@ -24,15 +24,15 @@ ASSETS = BASE / "assets"
 UA = "MonarchCinema3D/1.0 (https://github.com/adil-chandio/Top1)"
 
 # Poly Haven CC0 photogrammetry 3D models: (asset_id, preferred_resolution).
-# Hero close-up surfaces stay 2k; secondary silhouettes use 1k to keep CI fast.
+# Use verified 2k native .blend packages for deterministic CI imports.
 PH_MODELS = [
     ("sweet_potato", "2k"),
     ("Lantern_01", "2k"),
-    ("street_lamp_01", "1k"),
-    ("bolt_action_rifle_7_62", "1k"),
-    ("chess_set", "1k"),
-    ("wooden_candlestick", "1k"),
-    ("wicker_basket_01", "1k"),
+    ("street_lamp_01", "2k"),
+    ("bolt_action_rifle_7_62", "2k"),
+    ("chess_set", "2k"),
+    ("wooden_candlestick", "2k"),
+    ("wicker_basket_01", "2k"),
     ("marble_bust_01", "2k"),
 ]
 

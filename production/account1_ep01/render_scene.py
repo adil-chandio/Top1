@@ -289,37 +289,47 @@ def append_blend(asset_id: str, name: str | None = None):
     path = find_blend(asset_id)
     if path is None:
         raise FileNotFoundError(f"Missing Poly Haven .blend for {asset_id}")
-    group = new_empty(name or f"ASSET_{asset_id}")
-    with bpy.data.libraries.load(str(path), link=False) as (data_from, data_to):
-        data_to.objects = list(data_from.objects)
-    skip_tokens = ("backdrop", "shadow", "floor", "ground", "stage", "preview_plane")
-    appended = []
-    for obj in data_to.objects:
-        if obj is None or obj.type in {"LIGHT", "CAMERA"}:
-            continue
-        name = obj.name.lower()
-        if any(token in name for token in skip_tokens) or name.startswith("plane"):
-            continue
-        if obj.type == "MESH" and max(obj.dimensions) > 12.0:
-            continue
-        appended.append(obj)
-    appended_set = set(appended)
-    for obj in appended:
-        try:
-            if SCENE.collection not in obj.users_collection:
-                SCENE.collection.objects.link(obj)
-        except Exception:
+    before = set(bpy.data.objects)
+    try:
+        group = new_empty(name or f"ASSET_{asset_id}")
+        with bpy.data.libraries.load(str(path), link=False) as (data_from, data_to):
+            data_to.objects = list(data_from.objects)
+        skip_tokens = ("backdrop", "shadow", "floor", "ground", "stage", "preview_plane")
+        appended = []
+        for obj in data_to.objects:
+            if obj is None or obj.type in {"LIGHT", "CAMERA"}:
+                continue
+            lower = obj.name.lower()
+            if any(token in lower for token in skip_tokens) or lower.startswith("plane"):
+                continue
+            if obj.type == "MESH" and max(obj.dimensions) > 12.0:
+                continue
+            appended.append(obj)
+        appended_set = set(appended)
+        for obj in appended:
             try:
-                SCENE.collection.objects.link(obj)
+                if SCENE.collection not in obj.users_collection:
+                    SCENE.collection.objects.link(obj)
             except Exception:
-                pass
-        obj.hide_render = False
-        obj.hide_viewport = False
-        if obj.parent is None or obj.parent not in appended_set:
-            obj.parent = group
-    repath_images(path.parent)
-    bpy.context.view_layer.update()
-    return group
+                try:
+                    SCENE.collection.objects.link(obj)
+                except Exception:
+                    pass
+            obj.hide_render = False
+            obj.hide_viewport = False
+            if obj.parent is None or obj.parent not in appended_set:
+                obj.parent = group
+        repath_images(path.parent)
+        bpy.context.view_layer.update()
+        return group
+    except Exception:
+        for obj in list(bpy.data.objects):
+            if obj not in before:
+                try:
+                    bpy.data.objects.remove(obj, do_unlink=True)
+                except Exception:
+                    pass
+        raise
 
 
 def append_glb(filename: str, name: str | None = None):
@@ -328,31 +338,38 @@ def append_glb(filename: str, name: str | None = None):
         raise FileNotFoundError(f"Missing GLB asset {filename}")
     before = set(bpy.data.objects)
     try:
-        bpy.ops.import_scene.gltf(filepath=str(path))
-    except AttributeError:
         try:
+            bpy.ops.import_scene.gltf(filepath=str(path))
+        except AttributeError:
             bpy.ops.preferences.addon_enable(module="io_scene_gltf2")
             bpy.ops.import_scene.gltf(filepath=str(path))
-        except Exception as exc:
-            raise RuntimeError(f"glTF importer unavailable: {exc}") from exc
-    group = new_empty(name or f"ASSET_{Path(filename).stem}")
-    new_objs = [
-        obj for obj in bpy.data.objects
-        if obj not in before and obj.type not in {"LIGHT", "CAMERA"}
-    ]
-    new_set = set(new_objs)
-    for obj in new_objs:
-        try:
-            if SCENE.collection not in obj.users_collection:
-                SCENE.collection.objects.link(obj)
-        except Exception:
-            pass
-        obj.hide_render = False
-        obj.hide_viewport = False
-        if obj.parent is None or obj.parent not in new_set:
-            obj.parent = group
-    bpy.context.view_layer.update()
-    return group
+        group = new_empty(name or f"ASSET_{Path(filename).stem}")
+        imported = [
+            obj for obj in bpy.data.objects
+            if obj not in before and obj is not group
+            and obj.type not in {"LIGHT", "CAMERA"}
+        ]
+        imported_set = set(imported)
+        for obj in imported:
+            try:
+                if SCENE.collection not in obj.users_collection:
+                    SCENE.collection.objects.link(obj)
+            except Exception:
+                pass
+            obj.hide_render = False
+            obj.hide_viewport = False
+            if obj.parent is None or obj.parent not in imported_set:
+                obj.parent = group
+        bpy.context.view_layer.update()
+        return group
+    except Exception:
+        for obj in list(bpy.data.objects):
+            if obj not in before:
+                try:
+                    bpy.data.objects.remove(obj, do_unlink=True)
+                except Exception:
+                    pass
+        raise
 
 
 def try_append_blend(asset_id: str, name: str):
@@ -1120,7 +1137,8 @@ def make_particles(name, mat, *, count=44, center=(0, 0, 0.3), spread=1.0, seed=
             rng.uniform(-spread, spread),
             rng.uniform(-0.05, spread * 0.8),
         )
-        obj.scale = (rng.uniform(0.5, 1.8),) * 3
+        base_radius = 0.012
+        obj.scale = (rng.uniform(0.5, 1.8) * base_radius,) * 3
         objs.append(obj)
     return root, objs
 
@@ -1245,16 +1263,9 @@ def make_guard_rig(mats, name, loc, *, with_rifle=True, use_soldier=True):
             (0, -0.19, 1.16 - i * 0.13), mats["brass"], parent=rig, segments=10, rings=6,
         )
     if with_rifle:
-        rifle = try_append_blend("bolt_action_rifle_7_62", name + "_RIFLE")
-        if rifle:
-            fit_group(rifle, 1.18, use="max", center_xy=(0, 0), bottom_z=0.0)
-            rifle.parent = rig
-            rifle.location = (0.34, -0.12, 0.95)
-            rifle.rotation_euler = (math.radians(8), math.radians(74), math.radians(4))
-        else:
-            proc_rifle = make_procedural_rifle(name + "_PROC_RIFLE", (0.34, -0.12, 0.95), mats)
-            proc_rifle.parent = rig
-            proc_rifle.rotation_euler = (math.radians(8), math.radians(74), math.radians(4))
+        proc_rifle = make_procedural_rifle(name + "_PROC_RIFLE", (0.34, -0.12, 0.95), mats)
+        proc_rifle.parent = rig
+        proc_rifle.rotation_euler = (math.radians(8), math.radians(74), math.radians(4))
     return rig
 
 
