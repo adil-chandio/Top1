@@ -1,0 +1,2 @@
+# Optional public-platform execution tools. Keep media in ignored runtime storage.
+yt-dlp==2026.10.26

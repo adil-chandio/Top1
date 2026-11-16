@@ -35,5 +35,22 @@
     "youtube_publishing_allowed": false,
     "next_channel_requires_explicit_user_instruction": true,
     "delivery_is_not_user_acceptance": true
+  },
+  "platform_reference_policy": {
+    "priority": [
+      "youtube_long",
+      "youtube_shorts",
+      "instagram_reels",
+      "tiktok"
+    ],
+    "lanes": [
+      "direct_competitor",
+      "topic_winner",
+      "adjacent_craft",
+      "packaging"
+    ],
+    "require_av_before_production": true,
+    "no_private_metric_invention": true,
+    "no_reference_media_reuse_without_separate_rights": true
   }
 }
