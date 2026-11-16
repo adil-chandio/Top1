@@ -1,0 +1,101 @@
+name: PEHRA full-script lookdev (16 keyframes)
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths:
+      - 'production/account1_ep01/LOOKDEV_TRIGGER.txt'
+permissions:
+  contents: write
+concurrency:
+  group: pehra-lookdev-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+jobs:
+  lookdev:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with: {fetch-depth: 0}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install Blender + deps
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg libxi6 libxxf86vm1 libxfixes3 libxrender1 \
+            libgl1 libglu1-mesa libsm6 libice6 libxkbcommon0 libgomp1
+          python -m pip install --quiet requests numpy scipy pillow
+          if [ ! -x "$HOME/blender4215/$BLENDER_DIR/blender" ]; then
+            mkdir -p "$HOME/blender4215"
+            curl -fsSL --retry 3 -o /tmp/b.tar.xz \
+              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+            tar -xf /tmp/b.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/b.tar.xz
+          fi
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"; chmod +x "$BIN"
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+      - name: Timeline + assets
+        run: |
+          set -euo pipefail
+          python production/account1_ep01/plan_full.py
+          python production/account1_ep01/fetch_assets.py
+      - name: Render one lookdev frame per beat
+        run: |
+          set -uo pipefail
+          mkdir -p production/account1_ep01/frames_lookdev
+          for SHOT in B01_AERIAL_FIELD B02_GUARDED_FIELD B03_MASKED_TITLE B04_HUNGRY_PARIS \
+                      B05_POTATO_PROMISE B06_POISONED_MIND B07_FREE_BASKETS B08_SILENT_PIVOT \
+                      B09_FORTY_ACRES B10_WHISPERS B11_LAST_ORDER B12_SUNSET_WITHDRAWAL \
+                      B13_NIGHT_THEFT B14_EMPTY_FIELD_DAWN B15_GRAVE_200_YEARS B16_FINAL_MONARCH; do
+            echo "=== $SHOT ==="
+            "$BLENDER_BIN" -b --factory-startup \
+              --python production/account1_ep01/render_scene.py -- \
+              --shot "$SHOT" --mode lookdev --samples 10 --res-pct 62 \
+              --timeline production/account1_ep01/build/timeline_full.json \
+              --assets production/account1_ep01/assets \
+              --out production/account1_ep01/frames_lookdev 2>&1 | tail -3
+          done
+          ls production/account1_ep01/frames_lookdev | head -30
+      - name: Contact sheet + publish
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from PIL import Image, ImageDraw
+          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
+          d = Path("production/account1_ep01/frames_lookdev")
+          picks = []
+          for s in tl["shots"]:
+              f = int(s.get("lookdev_frame") or s["f_start"] + 8)
+              p = d / f"f_{f:06d}.png"
+              picks.append((s, f, p))
+          cols, tw = 4, 340
+          th = int(tw * 16 / 9)
+          rows = (len(picks) + cols - 1) // cols
+          sheet = Image.new("RGB", (cols * tw, rows * (th + 26)), (8, 8, 10))
+          dr = ImageDraw.Draw(sheet)
+          for i, (shot, f, p) in enumerate(picks):
+              x, y = (i % cols) * tw, (i // cols) * (th + 26)
+              if p.exists():
+                  sheet.paste(Image.open(p).convert("RGB").resize((tw, th), Image.LANCZOS), (x, y))
+              dr.text((x + 6, y + th + 5), f"{i+1:02d} {shot['id'][:22]}", fill=(235, 235, 235))
+          out = Path("deliverables/pehra-lookdev-full")
+          out.mkdir(parents=True, exist_ok=True)
+          sheet.save(out / "FULL_CONTACT_SHEET.jpg", quality=88)
+          missing = [s["id"] for s, _f, p in picks if not p.exists()]
+          (out / "missing.json").write_text(json.dumps(missing, indent=1))
+          print("rendered:", sum(1 for _s, _f, p in picks if p.exists()), "/", len(picks))
+          print("missing:", missing)
+          for s, f, p in picks:
+              if p.exists():
+                  (out / f"{s['id']}.png").write_bytes(p.read_bytes())
+          PY
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+          git add -f deliverables/pehra-lookdev-full
+          git commit -q -m "Lookdev: 16 full-script keyframes (run ${{ github.run_id }})" || echo "nothing"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
