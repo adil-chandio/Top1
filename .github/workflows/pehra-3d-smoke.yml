@@ -66,7 +66,7 @@ jobs:
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
           mkdir -p production/account1_ep01/frames_debug
-          blender -b --factory-startup --python production/account1_ep01/render_scene.py -- \
+          "$BLENDER_BIN" -b --factory-startup --python production/account1_ep01/render_scene.py -- \
             --shot S6_MASTER_MOVE --mode lookdev --samples 4 --res-pct 100 \
             --timeline production/account1_ep01/build/timeline_15s.json \
             --assets production/account1_ep01/assets \
