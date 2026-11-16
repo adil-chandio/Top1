@@ -27,3 +27,7 @@ cinema_v4/prime/build/
 # Local motion dependencies and generated frames
 .local-motion/
 research/monarch_cam_market/motion/out/
+
+# Persistent studio state, media and credentials are not source files
+studio/runtime/
+studio/credentials/

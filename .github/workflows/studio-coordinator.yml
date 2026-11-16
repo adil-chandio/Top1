@@ -1,0 +1,23 @@
+name: Three-channel studio coordinator
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: studio-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run coordinator safety tests
+        run: python -m unittest discover -s studio/tests -v
+      - name: Configuration status (not a production render)
+        run: python -m studio.pipeline doctor
+# No cron or render trigger until a real worker runtime, persistent storage,
+# and unattended Drive credentials are configured and a complete pilot passes.
+# Arena connectors are conversation tools, not automatically Actions secrets.
