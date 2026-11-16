@@ -12,11 +12,11 @@
   + texture cobblestone_floor_06 (2k): diff, nor_gl, rough, disp
 === Queueing CC0 / MIT GLB assets ===
 === Downloading 65 asset files (8 workers) ===
-  [10/65] latest=street_lamp_01_metal_2k.exr (1.02 MB)
-  [20/65] latest=bolt_action_rifle_7_62_accesories_rough_2k.png (8.32 MB)
-  [30/65] latest=chess_set_board_diff_2k.png (20.09 MB)
-  [40/65] latest=wicker_basket_01_rough_2k.exr (3.42 MB)
-  [50/65] latest=marble_bust_01_rough_2k.jpg (0.62 MB)
+  [10/65] latest=street_lamp_01_nor_gl_2k.exr (3.82 MB)
+  [20/65] latest=bolt_action_rifle_7_62_metal_2k.exr (1.22 MB)
+  [30/65] latest=chess_set_pieces_white_rough_2k.png (5.78 MB)
+  [40/65] latest=wooden_candlestick_rough_2k.exr (2.94 MB)
+  [50/65] latest=marble_bust_01_mask_2k.png (5.72 MB)
   [60/65] latest=GlassHurricaneCandleHolder.glb (2.58 MB)
-  [65/65] latest=Lantern.glb (9.12 MB)
-=== DONE: 65 files | 338.7 MB in 1.9s -> /home/runner/work/Top1/Top1/production/account1_ep01/assets/manifest.json ===
+  [65/65] latest=wicker_basket_01_rough_2k.exr (3.42 MB)
+=== DONE: 65 files | 338.7 MB in 4.7s -> /home/runner/work/Top1/Top1/production/account1_ep01/assets/manifest.json ===
