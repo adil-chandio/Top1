@@ -61,7 +61,7 @@ jobs:
           # sandbox, so diagnostics are written to a file and committed instead.
           mkdir -p production/account1_ep01/frames_debug
           blender -b --factory-startup --python production/account1_ep01/render_scene.py -- \
-            --shot S5_MASKED_MONARCH --mode lookdev --samples 4 --res-pct 100 \
+            --shot S6_MASTER_MOVE --mode lookdev --samples 4 --res-pct 100 \
             --timeline production/account1_ep01/build/timeline_15s.json \
             --assets production/account1_ep01/assets \
             --out production/account1_ep01/frames_debug > /tmp/blender.log 2>&1 || true
