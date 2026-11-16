@@ -20,8 +20,10 @@ def main():
         # Prior run established a >80MB source; acquire only a bounded excerpt.
         # FFmpeg performs HTTP range/stream reads; output cap is not a guarantee
         # of network transfer size. Global subprocess deadline limits exposure.
-        acquire=subprocess.run([ff,'-nostdin','-y','-v','error','-rw_timeout','15000000','-ss','0','-i',URL,'-t','6','-vf','scale=640:-2','-c:v','libx264','-crf','26','-c:a','aac','-b:a','64k','-fs','12000000','-movflags','+faststart',str(path)],capture_output=True,text=True,timeout=120)
-        if acquire.returncode:raise ValueError('bounded FFmpeg acquisition failed: '+acquire.stderr[-500:])
+        acquire=subprocess.run([ff,'-nostdin','-y','-v','info','-rw_timeout','15000000','-threads','1','-ss','0','-i',URL,'-t','6','-vf','scale=640:-2','-filter_threads','1','-c:v','libx264','-threads','1','-crf','26','-c:a','aac','-b:a','64k','-fs','12000000','-movflags','+faststart',str(path)],capture_output=True,text=True,timeout=120)
+        report['acquisition_returncode']=acquire.returncode
+        report['acquisition_log_tail']=acquire.stderr[-6000:]
+        if acquire.returncode:raise ValueError('bounded FFmpeg acquisition failed with returncode '+str(acquire.returncode))
         size=path.stat().st_size
         report.update(bytes=size,sha256=hashlib.sha256(path.read_bytes()).hexdigest(),acquired_segment_seconds=6,source_full_download=False,source_full_decode=False)
         r=subprocess.run([ff,'-nostdin','-v','info','-xerror','-i',str(path),'-f','null','-'],capture_output=True,text=True,timeout=180)
