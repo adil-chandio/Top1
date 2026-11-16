@@ -1,0 +1,21 @@
+{
+  "id": "soc_01-2eae823b0144",
+  "account": "soc_01",
+  "brief": "PEHRA EP01 15s preview: 1080x1920, 30fps, 450 frames, zero still-image plates, Urdu voice-00 narration, dark cinema masked look; no full-film authorization, no publishing",
+  "created_at": "2026-11-16T12:54:48.605650+00:00",
+  "status": "queued",
+  "stage": 0,
+  "attempts": {},
+  "history": [],
+  "outputs": {},
+  "blocker": null,
+  "artifacts": [],
+  "checkpoint": {
+    "schema": 1,
+    "created_at": "2026-11-16T12:54:48.605650+00:00",
+    "job_dir": "/home/user/Top1/accounts_studio/runtime/soc_01-2eae823b0144",
+    "artifact_count": 0,
+    "artifacts_present": 0,
+    "note": "PEHRA job blocked on runtime; checkpointed to survive sandbox reset"
+  }
+}
