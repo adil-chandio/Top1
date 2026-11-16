@@ -35,8 +35,10 @@ jobs:
             tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
             rm -f /tmp/blender.tar.xz
           fi
-          echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
-          "$HOME/blender4215/$BLENDER_DIR/blender" --version | head -3
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
+          chmod +x "$BIN"
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+          "$BIN" --version | head -3
       - name: Install DSP deps
         run: |
           set -euo pipefail
@@ -59,6 +61,7 @@ jobs:
           mkdir -p production/account1_ep01/frames
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
+          set +e
           for SHOT in B01_AERIAL_FIELD B02_GUARDED_FIELD B03_MASKED_TITLE \
                       B04_HUNGRY_PARIS B05_POTATO_PROMISE B06_POISONED_MIND \
                       B07_FREE_BASKETS B08_SILENT_PIVOT B09_FORTY_ACRES \
