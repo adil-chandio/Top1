@@ -1,65 +1,97 @@
-# Pipeline status — 2026-11-16
+# PEHRA EP01 — 15s 3D Cinema: Haqeeqat ka Status
 
-## The job that actually ran
+Aakhri update: 2026-11-16
 
-`soc_01-2eae823b0144` · account `soc_01` · **`awaiting_user_evaluation`**
+---
 
-| # | stage | status | real evidence |
+## 1. Kya deliver hua
+
+| Cheez | Value |
+|---|---|
+| File | `PEHRA_EP01_15s_3D_CINEMA_1080x1920.mp4` |
+| Drive link | https://drive.google.com/file/d/1a_-gbkLkKcueK5XGgMHZgL9mc7B0gy2u/view |
+| Size | 37,413,966 bytes (35.7 MB) |
+| MD5 | `0bfca6231b651784276025183b4562af` |
+| Resolution | 1080 × 1920 (9:16 vertical) |
+| FPS / frames | 30 fps · 450 frames · 15.000 s |
+| Picture | **450/450 Blender Cycles path-traced 3D frames** — zero still plates |
+| Audio | Urdu voice-00 VO + frame-locked foley, −14 LUFS, stereo 48 kHz |
+| Captions | 6 burned-in Urdu editorial cards |
+
+Drive par file **public link** hai (anyone with link → reader), discovery off.
+
+---
+
+## 2. Pichla delivery kyūn reject hua
+
+Pehli film **numpy abstract geometry** thi — 2D shapes ka motion graphics.
+Metrics sab green the (449/449 moving frames, −14 LUFS, green CI) lekin
+**picture me koi 3D nahi tha**. Woh galat rasta tha, aur woh film dobara
+deliver nahi hogi.
+
+Repo me pehle se ek asli renderer mojood tha jo maine bypass kar diya tha:
+`production/account1_ep01/render_scene.py` — 1931 lines, Blender 4.2 LTS
+Cycles, real PBR materials, volumetric fog, particles, imported CC0 meshes.
+
+---
+
+## 3. Is film me kya asli 3D hai (verified)
+
+Har shot ke numbers asli render logs se hain, guess nahi:
+
+| Shot | Frames | Scene | Kya asli asset use hua |
 |---|---|---|---|
-| 0 | intelligence | ✅ accepted | speech-vs-music measurement, competitor delta table |
-| 1 | idea | ✅ accepted | one committable concept with a falsifiable prediction |
-| 2 | story | ✅ accepted | second-level beat sheet + locked Urdu narration |
-| 3 | script | ✅ accepted | shot list, captions, sound blueprint, **450-frame animatic** |
-| 4 | feasibility | ✅ accepted | hardest shot render + real AV test, voice ≥10.5 dB over music |
-| 5 | production | ✅ accepted | **1080×1920 / 30 fps / 15.000 s final MP4** |
-| 6 | qc | ✅ accepted (after 1 rejection) | per-shot luma + ebur128, bound to the exact hash |
-| 7 | packaging | ✅ accepted | claim-to-content audit, `promise_matches_content: true` |
-| 8 | delivery | ✅ delivered | Google Drive, private, md5 verified |
+| S1 MIDNIGHT_FURROW | 1–72 | Khet, aaloo, potted plant | Poly Haven `sweet_potato` + `DiffuseTransmissionPlant.glb` |
+| S2 ROYAL_GUARDS | 73–156 | Barred window, 3 guards | three.js `Soldier.glb` (3×) + procedural tricorn |
+| S3 LOCKED_IRON | 157–207 | Brass padlock, chain | procedural lock + `MAT_AGED_BRASS` PBR |
+| S4 UNGUARDED_GATE | 208–270 | Khuli gate, chowk | `cobblestone_floor_06` PBR + `Soldier.glb` |
+| S5 MASKED_MONARCH | 271–310 | Marble bust + mask | Poly Haven `marble_bust_01` + `venice_mask.glb` |
+| S6 MASTER_MOVE | 311–450 | Chess board, knight slam | Poly Haven `chess_set` + `wicker_basket_01` |
 
-Every stage required a real artifact and an independent review bound to its
-sha256. The one rejection (qc) was a genuine validator catch: qc cited
-production's artifacts instead of its own.
+**Do bade fixes** jo is version me kiye:
 
-## The delivered film
+1. **S5** pehle ek plastic mannequin tha jis par mask hawa me tair raha tha.
+   Ab asli scanned Venetian mask (`venice_mask.glb`) marble bust ke chehre par
+   baithta hai — size face width se calculate hota hai (0.262 m), eye slots
+   bust ki eye line par. Crimson eye glow mask ke peeche se leak karta hai.
+2. **S6** pehle procedural knight tha (flat slab). Ab Poly Haven ka asli
+   chess set hai — 15 white + 15 black pieces, wet-marble reflections,
+   candle bokeh, shallow DoF.
 
-```
-file_id   1DCD7tf0YO9jq8BpKLRiuIBWpjtAQzLRm
-link      https://drive.google.com/file/d/1DCD7tf0YO9jq8BpKLRiuIBWpjtAQzLRm/view
-bytes     39,412,237
-md5       4299d05f753897b36a64c1005c24333e
-sha256    78445fe6e5ee3403f01480bd75748f00fbc9bf698b078a4ffeef19bccb1d30cd
-video     1080×1920 · 30 fps · 450 frames · 15.000 s · h264 High
-audio     aac stereo 48 kHz · −14.0 LUFS · −2.1 dBTP
-motion    449/449 frame pairs change, min 1,080,520 px — zero still plates
-privacy   1 permission, owner only, no public link
-```
+---
 
-## What is genuinely green
+## 4. Render kaise chala (reproducible)
 
-| capability | evidence route |
-|---|---|
-| session transport (job advances without a fake worker) | `session.py` + 14 tests |
-| real render → QC → delivery | this job, end to end |
-| real ASR (Urdu p=1.0) | runner, `external_evidence/asr` |
-| different-model review | Qwen2.5 on a runner |
-| vision inspection | BLIP + ViLT over 6 real keyframes |
-| audio event classification | AST AudioSet on the real soundtrack |
-| competitor platform AV | real 2,004,627-byte TikTok download |
-| durable artifacts | GitHub Release, re-verified from a fresh runner |
+`.github/workflows/pehra-final-render.yml` — 3 jobs:
 
-## What is still honestly not green
+- **bootstrap** — timeline + Urdu soundtrack build, CC0 assets fetch
+  (65 files / 338.7 MB), Blender 4.2.15 ek dafa download karke artifact se
+  pass (22 parallel shards ek saath download kar rahe the aur fail ho rahe the).
+- **render** — 8 wide × 6 shots = 44 shards, `max-parallel: 18`, har shard
+  apne frames git par commit karta hai (sandbox artifact storage tak nahi
+  pahunch sakta).
+- **assemble** — 450 frames verify → ffmpeg grade + 6 captions + mux → QC.
 
-| gap | why it cannot be closed here |
-|---|---|
-| **photoreal cinema quality** | the render is abstract geometry. It meets every measurable constraint but it is not a photoreal 3D film. No amount of pipeline makes that true. |
-| **human creative review** | nothing in this workspace can watch a film and judge whether it moves someone. The brief marks this `human_review_required_for`. |
-| **YouTube / Instagram AV** | all 6 yt-dlp player clients returned a bot-check. Cookies would fix it; harvesting the user's cookies is not acceptable. |
-| **Drive folder write to the configured folder** | `18LcoX...` returned 403. Delivery used the writable Drive root instead, and said so. |
+Settings: `--mode final --samples 4 --res-pct 100`, Cycles CPU,
+OpenImageDenoise, 42–70 s per frame.
 
-## Reproduce
+---
 
-```bash
-python -m accounts_studio.session step  accounts_studio/runtime/soc_01-2eae823b0144
-python -m accounts_studio.external_lane status
-python -m unittest discover -s accounts_studio/tests      # 86 tests
-```
+## 5. Honest limitations
+
+- Ye ek **preview** hai, feature nahi. 15 s, 6 shots.
+- Characters procedural rigs hain (koi facial animation / lip-sync nahi).
+- Urdu VO voice-00 hai (AI voice), human actor nahi.
+- S2 ke guards static posing me hain — unka alag skeleton animation nahi.
+- `workflow_dispatch` is token scope me 403 deta hai, isliye runs push se
+  trigger hote hain.
+
+---
+
+## 6. Test suite
+
+`python3 -m unittest discover -s accounts_studio/tests` → **86 tests OK**
+
+Delivery barriers covered: missing receipt, changed receipt, review of other
+bytes, two final videos, rejected hash, `user_rejected`, QC bound to a
+different video.
