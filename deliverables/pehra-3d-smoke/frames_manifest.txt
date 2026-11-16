@@ -1,2 +1,1 @@
-production/account1_ep01/frames/f_000372.png
-production/account1_ep01/frames/render_info_S6_MASTER_MOVE.json
+production/account1_ep01/frames_debug/s5_debug_.png
