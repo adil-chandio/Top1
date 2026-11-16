@@ -31,5 +31,11 @@
   "exact_3d_hood_geometry_verified": false,
   "macro_lookdev_attempts": 2,
   "macro_lookdev_approved": false,
-  "lookdev_review": "SHRIMP_ANATOMY_LOOKDEV_REVIEW_ROMAN_URDU.md"
+  "lookdev_review": "SHRIMP_ANATOMY_LOOKDEV_REVIEW_ROMAN_URDU.md",
+  "mechanical_proxy_asset": "assets/claw-mechanism-proxy.gltf",
+  "mechanical_proxy_articulated_channels": 4,
+  "mechanical_proxy_structural_validation": true,
+  "mechanical_proxy_realtime_playback": false,
+  "mechanical_proxy_anatomy_approved": false,
+  "mechanical_proxy_is_final_video": false
 }

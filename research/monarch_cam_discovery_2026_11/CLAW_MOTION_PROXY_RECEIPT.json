@@ -1,0 +1,21 @@
+{
+  "asset": "assets/claw-mechanism-proxy.gltf",
+  "sha256": "e57ab0acec7507e419d8208d814d03987f75c7df3d5d8cc34bb637fbdf9fcc09",
+  "bytes": 91244,
+  "validator": "gltf-validator@2.0.0-dev.3.10",
+  "issues": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 0,
+    "numHints": 0,
+    "messages": [],
+    "truncated": false
+  },
+  "original_generated_geometry": true,
+  "unit_tests": 5,
+  "actual_realtime_playback": false,
+  "visual_inspection": false,
+  "anatomy_verified": false,
+  "production_approved": false,
+  "audio_produced_or_heard": false
+}
