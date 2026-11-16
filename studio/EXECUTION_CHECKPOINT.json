@@ -1,0 +1,31 @@
+{
+  "job_id": "monarch_cam-4f4f68fd7693",
+  "channel": "monarch_cam",
+  "scope": "original_script_continuous_opening_20_seconds",
+  "status": "awaiting_reviewer",
+  "stage": "intelligence",
+  "stage_accepted": false,
+  "pending_role": "reviewer",
+  "creative_brief_sha256": "e266bd64c458b4afbc7b08512414b60b1d87f3250dce0191de776f1144cb4aee",
+  "recovery": {
+    "previous_job_id": "monarch_cam-d363f76eb8a3",
+    "reason": "Fresh checkout contained no ignored runtime. Current branch recovered by fast-forward from origin; new execution record continues same scope, not second video.",
+    "prior_runtime_available": false
+  },
+  "completed_this_pass": [
+    "Fresh primary-text and platform-discovery research",
+    "Actual paired thumbnail visual inspection",
+    "Original shot/edit/sound redesign WIP",
+    "Candidate evidence validated and submitted for independent review"
+  ],
+  "durable_work_product": "research/monarch_cam_market/OPENING_REDESIGN_EXECUTION_ROMAN_URDU.md",
+  "not_claimed": [
+    "independent_review_pass",
+    "reference_video_playback",
+    "reference_audio_listening",
+    "new_motion_proof",
+    "new_final_render",
+    "new_delivery"
+  ],
+  "background_service_started": false
+}
