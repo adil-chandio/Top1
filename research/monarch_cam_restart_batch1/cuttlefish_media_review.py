@@ -2,9 +2,7 @@
 import base64, hashlib, json, os, shutil, subprocess, tempfile, urllib.request
 from pathlib import Path
 from PIL import Image, ImageDraw
-# Publisher supplement denied HTTP403; do not bypass or retry it.
-# This separately accessible creator test is NOT a viral benchmark or cuttlefish footage.
-URL='https://github.com/jonaslacandola0617/curio-bureau/releases/download/visual-test-pistol-shrimp-v2-20261020/Curio-Test-03-Pistol-Shrimp-12s-v2.mp4'
+URL='https://pmc.ncbi.nlm.nih.gov/articles/PMC11939058/'
 CAP=40_000_000
 
 def publish(name, report, text=''):
@@ -14,23 +12,17 @@ def publish(name, report, text=''):
     with urllib.request.urlopen(req,timeout=30) as response: json.load(response)
 
 def main():
-    report={'url':URL,'source_type':'creator GitHub editorial test, NOT viral/approved reference',
-            'credit':'Curio Bureau creator test, GitHub release visual-test-pistol-shrimp-v2-20261020',
-            'rights':'No reuse licence established. Internal research only; not cleared for production footage.',
+    report={'url':URL,'source_type':'official scientific Movie S1, NOT YouTube editorial reference',
+            'credit':'Santon, Troscianko, Heatubun and How (2025), Science Advances, doi:10.1126/sciadv.adr3686, Movie S1',
+            'rights':'Article CC BY4.0 verified at PMC; inspect member-specific credits before production reuse.',
             'full_realtime_review':False,'actual_listening':False,'sampled_frames_opened':False,'success':False}
     with tempfile.TemporaryDirectory(prefix='monarch-one-reference-') as tmp:
         root=Path(tmp); source=root/'source.mp4'
         try:
-            request=urllib.request.Request(URL,headers={'User-Agent':'MonarchCamResearch/1.0'})
-            count=0; digest=hashlib.sha256()
-            with urllib.request.urlopen(request,timeout=30) as response, source.open('wb') as dest:
-                if int(response.headers.get('Content-Length','0'))>CAP: raise ValueError('Declared media exceeds cap')
-                while True:
-                    block=response.read(min(65536,CAP-count+1))
-                    if not block: break
-                    count+=len(block)
-                    if count>CAP: raise ValueError('Streaming byte cap exceeded')
-                    digest.update(block); dest.write(block)
+            from ranged_movie import acquire_one
+            report['archive_acquisition']=acquire_one(source)
+            count=source.stat().st_size
+            digest=hashlib.sha256(source.read_bytes())
             report.update(bytes=count,sha256=digest.hexdigest())
             ff=shutil.which('ffmpeg'); probe=shutil.which('ffprobe')
             meta=json.loads(subprocess.check_output([probe,'-v','error','-show_streams','-show_format','-of','json',str(source)],timeout=30))
@@ -48,7 +40,7 @@ def main():
             for start in range(0,len(frames),6):
                 images=[Image.open(p).convert('RGB') for p in frames[start:start+6]]
                 h=images[0].height; sheet=Image.new('RGB',(720,2*(h+20)+32),'#101820'); draw=ImageDraw.Draw(sheet)
-                draw.text((5,4),'Curio Bureau creator test | internal research, NOT viral benchmark',fill='white')
+                draw.text((5,4),'Santon et al. 2025 | Movie S1 | research samples, NOT YouTube',fill='white')
                 for i,im in enumerate(images):
                     x=(i%3)*240;y=32+(i//3)*(h+20);sheet.paste(im,(x,y));draw.text((x+3,y+h+2),f'~{(start+i+.5)*interval:.2f}s',fill='white')
                 path=root/'sheet.jpg';sheet.save(path,quality=38);raw=path.read_bytes()
