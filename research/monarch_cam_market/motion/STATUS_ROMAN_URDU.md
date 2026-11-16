@@ -1,3 +1,20 @@
+# Current update: whale-only diagnostic complete, requested cinematic proof incomplete
+
+20-second MP4 render aur full decode complete: `out/HUMPBACK_20S_MOTION_DIAGNOSTIC.mp4`, 640x360, 12fps, 240 frames, silent. Camera aur animal root fixed; tail/body/pectoral geometry independently deform hoti hai. Selected AI still ko input/project nahi kiya.
+
+Yeh whale-only engineering diagnostic hai, requested humpback+orca cinematic scene nahi. Orcas, translation/interaction, professional lighting aur selected-concept fidelity pending. Isko final quality pass mat samjho.
+
+20 one-second numerical samples finite hain; relative to frame0 shortest sampled edge ratio 0.878, longest 1.138; max vertex displacement 0.894m. Yeh stretching limitation hai, scientific motion validation nahi. Two pose renders plus mid/end production frames visually inspected; full real-time human-style playback review nahi hua. FFmpeg ne all 240 frames decode kiye without error, duration 20.00s.
+
+Native Tidewater part/span tags use hue; custom fin rotations aur vertical tail bending implement ki. Upstream full path-following rig port nahi. Pichhla proxy rendered scene mein hidden hai.
+
+Source and attribution: MIT, DRG Software Solutions LLC 2026, https://github.com/dgreenheck/tidewater . Notice `LICENSE-TIDEWATER.txt` included. Heavy frames, assets and MP4 ignored; render receipts source control mein hain.
+
+Remaining: improve articulation (edge stretch), source/rig orcas, lighting/texturing incl proper packed-height decoding, then re-evaluate requested cinematic proof. Full-film authorization nahi.
+
+---
+## Historical status before diagnostic implementation
+
 # 20-second motion request — incomplete / quality gate failed
 
 User ne five-second gate ko twenty-second proof se replace kiya. Full film approved nahi. Selected AI still ki preferred look selection available hai, but no matching production-ready 3D asset/rig.
