@@ -1,0 +1,26 @@
+name: Channel-first bounded API survey
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/channel_api_survey.py, .github/workflows/channel-first-api-survey.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  survey:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Collect channel inventories without exposing keys
+        env:
+          GH_TOKEN: ${{ github.token }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YTAP1: ${{ secrets.YTAP1 }}
+          YTAPI1: ${{ secrets.YTAPI1 }}
+          YT_KEY: ${{ secrets.YT_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python research/monarch_cam_restart_batch1/channel_api_survey.py
