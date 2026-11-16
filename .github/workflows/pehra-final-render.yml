@@ -130,8 +130,9 @@ jobs:
       - name: Unpack Blender (no per-shard download)
         run: |
           set -euo pipefail
-          tar -xf /tmp/blenderpkg/blender-ready.tar.xz -C "$HOME"
-          BIN="$HOME/$BLENDER_DIR/blender"
+          mkdir -p "$HOME/blender4215"
+          tar -xf /tmp/blenderpkg/blender-ready.tar.xz -C "$HOME/blender4215"
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
           chmod +x "$BIN"
           "$BIN" --version | head -3
           echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
