@@ -60,3 +60,7 @@ Enqueue/status `--root` must point at same persistent location. Service drains q
 5. Only then enable recurring work. Existing diagnostic does not satisfy selected-reference quality gate.
 
 At present steps 1–4 are NOT complete. Unit tests passing is not evidence of video quality, successful live delivery, or autonomous agent availability.
+
+## Executed deployment check
+
+Pilot `monarch_cam-d363f76eb8a3` local persistent queue mein enqueue hua; first run correctly blocked at intelligence: worker/reviewer runtime not configured. No render or upload initiated by this pilot. GitHub workflow dispatch attempt `gh workflow run studio-coordinator.yml --ref arena/2a8ad29e-top1` returned HTTP 404 for workflow lookup. Workflow file is pushed on current branch; no cloud run claimed. Default-branch registration/permissions need checking before relying on dispatch. No branch switch or merge performed.
