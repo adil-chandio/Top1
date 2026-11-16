@@ -134,7 +134,13 @@ def main():
         checks['credentials_file_exists']=bool(credential_path and Path(credential_path).is_file())
         checks['ffmpeg']=bool(shutil.which('ffmpeg'))
         checks['worker_executable']=executables['worker'];checks['reviewer_executable']=executables['reviewer']
-        print(json.dumps({'configured':checks,'ready':all(checks.values()),'note':'local configuration checks only; live worker/reviewer, Drive permissions and full pilot still require verification'},indent=2));return
+        try:
+            from accounts_studio import external_lane
+            lane={k:v['status'] for k,v in external_lane.capability_report().items()}
+        except Exception as exc:
+            lane={'error':type(exc).__name__}
+        print(json.dumps({'configured':checks,'ready':all(checks.values()),'external_lane':lane,
+            'note':'local configuration checks only; live worker/reviewer, Drive permissions and full pilot still require verification'},indent=2));return
     if args.cmd=='resume':
         job=owned(base,args.job);state=json.loads((job/'state.json').read_text());state['status']='queued';state['attempts'][CONFIG['stages'][state['stage']]]=0;save(job/'state.json',state);return
     from concurrent.futures import ThreadPoolExecutor

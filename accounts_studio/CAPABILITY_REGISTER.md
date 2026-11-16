@@ -170,3 +170,24 @@ Yeh tests ka maqsad ek hi hai: **koi future edit runner ka na kiya hua kaam
 Aakhri do red rahenge. Woh capability ki kami nahi — woh definition se hi
 insaan ya login maangte hain. Baaki sab, jo pehle "network block" ke naam par
 red tha, ab asli execution se green hai.
+
+---
+
+## How to use the lane
+
+```bash
+python -m accounts_studio.external_lane status    # per-capability report
+python -m accounts_studio.external_lane show asr  # the real transcript
+python -m accounts_studio.external_lane limits    # what it still can't do
+python -m accounts_studio.pipeline doctor         # includes lane status
+```
+
+Lane ko chalane ke liye commit message mein `[run-lane]` hona chahiye:
+
+```bash
+python -m accounts_studio.external_lane trigger --reason "refresh evidence"
+git commit --amend -m "... [run-lane]"     # ya commit message mein likh do
+```
+
+`[run-lane]` guard is liye hai ke runner ka apna evidence commit wapas lane ko
+dobara na jagaye — warna infinite loop banta hai (ek baar ho chuka tha).
