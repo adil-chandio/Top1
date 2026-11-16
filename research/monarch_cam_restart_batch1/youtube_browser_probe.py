@@ -34,6 +34,11 @@ async def main():
             await page.wait_for_timeout(4000)
             result['second']=await page.locator('video').first.evaluate('(v)=>({time:v.currentTime,readyState:v.readyState,paused:v.paused,videoWidth:v.videoWidth,videoHeight:v.videoHeight})')
             # Main content only; no comments/account or sensitive URL tokens captured.
+            if result['second']['readyState']==0:
+                await page.wait_for_timeout(15000)
+                result['after_load_wait']=await page.locator('video').first.evaluate('(v)=>({time:v.currentTime,readyState:v.readyState,videoWidth:v.videoWidth})')
+            result['public_page_message']=(await page.locator('body').inner_text(timeout=5000))[:2200]
+            result['playability']=await page.evaluate('()=>window.ytInitialPlayerResponse?.playabilityStatus ?? null')
             result['player_message']=(await page.locator('#movie_player').inner_text(timeout=5000))[:1800]
             result['success']=result['second']['time']>result['first']['time']+1 and result['second']['videoWidth']>0
         except Exception as exc:
