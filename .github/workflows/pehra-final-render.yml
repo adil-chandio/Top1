@@ -60,6 +60,11 @@ jobs:
         id: shots
         run: |
           set -euo pipefail
+          if [ -f production/account1_ep01/shards_pending.json ]; then
+            echo "Repair run: rendering only $(python -c "import json;print(len(json.load(open('production/account1_ep01/shards_pending.json'))))") pending shards"
+            echo "shots=$(python -c "import json;print(json.dumps(json.load(open('production/account1_ep01/shards_pending.json')),separators=(',',':')))")" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import json
           from pathlib import Path
@@ -241,12 +246,33 @@ jobs:
         with:
           name: pehra-final-bundle-${{ github.run_id }}
           path: production/account1_ep01
-      - name: Collect the frames the shards committed
+      - name: Collect every frame the shards committed
         run: |
           set -euo pipefail
-          git fetch origin "$GITHUB_REF_NAME"
-          git checkout "origin/$GITHUB_REF_NAME" -- production/account1_ep01/frames
-          find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l
+          git fetch origin "$GITHUB_REF_NAME" --unshallow 2>/dev/null || git fetch origin "$GITHUB_REF_NAME"
+          rm -rf production/account1_ep01/frames
+          mkdir -p production/account1_ep01/frames
+          # Shards reset to the remote tip before committing, so the newest
+          # frame set can live on any commit in the history — walk them all.
+          for c in $(git log --format=%H -40 "origin/$GITHUB_REF_NAME"); do
+            for f in $(git ls-tree -r --name-only "$c" -- production/account1_ep01/frames | grep 'f_.*\.png$'); do
+              base=$(basename "$f")
+              [ -f "production/account1_ep01/frames/$base" ] && continue
+              git show "$c:$f" > "production/account1_ep01/frames/$base"
+            done
+          done
+          N=$(find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l)
+          echo "collected $N frames"
+          python - "$N" <<'PY'
+          import sys
+          from pathlib import Path
+          got = {int(p.stem.split("_")[1]) for p in Path("production/account1_ep01/frames").glob("f_*.png")}
+          missing = [f for f in range(1, 451) if f not in got]
+          print(f"have {len(got)}/450; missing {len(missing)}")
+          if missing:
+              print("missing frames:", missing[:40])
+              sys.exit(1)
+          PY
       - name: Count the frame set
         run: |
           N=$(find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l)
