@@ -141,7 +141,7 @@
         {
           "question": "Is there text in the image?",
           "answer": "no",
-          "confidence": 0.9963
+          "confidence": 0.9964
         },
         {
           "question": "Is the scene indoors or outdoors?",

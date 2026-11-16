@@ -29,10 +29,10 @@
     {
       "model": "Qwen/Qwen2.5-0.5B-Instruct",
       "loaded": true,
-      "raw_response": "{\"meets_technical_spec\": true, \"findings\": \"The measured facts meet all the acceptance criteria provided.\"}",
+      "raw_response": "{\"meets_technical_spec\": true, \"findings\": \"The artifact meets all technical specifications provided.\"}",
       "parsed": {
         "meets_technical_spec": true,
-        "findings": "The measured facts meet all the acceptance criteria provided."
+        "findings": "The artifact meets all technical specifications provided."
       }
     }
   ],
