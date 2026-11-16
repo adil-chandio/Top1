@@ -1816,8 +1816,8 @@ def shot_s5(mats, s, e):
 
 
 def shot_s6(mats, s, e):
-    board, knight, knight_head, knight_base_z = make_chess_setup(mats, procedural_only=True)
-    basket = make_basket_setup(mats, loc=(1.34, 1.12, 0.02), procedural_only=True)
+    board, knight, knight_head, knight_base_z = make_chess_setup(mats, procedural_only=False)
+    basket = make_basket_setup(mats, loc=(1.34, 1.12, 0.02), procedural_only=False)
     candle_a, flame_a = make_procedural_candle("S6_CANDLE_A", (1.78, 0.78, 0.18), mats, height=0.30)
     candle_b, flame_b = make_procedural_candle("S6_CANDLE_B", (0.92, 1.55, 0.18), mats, height=0.27)
     make_dark_backdrop("S6_CHESS_BACKDROP", mats, y=6.0, z=2.8)
