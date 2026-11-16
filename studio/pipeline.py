@@ -94,6 +94,9 @@ def tick(job):
                 repair=validate_repair(invoke(repair_command,folder/'repair_request.json',folder/'repair.json'))
                 request['repair_guidance']=repair
                 save(folder/'request.json',request)
+            if stage=='production':
+                from studio.guards import production_preflight
+                production_preflight()
             result=validate(job,stage,invoke(worker,folder/'request.json',folder/'result.json'))
             if stage=='qc':
                 production={a['sha256'] for a in state['outputs']['production']['artifacts'] if a['path'].lower().endswith('.mp4')}
@@ -103,6 +106,8 @@ def tick(job):
             if review.get('approved') is not True or not review.get('inspected_artifacts') or not review.get('findings'):raise ValueError('independent review rejected: '+str(review.get('findings','no findings'))[:250])
             expected={a['sha256'] for a in result['artifacts']}
             if set(review['inspected_artifacts'])!=expected:raise ValueError('review artifact hashes do not match')
+            review_path=folder/'review.json'
+            state.setdefault('accepted_reviews',{})[stage]={'path':str(review_path.relative_to(job)),'sha256':hashlib.sha256(review_path.read_bytes()).hexdigest()}
             state['outputs'][stage]=result;state['stage']+=1;state['status']='queued';state['blocker']=None
             state['history'].append({'stage':stage,'attempt':attempt,'at':NOW().isoformat(),'outcome':'accepted'})
         except Exception as exc:
@@ -128,7 +133,8 @@ def main():
             except ValueError:executables[role]=False
         credential_path=os.getenv('STUDIO_DRIVE_CREDENTIALS_FILE')
         checks['credentials_file_exists']=bool(credential_path and Path(credential_path).is_file())
-        checks['ffmpeg']=bool(shutil.which('ffmpeg'))
+        from studio.media import ffmpeg_command
+        checks['ffmpeg']=bool(ffmpeg_command())
         checks['worker_executable']=executables['worker'];checks['reviewer_executable']=executables['reviewer']
         print(json.dumps({'configured':checks,'ready':all(checks.values()),'note':'local configuration checks only; live worker/reviewer, Drive permissions and full pilot still require verification'},indent=2));return
     if args.cmd=='resume':

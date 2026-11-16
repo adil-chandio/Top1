@@ -39,7 +39,9 @@ class PipelineTests(unittest.TestCase):
    self.assertEqual(tick(self.job),'queued');self.assertEqual(tick(self.job),'queued');self.assertEqual(tick(self.job),'blocked')
  def test_accepted_stage_advances(self):
   r=self.result();review={'approved':True,'inspected_artifacts':[r['artifacts'][0]['sha256']],'findings':'fixture inspected'}
-  with patch.dict(os.environ,{'STUDIO_WORKER_COMMAND':'worker','STUDIO_REVIEWER_COMMAND':'reviewer'},clear=True),patch('studio.pipeline.invoke',side_effect=[r,review]):tick(self.job)
+  def invoke_fixture(command,request,response):
+   value=r if command=='worker' else review;response.write_text(json.dumps(value));return value
+  with patch.dict(os.environ,{'STUDIO_WORKER_COMMAND':'worker','STUDIO_REVIEWER_COMMAND':'reviewer'},clear=True),patch('studio.pipeline.invoke',side_effect=invoke_fixture):tick(self.job)
   self.assertEqual(json.loads((self.job/'state.json').read_text())['stage'],1)
  def test_wrong_review_hash_rejected(self):
   with patch.dict(os.environ,{'STUDIO_WORKER_COMMAND':'worker','STUDIO_REVIEWER_COMMAND':'reviewer'},clear=True),patch('studio.pipeline.invoke',side_effect=[self.result(),{'approved':True,'inspected_artifacts':['wrong'],'findings':'fixture'}]):tick(self.job)

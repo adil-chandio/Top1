@@ -5,6 +5,8 @@ import hashlib,json,os,subprocess
 from pathlib import Path
 
 def deliver(job,state):
+    from studio.guards import delivery_preflight
+    delivery_preflight(job,state)
     from google.auth import load_credentials_from_file
     from google.auth.transport.requests import AuthorizedSession
     path=os.getenv('STUDIO_DRIVE_CREDENTIALS_FILE');folder=os.getenv('STUDIO_DRIVE_FOLDER_ID')
@@ -19,7 +21,10 @@ def deliver(job,state):
     original=next(a for a in state['outputs']['production']['artifacts'] if a['path'].lower().endswith('.mp4'))
     if sha!=original['sha256']:raise ValueError('video changed after QC')
     # Decode entire stream, not just header metadata.
-    subprocess.run(['ffmpeg','-v','error','-xerror','-i',str(video),'-f','null','-'],check=True,timeout=600,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    from studio.media import ffmpeg_command
+    ffmpeg=ffmpeg_command()
+    if not ffmpeg:raise RuntimeError('FFmpeg executable missing')
+    subprocess.run([ffmpeg,'-v','error','-xerror','-i',str(video),'-f','null','-'],check=True,timeout=600,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
     url='https://www.googleapis.com/drive/v3/files'
     # Job id is locally generated, folder supplied by trusted operator configuration.
     if "'" in folder:raise ValueError('invalid folder')
