@@ -1424,7 +1424,9 @@ def make_monarch_setup(mats, procedural_only=True):
 
     # A marble bust of this height wears roughly a 0.26 m wide face.
     face_w = bust_h * 0.285
-    chin_z = bust_top - bust_h * 0.30
+    # Seat the mask so its eye slots land on the bust's eye line (~1.29 m in
+    # world space); the crest is then allowed to rise above the crown.
+    mask_bottom_z = bust_top - bust_h * 0.44
 
     # --- the mask: real scanned Venetian half-mask, worn on the face --------
     mask = try_append_glb("venice_mask.glb", "MONARCH_VENICE_MASK")
@@ -1438,20 +1440,20 @@ def make_monarch_setup(mats, procedural_only=True):
         mask.location = Vector(mask.location) + Vector((
             -(mlo.x + mhi.x) * 0.5,          # centre on the face
             (bust_front + 0.015) - mhi.y,    # back of the shell rests on the face
-            chin_z - mlo.z,                  # mask chin meets the bust chin
+            mask_bottom_z - mlo.z,           # eye slots land on the bust eye line
         ))
         bpy.context.view_layer.update()
     else:
         mask = make_procedural_mask(
             "MONARCH_3D_VENICE_MASK",
-            (0, bust_front + face_w * 0.5, chin_z + face_w * 1.2),
+            (0, bust_front + face_w * 0.5, mask_bottom_z + face_w * 1.2),
             mats, width=face_w,
         )
 
     head = new_empty("MONARCH_HEAD_REF", (0, bust_front, bust_top))
     # Crimson signature: a light burning just behind the mask so it leaks
     # through the eye slots instead of a bar floating in mid-air.
-    glow_z = chin_z + (bbox_group(mask)[1].z - chin_z) * 0.62 if mask else chin_z + 0.14
+    glow_z = mask_bottom_z + (bbox_group(mask)[1].z - mask_bottom_z) * 0.60 if mask else mask_bottom_z + 0.14
     eye_light = add_point(
         "MONARCH_EYE_GLOW", (0, bust_front + face_w * 0.30, glow_z), 22, C_CRIMSON, 0.030,
     )
