@@ -1,0 +1,43 @@
+{
+  "url": "https://github.com/jonaslacandola0617/curio-bureau/releases/download/visual-test-pistol-shrimp-v2-20261020/Curio-Test-03-Pistol-Shrimp-12s-v2.mp4",
+  "source_type": "creator GitHub editorial test, NOT viral/approved reference",
+  "credit": "Curio Bureau creator test, GitHub release visual-test-pistol-shrimp-v2-20261020",
+  "rights": "No reuse licence established. Internal research only; not cleared for production footage.",
+  "full_realtime_review": false,
+  "actual_listening": false,
+  "sampled_frames_opened": true,
+  "success": true,
+  "bytes": 17412331,
+  "sha256": "8740a9d0067d809517d849d74af6d5586920215e07733d8b6f22ee9c4640eb9b",
+  "duration_seconds": 12.0,
+  "streams": [
+    {
+      "codec_type": "video",
+      "codec_name": "h264",
+      "width": 1080,
+      "height": 1920,
+      "sample_rate": null,
+      "channels": null,
+      "r_frame_rate": "30/1"
+    },
+    {
+      "codec_type": "audio",
+      "codec_name": "aac",
+      "width": null,
+      "height": null,
+      "sample_rate": "48000",
+      "channels": 2,
+      "r_frame_rate": "0/0"
+    }
+  ],
+  "whole_file_decode_passed": true,
+  "sample_interval_seconds": 0.25,
+  "sampling_note": "FFmpeg fps samples near interval midpoints; labels approximate, not exact cut timings",
+  "frames_sampled": 48,
+  "temporary_media_deleted": true,
+  "sampled_frames_opened_count": 48,
+  "sheets_opened_count": 8,
+  "cloud_check_evidence_retained": true,
+  "review_document": "MEDIA_LIFECYCLE_FINDINGS_ROMAN_URDU.md",
+  "local_temporary_evidence_deleted": true
+}
