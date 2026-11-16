@@ -496,7 +496,7 @@ def override_material_recursive(group, mat) -> None:
 # ---------------------------------------------------------------------------
 # Materials and primitive builders
 # ---------------------------------------------------------------------------
-def make_principled_mat(name, base, metallic=0.0, roughness=0.5, coat=0.0, transmission=0.0, noise=0.0):
+def make_principled_mat(name, base, metallic=0.0, roughness=0.5, coat=0.0, transmission=0.0, noise=0.0, bump=0.22, bump_dist=0.08):
     mat = bpy.data.materials.new(name)
     mat.use_nodes = True
     nt = mat.node_tree
@@ -519,12 +519,12 @@ def make_principled_mat(name, base, metallic=0.0, roughness=0.5, coat=0.0, trans
         tex.inputs["Scale"].default_value = noise
         tex.inputs["Detail"].default_value = 4.0
         tex.inputs["Roughness"].default_value = 0.65
-        bump = nt.nodes.new("ShaderNodeBump")
-        bump.location = (-110, -160)
-        bump.inputs["Strength"].default_value = 0.22
-        bump.inputs["Distance"].default_value = 0.08
-        nt.links.new(tex.outputs["Fac"], bump.inputs["Height"])
-        nt.links.new(bump.outputs["Normal"], bsdf.inputs["Normal"])
+        bump_node = nt.nodes.new("ShaderNodeBump")
+        bump_node.location = (-110, -160)
+        bump_node.inputs["Strength"].default_value = bump
+        bump_node.inputs["Distance"].default_value = bump_dist
+        nt.links.new(tex.outputs["Fac"], bump_node.inputs["Height"])
+        nt.links.new(bump_node.outputs["Normal"], bsdf.inputs["Normal"])
     mat.diffuse_color = (*base[:3], 1.0)
     return mat
 
@@ -877,7 +877,7 @@ def build_material_library():
         "gold": make_principled_mat("MAT_ROYAL_GOLD", (0.95, 0.57, 0.14), 0.86, 0.19, coat=0.35),
         "black": make_principled_mat("MAT_BLACK_COAT", (0.008, 0.010, 0.014), 0.08, 0.78),
         "obsidian": make_principled_mat("MAT_OBSIDIAN", (0.006, 0.008, 0.012), 0.35, 0.16, coat=0.8, noise=12),
-        "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.105, 0.068, 0.046), 0.0, 0.46, coat=0.18, noise=10),
+        "monarch_skin": make_principled_mat("MAT_MONARCH_WARM_SKIN", (0.115, 0.074, 0.050), 0.0, 0.58, coat=0.10, noise=140, bump=0.05, bump_dist=0.0015),
         "guard_coat": make_principled_mat("MAT_ROYAL_GUARD_CHARCOAL", (0.030, 0.036, 0.048), 0.12, 0.52, coat=0.35, noise=10),
         "backdrop": make_principled_mat("MAT_NIGHT_BACKDROP", (0.004, 0.008, 0.018), 0.0, 0.94, noise=6),
         "earth": make_principled_mat("MAT_WET_EARTH", (0.055, 0.037, 0.026), 0.0, 0.86, noise=34),
@@ -1082,44 +1082,64 @@ def make_procedural_candle(name, loc, mats, height=0.34):
 
 
 def make_procedural_head(name, loc, mats, height=0.44):
+    """Human-proportioned head: skull + jaw + hair, built around the root empty."""
     root = new_empty(name, loc)
     skin = mats.get("monarch_skin", mats["obsidian"])
-    make_sphere(name + "_skull", (0.16, 0.14, height / 2), (0, 0, height / 2), skin, parent=root)
-    make_sphere(name + "_hair", (0.168, 0.145, height * 0.27), (0, 0.018, height * 0.78), mats["black"], parent=root)
-    make_box(name + "_part", (0.008, 0.12, 0.015), (0, -0.075, height * 0.88), mats["crimson"], parent=root)
+    hw = height * 0.235          # half width
+    hd = height * 0.255          # half depth
+    hh = height * 0.315          # half height
+    make_sphere(name + "_skull", (hw, hd, hh), (0, 0, 0), skin, parent=root, segments=40, rings=24)
+    make_sphere(
+        name + "_jaw", (hw * 0.80, hd * 0.82, hh * 0.52),
+        (0, -hd * 0.22, -hh * 0.62), skin, parent=root, segments=32, rings=18,
+    )
+    make_sphere(
+        name + "_hair", (hw * 1.06, hd * 1.03, hh * 0.56),
+        (0, hd * 0.10, hh * 0.52), mats["black"], parent=root, segments=32, rings=18,
+    )
+    for sx in (-1, 1):
+        make_sphere(
+            name + f"_ear_{sx}", (hw * 0.24, hd * 0.30, hh * 0.34),
+            (sx * hw * 0.96, 0, -hh * 0.04), skin, parent=root, segments=20, rings=12,
+        )
+    make_box(name + "_hair_part", (0.006, hd * 0.95, 0.010), (0, hd * 0.05, hh * 0.92), mats["crimson"], parent=root)
     return root
 
 
 def make_procedural_mask(name, loc, mats, width=0.42):
-    """A wide Venetian half-mask: flat black shell, eye slots, gold filigree."""
+    """A Venetian half-mask that hugs the face: shell, gold rim, eye slots, filigree."""
     root = new_empty(name, loc)
+    half_w = width / 2.0
+    shell_d = width * 0.115
+    shell_h = width * 0.165
     make_sphere(
-        name + "_shell", (width / 2, 0.045, 0.115), (0, 0, 0),
-        mats["obsidian"], parent=root, segments=32, rings=18,
+        name + "_shell", (half_w, shell_d, shell_h), (0, 0, 0),
+        mats["black"], parent=root, segments=40, rings=22,
     )
-    rim = make_torus(
-        name + "_gold_rim", width * 0.47, 0.003, (0, -0.048, 0),
+    make_torus(
+        name + "_gold_rim", half_w * 0.965, 0.0035, (0, -shell_d * 0.55, 0),
         mats["brass"], parent=root, rotation=(math.pi / 2, 0, 0),
     )
-    rim.scale = (1.0, 0.55, 1.0)
     make_box(
-        name + "_brow_filigree", (width * 0.72, 0.010, 0.010),
-        (0, -0.056, 0.082), mats["brass"], parent=root, bevel=0.004,
+        name + "_brow_filigree", (width * 0.90, 0.009, 0.009),
+        (0, -shell_d * 0.78, shell_h * 0.72), mats["brass"], parent=root, bevel=0.003,
     )
     make_cylinder(
-        name + "_nose", 0.016, 0.085, (0, -0.056, -0.025),
-        mats["obsidian"], parent=root, vertices=12, bevel=0.006,
+        name + "_nose", 0.013, shell_h * 0.62, (0, -shell_d * 0.92, -shell_h * 0.18),
+        mats["obsidian"], parent=root, vertices=16, bevel=0.005, rotation=(math.pi / 2, 0, 0),
     )
     for sx in (-1, 1):
-        make_box(
-            name + f"_eye_{sx}", (0.095, 0.018, 0.032),
-            (sx * 0.095, -0.052, 0.020), mats["black"], parent=root, bevel=0.010,
+        eye = make_box(
+            name + f"_eye_{sx}", (width * 0.235, 0.016, 0.022),
+            (sx * half_w * 0.50, -shell_d * 0.86, shell_h * 0.10), mats["obsidian"],
+            parent=root, bevel=0.009,
         )
-        for i in range(5):
+        eye.rotation_euler = (0, math.radians(sx * 7), 0)
+        for i in range(4):
             make_sphere(
-                name + f"_stud_{sx}_{i}", (0.008, 0.008, 0.008),
-                (sx * (0.045 + i * 0.034), -0.057, 0.095 - i * 0.009),
-                mats["brass"], parent=root, segments=8, rings=5,
+                name + f"_stud_{sx}_{i}", (0.0065, 0.0065, 0.0065),
+                (sx * (half_w * 0.20 + i * half_w * 0.28), -shell_d * 0.93, shell_h * 0.62 - i * 0.006),
+                mats["brass"], parent=root, segments=10, rings=6,
             )
     return root
 
@@ -1379,33 +1399,39 @@ def make_basket_setup(mats, loc=(1.35, 1.15, 0.02), procedural_only=False):
 
 
 def make_monarch_setup(mats, procedural_only=True):
-    """A guaranteed-visible 3D MONARCH bust/head/mask with crimson signature."""
+    """A 3D MONARCH bust: head, masked face, turtleneck, crimson signature band.
+
+    Head is centred on the root empty, so the mask empty is placed on the
+    face plane (front of the skull) and the bust sits below the jaw.
+    """
     skin = mats.get("monarch_skin", mats["obsidian"])
-    head = make_procedural_head("MONARCH_3D_HEAD", (0, 0.42, 0.92), mats, height=0.48)
-    make_sphere(
-        "MONARCH_CHIN_AND_BEARD", (0.125, 0.095, 0.085),
-        (0, 0.36, 1.00), mats["black"], segments=20, rings=12,
+    height = 0.44
+    hw, hd, hh = height * 0.235, height * 0.255, height * 0.315
+    head = make_procedural_head("MONARCH_3D_HEAD", (0, 0.34, 1.22), mats, height=height)
+    # Bust: broad trapezoid torso, not a sphere.
+    bust = make_box(
+        "MONARCH_WARM_BUST", (0.62, 0.30, 0.42),
+        (0, 0.42, 0.86), skin, bevel=0.10,
     )
-    bust = make_sphere(
-        "MONARCH_WARM_BUST", (0.38, 0.22, 0.30),
-        (0, 0.68, 0.72), skin, segments=28, rings=16,
-    )
-    shoulders = make_sphere(
-        "MONARCH_TURTLENECK_SHOULDERS", (0.46, 0.24, 0.18),
-        (0, 0.55, 0.66), mats["black"], segments=28, rings=16,
+    shoulders = make_box(
+        "MONARCH_TURTLENECK_SHOULDERS", (0.74, 0.36, 0.20),
+        (0, 0.44, 0.76), mats["black"], bevel=0.07,
     )
     neck = make_cylinder(
-        "MONARCH_TURTLENECK", 0.17, 0.24, (0, 0.45, 0.83),
-        mats["black"], vertices=24, bevel=0.025,
+        "MONARCH_TURTLENECK", 0.088, 0.26, (0, 0.40, 1.03),
+        mats["black"], vertices=32, bevel=0.020,
     )
-    mask = make_procedural_mask("MONARCH_3D_VENICE_MASK", (0, 0.18, 1.18), mats, width=0.46)
+    # Mask sits on the face plane: front of the skull (y = 0.34 - hd*0.72),
+    # at ~85% of head height (brow line), so shell overlaps the skull.
+    face_y = 0.34 - hd * 0.72
+    mask = make_procedural_mask(
+        "MONARCH_3D_VENICE_MASK", (0, face_y, 1.22 + hh * 0.10), mats, width=hw * 2.06,
+    )
     bar = make_box(
-        "MONARCH_CRIMSON_LIGHT_BAR", (0.34, 0.010, 0.012),
-        (0, 0.102, 1.18), mats["crimson"], bevel=0.006,
+        "MONARCH_CRIMSON_LIGHT_BAR", (hw * 1.75, 0.008, 0.010),
+        (0, face_y - hd * 0.16, 1.22 + hh * 0.10), mats["crimson"], bevel=0.004,
     )
     return head, bust, shoulders, neck, mask, bar
-
-
 
 
 # ---------------------------------------------------------------------------
