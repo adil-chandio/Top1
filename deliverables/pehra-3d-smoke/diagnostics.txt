@@ -1,4 +1,12 @@
 --- assets ---
-no assets dir
+total 28
+drwxr-xr-x  5 runner runner 4096 Nov 16 16:45 .
+drwxr-xr-x  7 runner runner 4096 Nov 16 16:45 ..
+drwxr-xr-x  2 runner runner 4096 Nov 16 16:45 glb
+-rw-r--r--  1 runner runner 4512 Nov 16 16:45 manifest.json
+drwxr-xr-x 10 runner runner 4096 Nov 16 16:45 ph_models
+drwxr-xr-x  4 runner runner 4096 Nov 16 16:45 ph_textures
 --- frames dir ---
-no frames dir
+total 8
+drwxr-xr-x 2 runner runner 4096 Nov 16 16:45 .
+drwxr-xr-x 7 runner runner 4096 Nov 16 16:45 ..

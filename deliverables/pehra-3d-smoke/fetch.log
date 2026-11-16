@@ -1,0 +1,22 @@
+=== Querying Poly Haven CC0 model manifests ===
+  + model sweet_potato (2k): 4 files
+  + model Lantern_01 (2k): 6 files
+  + model street_lamp_01 (2k): 6 files
+  + model bolt_action_rifle_7_62 (2k): 10 files
+  + model chess_set (2k): 10 files
+  + model wooden_candlestick (2k): 6 files
+  + model wicker_basket_01 (2k): 4 files
+  + model marble_bust_01 (2k): 5 files
+=== Querying Poly Haven CC0 PBR texture manifests ===
+  + texture dry_mud_field_001 (2k): diff, nor_gl, rough, disp
+  + texture cobblestone_floor_06 (2k): diff, nor_gl, rough, disp
+=== Queueing CC0 / MIT GLB assets ===
+=== Downloading 65 asset files (8 workers) ===
+  [10/65] latest=Lantern_01_brass_nor_gl_2k.png (19.26 MB)
+  [20/65] latest=bolt_action_rifle_7_62_metal_2k.exr (1.22 MB)
+  [30/65] latest=chess_set_pieces_white_nor_gl_2k.png (15.78 MB)
+  [40/65] latest=wooden_candlestick_disp_2k.png (2.12 MB)
+  [50/65] latest=marble_bust_01_2k.blend (11.27 MB)
+  [60/65] latest=LeePerrySmith.glb (0.39 MB)
+  [65/65] latest=Lantern.glb (9.12 MB)
+=== DONE: 65 files | 338.7 MB in 1.6s -> /home/runner/work/Top1/Top1/production/account1_ep01/assets/manifest.json ===
