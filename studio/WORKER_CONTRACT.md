@@ -27,3 +27,16 @@ All artifacts must be nonempty real files within job directory. Feasibility `che
 Reviewer response: `{ "approved": true, "inspected_artifacts": ["each candidate SHA256"], "findings": "specific observations/limits from actual inspection" }`. On failure return approved false and actionable findings. Different commands are enforced; truly independent runtime/context must be configured by operator (different command paths alone do not establish independence).
 
 A worker may return `{ "status": "blocked", "reason": "specific unavailable capability" }`. Three failed attempts block the job; no infinite retries, no user approval loop. Correct infrastructure and resume rather than fabricate a pass. This coordinator does not itself provide a language model, browser, renderer or creative reasoning runtime.
+
+## Specialist craft contract (enforced)
+
+See `studio/craft.py` for exact required department keys per stage. Supply `craft[department]`:
+`{"status":"pass", "observations":"actual specific findings and limitations", "rationale":"why this choice serves story/reference", "evidence":["job-relative verified artifact path"]}`.
+Only typography can be not_applicable, with explicit rationale/observations. Do not add typography just to satisfy a checkbox. All evidence paths must be listed with valid hashes in artifacts. Documents can record listening/viewing findings but are NOT a substitute for actual underlying media inspection.
+
+Script: story design + sound/edit blueprint.
+Feasibility: art direction, asset provenance, and a combined motion-design/audio MP4 test (not a silent rig diagnostic).
+Production: animation, custom motion design, typography decision, compositing, sound design, music, mix, finishing. Required attribution must describe all third-party asset/music rights and original work. No ripping reference videos' music/SFX.
+QC: picture-only, audio-only, combined, reference comparison, delivery-integrity reviews. `reviewed_production_sha256` must match exact final production MP4. Any revision to final MP4 invalidates earlier review. Reviewer must actually access media; cannot infer listening from waveform or viewing from transcript.
+
+R&D command optional secure deployment `STUDIO_RD_COMMAND`, same request/response CLI. Invoked on a subsequent attempt with prior defect. R&D response is guidance, never auto-executed code or independent quality approval. See `remediation.py`: problem, acceptance_test, 1–3 candidates, exactly one selected; each has source_url, decision_reason. Selected candidate additionally needs version, license_review, security_review, compatibility, test_evidence, comparison, rollback, test_passed true. Reports are attestations; production must independently apply and validate, reviewer inspects actual result. Failed R&D consumes bounded attempt. Never call a library entry tested merely because README claims it works.

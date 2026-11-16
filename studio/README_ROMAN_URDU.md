@@ -1,3 +1,9 @@
+# Latest v2 craft aur R&D upgrade
+
+Current production blueprint: [PRODUCTION_SYSTEM_V2_ROMAN_URDU.md](PRODUCTION_SYSTEM_V2_ROMAN_URDU.md).
+
+Specialist craft evidence validation aur retry-time R&D command hook implemented. Script sound/edit blueprint; feasibility combined motion/audio test; production animation/motion/typography/compositing/music/sound/mix/finishing; QC picture/audio/combined/reference reviews exact final MP4 hash se bind. 24 isolated tests pass locally. Actual creative runtimes not deployed; read blueprint status section before claiming autonomy.
+
 # Updated operating rule: ek waqt mein ek channel
 
 User ki latest instruction purane parallel-channel design ko supersede karti hai.
