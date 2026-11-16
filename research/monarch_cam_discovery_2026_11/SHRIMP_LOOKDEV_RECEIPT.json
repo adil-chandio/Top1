@@ -1,0 +1,25 @@
+{
+  "images": [
+    {
+      "file": "shrimp-macro-lookdev-v1.png",
+      "sha256": "6306e7b3a97aba68927ee4cb4a1c4c8f85d2931cc8b4b9d0229fbbc8e081c1fa",
+      "ai_generated": true,
+      "actually_opened": true,
+      "approved": false,
+      "production_use": "rejected",
+      "input_photo_credit": "Robert Aguilar / Smithsonian Environmental Research Center, CC BY 2.0"
+    },
+    {
+      "file": "shrimp-macro-lookdev-v2.png",
+      "sha256": "69f949b156e65a6cb3139943b1165a82292f18b13d999acac558433c363a2ec9",
+      "ai_generated": true,
+      "actually_opened": true,
+      "approved": false,
+      "production_use": "rejected",
+      "input_photo_credit": "Robert Aguilar / Smithsonian Environmental Research Center, CC BY 2.0"
+    }
+  ],
+  "review": "SHRIMP_ANATOMY_LOOKDEV_REVIEW_ROMAN_URDU.md",
+  "independent_review": false,
+  "articulated_motion": false
+}

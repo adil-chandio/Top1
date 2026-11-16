@@ -25,5 +25,11 @@
   "full_resolution_photo_opened": true,
   "head_crop_opened": true,
   "hood_geometry_approved": false,
-  "species_photo_receipt": "SPECIES_PHOTO_RECEIPT.json"
+  "species_photo_receipt": "SPECIES_PHOTO_RECEIPT.json",
+  "scientific_head_reference_thumbnail_opened": true,
+  "scientific_head_reference_doi": "10.1242/jeb.209015",
+  "exact_3d_hood_geometry_verified": false,
+  "macro_lookdev_attempts": 2,
+  "macro_lookdev_approved": false,
+  "lookdev_review": "SHRIMP_ANATOMY_LOOKDEV_REVIEW_ROMAN_URDU.md"
 }
