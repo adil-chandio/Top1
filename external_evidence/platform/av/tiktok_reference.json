@@ -4,7 +4,128 @@
   "url": "https://www.tiktok.com/@scout2015/video/6718335390845095173",
   "reuse_in_production": false,
   "licence_note": "reference inspection only; not licensed for reuse in the PEHRA cut",
-  "steps": [],
-  "error": "FileNotFoundError: [Errno 2] No such file or directory: 'yt-dlp'",
-  "traceback": "Traceback (most recent call last):\n  File \"<stdin>\", line 13, in <module>\n  File \"/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py\", line 548, in run\n    with Popen(*popenargs, **kwargs) as process:\n         ^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py\", line 1026, in __init__\n    self._execute_child(args, executable, preexec_fn, close_fds,\n  File \"/opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/subprocess.py\", line 1955, in _execute_child\n    raise child_exception_type(errno_num, err_msg, err_filename)\nFileNotFoundError: [Errno 2] No such file or directory: 'yt-dlp'\n"
+  "steps": [
+    {
+      "download_rc": 0,
+      "download_tail": ""
+    }
+  ],
+  "downloaded_file": "/tmp/pv.mp4",
+  "downloaded_bytes": 2004627,
+  "sha256": "5fa05e7138b9e28ae66b4647e6828287692b91e23d4b3c2afc2ab334d31e5261",
+  "probe": {
+    "duration": "10.495011",
+    "width": 720,
+    "height": 1280,
+    "fps": "30/1",
+    "video_codec": "hevc",
+    "audio_codec": "aac"
+  },
+  "frames_extracted": [
+    "/tmp/fr/pv_0.png",
+    "/tmp/fr/pv_1.png",
+    "/tmp/fr/pv_2.png"
+  ],
+  "visual_inspection": [
+    {
+      "file": "pv_0.png",
+      "caption": "a small dog with a red collar standing on a stone walkway",
+      "vqa": [
+        {
+          "q": "Is there a person?",
+          "a": "no",
+          "conf": 0.9864
+        },
+        {
+          "q": "Is this a photograph?",
+          "a": "yes",
+          "conf": 0.9962
+        },
+        {
+          "q": "Is the image dark?",
+          "a": "no",
+          "conf": 1.0
+        }
+      ]
+    },
+    {
+      "file": "pv_1.png",
+      "caption": "a hand reaching into a pool with water",
+      "vqa": [
+        {
+          "q": "Is there a person?",
+          "a": "no",
+          "conf": 0.5793
+        },
+        {
+          "q": "Is this a photograph?",
+          "a": "no",
+          "conf": 0.5819
+        },
+        {
+          "q": "Is the image dark?",
+          "a": "yes",
+          "conf": 0.9045
+        }
+      ]
+    },
+    {
+      "file": "pv_2.png",
+      "caption": "a boat is traveling through the ocean",
+      "vqa": [
+        {
+          "q": "Is there a person?",
+          "a": "yes",
+          "conf": 0.9983
+        },
+        {
+          "q": "Is this a photograph?",
+          "a": "yes",
+          "conf": 0.9214
+        },
+        {
+          "q": "Is the image dark?",
+          "a": "yes",
+          "conf": 0.6517
+        }
+      ]
+    }
+  ],
+  "audio_events": [
+    {
+      "start": 0.0,
+      "top3": [
+        {
+          "label": "Music",
+          "score": 0.9079
+        },
+        {
+          "label": "Television",
+          "score": 0.0185
+        },
+        {
+          "label": "Bang",
+          "score": 0.0053
+        }
+      ]
+    },
+    {
+      "start": 5.0,
+      "top3": [
+        {
+          "label": "Music",
+          "score": 0.8977
+        },
+        {
+          "label": "Pop music",
+          "score": 0.0208
+        },
+        {
+          "label": "Rhythm and blues",
+          "score": 0.0104
+        }
+      ]
+    }
+  ],
+  "audio_duration_sec": 10.52
 }
