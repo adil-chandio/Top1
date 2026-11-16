@@ -39,9 +39,14 @@ def _digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def save(job, note=None):
-    """Write a git-trackable checkpoint for a job directory."""
+def save(job, note=None, state_dir=None):
+    """Write a git-trackable checkpoint for a job directory.
+
+    `state_dir` exists so tests can write to a temp directory. Production calls
+    omit it and land in the git-tracked `accounts_studio/state/`.
+    """
     job = Path(job).resolve()
+    target_dir = Path(state_dir) if state_dir else STATE_DIR
     state = json.loads((job / 'state.json').read_text(encoding='utf-8'))
     checkpoint = {key: state[key] for key in TRACKED_KEYS if key in state}
     artifacts = []
@@ -66,25 +71,26 @@ def save(job, note=None):
         'note': note or ('State only. Artifact bytes live outside git; '
                          '`present` reflects the moment of checkpointing.'),
     }
-    STATE_DIR.mkdir(parents=True, exist_ok=True)
-    dest = STATE_DIR / (state['id'] + '.json')
+    target_dir.mkdir(parents=True, exist_ok=True)
+    dest = target_dir / (state['id'] + '.json')
     dest.write_text(json.dumps(checkpoint, indent=2, ensure_ascii=False) + '\n',
                     encoding='utf-8')
     return dest
 
 
-def load(job_id):
-    path = STATE_DIR / (job_id + '.json')
+def load(job_id, state_dir=None):
+    path = (Path(state_dir) if state_dir else STATE_DIR) / (job_id + '.json')
     if not path.is_file():
         raise FileNotFoundError(f'no checkpoint for {job_id}')
     return json.loads(path.read_text(encoding='utf-8'))
 
 
-def list_checkpoints():
-    if not STATE_DIR.is_dir():
+def list_checkpoints(state_dir=None):
+    base = Path(state_dir) if state_dir else STATE_DIR
+    if not base.is_dir():
         return []
     out = []
-    for path in sorted(STATE_DIR.glob('*.json')):
+    for path in sorted(base.glob('*.json')):
         try:
             data = json.loads(path.read_text(encoding='utf-8'))
         except json.JSONDecodeError:
@@ -100,9 +106,9 @@ def list_checkpoints():
     return out
 
 
-def restore(job_id, base=None, force=False):
+def restore(job_id, base=None, force=False, state_dir=None):
     """Rebuild a job directory from a checkpoint (bytes are not restored)."""
-    data = load(job_id)
+    data = load(job_id, state_dir=state_dir)
     if base is not None:
         base_dir = Path(base)
     else:

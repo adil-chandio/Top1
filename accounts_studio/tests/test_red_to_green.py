@@ -180,8 +180,12 @@ class CheckpointReceiptTests(unittest.TestCase):
         import tempfile
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
+        # A temp state dir keeps these tests out of the real git-tracked
+        # accounts_studio/state/, which holds actual job checkpoints.
+        self.state_dir = Path(self.temp.name) / 'state'
         from accounts_studio.pipeline import create
-        self.job = create(self.temp.name, 'soc_01', 'checkpoint receipt fixture')
+        self.job = create(Path(self.temp.name) / 'runtime', 'soc_01',
+                          'checkpoint receipt fixture')
 
     def test_accepted_reviews_are_checkpointed(self):
         import hashlib
@@ -193,7 +197,7 @@ class CheckpointReceiptTests(unittest.TestCase):
             'intelligence': {'path': 'review.json',
                              'sha256': hashlib.sha256(receipt.read_bytes()).hexdigest()}}
         save(self.job / 'state.json', state)
-        out = json.loads(state_module.save(self.job).read_text(encoding='utf-8'))
+        out = json.loads(state_module.save(self.job, state_dir=self.state_dir).read_text(encoding='utf-8'))
         self.assertIn('intelligence', out['accepted_reviews'])
 
     def test_restore_reports_missing_receipt_instead_of_claiming_it(self):
@@ -206,10 +210,10 @@ class CheckpointReceiptTests(unittest.TestCase):
             'intelligence': {'path': 'review.json',
                              'sha256': hashlib.sha256(receipt.read_bytes()).hexdigest()}}
         save(self.job / 'state.json', state)
-        state_module.save(self.job)
+        state_module.save(self.job, state_dir=self.state_dir)
         receipt.unlink()
         import shutil
         shutil.rmtree(self.job)
-        result = state_module.restore(self.job.name)
+        result = state_module.restore(self.job.name, base=Path(self.temp.name) / 'runtime', state_dir=self.state_dir)
         payload = json.dumps(result)
         self.assertIn('missing', payload.lower())
