@@ -32,5 +32,6 @@ def delivery_preflight(job,state):
         if set(review.get('inspected_artifacts',[]))!={a['sha256'] for a in result['artifacts']}:raise ValueError('review artifact binding mismatch')
     videos=[a for a in state['outputs']['production']['artifacts'] if a['path'].lower().endswith('.mp4')]
     if len(videos)!=1:raise ValueError('exactly one final video required')
+    if videos[0]['sha256'] in state.get('rejected_video_hashes',[]):raise ValueError('rejected video hash cannot be redelivered')
     if state['outputs']['qc'].get('reviewed_production_sha256')!=videos[0]['sha256']:raise ValueError('QC belongs to different video')
     return True

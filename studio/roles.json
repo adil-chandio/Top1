@@ -1,0 +1,11 @@
+{
+  "intelligence": {"owner":"research_lead","task":"Current targeted market and specialist craft references. Distinguish observed video/audio from text. No CTR/retention inventions.","exit":"Evidence, limitations, opportunity decision."},
+  "idea": {"owner":"producer_story_editor","task":"Rank original ideas against audience, evidence and actual production feasibility; decide internally.","exit":"Chosen central question and rejected alternatives with reasons."},
+  "story": {"owner":"story_editor","task":"Question, mechanism, complication and payoff; do not compress full story into opening proof.","exit":"Original beat map and claim-source ledger."},
+  "script": {"owner":"writer_editor_sound_director","task":"Narration plus visual progression, editorial choreography and authored sound architecture; actual voice timing.","exit":"Script and edit/sound blueprint with evidence."},
+  "feasibility": {"owner":"creative_director_rd","task":"Representative boards and 4–6-second integrated animal/motion/edit/compositing/audio test. Test hardest relevant problem. No mandatory typography.","exit":"Actual integrated proof and inspected comparison; not concept image or silent rig."},
+  "production": {"owner":"animation_edit_motion_compositing_audio_team","task":"Execute binding creative brief. Editing and sound independent core departments. No generic labels or random effects; revise internally.","exit":"Actual final video, specialist evidence, editable project assets and complete provenance."},
+  "qc": {"owner":"independent_reviewer","task":"Actually view and hear output: picture-only, audio-only, combined, reference comparison and technical integrity. No false capabilities.","exit":"Actionable defects or specific findings tied to exact video hash."},
+  "packaging": {"owner":"editorial_packaging","task":"Promise matches delivered content. Respect brief; no unauthorized public publishing or new trailer.","exit":"Relevant checked deliverables, no misleading promise."},
+  "delivery": {"owner":"delivery_operator","task":"Verify exact reviewed media, upload privately in channel folder, verify object and return link.","exit":"Upload receipt; then await user evaluation, never auto-switch channel."}
+}

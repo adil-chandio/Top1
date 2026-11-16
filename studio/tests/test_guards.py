@@ -38,3 +38,8 @@ class GuardTests(unittest.TestCase):
   (self.job/'qc-review.json').write_text('{}')
   with patch('studio.guards.production_preflight'):
    with self.assertRaises(ValueError):delivery_preflight(self.job,self.state)
+
+ def test_rejected_hash_cannot_be_relabelled(self):
+  self.state['rejected_video_hashes']=[self.state['outputs']['production']['artifacts'][0]['sha256']]
+  with patch('studio.guards.production_preflight'):
+   with self.assertRaises(ValueError):delivery_preflight(self.job,self.state)

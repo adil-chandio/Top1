@@ -2,7 +2,6 @@
 No network listener. Durable job state lives under STUDIO_STATE_DIR.
 """
 import os,signal,time
-from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from studio.pipeline import ROOT,CONFIG,tick
 import json
@@ -12,14 +11,16 @@ def halt(*_):
  stop=True
 signal.signal(signal.SIGTERM,halt);signal.signal(signal.SIGINT,halt)
 def main():
+ from studio.readiness import inspect
+ ready=inspect()
+ if not ready['configuration_ready']:
+  print(json.dumps(ready,indent=2),flush=True)
+  raise SystemExit(2)
  base=Path(os.getenv('STUDIO_STATE_DIR',str(ROOT/'studio/runtime')))
  while not stop:
-  active={}
-  for p in sorted(base.glob('*/state.json')):
-   s=json.loads(p.read_text())
-   if s['status']=='queued' and s['channel']==CONFIG['active_channel']:active.setdefault(s['channel'],p.parent)
-  with ThreadPoolExecutor(max_workers=3) as pool:
-   for result in pool.map(tick,active.values()):print(result,flush=True)
+  from studio.lifecycle import select_job
+  job=select_job(base,CONFIG['active_channel'])
+  if job:print(job.name,tick(job),flush=True)
   for _ in range(30):
    if stop:return
    time.sleep(1)

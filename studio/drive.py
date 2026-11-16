@@ -28,14 +28,15 @@ def deliver(job,state):
     url='https://www.googleapis.com/drive/v3/files'
     # Job id is locally generated, folder supplied by trusted operator configuration.
     if "'" in folder:raise ValueError('invalid folder')
-    q=f"trashed = false and '{folder}' in parents and appProperties has {{ key='studio_job' and value='{state['id']}' }}"
+    delivery_key=state['id']+'-r'+str(len(state.get('revisions',[])))
+    q=f"trashed = false and '{folder}' in parents and appProperties has {{ key='studio_job' and value='{delivery_key}' }}"
     r=session.get(url,params={'q':q,'fields':'files(id,name,size,md5Checksum,webViewLink)','supportsAllDrives':'true','includeItemsFromAllDrives':'true'},timeout=60);r.raise_for_status()
     existing=r.json().get('files',[])
     if existing:
         if len(existing)!=1 or existing[0].get('md5Checksum')!=md5 or int(existing[0].get('size',0))!=len(data):raise ValueError('existing delivery conflicts; no duplicate uploaded')
         item=existing[0]
     else:
-        metadata={'name':state['id']+'.mp4','parents':[folder],'appProperties':{'studio_job':state['id'],'sha256':sha},'description':state['outputs']['production'].get('attribution','')}
+        metadata={'name':delivery_key+'.mp4','parents':[folder],'appProperties':{'studio_job':delivery_key,'sha256':sha},'description':state['outputs']['production'].get('attribution','')}
         r=session.post('https://www.googleapis.com/upload/drive/v3/files',params={'uploadType':'multipart','supportsAllDrives':'true','fields':'id,name,size,md5Checksum,webViewLink'},files={'metadata':('metadata',json.dumps(metadata),'application/json'),'file':(video.name,data,'video/mp4')},timeout=600);r.raise_for_status();item=r.json()
         if item.get('md5Checksum')!=md5 or int(item.get('size',0))!=len(data):raise ValueError('upload integrity mismatch')
     receipt={'file_id':item['id'],'link':item.get('webViewLink') or 'https://drive.google.com/file/d/'+item['id']+'/view','sha256':sha,'bytes':len(data),'public_sharing_enabled':False}

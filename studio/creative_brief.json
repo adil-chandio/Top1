@@ -1,0 +1,39 @@
+{
+  "version": 3,
+  "channel": "monarch_cam",
+  "deliverable": "Original full-film script ke continuous opening 20 seconds; separate summary/trailer nahi",
+  "script": "research/monarch_cam_market/SCRIPT_DRAFT_V2_ROMAN_URDU.md",
+  "opening_scope": "Orcas shikaar kar rahi hain... se sequential narration; actual audio timing determines endpoint",
+  "drive_folder_id": "1a2C3rWC1rwiz_2TNFAmpEndc3xKkETyF",
+  "creative_north_star": {
+    "story": "Viewer ko opposite-direction approach ka puzzle action se samajh aaye, claims ya graphics se manipulate na ho",
+    "art": "Intentional composition, readable animal weight and depth; pretty reference ko working rig proof na samjho",
+    "editing": "Designed visual progression and choreography; high-end editing independent department hai, shots jodna nahi",
+    "motion_design": "Custom explanatory transformation only when needed; kinetic typography optional, not compulsory decoration",
+    "compositing": "Unified scene lighting, depth, material response and graphic integration",
+    "sound": "Authored perspective, rhythm, space and silence; actual listening review, not loudness-only approval",
+    "viewer_respect": "Curiosity and clarity, not nonstop stimulation or fake scientific certainty"
+  },
+  "rejected_patterns": [
+    "Previous opening review cut f79e2b7ad77be58f8801fc22f2e9039ff3b1fdd80e3c8f69fcb2fac8e6a9e904",
+    "Persistent chapter headings, lower-left captions, progress rail, diet info cards from rejected cut",
+    "Random whooshes, bubbles, generic music used without actual listening-compatible comparison",
+    "Slideshow, repeated stills, pan/zoom as animal motion",
+    "Over-rendering a known weak asset or hiding defects in darkness",
+    "Calling tests/reports premium video quality"
+  ],
+  "evidence_rules": [
+    "Fresh targeted research every stage",
+    "Distinguish text_read, still_viewed, video_viewed and audio_listened",
+    "Never mark audiovisual review from transcript, screenshots or waveform alone",
+    "Claim-source ledger, asset-level rights and changes recorded",
+    "4-6 second integrated internal proof before full render"
+  ],
+  "authority": {
+    "routine_approvals_required": false,
+    "paid_spend_allowed": false,
+    "youtube_publishing_allowed": false,
+    "next_channel_requires_explicit_user_instruction": true,
+    "delivery_is_not_user_acceptance": true
+  }
+}
