@@ -49,9 +49,10 @@ jobs:
           ls -la production/account1_ep01/build/
           python -c "import json;d=json.load(open('production/account1_ep01/build/timeline_15s.json'));print('shots:',[s['id'] for s in d['shots']])"
       - name: Fetch the real CC0/MIT 3D assets
+        continue-on-error: true
         run: |
           set -euo pipefail
-          python production/account1_ep01/fetch_assets.py
+          python production/account1_ep01/fetch_assets.py 2>&1 | tee /tmp/fetch.log
           ls -la production/account1_ep01/assets | head -20
       - name: Final-quality probe (4 samples, 100%) + measure
         run: |
@@ -79,6 +80,7 @@ jobs:
           cp -a production/account1_ep01/frames_debug/*.png "$DEST"/ 2>/dev/null || true
           cp /tmp/smoke_blender.log "$DEST/blender.log" 2>/dev/null || echo 'no blender log' > "$DEST/blender.log"
           find production/account1_ep01/frames_debug -maxdepth 1 -type f | sort > "$DEST/frames_manifest.txt" || true
+          cp /tmp/fetch.log "$DEST/fetch.log" 2>/dev/null || echo 'no fetch log' > "$DEST/fetch.log"
           { echo '--- assets ---'; ls -la production/account1_ep01/assets 2>/dev/null || echo 'no assets dir';
             echo '--- frames dir ---'; ls -la production/account1_ep01/frames_debug 2>/dev/null || echo 'no frames dir'; } > "$DEST/diagnostics.txt"
           ls -la "$DEST" || true
