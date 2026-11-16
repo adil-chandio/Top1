@@ -127,3 +127,85 @@ class LaneTriggerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class DurableStoreTests(unittest.TestCase):
+    """Durability is the easiest thing to fake, so it gets the strictest rules."""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.temp.cleanup)
+        self.base = Path(self.temp.name)
+
+    def _write(self, rel, payload):
+        path = self.base / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(json.dumps(payload), encoding='utf-8')
+
+    def _upload(self, **over):
+        payload = {'route': 'github_release', 'tag': 'accounts-durable-store',
+                   'local_sha256': 'a' * 64, 'restored_sha256': 'a' * 64,
+                   'verified_roundtrip': True}
+        payload.update(over)
+        self._write(external_lane.ARTIFACTS['durable'], payload)
+
+    def _fresh(self, **over):
+        payload = {'route': 'github_actions_runner',
+                   'purpose': 'independent durability verification on a fresh runner',
+                   'fetched_sha256': 'a' * 64, 'fetched_bytes': 10,
+                   'matches_original_sha256': True}
+        payload.update(over)
+        self._write('durable/fresh_machine_verify.json', payload)
+
+    def test_upload_alone_is_not_enough_to_be_green(self):
+        self._upload()
+        report = external_lane.capability_report(self.base)
+        self.assertEqual(report['durable']['status'], 'unverified')
+        self.assertIn('fresh-machine', report['durable']['reason'])
+
+    def test_upload_plus_fresh_refetch_is_green(self):
+        self._upload()
+        self._fresh()
+        report = external_lane.capability_report(self.base)
+        self.assertEqual(report['durable']['status'], 'green')
+        self.assertTrue(report['durable']['fresh_machine_verified'])
+        self.assertEqual(report['durable']['fetched_bytes'], 10)
+
+    def test_hash_mismatch_on_upload_is_a_failure(self):
+        self._upload(restored_sha256='b' * 64, verified_roundtrip=False)
+        self._fresh()
+        report = external_lane.capability_report(self.base)
+        self.assertEqual(report['durable']['status'], 'ran_but_failed')
+        self.assertIn('hash mismatch', report['durable']['error'])
+
+    def test_fresh_machine_seeing_different_bytes_is_not_green(self):
+        self._upload()
+        self._fresh(matches_original_sha256=False)
+        report = external_lane.capability_report(self.base)
+        self.assertEqual(report['durable']['status'], 'unverified')
+        self.assertIn('different bytes', report['durable']['reason'])
+
+    def test_unreadable_fresh_evidence_is_not_green(self):
+        self._upload()
+        bad = self.base / 'durable/fresh_machine_verify.json'
+        bad.parent.mkdir(parents=True, exist_ok=True)
+        bad.write_text('<html>404</html>', encoding='utf-8')
+        report = external_lane.capability_report(self.base)
+        self.assertEqual(report['durable']['status'], 'unverified')
+
+
+class RunnerRouteTests(unittest.TestCase):
+    def test_only_runner_routes_count_as_provenance(self):
+        self.assertIn('github_actions_runner', external_lane.RUNNER_ROUTES)
+        self.assertIn('github_release', external_lane.RUNNER_ROUTES)
+        self.assertNotIn('local_sandbox', external_lane.RUNNER_ROUTES)
+
+    def test_a_local_route_cannot_claim_green(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            for kind, rel in external_lane.ARTIFACTS.items():
+                path = base / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(json.dumps({'route': 'local_sandbox'}), encoding='utf-8')
+            report = external_lane.capability_report(base)
+            self.assertEqual({e['status'] for e in report.values()}, {'unverified'})

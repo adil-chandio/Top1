@@ -25,3 +25,5 @@ production/*/keyframes
 Unselected files/
 google_drive/
 accounts_studio/runtime/
+external_evidence/platform/av/*.png
+external_evidence/platform/av/*.wav

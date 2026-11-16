@@ -55,6 +55,10 @@ TRIGGER_DIR = ROOT / 'external_lane_trigger'
 WORKFLOW = 'accounts-external-lane.yml'
 BRANCH = 'arena/944c619c-top1'
 
+#: Routes that only a GitHub-hosted runner can produce. A record claiming one
+#: of these is runner output; anything else must stay unverified.
+RUNNER_ROUTES = {'github_actions_runner', 'github_release'}
+
 #: Written by the runner, never by this module.
 ARTIFACTS = {
     'asr': 'asr/pehra_transcript.json',
@@ -145,14 +149,51 @@ def capability_report(evidence_dir: Path | None = None) -> dict:
             entry.update({'status': 'unreadable', 'reason': str(exc)})
             report[kind] = entry
             continue
-        entry['route'] = data.get('route')
+        # Two runner-written schemas exist: most artifacts carry an explicit
+        # `route` marker; the durability record instead names its `purpose`
+        # and is written by the lane-verify workflow. Both are runner output,
+        # so both must be accepted -- but nothing without a positive runner
+        # marker may be called green.
+        route = data.get('route')
+        purpose = str(data.get('purpose') or '')
+        runner_marked = route == 'github_actions_runner' or (
+            not route and 'runner' in purpose and
+            ('verification' in purpose or 'durability' in purpose))
+        runner_marked = route in RUNNER_ROUTES or runner_marked
+        entry['route'] = route or ('github_actions_runner (inferred from purpose)'
+                                   if runner_marked else None)
         if data.get('error'):
             entry.update({'status': 'ran_but_failed', 'error': data['error']})
-        elif data.get('route') != 'github_actions_runner':
+        elif not runner_marked:
             entry.update({'status': 'unverified',
                           'reason': 'artifact lacks the runner route marker'})
+        elif data.get('verified_roundtrip') is False or \
+                data.get('matches_original_sha256') is False:
+            entry.update({'status': 'ran_but_failed',
+                          'error': 'runner reported a hash mismatch'})
         else:
             entry['status'] = 'green'
+
+        # Durability is only green when a *second, fresh* machine re-fetched
+        # the artifact from the external store and got the same bytes. A
+        # successful upload alone proves nothing.
+        if kind == 'durable' and entry['status'] == 'green':
+            fresh = base / 'durable/fresh_machine_verify.json'
+            if not fresh.is_file():
+                entry.update({'status': 'unverified',
+                              'reason': 'no fresh-machine re-fetch evidence'})
+            else:
+                try:
+                    verify = json.loads(fresh.read_text(encoding='utf-8'))
+                except json.JSONDecodeError:
+                    verify = {}
+                if verify.get('matches_original_sha256') is not True:
+                    entry.update({'status': 'unverified',
+                                  'reason': 'fresh machine saw different bytes'})
+                else:
+                    entry['fresh_machine_verified'] = True
+                    entry['fetched_sha256'] = verify.get('fetched_sha256')
+                    entry['fetched_bytes'] = verify.get('fetched_bytes')
         report[kind] = entry
     return report
 
@@ -165,3 +206,42 @@ def honest_limits() -> list[str]:
         'YouTube and Instagram still refuse unauthenticated extraction',
         'the lane runs only when a push wakes it; there is no daemon',
     ]
+
+
+def main(argv=None):
+    """CLI: `python -m accounts_studio.external_lane {status,show,trigger,limits}`."""
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
+    sub = parser.add_subparsers(dest='cmd', required=True)
+    sub.add_parser('status', help='per-capability lane report')
+    show = sub.add_parser('show', help='print one runner artifact')
+    show.add_argument('kind', choices=sorted(ARTIFACTS))
+    trig = sub.add_parser('trigger', help='wake the lane via a push')
+    trig.add_argument('--reason', default='lane')
+    trig.add_argument('--dry-run', action='store_true')
+    sub.add_parser('limits', help='what this lane still cannot do')
+    args = parser.parse_args(argv)
+
+    if args.cmd == 'status':
+        report = capability_report()
+        width = max(len(k) for k in report)
+        for kind, entry in report.items():
+            detail = entry.get('reason') or entry.get('error') or ''
+            print(f'{kind:<{width}}  {entry["status"]:<13} {detail}')
+        greens = sum(1 for e in report.values() if e['status'] == 'green')
+        print(f'\n{greens}/{len(report)} external-lane capabilities have '
+              f'runner-produced evidence')
+        return 0
+    if args.cmd == 'show':
+        print(json.dumps(load(args.kind), indent=2, ensure_ascii=False))
+        return 0
+    if args.cmd == 'trigger':
+        print(json.dumps(trigger(args.reason, dry_run=args.dry_run), indent=2))
+        return 0
+    for line in honest_limits():
+        print('-', line)
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
