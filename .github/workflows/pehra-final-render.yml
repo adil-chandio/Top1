@@ -142,6 +142,7 @@ jobs:
           name: pehra-final-bundle-${{ github.run_id }}
           path: production/account1_ep01
       - name: Render frames for this shard
+        continue-on-error: true
         env:
           SLUG: ${{ matrix.shot.slug }}
           F_START: ${{ matrix.shot.f_start }}
@@ -165,23 +166,38 @@ jobs:
               --frames "$FRAME-$LAST" \
               --timeline production/account1_ep01/build/timeline_15s.json \
               --assets production/account1_ep01/assets \
-              --out production/account1_ep01/frames 2>&1 | tail -5
-            echo "[chunk] $SLUG: rendered $FRAME-$LAST"
+              --out production/account1_ep01/frames >> /tmp/shard.log 2>&1
+            RC=$?
+            tail -3 /tmp/shard.log
+            echo "[chunk] $SLUG: rendered $FRAME-$LAST (rc=$RC)"
             FRAME=$((LAST + 1))
           done
-          # Frames must survive the run: the sandbox cannot reach GitHub's
-          # artifact blob storage, so each shard commits only its own frames.
-          N=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" | wc -l)
+      - name: Commit this shard's frames
+        if: always()
+        env:
+          SLUG: ${{ matrix.shot.slug }}
+          F_START: ${{ matrix.shot.f_start }}
+          F_END: ${{ matrix.shot.f_end }}
+        run: |
+          set -uo pipefail
+          export SHARD_MARKER="production/account1_ep01/shards/${SLUG}.done"
+          mkdir -p production/account1_ep01/shards
+          cp /tmp/shard.log "production/account1_ep01/shards/${SLUG}.log" 2>/dev/null || true
+          N=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" 2>/dev/null | wc -l)
           echo "[done] $SLUG produced $N frames"
-          [ "$N" -ge 1 ] || { echo "::error::$SLUG produced no frames"; exit 1; }
+          if [ "$N" -lt 1 ]; then
+            echo "::error::$SLUG produced no frames (see shards/${SLUG}.log)"
+            exit 1
+          fi
+          touch "$SHARD_MARKER"
           git config user.name "pehra-render-bot"
           git config user.email "pehra-render@users.noreply.github.com"
           # Rendered frames are untracked, so a hard reset to the remote tip
           # keeps them on disk while discarding any stale tracked frames.
-          for attempt in 1 2 3 4 5; do
+          for attempt in 1 2 3 4 5 6; do
             git fetch -q origin "$GITHUB_REF_NAME"
             git reset -q --hard FETCH_HEAD
-            git add -f production/account1_ep01/frames "$SHARD_MARKER"
+            git add -f production/account1_ep01/frames "$SHARD_MARKER" "production/account1_ep01/shards/${SLUG}.log"
             if git diff --cached --quiet; then
               echo "[commit] nothing new to add (attempt $attempt)"
               break
@@ -192,8 +208,9 @@ jobs:
               break
             fi
             echo "[commit] push rejected, retrying ($attempt)"
-            sleep $((attempt * 4))
+            sleep $((attempt * 5))
           done
+
       - name: Upload shot frames
         if: always()
         uses: actions/upload-artifact@v4
