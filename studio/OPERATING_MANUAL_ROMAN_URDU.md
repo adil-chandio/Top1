@@ -61,3 +61,7 @@ Do not launch a supervisor and call it filmmaking when worker runtime absent. No
 ## Acceptance of the whole system
 
 Code implementation verified != autonomous deployment verified != creative production validated. Operational acceptance still needs real equipped runtimes and end-to-end real pilot, with actual AV reference review, combined proof and accepted final result. No source document or test count can substitute that.
+
+## Active-session alternative (new)
+
+External daemon configuration above applies only to unattended service. Active Arena session can now use `python -m studio.session step JOB_DIRECTORY` and connected Drive delivery without exporting credentials. See `SESSION_EXECUTION_ROMAN_URDU.md` for actual operator flow, identity/review rules and live evidence. This route does not invent external agents or autonomous off-chat execution.

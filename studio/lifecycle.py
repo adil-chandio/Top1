@@ -11,7 +11,7 @@ def select_job(base,channel):
             candidates.append((state.get('created_at',''),path.parent.name,path.parent,state))
     if not candidates:return None
     _,_,job,state=min(candidates)
-    return job if state['status']=='queued' else None
+    return job if state['status'] in ('queued','awaiting_worker','awaiting_reviewer') else None
 
 def feedback(job,decision,reason,restart_from='feasibility'):
     """Explicit operator/user instruction only. Serialize with execution lock."""
@@ -41,6 +41,7 @@ def feedback(job,decision,reason,restart_from='feasibility'):
             # Preserve old attempt counters: new revisions must not overwrite old attempt artifacts.
             state['stage']=start;state['status']='queued';state['user_rejected']=True;state['blocker']=reason
             state['revision_attempts']={}
+            state.pop('pending_task',None)
         else:raise ValueError('unknown feedback decision')
         state.setdefault('history',[]).append({'at':NOW().isoformat(),'outcome':'user_'+decision,'reason':reason})
         save(job/'state.json',state);return state

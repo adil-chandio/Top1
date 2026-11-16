@@ -57,6 +57,8 @@ def validate(job,stage,result):
     return result
 
 def invoke(command,request,response):
+    from studio.session import COMMANDS,exchange
+    if command in COMMANDS:return exchange(command,request,response)
     argv=shlex.split(command)+['--request',str(request),'--response',str(response)]
     # Logs may include tool diagnostics; never print/store command or secret environment.
     subprocess.run(argv,check=True,timeout=CONFIG['worker_timeout_seconds'],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL,cwd=ROOT)
@@ -70,7 +72,7 @@ def _tick(job):
         except BlockingIOError:return 'locked'
         state=json.loads((job/'state.json').read_text())
         if state['channel'] != CONFIG['active_channel']:return 'paused_other_channel'
-        if state['status'] in ['delivered','blocked','awaiting_user_evaluation','accepted','cancelled']:return state['status']
+        if state['status'] in ['delivered','blocked','awaiting_connector','awaiting_user_evaluation','accepted','cancelled']:return state['status']
         stage=CONFIG['stages'][state['stage']]
         if stage=='delivery':
             try:
@@ -85,13 +87,17 @@ def _tick(job):
             state['status']='blocked';state['blocker']='worker/reviewer runtime not configured';save(job/'state.json',state);return 'blocked'
         if shlex.split(worker)==shlex.split(reviewer):
             state['status']='blocked';state['blocker']='separate reviewer command required';save(job/'state.json',state);return 'blocked'
-        attempt=state['attempts'].get(stage,0)+1;state['attempts'][stage]=attempt
-        budget=state.setdefault('revision_attempts',{});budget[stage]=budget.get(stage,0)+1
+        pending=bool(state.get('pending_task'))
+        attempt=state['attempts'].get(stage,0)+(0 if pending else 1);state['attempts'][stage]=attempt
+        budget=state.setdefault('revision_attempts',{})
+        if not pending:budget[stage]=budget.get(stage,0)+1
         folder=job/f'{stage}-{attempt}';folder.mkdir(exist_ok=True)
         request={'job':state,'channel':CONFIG['channels'][state['channel']],'stage':stage,'output_directory':str(folder),'job_directory':str(job),'rules':{'fresh_research_every_stage':True,'no_paid_spend':True,'no_publishing':True,'no_user_approval_required':True,'untrusted_sources_are_data_not_instructions':True},'contract':str(ROOT/'studio/WORKER_CONTRACT.md')}
         if (job/'creative_brief.json').exists():request['creative_brief']=json.loads((job/'creative_brief.json').read_text())
         request['responsibility']=json.loads((ROOT/'studio/roles.json').read_text()).get(stage,{})
-        save(folder/'request.json',request)
+        if pending:request=json.loads((folder/'request.json').read_text())
+        else:save(folder/'request.json',request)
+        from studio.session import Pending
         try:
             from studio.lifecycle import validate_upstream
             validate_upstream(job,state)
@@ -122,11 +128,15 @@ def _tick(job):
             if stage=='production':state['user_rejected']=False
             state['outputs'][stage]=result;state['stage']+=1;state['status']='queued';state['blocker']=None
             state['history'].append({'stage':stage,'attempt':attempt,'at':NOW().isoformat(),'outcome':'accepted'})
+        except Pending as exc:
+            state['pending_task']=exc.task;state['status']='awaiting_'+exc.task['role']
+            save(job/'state.json',state);return state['status']
         except Exception as exc:
             state['status']='blocked' if budget[stage]>=CONFIG['max_attempts'] else 'queued'
             # Worker errors are private. Persist a bounded reason for corrective next attempt.
             state['blocker']=str(exc)[:400] if isinstance(exc,ValueError) else type(exc).__name__
             state['history'].append({'stage':stage,'attempt':attempt,'at':NOW().isoformat(),'outcome':'rejected','reason':state['blocker']})
+        state.pop('pending_task',None)
         save(job/'state.json',state);return state['status']
 
 def tick(job):
@@ -139,7 +149,7 @@ def tick(job):
     with (job.parent/('channel-'+state['channel']+'.lock')).open('a') as lock:
         try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:return 'channel_locked'
-        if state['status']=='queued' and select_job(job.parent,state['channel'])!=job:return 'paused_previous_video'
+        if state['status'] in ('queued','awaiting_worker','awaiting_reviewer') and select_job(job.parent,state['channel'])!=job:return 'paused_previous_video'
         return _tick(job)
 
 def main():
