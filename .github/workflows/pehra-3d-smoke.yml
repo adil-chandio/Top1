@@ -47,33 +47,39 @@ jobs:
           set -euo pipefail
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --quiet requests numpy scipy soundfile pydub
-      - name: Build frame-locked Urdu soundtrack (writes build/timeline_15s.json)
+      - name: Build the full-script timeline
         run: |
           set -euo pipefail
-          python production/account1_ep01/build_audio_15s.py
-          ls -la production/account1_ep01/build/
-          python -c "import json;d=json.load(open('production/account1_ep01/build/timeline_15s.json'));print('shots:',[s['id'] for s in d['shots']])"
+          python production/account1_ep01/plan_full.py
+          python -c "import json;d=json.load(open('production/account1_ep01/build/timeline_full.json'));print('beats:',len(d['shots']),'frames:',d['total_frames'])"
       - name: Fetch the real CC0/MIT 3D assets
         continue-on-error: true
         run: |
           set -euo pipefail
           python production/account1_ep01/fetch_assets.py 2>&1 | tee /tmp/fetch.log
           ls -la production/account1_ep01/assets | head -20
-      - name: Final-quality probe (4 samples, 100%) + measure
+      - name: Trace every full-script beat for construction errors
         run: |
           set -euo pipefail
           mkdir -p production/account1_ep01/frames
           # Capture the FULL blender output; we cannot read the run log from the
           # sandbox, so diagnostics are written to a file and committed instead.
           mkdir -p production/account1_ep01/frames_debug
-          for SHOT in S5_MASKED_MONARCH S4_UNGUARDED_GATE; do
+          for SHOT in B01_AERIAL_FIELD B02_GUARDED_FIELD B03_MASKED_TITLE \
+                      B04_HUNGRY_PARIS B05_POTATO_PROMISE B06_POISONED_MIND \
+                      B07_FREE_BASKETS B08_SILENT_PIVOT B09_FORTY_ACRES \
+                      B10_WHISPERS B11_LAST_ORDER B12_SUNSET_WITHDRAWAL \
+                      B13_NIGHT_THEFT B14_EMPTY_FIELD_DAWN B15_GRAVE_200_YEARS \
+                      B16_FINAL_MONARCH; do
             "$BLENDER_BIN" -b --factory-startup \
               --python production/account1_ep01/debug_shot_trace.py -- \
               --shot "$SHOT" \
-              --timeline production/account1_ep01/build/timeline_15s.json \
+              --timeline production/account1_ep01/build/timeline_full.json \
               --assets production/account1_ep01/assets >> /tmp/blender.log 2>&1 || true
           done
-          grep -A 25 "TRACE" /tmp/blender.log | head -80
+          grep "TRACE" /tmp/blender.log | head -40
+          echo "=== failures ==="
+          grep -A 12 "FAILED" /tmp/blender.log | head -120
           echo "=== exit summary ==="
           tail -40 /tmp/blender.log || true
           cp /tmp/blender.log /tmp/smoke_blender.log
