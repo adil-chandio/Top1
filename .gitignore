@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+*.mp4
+*.mov
+*.mkv
+*.m4a
+*.part
+*.log
+production/*/renders/
+production/*/renders
+production/*/frames/
+production/*/frames
+production/*/tmp/
+production/*/tmp
+production/*/assets/
+production/*/assets
+production/*/build/
+production/*/build
+production/*/captions/
+production/*/captions
+production/*/keyframes/
+production/*/keyframes
+Unselected files/
+google_drive/

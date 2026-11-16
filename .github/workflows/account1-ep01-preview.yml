@@ -1,0 +1,296 @@
+name: "Account 1 EP01 — PEHRA 15s True 3D Preview"
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "Render mode"
+        required: true
+        default: "lookdev"
+        type: choice
+        options:
+          - lookdev
+          - final
+      samples:
+        description: "Cycles samples per frame"
+        required: true
+        default: "12"
+        type: string
+      res_pct:
+        description: "Blender resolution percentage"
+        required: true
+        default: "100"
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: account1-ep01-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+
+jobs:
+  bootstrap:
+    name: "Prepare assets, audio, and Blender"
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore Blender cache
+        id: blender_cache
+        uses: actions/cache@v4
+        with:
+          path: ~/blender4215
+          key: blender-4.2.15-linux-x64-v1
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg \
+            fonts-dejavu-core \
+            xz-utils \
+            libgl1 \
+            libegl1 \
+            libglu1-mesa \
+            libx11-6 \
+            libxcb1 \
+            libxi6 \
+            libxrender1 \
+            libxfixes3 \
+            libxkbcommon0 \
+            libxrandr2 \
+            libxinerama1 \
+            libxxf86vm1 \
+            libsm6 \
+            libice6 \
+            libfontconfig1
+
+      - name: Install Blender 4.2.15 LTS if needed
+        run: |
+          set -euo pipefail
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
+          if [ ! -x "$BIN" ]; then
+            echo "Downloading Blender $BLENDER_VERSION LTS..."
+            mkdir -p "$HOME/blender4215"
+            curl -fL --retry 3 --retry-delay 2 \
+              -o /tmp/blender.tar.xz \
+              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/blender.tar.xz
+          fi
+          chmod +x "$BIN"
+          "$BIN" --version | head -3
+          echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+
+      - name: Install Python DSP dependencies
+        run: python -m pip install --disable-pip-version-check numpy scipy pillow
+
+      - name: Build frame-locked Urdu soundtrack
+        run: python production/account1_ep01/build_audio_15s.py
+
+      - name: Download verified CC0 / MIT 3D assets
+        run: python production/account1_ep01/fetch_assets.py
+
+      - name: Verify prepared bundle
+        run: |
+          set -euo pipefail
+          test -f production/account1_ep01/build/timeline_15s.json
+          test -f production/account1_ep01/build/master_15s.m4a
+          test -f production/account1_ep01/assets/manifest.json
+          test -f production/account1_ep01/render_scene.py
+          test -f production/account1_ep01/assemble_preview.py
+          du -sh production/account1_ep01/assets production/account1_ep01/build
+
+      - name: Upload render bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-bundle-${{ github.run_id }}
+          path: |
+            production/account1_ep01/assets
+            production/account1_ep01/build/timeline_15s.json
+            production/account1_ep01/build/master_15s.m4a
+            production/account1_ep01/render_scene.py
+            production/account1_ep01/assemble_preview.py
+            production/account1_ep01/ASSET_CREDITS.md
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 1
+
+  render:
+    name: "Cycles 3D render — ${{ matrix.shot }}"
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        shot:
+          - S1_MIDNIGHT_FURROW
+          - S2_ROYAL_GUARDS
+          - S3_LOCKED_IRON
+          - S4_UNGUARDED_GATE
+          - S5_MASKED_MONARCH
+          - S6_MASTER_MOVE
+    steps:
+      - name: Restore Blender cache
+        uses: actions/cache@v4
+        with:
+          path: ~/blender4215
+          key: blender-4.2.15-linux-x64-v1
+
+      - name: Install Blender runtime libraries
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            xz-utils \
+            libgl1 \
+            libegl1 \
+            libglu1-mesa \
+            libx11-6 \
+            libxcb1 \
+            libxi6 \
+            libxrender1 \
+            libxfixes3 \
+            libxkbcommon0 \
+            libxrandr2 \
+            libxinerama1 \
+            libxxf86vm1 \
+            libsm6 \
+            libice6 \
+            libfontconfig1
+
+      - name: Install Blender 4.2.15 LTS if cache is empty
+        run: |
+          set -euo pipefail
+          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
+          if [ ! -x "$BIN" ]; then
+            mkdir -p "$HOME/blender4215"
+            curl -fL --retry 3 --retry-delay 2 \
+              -o /tmp/blender.tar.xz \
+              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
+            rm -f /tmp/blender.tar.xz
+          fi
+          chmod +x "$BIN"
+          echo "$HOME/blender4215/$BLENDER_DIR" >> "$GITHUB_PATH"
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+
+      - name: Download prepared render bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: pehra-bundle-${{ github.run_id }}
+          path: production/account1_ep01
+
+      - name: Render true animated 3D frames
+        env:
+          MODE: ${{ github.event.inputs.mode }}
+          SAMPLES: ${{ github.event.inputs.samples }}
+          RES_PCT: ${{ github.event.inputs.res_pct }}
+        run: |
+          set -euo pipefail
+          "$BLENDER_BIN" -b --factory-startup \
+            --python production/account1_ep01/render_scene.py -- \
+            --shot "${{ matrix.shot }}" \
+            --mode "$MODE" \
+            --samples "$SAMPLES" \
+            --res-pct "$RES_PCT" \
+            --timeline production/account1_ep01/build/timeline_15s.json \
+            --assets production/account1_ep01/assets \
+            --out production/account1_ep01/frames
+          find production/account1_ep01/frames -name 'f_*.png' | wc -l
+
+      - name: Upload shot frames
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-frames-${{ matrix.shot }}-${{ github.run_id }}
+          path: production/account1_ep01/frames
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 1
+
+  assemble:
+    name: "Assemble, grade, mux, and QC"
+    needs: [bootstrap, render]
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install FFmpeg and caption fonts
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-dejavu-core
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Download prepared render bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: pehra-bundle-${{ github.run_id }}
+          path: production/account1_ep01
+
+      - name: Download all rendered frames
+        uses: actions/download-artifact@v4
+        with:
+          pattern: pehra-frames-*-${{ github.run_id }}
+          path: production/account1_ep01/frames
+          merge-multiple: true
+
+      - name: Verify merged frame set
+        run: |
+          set -euo pipefail
+          find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l
+          find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | sort | head -3
+          find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | sort | tail -3
+
+      - name: Assemble preview
+        env:
+          MODE: ${{ github.event.inputs.mode }}
+        run: |
+          set -euo pipefail
+          python production/account1_ep01/assemble_preview.py \
+            --mode "$MODE" \
+            --frames-dir production/account1_ep01/frames \
+            --timeline production/account1_ep01/build/timeline_15s.json \
+            --audio production/account1_ep01/build/master_15s.m4a \
+            --out-dir production/account1_ep01/renders
+          ls -lh production/account1_ep01/renders
+
+      - name: Upload preview package
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-preview-${{ github.event.inputs.mode }}-${{ github.run_id }}
+          path: production/account1_ep01/renders
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 1
+
+      - name: Write run summary
+        run: |
+          {
+            echo "## PEHRA 15s preview — ${{ github.event.inputs.mode }}"
+            echo ""
+            echo "- Resolution: 1080×1920 @ 30fps"
+            echo "- Picture: 100% animated Blender Cycles 3D renders (zero still-image plates)"
+            echo "- Audio: voice-00 Urdu VO + frame-locked foley, mastered to -14 LUFS"
+            echo "- Artifact: \`pehra-preview-${{ github.event.inputs.mode }}-${{ github.run_id }}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
