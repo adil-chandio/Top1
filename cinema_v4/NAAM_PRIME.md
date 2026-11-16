@@ -1,7 +1,9 @@
 # NAAM // PRIME — 48 s · 1080×1920 · 24 fps
 
 **Deliverable:** `deliverables/MONARCH_NAAM_PRIME_1080x1920.mp4`
-**Drive (public):** https://drive.google.com/file/d/1GAkpA1qiF-xsqFYGFXAjEwn1QGZHJ8z-/view
+**Drive — full 1080p (public, 74 MB):** https://drive.google.com/file/d/1GAkpA1qiF-xsqFYGFXAjEwn1QGZHJ8z-/view
+**Drive — 720p preview (public, 6.2 MB):** https://drive.google.com/file/d/1ieGQLt-SmxS65AO8M2Gz45ry8RN4dUFw/view
+**Direct download:** https://drive.google.com/uc?export=download&id=1GAkpA1qiF-xsqFYGFXAjEwn1QGZHJ8z-
 **Cover (public):** https://drive.google.com/file/d/1tMm5l2cQUIZCq0Rl_rP1ozwVCDLB_GtR/view
 **Branch:** `arena/2a8ad29e-top1`
 
