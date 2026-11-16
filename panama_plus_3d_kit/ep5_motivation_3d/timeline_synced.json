@@ -1,0 +1,212 @@
+{
+  "title": "Main Abhi Bhi Apni Taraf Hoon \u2014 Cinema 3D V3 (Tabahi Edition)",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 41.461,
+  "total_frames": 1244,
+  "beats": [
+    {
+      "id": "hook_shatter",
+      "tag": "HAAR NAHI",
+      "caption": "Tumhari haar tab nahi hoti jab tum girte ho.",
+      "start": 0.0,
+      "end": 2.91,
+      "vo_end": 2.85,
+      "start_frame": 0,
+      "end_frame": 87,
+      "phrase_offsets_s": [
+        0.0,
+        1.88
+      ],
+      "phrase_frames": [
+        0,
+        56
+      ]
+    },
+    {
+      "id": "khwaab_fade",
+      "tag": "KHWAAB",
+      "caption": "Balki us din hoti hai jab tum apne hi khwaab ko chhota keh kar nazar chura lete ho.",
+      "start": 2.91,
+      "end": 8.625,
+      "vo_end": 8.545,
+      "start_frame": 87,
+      "end_frame": 259,
+      "phrase_offsets_s": [
+        0.04,
+        1.7,
+        4.3
+      ],
+      "phrase_frames": [
+        88,
+        138,
+        216
+      ]
+    },
+    {
+      "id": "excuse_monoliths",
+      "tag": "BAHAANAY",
+      "caption": "Pehle kehte ho: Kal se. Phir: Mere bas ka nahi. Aur phir uska zikr hi band.",
+      "start": 8.625,
+      "end": 14.72,
+      "vo_end": 14.62,
+      "start_frame": 259,
+      "end_frame": 442,
+      "phrase_offsets_s": [
+        0.04,
+        2.04,
+        4.08,
+        4.88
+      ],
+      "phrase_frames": [
+        260,
+        320,
+        381,
+        405
+      ],
+      "slam_frames": [
+        320,
+        381,
+        405
+      ]
+    },
+    {
+      "id": "sukoon_trap",
+      "tag": "SUKOON YA RUKAWAT",
+      "caption": "Bahar se sab ko lagta hai tum theek ho. Thakay ho, thoda aaram kar lo.",
+      "start": 14.72,
+      "end": 19.73,
+      "vo_end": 19.65,
+      "start_frame": 442,
+      "end_frame": 592,
+      "phrase_offsets_s": [
+        0.04,
+        1.02,
+        3.14,
+        4.06
+      ],
+      "phrase_frames": [
+        443,
+        472,
+        536,
+        563
+      ]
+    },
+    {
+      "id": "xray_ignition",
+      "tag": "DAFAN MAT KARNA",
+      "caption": "Magar apne khwaab ko dafan karke uska naam sukoon mat rakhna!",
+      "start": 19.73,
+      "end": 24.431,
+      "vo_end": 24.331,
+      "start_frame": 592,
+      "end_frame": 733,
+      "phrase_offsets_s": [
+        0.04,
+        2.72
+      ],
+      "phrase_frames": [
+        593,
+        674
+      ]
+    },
+    {
+      "id": "micro_promise",
+      "tag": "EK WAADA",
+      "caption": "Aaj poori zindagi nahi badalni, bas ek chhota sa waada nibhana hai.",
+      "start": 24.431,
+      "end": 28.386,
+      "vo_end": 28.326,
+      "start_frame": 733,
+      "end_frame": 852,
+      "phrase_offsets_s": [
+        0.04,
+        0.48,
+        2.0,
+        2.52
+      ],
+      "phrase_frames": [
+        734,
+        747,
+        793,
+        809
+      ]
+    },
+    {
+      "id": "desk_ten_min",
+      "tag": "10 MINUTE",
+      "caption": "Phone ulta rakho, woh kaam kholo, aur sirf das minute usay do.",
+      "start": 28.386,
+      "end": 32.976,
+      "vo_end": 32.896,
+      "start_frame": 852,
+      "end_frame": 989,
+      "phrase_offsets_s": [
+        0.06,
+        1.7,
+        2.92
+      ],
+      "phrase_frames": [
+        853,
+        903,
+        939
+      ],
+      "desk_frames": [
+        864,
+        939,
+        940
+      ]
+    },
+    {
+      "id": "stairs_ascent",
+      "tag": "KHUD KO YAAD",
+      "caption": "Kisi duniya ko prove karne ke liye nahi, balki khud ko yaad dilane ke liye:",
+      "start": 32.976,
+      "end": 37.191,
+      "vo_end": 37.111,
+      "start_frame": 989,
+      "end_frame": 1116,
+      "phrase_offsets_s": [
+        0.04,
+        2.38
+      ],
+      "phrase_frames": [
+        990,
+        1061
+      ]
+    },
+    {
+      "id": "monarch_portrait",
+      "tag": "APNI TARAF",
+      "caption": "Main abhi bhi apni taraf hoon.",
+      "start": 37.191,
+      "end": 38.956,
+      "vo_end": 38.836,
+      "start_frame": 1116,
+      "end_frame": 1169,
+      "phrase_offsets_s": [
+        0.04
+      ],
+      "phrase_frames": [
+        1117
+      ]
+    },
+    {
+      "id": "loop_question",
+      "tag": "AAJ KA WAADA",
+      "caption": "Aaj ka woh das minute wala waada kya hai?",
+      "start": 38.956,
+      "end": 41.461,
+      "vo_end": 41.111,
+      "start_frame": 1169,
+      "end_frame": 1244,
+      "phrase_offsets_s": [
+        0.04
+      ],
+      "phrase_frames": [
+        1170
+      ]
+    }
+  ]
+}

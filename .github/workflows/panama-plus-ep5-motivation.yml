@@ -1,0 +1,140 @@
+name: Panama-Plus EP5 Motivation Cinema 3D Render
+
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - 'panama_plus_3d_kit/ep5_motivation_3d/**'
+      - '.github/workflows/panama-plus-ep5-motivation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: panama-ep5-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  render-chunk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: true
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5]
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Three.js & Playwright Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq curl
+          cd panama_plus_3d_kit/ep5_motivation_3d
+          npm init -y >/dev/null 2>&1 || true
+          npm install --no-save three@0.170.0 playwright >/dev/null
+          npx playwright install --with-deps chromium
+
+      - name: Download Verified CC0 Human & Night Study .glb Models
+        run: |
+          set -e
+          DEST="$PWD/panama_plus_3d_kit/ep5_motivation_3d/assets"
+          mkdir -p "$DEST" "$PWD/panama_plus_3d_kit/ep5_motivation_3d/qc"
+          BASE="https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs"
+          curl -L --fail --retry 3 "$BASE/quaternius-ultimatemodularcharacters/models/suit/suit.glb" -o "$DEST/suit.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/lamp_table/lamp_table.glb" -o "$DEST/lamp_table.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/armchair_pillows/armchair_pillows.glb" -o "$DEST/armchair_pillows.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/book_set/book_set.glb" -o "$DEST/book_set.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/rug_rectangle_a/rug_rectangle_a.glb" -o "$DEST/rug_rectangle_a.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-furniture-bits/models/shelf_b_large_decorated/shelf_b_large_decorated.glb" -o "$DEST/shelf_b_large_decorated.glb"
+          curl -L --fail --retry 3 "$BASE/kaykit-city-builder-bits/models/streetlight/streetlight.glb" -o "$DEST/streetlight.glb"
+
+      - name: Render Chunk ${{ matrix.chunk }}/6 (1080x1920 Cinema 3D)
+        env:
+          CHUNK_INDEX: ${{ matrix.chunk }}
+          CHUNK_COUNT: '6'
+        run: |
+          set -o pipefail
+          cd panama_plus_3d_kit/ep5_motivation_3d
+          node render_webgl.mjs --render-only 2>&1 | tee "qc/render_chunk_${CHUNK_INDEX}.log"
+          tar -cf "frames_chunk_${CHUNK_INDEX}.tar" -C _frames .
+
+      - name: Upload Rendered Frame Chunk
+        uses: actions/upload-artifact@v4
+        with:
+          name: ep5-frames-chunk-${{ matrix.chunk }}
+          path: panama_plus_3d_kit/ep5_motivation_3d/frames_chunk_${{ matrix.chunk }}.tar
+          retention-days: 1
+
+  assemble-and-commit:
+    needs: render-chunk
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg, Audio Stack & Earshot SFX
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python3 -m pip install --upgrade pip -q
+          python3 -m pip install -q numpy scipy
+          mkdir -p panama_plus_3d_kit/ep5_motivation_3d/assets panama_plus_3d_kit/ep5_motivation_3d/_frames panama_plus_3d_kit/ep5_motivation_3d/qc
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot || true
+          if [ -d /tmp/earshot/takes ]; then
+            cp -r /tmp/earshot/takes panama_plus_3d_kit/ep5_motivation_3d/assets/earshot_takes
+          fi
+
+      - name: Master Narration + Felt Piano + Rain + Earshot SFX (-14 LUFS)
+        run: python3 panama_plus_3d_kit/ep5_motivation_3d/build_audio.py
+
+      - name: Download All 6 Frame Chunks
+        uses: actions/download-artifact@v4
+        with:
+          path: panama_plus_3d_kit/ep5_motivation_3d/_chunks
+
+      - name: Encode 1080x1920 Master MP4 + Contact Sheet + QC
+        run: |
+          set -e
+          cd panama_plus_3d_kit/ep5_motivation_3d
+          for c in 0 1 2 3 4 5; do
+            tar -xf "_chunks/ep5-frames-chunk-${c}/frames_chunk_${c}.tar" -C _frames
+          done
+          rm -rf _chunks
+          node render_webgl.mjs --encode-only
+          ls -lh ../../deliverables/MONARCH_Motivation_MainAbhiBhiApniTarafHoon_PanamaPlus_1080x1920.mp4 qc/
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          set -e
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f deliverables/MONARCH_Motivation_MainAbhiBhiApniTarafHoon_PanamaPlus_1080x1920.mp4 \
+                     panama_plus_3d_kit/ep5_motivation_3d/qc/contact_sheet.png \
+                     panama_plus_3d_kit/ep5_motivation_3d/qc/qc_report.json
+          git commit -m "render(ep5-motivation-cinema): 1080x1920 cinema 3D master + QC [skip ci]"
+          PUSHED=0
+          for i in 1 2 3 4; do
+            git pull --rebase --autostash origin arena/2a8ad29e-top1
+            if git push origin HEAD:arena/2a8ad29e-top1; then
+              PUSHED=1
+              break
+            fi
+            sleep 6
+          done
+          [ "$PUSHED" = "1" ] || exit 1

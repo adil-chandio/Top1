@@ -1,0 +1,73 @@
+{
+  "title": "MONARCH Night Shift EP01 \u2014 The Sandwich Heist",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 50.1,
+  "total_frames": 1503,
+  "beats": [
+    {
+      "id": "prize_ecu",
+      "tag": "03:00 AM \u00b7 THE TARGET",
+      "wav": "vo/line_01_prize_ecu.wav",
+      "text": "Sandwich. Chips. Cookies. My greatest adventure.",
+      "start": 0.25,
+      "voice_end": 5.41,
+      "end": 6.11
+    },
+    {
+      "id": "driveway_entry",
+      "tag": "OPERATION SNACK",
+      "wav": "vo/line_02_driveway_entry.wav",
+      "text": "Three in the morning. A pickup truck in the driveway. Door unlocked. So kind. I give it a pull, and we are in.",
+      "start": 6.11,
+      "voice_end": 18.03,
+      "end": 18.73
+    },
+    {
+      "id": "jackpot_freeze",
+      "tag": "CAUGHT RED-PAWED",
+      "wav": "vo/line_03_jackpot_freeze.wav",
+      "text": "Jackpot. I am mid-bite when the human opens the door and just stands there. Frozen.",
+      "start": 18.73,
+      "voice_end": 26.45,
+      "end": 27.15
+    },
+    {
+      "id": "flash_plank",
+      "tag": "THE STANDOFF",
+      "wav": "vo/line_04_flash_plank.wav",
+      "text": "Then he takes a picture. Really, sir? Then he comes back with a plank of wood.",
+      "start": 27.15,
+      "voice_end": 33.63,
+      "end": 34.33
+    },
+    {
+      "id": "dignity_exit",
+      "tag": "STRATEGIC RETREAT",
+      "wav": "vo/line_05_dignity_exit.wav",
+      "text": "Buddy, this is a sandwich, not a fortress. So I leave. Out the driver's side. With dignity.",
+      "start": 34.33,
+      "voice_end": 42.17,
+      "end": 42.87
+    },
+    {
+      "id": "worth_it",
+      "tag": "NIGHT SHIFT EP01",
+      "wav": "vo/line_06_worth_it.wav",
+      "text": "...Worth it.",
+      "start": 42.87,
+      "voice_end": 44.07,
+      "end": 46.27
+    },
+    {
+      "id": "outro_crane",
+      "tag": "THE SANDWICH HEIST",
+      "wav": null,
+      "text": "MONARCH\u00ae NIGHT SHIFT \u00b7 EP01",
+      "start": 46.27,
+      "voice_end": 49.27,
+      "end": 50.1
+    }
+  ]
+}

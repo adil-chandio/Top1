@@ -1,0 +1,18 @@
+{
+  "title": "Main Abhi Bhi Apni Taraf Hoon — Cinema 3D",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 40.0,
+  "total_frames": 1200,
+  "beats": [
+    {"start": 0.00, "end": 8.90, "tag": "KHWAAB", "caption": "Sabse khaufnaak cheez haarna nahi. Khaufnaak woh din hai jab tum apne hi khwaab ko chhota sa khwaab keh kar us se nazar chura lete ho."},
+    {"start": 8.90, "end": 13.20, "tag": "BAHAANAY", "caption": "Pehle kehte ho, kal se. Phir kehte ho, mere bas ka nahi. Phir us khwaab ka zikr hi band."},
+    {"start": 13.20, "end": 17.90, "tag": "SUKOON YA RUKAWAT", "caption": "Aur duniya samajhti hai, tum theek ho. Haan, thakay ho to aaram karo."},
+    {"start": 17.90, "end": 23.53, "tag": "PEHLA QADAM", "caption": "Magar apne khwaab ko dafan karke uska naam sukoon mat rakhna."},
+    {"start": 23.53, "end": 27.76, "tag": "EK WAADA", "caption": "Aaj poori zindagi nahi badalni. Bas ek waada nibhana hai."},
+    {"start": 27.76, "end": 31.10, "tag": "10 MINUTE", "caption": "Phone side par rakho, woh kaam kholo, das minute usay do."},
+    {"start": 31.10, "end": 37.50, "tag": "APNI TARAF", "caption": "Kisi ko prove karne ke liye nahi. Khud ko yaad dilane ke liye: main abhi bhi apni taraf hoon."},
+    {"start": 37.50, "end": 40.00, "tag": "AAJ KA WAADA", "caption": "Aaj ka waada kya hai?"}
+  ]
+}

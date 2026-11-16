@@ -18,3 +18,8 @@ google_drive/
 # heavy / generated
 cinema_v4/prime/build/
 *.wav
+# Media stays outside source control
+*.mp4
+*.mov
+*.mkv
+*.webm
