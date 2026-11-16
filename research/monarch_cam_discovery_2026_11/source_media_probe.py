@@ -2,7 +2,7 @@
 No YouTube/bot bypass; no third-party repository code is executed.
 Cloud check outputs carry small attributed visual evidence, never credentials.
 """
-import base64,hashlib,json,os,subprocess,urllib.request
+import base64,hashlib,json,os,subprocess,urllib.request,shutil
 from pathlib import Path
 import imageio_ffmpeg
 from PIL import Image,ImageDraw
@@ -16,7 +16,9 @@ def main():
     report={'source':URL,'paper':'10.1038/s41559-024-02525-2','source_type':'primary_scientific_supplement_NOT_youtube_editorial_reference','license':'CC BY 4.0 per publisher rights section, subject to any clip-specific credit exceptions','attribution':'Sampaio et al. (2024), Nature Ecology & Evolution, doi:10.1038/s41559-024-02525-2. Supplementary Video 4. Sampled/scaled frames for research. https://creativecommons.org/licenses/by/4.0/','moving_picture_review':False,'audio_listening_review':False}
     try:
         path=OUT/'segment.mp4'
-        ff=imageio_ffmpeg.get_ffmpeg_exe()
+        ff=shutil.which('ffmpeg')
+        if not ff:raise ValueError('native system FFmpeg required; static 7.0.2 HTTPS backend crashed with SIGSEGV')
+        report['ffmpeg_executable']=ff
         # Prior run established a >80MB source; acquire only a bounded excerpt.
         # FFmpeg performs HTTP range/stream reads; output cap is not a guarantee
         # of network transfer size. Global subprocess deadline limits exposure.
