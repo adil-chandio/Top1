@@ -47,6 +47,15 @@ jobs:
           test -f production/account1_ep01/build/master_15s.m4a
           test -f production/account1_ep01/assets/manifest.json
           du -sh production/account1_ep01/assets production/account1_ep01/build
+      - name: Download Blender 4.2.15 LTS once
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 5 --retry-delay 5 --retry-all-errors -o /tmp/blender.tar.xz \
+            "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+          tar -xf /tmp/blender.tar.xz -C /tmp
+          /tmp/$BLENDER_DIR/blender --version | head -3
+          tar -C /tmp -cJf /tmp/blender-ready.tar.xz "$BLENDER_DIR"
+          ls -lh /tmp/blender-ready.tar.xz
       - name: Emit shot matrix
         id: shots
         run: |
@@ -83,6 +92,14 @@ jobs:
           if-no-files-found: error
           retention-days: 7
           compression-level: 1
+      - name: Upload the Blender tarball for the shards
+        uses: actions/upload-artifact@v4
+        with:
+          name: blender-ready-${{ github.run_id }}
+          path: /tmp/blender-ready.tar.xz
+          if-no-files-found: error
+          retention-days: 2
+          compression-level: 0
 
   render:
     name: "Render ${{ matrix.shot.id }} @ ${{ matrix.shot.f_start }}-${{ matrix.shot.f_end }}"
@@ -105,17 +122,16 @@ jobs:
             xz-utils libgl1 libegl1 libglu1-mesa libx11-6 libxcb1 libxi6 \
             libxrender1 libxfixes3 libxkbcommon0 libxrandr2 libxinerama1 \
             libxxf86vm1 libsm6 libice6 libfontconfig1 libgomp1
-      - name: Install Blender 4.2.15 LTS
+      - name: Fetch the prebuilt Blender tarball
+        uses: actions/download-artifact@v4
+        with:
+          name: blender-ready-${{ github.run_id }}
+          path: /tmp/blenderpkg
+      - name: Unpack Blender (no per-shard download)
         run: |
           set -euo pipefail
-          BIN="$HOME/blender4215/$BLENDER_DIR/blender"
-          if [ ! -x "$BIN" ]; then
-            mkdir -p "$HOME/blender4215"
-            curl -fsSL --retry 3 -o /tmp/blender.tar.xz \
-              "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
-            tar -xf /tmp/blender.tar.xz -C "$HOME/blender4215"
-            rm -f /tmp/blender.tar.xz
-          fi
+          tar -xf /tmp/blenderpkg/blender-ready.tar.xz -C "$HOME"
+          BIN="$HOME/$BLENDER_DIR/blender"
           chmod +x "$BIN"
           "$BIN" --version | head -3
           echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
@@ -132,7 +148,10 @@ jobs:
           SHOT_ID: ${{ matrix.shot.id }}
         run: |
           set -euo pipefail
+          rm -rf production/account1_ep01/frames
           mkdir -p production/account1_ep01/frames
+          export SHARD_MARKER="production/account1_ep01/shards/${SLUG}.done"
+          mkdir -p production/account1_ep01/shards
           chmod +x "$BLENDER_BIN"
           # Render in chunks so partial progress survives a timeout.
           FRAME=$F_START
@@ -149,9 +168,31 @@ jobs:
             echo "[chunk] $SLUG: rendered $FRAME-$LAST"
             FRAME=$((LAST + 1))
           done
+          # Frames must survive the run: the sandbox cannot reach GitHub's
+          # artifact blob storage, so each shard commits only its own frames.
           N=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" | wc -l)
           echo "[done] $SLUG produced $N frames"
           [ "$N" -ge 1 ] || { echo "::error::$SLUG produced no frames"; exit 1; }
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+          # Rendered frames are untracked, so a hard reset to the remote tip
+          # keeps them on disk while discarding any stale tracked frames.
+          for attempt in 1 2 3 4 5; do
+            git fetch -q origin "$GITHUB_REF_NAME"
+            git reset -q --hard FETCH_HEAD
+            git add -f production/account1_ep01/frames "$SHARD_MARKER"
+            if git diff --cached --quiet; then
+              echo "[commit] nothing new to add (attempt $attempt)"
+              break
+            fi
+            git commit -q -m "render[$SLUG] $F_START-$F_END (run ${{ github.run_id }})"
+            if git push -q origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "[commit] $SLUG pushed on attempt $attempt"
+              break
+            fi
+            echo "[commit] push rejected, retrying ($attempt)"
+            sleep $((attempt * 4))
+          done
       - name: Upload shot frames
         if: always()
         uses: actions/upload-artifact@v4
@@ -182,12 +223,12 @@ jobs:
         with:
           name: pehra-final-bundle-${{ github.run_id }}
           path: production/account1_ep01
-      - name: Download all rendered frames
-        uses: actions/download-artifact@v4
-        with:
-          pattern: pehra-final-frames-*-${{ github.run_id }}
-          path: production/account1_ep01/frames
-          merge-multiple: true
+      - name: Collect the frames the shards committed
+        run: |
+          set -euo pipefail
+          git fetch origin "$GITHUB_REF_NAME"
+          git checkout "origin/$GITHUB_REF_NAME" -- production/account1_ep01/frames
+          find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l
       - name: Count the frame set
         run: |
           N=$(find production/account1_ep01/frames -maxdepth 1 -name 'f_*.png' | wc -l)
