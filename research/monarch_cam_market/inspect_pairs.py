@@ -28,7 +28,7 @@ def inspect(pair):
   p=extract_object(html,'var ytInitialPlayerResponse =') or extract_object(html,'ytInitialPlayerResponse =')
   if p:
    d=p.get('videoDetails',{});m=p.get('microformat',{}).get('playerMicroformatRenderer',{})
-   result.update({'status':'player_metadata_retrieved','details':{k:d.get(k) for k in ['videoId','title','lengthSeconds','channelId','shortDescription','viewCount','author','isLiveContent']},'microformat':{k:m.get(k) for k in ['publishDate','uploadDate','category','isFamilySafe','isUnlisted','ownerChannelName']},'playability':p.get('playabilityStatus',{}).get('status'),'caption_tracks':[{k:t.get(k) for k in ['name','languageCode','kind','vssId']} for t in p.get('captions',{}).get('playerCaptionsTracklistRenderer',{}).get('captionTracks',[])]})
+   result.update({'status':('player_metadata_retrieved' if d.get('videoId') == vid and d.get('title') else 'player_shell_only_metadata_unavailable'),'details':{k:d.get(k) for k in ['videoId','title','lengthSeconds','channelId','shortDescription','viewCount','author','isLiveContent']},'microformat':{k:m.get(k) for k in ['publishDate','uploadDate','category','isFamilySafe','isUnlisted','ownerChannelName']},'playability':p.get('playabilityStatus',{}).get('status'),'caption_tracks':[{k:t.get(k) for k in ['name','languageCode','kind','vssId']} for t in p.get('captions',{}).get('playerCaptionsTracklistRenderer',{}).get('captionTracks',[])]})
   else:result['status']='no_player_json'
  except Exception as e:result['status']='watch_page_failed';result['reason']=type(e).__name__
  try:
