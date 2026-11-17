@@ -1,0 +1,302 @@
+{
+  "status": "verified_all59_clear",
+  "checks": [
+    {
+      "id": 133877149149,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877144441,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877140305,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877135304,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877131043,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877126347,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877121775,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877116961,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877112436,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877107775,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877103057,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877098939,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877094350,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877089718,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877085123,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877080909,
+      "sha": "a6e0e1ae10c93b612dd52c0688d6747cdbf91b8e",
+      "payload_present": false
+    },
+    {
+      "id": 133877016306,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133877011462,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133877006651,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133877001460,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876996550,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876991618,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876987170,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876982719,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876978159,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876973828,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876969010,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876964119,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876959256,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876953603,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876948244,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876943533,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876939010,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876934189,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876928884,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876924183,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876919877,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876915136,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876909186,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876902924,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876898067,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876893159,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876888143,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876883006,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876878102,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876873524,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876868184,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876863303,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876858094,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876853179,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876847871,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876842088,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876837516,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876832593,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876827443,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876822180,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876817150,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876812470,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    },
+    {
+      "id": 133876807704,
+      "sha": "1c7a465dc52e4f6e3df9592c723862a7bf2cc1f8",
+      "payload_present": false
+    }
+  ],
+  "explanation": "Resumed run reported57 clear and2 immediate-read assertion failures; later independent API reread confirms both remaining plus all other checks cleared. Failed workflow exit not misreported as successful run.",
+  "local_reference_jpeg_remaining": 0
+}
