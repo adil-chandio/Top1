@@ -1,12 +1,12 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 1,
-  "state": "research_reopened_in_progress",
+  "state": "market_decision_delivered_operational_cleanup_pending",
   "topic_locked": false,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
-    "1": "in_progress",
-    "2": "paused_not_passed",
+    "1": "research_delivered_operational_close_pending",
+    "2": "initial_primary_science_started_not_passed",
     "3": "not_started",
     "4": "not_started",
     "5": "not_started"
@@ -18,14 +18,18 @@
     "research/monarch_cam_restart_batch1/BIZARRE_BEASTS_CURRENT_COHORT.json",
     "research/monarch_cam_restart_batch1/ADDITIONAL_PRIMARY_COHORTS.json",
     "research/monarch_cam_restart_batch1/CONTEXTUAL_PRIMARY_CONTROLS.json",
-    "research/monarch_cam_restart_batch1/EXPANDED_COHORT_FINDINGS_ROMAN_URDU.md"
+    "research/monarch_cam_restart_batch1/EXPANDED_COHORT_FINDINGS_ROMAN_URDU.md",
+    "research/monarch_cam_restart_batch1/BATCH1_MARKET_DECISION_ROMAN_URDU.md",
+    "research/monarch_cam_restart_batch1/ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md",
+    "research/monarch_cam_restart_batch1/THUMBNAIL_INSPECTION_REGISTER.json",
+    "research/monarch_cam_restart_batch1/SECONDARY_PLATFORM_EVIDENCE.json",
+    "research/monarch_cam_restart_batch1/TIERZOO_PRIMARY_CONTROLS.json",
+    "research/monarch_cam_restart_batch1/BATCH2_GECKO_INITIAL_CLAIM_LEDGER_ROMAN_URDU.md"
   ],
   "next_required": [
-    "broad channel landscape and evidence-based relevance screening",
-    "channel audience/promise/topic/format inventory",
-    "within-channel performance cohorts",
-    "actual title-thumbnail comparisons",
-    "opportunities then original shortlist"
+    "verify queued remote thumbnail cleanup receipt; report private upload/checksum/permissions verified",
+    "complete gecko primary science/anatomy/rights ledger",
+    "execute and inspect hardest credible articulated toe-contact/release technical test"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -34,9 +38,23 @@
   "channel_identity_source": "studio/config.json channels.monarch_cam.focus",
   "channel_focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
   "research_fit_rule": "Direct animal/nature audience competitors first; cross-niche packaging controls explicitly separate; no preselected species/episode",
-  "thumbnail_recovery_run": 44033622263,
-  "thumbnail_recovery_status": "queued at last observation; not inspected",
-  "fresh_primary_watch_metadata_records": 43,
+  "thumbnail_recovery_run": 44035199124,
+  "thumbnail_recovery_status": "success;17 actually visually inspected,26 new-run copies discarded uninspected",
+  "fresh_primary_watch_metadata_records": 46,
   "batch1_passed": false,
-  "age_date_note": "2026-11-14 instructed session date retained; remote GitHub clock reports Nov17, not used to silently change age basis"
+  "age_date_note": "2026-11-14 instructed session date retained; remote GitHub clock reports Nov17, not used to silently change age basis",
+  "actual_thumbnail_inspections": 17,
+  "secondary_original_posts": 7,
+  "recommended_batch2_candidate": "gecko directional attachment and release; tokay scope provisional",
+  "thumbnail_cleanup_run": 44036505583,
+  "thumbnail_cleanup_status": "queued after first partial cleanup failure; recheck pending",
+  "market_report_drive": {
+    "file_id": "1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl",
+    "url": "https://drive.google.com/file/d/1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl/view",
+    "parent": "1a2C3rWC1rwiz_2TNFAmpEndc3xKkETyF",
+    "size": 36872,
+    "md5": "46d4df9c4384195d011abeb5232390fb",
+    "local_md5_matches": true,
+    "permissions_verified": "one owner user; no anyone/domain permission; no sharing changed"
+  }
 }

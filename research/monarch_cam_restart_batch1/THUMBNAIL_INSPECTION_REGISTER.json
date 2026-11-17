@@ -1,0 +1,146 @@
+{
+  "actual_inspection_method": "read_file returned image pixels; human-facing notes authored from those actual images, no video playback",
+  "source_run": 44035199124,
+  "n_actual_inspected": 17,
+  "local_jpeg_remaining": 0,
+  "notes": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md",
+  "rows": [
+    {
+      "id": "VhW7Ze3USno",
+      "check_id": 133876837516,
+      "source_sha256": "cecfbb902f85fc76edd670ecba4c76d4076fedf9f4c02a08b02161d9d4bdfeee",
+      "inspection_copy_sha256": "4d819b2c7e9097464d0b0e0e828817b608a89b48470edff627dd4798d2fef6c3",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "BHbZ7bO68fA",
+      "check_id": 133876817150,
+      "source_sha256": "0a6d9c6726ad19e31d1b7431206eddc947fd2b7bcba7f6836f5a8bbca02dafe3",
+      "inspection_copy_sha256": "5d12d6a1fa1d77eb5ab304497d5d9deaa36251f23c7c691c516390f5612f8198",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "jU3nOWkZCCQ",
+      "check_id": 133876807704,
+      "source_sha256": "c5aad09213ee0d7dd79704c24159e47079791f0e6eb8ac95cad623da803e373f",
+      "inspection_copy_sha256": "d3de4488540e0640f8a3db058d67864f834bb5995703d702546a21d1915548cc",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "pmLHg_B8uoI",
+      "check_id": 133876934189,
+      "source_sha256": "d34ceaf7a8f8f53a40d261752eafa10b6ca4e5beefb66cc1c8fee903b1793d02",
+      "inspection_copy_sha256": "3670708276fb4d969969acf8ccc1e64a96e2f59f8ba8210474de3ecee2f582e6",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "3tmPS1p-vEQ",
+      "check_id": 133876919877,
+      "source_sha256": "67a5d4790944e2bbd71697e05d786d59bd8b54a9b92c9d30e39579e22358e44f",
+      "inspection_copy_sha256": "65f1b1163b8f37deeb7b7859eb8dd4fd6c39127f73ca5f9a1b5118a1ea3d9bec",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "1VGBy04nIjA",
+      "check_id": 133876928884,
+      "source_sha256": "e8bc3a9c8bdff4693ac90a4d48236159dde21f640ed7cca6a6f9a17be180b4b9",
+      "inspection_copy_sha256": "b78bd254c395d0d29a302f6831c7c2f4adb06e958f7c375093a873bfe069b477",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "cv-kZIz58Dk",
+      "check_id": 133876893159,
+      "source_sha256": "be8ba28f8cbf80bf0ab86e8a32cb5fcd36555bcf45852a2c116fef192a9e742f",
+      "inspection_copy_sha256": "665bc7f4408e4234deb6f8a1aa13a10b25b367c619c7508a6818b072349448c9",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "teHwadQsmK0",
+      "check_id": 133876915136,
+      "source_sha256": "466221cbef5e0332c27894aa1cc2be0440a8dcd34f2a467bc20d5abad58fb03b",
+      "inspection_copy_sha256": "9f87e0615855c4ec1ea3614ebad28634e5afcc8de482f77d2e6d229919a6e625",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "Sem1b9uzTd0",
+      "check_id": 133876909186,
+      "source_sha256": "6f7300366a96d2698bd10e249da40106b4d228a8465239e67a766478c4689821",
+      "inspection_copy_sha256": "c04ca06ccb67f6f94fc183b217f085ad3b22a0aabfa061b7708516c963db7aa0",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "uHd7zuWZHxk",
+      "check_id": 133876973828,
+      "source_sha256": "2241ca32c221d78f150230bc0cdd07c6ca7838939972a9c4ee37885d117819e8",
+      "inspection_copy_sha256": "d14b997a01c0023b774708e60416e8922aa810062bcaab027797cbce77da9081",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "ZgyAnhlGUIY",
+      "check_id": 133876982719,
+      "source_sha256": "c311dec8806d81dc2b6f50cff1cb89b28e561dc435fa68f8b168a2bd535bbbfb",
+      "inspection_copy_sha256": "207a95c2b81cf2d4a6ddca876fb4e4fe194733848eeaffd81b55e4577e55a8f6",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "sbBjwBHOnsk",
+      "check_id": 133876991618,
+      "source_sha256": "0c7c2c1fa46f0c9dbe47496014f5baa1b990bf1f2b26081f9e9f233e7ead89dd",
+      "inspection_copy_sha256": "6004af9dfca1db68fd8c16015a84f97508534fdcaca5305c3a55da6f88e6bdf3",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "IH_uv4h2xYM",
+      "check_id": 133876964119,
+      "source_sha256": "370889e47d929dd43d14cfad014d6d2bab7e4cf88ec54a2cad3ecd789b00d9c5",
+      "inspection_copy_sha256": "e21912140aad71b0553a633046d94fc35231d364a51af4482e01697db620cdfc",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "2KpNwcpAAd8",
+      "check_id": 133876959256,
+      "source_sha256": "ab922c7f92ab7e63a6cee5a8ae64a43502b3246ea236bdd1ec3a7c9e9c46210c",
+      "inspection_copy_sha256": "257f945c0192400bff0bcd3bceaa19b1aeb15ecad8dd84166f48ac35149e2a0d",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "2x5eOBJ37iE",
+      "check_id": 133876873524,
+      "source_sha256": "7166619f0e830a1af7375f80ff7ce1dada27bc4d5e81c4acaa658066a1102bb7",
+      "inspection_copy_sha256": "40852dcb756bf9bafe9a7937cd03a115784459eb84852d9221138c05ffa9aa02",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "z3H6fJ3t-Cs",
+      "check_id": 133876878102,
+      "source_sha256": "6edb8d481ed15f9094fbd8df3172c7c3969792846f77d5a87ade1b3a39ad29e5",
+      "inspection_copy_sha256": "15badce4cf419f4d49bfd1d1cf3b3e6880946655f8aaec9c3f4e629878946287",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    },
+    {
+      "id": "W0JbIKPE9mc",
+      "check_id": 133876943533,
+      "source_sha256": "9961c0234d64dc9f7e1e279021e557fa551e49bca5866185eba2d28551a47d72",
+      "inspection_copy_sha256": "19e5acd0344a9bd5cc13c614d9ccf0fc472513c13a481e3944a5827e76d80417",
+      "actual_image_opened": true,
+      "local_copy_deleted": true
+    }
+  ],
+  "remote_cleanup_status": "first attempt partially cleared14/59 then failed; exact root cause unavailable in restricted log route; resumed idempotently with bounded diagnostics run44036505583 pending"
+}

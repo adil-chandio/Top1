@@ -1,3 +1,5 @@
+> Historical intermediate checkpoint: current decision/17 actual thumbnail findings aur status ke liye BATCH1_MARKET_DECISION_ROMAN_URDU.md aur MARKET_DELIVERY_MANIFEST.json dekhein. Neeche ke pending counts us waqt ke hain.
+
 # Fresh Batch1 — format-separated performance aur title evidence
 
 ## Kaam actually executed

@@ -103,7 +103,7 @@ Working titles hain, final science-approved assertions nahin. Originality ka mat
 **Working title:** `Gecko chipakta hai—phir har qadam par chhootta kaise hai?`
 **Core promise:** ek qadam mein contact engage aur release ko same foot par samjhana; 'superglue feet' misconception ke bajaye controllable attachment. Toe angle, loading, hierarchical structures aur species scope Batch2 mein verify honge.
 **Original causal angle:** impressive grip se shuru kar ke problem reverse: strong contact tab useful hai jab rapid release possible ho. Whole-gecko trivia/Ze Frank humour remaking nahin.
-**Packaging hypothesis:** realistic foot-on-glass close-up, do toe positions aur restrained force/peel inset; short label `CHHOOTTA KAISE?`. Actual toe anatomy rights/inspection ke baghair fabricated photo evidence nahin. Thumbnail diagram ko clearly explanation label karna.
+**Packaging hypothesis:** realistic foot-on-glass close-up, do toe positions aur restrained directional load/release inset; short label `CHHOOTTA KAISE?`. Actual toe anatomy rights/inspection ke baghair fabricated photo evidence nahin. Thumbnail diagram ko clearly explanation label karna.
 **Market support:** Ze Frank broad gecko1.67M contextual signal; Animalogic misconception framing; Deep Look ant contrast clarity. Direct demand for our release-specific Roman Urdu angle unmeasured.
 **Hardest technical question for Batch2:** toes/lamellae contacting and peeling with credible articulated gait, no foot sliding or magical adhesion; macro-to-anatomy scale transition, not pan/zoom stills. Asset licence/rig/real render pass abhi N/A.
 

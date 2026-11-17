@@ -1,0 +1,34 @@
+{
+  "main_report": "research/monarch_cam_restart_batch1/MONARCH_CAM_MARKET_RESEARCH_DELIVERY_ROMAN_URDU.md",
+  "bytes": 36872,
+  "sha256": "27590d5907c6690d60915f67dd4138a9ae789436291237a72caf81731f7a41a3",
+  "components": [
+    "BATCH1_MARKET_DECISION_ROMAN_URDU.md",
+    "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md",
+    "BATCH2_GECKO_INITIAL_CLAIM_LEDGER_ROMAN_URDU.md"
+  ],
+  "quality_checks": [
+    "46 unique YouTube originals",
+    "17 actual image opens matched to hash receipts and written notes",
+    "7 individual secondary-platform originals",
+    "new medians/strand partitions recomputed",
+    "no local reference JPEG remaining",
+    "5 offline integrity tests passed"
+  ],
+  "limitations": [
+    "No CTR/retention causal attribution",
+    "No native video/audio inspection in Batch1",
+    "Remote image cleanup resume queued; not certified complete",
+    "Batch2 scientific/asset/technical gate not passed"
+  ],
+  "reference_image_drive_uploads": 0,
+  "drive": {
+    "file_id": "1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl",
+    "url": "https://drive.google.com/file/d/1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl/view",
+    "parent": "1a2C3rWC1rwiz_2TNFAmpEndc3xKkETyF",
+    "size": 36872,
+    "md5": "46d4df9c4384195d011abeb5232390fb",
+    "local_md5_matches": true,
+    "permissions_verified": "one owner user; no anyone/domain permission; no sharing changed"
+  }
+}
