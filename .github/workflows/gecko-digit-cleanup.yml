@@ -18,7 +18,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import json,os,urllib.request
+          import json,os,time,urllib.request,urllib.error
           from pathlib import Path
           d=json.loads(Path('research/monarch_cam_gecko_batch2/DIGIT_REFERENCE_RECOVERY.json').read_text())
           ids=[]
@@ -29,11 +29,18 @@ jobs:
           base='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
           def call(i,body=None):
               req=urllib.request.Request(base+'/check-runs/'+str(i),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
-              with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)
+              for attempt in range(5):
+                  try:
+                      with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)
+                  except (urllib.error.URLError,TimeoutError):
+                      if attempt==4:raise
+                      time.sleep(5*(attempt+1))
           for i in ids:
               c=call(i)
               assert c['head_sha']==d['head_sha'] and c['name'].startswith('gecko-anatomy-fig')
           for i in ids:
+              if call(i)['output']['summary'].startswith('Temporary image payload cleared'):continue
+              time.sleep(1)
               call(i,{'output':{'title':'Inspected digit reference transport cleared','summary':'Temporary image payload cleared after hash-verified recovery and actual pixel inspection. Evidence: DIGIT_REFERENCE_RECOVERY.json; findings: DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md. No production approval or reuse permission implied.'}})
               assert call(i)['output']['summary'].startswith('Temporary image payload cleared')
           print(json.dumps({'cleared_readback_verified':ids}))
