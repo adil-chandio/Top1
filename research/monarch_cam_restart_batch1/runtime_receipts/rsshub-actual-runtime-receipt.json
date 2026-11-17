@@ -1,0 +1,466 @@
+{
+  "tool": "rsshub",
+  "media_verified": false,
+  "visual_review_complete": false,
+  "container_started": true,
+  "http_status": 200,
+  "feed_item_count": 30,
+  "feeds": [
+    {
+      "channel": "Animagraffs - YouTube",
+      "items": [
+        {
+          "title": "How the Grumman F-14 Tomcat Works",
+          "url": "https://www.youtube.com/watch?v=n9-5G4bS0X4",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:52 GMT"
+        },
+        {
+          "title": "How Nuclear Power Works",
+          "url": "https://www.youtube.com/watch?v=PRWwXeRIvoI",
+          "feed_date_unverified": "Wed, 17 Jun 2026 04:35:52 GMT"
+        },
+        {
+          "title": "How a Trans-Atlantic Steam Ship Worked",
+          "url": "https://www.youtube.com/watch?v=tBN2o4rAt5A",
+          "feed_date_unverified": "Fri, 17 Apr 2026 04:35:52 GMT"
+        },
+        {
+          "title": "How I recreated Hoover Dam in 3D (historical accuracy, research, modeling, and more)",
+          "url": "https://www.youtube.com/watch?v=itj2t8Fv8xs",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "How Hoover Dam Works",
+          "url": "https://www.youtube.com/watch?v=4EdMImlZE2s",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "My Custom 3D Tools & Workflow for Creating Animagraffs (Blender)",
+          "url": "https://www.youtube.com/watch?v=OkadsUTl1Pw",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "How an Off-Road Racing Trophy Truck Works (Baja 1000)",
+          "url": "https://www.youtube.com/watch?v=_nR1-J676ao",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "How I recreated the Golden Gate Bridge (historical research + 3D modeling)",
+          "url": "https://www.youtube.com/watch?v=FiyrzMmA1zk",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "How the Golden Gate Bridge Works",
+          "url": "https://www.youtube.com/watch?v=RjbJwnUd3Pw",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:52 GMT"
+        },
+        {
+          "title": "How a 16th Century Explorer's Sailing Ship Works",
+          "url": "https://www.youtube.com/watch?v=3pYqXrFx6S8",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:52 GMT"
+        },
+        {
+          "title": "How a Helicopter Works (Bell 407)",
+          "url": "https://www.youtube.com/watch?v=u1lU64CG8p8",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:52 GMT"
+        },
+        {
+          "title": "How I reconstructed the SR-71 Blackbird (in-depth research, 3D modelling, animation, and more)",
+          "url": "https://www.youtube.com/watch?v=hP7CDg0id4I",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:52 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "fern - YouTube",
+      "items": [
+        {
+          "title": "The Most Dangerous Religious Movement in America",
+          "url": "https://www.youtube.com/watch?v=JaAn-rwwG6w",
+          "feed_date_unverified": "Fri, 13 Nov 2026 04:35:53 GMT"
+        },
+        {
+          "title": "How the Internet Exposed a $10,000,000 Scam",
+          "url": "https://www.youtube.com/watch?v=oc8G53Tbsvs",
+          "feed_date_unverified": "Fri, 06 Nov 2026 04:35:53 GMT"
+        },
+        {
+          "title": "NATO's Plan If Russia Attacks Tomorrow",
+          "url": "https://www.youtube.com/watch?v=kp0jkUqVuok",
+          "feed_date_unverified": "Tue, 03 Nov 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The Stoner Kids Dealing Guns to the Army",
+          "url": "https://www.youtube.com/watch?v=JN_d89-FEKk",
+          "feed_date_unverified": "Tue, 27 Oct 2026 04:35:53 GMT"
+        },
+        {
+          "title": "How Teenagers Got Past America's Toughest Security",
+          "url": "https://www.youtube.com/watch?v=88itHnh8eMI",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The Strangest Place on the Internet",
+          "url": "https://www.youtube.com/watch?v=dU7gCt-7kKk",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The Scariest Building in Europe",
+          "url": "https://www.youtube.com/watch?v=4zxG_oUxBg4",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The Most Disgusting Influencer Campaign of 2026",
+          "url": "https://www.youtube.com/watch?v=WOOwVvYoq5I",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:53 GMT"
+        },
+        {
+          "title": "Why El Mencho Was So Hard to Catch",
+          "url": "https://www.youtube.com/watch?v=d61n1isTfeo",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The FBI's Most Valuable Agent",
+          "url": "https://www.youtube.com/watch?v=hK8kzWOBi-U",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:53 GMT"
+        },
+        {
+          "title": "The Death of Educational Content on YouTube",
+          "url": "https://www.youtube.com/watch?v=-Gnrp_caPvo",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:53 GMT"
+        },
+        {
+          "title": "McDonald's Darkest Secret",
+          "url": "https://www.youtube.com/watch?v=65hjeAq6Oq0",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:53 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "Zack D. Films - YouTube",
+      "items": [
+        {
+          "title": "5 Unreleased Videos I Thought Would Go Viral",
+          "url": "https://www.youtube.com/watch?v=9uIbPuBT0Uo",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:54 GMT"
+        },
+        {
+          "title": "19 of My Creepiest Fiction Stories (Compilation)",
+          "url": "https://www.youtube.com/watch?v=BtwxvD1JYAk",
+          "feed_date_unverified": "Mon, 17 Aug 2026 04:35:54 GMT"
+        },
+        {
+          "title": "The 10-Second Time Machine",
+          "url": "https://www.youtube.com/watch?v=7rd6HWqvaHQ",
+          "feed_date_unverified": "Mon, 17 Aug 2026 04:35:54 GMT"
+        },
+        {
+          "title": "13 Unreleased Videos I Thought Would Go Viral",
+          "url": "https://www.youtube.com/watch?v=LAl3pCigzKY",
+          "feed_date_unverified": "Sun, 17 May 2026 04:35:54 GMT"
+        },
+        {
+          "title": "Ohio's 1986 Balloon Disaster",
+          "url": "https://www.youtube.com/watch?v=_XV6Jz3Xg18",
+          "feed_date_unverified": "Fri, 17 Nov 2023 04:35:54 GMT"
+        },
+        {
+          "title": "The Pepsi Contest That Killed 5 People",
+          "url": "https://www.youtube.com/watch?v=xXJeD1bkp7w",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "The Flamin' Hot Lie (explained)",
+          "url": "https://www.youtube.com/watch?v=0tDmU77bOwE",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "Toyota's $2,300,000,000 Mistake",
+          "url": "https://www.youtube.com/watch?v=GF-QAi6_Vjs",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "The Disturbing Story Behind The Starbucks Logo",
+          "url": "https://www.youtube.com/watch?v=dA_TfDAM4wQ",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "The Full Story of Norman (the animatronic puppet)",
+          "url": "https://www.youtube.com/watch?v=g65bBvh7Pmk",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "Alligator Gar: Houston's Best Kept Secret",
+          "url": "https://www.youtube.com/watch?v=emKpmO82AI4",
+          "feed_date_unverified": "Thu, 17 Nov 2022 04:35:54 GMT"
+        },
+        {
+          "title": "The Buc-ee's Empire",
+          "url": "https://www.youtube.com/watch?v=pd8R4lEI3AY",
+          "feed_date_unverified": "Wed, 17 Nov 2021 04:35:54 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "neo - YouTube",
+      "items": [
+        {
+          "title": "How the U.S. Doomsday Plane Works",
+          "url": "https://www.youtube.com/watch?v=krSePO1QsDI",
+          "feed_date_unverified": "Fri, 17 Jul 2026 04:35:55 GMT"
+        },
+        {
+          "title": "Why Gaddafi Hated Switzerland",
+          "url": "https://www.youtube.com/watch?v=4S_5w5ptiK0",
+          "feed_date_unverified": "Fri, 17 Apr 2026 04:35:55 GMT"
+        },
+        {
+          "title": "The Impossible Landing",
+          "url": "https://www.youtube.com/watch?v=5Nkad_6aigM",
+          "feed_date_unverified": "Tue, 17 Mar 2026 04:35:55 GMT"
+        },
+        {
+          "title": "The Most Controversial Place America Owns",
+          "url": "https://www.youtube.com/watch?v=iFbDHtQN3Bs",
+          "feed_date_unverified": "Wed, 17 Dec 2025 04:35:55 GMT"
+        },
+        {
+          "title": "The Biggest Art Scam in History",
+          "url": "https://www.youtube.com/watch?v=T4b57E7oHYc",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "Why China Is Building Ships in the Desert",
+          "url": "https://www.youtube.com/watch?v=HGQzlpu2I-I",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "How Pit Stops Are So Fast",
+          "url": "https://www.youtube.com/watch?v=vlUUrrwcUQw",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "The Deepwater Horizon Disaster",
+          "url": "https://www.youtube.com/watch?v=-lyyIvxy2Z4",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "How the U.S. Found Saddam Hussein",
+          "url": "https://www.youtube.com/watch?v=BwziJOvqFE0",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "Why This Japanese Island is Abandoned",
+          "url": "https://www.youtube.com/watch?v=7r0CHuqRkI8",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "The Unbelievable Chile Mine Rescue",
+          "url": "https://www.youtube.com/watch?v=6wJ52H0aq9Q",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        },
+        {
+          "title": "How Minecraft Was Made",
+          "url": "https://www.youtube.com/watch?v=EpqarCB9UD8",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:55 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "Real Science - YouTube",
+      "items": [
+        {
+          "title": "This Slug Should Be Impossible",
+          "url": "https://www.youtube.com/watch?v=IH_uv4h2xYM",
+          "feed_date_unverified": "Wed, 17 Dec 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Why Studying Sloths Is Basically Impossible",
+          "url": "https://www.youtube.com/watch?v=2KpNwcpAAd8",
+          "feed_date_unverified": "Wed, 17 Dec 2025 04:35:56 GMT"
+        },
+        {
+          "title": "The Frog That Unleashed the World\u2019s Most Lethal Pathogen",
+          "url": "https://www.youtube.com/watch?v=uGCaL_Ge6tg",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Dragonflies Are Not What You Think",
+          "url": "https://www.youtube.com/watch?v=nq_tGiprNlU",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "The Insane Biology of: The Pangolin",
+          "url": "https://www.youtube.com/watch?v=q1O5B8I6cXs",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Why This Giant Snake Is So Destructive",
+          "url": "https://www.youtube.com/watch?v=seVy6d9lQ0k",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "The Insane Biology of: The Saltwater Crocodile",
+          "url": "https://www.youtube.com/watch?v=Z5rCogD4e2k",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Why Animal Eyes Look So Weird",
+          "url": "https://www.youtube.com/watch?v=V6UTU80vnjE",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Why Nudibranchs Are Impressively Good at Existing",
+          "url": "https://www.youtube.com/watch?v=8cHQNBV0jRk",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "The Insane Biology of: Deep Sea Anglerfish",
+          "url": "https://www.youtube.com/watch?v=m-7E5_xXrvg",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "Why We're Not Sure How (And If) the Tasmanian Tiger Went Extinct",
+          "url": "https://www.youtube.com/watch?v=jXYyMFUKpIs",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        },
+        {
+          "title": "The Apex Predator We Still Don't Understand",
+          "url": "https://www.youtube.com/watch?v=1OSGNzrNXr8",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:56 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "Veritasium - YouTube",
+      "items": [
+        {
+          "title": "I finally saw quantum mechanics with my own eyes... (It's spookier than I expected)",
+          "url": "https://www.youtube.com/watch?v=KfODG5REyss",
+          "feed_date_unverified": "Thu, 05 Nov 2026 04:35:58 GMT"
+        },
+        {
+          "title": "Relativity is so much weirder than we thought...",
+          "url": "https://www.youtube.com/watch?v=eyZEqSPeMwg",
+          "feed_date_unverified": "Tue, 27 Oct 2026 04:35:58 GMT"
+        },
+        {
+          "title": "Fiber Optics are so much cooler than I thought",
+          "url": "https://www.youtube.com/watch?v=NiCgcUTL9_Q",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:58 GMT"
+        },
+        {
+          "title": "We're trying something new...",
+          "url": "https://www.youtube.com/watch?v=ONAuUyml0yI",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:58 GMT"
+        },
+        {
+          "title": "The Insane Real Engineering of the Nazi Enigma Machine",
+          "url": "https://www.youtube.com/watch?v=JsBZOcqZerk",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:58 GMT"
+        },
+        {
+          "title": "We sent a camera to space to film the solar eclipse",
+          "url": "https://www.youtube.com/watch?v=J1WoNuemKOg",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:58 GMT"
+        },
+        {
+          "title": "Is spider web really stronger than steel?",
+          "url": "https://www.youtube.com/watch?v=wt4p2oalmRY",
+          "feed_date_unverified": "Mon, 17 Aug 2026 04:35:58 GMT"
+        },
+        {
+          "title": "Why does every mammal get 1 billion heartbeats in their life?",
+          "url": "https://www.youtube.com/watch?v=tL9Lw250spc",
+          "feed_date_unverified": "Mon, 17 Aug 2026 04:35:58 GMT"
+        },
+        {
+          "title": "The Scariest Chart in Electrical Engineering",
+          "url": "https://www.youtube.com/watch?v=GK2pZ_oVU1o",
+          "feed_date_unverified": "Fri, 17 Jul 2026 04:35:58 GMT"
+        },
+        {
+          "title": "We've Been Using The Wrong Science In Court For 50 years",
+          "url": "https://www.youtube.com/watch?v=mvcesPWvUIc",
+          "feed_date_unverified": "Fri, 17 Jul 2026 04:35:58 GMT"
+        },
+        {
+          "title": "We're 99.9% sure this pattern is true, but no one can prove it",
+          "url": "https://www.youtube.com/watch?v=8HBDE-msUjw",
+          "feed_date_unverified": "Wed, 17 Jun 2026 04:35:58 GMT"
+        },
+        {
+          "title": "Something is jamming GPS over Europe. Here's what we found",
+          "url": "https://www.youtube.com/watch?v=tz23G_UXCGA",
+          "feed_date_unverified": "Wed, 17 Jun 2026 04:35:58 GMT"
+        }
+      ]
+    },
+    {
+      "channel": "Branch Education - YouTube",
+      "items": [
+        {
+          "title": "The 3-Nanometer Air Gap Inside Every Hard Drive",
+          "url": "https://www.youtube.com/watch?v=ZZTC_dXcC2o",
+          "feed_date_unverified": "Sun, 08 Nov 2026 04:35:59 GMT"
+        },
+        {
+          "title": "How does Tap to Pay Work?",
+          "url": "https://www.youtube.com/watch?v=N_6k_jd5pnA",
+          "feed_date_unverified": "Sat, 17 Oct 2026 04:35:59 GMT"
+        },
+        {
+          "title": "How do microSD Cards Store 2 TB in such a TINY space?",
+          "url": "https://www.youtube.com/watch?v=9kM3mnxrMMM",
+          "feed_date_unverified": "Thu, 17 Sep 2026 04:35:59 GMT"
+        },
+        {
+          "title": "How does Computer Cache, Memory, and Storage Work? \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f",
+          "url": "https://www.youtube.com/watch?v=TfhL5kBiQVI",
+          "feed_date_unverified": "Wed, 17 Jun 2026 04:35:59 GMT"
+        },
+        {
+          "title": "The Incredible Evolution of Computers",
+          "url": "https://www.youtube.com/watch?v=aa6YISbAJEA",
+          "feed_date_unverified": "Tue, 17 Mar 2026 04:35:59 GMT"
+        },
+        {
+          "title": "The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb How do CPUs Work?",
+          "url": "https://www.youtube.com/watch?v=16zrEPOsIcI",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:59 GMT"
+        },
+        {
+          "title": "The $200M Machine that Prints Microchips: The EUV Photolithography System",
+          "url": "https://www.youtube.com/watch?v=B2482h_TNwg",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:59 GMT"
+        },
+        {
+          "title": "How do Transistors Build into a CPU? \ud83d\udda5\ufe0f\ud83e\udd14 How do Transistors Work? \ud83d\udda5\ufe0f\ud83e\udd14",
+          "url": "https://www.youtube.com/watch?v=_Pqfjer8-O4",
+          "feed_date_unverified": "Mon, 17 Nov 2025 04:35:59 GMT"
+        },
+        {
+          "title": "How do Graphics Cards Work? Exploring GPU Architecture",
+          "url": "https://www.youtube.com/watch?v=h9Z4oGN89MU",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:59 GMT"
+        },
+        {
+          "title": "How does Ray Tracing Work in Video Games and Movies?",
+          "url": "https://www.youtube.com/watch?v=iOlehM5kNSk",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:59 GMT"
+        },
+        {
+          "title": "How are Microchips Made? \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps",
+          "url": "https://www.youtube.com/watch?v=dX9CGRZwD-w",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:59 GMT"
+        },
+        {
+          "title": "How do Digital and Analog Clocks Work?",
+          "url": "https://www.youtube.com/watch?v=oEC5fIw0bL0",
+          "feed_date_unverified": "Sun, 17 Nov 2024 04:35:59 GMT"
+        }
+      ]
+    }
+  ],
+  "date_warning": "Feed dates may be reconstructed from relative ages; verify exact upload dates independently."
+}

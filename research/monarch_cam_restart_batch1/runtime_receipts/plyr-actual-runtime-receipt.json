@@ -1,0 +1,20 @@
+{
+  "tool": "Plyr full browser component",
+  "video_id": "ZQvfHyfgBtA",
+  "playback_verified": false,
+  "visual_review_complete": false,
+  "component_created": true,
+  "iframe_count": 1,
+  "first": {
+    "time": 0,
+    "ready": true
+  },
+  "second": {
+    "time": 0,
+    "ready": true
+  },
+  "frame_text": [
+    "PausePlay\n00:00\n-07:55\nUnmuteMute\nDisable captionsEnable captions\nSettings\nPIPExit fullscreenEnter fullscreen\nPlay",
+    "Sign in to confirm you\u2019re not a bot\nThis helps protect our community\nSign in\nLearn more"
+  ]
+}

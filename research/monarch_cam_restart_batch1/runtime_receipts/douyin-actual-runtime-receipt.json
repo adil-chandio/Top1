@@ -1,0 +1,7 @@
+{
+  "tool": "douyin",
+  "media_verified": false,
+  "visual_review_complete": false,
+  "error_type": "HTTPError",
+  "http_status": 403
+}

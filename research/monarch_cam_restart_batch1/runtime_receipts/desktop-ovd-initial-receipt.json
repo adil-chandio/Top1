@@ -1,0 +1,13 @@
+{
+  "app": "ovd",
+  "full_desktop": true,
+  "process_started": true,
+  "input_attempted": true,
+  "download_verified": false,
+  "visual_reference_review": false,
+  "alive_before_input": true,
+  "before_ui_text": "",
+  "after_ui_text": "Your queue is empty\n\nAdd some videos to get started.\n\n",
+  "alive_after_input": true,
+  "temporary_app_profile_deleted": true
+}
