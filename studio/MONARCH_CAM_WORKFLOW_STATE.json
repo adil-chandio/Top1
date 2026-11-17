@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "complete_63_68s_private_review_delivered_drive_verified_quality_anatomy_not_passed",
+  "state": "user_rejected_complete_review_below_prior_multi_episode_quality",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -9,7 +9,7 @@
     "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
     "3": "written English script + generated63.68svoice + approximate acoustic cue map +66sanimatic available; conditional handoff with audioQC/finesync holds",
     "4": "66sreviewcutv3:48newmacroframes+prior180release/36hero;protected-termcaptions/Englishcreditssheet; sampledvisual/full-decodepassed,finalanatomy/listeningQCnotpassed",
-    "5": "Complete 63.68s English private review delivered on explicit user request; prior craft/anatomy rejection not reversed; not premium/publication approved."
+    "5": "User explicitly rejected complete review quality as cheap/low quality versus prior 4\u20135-video benchmark; not approved or final. No additional render started."
   },
   "current_artifacts": [
     "research/monarch_cam_restart_batch1/ANIMAL_CHANNEL_SCREEN_ROMAN_URDU.md",
@@ -472,5 +472,11 @@
       "owner_only_permissions_verified": true
     },
     "sampled_visual_review": "11 composited samples inspected; microscopic contact-gap corrected and corrected contact sample inspected. Craft/anatomy remain below target; no native AV listening claim."
+  },
+  "latest_user_quality_rejection": {
+    "artifact": "gecko-complete-english-review-v1.mp4",
+    "accepted": false,
+    "requested_benchmark": "Above prior 4\u20135 3D videos made together, triggered from another Arena chat",
+    "next_action": "Open requested branch PR; no new rendering or quality approval implied"
   }
 }

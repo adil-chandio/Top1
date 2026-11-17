@@ -181,3 +181,6 @@ User requested prior-level and beyond enhancement. Fresh standalone Blender scen
 
 ## Latest full-script delivery
 User ke explicit same-process full video + Drive instruction par 63.68s complete English private review export/upload hua. Drive: https://drive.google.com/file/d/1tyDnpOMVw1qHp9_JMPJx1tzNpTwwOcDa/view . Size/MD5 readback match, owner-only permission verified. Approved narration unchanged; 1592 frames/25fps, 720x1280 composition, 432x768 rendered sources, 132 release poses at ~12Hz plus static plates/reframing and original schematic inserts. Full decode passed; sampled visuals inspected, contact gap corrected. Yeh premium craft/anatomy validation ya publication clearance nahin. Aage har newly made video automatically private Drive upload + link, per standing instruction.
+
+## Latest user rejection — supersedes delivery acceptance implications
+User ne complete 63.68s review ko explicitly low-quality/cheap keh kar reject kiya. Required benchmark prior 4–5 jointly made 3D videos se bhi upar hai; delivered cut us requirement ko meet nahin karta. Delivery/upload successful hona creative acceptance nahin. No new render started. User requested current branch pull request; PR is for review, not final-video approval.
