@@ -1,0 +1,17 @@
+{
+  "type": "CalledProcessError",
+  "error": "Command '['yt-dlp', '--no-playlist', '--no-warnings', '--socket-timeout', '20', '--retries', '0', '--max-filesize', '50M', '--match-filter', 'duration < 60', '-f', 'best[height<=480]/best', '--write-info-json', '-o', '/tmp/tokay-motion/video.%(ext)s', 'https://vimeo.com/105308288']' returned non-zero exit status 1.",
+  "stderr": "Deprecated Feature: Support for Python version 3.10 has been deprecated. Please update to Python 3.11 or above\nERROR: [vimeo] 105308288: The web client only works when logged-in. Use --cookies, --cookies-from-browser, --username and --password, --netrc-cmd, or --netrc (vimeo) to provide account credentials. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how-do-i-pass-cookies-to-yt-dlp  for how to manually pass cookies\n",
+  "pixels_inspected": false,
+  "source_url": "https://vimeo.com/105308288",
+  "uploader_from_public_page": "Annual Reviews",
+  "run_id": 44115694838,
+  "source_commit": "02e4fa3",
+  "check_id": 134155014925,
+  "public_page_reviewed": true,
+  "caption_identifies": "2014 review Video3; toe peeling during climbing by a tokay gecko",
+  "movie_acquired": false,
+  "frames_inspected": 0,
+  "decision": "Stop this extractor path at explicit login requirement. No cookies, credentials, alternate clients or challenge bypass attempted.",
+  "rights": "Publisher copyright; no production reuse cleared."
+}
