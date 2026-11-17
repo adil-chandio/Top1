@@ -84,28 +84,6 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Emit the shard matrix
-        id: shards
-        run: |
-          set -euo pipefail
-          python - <<'PY' >> "$GITHUB_OUTPUT"
-          import json, re, sys
-          from pathlib import Path
-          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
-          SHARD = 26          # ~26 frames/job at ~45 s/frame ≈ 20 min
-          rows = []
-          for s in tl["shots"]:
-              slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
-              lo, hi, part = int(s["f_start"]), int(s["f_end"]), 1
-              while lo <= hi:
-                  last = min(lo + SHARD - 1, hi)
-                  rows.append({"id": s["id"], "slug": f"{slug}_{part}",
-                               "f_start": lo, "f_end": last})
-                  lo, part = last + 1, part + 1
-          print("shards=" + json.dumps(rows, separators=(",", ":")))
-          print(f"# {len(rows)} shards, {max(s['f_end'] for s in tl['shots'])} frames", file=sys.stderr)
-          PY
-
       - name: Restore Blender cache
         id: blender_cache
         uses: actions/cache@v4
@@ -168,6 +146,28 @@ jobs:
 
       - name: Download verified CC0 / MIT 3D assets
         run: python production/account1_ep01/fetch_assets.py
+
+      - name: Emit the shard matrix
+        id: shards
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re, sys
+          from pathlib import Path
+          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
+          SHARD = 26          # ~26 frames/job at ~45 s/frame ≈ 20 min
+          rows = []
+          for s in tl["shots"]:
+              slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
+              lo, hi, part = int(s["f_start"]), int(s["f_end"]), 1
+              while lo <= hi:
+                  last = min(lo + SHARD - 1, hi)
+                  rows.append({"id": s["id"], "slug": f"{slug}_{part}",
+                               "f_start": lo, "f_end": last})
+                  lo, part = last + 1, part + 1
+          print("shards=" + json.dumps(rows, separators=(",", ":")))
+          print(f"# {len(rows)} shards, {max(s['f_end'] for s in tl['shots'])} frames", file=sys.stderr)
+          PY
 
       - name: Verify prepared bundle
         run: |
