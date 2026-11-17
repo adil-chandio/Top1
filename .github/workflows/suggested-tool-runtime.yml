@@ -1,0 +1,42 @@
+name: Suggested tools actual runtime matrix
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/tool_runtime_matrix.py, research/monarch_cam_restart_batch1/plyr_runtime_test.cjs, .github/workflows/suggested-tool-runtime.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  tools:
+    strategy:
+      fail-fast: false
+      matrix:
+        tool: [last30days, douyin, rsshub]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.12'}
+      - run: python -m pip install yt-dlp
+      - name: Execute bounded tool-specific test
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TOOL_KIND: ${{ matrix.tool }}
+        run: python research/monarch_cam_restart_batch1/tool_runtime_matrix.py
+  plyr:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: |
+          npm install --no-save --ignore-scripts playwright@1.56.0 plyr@3.8.3
+          npx playwright install --with-deps chromium
+      - name: Run full browser component against reference
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node research/monarch_cam_restart_batch1/plyr_runtime_test.cjs
