@@ -1,0 +1,25 @@
+name: Gecko WebGL Infrastructure Benchmark
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install pinned rendering dependencies
+        working-directory: research/monarch_cam_gecko_batch5/webgl
+        run: npm ci --no-audit --no-fund
+      - name: Render 12 native-resolution benchmark frames
+        working-directory: research/monarch_cam_gecko_batch5/webgl
+        run: npm run benchmark
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gecko-webgl-infrastructure-benchmark
+          path: studio/runtime/gecko/webgl-benchmark/
+          retention-days: 1

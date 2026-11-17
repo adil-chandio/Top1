@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "full_length_replacement_render_started_not_complete_or_quality_approved",
+  "state": "webgl_migration_started_local_browser_missing_nss_remote_benchmark_prepared",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -496,6 +496,15 @@
     "quality_approved": false,
     "drive_uploaded": false,
     "next_steps": "Check actual render output; inspect samples and full decode, upload completed new video privately to Drive and return verified link. Do not claim next-level acceptance.",
-    "limitations": "Original illustrative asset; static exterior pose with animated perspective cameras and 3D microscopic explanatory shots; not a validated toe-release animation."
+    "limitations": "Original illustrative asset; static exterior pose with animated perspective cameras and 3D microscopic explanatory shots; not a validated toe-release animation.",
+    "stopped": true,
+    "stop_reason": "Migrating away from slow CPU Cycles following user direction to restore historical fast WebGL approach; incomplete file not deliverable."
+  },
+  "standing_execution_preference": "When user says make/start/continue, execute authorized work instead of replying with a plan or requesting routine approval.",
+  "webgl_benchmark": {
+    "script": "research/monarch_cam_gecko_batch5/webgl/benchmark.mjs",
+    "local_attempt": "Chromium launch blocked by missing libnss3/libnssutil3/libnspr4; no frames or speed result",
+    "workflow": ".github/workflows/gecko-webgl-benchmark.yml",
+    "quality_pass": false
   }
 }

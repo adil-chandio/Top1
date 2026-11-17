@@ -1,0 +1,7 @@
+{
+  "name": "monarch-gecko-webgl",
+  "private": true,
+  "type": "module",
+  "scripts": {"benchmark": "node benchmark.mjs"},
+  "dependencies": {"three": "0.170.0", "playwright-core": "1.51.1", "@sparticuz/chromium": "133.0.0"}
+}

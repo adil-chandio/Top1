@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Monarch WebGL infrastructure benchmark</title><style>body{margin:0;background:#061017}canvas{display:block}</style><script type="importmap">{"imports":{"three":"./node_modules/three/build/three.module.js","three/addons/":"./node_modules/three/examples/jsm/"}}</script><script type="module">
+import * as T from 'three';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {UnrealBloomPass} from 'three/addons/postprocessing/UnrealBloomPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+const r=new T.WebGLRenderer({antialias:true});r.setSize(720,1280);r.shadowMap.enabled=true;r.shadowMap.type=T.PCFSoftShadowMap;r.toneMapping=T.ACESFilmicToneMapping;document.body.append(r.domElement);
+const s=new T.Scene();s.background=new T.Color('#061017');s.fog=new T.FogExp2('#061017',.035);const c=new T.PerspectiveCamera(42,720/1280,.02,100);
+s.add(new T.HemisphereLight(0xa1c9dd,0x131514,1));for(const [pos,col,power] of [[[3,5,4],0xffba72,70],[[-3,2,1],0x71bdff,40]]){const l=new T.PointLight(col,power,30);l.position.set(...pos);l.castShadow=true;l.shadow.mapSize.set(1024,1024);s.add(l);}
+const plane=new T.Mesh(new T.BoxGeometry(20,.15,20),new T.MeshStandardMaterial({color:0x26383b,roughness:.9}));plane.position.y=-.15;plane.receiveShadow=true;s.add(plane);
+const ma=new T.MeshStandardMaterial({color:0xb29660,roughness:.48});const group=new T.Group();s.add(group);
+// Original 3D microscopic schematic, not a gecko asset or anatomical validation.
+for(let row=0;row<4;row++)for(let j=0;j<10;j++){const x=(j-4.5)*.33,z=(row-1.5)*.45;const points=[new T.Vector3(x-.12,1.35,z),new T.Vector3(x-.1,.8,z),new T.Vector3(x,.3,z),new T.Vector3(x+.13,.03,z)];const mesh=new T.Mesh(new T.TubeGeometry(new T.CatmullRomCurve3(points),18,.018,6,false),ma);mesh.castShadow=true;group.add(mesh);for(let k=0;k<3;k++){const tip=new T.Mesh(new T.SphereGeometry(.045,8,6),ma);tip.scale.set(1,.16,.65);tip.position.set(x+.1+k*.035,.012,z);tip.castShadow=true;group.add(tip);}}
+const composer=new EffectComposer(r);composer.addPass(new RenderPass(s,c));composer.addPass(new UnrealBloomPass(new T.Vector2(360,640),.14,.45,.9));composer.addPass(new OutputPass());window.renderFrame=f=>{const t=f/25;c.position.set(3+.1*Math.sin(t),3,5);c.lookAt(0,.55,0);composer.render();};window.renderFrame(0);window.ready=true;
+</script></html>
