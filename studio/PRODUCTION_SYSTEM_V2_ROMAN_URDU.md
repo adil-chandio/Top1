@@ -1,5 +1,7 @@
 # Production system v2 — custom visual storytelling
 
+> Current fresh-start scope aur five-batch status: [MONARCH_CAM_ACTIVE_WORKFLOW_ROMAN_URDU.md](MONARCH_CAM_ACTIVE_WORKFLOW_ROMAN_URDU.md). Neeche ka 20s/orca scope historical hai, current assignment nahin.
+
 ## Operating agreement
 
 Ek waqt mein Monarch Cam. Doosre channel par tabhi jana jab user delivered video dekh kar explicitly bole. Intermediate research, design, debugging aur revision approvals delegated. Current scope 20-second humpback/orca integrated proof hai, full film/publishing nahi. Diagnostic final nahi. No purchases without authorization.

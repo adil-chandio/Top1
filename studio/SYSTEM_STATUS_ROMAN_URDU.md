@@ -1,5 +1,7 @@
 # Current system status — authoritative short summary
 
+> Current fresh-start scope aur five-batch status: [MONARCH_CAM_ACTIVE_WORKFLOW_ROMAN_URDU.md](MONARCH_CAM_ACTIVE_WORKFLOW_ROMAN_URDU.md). Neeche ka 20s/orca scope historical hai, current assignment nahin.
+
 ## User contract
 Monarch Cam only. Original script ka continuous first 20s. Premium animation AND editing/motion design/compositing AND authored sound/music. Fresh research every stage. No routine approvals. Checked result in channel Drive folder. Only user explicitly authorizes moving to next channel. Last delivered opening is REJECTED, not reusable quality approval.
 
