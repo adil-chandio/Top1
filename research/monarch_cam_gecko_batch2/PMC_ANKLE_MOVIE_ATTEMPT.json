@@ -1,0 +1,17 @@
+{
+  "type": "CalledProcessError",
+  "error": "Command '['ffprobe', '-v', 'error', '-show_format', '-show_streams', '-of', 'json', '/tmp/tokay-motion/video.mov']' returned non-zero exit status 1.",
+  "stderr": "[mov,mp4,m4a,3gp,3g2,mj2 @ 0x55d36efd9a00] moov atom not found\n/tmp/tokay-motion/video.mov: Invalid data found when processing input\n",
+  "pixels_inspected": false,
+  "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/instance/8602014/bin/JOA-239-1503-s001.mov",
+  "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8602014/",
+  "doi": "10.1111/joa.13511",
+  "run_id": 44120675048,
+  "check_id": 134171404242,
+  "source_commit": "bc2c15a",
+  "movie_validated": false,
+  "frames_inspected": 0,
+  "cause_limits": "Downloaded response failed ffprobe: moov atom not found. Response headers/size/body were not preserved; do not infer corruption, challenge, access restriction or source movie defect. No decoded frames.",
+  "scope": "Article identifies level-glass Tokay walking, not a substitute for vertical-release timing.",
+  "next": "No unchanged retry; future intake must record response MIME/size/hash and validate container before extracting."
+}

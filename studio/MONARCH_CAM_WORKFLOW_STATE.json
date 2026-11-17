@@ -54,7 +54,9 @@
     "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_DECISION.md",
     "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_INSPECTION.json",
     "research/monarch_cam_gecko_batch2/LIVE_MOTION_PUBLISHER_DISCOVERY.json",
-    "research/monarch_cam_gecko_batch2/LIVE_MOTION_VIMEO_ATTEMPT.json"
+    "research/monarch_cam_gecko_batch2/LIVE_MOTION_VIMEO_ATTEMPT.json",
+    "research/monarch_cam_gecko_batch2/PMC_ANKLE_MOVIE_ATTEMPT.json",
+    "research/monarch_cam_gecko_batch2/LIVE_MOTION_FEASIBILITY_DECISION.md"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -358,8 +360,9 @@
     "context_photos_inspected": 3,
     "tokay_left_pes_identity_confirmed_for_context_photos": false,
     "live_motion_inspected": false,
-    "next_bounded_target": "Move to independent legitimately accessible identified Tokay motion source; exact Video3 acquisition is bounded closed unless lawful supplied copy becomes available.",
+    "next_bounded_target": "No automated motion retrieval queued. Require accessible identified reference or qualified motion/anatomy review; independent bookkeeping only until gate addressed.",
     "production_approved": false,
-    "live_motion_acquisition": "Official Annual Reviews public Vimeo105308288 identified; run44115694838 extractor explicitly requires login, stopped. No movie/frames."
+    "live_motion_acquisition": "PMC2021 independent supplement response failed container validation; zero frames. Serial acquisition loop now stopped.",
+    "retrieval_loop_closed": true
   }
 }
