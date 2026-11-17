@@ -366,7 +366,9 @@ window.__PEHRA_INIT__ = async (timeline) => {
     g.position.set(x, 0, z);
     g.rotation.y = rotY;
     scene.add(g);
-    window.__SOLDIER_SCALE__ = +soldierScale.toFixed(3);
+    window.__SOLDIER_SCALE__ = { base: soldierBase.size, min: soldierBase.min,
+                                 center: soldierBase.center,
+                                 scale: +soldierScale.toFixed(4) };
     return g;
   };
   guardA = mk(-6.4, -14.5, 0.52);
