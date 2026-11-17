@@ -11,25 +11,40 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 8
     steps:
-      - name: Clear only locally recovered and inspected short sheets
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Clear only hash-recovered and actually inspected staged payloads
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
           import json,os,urllib.request
+          from pathlib import Path
+          evidence=json.loads(Path('research/monarch_cam_craft_forensics/STAGED_RECOVERY_48f4e79.json').read_text())
+          assert len(evidence['recovered_sheets'])==73
+          assert all(s['actually_inspected'] and s['sha256'] and s['inspection_report'] for s in evidence['recovered_sheets'])
+          authorized={i for s in evidence['recovered_sheets'] for i in s['transport_check_ids']}
           base='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
           headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
           def call(path,body=None):
               r=urllib.request.Request(base+path,headers=headers,data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
               with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
-          ids=[];page=1
+          found={};page=1
           while True:
-              items=call('/commits/c8d388e767bebd2ea725f92baa36d2301c2e1f35/check-runs?per_page=100&page='+str(page))['check_runs']
+              items=call('/commits/'+evidence['source_commit']+'/check-runs?per_page=100&page='+str(page))['check_runs']
               for c in items:
-                  if not c['name'].startswith('cf-short-image-'):continue
-                  call('/check-runs/'+str(c['id']),{'output':{'title':'Inspected reference frame transport cleared','summary':'Temporary image payload cleared after local SHA256 recovery and actual inspection. Text findings retained in PENCIL_ACTUAL_FORENSICS_ROMAN_URDU.md; no reuse rights implied.'}})
-                  ids.append(c['id'])
+                  if c['id'] in authorized:
+                      assert c['name'].startswith(('cs-microchips-image-','cs-storm-image-'))
+                      found[c['id']]=c
               if len(items)<100:break
               page+=1
-          print(json.dumps({'cleared':len(ids),'ids':ids,'scope':'short sheets only; long not touched'}))
+          assert set(found)==authorized, 'Must resolve every authorized transport before changing any'
+          for ident in sorted(authorized):
+              call('/check-runs/'+str(ident),{'output':{'title':'Inspected reference frame transport cleared','summary':'Temporary image payload cleared after SHA256 recovery and actual visual inspection. Local review records: STAGED_RECOVERY_48f4e79.json; findings: MICROCHIPS_STORM_ACTUAL_FORENSICS_ROMAN_URDU.md. No reuse rights implied.'}})
+          verified=[]
+          for ident in sorted(authorized):
+              c=call('/check-runs/'+str(ident))
+              assert c['output']['summary'].startswith('Temporary image payload cleared')
+              verified.append(ident)
+          print(json.dumps({'cleared_and_readback_verified':len(verified),'ids':verified,'source_commit':evidence['source_commit'],'scope':'Only73 inspected staged sheets; receipts and newer watch run untouched'}))
           PY

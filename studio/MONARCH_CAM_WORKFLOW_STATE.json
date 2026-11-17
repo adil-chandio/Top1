@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "craft_research_73_staged_sheets_actually_inspected_production_held",
+  "state": "craft_research_independent_watch_acquisition_queued_production_held",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -296,6 +296,14 @@
       "Additional independent long-form actual review",
       "Action-centered dense windows with PTS and larger crops",
       "Revised English treatment before production"
-    ]
+    ],
+    "watch_acquisition": {
+      "run_id": 44085898064,
+      "source_commit": "0bd51e20efc586b68caa3cdee530aa261f609aca",
+      "last_verified_status": "queued",
+      "actual_watch_visual_inspection": false,
+      "progress_report": "research/monarch_cam_craft_forensics/WATCH_STUDY_PLAN_AND_PROGRESS_ROMAN_URDU.md"
+    },
+    "draft_treatment": "research/monarch_cam_craft_forensics/GECKO_RESEARCH_DERIVED_SHOT_TREATMENT_DRAFT.md"
   }
 }
