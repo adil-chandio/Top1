@@ -85,3 +85,9 @@ Runtime44038761446 success; hashes verified and bpy4.2 imported.36frame original
 
 ## Active checkpoint: Batch3, not another Batch2polish loop
 User approved bounded feasibility exit. Batch2 conditional go permits script/design only; no hidden waiver of anatomy/rights/final motion QC. Batch3 original Roman Urdu continuous script +8beat shot/edit/sound blueprint and claim mapping saved in research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ROMAN_URDU.md. Actual voice selection/generation/timing still pending. Anatomy transport6checks independently clear after workflow44045775261 success. Historical checkpoints above are retained as history, not current pending tasks.
+
+## Binding language correction (latest user instruction)
+Film content/narration/titles/on-screen text **English**. Roman Urdu sirf chat/project commentary. Earlier Roman Urdu narration draft superseded; Urdu voice-08 automatically assigned tha, user-selected nahin, production mein use nahin hoga. Active script: research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ENGLISH.md. Actual English voice timing pending. Yeh correction earlier contradictory narration-language wording ko supersede karta hai.
+
+## English narration actual timing checkpoint
+User-selected English audition09 / voice-09 generated in two clips33.20s+30.48s. Combined63.68s, no speed processing. NARRATION_TIMING_RECEIPT.json records hashes/PCM checks; no listening/pronunciation/prosody/seam pass claimed. MEASURED_AUDIO_EDIT_UPDATE.md supersedes old provisional65–80s windows; only33.20s part boundary and63.68s ending are actual timing anchors, internal beat boundaries pending. Urdu audition excluded. Chat Roman Urdu; all production content English.

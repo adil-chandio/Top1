@@ -1,0 +1,36 @@
+{
+  "voice_id": "voice-09",
+  "selection": "user selected English audition09",
+  "language": "English",
+  "speed_processing": "none",
+  "clips": [
+    {
+      "file": "studio/runtime/gecko/narration/english-part1.wav",
+      "duration_seconds": 33.2,
+      "sample_rate": 24000,
+      "channels": 1,
+      "sha256": "802c9cfffca67e2e7023694f84fa95c240dcd0e7cf7a12d8ea62a1e47c48ccd7"
+    },
+    {
+      "file": "studio/runtime/gecko/narration/english-part2.wav",
+      "duration_seconds": 30.48,
+      "sample_rate": 24000,
+      "channels": 1,
+      "sha256": "d9a1047ee2d59d91b50a28df8825fe0370937f7243761db885976ec8b1427fb7"
+    }
+  ],
+  "join": "direct sequential PCM concatenation; no added gap",
+  "total_seconds": 63.68,
+  "audio_listened_by_agent": false,
+  "status": "synthesized and file-duration measured; pronunciation/prosody/seam review pending",
+  "beat_timing": "part1 coversB1\u2013B5;part2coversB6\u2013B8; individual word/beat boundaries not measured",
+  "technical_signal_checks": {
+    "sample_width_bytes": 2,
+    "peak_pcm": 27570,
+    "peak_dbfs": -1.5002633770788842,
+    "rms_dbfs": -19.284896086324032,
+    "full_scale_samples": 0,
+    "note": "PCM peak/RMS only; not LUFS, intelligibility, pronunciation or listening QC"
+  },
+  "combined_sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8"
+}

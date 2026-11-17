@@ -3,7 +3,9 @@
     "monarch_cam": {
       "name": "Monarch Cam",
       "focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
-      "reference": "research/monarch_cam_market/SCRIPT_DRAFT_V2_ROMAN_URDU.md"
+      "reference": "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ENGLISH.md",
+      "content_language": "en",
+      "conversation_language": "Roman Urdu"
     },
     "extinct_life": {
       "name": "Extinct Life",

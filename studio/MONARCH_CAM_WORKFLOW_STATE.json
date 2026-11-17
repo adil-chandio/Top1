@@ -1,13 +1,13 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 3,
-  "state": "batch2_conditional_go_for_script_only_batch3_written_draft_complete_timing_pending",
+  "state": "batch3_english_narration_generated_duration_measured_audioQC_finesync_pending",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
     "1": "market_research_delivered_cleanup_independently_verified",
     "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
-    "3": "complete_written_script_and_film_blueprint_v1; actual_voice_timing_pending",
+    "3": "English written script and blueprint complete; user-selected voice09 synthesized;actual63.68s measured;audioQC and fine sync pending",
     "4": "not_started",
     "5": "not_started"
   },
@@ -34,9 +34,9 @@
     "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ROMAN_URDU.md"
   ],
   "next_required": [
-    "voice audition then actual narration generation and measured beat timing (written windows are estimates)",
-    "resolve binding anatomy/rights holds before final production visuals",
-    "Batch4 actual craft-reference inspection and full film production; no further Batch2generic-polish loop"
+    "review English pronunciation/prosody and clip seam; final audio QC not yet passed",
+    "derive precise beat/word boundaries from actual audio,not writing estimates",
+    "resolve anatomy/rights holds and perform Batch4craft-reference inspection/full production"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -103,5 +103,24 @@
       "per_asset_rights",
       "actual_narration_timing"
     ]
+  },
+  "content_language": "English",
+  "conversation_language": "Roman Urdu",
+  "active_script": "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ENGLISH.md",
+  "superseded_language_artifacts": [
+    "Roman Urdu voiceover draft; historical only",
+    "Urdu audition voice-08; automatically assigned, not user-selected; not for production"
+  ],
+  "narration": {
+    "voice_id": "voice-09",
+    "user_selected": true,
+    "language": "English",
+    "seconds": 63.68,
+    "parts_seconds": [
+      33.2,
+      30.48
+    ],
+    "audio_listening_QC": "pending; not claimed",
+    "receipt": "research/monarch_cam_gecko_batch3/NARRATION_TIMING_RECEIPT.json"
   }
 }
