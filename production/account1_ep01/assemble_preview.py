@@ -388,6 +388,31 @@ def main() -> None:
     }
     (out_dir / f"PEHRA_{tag}_QC.json").write_text(json.dumps(qc, indent=2), encoding="utf-8")
 
+    # A film that is not the length of its own timeline is a broken film.
+    # Fail loudly here rather than shipping it.
+    streams = probe.get("streams") or []
+    video = next((x for x in streams if x.get("codec_type") == "video"), None)
+    audio = next((x for x in streams if x.get("codec_type") == "audio"), None)
+    if video is not None:
+        got_dur = float(video.get("duration") or probe.get("format", {}).get("duration") or 0)
+        if got_dur and abs(got_dur - duration) > 0.25:
+            raise SystemExit(
+                f"duration mismatch: video is {got_dur:.3f}s, timeline wants {duration:.3f}s"
+            )
+        if video.get("width") != width or video.get("height") != height:
+            raise SystemExit(
+                f"resolution mismatch: {video.get('width')}x{video.get('height')} "
+                f"!= {width}x{height}"
+            )
+        print(f"[qc] video {video.get('codec_name')} {video.get('width')}x"
+              f"{video.get('height')} {got_dur:.3f}s")
+    else:
+        print("[qc] WARNING: ffprobe unavailable; duration not verified")
+    if audio is None:
+        raise SystemExit("no audio stream in the assembled film")
+    print(f"[qc] audio {audio.get('codec_name')} {audio.get('sample_rate')} Hz "
+          f"{audio.get('channels')} ch")
+
     # Bundle the exact timeline, master audio, and CC0 credits beside the video.
     shutil.copy2(timeline_path, out_dir / f"timeline_{tag}.json")
     shutil.copy2(audio_path, out_dir / f"master_{tag}.m4a")
