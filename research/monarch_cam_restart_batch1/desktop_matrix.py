@@ -34,7 +34,10 @@ with tempfile.TemporaryDirectory(prefix='gui-matrix-') as work:
      gui.click(590,128);gui.hotkey('ctrl','a');gui.hotkey('ctrl','v');time.sleep(1);gui.click(870,128)
     else:
      gui.click(290,36);gui.hotkey('ctrl','a');gui.hotkey('ctrl','v');time.sleep(1);gui.click(612,36)
-    r['input_attempted']=True;time.sleep(40)
+    r['input_attempted']=True;time.sleep(25)
+    if kind=='ovd':
+     gui.click(612,36);time.sleep(2);gui.press('tab');gui.press('enter');time.sleep(15)
+    else:time.sleep(15)
    subprocess.run(['scrot',str(root/(stage+'.png'))],check=True,timeout=10)
    shot=Image.open(root/(stage+'.png'))
    ocr=subprocess.run(['tesseract',str(root/(stage+'.png')),'stdout'],capture_output=True,text=True,timeout=20)
@@ -42,6 +45,7 @@ with tempfile.TemporaryDirectory(prefix='gui-matrix-') as work:
    shot.thumbnail((1000,700));b=io.BytesIO();shot.convert('RGB').save(b,'JPEG',quality=40)
    publish('desktop-'+kind+'-'+stage,{'jpeg_base64':base64.b64encode(b.getvalue()).decode()})
   r['alive_after_input']=proc.poll() is None
+  log.flush();r['runtime_log_excerpt']=(root/'app.log').read_text(errors='replace')[-3500:]
  except Exception as e:r['error_type']=type(e).__name__
  finally:
   if proc and proc.poll() is None:

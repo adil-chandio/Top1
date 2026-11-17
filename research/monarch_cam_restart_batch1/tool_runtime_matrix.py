@@ -53,7 +53,10 @@ try:
    except urllib.error.HTTPError as e:r.update(http_status=e.code,response_excerpt=e.read(4500).decode(errors='replace'))
    finally:subprocess.run(['docker','stop','rsshub-test'],capture_output=True,timeout=30)
   else:r['startup_error']=p.stderr[-2500:]
-except Exception as e:r['error_type']=type(e).__name__
+except Exception as e:
+ r['error_type']=type(e).__name__
+ if isinstance(e,NameError):r['missing_symbol']=str(e)[:150]
+ if isinstance(e,urllib.error.HTTPError):r['http_status']=e.code
 finally:
  body={'name':KIND+'-actual-runtime-receipt','head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':'Actual bounded runtime, not reference review','summary':json.dumps(r)}}
  req=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/check-runs',data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
