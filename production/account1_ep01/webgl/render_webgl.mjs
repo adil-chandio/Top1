@@ -101,20 +101,27 @@ async function main() {
     const page = await ctx.newPage();
     page.on('pageerror', (e) => errors.push(`[W${workerId}] ${e.message}`));
     page.on('console', (m) => { if (m.type() === 'error') errors.push(`[W${workerId}] ${m.text()}`); });
+    const tGoto = Date.now();
     await page.goto(`${baseUrl}/scene.html`, { waitUntil: 'networkidle' });
+    console.log(`[W${workerId}] page loaded in ${((Date.now()-tGoto)/1000).toFixed(1)}s`);
+    const tInit = Date.now();
     await page.evaluate(async (tl) => {
       window.__SET_TIMELINE__(tl);
       await window.__PEHRA_INIT__(tl);
     }, TIMELINE);
+    console.log(`[W${workerId}] stage initialised in ${((Date.now()-tInit)/1000).toFixed(1)}s`);
 
+    let n = 0;
     for (const f of frames) {
+      const tF = Date.now();
       await page.evaluate((idx) => window.__PEHRA_FRAME__(idx), f);
       await page.screenshot({
         path: path.join(FRAMES_DIR, `frame_${String(f).padStart(5, '0')}.jpg`),
         type: 'jpeg', quality: JPEG_Q,
       });
+      if (++n <= 3) console.log(`[W${workerId}] frame ${f} took ${((Date.now()-tF)/1000).toFixed(2)}s`);
       completed++;
-      if (completed % 120 === 0 || completed === TOTAL) {
+      if (completed % 30 === 0 || completed === TOTAL) {
         const el = ((Date.now() - tStart) / 1000).toFixed(1);
         console.log(`  ${completed}/${TOTAL} frames (${el}s, ${(completed / el).toFixed(2)} fps)`);
       }
