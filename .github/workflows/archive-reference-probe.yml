@@ -1,0 +1,20 @@
+name: Public archive reference acquisition
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/archive_reference_probe.py, .github/workflows/archive-reference-probe.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - name: One temporary public archive reference
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/monarch_cam_restart_batch1/archive_reference_probe.py

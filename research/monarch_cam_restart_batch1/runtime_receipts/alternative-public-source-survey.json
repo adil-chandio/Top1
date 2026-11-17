@@ -1,0 +1,1073 @@
+{
+  "method": "public_creator_archive_dataset_discovery",
+  "media_downloaded": false,
+  "visual_review_complete": false,
+  "results": [
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22Animagraffs%22&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 21,
+          "params": {
+            "query": "creator:&quot;Animagraffs&quot;",
+            "qin": "creator:&quot;Animagraffs&quot;",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 3,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "@animagraffs",
+              "identifier": "youtube_-_UCnZeeKO8qVdtkrA4-uKhtTw_2023",
+              "mediatype": "movies",
+              "title": "YouTube - UCnZeeKO8qVdtkrA4-uKhtTw (2023)"
+            },
+            {
+              "creator": "Animagraffs",
+              "identifier": "youtube-cIQ0yIZgQeE",
+              "mediatype": "movies",
+              "title": "How a Diesel-Electric Locomotive Works"
+            },
+            {
+              "creator": "Animagraffs",
+              "identifier": "youtube-Hszu80NJ438",
+              "mediatype": "movies",
+              "title": "How a Steam Locomotive Works (Union Pacific \"Big Boy\")"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=title%3A%22How+a+Car+Engine+Works%22&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 498,
+          "params": {
+            "query": "title:&quot;How a Car Engine Works&quot;",
+            "qin": "title:&quot;How a Car Engine Works&quot;",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 4,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "animagraffs.com (Jacob O'Neal)",
+              "identifier": "engine-02",
+              "mediatype": "image",
+              "title": "How a car engine works 2"
+            },
+            {
+              "identifier": "how-a-car-engine-works",
+              "mediatype": "movies",
+              "title": "How A Car Engine Works"
+            },
+            {
+              "creator": "animagraffs.com (Jacob O'Neal)",
+              "identifier": "engine-04",
+              "mediatype": "image",
+              "title": "How a car engine works 4"
+            },
+            {
+              "creator": "animagraffs.com (Jacob O'Neal)",
+              "identifier": "engine-01",
+              "mediatype": "image",
+              "title": "How a car engine works 1"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=title%3A%22The+Densest+City+on+Earth%22&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 30,
+          "params": {
+            "query": "title:&quot;The Densest City on Earth&quot;",
+            "qin": "title:&quot;The Densest City on Earth&quot;",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 1,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "Neo",
+              "identifier": "the-densest-city-on-earth",
+              "mediatype": "movies",
+              "title": "The Densest City On Earth"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22Zack+D%22&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 53,
+          "params": {
+            "query": "creator:&quot;Zack D&quot;",
+            "qin": "creator:&quot;Zack D&quot;",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 1282,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-ZcEyC-Ixf-g",
+              "mediatype": "movies",
+              "title": "She Poured Concrete Into A Storm Drain \ud83d\ude28"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-pI2GAoIfJ-8",
+              "mediatype": "movies",
+              "title": "Goldfish Survives 7 Years In A Filtration Tank \ud83d\ude2e"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-sgrUtubX7Pk",
+              "mediatype": "movies",
+              "title": "How We Should Handle Streakers \ud83e\udd14"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-2Vlq6nov9yI",
+              "mediatype": "movies",
+              "title": "How To Make A Cup From A Coconut \ud83e\udd14"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-HAK9tTOQi2I",
+              "mediatype": "movies",
+              "title": "The Dog Who Didn\u2019t Bark \ud83e\udd10 (fiction)"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-eC7LM7IFzPw",
+              "mediatype": "movies",
+              "title": "How To Make 30-Calorie Seafood Pasta \ud83e\udd28"
+            },
+            {
+              "creator": "ZACK D CONNECT",
+              "identifier": "nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn",
+              "mediatype": "image",
+              "title": "the worst image on danger mouse desktop"
+            },
+            {
+              "creator": "Zack D. Films",
+              "identifier": "youtube-KkCCQXdAh24",
+              "mediatype": "movies",
+              "title": "Can Being Underwater Protect You From Bullets? \ud83e\udd14"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22fern%22+AND+mediatype%3Amovies&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 26,
+          "params": {
+            "query": "creator:&quot;fern&quot; AND mediatype:movies",
+            "qin": "creator:&quot;fern&quot; AND mediatype:movies",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 69,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "fern",
+              "identifier": "the-kids-who-hacked-the-cia-480-ytshorts.savetube.me",
+              "mediatype": "movies",
+              "title": "The Kids Who Hacked The CIA"
+            },
+            {
+              "creator": "Fern",
+              "identifier": "gold_20260826_202608",
+              "mediatype": "movies",
+              "title": "gold"
+            },
+            {
+              "creator": "Tina&Fern",
+              "identifier": "youtube-odatDWByonw",
+              "mediatype": "movies",
+              "title": "Evanescence-Imaginary (with lyrics)"
+            },
+            {
+              "creator": "fern",
+              "identifier": "i1zD7dY7QYg",
+              "mediatype": "movies",
+              "title": "How Israel Kills Journalists"
+            },
+            {
+              "creator": "fern prynce",
+              "identifier": "you-are-loved-cinderpelt-animatic-1080p-30fps-h-264-128kbit-aac",
+              "mediatype": "movies",
+              "title": "you are loved (cinderpelt animatic)"
+            },
+            {
+              "creator": "fern",
+              "identifier": "the-death-of-educational-content-on-youtube",
+              "mediatype": "movies",
+              "title": "The Death of Educational Content on YouTube"
+            },
+            {
+              "creator": "Max Baby Fern",
+              "identifier": "videoplayback-7_202610",
+              "mediatype": "movies",
+              "title": "Best of JESUSNALGAS - TikTok Complications"
+            },
+            {
+              "creator": "Fern",
+              "identifier": "the-mc-donalds-glass-scandal-fern-1080p-h-264",
+              "mediatype": "movies",
+              "title": "The Mc Donald's Glass Scandal"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22Branch+Education%22&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 38,
+          "params": {
+            "query": "creator:&quot;Branch Education&quot;",
+            "qin": "creator:&quot;Branch Education&quot;",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 9,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "Branch Education",
+              "identifier": "branch-education",
+              "mediatype": "movies",
+              "title": "Branch Education"
+            },
+            {
+              "creator": "CANADA. DEPT. OF NORTHERN AFFAIRS AND NATIONAL RESOURCES. NORTHERN ADMINISTRATION BRANCH. EDUCATION DIVISION",
+              "identifier": "31761115579443",
+              "mediatype": "texts",
+              "title": "EDUCATION REVIEW - NORTHWEST TERRITORIES AND ARCTIC QUEBEC"
+            },
+            {
+              "creator": "CANADA. DEPT. OF INDIAN AFFAIRS AND NORTHERN DEVELOPMENT. NORTHERN ADMINISTRATIVE BRANCH. EDUCATION DIVISION",
+              "identifier": "31761115579559",
+              "mediatype": "texts",
+              "title": "NORTHWEST TERRITORIES - DRIVER INSTRUCTION PROGRAM"
+            },
+            {
+              "creator": "Josie Flett, Materials Production, Publications and Information Branch, Education Dept, Victoria",
+              "identifier": "educationalmaga01unkngoog",
+              "mediatype": "texts",
+              "title": "The educational magazine"
+            },
+            {
+              "creator": "CANADA. DEPT. OF INDIAN AFFAIRS AND NORTHERN DEVELOPMENT. NORTHERN ADMINISTRATION BRANCH. EDUCATION DIVISION",
+              "identifier": "31761115579591",
+              "mediatype": "texts",
+              "title": "SALLIQ - AN ESKIMO GRAMMAR"
+            },
+            {
+              "creator": "Branch Education",
+              "identifier": "howdographicscardwork",
+              "mediatype": "movies",
+              "title": "Branch Education - How do Graphics Card Work? [2160p]"
+            },
+            {
+              "creator": "Canada. Northern Administration Branch. Education Division",
+              "identifier": "northerneducatio00cana",
+              "mediatype": "texts",
+              "title": "Northern education : ten years of progress"
+            },
+            {
+              "creator": "Branch Education",
+              "identifier": "youtube-7J7X7aZvMXQ",
+              "mediatype": "movies",
+              "title": "How does Computer Memory Work? \ud83d\udcbb\ud83d\udee0"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22Real+Science%22+AND+mediatype%3Amovies&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 19,
+          "params": {
+            "query": "creator:&quot;Real Science&quot; AND mediatype:movies",
+            "qin": "creator:&quot;Real Science&quot; AND mediatype:movies",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 2,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "Real science",
+              "identifier": "the-insane-biology-of-the-greenland-shark",
+              "mediatype": "movies",
+              "title": "The Insane Biology Of The Greenland Shark"
+            },
+            {
+              "creator": "Real Science",
+              "identifier": "youtube-7aWL2iEb6y4",
+              "mediatype": "movies",
+              "title": "Why Crows Are as Smart as 7 Year Old Humans"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://archive.org/advancedsearch.php?q=creator%3A%22Veritasium%22+AND+mediatype%3Amovies&output=json&rows=8&fl%5B%5D=identifier&fl%5B%5D=title&fl%5B%5D=mediatype&fl%5B%5D=creator",
+      "data": {
+        "responseHeader": {
+          "status": 0,
+          "QTime": 44,
+          "params": {
+            "query": "creator:&quot;Veritasium&quot; AND mediatype:movies",
+            "qin": "creator:&quot;Veritasium&quot; AND mediatype:movies",
+            "fields": "identifier,title,mediatype,creator",
+            "wt": "json",
+            "rows": 8,
+            "start": 0
+          }
+        },
+        "response": {
+          "numFound": 112,
+          "start": 0,
+          "docs": [
+            {
+              "creator": "Veritasium",
+              "identifier": "youtube-eyZEqSPeMwg",
+              "mediatype": "movies",
+              "title": "No device could prove our theory of gravity wrong... until now"
+            },
+            {
+              "creator": "Veritasium",
+              "identifier": "2025_11_26-www_youtube_com_watch_v_HBluLfX2F_k-acb8f5f1",
+              "mediatype": "movies",
+              "title": "You've (Likely) Been Playing The Game of Life Wrong"
+            },
+            {
+              "creator": "Veritasium",
+              "identifier": "odysee_-_veritasium_202001",
+              "mediatype": "movies",
+              "title": "Odysee - Veritasium (202001)"
+            },
+            {
+              "creator": "Veritasium",
+              "identifier": "2025_12_31-www_youtube_com_watch_v_MiUHjLxm3V0-6e116ce4",
+              "mediatype": "movies",
+              "title": "The Ridiculous Engineering Of The World's Most Important Machine"
+            },
+            {
+              "creator": "Veritasium",
+              "identifier": "researching-happiness",
+              "mediatype": "movies",
+              "title": "Researching Happiness"
+            },
+            {
+              "creator": "veritasium",
+              "identifier": "veritasium_20240525",
+              "mediatype": "movies",
+              "title": "veritasium"
+            },
+            {
+              "creator": "Veritasium",
+              "identifier": "the-most-misunderstood-concept-in-physics-veritasium",
+              "mediatype": "movies",
+              "title": "The Most Misunderstood Concept in Physics"
+            },
+            {
+              "creator": "Veritasium em Portugu\\\u00eas",
+              "identifier": "LHRJLujsZuU",
+              "mediatype": "movies",
+              "title": "E se voc\\\u00ea continuar dando zoom?"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "url": "https://huggingface.co/api/datasets?search=animagraffs&limit=8",
+      "data": []
+    },
+    {
+      "url": "https://huggingface.co/api/datasets?search=zack&limit=8",
+      "data": [
+        {
+          "_id": "64bee75e12afb2f11969b2f1",
+          "id": "ZackBradshaw/Megalodon",
+          "author": "ZackBradshaw",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-07-24T21:04:30.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "3c448bc888f44694fb53e84143b2c954f742051c",
+          "downloads": 6,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2023-07-24T21:04:30.000Z",
+          "key": ""
+        },
+        {
+          "_id": "64e773ba14a7448ab96b0ac6",
+          "id": "zack01/instruct_qa_financial",
+          "author": "zack01",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-08-27T08:25:05.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "8555759a4ce5030e2848ae8215bc9d67a78e2450",
+          "downloads": 33,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2023-08-24T15:14:02.000Z",
+          "key": ""
+        },
+        {
+          "_id": "656e195a79a834846b31742f",
+          "id": "Zack157/burnley",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-12-04T18:34:16.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "c635929fa18c1e76385a22ebd2fac8e20a7b1694",
+          "downloads": 13,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2023-12-04T18:24:26.000Z",
+          "key": ""
+        },
+        {
+          "_id": "656fc803e2c3369baa4c937a",
+          "id": "Zack157/junin",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-12-06T01:02:34.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "98d6ded429a11dba80f03e1f4c7472e75441aa63",
+          "downloads": 13,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2023-12-06T01:01:55.000Z",
+          "key": ""
+        },
+        {
+          "_id": "6571221d907d85eaa5a7e1a6",
+          "id": "Zack157/burnleyv2",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-12-07T01:39:20.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "b1a08122fcecbb6a6a2d8df489b143d02a42b8d7",
+          "downloads": 11,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2023-12-07T01:38:37.000Z",
+          "key": ""
+        },
+        {
+          "_id": "6574e39b983403462a390e25",
+          "id": "Zack157/ZXCK",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2025-01-20T22:47:58.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "c1f286abfc962e4a9579cc7c8b345d2a554bff87",
+          "downloads": 12,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2023-12-09T22:00:59.000Z",
+          "key": ""
+        },
+        {
+          "_id": "65906606dfca9fad615827b5",
+          "id": "Zack157/modelchrisbrown",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-01-25T01:29:14.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "8a674af0c3337d7145039e75dc2af7dc0cf86823",
+          "downloads": 14,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2023-12-30T18:48:38.000Z",
+          "key": ""
+        },
+        {
+          "_id": "65addc31a92a64ef5b7a6c92",
+          "id": "Zack157/LG",
+          "author": "Zack157",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-01-22T03:09:34.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "aef05c332751c55ee2a6384cadb2a0be0650930c",
+          "downloads": 13,
+          "tags": [
+            "license:openrail",
+            "size_categories:n<1K",
+            "format:audiofolder",
+            "modality:audio",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2024-01-22T03:08:33.000Z",
+          "key": ""
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/api/datasets?search=youtube+video&limit=8",
+      "data": [
+        {
+          "_id": "6242e34d44c9c3b21be58861",
+          "id": "tskolm/youtube_top_popular_videos_comments",
+          "author": "tskolm",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2022-03-29T10:46:48.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "9558b3aebf458be990ca8a250f0f88e463325d2e",
+          "downloads": 47,
+          "tags": [
+            "size_categories:100K<n<1M",
+            "format:csv",
+            "modality:tabular",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2022-03-29T10:45:33.000Z",
+          "key": ""
+        },
+        {
+          "_id": "63efc5cf02ab9938d77babe1",
+          "id": "jettisonthenet/timeseries_trending_youtube_videos_2019-04-15_to_2020-04-15",
+          "author": "jettisonthenet",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-02-17T19:20:16.000Z",
+          "likes": 6,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "1366ecc76ebb3cae6a2bd564bf08e643a8ab581d",
+          "description": "Timeseries Trending YouTube Videos: 2019-04-15 to 2020-04-15\nThis dataset is a csv of one of the archived historical database tables queried from my non public database that contains time series data for period of 2019-04-15 to 2020-04-15. Video data was captured from the time they first appeared on trending list, and TSD exists until the video is removed from trending list.\nThis snapshot contains data for the 11,369 videos that appeared on trending within the timeframe, with 1,541,128 records\u2026 See the full description on the dataset page: https://huggingface.co/datasets/jettisonthenet/timeseries_trending_youtube_videos_2019-04-15_to_2020-04-15.",
+          "downloads": 143,
+          "tags": [
+            "language:en",
+            "size_categories:1M<n<10M",
+            "format:csv",
+            "modality:tabular",
+            "modality:text",
+            "modality:timeseries",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us",
+            "youtube",
+            "timeseries",
+            "time series",
+            "tsd",
+            "trending videos"
+          ],
+          "createdAt": "2023-02-17T18:22:07.000Z",
+          "key": ""
+        },
+        {
+          "_id": "6430c801eece62b995dbd907",
+          "id": "somosnlp-hackathon-2022/metadata_videos_canciones_youtube",
+          "author": "somosnlp-hackathon-2022",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-04-08T01:48:51.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "9e16c436a5ab3d007e2b947c836f9c41d47b2bae",
+          "downloads": 31,
+          "tags": [
+            "size_categories:1K<n<10K",
+            "format:parquet",
+            "modality:tabular",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2023-04-08T01:48:49.000Z",
+          "key": ""
+        },
+        {
+          "_id": "6430c88beece62b995dbdd02",
+          "id": "ID3/metadata_videos_canciones_youtube",
+          "author": "ID3",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-04-08T22:37:04.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "5a2bc03494d5b68222c870ae85ba247c612f9f13",
+          "downloads": 80,
+          "tags": [
+            "license:apache-2.0",
+            "size_categories:1K<n<10K",
+            "format:parquet",
+            "modality:tabular",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2023-04-08T01:51:07.000Z",
+          "key": ""
+        },
+        {
+          "_id": "64642605dfacc4d097bcf8a6",
+          "id": "tonarie/Wayback-Data-Youtube-Homepage-Videos",
+          "author": "tonarie",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-05-17T01:03:29.000Z",
+          "likes": 1,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "e6847209647855e5566bb78d43e06979d4846007",
+          "description": "Dataset capturing info for each video feature instance on the youtube homepage, 2005-2010, based on scraped wayback snapshots.\n",
+          "downloads": 89,
+          "tags": [
+            "license:mit",
+            "region:us"
+          ],
+          "createdAt": "2023-05-17T00:55:33.000Z",
+          "key": ""
+        },
+        {
+          "_id": "655d2bc8763ea35ecd32aa8b",
+          "id": "pavitemple/youtube-videos",
+          "author": "pavitemple",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2023-11-21T22:14:38.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "8f30a9be9172c92f017aa14e28a5dfa0ee964532",
+          "downloads": 2,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2023-11-21T22:14:32.000Z",
+          "key": ""
+        },
+        {
+          "_id": "668b01286d6f8eb8d599ff4d",
+          "id": "ClarityClips/youtube-video-summarization",
+          "author": "ClarityClips",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-07-07T21:17:24.000Z",
+          "likes": 6,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "ca33e3f950fc45e5a804d090c4cea2e43cb8584f",
+          "downloads": 69,
+          "tags": [
+            "task_categories:summarization",
+            "language:en",
+            "language:fr",
+            "license:mit",
+            "size_categories:n<1K",
+            "format:parquet",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2024-07-07T20:57:12.000Z",
+          "key": ""
+        },
+        {
+          "_id": "66b70cafb840335096de7605",
+          "id": "weege007/youtube_videos",
+          "author": "weege007",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-08-10T16:51:17.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "898df16e9cfdde05078ab628698fc650b98573f2",
+          "downloads": 263,
+          "tags": [
+            "size_categories:n<1K",
+            "format:text",
+            "modality:text",
+            "modality:video",
+            "library:datasets",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2024-08-10T06:46:07.000Z",
+          "key": ""
+        }
+      ]
+    },
+    {
+      "url": "https://huggingface.co/api/datasets?search=Video-MME&limit=8",
+      "data": [
+        {
+          "_id": "6ace3c4fbf6c54d1e80726cd",
+          "id": "aintropy-ai/video-mme-sample10",
+          "author": "aintropy-ai",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2026-10-13T17:36:03.000Z",
+          "likes": 3,
+          "trendingScore": 1,
+          "private": false,
+          "sha": "6eb049c5943f7e083d5677e017d1d32525c3fa5b",
+          "description": "\n\t\n\t\t\n\t\n\t\n\t\tVideo-MME 10% Sample\n\t\n\nA 10% random sample of the Video-MME benchmark: 90 of the 900 videos, with their 270 multiple-choice questions and 78 subtitle files. It was prepared by Aintropy for quick, low-cost evaluation runs and pipeline smoke tests.\nThis is not the original dataset and not an official release. The full benchmark, its paper and its leaderboard belong to the Video-MME authors:\n\nOriginal dataset on Hugging Face: https://huggingface.co/datasets/lmms-eval/Video-MME\nPaper:\u2026 See the full description on the dataset page: https://huggingface.co/datasets/aintropy-ai/video-mme-sample10.",
+          "downloads": 1582,
+          "tags": [
+            "task_categories:video-text-to-text",
+            "task_categories:visual-question-answering",
+            "language:en",
+            "size_categories:n<1K",
+            "format:json",
+            "modality:text",
+            "modality:video",
+            "library:datasets",
+            "library:pandas",
+            "library:polars",
+            "library:mlcroissant",
+            "arxiv:2405.21075",
+            "region:us",
+            "video",
+            "benchmark",
+            "video-understanding",
+            "multimodal"
+          ],
+          "createdAt": "2026-10-13T14:12:31.000Z",
+          "key": ""
+        },
+        {
+          "_id": "6662f7cd2b8a3cd48ea74f41",
+          "id": "lmms-eval/Video-MME",
+          "author": "lmms-eval",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-07-04T08:14:20.000Z",
+          "likes": 98,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "ead1408f75b618502df9a1d8e0950166bf0a2a0b",
+          "downloads": 74389,
+          "tags": [
+            "size_categories:1K<n<10K",
+            "format:parquet",
+            "modality:text",
+            "modality:video",
+            "library:datasets",
+            "library:pandas",
+            "library:polars",
+            "library:mlcroissant",
+            "region:us"
+          ],
+          "createdAt": "2024-06-07T12:06:37.000Z",
+          "key": ""
+        },
+        {
+          "_id": "670ce6aad8ddb67d9787bfbd",
+          "id": "ahmedheakl/arabic_videomme",
+          "author": "ahmedheakl",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-10-29T09:22:48.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "c335508b0c4210f54706ed3ab42e8dcaab40ef14",
+          "downloads": 67,
+          "tags": [
+            "size_categories:n<1K",
+            "format:parquet",
+            "modality:image",
+            "modality:text",
+            "library:datasets",
+            "library:dask",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2024-10-14T09:38:50.000Z",
+          "key": ""
+        },
+        {
+          "_id": "671e98dc3cf85ea3a5f1e9ed",
+          "id": "yizhilll/videomme_max-4096frames_high_2fps",
+          "author": "yizhilll",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-10-27T19:47:40.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "315cc8eb49f9c5214931b1bf9e7d052fb275f7cc",
+          "downloads": 11,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2024-10-27T19:47:40.000Z",
+          "key": ""
+        },
+        {
+          "_id": "67216b3734aa02337fafa354",
+          "id": "rohan2810/video-mme-short",
+          "author": "rohan2810",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2024-10-30T01:17:41.000Z",
+          "likes": 1,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "ed1afa4024c705bc2f23b03fe57e85ad9cbba2f7",
+          "downloads": 115,
+          "tags": [
+            "size_categories:n<1K",
+            "format:parquet",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2024-10-29T23:09:43.000Z",
+          "key": ""
+        },
+        {
+          "_id": "67422582f7ff3d28ec87c608",
+          "id": "vid-modeling/videomme",
+          "author": "vid-modeling",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2025-01-20T11:28:11.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "bcfd98d14d59c0038dd3264931ea5a22a03c7afd",
+          "downloads": 15250,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2024-11-23T18:57:06.000Z",
+          "key": ""
+        },
+        {
+          "_id": "679ca2c5ee236841c0d120fa",
+          "id": "js-hyun/preprocess-videomme-data",
+          "author": "js-hyun",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2025-06-23T23:55:34.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "686d50a3daf9466b3dff78eece2175e541266378",
+          "downloads": 219,
+          "tags": [
+            "region:us"
+          ],
+          "createdAt": "2025-01-31T10:15:33.000Z",
+          "key": ""
+        },
+        {
+          "_id": "67d1ad52ec8caff753c61243",
+          "id": "ziyjiang/MMEB_Pro_Video_Retrieval",
+          "author": "ziyjiang",
+          "disabled": false,
+          "gated": false,
+          "lastModified": "2025-03-12T17:02:50.000Z",
+          "likes": 0,
+          "trendingScore": 0,
+          "private": false,
+          "sha": "8451a225bcb2f942b326ee0d764ba713667ea3cd",
+          "downloads": 116,
+          "tags": [
+            "license:apache-2.0",
+            "size_categories:n<1K",
+            "format:parquet",
+            "modality:text",
+            "library:datasets",
+            "library:pandas",
+            "library:mlcroissant",
+            "library:polars",
+            "region:us"
+          ],
+          "createdAt": "2025-03-12T15:50:42.000Z",
+          "key": ""
+        }
+      ]
+    },
+    {
+      "url": "https://animagraffs.com/how-a-car-engine-works/",
+      "media_links": [],
+      "youtube_ids": []
+    },
+    {
+      "url": "https://animagraffs.com/how-a-handgun-works/",
+      "media_links": [],
+      "youtube_ids": []
+    },
+    {
+      "url": "https://www.zackdfilms.com/",
+      "media_links": [],
+      "youtube_ids": [
+        "drcLZMuyAHI",
+        "vniIZ2bYx2A",
+        "quePIIHPDeY",
+        "QJqqRN6dssk",
+        "YrXiHpSykZI",
+        "OEVs0ocJZr4",
+        "GWPz4-Z8j7U",
+        "GycFYrtbVqw",
+        "EHhqfU1kXxQ",
+        "KK3dkTtTcYY",
+        "GwgYkoaKcGI",
+        "Om2YY4n-jQ4",
+        "bm6iRlDf1Rk",
+        "VOI9-Gx2EaY",
+        "3501sPb6ZmM",
+        "sGKqKf5Lgm0",
+        "aWS0jm3ck90",
+        "5u8QXUKkL_w",
+        "arxhMfOZFiI",
+        "gYiLlAg-B1I"
+      ]
+    }
+  ]
+}
