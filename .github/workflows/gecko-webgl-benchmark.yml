@@ -1,5 +1,10 @@
 name: Gecko WebGL Infrastructure Benchmark
 on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - '.github/workflows/gecko-webgl-benchmark.yml'
+      - 'research/monarch_cam_gecko_batch5/webgl/**'
   workflow_dispatch:
 permissions:
   contents: read
