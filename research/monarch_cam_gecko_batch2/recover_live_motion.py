@@ -10,8 +10,12 @@ def emit(name,report):
  with urllib.request.urlopen(r,timeout=30) as f:print(json.load(f)['id'],flush=True)
 def run(cmd,timeout=90):return subprocess.run(cmd,capture_output=True,text=True,timeout=timeout,check=True)
 try:
- run(['yt-dlp','--no-playlist','--no-warnings','--socket-timeout','20','--retries','0','--max-filesize','50M','--match-filter','duration < 60','-f','best[height<=480]/best','--write-info-json','-o',str(OUT/'video.%(ext)s'),'https://vimeo.com/105308288'],150)
- info=json.loads((OUT/'video.info.json').read_text());video=next(p for p in OUT.glob('video.*') if p.suffix!='.json')
+ url='https://pmc.ncbi.nlm.nih.gov/articles/instance/8602014/bin/JOA-239-1503-s001.mov'
+ video=OUT/'video.mov'
+ with urllib.request.urlopen(url,timeout=60) as f: raw=f.read(30000001)
+ assert len(raw)<=30000000,'reference exceeds30MB cap'
+ video.write_bytes(raw)
+ info={'title':'Higham, Zhuang & Russell2021 Movie S1','uploader':'PMC author manuscript supplement','id':'PMC8602014-S1'}
  probe=json.loads(run(['ffprobe','-v','error','-show_format','-show_streams','-of','json',str(video)]).stdout)
  duration=float(probe['format']['duration']);assert duration<60
  # Whole movie one-second survey plus native consecutive frames in first release candidate interval.
@@ -27,7 +31,7 @@ try:
     # rows are 176px: retain source aspect ratio in 320x150 image area.
     im.thumbnail((320,150));sheet.paste(im,(x,y+24));draw.text((x+5,y+5),f'{mode} index {start+j}'+(f' ~{start+j}s' if mode=='survey' else f' seek4s frame+{start+j}'),fill='white')
    dest=OUT/f'{mode}-{start//24:02}.jpg';sheet.save(dest,quality=85);files.append((dest,len(frames[start:start+24])))
- receipt={'url':'https://vimeo.com/105308288','title':info.get('title'),'uploader':info.get('uploader'),'id':info.get('id'),'duration':duration,'media_sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'streams':[{k:s.get(k) for k in ['codec_type','width','height','avg_frame_rate','nb_frames']} for s in probe['streams']],'pixels_inspected':False,'capture_rate_not_established':True,'rights':'Annual Reviews copyright; reference only; no production reuse clearance'}
+ receipt={'url':url,'article':'https://pmc.ncbi.nlm.nih.gov/articles/PMC8602014/','title':info.get('title'),'uploader':info.get('uploader'),'id':info.get('id'),'duration':duration,'media_sha256':hashlib.sha256(video.read_bytes()).hexdigest(),'streams':[{k:s.get(k) for k in ['codec_type','width','height','avg_frame_rate','nb_frames']} for s in probe['streams']],'pixels_inspected':False,'capture_rate_not_established':True,'rights':'Anatomical Society2021 copyright; reference only; no production reuse clearance'}
  emit('tokay-motion-receipt',receipt)
  for p,count in files:
   raw=p.read_bytes();enc=base64.b64encode(raw).decode()
