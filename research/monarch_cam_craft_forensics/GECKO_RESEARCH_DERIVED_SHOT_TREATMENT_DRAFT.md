@@ -33,3 +33,14 @@ Make the viewer follow one toe from visible attachment to visible clearance. The
 6. No public upload, paid spend or unlicensed reference reuse. References guide principles; original assets/sequence required.
 
 No claim that these provisional66seconds fit the unchanged63.68s narration. This must be resolved in the written edit/voice map before rendering. No generic toe-polishing loop is authorized by this draft.
+
+## Revision after independent long and corrected action review
+Animagraffs locomotive originalcIQ0yIZgQeE now actually surveyed full-duration at1fps plus7short native-frame windows; see DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md. Corrected Microchips6x72frame windows actually reviewed; see MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md. This supersedes earlier independent-long-pending statement but not audio/anatomy/rights gates.
+
+- Beat3 must reveal **solid toe silhouette and growing physical gap before** microscopic explanation. Locomotive03:11.000–03:11.958 demonstrates separation before internal transparency; not a biological mechanism/timing analogy.
+- Beat4 ghosting only if it improves clarity; whole-foot translucency rejected if it hides pad/wall boundary. Engine/EGR survey shows risk of overlapping ghost layers.
+- Beat3/5 retain wall/reference edge through state change, like Microchips05:46–05:48.367 retains substrate edges. Highlight fading with unchanged planted geometry is insufficient.
+- Include established state, change, settled state. Microchips05:57–05:59.367 holds first then introduces local pattern; no constant cut quota.
+- Effects budget: if overlay blocks contact silhouette, remove it. Microchips19:01–19:03.367 particles compete with surface pattern; more motion is not automatically more explanation.
+
+Next design handoff: revised English script/voice-to-shot map and explicit realistic-versus-schematic rig decision. Draft alone does not authorize production. Remaining audio/nativeAV/detail review must not be relabeled complete.

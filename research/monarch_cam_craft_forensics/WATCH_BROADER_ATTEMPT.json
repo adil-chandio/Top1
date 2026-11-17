@@ -1,0 +1,59 @@
+{
+  "run_id": 44087213323,
+  "check_id": 134056404136,
+  "receipt": {
+    "identifier": "youtube-9_QsCLYs2mY",
+    "selected_file": null,
+    "actual_visual_inspection": false,
+    "audio_listened": false,
+    "stages": [],
+    "discovery": {
+      "numFound": 8,
+      "start": 0,
+      "docs": [
+        {
+          "creator": "UCnZeeKO8qVdtkrA4-uKhtTw",
+          "identifier": "youtube_-_UCnZeeKO8qVdtkrA4-uKhtTw_2022",
+          "title": "YouTube - UCnZeeKO8qVdtkrA4-uKhtTw (2022)"
+        },
+        {
+          "creator": "@animagraffs",
+          "identifier": "youtube_-_UCnZeeKO8qVdtkrA4-uKhtTw_2023",
+          "title": "YouTube - UCnZeeKO8qVdtkrA4-uKhtTw (2023)"
+        },
+        {
+          "identifier": "warc_animagraffs_com_20190522",
+          "title": "WARC: animagraffs.com 20190522"
+        },
+        {
+          "creator": "Disclose.tv",
+          "identifier": "youtube-alraEBqS5lU",
+          "title": "How the East Palestine train derailed, Ohio"
+        },
+        {
+          "creator": "Animagraffs",
+          "identifier": "youtube-cIQ0yIZgQeE",
+          "title": "How a Diesel-Electric Locomotive Works"
+        },
+        {
+          "creator": "SpreadShotNews",
+          "identifier": "spread-shot-news-669",
+          "title": "SpreadShotNews Podcast 669: Esta gente no para de caer para arriba - Mod Noxus Edition"
+        },
+        {
+          "creator": "Electric Future",
+          "identifier": "youtube-tQmFVcD-Mbo",
+          "title": "Solar 3.0: This New Technology Could Change Everything"
+        },
+        {
+          "creator": "Animagraffs",
+          "identifier": "youtube-Hszu80NJ438",
+          "title": "How a Steam Locomotive Works (Union Pacific \"Big Boy\")"
+        }
+      ]
+    },
+    "success": false,
+    "failed_stage": "metadata",
+    "error": "RuntimeError: Exact identifier and broader creator metadata scan yielded no bounded matching watch media; discovery preserved"
+  }
+}

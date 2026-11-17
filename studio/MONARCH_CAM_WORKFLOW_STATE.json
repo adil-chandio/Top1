@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "craft_research_independent_watch_acquisition_queued_production_held",
+  "state": "independent_long_and_corrected_action_frames_actually_reviewed_production_held",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -293,27 +293,39 @@
     "audio_listened": false,
     "every_native_frame_review": false,
     "next": [
-      "Additional independent long-form actual review",
-      "Action-centered dense windows with PTS and larger crops",
-      "Revised English treatment before production"
+      "Revised English script/voice-to-shot map",
+      "Explicit specimen-grounded realistic versus schematic rig decision",
+      "Audio/nativeAV and scientific/rights review before production"
     ],
     "watch_acquisition": {
       "run_id": 44087213323,
       "source_commit": "0d551e616fca419c11f75493b09abb92107cb429",
-      "last_verified_status": "queued; exact attempt44085898064 failed, broader metadata recovery pending",
+      "last_verified_status": "failed metadata,8broader results,no matching watch media",
       "actual_watch_visual_inspection": false,
       "progress_report": "research/monarch_cam_craft_forensics/WATCH_STUDY_PLAN_AND_PROGRESS_ROMAN_URDU.md"
     },
     "draft_treatment": "research/monarch_cam_craft_forensics/GECKO_RESEARCH_DERIVED_SHOT_TREATMENT_DRAFT.md",
     "staged_cleanup": {
-      "run_id": 44086750704,
-      "conclusion": "failure",
-      "independent_api_readback": {
-        "authorized_checks": 176,
-        "cleared": 151,
-        "uncleared": 25
-      },
-      "recovery": "idempotent resume with retry/backoff, pending"
+      "run_id": 44087384602,
+      "conclusion": "success",
+      "independently_verified_cleared_checks": 176
+    },
+    "independent_long": {
+      "original": "https://www.youtube.com/watch?v=cIQ0yIZgQeE",
+      "run_id": 44088454294,
+      "source_commit": "292611bd07cb87b1cfe0536df2285b3dce7579ae",
+      "survey_samples": 1513,
+      "survey_sheets_opened": 51,
+      "unique_dense_cells_viewed": 168,
+      "dense_duplicate_pages_not_counted": 14,
+      "report": "research/monarch_cam_craft_forensics/DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    "corrected_actions": {
+      "run_id": 44088883088,
+      "source_commit": "f99952f4aef83b2b1a34d9130d5bc71492cdc2c7",
+      "actually_opened_sheets": 18,
+      "unique_dense_frame_cells": 432,
+      "report": "research/monarch_cam_craft_forensics/MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md"
     }
   }
 }

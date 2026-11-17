@@ -1,0 +1,499 @@
+{
+  "source_commit": "f99952f4aef83b2b1a34d9130d5bc71492cdc2c7",
+  "references": [
+    {
+      "label": "microchips-actions",
+      "check_id": 134059992855,
+      "receipt": {
+        "identifier": "branch-education",
+        "selected_file": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.ia.mp4",
+        "actual_visual_inspection": false,
+        "audio_listened": false,
+        "stages": [],
+        "source_metadata": {
+          "title": "Branch Education",
+          "creator": "Branch Education",
+          "source": null,
+          "licenseurl": null
+        },
+        "listed_bytes": 161987008,
+        "bytes": 161987008,
+        "sha256": "3fc369f5a7ecb8c1bb7dc347862b201dcd391931552d3d404157f7ed3c40fb7e",
+        "duration": 1667.82,
+        "video": {
+          "width": 854,
+          "height": 480,
+          "r_frame_rate": "30/1",
+          "nb_frames": "50033"
+        },
+        "survey_interval": null,
+        "survey_omitted": "Action drill-down only; full1fps survey already inspected in48f4e79",
+        "dense_method": "72 consecutive decoded frames per seek, in three24-cell sheets; displayed filter PTS plus requested seek offset, not independent demuxer packet-PTS verification",
+        "dense_windows": [
+          346,
+          357,
+          375,
+          1120,
+          1141,
+          1447
+        ],
+        "sheets": [
+          {
+            "name": "dense-00-01.jpg",
+            "bytes": 151695,
+            "sha256": "bffc142d125d4f9895a30c19311896156b31a389ce637d54db4dd57e3b26709a",
+            "checks": [
+              134059585224,
+              134059590955,
+              134059596472,
+              134059602174
+            ]
+          },
+          {
+            "name": "dense-00-02.jpg",
+            "bytes": 111301,
+            "sha256": "b7cfa36b15e771736a6989855b981b29289780d7364cb3e80cac9271e1af9302",
+            "checks": [
+              134059608383,
+              134059614543,
+              134059620477
+            ]
+          },
+          {
+            "name": "dense-00-03.jpg",
+            "bytes": 107391,
+            "sha256": "2e4b3f4a6504a247cff62e4392d5a2e7a004cdbd6fa7dce503cfe0ff9abdcdb5",
+            "checks": [
+              134059627123,
+              134059633603,
+              134059639112
+            ]
+          },
+          {
+            "name": "dense-01-01.jpg",
+            "bytes": 92662,
+            "sha256": "cb279f1e158cf5a826890a7bb89dbd88efbe18b58debd682fd3a3087b373fb8c",
+            "checks": [
+              134059644093,
+              134059649133,
+              134059654334
+            ]
+          },
+          {
+            "name": "dense-01-02.jpg",
+            "bytes": 90665,
+            "sha256": "4b6be4ccda8c7f0dd1ba76bc6821a17f8b8ef8814dbde794bccc8023dad4eac1",
+            "checks": [
+              134059659234,
+              134059665015,
+              134059671370
+            ]
+          },
+          {
+            "name": "dense-01-03.jpg",
+            "bytes": 89755,
+            "sha256": "b0baaf4e37c0b455abe935c5a756c6be7baf2a0abd38551e2e6b413e51fbd915",
+            "checks": [
+              134059677479,
+              134059684806,
+              134059690898
+            ]
+          },
+          {
+            "name": "dense-02-01.jpg",
+            "bytes": 186618,
+            "sha256": "29ff7507120f3141756e2acba961f159eaba2bb8abe947e389e4c11e3895f4e0",
+            "checks": [
+              134059697332,
+              134059704146,
+              134059709950,
+              134059716033,
+              134059721722
+            ]
+          },
+          {
+            "name": "dense-02-02.jpg",
+            "bytes": 184187,
+            "sha256": "e584686cd7e88ea39f25fcb9f312fb2e14f5574aa812eaa0fcfe8bc4f4ea4006",
+            "checks": [
+              134059727929,
+              134059734412,
+              134059740460,
+              134059745197,
+              134059750460
+            ]
+          },
+          {
+            "name": "dense-02-03.jpg",
+            "bytes": 182861,
+            "sha256": "fc1026fe52ed89e34f9d6ac1c5aa1972b9eb459c8d4102426483612eac126167",
+            "checks": [
+              134059756394,
+              134059763076,
+              134059770968,
+              134059777366,
+              134059782526
+            ]
+          },
+          {
+            "name": "dense-03-01.jpg",
+            "bytes": 128659,
+            "sha256": "23be5261fc0c7ece5b2a35b35a7864985443bab713b812ebfd64c50d535790a0",
+            "checks": [
+              134059788134,
+              134059795304,
+              134059801695,
+              134059807204
+            ]
+          },
+          {
+            "name": "dense-03-02.jpg",
+            "bytes": 125861,
+            "sha256": "1e75a1c61da5c52b869a01c4f4a641f249c54f4dc2ae05ecc902adc0547830de",
+            "checks": [
+              134059812093,
+              134059817550,
+              134059823012,
+              134059829126
+            ]
+          },
+          {
+            "name": "dense-03-03.jpg",
+            "bytes": 125417,
+            "sha256": "5b23f8b70dbac1755ba2c0e455401eb07718be791808196271a0629517aa8fed",
+            "checks": [
+              134059835703,
+              134059842333,
+              134059848000,
+              134059854188
+            ]
+          },
+          {
+            "name": "dense-04-01.jpg",
+            "bytes": 150747,
+            "sha256": "d33254b22560e4dbf574c6f2b6da7e0e480f6a83771170fcebe1357857590ad0",
+            "checks": [
+              134059860159,
+              134059866576,
+              134059872833,
+              134059878346
+            ]
+          },
+          {
+            "name": "dense-04-02.jpg",
+            "bytes": 156820,
+            "sha256": "a9c9cbd218c3944ebe0962a9edd06b1788493f67aee82a98664acb6aeb0d5e84",
+            "checks": [
+              134059883990,
+              134059891275,
+              134059897110,
+              134059903035
+            ]
+          },
+          {
+            "name": "dense-04-03.jpg",
+            "bytes": 155208,
+            "sha256": "6421b1387ce2bb1436bdd7c62c857e695daefab255d218bcaaecf6e0112ac6f9",
+            "checks": [
+              134059908522,
+              134059914919,
+              134059920569,
+              134059925939
+            ]
+          },
+          {
+            "name": "dense-05-01.jpg",
+            "bytes": 80633,
+            "sha256": "4e65be0347afb3c2a44d2751d1079520259ef519c3fdf2b9fc357f0f505ad0b2",
+            "checks": [
+              134059931654,
+              134059938133
+            ]
+          },
+          {
+            "name": "dense-05-02.jpg",
+            "bytes": 118348,
+            "sha256": "d8fc7ece5169e78bb1d5126bff9a4f87916e97534bc1140aaf9d10b8ea2aa165",
+            "checks": [
+              134059944776,
+              134059951338,
+              134059957438
+            ]
+          },
+          {
+            "name": "dense-05-03.jpg",
+            "bytes": 130388,
+            "sha256": "98e94ef4d83d0aff0a0c561438c6cc869762105940fc2ce7da19bcb7f54c3fc0",
+            "checks": [
+              134059963790,
+              134059970022,
+              134059976152,
+              134059981969
+            ]
+          }
+        ],
+        "success": true,
+        "temporary_media_deleted": true
+      }
+    }
+  ],
+  "recovered_sheets": [
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-00-01.jpg",
+      "sha256": "bffc142d125d4f9895a30c19311896156b31a389ce637d54db4dd57e3b26709a",
+      "bytes": 151695,
+      "transport_check_ids": [
+        134059585224,
+        134059590955,
+        134059596472,
+        134059602174
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-00-02.jpg",
+      "sha256": "b7cfa36b15e771736a6989855b981b29289780d7364cb3e80cac9271e1af9302",
+      "bytes": 111301,
+      "transport_check_ids": [
+        134059608383,
+        134059614543,
+        134059620477
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-00-03.jpg",
+      "sha256": "2e4b3f4a6504a247cff62e4392d5a2e7a004cdbd6fa7dce503cfe0ff9abdcdb5",
+      "bytes": 107391,
+      "transport_check_ids": [
+        134059627123,
+        134059633603,
+        134059639112
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-01-01.jpg",
+      "sha256": "cb279f1e158cf5a826890a7bb89dbd88efbe18b58debd682fd3a3087b373fb8c",
+      "bytes": 92662,
+      "transport_check_ids": [
+        134059644093,
+        134059649133,
+        134059654334
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-01-02.jpg",
+      "sha256": "4b6be4ccda8c7f0dd1ba76bc6821a17f8b8ef8814dbde794bccc8023dad4eac1",
+      "bytes": 90665,
+      "transport_check_ids": [
+        134059659234,
+        134059665015,
+        134059671370
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-01-03.jpg",
+      "sha256": "b0baaf4e37c0b455abe935c5a756c6be7baf2a0abd38551e2e6b413e51fbd915",
+      "bytes": 89755,
+      "transport_check_ids": [
+        134059677479,
+        134059684806,
+        134059690898
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-02-01.jpg",
+      "sha256": "29ff7507120f3141756e2acba961f159eaba2bb8abe947e389e4c11e3895f4e0",
+      "bytes": 186618,
+      "transport_check_ids": [
+        134059697332,
+        134059704146,
+        134059709950,
+        134059716033,
+        134059721722
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-02-02.jpg",
+      "sha256": "e584686cd7e88ea39f25fcb9f312fb2e14f5574aa812eaa0fcfe8bc4f4ea4006",
+      "bytes": 184187,
+      "transport_check_ids": [
+        134059727929,
+        134059734412,
+        134059740460,
+        134059745197,
+        134059750460
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-02-03.jpg",
+      "sha256": "fc1026fe52ed89e34f9d6ac1c5aa1972b9eb459c8d4102426483612eac126167",
+      "bytes": 182861,
+      "transport_check_ids": [
+        134059756394,
+        134059763076,
+        134059770968,
+        134059777366,
+        134059782526
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-03-01.jpg",
+      "sha256": "23be5261fc0c7ece5b2a35b35a7864985443bab713b812ebfd64c50d535790a0",
+      "bytes": 128659,
+      "transport_check_ids": [
+        134059788134,
+        134059795304,
+        134059801695,
+        134059807204
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-03-02.jpg",
+      "sha256": "1e75a1c61da5c52b869a01c4f4a641f249c54f4dc2ae05ecc902adc0547830de",
+      "bytes": 125861,
+      "transport_check_ids": [
+        134059812093,
+        134059817550,
+        134059823012,
+        134059829126
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-03-03.jpg",
+      "sha256": "5b23f8b70dbac1755ba2c0e455401eb07718be791808196271a0629517aa8fed",
+      "bytes": 125417,
+      "transport_check_ids": [
+        134059835703,
+        134059842333,
+        134059848000,
+        134059854188
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-04-01.jpg",
+      "sha256": "d33254b22560e4dbf574c6f2b6da7e0e480f6a83771170fcebe1357857590ad0",
+      "bytes": 150747,
+      "transport_check_ids": [
+        134059860159,
+        134059866576,
+        134059872833,
+        134059878346
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-04-02.jpg",
+      "sha256": "a9c9cbd218c3944ebe0962a9edd06b1788493f67aee82a98664acb6aeb0d5e84",
+      "bytes": 156820,
+      "transport_check_ids": [
+        134059883990,
+        134059891275,
+        134059897110,
+        134059903035
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-04-03.jpg",
+      "sha256": "6421b1387ce2bb1436bdd7c62c857e695daefab255d218bcaaecf6e0112ac6f9",
+      "bytes": 155208,
+      "transport_check_ids": [
+        134059908522,
+        134059914919,
+        134059920569,
+        134059925939
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-05-01.jpg",
+      "sha256": "4e65be0347afb3c2a44d2751d1079520259ef519c3fdf2b9fc357f0f505ad0b2",
+      "bytes": 80633,
+      "transport_check_ids": [
+        134059931654,
+        134059938133
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-05-02.jpg",
+      "sha256": "d8fc7ece5169e78bb1d5126bff9a4f87916e97534bc1140aaf9d10b8ea2aa165",
+      "bytes": 118348,
+      "transport_check_ids": [
+        134059944776,
+        134059951338,
+        134059957438
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/f99952f/microchips-actions/dense-05-03.jpg",
+      "sha256": "98e94ef4d83d0aff0a0c561438c6cc869762105940fc2ce7da19bcb7f54c3fc0",
+      "bytes": 130388,
+      "transport_check_ids": [
+        134059963790,
+        134059970022,
+        134059976152,
+        134059981969
+      ],
+      "actually_inspected": true,
+      "inspection_report": "MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md",
+      "inspection_method": "Opened timestamped24-cell sheet; three distinct pages per72frame window"
+    }
+  ],
+  "actual_listening": false,
+  "full_every_frame_review": false,
+  "coverage_audit": {
+    "dense_unique_pages": 18,
+    "actually_opened_sheets": 18,
+    "frame_cells": 432,
+    "all_unique_pages_opened": true,
+    "audio_listened": false,
+    "full_every_frame_review": false
+  }
+}

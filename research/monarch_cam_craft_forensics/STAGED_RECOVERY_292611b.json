@@ -1,0 +1,1680 @@
+{
+  "source_commit": "292611bd07cb87b1cfe0536df2285b3dce7579ae",
+  "references": [
+    {
+      "label": "diesel",
+      "check_id": 134058702492,
+      "receipt": {
+        "identifier": "youtube-cIQ0yIZgQeE",
+        "selected_file": "cIQ0yIZgQeE.mp4",
+        "actual_visual_inspection": false,
+        "audio_listened": false,
+        "stages": [],
+        "source_metadata": {
+          "title": "How a Diesel-Electric Locomotive Works",
+          "creator": "Animagraffs",
+          "source": null,
+          "licenseurl": null
+        },
+        "listed_bytes": 155059374,
+        "bytes": 155059374,
+        "sha256": "5f47eeeec3086b717b634d9305364466df173a18451add597049cf0201217a8b",
+        "duration": 1512.765,
+        "video": {
+          "width": 854,
+          "height": 480,
+          "r_frame_rate": "24/1",
+          "nb_frames": "36305"
+        },
+        "survey_interval": 1,
+        "dense_method": "72 consecutive decoded frames per seek, in three24-cell sheets; displayed filter PTS plus requested seek offset, not independent demuxer packet-PTS verification",
+        "dense_windows": [
+          31,
+          157,
+          191,
+          239,
+          255,
+          898,
+          1019
+        ],
+        "sheets": [
+          {
+            "name": "dense-00-01.jpg",
+            "bytes": 74802,
+            "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+            "checks": [
+              134057624923,
+              134057630408
+            ]
+          },
+          {
+            "name": "dense-00-02.jpg",
+            "bytes": 74802,
+            "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+            "checks": [
+              134057636035,
+              134057644351
+            ]
+          },
+          {
+            "name": "dense-00-03.jpg",
+            "bytes": 74802,
+            "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+            "checks": [
+              134057652446,
+              134057658908
+            ]
+          },
+          {
+            "name": "dense-01-01.jpg",
+            "bytes": 136883,
+            "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+            "checks": [
+              134057665285,
+              134057671474,
+              134057678147,
+              134057684480
+            ]
+          },
+          {
+            "name": "dense-01-02.jpg",
+            "bytes": 136883,
+            "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+            "checks": [
+              134057689976,
+              134057696510,
+              134057702374,
+              134057708546
+            ]
+          },
+          {
+            "name": "dense-01-03.jpg",
+            "bytes": 136883,
+            "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+            "checks": [
+              134057714614,
+              134057720407,
+              134057726045,
+              134057731219
+            ]
+          },
+          {
+            "name": "dense-02-01.jpg",
+            "bytes": 91489,
+            "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+            "checks": [
+              134057736530,
+              134057742517,
+              134057747584
+            ]
+          },
+          {
+            "name": "dense-02-02.jpg",
+            "bytes": 91489,
+            "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+            "checks": [
+              134057752657,
+              134057758750,
+              134057765396
+            ]
+          },
+          {
+            "name": "dense-02-03.jpg",
+            "bytes": 91489,
+            "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+            "checks": [
+              134057771022,
+              134057777041,
+              134057783355
+            ]
+          },
+          {
+            "name": "dense-03-01.jpg",
+            "bytes": 93133,
+            "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+            "checks": [
+              134057788936,
+              134057794542,
+              134057800502
+            ]
+          },
+          {
+            "name": "dense-03-02.jpg",
+            "bytes": 93133,
+            "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+            "checks": [
+              134057805692,
+              134057810764,
+              134057815305
+            ]
+          },
+          {
+            "name": "dense-03-03.jpg",
+            "bytes": 93133,
+            "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+            "checks": [
+              134057820650,
+              134057826449,
+              134057831714
+            ]
+          },
+          {
+            "name": "dense-04-01.jpg",
+            "bytes": 104073,
+            "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+            "checks": [
+              134057838102,
+              134057845154,
+              134057852656
+            ]
+          },
+          {
+            "name": "dense-04-02.jpg",
+            "bytes": 104073,
+            "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+            "checks": [
+              134057858253,
+              134057865287,
+              134057870974
+            ]
+          },
+          {
+            "name": "dense-04-03.jpg",
+            "bytes": 104073,
+            "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+            "checks": [
+              134057876236,
+              134057881959,
+              134057887437
+            ]
+          },
+          {
+            "name": "dense-05-01.jpg",
+            "bytes": 143377,
+            "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+            "checks": [
+              134057893432,
+              134057900389,
+              134057906910,
+              134057914562
+            ]
+          },
+          {
+            "name": "dense-05-02.jpg",
+            "bytes": 143377,
+            "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+            "checks": [
+              134057921335,
+              134057927904,
+              134057933551,
+              134057938407
+            ]
+          },
+          {
+            "name": "dense-05-03.jpg",
+            "bytes": 143377,
+            "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+            "checks": [
+              134057943524,
+              134057949683,
+              134057955229,
+              134057961700
+            ]
+          },
+          {
+            "name": "dense-06-01.jpg",
+            "bytes": 110052,
+            "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+            "checks": [
+              134057972117,
+              134057986261,
+              134057999675
+            ]
+          },
+          {
+            "name": "dense-06-02.jpg",
+            "bytes": 110052,
+            "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+            "checks": [
+              134058012801,
+              134058024354,
+              134058039677
+            ]
+          },
+          {
+            "name": "dense-06-03.jpg",
+            "bytes": 110052,
+            "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+            "checks": [
+              134058048653,
+              134058054460,
+              134058059864
+            ]
+          },
+          {
+            "name": "survey-001.jpg",
+            "bytes": 72936,
+            "sha256": "2444374ef823beb29445c69ab5af38bcd3acabdd39ed360724b1b8bdb86c7e2d",
+            "checks": [
+              134058064730,
+              134058070885
+            ]
+          },
+          {
+            "name": "survey-002.jpg",
+            "bytes": 61134,
+            "sha256": "4c8c10d3d162b714c4d3da6293f9163093502ba6a88f77c748d1961959f9ac00",
+            "checks": [
+              134058076903,
+              134058083075
+            ]
+          },
+          {
+            "name": "survey-003.jpg",
+            "bytes": 66022,
+            "sha256": "149a86c510435f9b8bf380a6d617291dc39454d51d2a5eb730689411fbf0c89e",
+            "checks": [
+              134058089262,
+              134058095045
+            ]
+          },
+          {
+            "name": "survey-004.jpg",
+            "bytes": 50216,
+            "sha256": "acbeae9bc1402400c2bb8b9c76da16eb76156ec380b5ddfbc15b4ce1e2a8c95c",
+            "checks": [
+              134058102380,
+              134058108029
+            ]
+          },
+          {
+            "name": "survey-005.jpg",
+            "bytes": 56329,
+            "sha256": "804b46e0b493b23d01ce868d6f9b84668c39bc7185cd7b767681a0dfdbfc19bb",
+            "checks": [
+              134058113726,
+              134058119873
+            ]
+          },
+          {
+            "name": "survey-006.jpg",
+            "bytes": 57585,
+            "sha256": "6ff8f33fd15dff14ac1d52926c1b33c5d0cebf97c6970ca457ecda0d71da2228",
+            "checks": [
+              134058124964,
+              134058130362
+            ]
+          },
+          {
+            "name": "survey-007.jpg",
+            "bytes": 47600,
+            "sha256": "a9f622984b77bb7b7308db9faccf925ad5adc32ed36e42b9b854e3055b9b9216",
+            "checks": [
+              134058136118,
+              134058142024
+            ]
+          },
+          {
+            "name": "survey-008.jpg",
+            "bytes": 54197,
+            "sha256": "680e0362dd9c0e40e543bad051f80f677d606bcf2d4bddd6c35e1262b7cc50cb",
+            "checks": [
+              134058147517,
+              134058153011
+            ]
+          },
+          {
+            "name": "survey-009.jpg",
+            "bytes": 50611,
+            "sha256": "a3f9432e0b98d1a95225bd0836ff410732c36565e6306dd3de25df57419ffaf1",
+            "checks": [
+              134058158418,
+              134058163820
+            ]
+          },
+          {
+            "name": "survey-010.jpg",
+            "bytes": 52870,
+            "sha256": "b769f427533655b6b4fcddbb822e3345f7ca7226740b7a4d6ae1c4727266e8a8",
+            "checks": [
+              134058170137,
+              134058176495
+            ]
+          },
+          {
+            "name": "survey-011.jpg",
+            "bytes": 58226,
+            "sha256": "2babb9c45e6d5c3afad413b42ba3eb59af56455ce41b4e89beba087a0e81b91f",
+            "checks": [
+              134058182529,
+              134058187460
+            ]
+          },
+          {
+            "name": "survey-012.jpg",
+            "bytes": 61040,
+            "sha256": "80347cb05fcf7aaedfbe72e5783916da76839d48583c0b49f34c6f9dab6b2467",
+            "checks": [
+              134058193247,
+              134058198981
+            ]
+          },
+          {
+            "name": "survey-013.jpg",
+            "bytes": 60935,
+            "sha256": "eac081f861f818d63b4ebf8b9c46fa8349065ea00a40c0b6bf39f0c108e6d412",
+            "checks": [
+              134058205396,
+              134058211367
+            ]
+          },
+          {
+            "name": "survey-014.jpg",
+            "bytes": 46453,
+            "sha256": "f6339aac4e82788b667f5bd61c2045837771ed5330b5931b668b48f5c5e7945c",
+            "checks": [
+              134058216725,
+              134058223891
+            ]
+          },
+          {
+            "name": "survey-015.jpg",
+            "bytes": 47481,
+            "sha256": "1389fb3eae01cb344c4681bd9752eddf1df559d9875ae1aa096becdbf7030db0",
+            "checks": [
+              134058231527,
+              134058237651
+            ]
+          },
+          {
+            "name": "survey-016.jpg",
+            "bytes": 62749,
+            "sha256": "8ada8091a0b86c3ab79b0d6655be6fbac49017287f47a6c2dbe5f20c72e5a29c",
+            "checks": [
+              134058244054,
+              134058250035
+            ]
+          },
+          {
+            "name": "survey-017.jpg",
+            "bytes": 61519,
+            "sha256": "0cd751276349b71e8e4082ab441008e440b579657727f8359f31261d3ed365d0",
+            "checks": [
+              134058256741,
+              134058262463
+            ]
+          },
+          {
+            "name": "survey-018.jpg",
+            "bytes": 41934,
+            "sha256": "0b4c77f6b3f5c70fbb4ecdec2ac4b43642b4480b06342a4c01ee8c77849a0ecd",
+            "checks": [
+              134058268347,
+              134058275510
+            ]
+          },
+          {
+            "name": "survey-019.jpg",
+            "bytes": 55870,
+            "sha256": "6c903a9d765aaf2d0d024bac01171c4a98d079d007687eb7ad8383b3c7eb0fcb",
+            "checks": [
+              134058281020,
+              134058286261
+            ]
+          },
+          {
+            "name": "survey-020.jpg",
+            "bytes": 64669,
+            "sha256": "58185f42880a00fbd3877e2feccfef9d8e8b73a5a18329278dcc552617d871b5",
+            "checks": [
+              134058292118,
+              134058298049
+            ]
+          },
+          {
+            "name": "survey-021.jpg",
+            "bytes": 56917,
+            "sha256": "2a89fb016e3a9662b85ba0f1743f02b452efa6155a5e33b3c86828daf1c6386b",
+            "checks": [
+              134058303146,
+              134058308385
+            ]
+          },
+          {
+            "name": "survey-022.jpg",
+            "bytes": 48849,
+            "sha256": "8b54e836142b88d6b086620ae9fab02072c82da6f923d943ad3995c011cd967b",
+            "checks": [
+              134058314148,
+              134058321133
+            ]
+          },
+          {
+            "name": "survey-023.jpg",
+            "bytes": 67328,
+            "sha256": "7418da5ed72a64e5cfb2501a1c001ed7a31af7759a038e50b4bf3a82a4074266",
+            "checks": [
+              134058326391,
+              134058333237
+            ]
+          },
+          {
+            "name": "survey-024.jpg",
+            "bytes": 60226,
+            "sha256": "28f1e455cde63ae4ef7b64d0450d2095b360020c6cf5f6c7069214d98209b2c8",
+            "checks": [
+              134058339677,
+              134058345535
+            ]
+          },
+          {
+            "name": "survey-025.jpg",
+            "bytes": 64523,
+            "sha256": "43abf5bc75ac238796ae4abd9026b5a38c9721ee04183b792fd82a4d38d95967",
+            "checks": [
+              134058351374,
+              134058357245
+            ]
+          },
+          {
+            "name": "survey-026.jpg",
+            "bytes": 77532,
+            "sha256": "a5b96e82a97d5e0359bc829782a5d9790e5e4aef6afaa5e0ea05cf16604d40aa",
+            "checks": [
+              134058363566,
+              134058370690
+            ]
+          },
+          {
+            "name": "survey-027.jpg",
+            "bytes": 65258,
+            "sha256": "7ccb609fe43ffd0092b155d6d55dfe3d7c135ac28cbce37a73e01006cc4c6f8e",
+            "checks": [
+              134058376012,
+              134058382056
+            ]
+          },
+          {
+            "name": "survey-028.jpg",
+            "bytes": 59482,
+            "sha256": "53b68820d4116cdddebeeaca9ea1110b55d028999baee64d300560b395d3875b",
+            "checks": [
+              134058388172,
+              134058393986
+            ]
+          },
+          {
+            "name": "survey-029.jpg",
+            "bytes": 58660,
+            "sha256": "eb020f6b54b4d11d2ee1a40a5bbb516d526c8ae6fcac5ffcd56ab53189a622d2",
+            "checks": [
+              134058400265,
+              134058406011
+            ]
+          },
+          {
+            "name": "survey-030.jpg",
+            "bytes": 60157,
+            "sha256": "2db0ff26d76f7c456ad642236de4a671e39e84bb550b4be01719fe028f6062b2",
+            "checks": [
+              134058411799,
+              134058417241
+            ]
+          },
+          {
+            "name": "survey-031.jpg",
+            "bytes": 52605,
+            "sha256": "6eeb04dca9830a146f9098650861715a8a28e48a733217c61ef4774a01aec76d",
+            "checks": [
+              134058424599,
+              134058430373
+            ]
+          },
+          {
+            "name": "survey-032.jpg",
+            "bytes": 66628,
+            "sha256": "06894f5a08a12116bbd2c194b34f278e86bf7928fdf9d987c246b1c04cbd6985",
+            "checks": [
+              134058438143,
+              134058445248
+            ]
+          },
+          {
+            "name": "survey-033.jpg",
+            "bytes": 63076,
+            "sha256": "dfe4f6ead3ac896c23d0272c5ba12514bc0a8f12e499812efa8d791f8e93cf45",
+            "checks": [
+              134058451362,
+              134058457404
+            ]
+          },
+          {
+            "name": "survey-034.jpg",
+            "bytes": 55623,
+            "sha256": "ec775e4105c1d71f9776c5c970eb0c4279c0dba7c0ff008c66ce0c6f860e9c7b",
+            "checks": [
+              134058463449,
+              134058469127
+            ]
+          },
+          {
+            "name": "survey-035.jpg",
+            "bytes": 48327,
+            "sha256": "9fd557bcb80df18bd9bd145eca21aaa5d09b5adeace5cb741704c710e704db2c",
+            "checks": [
+              134058474704,
+              134058480758
+            ]
+          },
+          {
+            "name": "survey-036.jpg",
+            "bytes": 67470,
+            "sha256": "8ea5b760e1474c42b7641ebb49ddac12ef74831f90bd5484b765fb9e42cd86db",
+            "checks": [
+              134058487593,
+              134058493839
+            ]
+          },
+          {
+            "name": "survey-037.jpg",
+            "bytes": 47591,
+            "sha256": "b3610540727d7132a1d6f2c6e5e7e5b5a75e2d13e3b9227d2eb70069aba2db58",
+            "checks": [
+              134058499859,
+              134058505824
+            ]
+          },
+          {
+            "name": "survey-038.jpg",
+            "bytes": 48323,
+            "sha256": "2fe01854fa3d6ab0cb21e0c61135a7b4f0f244621caba2b3875dc2ee6d4c35a5",
+            "checks": [
+              134058511455,
+              134058516848
+            ]
+          },
+          {
+            "name": "survey-039.jpg",
+            "bytes": 57658,
+            "sha256": "60c4585218515919cef3cd166da59642260c0d3fd93bbb1f8dd3330a0ad3c65f",
+            "checks": [
+              134058522680,
+              134058528425
+            ]
+          },
+          {
+            "name": "survey-040.jpg",
+            "bytes": 47459,
+            "sha256": "eb5c5e26cdfe2e99f97dcced9467ea59da8a42f561ae7155173ef583b0f52f14",
+            "checks": [
+              134058534521,
+              134058542014
+            ]
+          },
+          {
+            "name": "survey-041.jpg",
+            "bytes": 78955,
+            "sha256": "e6d1275915eb0b98896d9e9a0eb13f80cb4b4be39d87390c7b282797613801e4",
+            "checks": [
+              134058547919,
+              134058554981
+            ]
+          },
+          {
+            "name": "survey-042.jpg",
+            "bytes": 62188,
+            "sha256": "49fceda291aca3f93a79fd7e7efe2e2cfb37dba5a28e602106c27d06adabf56b",
+            "checks": [
+              134058561372,
+              134058567158
+            ]
+          },
+          {
+            "name": "survey-043.jpg",
+            "bytes": 92189,
+            "sha256": "1ce9222ce1180b762046e7b173cbcf92f6d2e36d79ed60e31e0b63648d8b84e5",
+            "checks": [
+              134058574306,
+              134058579736,
+              134058585157
+            ]
+          },
+          {
+            "name": "survey-044.jpg",
+            "bytes": 94633,
+            "sha256": "e911940ab6e53a4c4ca10e33a4592a4443cec3f216446004d9e4561a5634ec90",
+            "checks": [
+              134058590643,
+              134058598007,
+              134058604094
+            ]
+          },
+          {
+            "name": "survey-045.jpg",
+            "bytes": 92351,
+            "sha256": "be9d9509b0fb179bbbb1bb83047209938646638bbd5d7a9fc27b602737187966",
+            "checks": [
+              134058610303,
+              134058616611,
+              134058622790
+            ]
+          },
+          {
+            "name": "survey-046.jpg",
+            "bytes": 67962,
+            "sha256": "f3f631d347cd55730bd0f46a5d5b1f72b0b670857fde1490e5af2cdc440c2631",
+            "checks": [
+              134058628283,
+              134058633963
+            ]
+          },
+          {
+            "name": "survey-047.jpg",
+            "bytes": 73104,
+            "sha256": "65e18eaab5c5bf7f6ea1c2b814ac4648a11ee7ba5869c92a2d8a5a04ddbf07b3",
+            "checks": [
+              134058641707,
+              134058649433
+            ]
+          },
+          {
+            "name": "survey-048.jpg",
+            "bytes": 71352,
+            "sha256": "761853ba528b79b7bd76ff26d59c15c59ab07a6f5e5b612f6d18ac41d79081c3",
+            "checks": [
+              134058654668,
+              134058660214
+            ]
+          },
+          {
+            "name": "survey-049.jpg",
+            "bytes": 65619,
+            "sha256": "f746ef1955b7f7b87cf7728286dcb225365858fa3428eb8ed42ae0f3bd9ee9a1",
+            "checks": [
+              134058665780,
+              134058671383
+            ]
+          },
+          {
+            "name": "survey-050.jpg",
+            "bytes": 70003,
+            "sha256": "7f55203d441a3589133a0a1647b9da5f1e9aa5dabc806917b62538c23bf66903",
+            "checks": [
+              134058676901,
+              134058682353
+            ]
+          },
+          {
+            "name": "survey-051.jpg",
+            "bytes": 30284,
+            "sha256": "03db15c69a4145af8208107ebd1cb8906a775505b5260ee42fe7a82058604698",
+            "checks": [
+              134058689604
+            ]
+          }
+        ],
+        "success": true,
+        "temporary_media_deleted": true
+      }
+    }
+  ],
+  "recovered_sheets": [
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-00-01.jpg",
+      "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+      "bytes": 74802,
+      "transport_check_ids": [
+        134057624923,
+        134057630408
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-00-02.jpg",
+      "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+      "bytes": 74802,
+      "transport_check_ids": [
+        134057636035,
+        134057644351
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-00-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-00-03.jpg",
+      "sha256": "905e2a9c5024cff2e44273b69b4685bd5588b6667438984b4004c90fc030c788",
+      "bytes": 74802,
+      "transport_check_ids": [
+        134057652446,
+        134057658908
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-00-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-01-01.jpg",
+      "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+      "bytes": 136883,
+      "transport_check_ids": [
+        134057665285,
+        134057671474,
+        134057678147,
+        134057684480
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-01-02.jpg",
+      "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+      "bytes": 136883,
+      "transport_check_ids": [
+        134057689976,
+        134057696510,
+        134057702374,
+        134057708546
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-01-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-01-03.jpg",
+      "sha256": "c67c32092790881f3f53b090c4b155ea70b72e7ba8fc91282d9aed1bcb6a115b",
+      "bytes": 136883,
+      "transport_check_ids": [
+        134057714614,
+        134057720407,
+        134057726045,
+        134057731219
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-01-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-02-01.jpg",
+      "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+      "bytes": 91489,
+      "transport_check_ids": [
+        134057736530,
+        134057742517,
+        134057747584
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-02-02.jpg",
+      "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+      "bytes": 91489,
+      "transport_check_ids": [
+        134057752657,
+        134057758750,
+        134057765396
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-02-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-02-03.jpg",
+      "sha256": "cff53d62ce9a4b62357b9cbcdbc97adb08c4358126609d5be56e99df34e598b2",
+      "bytes": 91489,
+      "transport_check_ids": [
+        134057771022,
+        134057777041,
+        134057783355
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-02-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-03-01.jpg",
+      "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+      "bytes": 93133,
+      "transport_check_ids": [
+        134057788936,
+        134057794542,
+        134057800502
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-03-02.jpg",
+      "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+      "bytes": 93133,
+      "transport_check_ids": [
+        134057805692,
+        134057810764,
+        134057815305
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-03-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-03-03.jpg",
+      "sha256": "6328a685c8bc2c65b8a9fa0b624ce27816b557c0d52b57f052766ce327cd7953",
+      "bytes": 93133,
+      "transport_check_ids": [
+        134057820650,
+        134057826449,
+        134057831714
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-03-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-04-01.jpg",
+      "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+      "bytes": 104073,
+      "transport_check_ids": [
+        134057838102,
+        134057845154,
+        134057852656
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-04-02.jpg",
+      "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+      "bytes": 104073,
+      "transport_check_ids": [
+        134057858253,
+        134057865287,
+        134057870974
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-04-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-04-03.jpg",
+      "sha256": "f9028401c1854282d2ffd2d6f9c686be480d2eecc2000fb1fbe8823ccbf92e5f",
+      "bytes": 104073,
+      "transport_check_ids": [
+        134057876236,
+        134057881959,
+        134057887437
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-04-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-05-01.jpg",
+      "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+      "bytes": 143377,
+      "transport_check_ids": [
+        134057893432,
+        134057900389,
+        134057906910,
+        134057914562
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-05-02.jpg",
+      "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+      "bytes": 143377,
+      "transport_check_ids": [
+        134057921335,
+        134057927904,
+        134057933551,
+        134057938407
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-05-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-05-03.jpg",
+      "sha256": "0beac5bf0663c0f342e39500ccc1a3ad4a2f1b2586ff5f4d0e5c14b7541d7c35",
+      "bytes": 143377,
+      "transport_check_ids": [
+        134057943524,
+        134057949683,
+        134057955229,
+        134057961700
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-05-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-06-01.jpg",
+      "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+      "bytes": 110052,
+      "transport_check_ids": [
+        134057972117,
+        134057986261,
+        134057999675
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-06-02.jpg",
+      "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+      "bytes": 110052,
+      "transport_check_ids": [
+        134058012801,
+        134058024354,
+        134058039677
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-06-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/dense-06-03.jpg",
+      "sha256": "e36bb3d719b1099b304b22a4e1cb32fb9a568a2a4c36e5bca87a0d40a6c59155",
+      "bytes": 110052,
+      "transport_check_ids": [
+        134058048653,
+        134058054460,
+        134058059864
+      ],
+      "actually_inspected": false,
+      "unique_temporal_coverage": false,
+      "duplicate_of": "studio/runtime/craft-forensics/292611b/diesel/dense-06-01.jpg"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-001.jpg",
+      "sha256": "2444374ef823beb29445c69ab5af38bcd3acabdd39ed360724b1b8bdb86c7e2d",
+      "bytes": 72936,
+      "transport_check_ids": [
+        134058064730,
+        134058070885
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-002.jpg",
+      "sha256": "4c8c10d3d162b714c4d3da6293f9163093502ba6a88f77c748d1961959f9ac00",
+      "bytes": 61134,
+      "transport_check_ids": [
+        134058076903,
+        134058083075
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-003.jpg",
+      "sha256": "149a86c510435f9b8bf380a6d617291dc39454d51d2a5eb730689411fbf0c89e",
+      "bytes": 66022,
+      "transport_check_ids": [
+        134058089262,
+        134058095045
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-004.jpg",
+      "sha256": "acbeae9bc1402400c2bb8b9c76da16eb76156ec380b5ddfbc15b4ce1e2a8c95c",
+      "bytes": 50216,
+      "transport_check_ids": [
+        134058102380,
+        134058108029
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-005.jpg",
+      "sha256": "804b46e0b493b23d01ce868d6f9b84668c39bc7185cd7b767681a0dfdbfc19bb",
+      "bytes": 56329,
+      "transport_check_ids": [
+        134058113726,
+        134058119873
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-006.jpg",
+      "sha256": "6ff8f33fd15dff14ac1d52926c1b33c5d0cebf97c6970ca457ecda0d71da2228",
+      "bytes": 57585,
+      "transport_check_ids": [
+        134058124964,
+        134058130362
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-007.jpg",
+      "sha256": "a9f622984b77bb7b7308db9faccf925ad5adc32ed36e42b9b854e3055b9b9216",
+      "bytes": 47600,
+      "transport_check_ids": [
+        134058136118,
+        134058142024
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-008.jpg",
+      "sha256": "680e0362dd9c0e40e543bad051f80f677d606bcf2d4bddd6c35e1262b7cc50cb",
+      "bytes": 54197,
+      "transport_check_ids": [
+        134058147517,
+        134058153011
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-009.jpg",
+      "sha256": "a3f9432e0b98d1a95225bd0836ff410732c36565e6306dd3de25df57419ffaf1",
+      "bytes": 50611,
+      "transport_check_ids": [
+        134058158418,
+        134058163820
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-010.jpg",
+      "sha256": "b769f427533655b6b4fcddbb822e3345f7ca7226740b7a4d6ae1c4727266e8a8",
+      "bytes": 52870,
+      "transport_check_ids": [
+        134058170137,
+        134058176495
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-011.jpg",
+      "sha256": "2babb9c45e6d5c3afad413b42ba3eb59af56455ce41b4e89beba087a0e81b91f",
+      "bytes": 58226,
+      "transport_check_ids": [
+        134058182529,
+        134058187460
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-012.jpg",
+      "sha256": "80347cb05fcf7aaedfbe72e5783916da76839d48583c0b49f34c6f9dab6b2467",
+      "bytes": 61040,
+      "transport_check_ids": [
+        134058193247,
+        134058198981
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-013.jpg",
+      "sha256": "eac081f861f818d63b4ebf8b9c46fa8349065ea00a40c0b6bf39f0c108e6d412",
+      "bytes": 60935,
+      "transport_check_ids": [
+        134058205396,
+        134058211367
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-014.jpg",
+      "sha256": "f6339aac4e82788b667f5bd61c2045837771ed5330b5931b668b48f5c5e7945c",
+      "bytes": 46453,
+      "transport_check_ids": [
+        134058216725,
+        134058223891
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-015.jpg",
+      "sha256": "1389fb3eae01cb344c4681bd9752eddf1df559d9875ae1aa096becdbf7030db0",
+      "bytes": 47481,
+      "transport_check_ids": [
+        134058231527,
+        134058237651
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-016.jpg",
+      "sha256": "8ada8091a0b86c3ab79b0d6655be6fbac49017287f47a6c2dbe5f20c72e5a29c",
+      "bytes": 62749,
+      "transport_check_ids": [
+        134058244054,
+        134058250035
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-017.jpg",
+      "sha256": "0cd751276349b71e8e4082ab441008e440b579657727f8359f31261d3ed365d0",
+      "bytes": 61519,
+      "transport_check_ids": [
+        134058256741,
+        134058262463
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-018.jpg",
+      "sha256": "0b4c77f6b3f5c70fbb4ecdec2ac4b43642b4480b06342a4c01ee8c77849a0ecd",
+      "bytes": 41934,
+      "transport_check_ids": [
+        134058268347,
+        134058275510
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-019.jpg",
+      "sha256": "6c903a9d765aaf2d0d024bac01171c4a98d079d007687eb7ad8383b3c7eb0fcb",
+      "bytes": 55870,
+      "transport_check_ids": [
+        134058281020,
+        134058286261
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-020.jpg",
+      "sha256": "58185f42880a00fbd3877e2feccfef9d8e8b73a5a18329278dcc552617d871b5",
+      "bytes": 64669,
+      "transport_check_ids": [
+        134058292118,
+        134058298049
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-021.jpg",
+      "sha256": "2a89fb016e3a9662b85ba0f1743f02b452efa6155a5e33b3c86828daf1c6386b",
+      "bytes": 56917,
+      "transport_check_ids": [
+        134058303146,
+        134058308385
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-022.jpg",
+      "sha256": "8b54e836142b88d6b086620ae9fab02072c82da6f923d943ad3995c011cd967b",
+      "bytes": 48849,
+      "transport_check_ids": [
+        134058314148,
+        134058321133
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-023.jpg",
+      "sha256": "7418da5ed72a64e5cfb2501a1c001ed7a31af7759a038e50b4bf3a82a4074266",
+      "bytes": 67328,
+      "transport_check_ids": [
+        134058326391,
+        134058333237
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-024.jpg",
+      "sha256": "28f1e455cde63ae4ef7b64d0450d2095b360020c6cf5f6c7069214d98209b2c8",
+      "bytes": 60226,
+      "transport_check_ids": [
+        134058339677,
+        134058345535
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-025.jpg",
+      "sha256": "43abf5bc75ac238796ae4abd9026b5a38c9721ee04183b792fd82a4d38d95967",
+      "bytes": 64523,
+      "transport_check_ids": [
+        134058351374,
+        134058357245
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-026.jpg",
+      "sha256": "a5b96e82a97d5e0359bc829782a5d9790e5e4aef6afaa5e0ea05cf16604d40aa",
+      "bytes": 77532,
+      "transport_check_ids": [
+        134058363566,
+        134058370690
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-027.jpg",
+      "sha256": "7ccb609fe43ffd0092b155d6d55dfe3d7c135ac28cbce37a73e01006cc4c6f8e",
+      "bytes": 65258,
+      "transport_check_ids": [
+        134058376012,
+        134058382056
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-028.jpg",
+      "sha256": "53b68820d4116cdddebeeaca9ea1110b55d028999baee64d300560b395d3875b",
+      "bytes": 59482,
+      "transport_check_ids": [
+        134058388172,
+        134058393986
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-029.jpg",
+      "sha256": "eb020f6b54b4d11d2ee1a40a5bbb516d526c8ae6fcac5ffcd56ab53189a622d2",
+      "bytes": 58660,
+      "transport_check_ids": [
+        134058400265,
+        134058406011
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-030.jpg",
+      "sha256": "2db0ff26d76f7c456ad642236de4a671e39e84bb550b4be01719fe028f6062b2",
+      "bytes": 60157,
+      "transport_check_ids": [
+        134058411799,
+        134058417241
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-031.jpg",
+      "sha256": "6eeb04dca9830a146f9098650861715a8a28e48a733217c61ef4774a01aec76d",
+      "bytes": 52605,
+      "transport_check_ids": [
+        134058424599,
+        134058430373
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-032.jpg",
+      "sha256": "06894f5a08a12116bbd2c194b34f278e86bf7928fdf9d987c246b1c04cbd6985",
+      "bytes": 66628,
+      "transport_check_ids": [
+        134058438143,
+        134058445248
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-033.jpg",
+      "sha256": "dfe4f6ead3ac896c23d0272c5ba12514bc0a8f12e499812efa8d791f8e93cf45",
+      "bytes": 63076,
+      "transport_check_ids": [
+        134058451362,
+        134058457404
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-034.jpg",
+      "sha256": "ec775e4105c1d71f9776c5c970eb0c4279c0dba7c0ff008c66ce0c6f860e9c7b",
+      "bytes": 55623,
+      "transport_check_ids": [
+        134058463449,
+        134058469127
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-035.jpg",
+      "sha256": "9fd557bcb80df18bd9bd145eca21aaa5d09b5adeace5cb741704c710e704db2c",
+      "bytes": 48327,
+      "transport_check_ids": [
+        134058474704,
+        134058480758
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-036.jpg",
+      "sha256": "8ea5b760e1474c42b7641ebb49ddac12ef74831f90bd5484b765fb9e42cd86db",
+      "bytes": 67470,
+      "transport_check_ids": [
+        134058487593,
+        134058493839
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-037.jpg",
+      "sha256": "b3610540727d7132a1d6f2c6e5e7e5b5a75e2d13e3b9227d2eb70069aba2db58",
+      "bytes": 47591,
+      "transport_check_ids": [
+        134058499859,
+        134058505824
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-038.jpg",
+      "sha256": "2fe01854fa3d6ab0cb21e0c61135a7b4f0f244621caba2b3875dc2ee6d4c35a5",
+      "bytes": 48323,
+      "transport_check_ids": [
+        134058511455,
+        134058516848
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-039.jpg",
+      "sha256": "60c4585218515919cef3cd166da59642260c0d3fd93bbb1f8dd3330a0ad3c65f",
+      "bytes": 57658,
+      "transport_check_ids": [
+        134058522680,
+        134058528425
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-040.jpg",
+      "sha256": "eb5c5e26cdfe2e99f97dcced9467ea59da8a42f561ae7155173ef583b0f52f14",
+      "bytes": 47459,
+      "transport_check_ids": [
+        134058534521,
+        134058542014
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-041.jpg",
+      "sha256": "e6d1275915eb0b98896d9e9a0eb13f80cb4b4be39d87390c7b282797613801e4",
+      "bytes": 78955,
+      "transport_check_ids": [
+        134058547919,
+        134058554981
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-042.jpg",
+      "sha256": "49fceda291aca3f93a79fd7e7efe2e2cfb37dba5a28e602106c27d06adabf56b",
+      "bytes": 62188,
+      "transport_check_ids": [
+        134058561372,
+        134058567158
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-043.jpg",
+      "sha256": "1ce9222ce1180b762046e7b173cbcf92f6d2e36d79ed60e31e0b63648d8b84e5",
+      "bytes": 92189,
+      "transport_check_ids": [
+        134058574306,
+        134058579736,
+        134058585157
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-044.jpg",
+      "sha256": "e911940ab6e53a4c4ca10e33a4592a4443cec3f216446004d9e4561a5634ec90",
+      "bytes": 94633,
+      "transport_check_ids": [
+        134058590643,
+        134058598007,
+        134058604094
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-045.jpg",
+      "sha256": "be9d9509b0fb179bbbb1bb83047209938646638bbd5d7a9fc27b602737187966",
+      "bytes": 92351,
+      "transport_check_ids": [
+        134058610303,
+        134058616611,
+        134058622790
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-046.jpg",
+      "sha256": "f3f631d347cd55730bd0f46a5d5b1f72b0b670857fde1490e5af2cdc440c2631",
+      "bytes": 67962,
+      "transport_check_ids": [
+        134058628283,
+        134058633963
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-047.jpg",
+      "sha256": "65e18eaab5c5bf7f6ea1c2b814ac4648a11ee7ba5869c92a2d8a5a04ddbf07b3",
+      "bytes": 73104,
+      "transport_check_ids": [
+        134058641707,
+        134058649433
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-048.jpg",
+      "sha256": "761853ba528b79b7bd76ff26d59c15c59ab07a6f5e5b612f6d18ac41d79081c3",
+      "bytes": 71352,
+      "transport_check_ids": [
+        134058654668,
+        134058660214
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-049.jpg",
+      "sha256": "f746ef1955b7f7b87cf7728286dcb225365858fa3428eb8ed42ae0f3bd9ee9a1",
+      "bytes": 65619,
+      "transport_check_ids": [
+        134058665780,
+        134058671383
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-050.jpg",
+      "sha256": "7f55203d441a3589133a0a1647b9da5f1e9aa5dabc806917b62538c23bf66903",
+      "bytes": 70003,
+      "transport_check_ids": [
+        134058676901,
+        134058682353
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    },
+    {
+      "file": "studio/runtime/craft-forensics/292611b/diesel/survey-051.jpg",
+      "sha256": "03db15c69a4145af8208107ebd1cb8906a775505b5260ee42fe7a82058604698",
+      "bytes": 30284,
+      "transport_check_ids": [
+        134058689604
+      ],
+      "actually_inspected": true,
+      "unique_temporal_coverage": true,
+      "duplicate_of": null,
+      "inspection_report": "DIESEL_ACTUAL_FORENSICS_ROMAN_URDU.md"
+    }
+  ],
+  "actual_listening": false,
+  "full_every_frame_review": false,
+  "coverage_audit": {
+    "three_page_dense_output_defect": true,
+    "dense_unique_pages_per_window": 1,
+    "dense_unique_cells_per_window": 24,
+    "intended72frameclaim_rejected": true,
+    "actual_listening": false
+  }
+}
