@@ -88,13 +88,16 @@ function displacedPlane(w, d, seg, amp, freq, color, rough, metal) {
 }
 
 /* the field: dark tilled earth, ridged in rows */
+/* The wide field plate exists so the horizon is not empty, but at 120 m its
+   near corner reaches the aerial camera and smears across frame. The bank under
+   the action carries the ground, so this plate is pushed far back and sunk. */
 const field = displacedPlane(120, 120, 90, 0.22, 0.60, 0x2b2018, 0.97, 0.01);
-field.position.y = -0.06;
+field.position.set(0, -0.85, -120);
 scene.add(field);
 
 /* a second, closer furrow bank so the aerial has depth under it */
-const bank = displacedPlane(46, 16, 34, 0.30, 0.70, 0x33261c, 0.97, 0.01);
-bank.position.set(-16, 0.06, -30);
+const bank = displacedPlane(90, 70, 64, 0.20, 0.55, 0x2b2018, 0.97, 0.01);
+bank.position.set(0, -0.04, -14);
 scene.add(bank);
 
 /* ------------------------------------------------------------- potato prop */
