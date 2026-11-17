@@ -56,7 +56,9 @@
     "research/monarch_cam_gecko_batch2/LIVE_MOTION_PUBLISHER_DISCOVERY.json",
     "research/monarch_cam_gecko_batch2/LIVE_MOTION_VIMEO_ATTEMPT.json",
     "research/monarch_cam_gecko_batch2/PMC_ANKLE_MOVIE_ATTEMPT.json",
-    "research/monarch_cam_gecko_batch2/LIVE_MOTION_FEASIBILITY_DECISION.md"
+    "research/monarch_cam_gecko_batch2/LIVE_MOTION_FEASIBILITY_DECISION.md",
+    "research/monarch_cam_craft_forensics/PRODUCTION_BLOCKERS_AND_REVIEW_HANDOFF.md",
+    "research/monarch_cam_gecko_batch2/DIGIT_TRANSPORT_CLEANUP.json"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -364,5 +366,7 @@
     "production_approved": false,
     "live_motion_acquisition": "PMC2021 independent supplement response failed container validation; zero frames. Serial acquisition loop now stopped.",
     "retrieval_loop_closed": true
-  }
+  },
+  "review_handoff": "research/monarch_cam_craft_forensics/PRODUCTION_BLOCKERS_AND_REVIEW_HANDOFF.md",
+  "digit_transport_cleanup": "1of9 independently verified cleared; retry/backoff resume committed69c987c; remaining not yet verified"
 }

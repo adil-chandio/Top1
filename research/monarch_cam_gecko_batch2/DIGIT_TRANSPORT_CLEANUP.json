@@ -1,0 +1,46 @@
+{
+  "run_id": 44123564402,
+  "run_status": "failure",
+  "independent_readback": [
+    {
+      "id": 134083470014,
+      "cleared": true
+    },
+    {
+      "id": 134083476413,
+      "cleared": false
+    },
+    {
+      "id": 134083482677,
+      "cleared": false
+    },
+    {
+      "id": 134083488901,
+      "cleared": false
+    },
+    {
+      "id": 134083494306,
+      "cleared": false
+    },
+    {
+      "id": 134083440417,
+      "cleared": false
+    },
+    {
+      "id": 134083447353,
+      "cleared": false
+    },
+    {
+      "id": 134083453760,
+      "cleared": false
+    },
+    {
+      "id": 134083460314,
+      "cleared": false
+    }
+  ],
+  "all_cleared": false,
+  "note": "Run failure reason unavailable: log-host EOF. Readback determines actual cleanup, not job status.",
+  "resume_commit": "69c987c",
+  "resume_result": "not yet verified"
+}
