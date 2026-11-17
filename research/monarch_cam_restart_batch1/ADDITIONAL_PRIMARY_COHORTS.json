@@ -1,0 +1,167 @@
+{
+  "age_basis": "2026-11-14",
+  "timestamp_note": "Age uses instructed session date; remote runtime may show a different clock. Counts are retrieval snapshots, not archived historical counts.",
+  "cohorts": [
+    {
+      "channel": "Animal Fact Files",
+      "rows": [
+        {
+          "id": "4d1hE5Aenb8",
+          "url": "https://www.youtube.com/watch?v=4d1hE5Aenb8",
+          "title": "Nightcrawler Facts: The Common Earthworm 🪱 Animal Fact Files",
+          "upload_date": "2026-10-11",
+          "duration_seconds": 507,
+          "views": 6909,
+          "age_days": 34,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": null
+        },
+        {
+          "id": "cv-kZIz58Dk",
+          "url": "https://www.youtube.com/watch?v=cv-kZIz58Dk",
+          "title": "Stink Bugs Facts: A Stinky Menace 👃 Animal Fact Files",
+          "upload_date": "2026-09-06",
+          "duration_seconds": 534,
+          "views": 7532,
+          "age_days": 69,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 1.773
+        },
+        {
+          "id": "Ghmo43WEH_k",
+          "url": "https://www.youtube.com/watch?v=Ghmo43WEH_k",
+          "title": "Buttonquail Facts: SMALL as a BUTTON ⚉ Animal Fact Files",
+          "upload_date": "2026-08-14",
+          "duration_seconds": 520,
+          "views": 4551,
+          "age_days": 92,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 1.071
+        },
+        {
+          "id": "a7qwlYe7F74",
+          "url": "https://www.youtube.com/watch?v=a7qwlYe7F74",
+          "title": "Garden Eel Facts: the Ocean Prairie 🌊 Animal Fact Files",
+          "upload_date": "2026-07-12",
+          "duration_seconds": 489,
+          "views": 3679,
+          "age_days": 125,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 0.866
+        },
+        {
+          "id": "Sem1b9uzTd0",
+          "url": "https://www.youtube.com/watch?v=Sem1b9uzTd0",
+          "title": "Padloper Facts: TINIEST Tortoise 🐢 Animal Fact Files",
+          "upload_date": "2026-06-15",
+          "duration_seconds": 510,
+          "views": 2406,
+          "age_days": 152,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 0.566
+        },
+        {
+          "id": "teHwadQsmK0",
+          "url": "https://www.youtube.com/watch?v=teHwadQsmK0",
+          "title": "Serow: the Ghost Goat 👻 Animal Fact Files",
+          "upload_date": "2026-05-10",
+          "duration_seconds": 520,
+          "views": 4249,
+          "age_days": 188,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 1.0
+        }
+      ],
+      "comparison_n": 5,
+      "median_views": 4249,
+      "selection": "Recovered monthly species profiles May–Oct; October younger held separate",
+      "limitations": "Bounded recovered sample; complete catalogue not established; unequal ages and topic/seasonal confounds. No CTR/retention or causal performance attribution."
+    },
+    {
+      "channel": "Deep Look",
+      "rows": [
+        {
+          "id": "3tmPS1p-vEQ",
+          "url": "https://www.youtube.com/watch?v=3tmPS1p-vEQ",
+          "title": "Copycats! This Ant Is Surrounded By Imposters | Deep Look",
+          "upload_date": "2026-07-28",
+          "duration_seconds": 289,
+          "views": 151100,
+          "age_days": 109,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 1.0
+        },
+        {
+          "id": "CJl_relCddQ",
+          "url": "https://www.youtube.com/watch?v=CJl_relCddQ",
+          "title": "These Mudskipper Fins Were Made For Walking | Deep Look",
+          "upload_date": "2026-06-30",
+          "duration_seconds": 313,
+          "views": 135145,
+          "age_days": 137,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 0.894
+        },
+        {
+          "id": "1VGBy04nIjA",
+          "url": "https://www.youtube.com/watch?v=1VGBy04nIjA",
+          "title": "The Slimy Details Behind Banana Slug Mating",
+          "upload_date": "2026-06-02",
+          "duration_seconds": 246,
+          "views": 48465,
+          "age_days": 165,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 0.321
+        },
+        {
+          "id": "pmLHg_B8uoI",
+          "url": "https://www.youtube.com/watch?v=pmLHg_B8uoI",
+          "title": "Release The Brood! Roly-poly Birthing Is Intense",
+          "upload_date": "2026-05-12",
+          "duration_seconds": 233,
+          "views": 306884,
+          "age_days": 186,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 2.031
+        },
+        {
+          "id": "IGtbHRPcSe8",
+          "url": "https://www.youtube.com/watch?v=IGtbHRPcSe8",
+          "title": "Spotted Lanternflies are the Ultimate Party Crashers",
+          "upload_date": "2026-04-21",
+          "duration_seconds": 289,
+          "views": 473542,
+          "age_days": 207,
+          "thumbnail_inspected": false,
+          "video_playback": false,
+          "source": "original watch-page text metadata; not audiovisual inspection",
+          "sample_median_ratio": 3.134
+        }
+      ],
+      "comparison_n": 5,
+      "median_views": 151100,
+      "selection": "Recovered five 3:53–5:13 standalones April–July; hosted Big Ideas and compilations excluded",
+      "limitations": "Bounded recovered sample; complete catalogue not established; unequal ages and topic/seasonal confounds. No CTR/retention or causal performance attribution."
+    }
+  ]
+}

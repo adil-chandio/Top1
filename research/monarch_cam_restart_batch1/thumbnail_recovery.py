@@ -5,7 +5,13 @@ import base64,hashlib,io,json,os,urllib.request
 from PIL import Image
 from pathlib import Path
 rows=json.loads(Path('research/monarch_cam_restart_batch1/ANIMAL_PERFORMANCE_COHORTS.json').read_text())
-ids=list(dict.fromkeys(r['id'] for c in rows['cohorts'] for r in c['rows']))
+ids=[r['id'] for c in rows['cohorts'] for r in c['rows']]
+root=Path('research/monarch_cam_restart_batch1')
+for filename in ['ADDITIONAL_PRIMARY_COHORTS.json','CONTEXTUAL_PRIMARY_CONTROLS.json']:
+ extra=json.loads((root/filename).read_text())
+ ids.extend(r['id'] for c in extra['cohorts'] for r in c['rows'])
+ids.extend(r['id'] for r in json.loads((root/'BIZARRE_BEASTS_CURRENT_COHORT.json').read_text())['rows'])
+ids=list(dict.fromkeys(ids))
 def api(path,body):
  req=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+path,data=json.dumps(body).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},method='POST')
  with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)

@@ -1,0 +1,223 @@
+{
+  "selection": "June1–Sep16 non-human animal long episodes recovered from recent feed; promotional/short clips and Neandertal topic excluded; original catalogue completeness not established",
+  "mature_n": 7,
+  "mature_median": 69651,
+  "age_range_mature_days": [
+    59,
+    166
+  ],
+  "date_basis": "2026-11-14 instructed age date; live retrieval counts not historical same-date snapshot proof",
+  "newer_rows_kept_separate": 3,
+  "title_disagreements": [
+    {
+      "id": "ldAGbtpD9uI",
+      "discovery_title": "This Shark Should Outlive You",
+      "current_watch_title": "This Shark is Toxic (So It Doesn't Freeze)"
+    },
+    {
+      "id": "rP0suD42zy0",
+      "discovery_title": "This Is Not A Wolf (It's Weirder)",
+      "current_watch_title": "\"Carnivore\" Is a Spectrum"
+    }
+  ],
+  "causal_title_change_effect": "not established; cache timing and change history unknown",
+  "rows": [
+    {
+      "id": "uHd7zuWZHxk",
+      "url": "https://www.youtube.com/watch?v=uHd7zuWZHxk",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "These Snake Clones Are Everywhere (And It’s Our Fault)",
+      "upload_date": "2026-06-01",
+      "duration_seconds": 852,
+      "views_snapshot": 134954,
+      "age_days": 166,
+      "in_mature_window": true,
+      "mature_sample_ratio": 1.938,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": 1.787
+    },
+    {
+      "id": "a0EBpzqWeyI",
+      "url": "https://www.youtube.com/watch?v=a0EBpzqWeyI",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "How One Island Lost 80% of Its Mammals",
+      "upload_date": "2026-06-17",
+      "duration_seconds": 740,
+      "views_snapshot": 61098,
+      "age_days": 150,
+      "in_mature_window": true,
+      "mature_sample_ratio": 0.877,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "Endlings",
+      "within_strand_mature_ratio": 1.0
+    },
+    {
+      "id": "ZgyAnhlGUIY",
+      "url": "https://www.youtube.com/watch?v=ZgyAnhlGUIY",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "This Bug Has One Weird Thing in Common with Sharks",
+      "upload_date": "2026-07-06",
+      "duration_seconds": 802,
+      "views_snapshot": 69651,
+      "age_days": 131,
+      "in_mature_window": true,
+      "mature_sample_ratio": 1.0,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": 0.922
+    },
+    {
+      "id": "uWallOyZvn0",
+      "url": "https://www.youtube.com/watch?v=uWallOyZvn0",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "Will Frogs Win The Fight Against Fungus?",
+      "upload_date": "2026-07-15",
+      "duration_seconds": 882,
+      "views_snapshot": 46080,
+      "age_days": 122,
+      "in_mature_window": true,
+      "mature_sample_ratio": 0.662,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "Endlings",
+      "within_strand_mature_ratio": 0.754
+    },
+    {
+      "id": "sbBjwBHOnsk",
+      "url": "https://www.youtube.com/watch?v=sbBjwBHOnsk",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "The Skydiving Salamander of The Redwood Forest",
+      "upload_date": "2026-08-03",
+      "duration_seconds": 864,
+      "views_snapshot": 64802,
+      "age_days": 103,
+      "in_mature_window": true,
+      "mature_sample_ratio": 0.93,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": 0.858
+    },
+    {
+      "id": "xNA4quA9VuI",
+      "url": "https://www.youtube.com/watch?v=xNA4quA9VuI",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "What Causes This Caterpillar-pocalpyse?",
+      "upload_date": "2026-09-08",
+      "duration_seconds": 897,
+      "views_snapshot": 81389,
+      "age_days": 67,
+      "in_mature_window": true,
+      "mature_sample_ratio": 1.169,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": 1.078
+    },
+    {
+      "id": "xYXRmZJsybs",
+      "url": "https://www.youtube.com/watch?v=xYXRmZJsybs",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "We Created An Extinction Machine",
+      "upload_date": "2026-09-16",
+      "duration_seconds": 727,
+      "views_snapshot": 73973,
+      "age_days": 59,
+      "in_mature_window": true,
+      "mature_sample_ratio": 1.062,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "Endlings",
+      "within_strand_mature_ratio": 1.211
+    },
+    {
+      "id": "ldAGbtpD9uI",
+      "url": "https://www.youtube.com/watch?v=ldAGbtpD9uI",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "This Shark is Toxic (So It Doesn't Freeze)",
+      "upload_date": "2026-10-05",
+      "duration_seconds": 843,
+      "views_snapshot": 227915,
+      "age_days": 40,
+      "in_mature_window": false,
+      "mature_sample_ratio": null,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": null
+    },
+    {
+      "id": "E4DkTVavyMk",
+      "url": "https://www.youtube.com/watch?v=E4DkTVavyMk",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "Why Did We Decide To Save This Bird?",
+      "upload_date": "2026-10-14",
+      "duration_seconds": 895,
+      "views_snapshot": 101793,
+      "age_days": 31,
+      "in_mature_window": false,
+      "mature_sample_ratio": null,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "Endlings",
+      "within_strand_mature_ratio": null
+    },
+    {
+      "id": "rP0suD42zy0",
+      "url": "https://www.youtube.com/watch?v=rP0suD42zy0",
+      "channel": "Bizarre Beasts",
+      "title_current_watch_snapshot": "\"Carnivore\" Is a Spectrum",
+      "upload_date": "2026-11-02",
+      "duration_seconds": 833,
+      "views_snapshot": 136609,
+      "age_days": 12,
+      "in_mature_window": false,
+      "mature_sample_ratio": null,
+      "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
+      "thumbnail_inspected": false,
+      "actual_video_playback": false,
+      "strand": "monthly",
+      "within_strand_mature_ratio": null
+    }
+  ],
+  "strand_comparisons": [
+    {
+      "strand": "monthly",
+      "n_mature": 4,
+      "median_views": 75520.0,
+      "ids": [
+        "uHd7zuWZHxk",
+        "ZgyAnhlGUIY",
+        "sbBjwBHOnsk",
+        "xNA4quA9VuI",
+        "ldAGbtpD9uI",
+        "rP0suD42zy0"
+      ]
+    },
+    {
+      "strand": "Endlings",
+      "n_mature": 3,
+      "median_views": 61098,
+      "ids": [
+        "a0EBpzqWeyI",
+        "uWallOyZvn0",
+        "xYXRmZJsybs",
+        "E4DkTVavyMk"
+      ]
+    }
+  ],
+  "pooled_mature_median_use": "historical descriptive pooled statistic only; use strand-specific comparisons, not pooled performance labels"
+}

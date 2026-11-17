@@ -1,0 +1,91 @@
+{
+  "cohorts": [
+    {
+      "channel": "Ze Frank",
+      "rows": [
+        {
+          "id": "W0JbIKPE9mc",
+          "url": "https://www.youtube.com/watch?v=W0JbIKPE9mc",
+          "title": "True Facts: Geckos",
+          "upload_date": "2026-04-01",
+          "duration_seconds": 808,
+          "views": 1669655,
+          "age_days": 227,
+          "format_note": "species profile",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        },
+        {
+          "id": "_hw26yREe9w",
+          "url": "https://www.youtube.com/watch?v=_hw26yREe9w",
+          "title": "True Facts: The Mystery Of How Bees Build",
+          "upload_date": "2026-05-26",
+          "duration_seconds": 971,
+          "views": 1105060,
+          "age_days": 172,
+          "format_note": "mechanism",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        },
+        {
+          "id": "vySjeGnPlMk",
+          "url": "https://www.youtube.com/watch?v=vySjeGnPlMk",
+          "title": "True Facts: The Ferret and the Plague",
+          "upload_date": "2026-06-27",
+          "duration_seconds": 416,
+          "views": 515587,
+          "age_days": 140,
+          "format_note": "WWF conservation collaboration; shorter; separate",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        }
+      ],
+      "channel_median": null,
+      "limitation": "Three selected contextual originals, not complete consecutive homogeneous cohort; no channel performance tier assigned"
+    },
+    {
+      "channel": "Real Science",
+      "rows": [
+        {
+          "id": "2KpNwcpAAd8",
+          "url": "https://www.youtube.com/watch?v=2KpNwcpAAd8",
+          "title": "Why Studying Sloths Is Basically Impossible",
+          "upload_date": "2025-12-06",
+          "duration_seconds": 1030,
+          "views": 199028,
+          "age_days": 343,
+          "format_note": "field research documentary; separate",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        },
+        {
+          "id": "IH_uv4h2xYM",
+          "url": "https://www.youtube.com/watch?v=IH_uv4h2xYM",
+          "title": "This Slug Should Be Impossible",
+          "upload_date": "2025-11-22",
+          "duration_seconds": 984,
+          "views": 2073299,
+          "age_days": 357,
+          "format_note": "mechanism explainer",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        },
+        {
+          "id": "uGCaL_Ge6tg",
+          "url": "https://www.youtube.com/watch?v=uGCaL_Ge6tg",
+          "title": "The Frog That Unleashed the World\u2019s Most Lethal Pathogen",
+          "upload_date": "2025-10-25",
+          "duration_seconds": 1120,
+          "views": 1308056,
+          "age_days": 385,
+          "format_note": "causal history explainer",
+          "thumbnail_inspected": false,
+          "video_playback": false
+        }
+      ],
+      "channel_median": null,
+      "limitation": "Three selected contextual originals, not complete consecutive homogeneous cohort; no channel performance tier assigned"
+    }
+  ],
+  "evidence": "Original watch pages metadata chunk0; channel featured shelves are curated and may be stale"
+}
