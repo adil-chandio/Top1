@@ -1,0 +1,176 @@
+{
+  "type": "animated_orca_asset_engineering_checkpoint",
+  "asset_path_ignored": "research/monarch_cam_market/motion/out/orca/orca_metric_rig.glb",
+  "asset_bytes": 599116,
+  "asset_sha256": "fe07098f13cc0cf35119cba9d82c62dd9486040c5952a5a68fcb363ae166d971",
+  "roundtrip": {
+    "type": "actual_animated_GLB_export_and_supported_loader_reimport",
+    "frames_evaluated": 144,
+    "fps": 24,
+    "clip_seconds": 6,
+    "bones": 8,
+    "maximum_vertex_roundtrip_error": 1.4556104308713008e-07,
+    "geometry_preserved": true,
+    "source_image_buffer_views_preserved": 2,
+    "source_materials_preserved": 1,
+    "independent_review": false,
+    "production_release": false
+  },
+  "schema_validation": {
+    "asset_sha256": "fe07098f13cc0cf35119cba9d82c62dd9486040c5952a5a68fcb363ae166d971",
+    "validator": "Khronos glTF Validator 2.0.0-dev.3.10",
+    "uri": "orca_metric_rig.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-11-16T14:11:31.648Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 11,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/0"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/1"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/2"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/3"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/4"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/5"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/6"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/7"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/8"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/10"
+        },
+        {
+          "code": "UNUSED_OBJECT",
+          "message": "This object may be unused.",
+          "severity": 2,
+          "pointer": "/accessors/15"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.4.0",
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 592716
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/png",
+          "storage": "buffer-view",
+          "image": {
+            "width": 1024,
+            "height": 1024,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        },
+        {
+          "pointer": "/images/1",
+          "mimeType": "image/png",
+          "storage": "buffer-view",
+          "image": {
+            "width": 1024,
+            "height": 1024,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 1,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": true,
+      "hasTextures": true,
+      "hasDefaultScene": true,
+      "drawCallCount": 1,
+      "totalVertexCount": 1656,
+      "totalTriangleCount": 3072,
+      "maxUVs": 1,
+      "maxInfluences": 4,
+      "maxAttributes": 6
+    }
+  },
+  "motion_diagnostic": {
+    "type": "actual_textured_metric_mesh_motion_diagnostic",
+    "frames": 144,
+    "fps": 24,
+    "duration_seconds": 6.0,
+    "encoded_resolution": [
+      720,
+      406
+    ],
+    "camera_fixed": true,
+    "actual_skinned_geometry_per_frame": true,
+    "uv_texture_interpolated": true,
+    "full_decode_passed": true,
+    "sha256": "afcee1a6286685461018c392856b7df704ede81fb811b8ea9581f9d0dd1c2e04",
+    "bytes": 64151,
+    "audio": false,
+    "independent_review": false,
+    "production_release": false,
+    "limits": "Simple CPU diagnostic lighting/rasterizer; not final shading, anatomy signoff or sound-integrated feasibility."
+  },
+  "actual_visual_inspection": "Opened metric-motion-sheet.jpg: per-pixel UV interpolation restores readable eye/saddle/underside markings compared with previous face-average diagnostic. Three still samples only; not full-motion viewing or independent signoff.",
+  "attribution": "Killer Whale by Abner Wu / Trouvaille, CC-BY-4.0; existing asset notices remain required. Skeleton, weights and clip modified by this project.",
+  "creative_gates_advanced": false,
+  "tests_passed": 103
+}

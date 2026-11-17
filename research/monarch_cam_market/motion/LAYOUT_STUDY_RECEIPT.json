@@ -1,0 +1,67 @@
+{
+  "type": "silent_original_proxy_layout_NOT_integrated_AV_proof",
+  "duration_seconds": 6.0,
+  "fps": 24,
+  "frames": 144,
+  "resolution": [
+    960,
+    540
+  ],
+  "full_decode_passed": true,
+  "closest_near_orca_humpback_centre_stage_units": 16.311001320044703,
+  "camera_static": true,
+  "independent_trajectories": true,
+  "vertical_tail_projection": true,
+  "source_rights": "Original vector proxy geometry and background; no third-party media/audio",
+  "audio": false,
+  "not_passed": [
+    "reference_audiovisual_gate",
+    "anatomy_review",
+    "sound_listening",
+    "independent_review",
+    "final_creative_approval"
+  ],
+  "files": [
+    {
+      "path": "layout-000.jpg",
+      "sha256": "f2fb5d91dad377196740f30b25ac7b959b8783fec552faceb32e335f9b78eaf3"
+    },
+    {
+      "path": "layout-072.jpg",
+      "sha256": "752629db6db6d72d61551175d90560fb96a1617091fe664660f17f27c7901c9e"
+    },
+    {
+      "path": "SPATIAL_LAYOUT_6S_INTERNAL.mp4",
+      "sha256": "b56e8e4f548034be17520ef3c0194c1037cb6eb051cdd8d804fcc89a9dd04148"
+    },
+    {
+      "path": "layout-143.jpg",
+      "sha256": "5ddac3e2d5db45121e99c2e21ddd59d1741e518779ba4832c92f57acd213e7f3"
+    },
+    {
+      "path": "layout-contact-sheet.jpg",
+      "sha256": "bff75192c8b62c7fd424f54cb311495ebaefb35bc101fc11c45393e179ba1cf9"
+    },
+    {
+      "path": "trajectory.json",
+      "sha256": "eb72a303c9b483eeb9b53af6a141f6ab1386a235a9d03be06b55b218583d24ae"
+    }
+  ],
+  "producer_self_checks": {
+    "finite_trajectories": true,
+    "orca_forward_motion": true,
+    "humpback_opposing_motion": true,
+    "actual_stills_opened": [
+      "layout-v1/layout-contact-sheet.jpg",
+      "layout-v2/layout-143.jpg"
+    ],
+    "changes_after_self_inspection": [
+      "Earlier humpback entrance for more readable encounter geometry",
+      "Raised dark-orca visibility",
+      "Added neutral prey proxy so pursuit has a target"
+    ],
+    "limits": "Author self-check and still inspection, NOT independent or continuous-video review. Proxy geometry is a staging tool, not production anatomy."
+  },
+  "source_sha256": "e30ec22d4b423cc750a83b6e05acdd36a0194f31befe9f87b30518eab99f14cd",
+  "reproduce": "PYTHONPATH=.local-motion python3 research/monarch_cam_market/motion/layout_study.py"
+}

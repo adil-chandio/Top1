@@ -1,0 +1,75 @@
+name: Monarch unattended runtime
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - 'studio/supervisor.py'
+      - 'studio/processes.py'
+      - 'studio/runtime_probe.py'
+      - 'studio/deploy/**'
+      - '.github/workflows/monarch-unattended.yml'
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: Verify code or execute on an already provisioned private studio runner
+        type: choice
+        options: [verify, execute]
+        default: verify
+permissions:
+  contents: read
+concurrency:
+  group: monarch-unattended-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  verify:
+    if: github.ref == 'refs/heads/arena/2a8ad29e-top1'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify coordinator and process safety
+        run: python -m unittest discover -s studio/tests -v
+      - name: Summarize exactly what ran
+        run: |
+          echo '### Coordinator verification only' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Safety/unit tests executed. No creator agent, artistic review, render, Drive delivery or production activation is implied.' >> "$GITHUB_STEP_SUMMARY"
+  execute:
+    if: github.event_name == 'workflow_dispatch' && inputs.operation == 'execute' && github.ref == 'refs/heads/arena/2a8ad29e-top1'
+    needs: verify
+    # Public repo: never run PRs/untrusted pushes on this privileged machine.
+    # Protected environment must be configured by host operator before dispatch.
+    environment: monarch-private-runtime
+    runs-on: [self-hosted, linux, monarch-private-runtime]
+    timeout-minutes: 125
+    steps:
+      # Deliberately no checkout: run operator-installed reviewed branch code only.
+      - name: Check installed runtime and selected branch
+        working-directory: /opt/top1
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = 'arena/2a8ad29e-top1'
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test -x /opt/top1/.venv/bin/python
+          test -r /etc/monarch-studio/runtime.env
+      - name: Live runtime probe and bounded production continuation
+        working-directory: /opt/top1
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Trusted host config, never user/research-generated command content.
+          set -a
+          source /etc/monarch-studio/runtime.env
+          set +a
+          /opt/top1/.venv/bin/python -m studio.runtime_probe --output /var/lib/monarch-studio/live_probe.json
+          /opt/top1/.venv/bin/python -m studio.supervisor --root /var/lib/monarch-studio/jobs --max-ticks 30 --max-seconds 3600
+      - name: Explain private status location
+        if: always()
+        shell: bash
+        run: |
+          echo 'Private runtime status stays on host at /var/lib/monarch-studio/; no unpublished videos, credentials or private logs uploaded to public Actions artifacts.' >> "$GITHUB_STEP_SUMMARY"

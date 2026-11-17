@@ -1,0 +1,188 @@
+{
+  "source_url": "https://github.com/jonaslacandola0617/curio-bureau/releases/download/visual-test-pistol-shrimp-v2-20261020/Curio-Test-03-Pistol-Shrimp-12s-v2.mp4",
+  "reference_kind": "owner-requested_public_visual_test_NOT_accepted_competitor_benchmark",
+  "production_reuse_permitted": false,
+  "source_repository_code_executed": false,
+  "actual_listening": false,
+  "actual_realtime_viewing": false,
+  "bytes": 206637,
+  "sha256": "6b67d13520064c6362ec83862b64076201091769d58a822ec7916b080d8b132e",
+  "automatic_asr": {
+    "language": "en",
+    "segments": [
+      {
+        "start": 1.479999999999999,
+        "end": 4.46,
+        "text": " This shrimp snap comes from a collapsing bubble.",
+        "words": [
+          {
+            "start": 1.479999999999999,
+            "end": 2.18,
+            "word": " This",
+            "probability": 0.7923640608787537
+          },
+          {
+            "start": 2.18,
+            "end": 2.46,
+            "word": " shrimp",
+            "probability": 0.8069871664047241
+          },
+          {
+            "start": 2.46,
+            "end": 2.76,
+            "word": " snap",
+            "probability": 0.7472443580627441
+          },
+          {
+            "start": 2.76,
+            "end": 3.12,
+            "word": " comes",
+            "probability": 0.9962466359138489
+          },
+          {
+            "start": 3.12,
+            "end": 3.36,
+            "word": " from",
+            "probability": 0.9964312314987183
+          },
+          {
+            "start": 3.36,
+            "end": 3.88,
+            "word": " a",
+            "probability": 0.9938377737998962
+          },
+          {
+            "start": 3.88,
+            "end": 3.88,
+            "word": " collapsing",
+            "probability": 0.9973747730255127
+          },
+          {
+            "start": 3.88,
+            "end": 4.46,
+            "word": " bubble.",
+            "probability": 0.9968976974487305
+          }
+        ]
+      },
+      {
+        "start": 4.96,
+        "end": 9.1,
+        "text": " It's claw fires of water jet, the bubble forms, then implodes.",
+        "words": [
+          {
+            "start": 4.96,
+            "end": 5.1,
+            "word": " It's",
+            "probability": 0.7277789115905762
+          },
+          {
+            "start": 5.1,
+            "end": 5.3,
+            "word": " claw",
+            "probability": 0.7972379922866821
+          },
+          {
+            "start": 5.3,
+            "end": 5.68,
+            "word": " fires",
+            "probability": 0.7627781629562378
+          },
+          {
+            "start": 5.68,
+            "end": 5.94,
+            "word": " of",
+            "probability": 0.6645125150680542
+          },
+          {
+            "start": 5.94,
+            "end": 6.12,
+            "word": " water",
+            "probability": 0.9981693029403687
+          },
+          {
+            "start": 6.12,
+            "end": 6.52,
+            "word": " jet,",
+            "probability": 0.829440176486969
+          },
+          {
+            "start": 6.86,
+            "end": 6.92,
+            "word": " the",
+            "probability": 0.9878074526786804
+          },
+          {
+            "start": 6.92,
+            "end": 7.14,
+            "word": " bubble",
+            "probability": 0.950568675994873
+          },
+          {
+            "start": 7.14,
+            "end": 7.62,
+            "word": " forms,",
+            "probability": 0.9869916439056396
+          },
+          {
+            "start": 8.04,
+            "end": 8.3,
+            "word": " then",
+            "probability": 0.9806435108184814
+          },
+          {
+            "start": 8.3,
+            "end": 9.1,
+            "word": " implodes.",
+            "probability": 0.7201236188411713
+          }
+        ]
+      }
+    ],
+    "limitation": "Automatic transcription, NOT listening or verified narration accuracy."
+  },
+  "status": "acquired_and_measured_NOT_listened",
+  "technical_audio_measurements": {
+    "integrated_lufs": -14.1,
+    "lra_lu": 6.1,
+    "maximum_true_peak_dbfs": -0.5,
+    "scope": "processed AAC research excerpt, not original master"
+  },
+  "private_local_evidence": [
+    {
+      "file": "editorial-reference.mp4",
+      "sha256": "6b67d13520064c6362ec83862b64076201091769d58a822ec7916b080d8b132e"
+    },
+    {
+      "file": "audio.wav",
+      "sha256": "dd9cd5dcbd5c93f72a4d4cb3a2bccc67dd01ae1c1b3ba7c4d2c2c6b73e12c960"
+    },
+    {
+      "file": "editorial-sheet-0.jpg",
+      "sha256": "865fc95c560aa9f3fbf661cd27012451b043012538dc45595c9fd9bd2d06a24b"
+    },
+    {
+      "file": "editorial-sheet-1.jpg",
+      "sha256": "51b814b3ecacd9f3b7bbbf95e25e939c60bd6f7539114378a47ef73b7b97466b"
+    },
+    {
+      "file": "editorial-sheet-2.jpg",
+      "sha256": "89218ce7d84e07ae7c6bcec5061f542cb8a47ca39ecdda55b606870a866f37d7"
+    },
+    {
+      "file": "audio-rms.png",
+      "sha256": "0839a8cbeb51390e37ac836815cba600a47aafed3187e194b4b4ee92c0caf421"
+    }
+  ],
+  "inspection": {
+    "timed_frame_samples_opened": 24,
+    "sampling_fps": 2,
+    "visual_sheet_inspection": true,
+    "actual_realtime_viewing": false,
+    "actual_listening": false,
+    "independent_review": false,
+    "automatic_asr_human_verified": false,
+    "viral_youtube_reference_gate": false
+  },
+  "successful_run": "https://github.com/adil-chandio/Top1/actions/runs/43926175156"
+}

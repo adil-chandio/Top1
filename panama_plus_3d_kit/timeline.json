@@ -1,0 +1,219 @@
+{
+  "title": "Why Orcas Fear Humpbacks \u2014 Cinema 3D",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 58.067,
+  "total_frames": 1742,
+  "beats": [
+    {
+      "id": "hook_orcas",
+      "tag": "APEX PREDATOR",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_01_hook_orcas.wav",
+      "text": "Orcas are the deadliest killers in the open ocean. Even great white sharks flee the moment a hunting pod arrives.",
+      "sfx": [
+        [
+          "sub_boom",
+          0.12,
+          0.78
+        ],
+        [
+          "whoosh",
+          0.6,
+          0.48
+        ]
+      ],
+      "start": 0.2,
+      "voice_end": 8.048,
+      "end": 8.548
+    },
+    {
+      "id": "scale_reveal",
+      "tag": "40-TON GIANT",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_02_scale_reveal.wav",
+      "text": "Yet there is one creature in the abyss that flips the entire hunt upside down: the forty-ton humpback whale.",
+      "sfx": [
+        [
+          "riser",
+          -0.8,
+          0.58
+        ],
+        [
+          "sub_boom",
+          0.0,
+          0.88
+        ],
+        [
+          "whale_call",
+          0.25,
+          0.56
+        ]
+      ],
+      "start": 8.548,
+      "voice_end": 15.665,
+      "end": 16.165
+    },
+    {
+      "id": "data_compare",
+      "tag": "MASS COMPARISON",
+      "headline": "6 TONNES  vs  40 TONNES",
+      "subline": "ORCA (8M)  \u00b7  HUMPBACK (15M)",
+      "wav": "vo/beat_03_data_compare.wav",
+      "text": "At forty tonnes and fifteen meters long, a humpback outweighs an orca nearly seven to one.",
+      "sfx": [
+        [
+          "impact_tick",
+          0.1,
+          0.58
+        ],
+        [
+          "impact_tick",
+          0.45,
+          0.58
+        ]
+      ],
+      "start": 16.165,
+      "voice_end": 22.214,
+      "end": 22.714
+    },
+    {
+      "id": "weapon_fins",
+      "tag": "NATURAL ARMOR",
+      "headline": "5M RAZOR-ARMORED FINS",
+      "subline": "COVERED IN SHARP BARNACLES",
+      "wav": "vo/beat_04_weapon_fins.wav",
+      "text": "Its massive five-meter pectoral fins are armored with razor-sharp barnacles that swing like bone-crushing clubs.",
+      "sfx": [
+        [
+          "whoosh",
+          0.0,
+          0.56
+        ],
+        [
+          "sub_boom",
+          0.22,
+          0.68
+        ],
+        [
+          "bubble_burst",
+          0.5,
+          0.4
+        ]
+      ],
+      "start": 22.714,
+      "voice_end": 29.239,
+      "end": 29.739
+    },
+    {
+      "id": "sonar_bait",
+      "tag": "OCEAN ALARM",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_05_sonar_bait.wav",
+      "text": "When orcas coordinate an attack, humpbacks hear their echoing sonar calls from miles away across the deep.",
+      "sfx": [
+        [
+          "sonar_ping",
+          0.18,
+          0.62
+        ],
+        [
+          "sonar_ping",
+          1.85,
+          0.52
+        ],
+        [
+          "bubble_burst",
+          0.95,
+          0.38
+        ]
+      ],
+      "start": 29.739,
+      "voice_end": 35.915,
+      "end": 36.415
+    },
+    {
+      "id": "intervention",
+      "tag": "THE INTERVENTION",
+      "headline": "",
+      "subline": "",
+      "wav": "vo/beat_06_intervention.wav",
+      "text": "Scientists have documented humpbacks charging straight into orca ambushes to shield panicked seals and smaller whales.",
+      "sfx": [
+        [
+          "riser",
+          -0.7,
+          0.68
+        ],
+        [
+          "sub_boom",
+          0.0,
+          0.94
+        ],
+        [
+          "whale_call",
+          0.4,
+          0.58
+        ]
+      ],
+      "start": 36.415,
+      "voice_end": 43.37,
+      "end": 43.87
+    },
+    {
+      "id": "retreat",
+      "tag": "85% RETREAT RATE",
+      "headline": "ORCAS BREAK FORMATION",
+      "subline": "DOCUMENTED INTERVENTIONS",
+      "wav": "vo/beat_07_retreat.wav",
+      "text": "Thrashing their monumental tails and blocking every strike, they force the entire orca pod to break formation and retreat.",
+      "sfx": [
+        [
+          "whoosh",
+          0.0,
+          0.62
+        ],
+        [
+          "bubble_burst",
+          0.3,
+          0.46
+        ],
+        [
+          "sub_boom",
+          0.9,
+          0.65
+        ]
+      ],
+      "start": 43.87,
+      "voice_end": 51.463,
+      "end": 51.963
+    },
+    {
+      "id": "closer",
+      "tag": "MONARCH OF THE DEEP",
+      "headline": "EVEN KILLERS FEAR A GUARDIAN",
+      "subline": "MONARCH\u00ae OCEAN ARCHIVE",
+      "wav": "vo/beat_08_closer.wav",
+      "text": "In the deep ocean, brute speed bows to an unbreakable guardian.",
+      "sfx": [
+        [
+          "sub_boom",
+          0.0,
+          0.8
+        ],
+        [
+          "whale_call",
+          0.3,
+          0.62
+        ]
+      ],
+      "start": 51.963,
+      "voice_end": 56.351,
+      "end": 58.067
+    }
+  ]
+}

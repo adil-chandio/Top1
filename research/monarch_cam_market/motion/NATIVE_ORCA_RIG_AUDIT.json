@@ -1,0 +1,75 @@
+{
+  "native_rig_ready_for_production": false,
+  "compatibility_status": "FAILED_size_sanity_requires_independent_loader_crosscheck",
+  "type": "actual_native_glTF_animation_skinning_evaluation",
+  "clip_name": "Take 001",
+  "clip_seconds": [
+    0.0416666679084301,
+    2.0333333015441895
+  ],
+  "joints": 12,
+  "animation_channels": 7,
+  "vertices_tested": 1656,
+  "native_skin_preserved": true,
+  "weight_sums_checked": true,
+  "finite_samples": true,
+  "samples": [
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 116.1654728391516,
+      "time": 0.0416666679084301,
+      "max_vertex_displacement_from_clip_start_model_units": 0.0,
+      "moving_vertices_over_0_001": 0
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 75.659974487431,
+      "time": 0.2906249971129,
+      "max_vertex_displacement_from_clip_start_model_units": 125.44945377112813,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 66.3876923688226,
+      "time": 0.5395833263173699,
+      "max_vertex_displacement_from_clip_start_model_units": 395.4006998233512,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 152.58454358839208,
+      "time": 0.7885416555218399,
+      "max_vertex_displacement_from_clip_start_model_units": 651.6279928330931,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 187.96482859996442,
+      "time": 1.0374999847263098,
+      "max_vertex_displacement_from_clip_start_model_units": 763.4532141165822,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 154.77326529345703,
+      "time": 1.2864583139307797,
+      "max_vertex_displacement_from_clip_start_model_units": 658.3354158418234,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 69.64352697769228,
+      "time": 1.5354166431352496,
+      "max_vertex_displacement_from_clip_start_model_units": 405.04238856046214,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 73.63633733470142,
+      "time": 1.7843749723397195,
+      "max_vertex_displacement_from_clip_start_model_units": 132.97800647803302,
+      "moving_vertices_over_0_001": 1656
+    },
+    {
+      "bbox_extent_to_rest_extent_max_ratio": 116.73380942774509,
+      "time": 2.0333333015441895,
+      "max_vertex_displacement_from_clip_start_model_units": 4.04510236710541,
+      "moving_vertices_over_0_001": 1649
+    }
+  ],
+  "decision": "Do not deploy this native skin yet: numerical output shows implausible bounding extents relative to rest mesh. Cross-check decoded asset, bind transforms and evaluator against a supported loader before blaming source rig. Preserve source hierarchy for investigation; previous integrated_scene.py drops rig objects. Finite movement alone is not a pass.",
+  "creative_or_anatomy_approval": false,
+  "asset_sha256": "105ece638fcd9e47fe9d984116ce829dc22fe685c59155eebe7b3297050abfe1"
+}

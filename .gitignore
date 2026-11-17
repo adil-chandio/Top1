@@ -1,0 +1,33 @@
+__pycache__/
+*.pyc
+node_modules/
+panama_plus_3d_kit/out/
+panama_plus_3d_kit/assets/
+panama_plus_3d_kit/ep2_b2b/out/
+panama_plus_3d_kit/ep2_b2b/assets/
+panama_plus_3d_kit/ep3_nightshift/out/
+panama_plus_3d_kit/ep3_nightshift/assets/
+panama_plus_3d_kit/ep4_orca_urdu/out/
+panama_plus_3d_kit/ep4_orca_urdu/assets/
+panama_plus_3d_kit/ep5_motivation_3d/out/
+panama_plus_3d_kit/ep5_motivation_3d/assets/
+panama_plus_3d_kit/ep6_mafia_temple/out/
+panama_plus_3d_kit/ep6_mafia_temple/assets/
+google_drive/
+
+# heavy / generated
+cinema_v4/prime/build/
+*.wav
+# Media stays outside source control
+*.mp4
+*.mov
+*.mkv
+*.webm
+
+# Local motion dependencies and generated frames
+.local-motion/
+research/monarch_cam_market/motion/out/
+
+# Persistent studio state, media and credentials are not source files
+studio/runtime/
+studio/credentials/
