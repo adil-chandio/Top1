@@ -87,22 +87,18 @@ function displacedPlane(w, d, seg, amp, freq, color, rough, metal) {
   return mesh;
 }
 
-/* the field: dark tilled earth, ridged in rows */
-/* The wide field plate exists so the horizon is not empty, but at 120 m its
-   near corner reaches the aerial camera and smears across frame. The bank under
-   the action carries the ground, so this plate is pushed far back and sunk. */
-const field = displacedPlane(120, 120, 90, 0.22, 0.60, 0x2b2018, 0.97, 0.01);
-field.position.set(0, -0.85, -120);
-scene.add(field);
-
-/* a second, closer furrow bank so the aerial has depth under it */
-const bank = displacedPlane(90, 70, 64, 0.20, 0.55, 0x2b2018, 0.97, 0.01);
-bank.position.set(0, -0.04, -14);
-scene.add(bank);
+/* One ground plane, tilled and ridged, sized so its near edge stays behind
+   every camera in the film. Two overlapping plates of the same colour made the
+   smear impossible to attribute earlier; there is only one now. */
+const ground = displacedPlane(140, 140, 110, 0.16, 0.50, 0x2a1f17, 0.97, 0.01);
+ground.position.set(0, -0.05, -45);
+scene.add(ground);
+const field = ground;   // kept as an alias for the probe's hide list
+const bank = ground;
 
 /* ------------------------------------------------------------- potato prop */
 function potato(scale = 1) {
-  const g = new THREE.SphereGeometry(0.30 * scale, 12, 9);
+  const g = new THREE.SphereGeometry(0.16 * scale, 12, 9);
   const p = g.attributes.position;
   for (let i = 0; i < p.count; i++) {
     const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
@@ -582,13 +578,13 @@ window.__PEHRA_FRAME__ = (frame) => {
 };
 
 window.__SET_TIMELINE__ = (tl) => { window.__TIMELINE__ = tl; };
-window.__DEBUG__ = { scene, camera, field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB };
+window.__DEBUG__ = { scene, camera, ground, field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB };
 window.__HIDE__ = (name, on) => {
-  const m = { field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, soldierGrp, lantern }[name];
+  const m = { ground, field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, soldierGrp, lantern }[name];
   if (m) m.visible = !on;
 };
 window.__ONLY_ALL_OFF__ = (on) => {
-  for (const h of Object.values({ field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, planet: null })) {
+  for (const h of Object.values({ ground, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB })) {
     if (h) h.visible = !on;
   }
 };
