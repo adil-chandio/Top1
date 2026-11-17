@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "bounded_integrated_visual_proof_delivered_awaiting_user_review_full_production_held",
+  "state": "integrated_proof_v1_rejected_prior_episode_baseline_audited_no_new_render",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -65,7 +65,8 @@
     "research/monarch_cam_gecko_batch5/USER_INTEGRATED_PROOF_AUTHORIZATION.json",
     "research/monarch_cam_gecko_batch5/build_integrated_proof.py",
     "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_RECEIPT.json",
-    "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_REVIEW.md"
+    "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_REVIEW.md",
+    "research/monarch_cam_craft_forensics/PRIOR_EPISODE_BASELINE_ACTUAL_AUDIT.md"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -400,7 +401,7 @@
     "user_statement": "Han ijazat ha",
     "authorization_receipt": "research/monarch_cam_gecko_batch5/USER_INTEGRATED_PROOF_AUTHORIZATION.json",
     "scope": "one4\u20136s original integrated visual feasibility proof despite disclosed unresolved anatomy; no full production/publication/spend",
-    "status": "render_complete_full_decode_passed_sampled_frames_inspected_user_visual_review_pending",
+    "status": "rejected_by_user_quality_below_prior_bear_ancient_baseline",
     "target_seconds": 5,
     "target_frames": 120,
     "fps": 24,
@@ -415,5 +416,12 @@
     "sha256": "5f9ddb40edc6d3909c3fc74d5c21ca5e630faccfc5637a31a0927ebcf6337337",
     "receipt": "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_RECEIPT.json",
     "user_visual_approved": false
+  },
+  "prior_episode_baseline_audit": {
+    "report": "research/monarch_cam_craft_forensics/PRIOR_EPISODE_BASELINE_ACTUAL_AUDIT.md",
+    "saved_contact_sheets_opened": 7,
+    "full_films_watched": false,
+    "audio_listened_by_assistant": false,
+    "new_render_authorized": false
   }
 }
