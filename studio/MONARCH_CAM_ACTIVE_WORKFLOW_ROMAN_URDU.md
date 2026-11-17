@@ -97,3 +97,6 @@ English story66sanimatic actually exported540x960/24fps with63.68svoice,8beats a
 
 ## Latest Batch4 visual-development checkpoint
 66sEnglish3Dvisualcut exported/full-decoded. Originalfoot/setae/padsceneassets integrated; initially disconnected digit corrected, external skin1component17620vertices verified.12samplepoints and corrected65sdecodedframe actually inspected; earlier2Dtip composite leak fixed. Historical actualcraft findings applied, not new fullreferencewatching. Footclaws/proportions/LDT, fullratesmoothmotion, unifiedbackground and audiolistening/mix still open. See research/monarch_cam_gecko_batch4/CRAFT_APPLICATION_AND_VISUAL_PASS_ROMAN_URDU.md; no finalfilm/anatomy/audioQCpass.
+
+## Latest full-rate motion and sound draft
+66sEnglishmotionmix exported:180newper-frame512pxreleaseposes at24fps plus36frameoriginalfootwarp. Transparentbackground removesgreycard; noopticalflow/frameblend.12samplestoryframes and currentexport8consecutivedecodedframes37.5s actually inspected; all8unique. Full decodepass. Original3quieteditorialtextures/noBGM;48kHzstereodraftmaster. AACmeasured-16.31LUFS/-4.81dBTP; these are technicalchecks,notlisteningapproval. Macro still,exactanatomy/claw/LDT,rigvalidation and pronunciation/prosody/seam/effects balance remain. See Batch4MOTION_CUT_RECEIPT.json.

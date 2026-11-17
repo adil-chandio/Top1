@@ -1,0 +1,41 @@
+{
+  "file": "studio/runtime/gecko/motion-pass/sound-draft-v1.wav",
+  "sha256": "e3819f78bb341d072bb00623bc3beac7febd5a3a58a6fae720e707cefd38d1b1",
+  "seconds": 66,
+  "sample_rate": 48000,
+  "channels": 2,
+  "provenance": "selected voice09 + original deterministic noise textures; noBGM/externalSFX",
+  "events": [
+    {
+      "time": 11.08,
+      "duration": 0.25,
+      "role": "quiet editorial transition,not literal adhesive sound"
+    },
+    {
+      "time": 26.59,
+      "duration": 0.18,
+      "role": "quiet editorial transition,not literal adhesive sound"
+    },
+    {
+      "time": 33.2,
+      "duration": 0.24,
+      "role": "quiet editorial transition,not literal adhesive sound"
+    }
+  ],
+  "loudnorm_input_measurements": {
+    "input_i": "-19.05",
+    "input_tp": "-1.47",
+    "input_lra": "3.30",
+    "input_thresh": "-29.55",
+    "output_i": "-16.76",
+    "output_tp": "-2.00",
+    "output_lra": "3.30",
+    "output_thresh": "-27.25",
+    "normalization_type": "dynamic",
+    "target_offset": "0.76"
+  },
+  "master_measured_lufs": -16.29,
+  "master_measured_true_peak_db": -5.0,
+  "listening_QC": "NOT performed; pronunciation,prosody,seam and effects balance remain open",
+  "status": "technical mastered draft only"
+}

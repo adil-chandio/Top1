@@ -1,0 +1,28 @@
+{
+  "pad_render_frames": 180,
+  "fps": 24,
+  "size": [
+    512,
+    512
+  ],
+  "first_output": {
+    "output_frame": 0,
+    "rig_time": 30.0,
+    "phase": "DIRECTIONAL LOAD (symbolic)",
+    "lowest_mesh_z": 0.014999999999999986,
+    "contact_rings": 81
+  },
+  "last_output": {
+    "output_frame": 179,
+    "rig_time": 60.0,
+    "phase": "CLEAR",
+    "lowest_mesh_z": 0.46499999999999997,
+    "contact_rings": 0
+  },
+  "minimum_mesh_z": 0.014999999999999986,
+  "rig_numeric_sha256": "444e25fd474e4b0b100e816ae011626b1f9d3f0f3967d64c41cb8abdfc702fea",
+  "hero_frames": 36,
+  "hero_kind": "external-skin and ridge warp; not skeletal/tendon rig",
+  "transparent_background": true,
+  "known_limits": "illustrative proportions/claws and LDT; not measured gait or force simulation; no final biological pass"
+}

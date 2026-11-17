@@ -1,0 +1,28 @@
+{
+  "file": "studio/runtime/gecko/motion-pass/cut/gecko-english-motion-mix-v1.mp4",
+  "sha256": "96a2e3d56a4f916a350b81b7e117345a23d8426f01fa682cb4a430b29ea0e0ff",
+  "seconds": 66,
+  "fps": 24,
+  "resolution": [
+    540,
+    960
+  ],
+  "release_sequence": {
+    "rendered_frames": 180,
+    "fps": 24,
+    "seconds": 7.5,
+    "mapping": "B6 output34.5s onwards selects new per-frame rendered pose; recap55.82s onwards",
+    "no_opticalflow_or_frameblending": true
+  },
+  "hero_frames": 36,
+  "hero_method": "original external skin/ridge warp; NOT bone/tendon or measured gait",
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "sound_receipt": "SOUND_DRAFT_RECEIPT.json",
+  "holds": [
+    "exactanatomy/claw/LDT and footrig not passed",
+    "listeningQC/pronunciation/prosody/seam/effectsbalance not performed",
+    "macro still with scale move remains",
+    "not final film or private delivery"
+  ]
+}

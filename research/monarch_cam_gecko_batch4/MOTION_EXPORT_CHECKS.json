@@ -1,0 +1,13 @@
+{
+  "mp4_sha256": "96a2e3d56a4f916a350b81b7e117345a23d8426f01fa682cb4a430b29ea0e0ff",
+  "decoded_consecutive_frames": {
+    "start_seconds": 37.5,
+    "count": 8,
+    "fps": 24,
+    "unique_decoded_frames": 8
+  },
+  "aac_measured_lufs": -16.31,
+  "aac_measured_true_peak_db": -4.81,
+  "audio_listening_review": false,
+  "note": "measurement and frame checks only, not final AV QC"
+}
