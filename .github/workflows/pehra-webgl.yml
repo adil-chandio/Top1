@@ -49,6 +49,8 @@ jobs:
       first_beat: ${{ steps.cfg.outputs.first_beat }}
       last_beat: ${{ steps.cfg.outputs.last_beat }}
       workers: ${{ steps.cfg.outputs.workers }}
+      f_first: ${{ steps.range.outputs.f_first }}
+      f_last: ${{ steps.range.outputs.f_last }}
     steps:
       - uses: actions/checkout@v4
 
@@ -77,6 +79,25 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --disable-pip-version-check -q numpy scipy pillow
+
+      - name: Resolve the frame range from the beats
+        id: range
+        env:
+          FIRST_BEAT: ${{ steps.cfg.outputs.first_beat }}
+          LAST_BEAT: ${{ steps.cfg.outputs.last_beat }}
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          tl = json.load(open('production/account1_ep01/build/timeline_full.json'))
+          shots = tl['shots']
+          ids = [s['id'] for s in shots]
+          a = os.environ.get('FIRST_BEAT') or ids[0]
+          b = os.environ.get('LAST_BEAT') or a
+          i, j = ids.index(a), ids.index(b)
+          print(f"f_first={shots[i]['f_start']}")
+          print(f"f_last={shots[j]['f_end']}")
+          PY
 
       - name: Restore the Urdu narration performance
         run: python -u production/account1_ep01/restore_narration.py
@@ -133,8 +154,11 @@ jobs:
         with:
           name: pehra-webgl-bundle-${{ github.run_id }}
           path: production/account1_ep01
-      - name: Draw exactly one frame and record what happened
+      - name: Draw one frame per beat and record what happened
         continue-on-error: true
+        env:
+          P_F0: ${{ needs.bootstrap.outputs.f_first }}
+          P_F1: ${{ needs.bootstrap.outputs.f_last }}
         run: node production/account1_ep01/webgl/probe.mjs
       - name: Publish the probe result so it can be read from the branch
         if: always()
@@ -155,7 +179,8 @@ jobs:
 
   render:
     name: "WebGL frames and encode"
-    needs: bootstrap
+    needs: [bootstrap, probe]
+    if: github.event_name == 'workflow_dispatch' || vars.PEHRA_RENDER == '1'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:

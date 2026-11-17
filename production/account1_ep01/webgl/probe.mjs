@@ -67,10 +67,14 @@ try {
   for (const [k, v] of Object.entries(each)) log('asset:' + k, v);
   const init = await page.evaluate(async(tl)=>{try{window.__SET_TIMELINE__(tl);await window.__PEHRA_INIT__(tl);return 'ok';}catch(e){return 'ERR '+e.message;}},tl);
   log('init', init);
-  const f = await page.evaluate(()=>{try{window.__PEHRA_FRAME__(60);return 'ok';}catch(e){return 'ERR '+e.message;}});
-  log('frame', f);
-  await page.screenshot({path:path.join(OUT,'probe_frame.jpg'),type:'jpeg',quality:92});
-  log('screenshot','ok');
+  /* one representative frame per beat, so the look of every beat can be
+     inspected from the branch without waiting on a full render */
+  const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
+  for (const s of picks) {
+    const f = await page.evaluate((idx)=>{try{window.__PEHRA_FRAME__(idx);return 'ok';}catch(e){return 'ERR '+e.message;}}, s.lookdev_frame);
+    await page.screenshot({path:path.join(OUT, `${s.id}.jpg`), type:'jpeg', quality:92});
+    log('beat:'+s.id, f);
+  }
   verdict = (init==='ok' && f==='ok') ? 'PASS' : 'FAIL';
 } catch (e) {
   log('exception', (e?.message||String(e)).slice(0,400));
