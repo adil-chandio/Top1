@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "rebuild_authorized_replacement_asset_rendered_self_review_failed_not_promoted",
+  "state": "full_length_replacement_render_started_not_complete_or_quality_approved",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -479,5 +479,23 @@
     "requested_benchmark": "Above prior 4\u20135 3D videos made together, triggered from another Arena chat",
     "next_action": "Open requested branch PR; no new rendering or quality approval implied"
   },
-  "replacement_asset_review": "research/monarch_cam_gecko_batch5/CINEMATIC_REPLACEMENT_SELF_REVIEW.json"
+  "replacement_asset_review": "research/monarch_cam_gecko_batch5/CINEMATIC_REPLACEMENT_SELF_REVIEW.json",
+  "active_full_render": {
+    "process_id": "full-length-gecko-video-render-b2015824",
+    "script": "research/monarch_cam_gecko_batch5/render_cinematic_full.py",
+    "target_seconds": 63.68,
+    "target_frames": 1592,
+    "target_resolution": [
+      720,
+      1280
+    ],
+    "log": "studio/runtime/gecko/cinematic-full-v2.log",
+    "output": "studio/runtime/gecko/cinematic-full-v2/gecko-complete-cinematic-v2.mp4",
+    "started": true,
+    "completion_verified": false,
+    "quality_approved": false,
+    "drive_uploaded": false,
+    "next_steps": "Check actual render output; inspect samples and full decode, upload completed new video privately to Drive and return verified link. Do not claim next-level acceptance.",
+    "limitations": "Original illustrative asset; static exterior pose with animated perspective cameras and 3D microscopic explanatory shots; not a validated toe-release animation."
+  }
 }
