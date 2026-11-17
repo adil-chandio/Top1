@@ -1,0 +1,57 @@
+{
+  "head_sha": "2d39b3c3474a76f25278fc6bf1de21ba7cdf09d8",
+  "run_id": 44095691512,
+  "figures": [
+    {
+      "figure": "fig4-digit-IV-SEM",
+      "parts": 5,
+      "source_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ce3a/13617260/dff809b6e633/JOA-9999-0-g017.webp",
+      "source_size": [
+        1064,
+        644
+      ],
+      "source_sha256": "8d12c361538843a93391f6d2b6614f23bfdfe369d44924cda80a4230cd764327",
+      "copy_sha256": "0840bcc57d49b6d0a01b105ea4c5196fef2af4bd96ac1a00f7c1ac44545d7c5a",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13617260/",
+      "credit": "Russell, Delannoy & Garner2026; Journal of Anatomy; DOI10.1111/joa.70251",
+      "license": "CC BY4.0 per article; check figure-specific credit before reuse",
+      "check_ids": [
+        134083470014,
+        134083476413,
+        134083482677,
+        134083488901,
+        134083494306
+      ],
+      "local_path": "studio/runtime/gecko/anatomy-digit-evidence/fig4-digit-IV-SEM.jpg",
+      "hash_verified": true,
+      "pixels_inspected": true,
+      "inspection_method": "read_file image viewer; full figure at supplied 1064px width",
+      "inspection_report": "DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md"
+    },
+    {
+      "figure": "fig3-digit-IV-multiview",
+      "parts": 4,
+      "source_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ce3a/13617260/1579b8950185/JOA-9999-0-g007.webp",
+      "source_size": [
+        1064,
+        627
+      ],
+      "source_sha256": "cf568d465feaf07a82f6bd1c595f23c6592930b40084f89e7db333ee1fa906b7",
+      "copy_sha256": "be649dbc07d26fad9a059c235e9aea1169eec9b20243972cd72b8912be1bba9d",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13617260/",
+      "credit": "Russell, Delannoy & Garner2026; Journal of Anatomy; DOI10.1111/joa.70251",
+      "license": "CC BY4.0 per article; check figure-specific credit before reuse",
+      "check_ids": [
+        134083440417,
+        134083447353,
+        134083453760,
+        134083460314
+      ],
+      "local_path": "studio/runtime/gecko/anatomy-digit-evidence/fig3-digit-IV-multiview.jpg",
+      "hash_verified": true,
+      "pixels_inspected": true,
+      "inspection_method": "read_file image viewer; full figure at supplied 1064px width",
+      "inspection_report": "DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md"
+    }
+  ]
+}
