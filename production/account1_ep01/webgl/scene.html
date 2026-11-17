@@ -88,11 +88,12 @@ function displacedPlane(w, d, seg, amp, freq, color, rough, metal) {
 }
 
 /* the field: dark tilled earth, ridged in rows */
-const field = displacedPlane(150, 150, 110, 0.30, 0.55, 0x2b2018, 0.97, 0.01);
+const field = displacedPlane(120, 120, 90, 0.22, 0.60, 0x2b2018, 0.97, 0.01);
+field.position.y = -0.06;
 scene.add(field);
 
 /* a second, closer furrow bank so the aerial has depth under it */
-const bank = displacedPlane(70, 22, 44, 0.40, 0.60, 0x33261c, 0.97, 0.01);
+const bank = displacedPlane(46, 16, 34, 0.30, 0.70, 0x33261c, 0.97, 0.01);
 bank.position.set(-16, 0.06, -30);
 scene.add(bank);
 
@@ -376,8 +377,8 @@ function applyPalette(name) {
 const BEATS = {
   B01_AERIAL_FIELD(t) {                        // high drone drift over the field
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-13 + e * 10, 16.5 - e * 4.0, 20 - e * 9);
-    camera.lookAt(0, 0.8, -6);
+    camera.position.set(-11 + e * 8, 21 - e * 3.5, 24 - e * 9);
+    camera.lookAt(0, 0.9, -5);
     keyLt.position.set(-16, 24, 10); keyLt.intensity = 2.9;
     rimLt.position.set(18, 10, -30);  rimLt.intensity = 2.4;
     gateLt.visible = false; moonLt.visible = true; moonLt.intensity = 7;
@@ -458,8 +459,8 @@ const BEATS = {
   },
   B09_FORTY_ACRES(t) {                         // pull back: forty walled acres
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-16 + e * 8, 9.5 - e * 2.5, 16 - e * 6);
-    camera.lookAt(0, 1.2, -12);
+    camera.position.set(-14 + e * 7, 11.5 - e * 2.5, 20 - e * 7);
+    camera.lookAt(0, 1.2, -11);
     keyLt.position.set(-18, 20, 8); keyLt.intensity = 2.6;
     rimLt.position.set(16, 9, -28); rimLt.intensity = 2.6;
     gateLt.visible = true; gateLt.intensity = 24;
