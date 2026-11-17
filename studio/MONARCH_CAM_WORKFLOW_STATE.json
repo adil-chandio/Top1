@@ -12,8 +12,7 @@
     "5": "not_started"
   },
   "current_artifacts": [
-    "research/monarch_cam_restart_batch1/REOPENED_MARKET_PRIMARY_PAIRS.json",
-    "research/monarch_cam_restart_batch1/REOPENED_MARKET_FINDINGS_ROMAN_URDU.md"
+    "research/monarch_cam_restart_batch1/ANIMAL_CHANNEL_SCREEN_ROMAN_URDU.md"
   ],
   "next_required": [
     "broad channel landscape and evidence-based relevance screening",
@@ -24,7 +23,7 @@
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
-  "research_start": "fresh_broad_channel_discovery_before_any_deep_channel_comparison",
+  "research_start": "fresh animal behaviour/mechanism channel landscape; broad screen executed; cohort research pending",
   "prior_pair_study": "historical auxiliary evidence; excluded from fresh-start completion",
   "channel_identity_source": "studio/config.json channels.monarch_cam.focus",
   "channel_focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
