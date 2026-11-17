@@ -17,7 +17,7 @@ concurrency:
 env:
   BLENDER_VERSION: "4.2.15"
   BLENDER_DIR: "blender-4.2.15-linux-x64"
-  SAMPLES: "4"
+  SAMPLES: "24"
 
 jobs:
   bootstrap:
@@ -84,7 +84,7 @@ jobs:
           import json, re
           from pathlib import Path
           tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
-          SHARD = 40          # ~40 frames per shard at ~42 s/frame ≈ 28 min
+          SHARD = 30          # ~30 frames/shard, ~20 min at 24 samples with OIDN
           rows = []
           for s in tl["shots"]:
               slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
