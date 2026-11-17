@@ -80,6 +80,15 @@ jobs:
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --disable-pip-version-check -q numpy scipy pillow
 
+      - name: Restore the Urdu narration performance
+        run: python -u production/account1_ep01/restore_narration.py
+
+      - name: Build the full-script timeline
+        run: python -u production/account1_ep01/plan_full.py
+
+      - name: Build the full-script soundtrack
+        run: python -u production/account1_ep01/build_audio_full.py
+
       - name: Resolve the frame range from the beats
         id: range
         env:
@@ -98,15 +107,6 @@ jobs:
           print(f"f_first={shots[i]['f_start']}")
           print(f"f_last={shots[j]['f_end']}")
           PY
-
-      - name: Restore the Urdu narration performance
-        run: python -u production/account1_ep01/restore_narration.py
-
-      - name: Build the full-script timeline
-        run: python -u production/account1_ep01/plan_full.py
-
-      - name: Build the full-script soundtrack
-        run: python -u production/account1_ep01/build_audio_full.py
 
       - name: Verify the prepared bundle
         run: |
