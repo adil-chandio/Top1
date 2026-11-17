@@ -1,0 +1,8 @@
+usage: blender [-h] --shot SHOT [--mode {lookdev,final}] [--samples SAMPLES]
+               [--res-pct RES_PCT] [--timeline TIMELINE] [--assets ASSETS]
+               [--out OUT]
+blender: error: unrecognized arguments: --frames 400-400
+Blender 4.2.15 LTS (hash e8cd310002f4 built 2025-10-28 01:31:07)
+total 8
+drwxr-xr-x 2 runner runner 4096 Nov 17 04:38 .
+drwxr-xr-x 7 runner runner 4096 Nov 17 04:38 ..
