@@ -12,20 +12,16 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 25
     steps:
-      - name: Prevent duplicate acquisition from the unassigned older queue entry
+      - name: Cancel only our now-unnecessary fallback acquisition
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          status=$(gh api repos/${{ github.repository }}/actions/runs/44023314588 --jq .status)
-          if [ "$status" = "queued" ]; then
-            gh api --method POST repos/${{ github.repository }}/actions/runs/44023314588/cancel
-          elif [ "$status" != "completed" ]; then
-            echo "Older run has started; refusing duplicate acquisition."
-            exit 1
+          status=$(gh api repos/${{ github.repository }}/actions/runs/44024328065 --jq .status)
+          if [ "$status" != "completed" ]; then
+            gh api --method POST repos/${{ github.repository }}/actions/runs/44024328065/cancel
           fi
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
-      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
       - env:
           GH_TOKEN: ${{ github.token }}
         run: python research/monarch_cam_restart_batch1/archive_batch.py

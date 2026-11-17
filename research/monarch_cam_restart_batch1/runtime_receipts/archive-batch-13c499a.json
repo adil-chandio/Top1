@@ -1,0 +1,1584 @@
+[
+  {
+    "identifier": "the-most-misunderstood-concept-in-physics-veritasium",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "The Most Misunderstood Concept in Physics",
+      "creator": "Veritasium",
+      "description": "https://www.youtube.com/watch?v=DxL2HoqLbyA",
+      "source": null,
+      "date": "2023",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "The Most Misunderstood Concept in Physics - Veritasium.mp4",
+        "size": "128808077",
+        "format": "MPEG4",
+        "source": "original"
+      }
+    ],
+    "chosen": {
+      "name": "The Most Misunderstood Concept in Physics - Veritasium.mp4",
+      "size": "128808077",
+      "format": "MPEG4",
+      "source": "original"
+    },
+    "bytes": 128808077,
+    "sha256": "50625d4ee67b17dcc84e1fc6fc83800d922e93de2d13834eaa8262e9aa66dd3d",
+    "duration": 1634.313288,
+    "video": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24000/1001"
+      }
+    ],
+    "survey_interval": 4,
+    "scene_candidates_seconds": [
+      1.37637,
+      2.12712,
+      2.79446,
+      3.46179,
+      4.17083,
+      4.79646,
+      5.54721,
+      6.21454,
+      9.96829,
+      10.7607,
+      12.4708,
+      12.9296,
+      13.2632,
+      14.8065,
+      14.8482,
+      16.6833,
+      20.2285,
+      22.2722,
+      22.9813,
+      23.5652,
+      23.9406,
+      25.8592,
+      26.4014,
+      26.7767,
+      27.9029,
+      28.32,
+      28.6536,
+      29.1124,
+      29.5712,
+      35.2018,
+      38.1214,
+      40.9159,
+      42.2088,
+      43.6269,
+      45.8375,
+      49.2993,
+      51.343,
+      53.0113,
+      54.3042,
+      57.349,
+      59.351,
+      61.2278,
+      63.6886,
+      64.2308,
+      67.8595,
+      72.4057,
+      73.2398,
+      74.3242,
+      75.9092,
+      77.369,
+      78.37,
+      79.9132,
+      83.2498,
+      84.6262,
+      89.381,
+      93.5935,
+      97.2638,
+      98.5985,
+      104.98,
+      106.148,
+      109.359,
+      111.153,
+      117.034,
+      118.577,
+      119.828,
+      123.332,
+      125.042,
+      127.753,
+      129.212,
+      129.921,
+      130.63,
+      131.673,
+      141.933,
+      147.23,
+      152.527,
+      156.615,
+      160.911,
+      164.998,
+      170.712,
+      176.009,
+      182.307,
+      187.145,
+      191.608,
+      198.198,
+      200.951,
+      201.785,
+      205.789,
+      208.166,
+      210.293,
+      213.213,
+      214.923,
+      216.091,
+      218.093,
+      223.515,
+      227.602,
+      232.524,
+      244.369,
+      255.13,
+      332.874,
+      335.46,
+      382.007,
+      392.183,
+      440.899,
+      506.297,
+      522.355,
+      531.74,
+      537.62,
+      545.378,
+      548.173,
+      550.008,
+      553.261,
+      566.649,
+      585.668,
+      588.338,
+      595.261,
+      607.857,
+      623.289,
+      629.295,
+      644.811,
+      646.896,
+      648.815,
+      650.316,
+      651.693,
+      654.279,
+      657.657,
+      663.83,
+      670.67,
+      671.963,
+      672.797,
+      674.173,
+      677.302,
+      679.512,
+      682.765,
+      685.31,
+      685.643,
+      686.644,
+      686.811,
+      688.188,
+      690.94,
+      773.523,
+      777.61,
+      850.099,
+      857.356,
+      862.862,
+      867.241,
+      875.208,
+      890.056,
+      897.688,
+      902.151,
+      905.822,
+      911.661,
+      919.836,
+      922.171,
+      924.507,
+      928.636,
+      930.429,
+      932.64,
+      933.724,
+      937.228,
+      942.567,
+      943.025,
+      943.401,
+      943.734,
+      944.026,
+      944.193,
+      944.36,
+      947.53,
+      950.575,
+      954.12,
+      958.916,
+      960.376,
+      962.128,
+      965.214,
+      970.386,
+      972.013,
+      973.723,
+      977.435,
+      984.692,
+      988.571,
+      993.409,
+      997.705,
+      1001.13,
+      1003.59,
+      1006.67,
+      1007.42,
+      1009.01,
+      1010.88,
+      1014.05,
+      1018.52,
+      1023.19,
+      1024.52,
+      1026.65,
+      1028.94,
+      1030.65,
+      1032.16,
+      1034.37,
+      1037.04,
+      1045.75,
+      1062.85,
+      1063.94,
+      1065.27,
+      1066.98,
+      1067.82,
+      1069.36,
+      1069.74,
+      1070.19,
+      1071.2,
+      1081.04,
+      1089.67,
+      1098.81,
+      1103.39,
+      1106.61,
+      1109.73,
+      1117.41,
+      1122.45,
+      1125.46,
+      1129.8,
+      1139.76,
+      1151.19,
+      1160.91,
+      1166.79,
+      1169.21,
+      1171.84,
+      1172.75,
+      1192.48,
+      1241.57,
+      1245.45,
+      1258.59,
+      1296.88,
+      1303.14,
+      1325.74,
+      1332.54,
+      1337.29,
+      1340.21,
+      1344.43,
+      1347.26,
+      1357.98,
+      1369.2,
+      1371.87,
+      1395.27,
+      1402.11,
+      1416.16,
+      1420.5,
+      1421.92,
+      1435.56,
+      1440.23,
+      1447.28,
+      1492.82,
+      1507.01,
+      1509.8,
+      1512.76,
+      1514.55,
+      1522.19,
+      1524.44,
+      1526.32,
+      1530.24,
+      1535.12,
+      1568.32,
+      1576.12,
+      1579.7,
+      1602.52,
+      1607.19,
+      1613.9
+    ],
+    "dense_windows": [
+      0,
+      1.02637,
+      679.1619999999999,
+      1613.5500000000002,
+      1633.2132880000001
+    ],
+    "sheets": 19,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-7aWL2iEb6y4",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "Why Crows Are as Smart as 7 Year Old Humans",
+      "creator": "Real Science",
+      "description": "Be one of the first 200 people to sign up with this link and get 20% off your subscription with Brilliant.org! https://brilliant.org/realscience/ <br /><br />Watch this video ad-free on Nebula: https://nebula.tv/videos/realscience-why-crows-are-as-smart-as-7yearold-humans<br /><br />Patreon: https://www.patreon.com/realscience<br />Twitter: https://twitter.com/stephaniesamma<br />Instagram: https://www.instagram.com/stephaniesammann<br /><br />Credits:<br />Narrator/Writer: Stephanie Sammann<br />Writer: Ashleen Knutsen<br />Editor: Dylan Hennessy (https://www.behance.net/dylanhennessy1)<br />Illustrator: Elfy Chiang (https://www.elfylandstudios.com)<br />Illustrator/Animator: Kirtan Patel (https://kpatart.com/illustrations)<br />Animator: Mike Ridolfi (https://www.moboxgraphics.com/)<br />Sound: Graham Haerther (https://haerther.net)<br />Thumbnail: Simon Buckmaster (https://twitter.com/forgottentowel)<br />Producer: Brian McManus (https://www.youtube.com/c/realengineering)<br /><br />Imagery courtesy of Getty Images<br /><br />References:<br /><br />[1] https://www.sciencedirect.com/science/article/abs/pii/S0003347209005806<br />[2] https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0092895  <br />[3] https://www.youtube.com/watch?v=ZerUbHmuY04&ab_channel=PLOSMedia <br />[4] https://www.nature.com/articles/s41598-018-33458-z#Sec20 <br />[5] https://royalsocietypublishing.org/doi/10.1098/rspb.2020.1490<br />[6] https://www.jstor.org/stable/pdf/3839824.pdf?casa_token=oTKj9ZMZn4wAAAAA:L1Bfggt3KOKmSoTixxYyJCiF53ywAG_iBPH8gArUfE-DEtmBkP4xmWA30Ue5-v-0zK74RJ7KaLIQCFSS5suQGg5Ag9tQBQki8Ff_xgYChQ8oS2cmHBs <br />[7] https://link.springer.com/referenceworkentry/10.1007/978-3-540-29678-2_3165 <br />[8] \u200b\u200bhttps://www.kenhub.com/en/library/anatomy/cortical-cytoarchitecture <br />[9] https://juser.fz-juelich.de/record/875386/files/Stacho%20et%20al_Sciene_2020_postprint.pdf) <br />[10] \u200b\u200bhttps://www.brainfacts.org/brain-anatomy-and-function/anatomy/2015/does-brain-size-matter <br />[11] https://www.pnas.org/doi/10.1073/pnas.1517131113<br />[12] https://www.science.org/content/article/humans-these-big-brained-birds-may-owe-their-smarts-long-childhoods<br />[13] https://royalsocietypublishing.org/doi/pdf/10.1098/rstb.2019.0495 <br />[14] https://www.sciencedirect.com/science/article/abs/pii/S0003347210003532<br />[15] https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4373546/#:~:text=Ravens%2C%20Corvus%20corax%2C%20are%20members,highly%20social%20(Heinrich%201999).<br />[16] https://globalnews.ca/news/4315747/crows-gangs-ravens/<br />[17] https://www.yellowstone.org/naturalist-notes-wolves-and-ravens/<br />[18] https://www.crowdedcities.com/ <br />[19] http://www.thecrowbox.com/ <br />[20] https://www.smithsonianmag.com/smart-news/french-theme-park-taught-crows-pick-trash-180969996/",
+      "source": null,
+      "date": "2022-05-31",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "7aWL2iEb6y4.mp4",
+        "size": "90900185",
+        "format": "h.264",
+        "source": "derivative"
+      },
+      {
+        "name": "7aWL2iEb6y4.webm",
+        "size": "356234062",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "original_metadata": [
+      {
+        "id": "7aWL2iEb6y4",
+        "title": "Why Crows Are as Smart as 7 Year Old Humans",
+        "channel": "Real Science",
+        "channel_id": "UC176GAQozKKjhz62H8u9vQQ",
+        "webpage_url": "https://www.youtube.com/watch?v=7aWL2iEb6y4",
+        "duration": 962,
+        "view_count": 6418481,
+        "upload_date": "20220531",
+        "license": null
+      }
+    ],
+    "chosen": {
+      "name": "7aWL2iEb6y4.mp4",
+      "size": "90900185",
+      "format": "h.264",
+      "source": "derivative"
+    },
+    "bytes": 90900185,
+    "sha256": "dba8b1a8e36ca8ac41cb03a5c085690490ee98bccc508d23ec7ffb4a67b807ef",
+    "duration": 962.091,
+    "video": [
+      {
+        "width": 854,
+        "height": 480,
+        "r_frame_rate": "25/1"
+      }
+    ],
+    "survey_interval": 4,
+    "scene_candidates_seconds": [
+      1.76,
+      2.92,
+      4.24,
+      5.48,
+      8.08,
+      10.64,
+      15.4,
+      19.04,
+      22.04,
+      23.96,
+      26.28,
+      28.32,
+      30.44,
+      32.64,
+      34.68,
+      38.8,
+      41.52,
+      44.24,
+      46.68,
+      48.8,
+      50.52,
+      52.96,
+      55.92,
+      59.52,
+      62.6,
+      66.36,
+      74.32,
+      77.6,
+      80.28,
+      82.68,
+      93.36,
+      98.0,
+      103.04,
+      105.08,
+      109.0,
+      112.2,
+      113.96,
+      114.64,
+      115.4,
+      116.04,
+      117.28,
+      119.72,
+      123.08,
+      129.4,
+      130.88,
+      153.28,
+      166.12,
+      182.96,
+      186.4,
+      205.0,
+      224.28,
+      227.2,
+      230.6,
+      244.12,
+      252.52,
+      260.04,
+      264.2,
+      267.56,
+      272.68,
+      280.04,
+      284.4,
+      289.36,
+      294.64,
+      297.36,
+      318.96,
+      331.8,
+      336.48,
+      357.12,
+      366.76,
+      370.88,
+      373.88,
+      374.96,
+      380.88,
+      385.52,
+      392.24,
+      395.04,
+      398.24,
+      401.48,
+      405.24,
+      409.64,
+      414.32,
+      420.32,
+      425.08,
+      430.32,
+      482.64,
+      487.08,
+      493.04,
+      496.64,
+      503.04,
+      506.72,
+      515.04,
+      525.52,
+      531.44,
+      534.64,
+      540.64,
+      560.16,
+      563.72,
+      566.52,
+      568.04,
+      569.96,
+      571.8,
+      575.04,
+      578.64,
+      583.72,
+      605.28,
+      610.32,
+      615.72,
+      618.64,
+      623.36,
+      630.36,
+      635.36,
+      637.72,
+      642.4,
+      646.64,
+      649.92,
+      653.16,
+      662.32,
+      665.2,
+      666.2,
+      671.04,
+      675.6,
+      681.28,
+      684.72,
+      688.12,
+      691.76,
+      695.68,
+      701.56,
+      706.24,
+      711.84,
+      714.4,
+      718.2,
+      723.0,
+      729.48,
+      741.08,
+      755.84,
+      761.04,
+      765.88,
+      768.2,
+      771.16,
+      774.0,
+      777.64,
+      783.08,
+      788.72,
+      795.08,
+      801.36,
+      804.2,
+      809.68,
+      815.0,
+      819.28,
+      824.08,
+      830.08,
+      841.0,
+      843.92,
+      845.2,
+      847.2,
+      850.36,
+      852.6,
+      856.24,
+      857.16,
+      857.76,
+      862.4,
+      864.32,
+      866.44,
+      871.6
+    ],
+    "dense_windows": [
+      0,
+      1.4100000000000001,
+      424.72999999999996,
+      871.25,
+      960.991
+    ],
+    "sheets": 14,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "branch-education",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "Branch Education",
+      "creator": "Branch Education",
+      "description": "<div>How do Microchips work?\u00a0 How does your smartphone camera work?\u00a0 How does Bluetooth work?\u00a0 At Branch Education, we dive deep into the science, engineering, and technology in our modern world using 3D animation and incredibly detailed models.\u00a0</div><div><br /></div><div>Founder of Branch Education: Theodore J Tablante</div><div><br /></div><div>Want to support in-depth engineering and technology education? Support us on Patreon:\u00a0 http://www.patreon.com/brancheducation</div><div><br /></div><div>Modeling is done in Blender 4.2.3 LTS Eevee and Cycles Render Engine, Adobe Premiere, and Reaper</div><div><br /></div><div><a href=\"https://branch.education/\" rel=\"ugc nofollow\">https://branch.education/</a></div><div><br /></div><div><i>Go <a href=\"https://www.youtube.com/@BranchEducation\" rel=\"ugc nofollow\">watch the real thing</a> as long as it is still exist, this is just an archive for history and for the coming generations!</i></div>",
+      "source": null,
+      "date": "2018",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "3-Way Light Switches Explained!! Engineering Inside Light Switches and How They Work.ia.mp4",
+        "size": "93408876",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "3-Way Light Switches Explained!! Engineering Inside Light Switches and How They Work.mp4",
+        "size": "93408876",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How Do Noise Canceling Headphones Work_.ia.mp4",
+        "size": "213766459",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How Do Noise Canceling Headphones Work_.mp4",
+        "size": "213766459",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How Do Touchscreens Work_.ia.mp4",
+        "size": "134992523",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How Do Touchscreens Work_.mp4",
+        "size": "134992523",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How Do Trees Extract CO2_.ia.mp4",
+        "size": "92876271",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How Do Trees Extract CO2_.mp4",
+        "size": "92876271",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How are Images Compressed_  [46MB \u2198\u2198 4.07MB] JPEG In Depth.ia.mp4",
+        "size": "358436352",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How are Images Compressed_  [46MB \u2198\u2198 4.07MB] JPEG In Depth.mp4",
+        "size": "358436352",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.ia.mp4",
+        "size": "161987008",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.mp4",
+        "size": "2372987217",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do CPU Water Coolers Work_ #pcbuild #watercooling #computerhardware.ia.mp4",
+        "size": "4450153",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do CPU Water Coolers Work_ #pcbuild #watercooling #computerhardware.mp4",
+        "size": "67283208",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do CPUs Work_  The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb.ia.mp4",
+        "size": "213507404",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do CPUs Work_  The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb.mp4",
+        "size": "2359541123",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Computer Keyboards Work_ \ud83e\udd14\u2328\u2328\ud83d\udee0.ia.mp4",
+        "size": "64964807",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Computer Keyboards Work_ \ud83e\udd14\u2328\u2328\ud83d\udee0.mp4",
+        "size": "560073235",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Desktop Computers Work_ #pcbuild #computerhardware.ia.mp4",
+        "size": "5580662",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Desktop Computers Work_ #pcbuild #computerhardware.mp4",
+        "size": "96398361",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Digital and Analog Clocks Work_.ia.mp4",
+        "size": "318424229",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Digital and Analog Clocks Work_.mp4",
+        "size": "318424229",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Electron Microscopes Work_ \ud83d\udd2c\ud83d\udee0\ud83d\udd2c Taking Pictures of Atoms.ia.mp4",
+        "size": "116328093",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Electron Microscopes Work_ \ud83d\udd2c\ud83d\udee0\ud83d\udd2c Taking Pictures of Atoms.mp4",
+        "size": "862564568",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Graphics Cards Work_  Exploring GPU Architecture.ia.mp4",
+        "size": "166805488",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Graphics Cards Work_  Exploring GPU Architecture.mp4",
+        "size": "2217376040",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Hard Disk Drives Work_  \ud83d\udcbb\ud83d\udcbf\ud83d\udee0.ia.mp4",
+        "size": "275126988",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Hard Disk Drives Work_  \ud83d\udcbb\ud83d\udcbf\ud83d\udee0.mp4",
+        "size": "275126988",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do LEDs & Batteries Work_.ia.mp4",
+        "size": "227933921",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do LEDs & Batteries Work_.mp4",
+        "size": "227933921",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Lithium-ion Batteries Work_.ia.mp4",
+        "size": "224329931",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Lithium-ion Batteries Work_.mp4",
+        "size": "224329931",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Mechanical Pencils Work_ #shorts.ia.mp4",
+        "size": "13829875",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Mechanical Pencils Work_ #shorts.mp4",
+        "size": "13829875",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Power Supplies Work_ #pcbuild #powersupply #gamingpc.ia.mp4",
+        "size": "4547871",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Power Supplies Work_ #pcbuild #powersupply #gamingpc.mp4",
+        "size": "72421033",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do SSDs Work_  How to fit 3 WEEKS of TV in a microchip the size of a dime!!  Explained in 3min..ia.mp4",
+        "size": "80999098",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do SSDs Work_  How to fit 3 WEEKS of TV in a microchip the size of a dime!!  Explained in 3min..mp4",
+        "size": "80999098",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do SSDs Work_ _ How does your Smartphone store data_ _  Insanely Complex Nanoscopic Structures!.ia.mp4",
+        "size": "358261578",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do SSDs Work_ _ How does your Smartphone store data_ _  Insanely Complex Nanoscopic Structures!.mp4",
+        "size": "358261578",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Scroll Wheels Work_ \ud83d\uddb1\ud83d\udee0\ud83d\udd2c.ia.mp4",
+        "size": "61388342",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Scroll Wheels Work_ \ud83d\uddb1\ud83d\udee0\ud83d\udd2c.mp4",
+        "size": "283360981",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Smartphone CPUs Work_  __  Inside the System on a Chip.ia.mp4",
+        "size": "639140311",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Smartphone CPUs Work_  __  Inside the System on a Chip.mp4",
+        "size": "639140311",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Soap Bottle Pumps Work_  __  Inside Animation of a Soap Pump Dispenser.ia.mp4",
+        "size": "17069221",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Soap Bottle Pumps Work_  __  Inside Animation of a Soap Pump Dispenser.mp4",
+        "size": "17069221",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Steam Engines Work_.ia.mp4",
+        "size": "223246259",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Steam Engines Work_.mp4",
+        "size": "223246259",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Transistors Build into a CPU_  \ud83d\udda5\ufe0f\ud83e\udd14  How do Transistors Work_ \ud83d\udda5\ufe0f\ud83e\udd14.ia.mp4",
+        "size": "156817342",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Transistors Build into a CPU_  \ud83d\udda5\ufe0f\ud83e\udd14  How do Transistors Work_ \ud83d\udda5\ufe0f\ud83e\udd14.mp4",
+        "size": "1425874449",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Video Game Controllers Work_  __ Exploring a PS4 Game Controller.ia.mp4",
+        "size": "163930149",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Video Game Controllers Work_  __ Exploring a PS4 Game Controller.mp4",
+        "size": "163930149",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Video Game Graphics Work_.ia.mp4",
+        "size": "122853494",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Video Game Graphics Work_.mp4",
+        "size": "1371536762",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do Wireless Headphones Work_.ia.mp4",
+        "size": "37985142",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do Wireless Headphones Work_.mp4",
+        "size": "37985142",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do microSD Cards Store 2 TB in such a TINY space_.ia.mp4",
+        "size": "34924035",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do microSD Cards Store 2 TB in such a TINY space_.mp4",
+        "size": "367050248",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How do speakers work_  Incredibly small, yet impressively loud.ia.mp4",
+        "size": "112751102",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How do speakers work_  Incredibly small, yet impressively loud.mp4",
+        "size": "112751102",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Bluetooth Work_.ia.mp4",
+        "size": "418581789",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Bluetooth Work_.mp4",
+        "size": "418581789",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Computer Cache, Memory, and Storage Work_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.ia.mp4",
+        "size": "159874419",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Computer Cache, Memory, and Storage Work_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.mp4",
+        "size": "2223915750",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Computer Hardware Work_  \ud83d\udcbb\ud83d\udee0\ud83d\udd2c  [3D Animated Teardown].ia.mp4",
+        "size": "101354088",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Computer Hardware Work_  \ud83d\udcbb\ud83d\udee0\ud83d\udd2c  [3D Animated Teardown].mp4",
+        "size": "1452711307",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Computer Memory Work_ \ud83d\udcbb\ud83d\udee0.ia.mp4",
+        "size": "614246953",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Computer Memory Work_ \ud83d\udcbb\ud83d\udee0.mp4",
+        "size": "614246953",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Multitouch work_.ia.mp4",
+        "size": "199761765",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Multitouch work_.mp4",
+        "size": "199761765",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does NAND Flash Work_  Reading from TLC _ Triple Level Cells  __  Exploring Solid State Drives.ia.mp4",
+        "size": "210995527",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does NAND Flash Work_  Reading from TLC _ Triple Level Cells  __  Exploring Solid State Drives.mp4",
+        "size": "210995527",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Ray Tracing Work in Video Games and Movies_.ia.mp4",
+        "size": "171930082",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Ray Tracing Work in Video Games and Movies_.mp4",
+        "size": "1933722148",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does Starlink Satellite Internet Work_\ud83d\udce1\u2604\ud83d\udda5.ia.mp4",
+        "size": "472454240",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does Starlink Satellite Internet Work_\ud83d\udce1\u2604\ud83d\udda5.mp4",
+        "size": "472454240",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does a Mouse know when you move it_  __  How Does a Computer Mouse Work_.ia.mp4",
+        "size": "67592849",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does a Mouse know when you move it_  __  How Does a Computer Mouse Work_.mp4",
+        "size": "459042061",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does a camera work_.ia.mp4",
+        "size": "230763603",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does a camera work_.mp4",
+        "size": "230763603",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How does this SSD store 8TB of Data_  __  Inside the Engineering of Solid-State Drive Architecture.ia.mp4",
+        "size": "236312674",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How does this SSD store 8TB of Data_  __  Inside the Engineering of Solid-State Drive Architecture.mp4",
+        "size": "236312674",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "How to Make Lemon Batteries!.ia.mp4",
+        "size": "72918874",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "How to Make Lemon Batteries!.mp4",
+        "size": "72918874",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "Inside the Original iPod #shorts.ia.mp4",
+        "size": "17205364",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "Inside the Original iPod #shorts.mp4",
+        "size": "17205364",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "Technology Size Comparison  \ud83e\udd2f\ud83e\udd2f  3D Animation.ia.mp4",
+        "size": "22291437",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "Technology Size Comparison  \ud83e\udd2f\ud83e\udd2f  3D Animation.mp4",
+        "size": "192119146",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The $200M Machine that Prints Microchips_  The EUV Photolithography System.ia.mp4",
+        "size": "226174130",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The $200M Machine that Prints Microchips_  The EUV Photolithography System.mp4",
+        "size": "2233783919",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The Engineering Inside Wireless Earbuds __ How do Wireless Earbuds and Audio Codecs Work_.ia.mp4",
+        "size": "329533261",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The Engineering Inside Wireless Earbuds __ How do Wireless Earbuds and Audio Codecs Work_.mp4",
+        "size": "329533261",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The Engineering Puzzle of Storing Trillions of Bits in your Smartphone _ SSD using Quantum Mechanics.ia.mp4",
+        "size": "199064846",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The Engineering Puzzle of Storing Trillions of Bits in your Smartphone _ SSD using Quantum Mechanics.mp4",
+        "size": "199064846",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The Incredible Evolution of Computers.ia.mp4",
+        "size": "197354128",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The Incredible Evolution of Computers.mp4",
+        "size": "890334922",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The Intricate Engineering Inside Foldable Smartphones.ia.mp4",
+        "size": "159509201",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The Intricate Engineering Inside Foldable Smartphones.mp4",
+        "size": "159509201",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "The Speed of Sound & How does Sound Travel_  A Fundamental Understanding.ia.mp4",
+        "size": "153537517",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "The Speed of Sound & How does Sound Travel_  A Fundamental Understanding.mp4",
+        "size": "153537517",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "What are PCBs_ __ How do PCBs Work_.ia.mp4",
+        "size": "228270401",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "What are PCBs_ __ How do PCBs Work_.mp4",
+        "size": "228270401",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "What does a Star Wars battle actually sound like_.ia.mp4",
+        "size": "114352852",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "What does a Star Wars battle actually sound like_.mp4",
+        "size": "114352852",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "What is Sound_  The Fundamental Science Behind Sound.ia.mp4",
+        "size": "166961005",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "What is Sound_  The Fundamental Science Behind Sound.mp4",
+        "size": "166961005",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "What is the First Engine Ever_.ia.mp4",
+        "size": "216301961",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "What is the First Engine Ever_.mp4",
+        "size": "216301961",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "What's Inside a Smartphone_.ia.mp4",
+        "size": "56637292",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "What's Inside a Smartphone_.mp4",
+        "size": "56637292",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "Why Don\u2019t Computers Just Use One Type of Memory_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.ia.mp4",
+        "size": "159874276",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "Why Don\u2019t Computers Just Use One Type of Memory_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.mp4",
+        "size": "1686277162",
+        "format": "MPEG4",
+        "source": "original"
+      },
+      {
+        "name": "Why are Smoke Detectors Radioactive_  And How do Smoke Detectors Work_.ia.mp4",
+        "size": "108648940",
+        "format": "h.264 IA",
+        "source": "derivative"
+      },
+      {
+        "name": "Why are Smoke Detectors Radioactive_  And How do Smoke Detectors Work_.mp4",
+        "size": "475326149",
+        "format": "MPEG4",
+        "source": "original"
+      }
+    ],
+    "chosen": {
+      "name": "How do CPU Water Coolers Work_ #pcbuild #watercooling #computerhardware.ia.mp4",
+      "size": "4450153",
+      "format": "h.264 IA",
+      "source": "derivative"
+    },
+    "bytes": 4450153,
+    "sha256": "91b929332451d80c0189dbcc238e6c26d24b1f67388fa235469ca33541873eb1",
+    "duration": 46.858005,
+    "video": [
+      {
+        "width": 270,
+        "height": 480,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [],
+    "dense_windows": [
+      0,
+      45.758005
+    ],
+    "sheets": 4,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-sgrUtubX7Pk",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "How We Should Handle Streakers \ud83e\udd14",
+      "creator": "Zack D. Films",
+      "description": null,
+      "source": null,
+      "date": "2026-10-01",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "sgrUtubX7Pk.mp4",
+        "size": "3261691",
+        "format": "h.264",
+        "source": "derivative"
+      },
+      {
+        "name": "sgrUtubX7Pk.webm",
+        "size": "52409211",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "chosen": {
+      "name": "sgrUtubX7Pk.mp4",
+      "size": "3261691",
+      "format": "h.264",
+      "source": "derivative"
+    },
+    "bytes": 3261691,
+    "sha256": "094cda148d27ecd029cfbe35bbc8bb27e911ce9c3364e6c12342bd4be3a5969c",
+    "duration": 32.946,
+    "video": [
+      {
+        "width": 270,
+        "height": 480,
+        "r_frame_rate": "2997/100"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [
+      4.73807
+    ],
+    "dense_windows": [
+      0,
+      4.38807,
+      31.845999999999997
+    ],
+    "sheets": 5,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-2Vlq6nov9yI",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "How To Make A Cup From A Coconut \ud83e\udd14",
+      "creator": "Zack D. Films",
+      "description": null,
+      "source": null,
+      "date": "2026-10-02",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "2Vlq6nov9yI.mp4",
+        "size": "3199787",
+        "format": "h.264",
+        "source": "derivative"
+      },
+      {
+        "name": "2Vlq6nov9yI.webm",
+        "size": "50869274",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "original_metadata": [
+      {
+        "id": "2Vlq6nov9yI",
+        "title": "How To Make A Cup From A Coconut \ud83e\udd14",
+        "channel": "Zack D. Films",
+        "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+        "webpage_url": "https://www.youtube.com/watch?v=2Vlq6nov9yI",
+        "duration": 32,
+        "view_count": 28,
+        "upload_date": "20261002",
+        "license": null
+      }
+    ],
+    "chosen": {
+      "name": "2Vlq6nov9yI.mp4",
+      "size": "3199787",
+      "format": "h.264",
+      "source": "derivative"
+    },
+    "bytes": 3199787,
+    "sha256": "7200c3d4643bf29839cd24024b839bb0fd2d33febbd22cb0ec34833db2f08491",
+    "duration": 32.007,
+    "video": [
+      {
+        "width": 270,
+        "height": 480,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [],
+    "dense_windows": [
+      0,
+      30.906999999999996
+    ],
+    "sheets": 4,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-KkCCQXdAh24",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "Can Being Underwater Protect You From Bullets? \ud83e\udd14",
+      "creator": "Zack D. Films",
+      "description": null,
+      "source": null,
+      "date": "2026-02-03",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "KkCCQXdAh24.webm",
+        "size": "45342668",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "original_metadata": [
+      {
+        "id": "KkCCQXdAh24",
+        "title": "Can Being Underwater Protect You From Bullets? \ud83e\udd14",
+        "channel": "Zack D. Films",
+        "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+        "webpage_url": "https://www.youtube.com/watch?v=KkCCQXdAh24",
+        "duration": 34,
+        "view_count": 1483939,
+        "upload_date": "20260203",
+        "license": null
+      }
+    ],
+    "chosen": {
+      "name": "KkCCQXdAh24.webm",
+      "size": "45342668",
+      "format": "WebM",
+      "source": "original"
+    },
+    "bytes": 45342668,
+    "sha256": "5037517dc9d64bd3b53dc0a08aba5d97af90228d594ab75400cb25b573336f63",
+    "duration": 34.288,
+    "video": [
+      {
+        "width": 2160,
+        "height": 3840,
+        "r_frame_rate": "30000/1001"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [],
+    "dense_windows": [
+      0,
+      33.187999999999995
+    ],
+    "sheets": 4,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-pI2GAoIfJ-8",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "Goldfish Survives 7 Years In A Filtration Tank \ud83d\ude2e",
+      "creator": "Zack D. Films",
+      "description": null,
+      "source": null,
+      "date": "2026-01-13",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "pI2GAoIfJ-8.webm",
+        "size": "40940279",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "original_metadata": [
+      {
+        "id": "pI2GAoIfJ-8",
+        "title": "Goldfish Survives 7 Years In A Filtration Tank \ud83d\ude2e",
+        "channel": "Zack D. Films",
+        "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+        "webpage_url": "https://www.youtube.com/watch?v=pI2GAoIfJ-8",
+        "duration": 41,
+        "view_count": 0,
+        "upload_date": "20260113",
+        "license": null
+      }
+    ],
+    "chosen": {
+      "name": "pI2GAoIfJ-8.webm",
+      "size": "40940279",
+      "format": "WebM",
+      "source": "original"
+    },
+    "bytes": 40940279,
+    "sha256": "0ef7e916337298490e3250b26915f619f82fa095f9072c16e5577f91308b5b32",
+    "duration": 41.128,
+    "video": [
+      {
+        "width": 2160,
+        "height": 3840,
+        "r_frame_rate": "30000/1001"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [
+      2.169,
+      10.31,
+      26.393
+    ],
+    "dense_windows": [
+      0,
+      1.819,
+      9.96,
+      26.043,
+      40.028
+    ],
+    "sheets": 7,
+    "temporary_media_deleted": true
+  },
+  {
+    "identifier": "youtube-ZcEyC-Ixf-g",
+    "actual_visual_inspection": false,
+    "media_acquired": true,
+    "metadata": {
+      "title": "She Poured Concrete Into A Storm Drain \ud83d\ude28",
+      "creator": "Zack D. Films",
+      "description": null,
+      "source": null,
+      "date": "2026-01-11",
+      "licenseurl": null,
+      "external-identifier": null
+    },
+    "restricted": false,
+    "media_files": [
+      {
+        "name": "ZcEyC-Ixf-g.webm",
+        "size": "101156397",
+        "format": "WebM",
+        "source": "original"
+      }
+    ],
+    "original_metadata": [
+      {
+        "id": "ZcEyC-Ixf-g",
+        "title": "She Poured Concrete Into A Storm Drain \ud83d\ude28",
+        "channel": "Zack D. Films",
+        "channel_id": "UCvz84_Q0BbvZThy75mbd-Dg",
+        "webpage_url": "https://www.youtube.com/watch?v=ZcEyC-Ixf-g",
+        "duration": 47,
+        "view_count": 114490,
+        "upload_date": "20260111",
+        "license": null
+      }
+    ],
+    "chosen": {
+      "name": "ZcEyC-Ixf-g.webm",
+      "size": "101156397",
+      "format": "WebM",
+      "source": "original"
+    },
+    "bytes": 101156397,
+    "sha256": "b0903dfce37f6cf93c05bd89dd5ad9492870ddbd3a578ce5886edf1d2d31ebc6",
+    "duration": 47.328,
+    "video": [
+      {
+        "width": 2160,
+        "height": 3840,
+        "r_frame_rate": "30000/1001"
+      }
+    ],
+    "survey_interval": 1,
+    "scene_candidates_seconds": [],
+    "dense_windows": [
+      0,
+      46.228
+    ],
+    "sheets": 4,
+    "temporary_media_deleted": true
+  }
+]

@@ -10,12 +10,19 @@ def publish(name,data):
  req=urllib.request.Request(BASE+'/check-runs',data=json.dumps({'name':name,'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':name,'summary':s}},ensure_ascii=False).encode(),headers=HEADERS)
  with urllib.request.urlopen(req,timeout=30) as f:return json.load(f)
 cfg=json.loads(Path('research/monarch_cam_restart_batch1/archive_batch_config.json').read_text())
+cleared=[]
 for sha in cfg.get('clear_shas',[]):
- for c in get(BASE+'/commits/'+sha+'/check-runs?per_page=100',True)['check_runs']:
-  if c['name'].startswith('ab-image-'):
-   req=urllib.request.Request(BASE+'/check-runs/'+str(c['id']),method='PATCH',data=json.dumps({'output':{'title':'Inspected frames cleared','summary':'Temporary image transport cleared after actual inspection.'}}).encode(),headers=HEADERS)
-   with urllib.request.urlopen(req,timeout=30) as f:json.load(f)
-if cfg['mode']=='cleanup':publish('ab-cleanup',{'cleared':cfg['clear_shas']});raise SystemExit
+ page=1
+ while True:
+  checks=get(BASE+'/commits/'+sha+'/check-runs?per_page=100&page='+str(page),True)['check_runs']
+  for c in checks:
+   if c['name'].startswith('ab-image-'):
+    req=urllib.request.Request(BASE+'/check-runs/'+str(c['id']),method='PATCH',data=json.dumps({'output':{'title':'Inspected frames cleared','summary':'Temporary image transport cleared after actual inspection.'}}).encode(),headers=HEADERS)
+    with urllib.request.urlopen(req,timeout=30) as f:json.load(f)
+    cleared.append(c['id'])
+  if len(checks)<100:break
+  page+=1
+if cfg['mode']=='cleanup':publish('ab-cleanup',{'cleared_shas':cfg['clear_shas'],'image_check_ids':cleared,'count':len(cleared)});raise SystemExit
 for ident in cfg['identifiers']:
  r={'identifier':ident,'actual_visual_inspection':False,'media_acquired':False}
  try:
