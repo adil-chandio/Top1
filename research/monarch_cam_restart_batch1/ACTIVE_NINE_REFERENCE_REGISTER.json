@@ -13,7 +13,12 @@
       "age_days_on_2026_11_14": 2072,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "ZcEyC-Ixf-g",
@@ -26,7 +31,12 @@
       "age_days_on_2026_11_14": 307,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "pI2GAoIfJ-8",
@@ -39,7 +49,12 @@
       "age_days_on_2026_11_14": 305,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "KkCCQXdAh24",
@@ -52,7 +67,12 @@
       "age_days_on_2026_11_14": 284,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "2Vlq6nov9yI",
@@ -65,7 +85,12 @@
       "age_days_on_2026_11_14": 43,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "sgrUtubX7Pk",
@@ -78,7 +103,12 @@
       "age_days_on_2026_11_14": 44,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "x-VfmexNHpE",
@@ -91,7 +121,12 @@
       "age_days_on_2026_11_14": 396,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "7aWL2iEb6y4",
@@ -104,7 +139,12 @@
       "age_days_on_2026_11_14": 1628,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     },
     {
       "video_id": "DxL2HoqLbyA",
@@ -117,7 +157,19 @@
       "age_days_on_2026_11_14": 1232,
       "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
       "relative_outlier": null,
-      "visual_review_complete": false
+      "visual_review_complete": false,
+      "chronological_frame_survey_inspected": true,
+      "selected_native_consecutive_windows_inspected": true,
+      "every_frame_inspected": false,
+      "actual_listening": false,
+      "review_scope": "bounded chronological survey plus selected dense windows; precise unresolved motion questions remain N/A"
     }
-  ]
+  ],
+  "bounded_visual_surveys_inspected": 9,
+  "million_plus_in_inspected_sample": 8,
+  "extra_lower_view_controls": 1,
+  "full_motion_reviews_complete": 0,
+  "batch1_deliverable": "NINE_REFERENCE_VISUAL_REVIEW_ROMAN_URDU.md",
+  "topic_for_batch2_gate": "Seat belt: webbing-sensitive retractor example, subject to science and feasibility validation",
+  "end_to_end_complete": false
 }
