@@ -396,11 +396,29 @@ window.__PEHRA_INIT__ = async (timeline) => {
      blind: a stray object could sit in frame and never be named. */
   window.__ASSET_BOUNDS__ = (() => {
     const boxOf = (o) => {
-      const b = new THREE.Box3().setFromObject(o);
+      o.updateWorldMatrix(true, true);
+      const b = new THREE.Box3();
+      const v = new THREE.Vector3();
+      let sawSkinned = false;
+      o.traverse((n) => {
+        if (n.isSkinnedMesh) {
+          sawSkinned = true;
+          /* the skeleton's bones carry the real pose */
+          for (const bone of n.skeleton.bones) {
+            b.expandByPoint(bone.getWorldPosition(v));
+          }
+        } else if (n.isMesh && n.geometry?.attributes?.position) {
+          const pos = n.geometry.attributes.position;
+          for (let i = 0; i < pos.count; i += Math.max(1, Math.floor(pos.count / 800))) {
+            b.expandByPoint(v.fromBufferAttribute(pos, i).applyMatrix4(n.matrixWorld));
+          }
+        }
+      });
+      if (b.isEmpty()) b.setFromObject(o);
       const sz = new THREE.Vector3(), c = new THREE.Vector3();
       b.getSize(sz); b.getCenter(c);
       return { size: sz.toArray().map(x=>+x.toFixed(2)),
-               center: c.toArray().map(x=>+x.toFixed(2)) };
+               center: c.toArray().map(x=>+x.toFixed(2)), skinned: sawSkinned };
     };
     return {
       source: { head: boxOf(headG.scene), mask: boxOf(maskG.scene),
