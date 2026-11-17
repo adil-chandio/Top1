@@ -212,11 +212,14 @@ function normalize(root, targetLen, yOff = 0) {
     b.getSize(size); b.getCenter(center);
   }
   const s = targetLen / Math.max(size.x, size.y, size.z, 0.001);
-  /* The GLBs carry their own scale on an inner node; multiplying on the root
-     compounds with it. Wrapping in a fresh carrier replaces it outright. */
+  /* Scale the carrier, not the root. The GLBs already carry a scale on an
+     inner node, so multiplying the root compounds with it and the actor comes
+     out centimetres tall and sunk below the ground. */
   const carrier = new THREE.Group();
-  root.scale.multiplyScalar(s);
-  root.position.set(-center.x * s, -center.y * s + yOff, -center.z * s);
+  carrier.scale.setScalar(s);
+  /* recentre in the carrier's own space so the carrier's origin becomes the
+     actor's feet */
+  root.position.set(-center.x, -center.y + yOff / Math.max(s, 1e-6), -center.z);
   carrier.add(root);
   return carrier;
   root.traverse((o) => {
