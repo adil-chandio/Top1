@@ -99,7 +99,7 @@ scene.add(bank);
 
 /* ------------------------------------------------------------- potato prop */
 function potato(scale = 1) {
-  const g = new THREE.SphereGeometry(0.34 * scale, 14, 10);
+  const g = new THREE.SphereGeometry(0.30 * scale, 12, 9);
   const p = g.attributes.position;
   for (let i = 0; i < p.count; i++) {
     const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
@@ -115,16 +115,18 @@ function potato(scale = 1) {
 
 const potatoes = [];
 const rnd = (i) => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
-for (let i = 0; i < 90; i++) {
-  const s = 0.62 + rnd(i) * 0.55;
+/* Potatoes read as produce only at ~8 cm and only when they sit in furrow
+   lines. Bigger than that and they become boulders filling the frame. */
+for (let i = 0; i < 120; i++) {
+  const s = 0.16 + rnd(i) * 0.09;               // 8-13 cm across
   const m = potato(s);
-  const row = Math.floor(i / 9);
+  const row = Math.floor(i / 12), col = i % 12;
   m.position.set(
-    (i % 9) * 0.52 - 2.1 + rnd(i + 7) * 0.18,
-    0.11 * s,
-    -2.0 - row * 0.78 + rnd(i + 13) * 0.22
+    col * 0.34 - 1.9 + rnd(i + 7) * 0.10,
+    0.028,
+    -2.6 - row * 0.52 + rnd(i + 13) * 0.12
   );
-  m.rotation.set(rnd(i + 3) * 0.6, rnd(i + 5) * 6.28, rnd(i + 9) * 0.4);
+  m.rotation.set(rnd(i + 3) * 0.5, rnd(i + 5) * 6.28, rnd(i + 9) * 0.3);
   scene.add(m);
   potatoes.push(m);
 }
@@ -377,8 +379,8 @@ function applyPalette(name) {
 const BEATS = {
   B01_AERIAL_FIELD(t) {                        // high drone drift over the field
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-11 + e * 8, 21 - e * 3.5, 24 - e * 9);
-    camera.lookAt(0, 0.9, -5);
+    camera.position.set(-7 + e * 6, 13.0 - e * 2.0, 12 - e * 5);
+    camera.lookAt(0.5, 0.6, -10);
     keyLt.position.set(-16, 24, 10); keyLt.intensity = 2.9;
     rimLt.position.set(18, 10, -30);  rimLt.intensity = 2.4;
     gateLt.visible = false; moonLt.visible = true; moonLt.intensity = 7;
@@ -418,8 +420,8 @@ const BEATS = {
   },
   B05_POTATO_PROMISE(t) {                      // macro glide over the crop
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-3.6 + e * 2.8, 1.30, 1.2 - e * 2.4);
-    camera.lookAt(0.3, 0.30, -3.4);
+    camera.position.set(-1.6 + e * 1.2, 0.62, 1.0 - e * 1.8);
+    camera.lookAt(0.2, 0.12, -3.2);
     keyLt.position.set(-4, 6, 5); keyLt.intensity = 2.6;
     rimLt.position.set(5, 4, -10); rimLt.intensity = 2.5;
     gateLt.visible = true; gateLt.intensity = 22;
@@ -459,8 +461,8 @@ const BEATS = {
   },
   B09_FORTY_ACRES(t) {                         // pull back: forty walled acres
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-14 + e * 7, 11.5 - e * 2.5, 20 - e * 7);
-    camera.lookAt(0, 1.2, -11);
+    camera.position.set(-9 + e * 5, 8.0 - e * 1.5, 9 - e * 4);
+    camera.lookAt(0.5, 0.9, -11);
     keyLt.position.set(-18, 20, 8); keyLt.intensity = 2.6;
     rimLt.position.set(16, 9, -28); rimLt.intensity = 2.6;
     gateLt.visible = true; gateLt.intensity = 24;
