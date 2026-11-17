@@ -14,3 +14,6 @@ source=source.replace('ab-image-',f'cf-{label}-image-').replace('ab-receipt-',f'
 # A multi-video collection's first arbitrary info.json is NOT this selected file's provenance.
 source=source.replace("for f in info[:2]:","for f in [x for x in info if x['name'].removesuffix('.info.json') == cfg.get('files',{}).get(ident,'').removesuffix('.ia.mp4').removesuffix('.mp4')][:1]:")
 exec(compile(source,'bounded_reference_pipeline','exec'))
+
+if not globals().get('r',{}).get('sheets'):
+ raise SystemExit('Source acquisition/decoding did not produce sheets; inspect cf receipt')
