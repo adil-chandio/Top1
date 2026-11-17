@@ -68,3 +68,11 @@ Wohi SHA-256 wali copy dobara temporary acquire ki, kyun ke pehle run ne raw med
 - **446.5–447.5s:** muffler assembly aur faint surrounding context; chhoti framing movement, koi visible scene cut nahin. Yeh reassembly se pehle ka window hai, reassembly transition ka proof nahin.
 
 **Correction:** in windows ko initially selected transition candidates kaha gaya tha; actual inspection ne dikhaya ke zyada tar within-shot motion mila. Unseen boundary ke exact cut/easing par ab bhi N/A. Yeh useful negative finding hai, completion ko inflate karne ki wajah nahin.
+
+## Source discovery aur cleanup
+- Public archive API par exact engine title ke saath playable movie mili; neo ka exact title bhi mila magar uski listed MP4 897,487,246 bytes thi, is bounded test mein download nahin ki.
+- Zack D. Films, Branch Education, Real Science, Veritasium aur fern ke naam se archive leads niklay. Yeh uploader metadata hai, verified official uploads ya watched references nahin; original IDs aur content match alag se zaroori hain. Topic-neutral pool qaim hai.
+- Hugging Face API waqai request ki: `animagraffs` par empty result aaya, broader dataset searches ne metadata aur video datasets dono return kiye. Sirf dataset listing ko footage access nahin kaha; koi bulk dataset nahin khincha.
+- Dono acquisition runs mein temporary MP4 directory delete hui. Raw MP4 Git, Drive ya Actions artifact mein upload nahin ki.
+- Local contact sheets inspection ke baad delete ki gayin. GitHub check-output mein jo temporary base64 frame sheets bheji thin unki **current summaries** Actions app se overwrite kar ke API readback verify kiya: https://github.com/adil-chandio/Top1/actions/runs/44021704973 . Backend backups ya provider retention ke absolute deletion ka daawa nahin.
+- Sirf Roman Urdu findings aur non-media receipts preserve kiye. Batch 1 ab bhi incomplete; final topic select nahin hua.
