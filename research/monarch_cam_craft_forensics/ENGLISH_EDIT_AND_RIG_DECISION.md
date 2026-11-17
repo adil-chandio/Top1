@@ -77,12 +77,12 @@ The final animation must be checked at consecutive frames around onset, propagat
 
 ## 5. Sound plan — authored intent, not heard approval
 
-Existing voice is unapproved for pronunciation/prosody/join. No tool-based listening occurred. Do not infer listening from acoustic alignment, waveform/RMS, transcript or source-page music credits.
+The user explicitly approved the presented retained English narration (“Audio approved”); approval is bound to the63.68s WAV hash above. See `research/monarch_cam_gecko_batch5/USER_ENGLISH_AUDIO_APPROVAL.json`. No assistant/tool-based listening is claimed. Final effects balance/mix and native audiovisual craft remain unapproved. Do not infer additional approval from alignment, waveform/RMS or source-page music credits.
 
 - Keep speech primary; no whoosh on every scale transition, tape-rip on release, suction pop, or literal glue sound.
 - R01 should leave space around first lift and settled clearance; whether any quiet movement cue helps is an actual listening/AV decision, not a required effect.
 - No new music/SFX selected; licences and asset identity must be checked first. Music can be absent if it competes with explanation.
-- Review the existing full63.68s track and33.20s seam, not only the critical-term excerpt. Check Tokay, setae, van der Waals, digital hyperextension. Do not assign an all-clear from script matching.
+- Retained full63.68s narration listening review is user-approved; do not ask for the same approval again unless audio changes. Any future effects/mix must be reviewed against the full track and33.20s seam, not only the diagnostic excerpt.
 
 ## 6. Why this is not cosmetic V7
 
@@ -101,6 +101,6 @@ References informing these principles: actual Pencil local-motion study; Microch
 
 **Completed now:** written script-to-shot mapping for existing English voice, audio hash/duration recheck, source-cue coverage checks, explicit hybrid rig classification, scope conflict resolution, and revised art/edit/sound constraints.
 
-**Not passed:** exterior asset/realistic anatomy, proof of production-quality rig or motion, native/referenceAV and audio listening, rights for final assets, final caption/credit legibility, final render or publication. The user's thorough reference-study requirement is not declared exhaustive from sampled still sheets.
+**Not passed:** exterior asset/realistic anatomy, proof of production-quality rig or motion, native/referenceAV and final sound mix (retained narration user-approved), rights for final assets, final caption/credit legibility, final render or publication. The user's thorough reference-study requirement is not declared exhaustive from sampled still sheets.
 
 Next execution: close source-specific anatomy/context asset evidence and outstanding AV review, then consolidate a production-ready scene/asset/edit specification. The historical4–6s integrated proof would only be a later bounded feasibility gate after production holds are resolved—not authorization to restart isolated toe polishing or another full-render loop.

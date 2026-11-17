@@ -1,0 +1,83 @@
+{
+  "checkpoint_date": "2026-11-14",
+  "scope": "Prospective rebuilt film asset policy, NOT final export audit or legal opinion",
+  "production_approved": false,
+  "publication_authorized": false,
+  "assets": [
+    {
+      "id": "narration",
+      "decision": "retain_exact_file",
+      "path": "studio/runtime/gecko/narration/english-narration-v1.wav",
+      "sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+      "origin": "session-generated selected voice09",
+      "user_listening_approved": true,
+      "rights_limit": "User audio approval is not independent verification of service commercial-use terms; no real-person imitation claim."
+    },
+    {
+      "id": "font",
+      "decision": "proposed_unmodified_DejaVuSans",
+      "local_path": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+      "sha256": "abdc775b21b1bc470d50c97e790d276f2054b7504e56e5bd3e64f48d68582322",
+      "licence_evidence": "DEJAVU_FONT_NOTICE.txt",
+      "rights_status": "local font permission text inspected; preserve applicable notices if font software is bundled",
+      "binary_bundled": false
+    },
+    {
+      "id": "rebuilt_exterior",
+      "decision": "original_authoring_required",
+      "exists_as_approved_asset": false,
+      "rights_status": "future source/texture/dependency audit required",
+      "legacy_asset_promotion_allowed": false
+    },
+    {
+      "id": "mechanism_insert",
+      "decision": "original_qualitative_authoring_only",
+      "rights_status": "future dependency audit required; no image tracing/texture extraction"
+    },
+    {
+      "id": "music",
+      "decision": "none_selected",
+      "rights_status": "no music licence assumed"
+    },
+    {
+      "id": "sfx",
+      "decision": "none_selected_for_rebuild",
+      "rights_status": "historical deterministic sound draft not automatically carried forward; any chosen effects require exact identity and mix review"
+    }
+  ],
+  "reference_only_exclusions": [
+    {
+      "group": "Branch/Animagraffs/Zack craft footage, frames and audio",
+      "policy": "No incorporation, traced frames, recreated branded scene, audio sampling or production texture. Only general staging/editing principles."
+    },
+    {
+      "group": "Russell2026 scientific figures",
+      "policy": "Research only; article CC BY4 noted but figure-specific credit not fully cleared. No figure pixels in planned film."
+    },
+    {
+      "group": "EarthDate/Niewiarowski photographs",
+      "policy": "Research only; page permission credit does not extend permission to this film. No pixels or textures."
+    },
+    {
+      "group": "Commons Gecko foot on glass / other Commons comparators",
+      "policy": "Research only; no CC BY-SA/GFDL asset incorporated. If this changes, review attribution/share-alike obligations before use."
+    },
+    {
+      "group": "AnnualReviews Video3 / Higham2021 supplement",
+      "policy": "Not acquired as valid inspected motion; no frames/audio in production, no reuse permission assumed."
+    }
+  ],
+  "final_export_audit_required": [
+    "Record every actual image/texture/model/audio/font dependency and origin",
+    "Compare actual edit dependencies against exclusions",
+    "Verify chosen service/asset use terms, notices and final companion credits",
+    "Rehash retained narration and identify any mastering derivative separately",
+    "No publication before explicit authorization"
+  ],
+  "remaining_holds": [
+    "Exterior anatomy/motion",
+    "Native audiovisual craft and final mix",
+    "Actual final-asset rights audit",
+    "Publication/spend authorization"
+  ]
+}

@@ -166,3 +166,6 @@ Resume44123864720 failed, but independent API readback now confirms6/9 digit pay
 
 ### User narration approval — supersedes retained-voice listening hold
 User explicitly said “Audio approved” after retained63.68s English voice-09 WAV was presented. File SHA256 reverified1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8. Approval recorded in Batch5 USER_ENGLISH_AUDIO_APPROVAL.json. Retained-narration listening gate closed by USER, not assistant listening claim. No new synthesis required. Final sound mix/native A/V, anatomy/motion, rights and production/publication/spend gates remain separate and unapproved.
+
+### Prospective rights gate work after user audio approval
+PROSPECTIVE_ASSET_RIGHTS_LEDGER.json distinguishes future original-authoring needs from reference-only media. No borrowed craft footage/audio, scientific figure pixels, EarthDate photos or Commons images selected for rebuild. No music/newSFX selected; historical sound draft not automatically carried forward. Local unmodified DejaVuSans font licence text inspected and notice preserved (font binary not bundled). Exact narration remains user-approved. Active ENGLISH_EDIT_AND_RIG_DECISION.md stale audio-unapproved wording corrected. This is prospective dependency policy, NOT final rights clearance/anatomy/nativeAV/production approval.
