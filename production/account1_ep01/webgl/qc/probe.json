@@ -4,168 +4,193 @@
     [
       "launch",
       "ok",
-      3.2
+      0.3
     ],
     [
       "goto",
       "ok",
-      3.8
+      1
     ],
     [
       "webgl",
       "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
-      3.8
+      1
     ],
     [
       "asset:LeePerrySmith",
       "ok 9279v",
-      4.4
+      1.8
     ],
     [
       "asset:venice_mask",
       "ok 173876v",
-      4.4
+      1.8
     ],
     [
       "asset:Soldier",
       "ok 7434v",
-      4.4
+      1.8
     ],
     [
       "asset:DiffuseTransmissionPlant",
       "ok 50369v",
-      4.4
+      1.8
     ],
     [
       "asset:Lantern",
       "ok 4145v",
-      4.4
+      1.8
     ],
     [
       "asset:GlassHurricaneCandleHolder",
       "ok 2386v",
-      4.4
+      1.8
     ],
     [
       "init",
       "ok",
-      4.9
+      2.4
     ],
     [
       "mask_meshes",
       "null",
-      4.9
+      2.4
     ],
     [
       "hidden",
       "bank",
-      7.1
+      5.6
     ],
     [
       "hidden",
       "moonDisc",
-      8.1
+      7.4
+    ],
+    [
+      "hidden",
+      "moonHalo",
+      9.2
     ],
     [
       "hidden",
       "field",
-      8.8
+      10.3
     ],
     [
       "hidden",
       "dust",
-      9.8
+      12
+    ],
+    [
+      "hidden",
+      "gate",
+      13.7
+    ],
+    [
+      "hidden",
+      "monarch",
+      15.4
+    ],
+    [
+      "hidden",
+      "guardA",
+      16.7
+    ],
+    [
+      "hidden",
+      "guardB",
+      18
     ],
     [
       "mask_placed",
       "{\"headSize\":[8.55,7.93,5.17],\"curioSize\":[0.033,0.065,0.018],\"headScale\":0.145,\"maskScale\":20.65,\"faceW\":1.24,\"maskPos\":[0.08,0.18,0.39]}",
-      9.8
+      18
     ],
     [
       "beat:B01_AERIAL_FIELD",
       "ok",
-      10.9
+      19.4
     ],
     [
       "beat:B02_GUARDED_FIELD",
       "ok",
-      11.6
+      20.5
     ],
     [
       "beat:B03_MASKED_TITLE",
       "ok",
-      14.6
+      25.1
     ],
     [
       "beat:B04_HUNGRY_PARIS",
       "ok",
-      15.4
+      26.4
     ],
     [
       "beat:B05_POTATO_PROMISE",
       "ok",
-      16.1
+      27.7
     ],
     [
       "beat:B06_POISONED_MIND",
       "ok",
-      17.1
+      29.6
     ],
     [
       "beat:B07_FREE_BASKETS",
       "ok",
-      17.7
+      30.8
     ],
     [
       "beat:B08_SILENT_PIVOT",
       "ok",
-      18.9
+      33
     ],
     [
       "beat:B09_FORTY_ACRES",
       "ok",
-      19.6
+      34.4
     ],
     [
       "beat:B10_WHISPERS",
       "ok",
-      20.5
+      36.1
     ],
     [
       "beat:B11_LAST_ORDER",
       "ok",
-      21.9
+      38.6
     ],
     [
       "beat:B12_SUNSET_WITHDRAWAL",
       "ok",
-      22.6
+      40
     ],
     [
       "beat:B13_NIGHT_THEFT",
       "ok",
-      23.5
+      41.5
     ],
     [
       "beat:B14_EMPTY_FIELD_DAWN",
       "ok",
-      24.2
+      42.8
     ],
     [
       "beat:B15_GRAVE_200_YEARS",
       "ok",
-      24.9
+      44
     ],
     [
       "beat:B16_FINAL_MONARCH",
       "ok",
-      26.1
+      46.4
     ],
     [
       "exception",
       "f is not defined",
-      26.1
+      46.4
     ]
   ],
-  "run": "44103034241"
+  "run": "44104492748"
 }
