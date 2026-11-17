@@ -61,6 +61,7 @@ jobs:
           ls -la production/account1_ep01/frames | head || true
           cp /tmp/probe.log deliverables/pehra-probe/probe.log || true
           { tail -60 /tmp/probe.log; echo; echo "--- frames ---"; ls -la production/account1_ep01/frames; } > deliverables/pehra-probe/summary.txt 2>&1 || true
+          cp production/account1_ep01/frames/f_*.png deliverables/pehra-probe/ 2>/dev/null || true
       - name: Publish probe log
         if: always()
         run: |
@@ -69,6 +70,7 @@ jobs:
           ls -la production/account1_ep01/frames >> deliverables/pehra-probe/probe.log 2>&1 || true
           git config user.name "pehra-render-bot"
           git config user.email "pehra-render@users.noreply.github.com"
+          cp production/account1_ep01/frames/f_*.png deliverables/pehra-probe/ 2>/dev/null || true
           git add -f deliverables/pehra-probe
           git commit -q -m "Probe: one final frame log (run ${{ github.run_id }})" || echo nothing
           git push origin "HEAD:${GITHUB_REF_NAME}" || echo "push failed"
