@@ -181,7 +181,7 @@ jobs:
     name: "WebGL frames and encode"
     needs: [bootstrap, probe]
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 170
     steps:
       - uses: actions/checkout@v4
 

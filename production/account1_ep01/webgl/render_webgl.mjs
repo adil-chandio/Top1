@@ -30,7 +30,7 @@ const AUDIO_PATH = path.resolve(arg('audio', path.join(ROOT, 'production/account
 const OUT_MP4 = path.resolve(arg('out', path.join(ROOT, 'production/account1_ep01/renders/PEHRA_EP01_WEBGL_1080x1920.mp4')));
 const FIRST_BEAT = arg('first-beat', null);
 const LAST_BEAT = arg('last-beat', null);
-const WORKERS = parseInt(arg('workers', '4'), 10);
+const WORKERS = parseInt(arg('workers', '6'), 10);
 const JPEG_Q = parseInt(arg('quality', '94'), 10);
 
 const TIMELINE = JSON.parse(fs.readFileSync(TIMELINE_PATH, 'utf8'));
@@ -148,7 +148,7 @@ async function main() {
     '-y', '-framerate', String(FPS),
     '-i', path.join(FRAMES_DIR, 'frame_%05d.jpg'),
     ...audioArgs,
-    '-c:v', 'libx264', '-preset', 'slow', '-crf', '17',
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '18',
     '-pix_fmt', 'yuv420p', '-r', String(FPS),
     ...audioMap, '-movflags', '+faststart', OUT_MP4,
   ], { stdio: 'inherit' });
