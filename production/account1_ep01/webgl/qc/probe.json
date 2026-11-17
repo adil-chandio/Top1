@@ -1,0 +1,36 @@
+{
+  "verdict": "FAIL",
+  "steps": [
+    [
+      "launch",
+      "ok",
+      1.6
+    ],
+    [
+      "goto",
+      "ok",
+      2.2
+    ],
+    [
+      "webgl",
+      "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      2.2
+    ],
+    [
+      "init",
+      "ERR THREE.GLTFLoader: No DRACOLoader instance provided.",
+      2.3
+    ],
+    [
+      "frame",
+      "ERR Cannot read properties of null (reading 'position')",
+      2.4
+    ],
+    [
+      "screenshot",
+      "ok",
+      2.5
+    ]
+  ],
+  "run": "44085464988"
+}
