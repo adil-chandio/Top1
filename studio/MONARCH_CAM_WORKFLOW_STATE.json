@@ -3,7 +3,7 @@
   "active_batch": 1,
   "state": "research_reopened_in_progress",
   "topic_locked": false,
-  "candidate_seatbelt": "not_active_selection; historical only",
+  "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
     "1": "in_progress",
     "2": "paused_not_passed",
@@ -25,5 +25,8 @@
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
   "research_start": "fresh_broad_channel_discovery_before_any_deep_channel_comparison",
-  "prior_pair_study": "historical auxiliary evidence; excluded from fresh-start completion"
+  "prior_pair_study": "historical auxiliary evidence; excluded from fresh-start completion",
+  "channel_identity_source": "studio/config.json channels.monarch_cam.focus",
+  "channel_focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
+  "research_fit_rule": "Direct animal/nature audience competitors first; cross-niche packaging controls explicitly separate; no preselected species/episode"
 }

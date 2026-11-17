@@ -2,6 +2,9 @@
 
 Yeh current scope ka authoritative map hai. Purane `PRODUCTION_SYSTEM_V2_ROMAN_URDU.md` aur `SYSTEM_STATUS_ROMAN_URDU.md` mein 20-second orca/opening scope historical hai; current assignment us ka autoresume nahin. Un documents ke useful craft/safety contracts remain, magar neeche ka fresh five-batch scope unke conflicting scope statements ko supersede karta hai.
 
+## Channel identity pehle — research ka fit filter
+Repository `studio/config.json` mein Monarch Cam ka recorded focus: **Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.** Fresh start ka matlab is channel identity ko erase karna nahin. Species/episode pehle lock nahin, magar unrelated engineering/business ko default Monarch Cam topic banana bhi sahi nahin. Cross-niche channels transferable idea/packaging principles ke controls ho sakte hain; direct audience/topic competitors se separate mark hon. Purana script reference historical hai, us project ko resume karne ki approval nahin. Current channel-fit screening ke baghair seatbelt recommendation withdrawn hai.
+
 ## Maqsad aur boundaries
 - Sirf Monarch Cam ke liye original **poori video**, teaser/slideshow/20s proof ko final nahin kehna.
 - Roman Urdu narration/deliverables. A–Z execution delegated; routine approvals nahin.
