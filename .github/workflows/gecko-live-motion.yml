@@ -1,0 +1,18 @@
+name: Gecko publisher live motion reference
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_gecko_batch2/recover_live_motion.py, .github/workflows/gecko-live-motion.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  inspect-source:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: python research/monarch_cam_gecko_batch2/recover_live_motion.py
+        env:
+          GH_TOKEN: ${{ github.token }}
