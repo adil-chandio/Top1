@@ -70,6 +70,8 @@ try {
   /* one representative frame per beat, so the look of every beat can be
      inspected from the branch without waiting on a full render */
   const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
+  const meshes = await page.evaluate(()=>window.__MASK_MESHES__ || null);
+  log('mask_meshes', JSON.stringify(meshes));
   const placed = await page.evaluate(()=>window.__MASK_PLACED__ || null);
   log('mask_placed', JSON.stringify(placed));
   for (const s of picks) {
