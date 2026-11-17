@@ -1,4 +1,4 @@
-name: "Account 1 EP01 — PEHRA 15s True 3D Preview"
+name: "PEHRA EP01 — Full Script 1080p Cycles (sharded)"
 
 on:
   push:
@@ -49,6 +49,7 @@ jobs:
       mode: ${{ steps.config.outputs.mode }}
       samples: ${{ steps.config.outputs.samples }}
       res_pct: ${{ steps.config.outputs.res_pct }}
+      shards: ${{ steps.shards.outputs.shards }}
     steps:
       - name: Checkout branch
         uses: actions/checkout@v4
@@ -82,6 +83,28 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Emit the shard matrix
+        id: shards
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, re, sys
+          from pathlib import Path
+          tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
+          SHARD = 26          # ~26 frames/job at ~45 s/frame ≈ 20 min
+          rows = []
+          for s in tl["shots"]:
+              slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
+              lo, hi, part = int(s["f_start"]), int(s["f_end"]), 1
+              while lo <= hi:
+                  last = min(lo + SHARD - 1, hi)
+                  rows.append({"id": s["id"], "slug": f"{slug}_{part}",
+                               "f_start": lo, "f_end": last})
+                  lo, part = last + 1, part + 1
+          print("shards=" + json.dumps(rows, separators=(",", ":")))
+          print(f"# {len(rows)} shards, {max(s['f_end'] for s in tl['shots'])} frames", file=sys.stderr)
+          PY
 
       - name: Restore Blender cache
         id: blender_cache
@@ -134,8 +157,14 @@ jobs:
       - name: Install Python DSP dependencies
         run: python -m pip install --disable-pip-version-check numpy scipy pillow
 
-      - name: Build frame-locked Urdu soundtrack
-        run: python production/account1_ep01/build_audio_15s.py
+      - name: Restore the Urdu narration performance
+        run: python -u production/account1_ep01/restore_narration.py
+
+      - name: Build the full-script timeline
+        run: python -u production/account1_ep01/plan_full.py
+
+      - name: Build the full-script soundtrack
+        run: python -u production/account1_ep01/build_audio_full.py
 
       - name: Download verified CC0 / MIT 3D assets
         run: python production/account1_ep01/fetch_assets.py
@@ -143,8 +172,8 @@ jobs:
       - name: Verify prepared bundle
         run: |
           set -euo pipefail
-          test -f production/account1_ep01/build/timeline_15s.json
-          test -f production/account1_ep01/build/master_15s.m4a
+          test -f production/account1_ep01/build/timeline_full.json
+          test -f production/account1_ep01/build/master_full.m4a
           test -f production/account1_ep01/assets/manifest.json
           test -f production/account1_ep01/render_scene.py
           test -f production/account1_ep01/assemble_preview.py
@@ -156,8 +185,8 @@ jobs:
           name: pehra-bundle-${{ github.run_id }}
           path: |
             production/account1_ep01/assets
-            production/account1_ep01/build/timeline_15s.json
-            production/account1_ep01/build/master_15s.m4a
+            production/account1_ep01/build/timeline_full.json
+            production/account1_ep01/build/master_full.m4a
             production/account1_ep01/render_scene.py
             production/account1_ep01/assemble_preview.py
             production/account1_ep01/ASSET_CREDITS.md
@@ -166,21 +195,15 @@ jobs:
           compression-level: 1
 
   render:
-    name: "Cycles 3D render — ${{ matrix.shot }}"
+    name: "Cycles 3D — ${{ matrix.shard.id }} @ ${{ matrix.shard.f_start }}-${{ matrix.shard.f_end }}"
     needs: bootstrap
     runs-on: ubuntu-latest
     timeout-minutes: 180
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 20
       matrix:
-        shot:
-          - S1_MIDNIGHT_FURROW
-          - S2_ROYAL_GUARDS
-          - S3_LOCKED_IRON
-          - S4_UNGUARDED_GATE
-          - S5_MASKED_MONARCH
-          - S6_MASTER_MOVE
+        shard: ${{ fromJSON(needs.bootstrap.outputs.shards) }}
     steps:
       - name: Restore Blender cache
         uses: actions/cache@v4
@@ -240,11 +263,12 @@ jobs:
           set -euo pipefail
           "$BLENDER_BIN" -b --factory-startup \
             --python production/account1_ep01/render_scene.py -- \
-            --shot "${{ matrix.shot }}" \
+            --shot "${{ matrix.shard.id }}" \
             --mode "$MODE" \
             --samples "$SAMPLES" \
             --res-pct "$RES_PCT" \
-            --timeline production/account1_ep01/build/timeline_15s.json \
+            --frames "${{ matrix.shard.f_start }}-${{ matrix.shard.f_end }}" \
+            --timeline production/account1_ep01/build/timeline_full.json \
             --assets production/account1_ep01/assets \
             --out production/account1_ep01/frames
           find production/account1_ep01/frames -name 'f_*.png' | wc -l
@@ -252,7 +276,7 @@ jobs:
       - name: Upload shot frames
         uses: actions/upload-artifact@v4
         with:
-          name: pehra-frames-${{ matrix.shot }}-${{ github.run_id }}
+          name: pehra-frames-${{ matrix.shard.slug }}-${{ github.run_id }}
           path: production/account1_ep01/frames
           if-no-files-found: error
           retention-days: 7
@@ -311,8 +335,8 @@ jobs:
           python production/account1_ep01/assemble_preview.py \
             --mode "$MODE" \
             --frames-dir production/account1_ep01/frames \
-            --timeline production/account1_ep01/build/timeline_15s.json \
-            --audio production/account1_ep01/build/master_15s.m4a \
+            --timeline production/account1_ep01/build/timeline_full.json \
+            --audio production/account1_ep01/build/master_full.m4a \
             --out-dir production/account1_ep01/renders
           ls -lh production/account1_ep01/renders
 
