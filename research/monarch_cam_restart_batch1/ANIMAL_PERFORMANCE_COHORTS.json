@@ -4,9 +4,9 @@
     {
       "name": "Animalogic seven weekly standalones",
       "n": 7,
-      "selection": "All seven weekly 10\u201325min standalone entries between Jul31 and Sep11 in recovered catalogue; interleaved long compilations excluded; independent catalogue completeness not established",
+      "selection": "All seven weekly 10–25min standalone entries between Jul31 and Sep11 in recovered catalogue; interleaved long compilations excluded; independent catalogue completeness not established",
       "median_views": 123019,
-      "limitation": "64\u2013106 days old; not equal-age views, sample not whole channel; extinct-topic controls are not Monarch Cam episode recommendations",
+      "limitation": "64–106 days old; not equal-age views, sample not whole channel; extinct-topic controls are not Monarch Cam episode recommendations",
       "rows": [
         {
           "id": "jU3nOWkZCCQ",
@@ -22,9 +22,10 @@
           "age_days": 106,
           "metadata_evidence": "original watch page fetched this research pass",
           "thumbnail_url": "https://i.ytimg.com/vi/jU3nOWkZCCQ/maxresdefault.jpg",
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
-          "descriptive_sample_median_ratio": 0.383
+          "descriptive_sample_median_ratio": 0.383,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "I1q0BWE9ehQ",
@@ -58,9 +59,10 @@
           "age_days": 92,
           "metadata_evidence": "original watch page fetched this research pass",
           "thumbnail_url": "https://i.ytimg.com/vi/BHbZ7bO68fA/maxresdefault.jpg",
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
-          "descriptive_sample_median_ratio": 1.0
+          "descriptive_sample_median_ratio": 1.0,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "aVLhzZ6p2V8",
@@ -130,16 +132,17 @@
           "age_days": 64,
           "metadata_evidence": "original watch page fetched this research pass",
           "thumbnail_url": "https://i.ytimg.com/vi/VhW7Ze3USno/maxresdefault.jpg",
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
-          "descriptive_sample_median_ratio": 1.667
+          "descriptive_sample_median_ratio": 1.667,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         }
       ]
     },
     {
       "name": "Animalogic five catalogue-labelled Shorts",
       "n": 5,
-      "selection": "Five chronological short-badged entries Aug18\u2013Sep17 in recovered catalogue",
+      "selection": "Five chronological short-badged entries Aug18–Sep17 in recovered catalogue",
       "median_views": 19661,
       "limitation": "small n, unequal ages/durations; native classification provisional",
       "rows": [
@@ -240,7 +243,7 @@
       "n": 4,
       "median_views": null,
       "selection": "Four examples explicitly featured by publisher; curated success-biased convenience sample",
-      "limitation": "No typical/low label or outlier baseline permitted; date span2021\u20132023",
+      "limitation": "No typical/low label or outlier baseline permitted; date span2021–2023",
       "rows": [
         {
           "id": "WXmvOjiYdvo",
@@ -273,8 +276,9 @@
           "age_days": 1716,
           "metadata_evidence": "original watch page fetched this research pass",
           "thumbnail_url": "https://i.ytimg.com/vi/2x5eOBJ37iE/maxresdefault.jpg",
-          "thumbnail_inspected": false,
-          "video_playback": false
+          "thumbnail_inspected": true,
+          "video_playback": false,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "z3H6fJ3t-Cs",
@@ -290,8 +294,9 @@
           "age_days": 1499,
           "metadata_evidence": "original watch page fetched this research pass",
           "thumbnail_url": "https://i.ytimg.com/vi/z3H6fJ3t-Cs/maxresdefault.jpg",
-          "thumbnail_inspected": false,
-          "video_playback": false
+          "thumbnail_inspected": true,
+          "video_playback": false,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "KlU-CCF-j9M",

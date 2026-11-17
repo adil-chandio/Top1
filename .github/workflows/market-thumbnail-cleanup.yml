@@ -1,0 +1,18 @@
+name: Clear temporary market thumbnails
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/clear_market_thumbnail_checks.py, .github/workflows/market-thumbnail-cleanup.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: python research/monarch_cam_restart_batch1/clear_market_thumbnail_checks.py
+        env:
+          GH_TOKEN: ${{ github.token }}

@@ -26,10 +26,11 @@
           "duration_seconds": 534,
           "views": 7532,
           "age_days": 69,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 1.773
+          "sample_median_ratio": 1.773,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "Ghmo43WEH_k",
@@ -65,10 +66,11 @@
           "duration_seconds": 510,
           "views": 2406,
           "age_days": 152,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 0.566
+          "sample_median_ratio": 0.566,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "teHwadQsmK0",
@@ -78,10 +80,11 @@
           "duration_seconds": 520,
           "views": 4249,
           "age_days": 188,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 1.0
+          "sample_median_ratio": 1.0,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         }
       ],
       "comparison_n": 5,
@@ -100,10 +103,11 @@
           "duration_seconds": 289,
           "views": 151100,
           "age_days": 109,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 1.0
+          "sample_median_ratio": 1.0,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "CJl_relCddQ",
@@ -126,10 +130,11 @@
           "duration_seconds": 246,
           "views": 48465,
           "age_days": 165,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 0.321
+          "sample_median_ratio": 0.321,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "pmLHg_B8uoI",
@@ -139,10 +144,11 @@
           "duration_seconds": 233,
           "views": 306884,
           "age_days": 186,
-          "thumbnail_inspected": false,
+          "thumbnail_inspected": true,
           "video_playback": false,
           "source": "original watch-page text metadata; not audiovisual inspection",
-          "sample_median_ratio": 2.031
+          "sample_median_ratio": 2.031,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "IGtbHRPcSe8",

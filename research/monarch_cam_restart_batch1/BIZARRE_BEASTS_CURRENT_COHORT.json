@@ -34,10 +34,11 @@
       "in_mature_window": true,
       "mature_sample_ratio": 1.938,
       "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
-      "thumbnail_inspected": false,
+      "thumbnail_inspected": true,
       "actual_video_playback": false,
       "strand": "monthly",
-      "within_strand_mature_ratio": 1.787
+      "within_strand_mature_ratio": 1.787,
+      "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
     },
     {
       "id": "a0EBpzqWeyI",
@@ -68,10 +69,11 @@
       "in_mature_window": true,
       "mature_sample_ratio": 1.0,
       "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
-      "thumbnail_inspected": false,
+      "thumbnail_inspected": true,
       "actual_video_playback": false,
       "strand": "monthly",
-      "within_strand_mature_ratio": 0.922
+      "within_strand_mature_ratio": 0.922,
+      "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
     },
     {
       "id": "uWallOyZvn0",
@@ -102,10 +104,11 @@
       "in_mature_window": true,
       "mature_sample_ratio": 0.93,
       "source": "original watch page fetched in this pass; discovery Nerdfighteria recent feed",
-      "thumbnail_inspected": false,
+      "thumbnail_inspected": true,
       "actual_video_playback": false,
       "strand": "monthly",
-      "within_strand_mature_ratio": 0.858
+      "within_strand_mature_ratio": 0.858,
+      "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
     },
     {
       "id": "xNA4quA9VuI",

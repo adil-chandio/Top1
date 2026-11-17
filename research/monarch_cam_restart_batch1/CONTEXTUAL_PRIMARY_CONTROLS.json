@@ -12,8 +12,9 @@
           "views": 1669655,
           "age_days": 227,
           "format_note": "species profile",
-          "thumbnail_inspected": false,
-          "video_playback": false
+          "thumbnail_inspected": true,
+          "video_playback": false,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "_hw26yREe9w",
@@ -55,8 +56,9 @@
           "views": 199028,
           "age_days": 343,
           "format_note": "field research documentary; separate",
-          "thumbnail_inspected": false,
-          "video_playback": false
+          "thumbnail_inspected": true,
+          "video_playback": false,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "IH_uv4h2xYM",
@@ -67,13 +69,14 @@
           "views": 2073299,
           "age_days": 357,
           "format_note": "mechanism explainer",
-          "thumbnail_inspected": false,
-          "video_playback": false
+          "thumbnail_inspected": true,
+          "video_playback": false,
+          "thumbnail_inspection_evidence": "ACTUAL_THUMBNAIL_NOTES_ROMAN_URDU.md; hash receipt JSONL; actual read_file image inspection"
         },
         {
           "id": "uGCaL_Ge6tg",
           "url": "https://www.youtube.com/watch?v=uGCaL_Ge6tg",
-          "title": "The Frog That Unleashed the World\u2019s Most Lethal Pathogen",
+          "title": "The Frog That Unleashed the World’s Most Lethal Pathogen",
           "upload_date": "2025-10-25",
           "duration_seconds": 1120,
           "views": 1308056,
