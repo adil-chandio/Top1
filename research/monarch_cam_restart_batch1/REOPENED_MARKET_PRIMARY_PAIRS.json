@@ -1,0 +1,90 @@
+{
+  "date_basis": "2026-11-14 instructed local date; snapshot live at tool retrieval, not archival same-date proof",
+  "status": "active_partial_not_batch_complete",
+  "rows": [
+    {
+      "channel": "Animagraffs",
+      "id": "RjbJwnUd3Pw",
+      "url": "https://www.youtube.com/watch?v=RjbJwnUd3Pw",
+      "title": "How the Golden Gate Bridge Works",
+      "upload_date": "2025-09-19",
+      "views_snapshot": 3615886,
+      "duration": "1:24:25",
+      "format": "long",
+      "content_type": "explainer",
+      "source": "original YouTube watch page fetched in active research pass",
+      "age_days_on_2026_11_14": 421,
+      "thumbnail_url": "https://i.ytimg.com/vi/RjbJwnUd3Pw/maxresdefault.jpg",
+      "thumbnail_visually_inspected": false,
+      "full_video_playback": false
+    },
+    {
+      "channel": "Animagraffs",
+      "id": "FiyrzMmA1zk",
+      "url": "https://www.youtube.com/watch?v=FiyrzMmA1zk",
+      "title": "How I recreated the Golden Gate Bridge (historical research + 3D modeling)",
+      "upload_date": "2025-10-01",
+      "views_snapshot": 69035,
+      "duration": "48:37",
+      "format": "long",
+      "content_type": "making_of",
+      "source": "original YouTube watch page fetched in active research pass",
+      "age_days_on_2026_11_14": 409,
+      "thumbnail_url": "https://i.ytimg.com/vi/FiyrzMmA1zk/maxresdefault.jpg",
+      "thumbnail_visually_inspected": false,
+      "full_video_playback": false
+    },
+    {
+      "channel": "Animagraffs",
+      "id": "4EdMImlZE2s",
+      "url": "https://www.youtube.com/watch?v=4EdMImlZE2s",
+      "title": "How Hoover Dam Works",
+      "upload_date": "2025-04-21",
+      "views_snapshot": 4428796,
+      "duration": "1:06:00",
+      "format": "long",
+      "content_type": "explainer",
+      "source": "original YouTube watch page fetched in active research pass",
+      "age_days_on_2026_11_14": 572,
+      "thumbnail_url": "https://i.ytimg.com/vi/4EdMImlZE2s/maxresdefault.jpg",
+      "thumbnail_visually_inspected": false,
+      "full_video_playback": false
+    },
+    {
+      "channel": "Animagraffs",
+      "id": "itj2t8Fv8xs",
+      "url": "https://www.youtube.com/watch?v=itj2t8Fv8xs",
+      "title": "How I recreated Hoover Dam in 3D (historical accuracy, research, modeling, and more)",
+      "upload_date": "2025-04-26",
+      "views_snapshot": 137047,
+      "duration": "49:36",
+      "format": "long",
+      "content_type": "making_of",
+      "source": "original YouTube watch page fetched in active research pass",
+      "age_days_on_2026_11_14": 567,
+      "thumbnail_url": "https://i.ytimg.com/vi/itj2t8Fv8xs/maxresdefault.jpg",
+      "thumbnail_visually_inspected": false,
+      "full_video_playback": false
+    }
+  ],
+  "pairs": [
+    {
+      "ids": [
+        "RjbJwnUd3Pw",
+        "FiyrzMmA1zk"
+      ],
+      "explainer_to_makingof_views_ratio": 52.38,
+      "upload_gap_days": 12,
+      "causal_effect_established": false
+    },
+    {
+      "ids": [
+        "4EdMImlZE2s",
+        "itj2t8Fv8xs"
+      ],
+      "explainer_to_makingof_views_ratio": 32.32,
+      "upload_gap_days": 5,
+      "causal_effect_established": false
+    }
+  ]
+}
