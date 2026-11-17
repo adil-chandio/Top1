@@ -58,7 +58,8 @@
     "research/monarch_cam_gecko_batch2/PMC_ANKLE_MOVIE_ATTEMPT.json",
     "research/monarch_cam_gecko_batch2/LIVE_MOTION_FEASIBILITY_DECISION.md",
     "research/monarch_cam_craft_forensics/PRODUCTION_BLOCKERS_AND_REVIEW_HANDOFF.md",
-    "research/monarch_cam_gecko_batch2/DIGIT_TRANSPORT_CLEANUP.json"
+    "research/monarch_cam_gecko_batch2/DIGIT_TRANSPORT_CLEANUP.json",
+    "research/monarch_cam_gecko_batch5/USER_ENGLISH_AUDIO_APPROVAL.json"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -373,7 +374,11 @@
     "file": "studio/runtime/gecko/narration/english-narration-v1.wav",
     "sha256_verified": true,
     "duration_seconds": 63.68,
-    "listening_approved": false,
-    "requested_review": "Pronunciation/negations/natural prosody and33.20s join; human listening needed, no new synthesis"
+    "listening_approved": true,
+    "requested_review": "Pronunciation/negations/natural prosody and33.20s join; human listening needed, no new synthesis",
+    "approved_by": "user",
+    "user_statement": "Audio approved",
+    "approval_scope": "Retained narration only; final mix/native AV excluded",
+    "receipt": "research/monarch_cam_gecko_batch5/USER_ENGLISH_AUDIO_APPROVAL.json"
   }
 }

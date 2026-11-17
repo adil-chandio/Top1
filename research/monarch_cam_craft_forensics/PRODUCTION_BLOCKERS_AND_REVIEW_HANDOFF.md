@@ -17,7 +17,7 @@ Authoritative treatment: `ENGLISH_EDIT_AND_RIG_DECISION.md`. Existing structural
 | Gate | Reviewer/input needed | Specific acceptance question | Current status |
 |---|---|---|---|
 | Exterior anatomy and qualitative controls | Qualified Tokay anatomy/motion reviewer, or lawfully accessible identified live reference that can actually be inspected | Does the intended left hindfoot silhouette, terminal/claw integration and digit/ankle separation avoid a misleading mechanism? | OPEN; legacy exterior rejected; figures/photos constrain design only |
-| Retained English voice | Actual listener, full63.68s WAV plus critical18.1s diagnostic if useful | Are negations, scientific terms, prosody and33.20s join correct and natural? | OPEN; alignment/hash tests are not listening |
+| Retained English voice | Actual listener, full63.68s WAV plus critical18.1s diagnostic if useful | Are negations, scientific terms, prosody and33.20s join correct and natural? | APPROVED BY USER: “Audio approved”; exact retained WAV hash reverified; final mix/native A/V excluded |
 | Native audiovisual craft | Actual native-speed viewing/listening of a future bounded integrated proof, only after upstream gates | Is causal release clear, continuous, spatially grounded and stronger than rejected V6 without explanatory overlays rescuing it? | NOT RUN; no new proof made |
 | Rights/source use | Asset-by-asset review before any incorporation/publication | Is every image/audio/model actually used covered by applicable permission/licence and attribution? | OPEN; reference availability is not permission |
 
@@ -38,3 +38,6 @@ Runtime media are local/ignored; this document does not assert they have been se
 Do not turn repeated 'continue' into publication/spend, anatomy approval, a new voice, or permission to produce another cosmetic full render. Do not reopen exact Video3/PMC download attempts unchanged. No automated retrieval is queued. A real review/input gap is now the blocker—not another report or another minor toe iteration.
 
 Independent housekeeping may continue, including pending diesel/action temporary transport cleanup. It must not be described as creative quality progress. Once the real gates are addressed, assess only the previously bounded4–6s integrated proof before authorizing a full production pass.
+
+## Superseding user audio decision
+The user explicitly approved the presented retained narration: “Audio approved”. See `research/monarch_cam_gecko_batch5/USER_ENGLISH_AUDIO_APPROVAL.json`. This closes the retained-narration listening gate only. Earlier requests for that approval are historical; do not ask again unless the audio changes. Anatomy/motion, final mix/native audiovisual craft, rights and production authorization remain open.

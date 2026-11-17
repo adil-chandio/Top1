@@ -163,3 +163,6 @@ Independent Higham2021 PMC8602014 MovieS1 attempted in44120675048. Downloaded re
 
 ### Latest cleanup readback and listening handoff
 Resume44123864720 failed, but independent API readback now confirms6/9 digit payloads cleared,3 outstanding; no new retry queued. Receipt DIGIT_TRANSPORT_CLEANUP.json. Retained English narration actual file SHA256 reverified and duration63.68s. Opened for human listening review, NOT self-certified heard/approved. Ask for pronunciation/negation/prosody and33.20s join observations. No new synthesis/render, production held.
+
+### User narration approval — supersedes retained-voice listening hold
+User explicitly said “Audio approved” after retained63.68s English voice-09 WAV was presented. File SHA256 reverified1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8. Approval recorded in Batch5 USER_ENGLISH_AUDIO_APPROVAL.json. Retained-narration listening gate closed by USER, not assistant listening claim. No new synthesis required. Final sound mix/native A/V, anatomy/motion, rights and production/publication/spend gates remain separate and unapproved.
