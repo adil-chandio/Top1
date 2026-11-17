@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the 15s PEHRA 3D preview: captions, grade, audio mux, QC, keyframes.
+"""Assemble the PEHRA film: captions, grade, audio mux, QC, keyframes.
 
 - final: validate 450 rendered Cycles PNGs, overlay six animated editorial
   captions, add subtle film grade/grain/vignette/glare-friendly contrast,
@@ -255,7 +255,7 @@ def build_video(
         "-r", str(fps),
         "-c:v", "libx264",
         "-preset", "slow",
-        "-crf", "17",
+        "-crf", "21",
         "-profile:v", "high",
         "-level", "4.2",
         "-pix_fmt", "yuv420p",
@@ -267,7 +267,7 @@ def build_video(
         "-ar", "48000",
         "-ac", "2",
         "-movflags", "+faststart",
-        "-metadata", "title=MONARCH EP01 PEHRA — 15s Dark 3D Cinema Preview",
+        "-metadata", f"title=MONARCH EP01 PEHRA — {duration:.0f}s Dark 3D Cinema Film",
         "-metadata", "comment=100% animated Blender Cycles 3D renders; zero still-image plates",
         str(out_mp4),
     ]
@@ -300,8 +300,8 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--mode", choices=("lookdev", "final"), default="final")
     parser.add_argument("--frames-dir", default=str(BASE / "frames"))
-    parser.add_argument("--timeline", default=str(BASE / "build" / "timeline_15s.json"))
-    parser.add_argument("--audio", default=str(BASE / "build" / "master_15s.m4a"))
+    parser.add_argument("--timeline", default=str(BASE / "build" / "timeline_full.json"))
+    parser.add_argument("--audio", default=str(BASE / "build" / "master_full.m4a"))
     parser.add_argument("--out-dir", default=str(BASE / "renders"))
     args = parser.parse_args()
 
@@ -394,7 +394,7 @@ def main() -> None:
     credits = BASE / "ASSET_CREDITS.md"
     if credits.exists():
         shutil.copy2(credits, out_dir / "ASSET_CREDITS.md")
-    print(f"=== FINAL 15s PREVIEW -> {out_mp4} ({out_mp4.stat().st_size / 1048576:.1f} MB) ===")
+    print(f"=== FINAL FILM -> {out_mp4} ({out_mp4.stat().st_size / 1048576:.1f} MB) ===")
 
 
 if __name__ == "__main__":
