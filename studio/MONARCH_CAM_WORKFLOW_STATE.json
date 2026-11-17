@@ -26,12 +26,14 @@
     "research/monarch_cam_restart_batch1/TIERZOO_PRIMARY_CONTROLS.json",
     "research/monarch_cam_restart_batch1/BATCH2_GECKO_INITIAL_CLAIM_LEDGER_ROMAN_URDU.md",
     "research/monarch_cam_gecko_batch2/SCIENCE_MOTION_UPDATE_ROMAN_URDU.md",
-    "research/monarch_cam_gecko_batch2/ASSET_AND_REFERENCE_LEDGER.json"
+    "research/monarch_cam_gecko_batch2/ASSET_AND_REFERENCE_LEDGER.json",
+    "research/monarch_cam_gecko_batch2/CONTINUOUS_CYCLE_QC_RECEIPT.json",
+    "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json"
   ],
   "next_required": [
-    "verify gecko transport cleanup after workflow",
-    "species-specific continuous toe/foot geometry and anatomy/rights review",
-    "engagement and shear-loading test, then anatomically grounded release"
+    "reference-validated identified Tokay foot/digit/claw layout and anatomy/rights review",
+    "species-specific pad/foot geometry rather than generic prototype polishing",
+    "validate engagement/shear mechanism and release within anatomical rig"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -64,5 +66,11 @@
     "last_verified_status": "success; archive and individual libraries hash verified; bpy4.2 imported",
     "render_exists": true
   },
-  "toe_test": "36frame original schematic rendered, revised3times, consecutive10\u201318 inspected; not species-anatomy/production pass"
+  "toe_test": "60frame continuous mesh approach/contact/symbolic loading/release cycle rendered, consecutive36\u201340 inspected,5geometry tests passed; species anatomy/actual force NOT passed",
+  "gecko_transport_cleanup": {
+    "run": 44040935377,
+    "workflow": "success",
+    "independent_api_reread": "11 checks clear",
+    "receipt": "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json"
+  }
 }
