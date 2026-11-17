@@ -346,17 +346,31 @@ window.__PEHRA_INIT__ = async (timeline) => {
                              faceW:+faceW.toFixed(2),
                              maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
   /* two soldiers flanking the gate */
-  const mk = (x, z, rotY, targetLen) => {
+  /* Soldier.glb measures ~1.85 units tall with its own inner scale, but the
+     scene-wide normaliser is shared with props that carry wildly different
+     internal units, so the guards get an explicit height instead. */
+  const soldierBase = boundsOf(soldierG.scene);
+  const soldierScale = 2.45 / Math.max(soldierBase.size[1], 1e-6);
+  const mk = (x, z, rotY) => {
     const g = new THREE.Group();
-    const inner = normalize(SkeletonUtils.clone(soldierG.scene), targetLen, 0);
-    g.add(inner);
+    const inner = SkeletonUtils.clone(soldierG.scene);
+    inner.scale.setScalar(soldierScale);
+    inner.position.set(
+      -soldierBase.center[0] * soldierScale,
+      -soldierBase.min[1] * soldierScale,
+      -soldierBase.center[2] * soldierScale
+    );
+    const wrap = new THREE.Group();
+    wrap.add(inner);
+    g.add(wrap);
     g.position.set(x, 0, z);
     g.rotation.y = rotY;
     scene.add(g);
+    window.__SOLDIER_SCALE__ = +soldierScale.toFixed(3);
     return g;
   };
-  guardA = mk(-6.4, -14.5, 0.52, 2.55);
-  guardB = mk( 6.4, -14.5, -0.52, 2.55);
+  guardA = mk(-6.4, -14.5, 0.52);
+  guardB = mk( 6.4, -14.5, -0.52);
 
   /* vegetation along the furrows */
   plantA = new THREE.Group();
