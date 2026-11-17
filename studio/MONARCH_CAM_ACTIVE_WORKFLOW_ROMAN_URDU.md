@@ -160,3 +160,6 @@ Public https://vimeo.com/105308288 page actually fetched: Annual Reviews uploade
 
 ### Latest superseding feasibility decision: stop serial retrieval loop
 Independent Higham2021 PMC8602014 MovieS1 attempted in44120675048. Downloaded response failed ffprobe moov-atom validation; no valid movie or inspected frames. Response details missing, root cause unknown (not automatically corruption/access-control). Article text gives separate level-walking vs climbing and digit-release-before-ankle-plantarflexion constraints, not observed kinematics. LIVE_MOTION_FEASIBILITY_DECISION.md records bounded closure: no further automatic source downloads queued, no generic toe polishing. Need accessible identified reference or qualified anatomy/motion review to close gate; independent bookkeeping can continue. Existing14region handoff unchanged, no new render/publication/spend.
+
+### Latest cleanup readback and listening handoff
+Resume44123864720 failed, but independent API readback now confirms6/9 digit payloads cleared,3 outstanding; no new retry queued. Receipt DIGIT_TRANSPORT_CLEANUP.json. Retained English narration actual file SHA256 reverified and duration63.68s. Opened for human listening review, NOT self-certified heard/approved. Ask for pronunciation/negation/prosody and33.20s join observations. No new synthesis/render, production held.

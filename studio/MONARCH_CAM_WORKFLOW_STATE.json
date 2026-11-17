@@ -368,5 +368,12 @@
     "retrieval_loop_closed": true
   },
   "review_handoff": "research/monarch_cam_craft_forensics/PRODUCTION_BLOCKERS_AND_REVIEW_HANDOFF.md",
-  "digit_transport_cleanup": "1of9 independently verified cleared; retry/backoff resume committed69c987c; remaining not yet verified"
+  "digit_transport_cleanup": "6of9 independently verified cleared after failed resume44123864720;3 outstanding; no further retry queued",
+  "audio_review_handoff": {
+    "file": "studio/runtime/gecko/narration/english-narration-v1.wav",
+    "sha256_verified": true,
+    "duration_seconds": 63.68,
+    "listening_approved": false,
+    "requested_review": "Pronunciation/negations/natural prosody and33.20s join; human listening needed, no new synthesis"
+  }
 }

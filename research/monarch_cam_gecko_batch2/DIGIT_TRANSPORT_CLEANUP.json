@@ -8,23 +8,23 @@
     },
     {
       "id": 134083476413,
-      "cleared": false
+      "cleared": true
     },
     {
       "id": 134083482677,
-      "cleared": false
+      "cleared": true
     },
     {
       "id": 134083488901,
-      "cleared": false
+      "cleared": true
     },
     {
       "id": 134083494306,
-      "cleared": false
+      "cleared": true
     },
     {
       "id": 134083440417,
-      "cleared": false
+      "cleared": true
     },
     {
       "id": 134083447353,
@@ -42,5 +42,7 @@
   "all_cleared": false,
   "note": "Run failure reason unavailable: log-host EOF. Readback determines actual cleanup, not job status.",
   "resume_commit": "69c987c",
-  "resume_result": "not yet verified"
+  "resume_result": "failure",
+  "resume_run_id": 44123864720,
+  "retry_policy": "No further cleanup retry queued; preserve partial result and outstanding IDs."
 }
