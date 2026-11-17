@@ -37,24 +37,25 @@ jobs:
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --quiet requests numpy scipy soundfile pydub
       - name: Build the full-script timeline
-        run: python production/account1_ep01/plan_full.py
+        run: python -u production/account1_ep01/plan_full.py
       - name: Restore the Urdu narration performance
-        run: python production/account1_ep01/restore_narration.py
-      - name: Build the full-script soundtrack
-        run: python production/account1_ep01/build_audio_full.py
-      - name: Fetch verified CC0 / MIT 3D assets
-        run: python production/account1_ep01/fetch_assets.py
-      - name: Refuse to render a silent film
+        run: python -u production/account1_ep01/restore_narration.py
+      - name: Build the full-script soundtrack and gate on narration
         run: |
           set -euo pipefail
+          python -u production/account1_ep01/build_audio_full.py 2>&1 | tee /tmp/audio.log
           PLACED=$(sed -n 's/.*narration placed: \([0-9]*\)\/.*/\1/p' /tmp/audio.log | tail -1)
           PLACED=${PLACED:-0}
           echo "narration placed: $PLACED / 16"
           if [ "$PLACED" -ne 16 ]; then
-            echo "::error::only $PLACED/16 narration lines — not rendering"
-            grep "skip" /tmp/audio.log || true
+            echo "::error::only $PLACED/16 narration lines - not rendering a silent film"
+            grep skip /tmp/audio.log || true
             exit 1
           fi
+          test -f production/account1_ep01/build/master_full.m4a
+          test -s production/account1_ep01/build/master_full.m4a
+      - name: Fetch verified CC0 / MIT 3D assets
+        run: python production/account1_ep01/fetch_assets.py
       - name: Verify prepared bundle
         run: |
           set -euo pipefail
