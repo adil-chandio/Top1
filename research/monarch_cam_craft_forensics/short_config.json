@@ -1,0 +1,22 @@
+{
+  "mode": "review",
+  "clear_shas": [],
+  "identifiers": [
+    "branch-education"
+  ],
+  "max_bytes": 180000000,
+  "files": {
+    "branch-education": "How do Mechanical Pencils Work_ #shorts.ia.mp4"
+  },
+  "interval": 1,
+  "long_interval": 1,
+  "windows": {
+    "branch-education": [
+      0,
+      4,
+      12,
+      20,
+      28
+    ]
+  }
+}

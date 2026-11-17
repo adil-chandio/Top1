@@ -1,0 +1,12 @@
+{
+  "mode": "review",
+  "clear_shas": [],
+  "identifiers": [
+    "youtube-caf8mwyrYeY"
+  ],
+  "max_bytes": 180000000,
+  "files": {},
+  "interval": 1,
+  "long_interval": 1,
+  "windows": {}
+}

@@ -1,0 +1,24 @@
+{
+  "mode": "review",
+  "clear_shas": [],
+  "identifiers": [
+    "branch-education"
+  ],
+  "max_bytes": 180000000,
+  "files": {
+    "branch-education": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.ia.mp4"
+  },
+  "interval": 1,
+  "long_interval": 1,
+  "windows": {
+    "branch-education": [
+      0,
+      124,
+      154,
+      470,
+      626,
+      1096,
+      1398
+    ]
+  }
+}

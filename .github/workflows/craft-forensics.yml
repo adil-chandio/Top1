@@ -1,0 +1,28 @@
+name: Craft forensics - bounded reference frames
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - research/monarch_cam_craft_forensics/run_reference.py
+      - research/monarch_cam_craft_forensics/*_config.json
+      - .github/workflows/craft-forensics.yml
+permissions:
+  contents: read
+  checks: write
+jobs:
+  inspect-source:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      max-parallel: 1
+      matrix:
+        reference: [short, zack, long]
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Decode reference without retaining raw footage
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REFERENCE_LABEL: ${{ matrix.reference }}
+        run: python research/monarch_cam_craft_forensics/run_reference.py
