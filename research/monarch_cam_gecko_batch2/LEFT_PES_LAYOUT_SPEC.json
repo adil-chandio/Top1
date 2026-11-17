@@ -1,0 +1,84 @@
+{
+  "species": "Gekko gecko",
+  "side": "left",
+  "appendage": "pes",
+  "view": "ventral",
+  "geometry_status": "original unmeasured2Dblocking, not traced; not final anatomy",
+  "source_figures": {
+    "layout": "2026 Fig1b left pes ventral",
+    "phalangeal_counts": "2026 Fig2b right pes dorsal; counts transferable, image coordinates NOT transferred"
+  },
+  "digits": [
+    {
+      "id": "I",
+      "start": [
+        570,
+        440
+      ],
+      "tip": [
+        730,
+        355
+      ],
+      "width": 42,
+      "claw": false,
+      "phalanges": 2
+    },
+    {
+      "id": "II",
+      "start": [
+        550,
+        395
+      ],
+      "tip": [
+        640,
+        210
+      ],
+      "width": 48,
+      "claw": true,
+      "phalanges": 3
+    },
+    {
+      "id": "III",
+      "start": [
+        485,
+        370
+      ],
+      "tip": [
+        435,
+        160
+      ],
+      "width": 49,
+      "claw": true,
+      "phalanges": 4
+    },
+    {
+      "id": "IV",
+      "start": [
+        425,
+        440
+      ],
+      "tip": [
+        195,
+        435
+      ],
+      "width": 52,
+      "claw": true,
+      "phalanges": 5
+    },
+    {
+      "id": "V",
+      "start": [
+        470,
+        500
+      ],
+      "tip": [
+        355,
+        715
+      ],
+      "width": 50,
+      "claw": true,
+      "phalanges": 4
+    }
+  ],
+  "warning": "pixel coordinates/widths are illustration choices, NOT biological measurements; claw marks are placeholders"
+}

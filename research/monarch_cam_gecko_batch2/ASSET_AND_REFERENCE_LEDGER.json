@@ -58,6 +58,40 @@
       "production_reuse_status": "reference only; no production licence established",
       "local_copy_deleted_after_notes": true,
       "observations": "Fig1: five splayed digits, transverse lamellae, progressively magnified arrays/seta/spatula; Fig2: toe distal/proximal orientation and isolated sensor/slide paths30/150deg. Neither is a filmed whole-foot gait sequence."
+    },
+    {
+      "figure": "fig2-radiograph-right-manus-pes",
+      "source_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ce3a/13617260/ec29f6de53c9/JOA-9999-0-g009.webp",
+      "source_size": [
+        1064,
+        487
+      ],
+      "source_sha256": "a7461587a6e8ab7f773f93b9df2e9aaa07560cd264f06acbaf35182e97a5d56b",
+      "copy_sha256": "6f06cc687372c5422d17925bb6be0fef5d74f24464ebc18c0d875266b9f0ef46",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13617260/",
+      "credit": "Russell, Delannoy & Garner2026; Journal of Anatomy; DOI10.1111/joa.70251",
+      "license": "CC BY4.0 per article; check figure-specific credit before reuse",
+      "actual_pixels_inspected": true,
+      "local_copy_deleted_after_notes": true,
+      "production_status": "reference only; original study contains no source pixels",
+      "observations": "Fig2 labels (a) right manus and (b) right pes dorsal radiographs. Visible numbered phalanges yield manus2-3-4-5-3 versus pes2-3-4-5-4. Right dorsal coordinates not copied into left ventral drawing; only digit identities and counts used. Coloured OB/TB lines do not equal visible pad edges."
+    },
+    {
+      "figure": "fig1-ventral-left-pes",
+      "source_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/ce3a/13617260/85c3c710dee7/JOA-9999-0-g004.webp",
+      "source_size": [
+        1064,
+        618
+      ],
+      "source_sha256": "e5cfb1d04bb5be1e1de5a53518b9c7a6debd924f92183370081dd8cc4eddd410",
+      "copy_sha256": "2af6d3ff834d04b797f39bf30ed2123376902db89c101f85173d89c3d3ea6492",
+      "article": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13617260/",
+      "credit": "Russell, Delannoy & Garner2026; Journal of Anatomy; DOI10.1111/joa.70251",
+      "license": "CC BY4.0 per article; check figure-specific credit before reuse",
+      "actual_pixels_inspected": true,
+      "local_copy_deleted_after_notes": true,
+      "production_status": "reference only; original study contains no source pixels",
+      "observations": "Fig1b labelled left pes ventral: I at upper-right clawless; II upper-right, III upper, IV left, V lower-left in THIS pose; transverse enlarged scales and smaller plantar scales. Fig1a distal claw sits above enlarged scale series, not a suction disk."
     }
   ],
   "production_licensed_gecko_model": null,

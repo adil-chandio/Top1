@@ -21,9 +21,9 @@ jobs:
           def call(path,body=None):
               r=urllib.request.Request(base+path,headers=headers,data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
               with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
-          cs=call('/commits/fe327d7/check-runs?per_page=100')['check_runs']
+          cs=call('/commits/4e08938/check-runs?per_page=100')['check_runs']
           for c in cs:
-              if not c['name'].startswith(('gecko-runtime-chunk-','gecko-figure-')):continue
+              if not c['name'].startswith('gecko-anatomy-'):continue
               call('/check-runs/'+str(c['id']),{'output':{'title':'Temporary gecko transport cleared','summary':'Payload removed after hash-verified local recovery. Runtime receipt and research inspection notes preserved; no production figure reuse permitted.'}})
               time.sleep(1)
               print('cleared',c['id'],c['name'])
