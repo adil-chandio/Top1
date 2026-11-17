@@ -106,3 +106,6 @@ Full66sEnglishcut now includes48newmacrocontactframes at24fps, replacesstaticupr
 
 ## Latest Batch5 preliminary audit / targeted corrections
 Wholev3survey:66decoded1sframes actually viewed/4sheets;1584frames decoded,noblackframes. Found44stoecontactreset,52suncuedrecap,smallendcredits. Correctedv4export/full-decode and8correctionpoints inspected. No wholev4nativeplayback/audioQCclaim. Final NOTREADY;Batch4fullpassnotclaimed. See research/monarch_cam_gecko_batch5/PRELIMINARY_QC_AND_CORRECTIONS_ROMAN_URDU.md for timecoded QC04/05/06/08 holds.
+
+## Latest V5externalfeature/framing correction
+Rodclawforms replacedbytapered/recurvedschematicsonII–V;Ishortest/clawless assertions retained.36hero frames rerendered; lateral diagnostic/ventralframe +12v5samplepoints inspected. Stableheroalphacrop and enlargedpad/macro framing implemented;continuity/recap/creditsfixespreserved.Fullv5decodeexit0. Rodformdefectclosed,notexactanatomy/biologicalrigapproval. Sameaudiodraft,no listeningpass.Finalheld.See Batch5V5_CORRECTION_RECHECK_ROMAN_URDU.md.

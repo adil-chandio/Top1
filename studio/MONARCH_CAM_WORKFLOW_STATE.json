@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "batch5_preliminary_wholecut_audit_and_v4corrections_final_not_ready",
+  "state": "batch5_targeted_v5_externalclaw_and_framing_corrections_rechecked_finalheld",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -9,7 +9,7 @@
     "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
     "3": "written English script + generated63.68svoice + approximate acoustic cue map +66sanimatic available; conditional handoff with audioQC/finesync holds",
     "4": "66sreviewcutv3:48newmacroframes+prior180release/36hero;protected-termcaptions/Englishcreditssheet; sampledvisual/full-decodepassed,finalanatomy/listeningQCnotpassed",
-    "5": "preliminaryQCexecuted:66v3samplepictures+1584decodedframes;3specificdefectscorrectedv4;finalsignoffNOTREADY"
+    "5": "preliminaryaudit+v5targetedcorrections:rodformfixed,framingimproved;exactanatomy/listening/finalcraftsignoffOPEN"
   },
   "current_artifacts": [
     "research/monarch_cam_restart_batch1/ANIMAL_CHANNEL_SCREEN_ROMAN_URDU.md",
@@ -46,12 +46,14 @@
     "research/monarch_cam_gecko_batch4/CREDITS_AND_SOURCES_ENGLISH.md",
     "research/monarch_cam_gecko_batch4/AUDIT_CORRECTION_RECEIPT.json",
     "research/monarch_cam_gecko_batch4/WHOLE_CUT_TECHNICAL_AUDIT.json",
-    "research/monarch_cam_gecko_batch5/PRELIMINARY_QC_AND_CORRECTIONS_ROMAN_URDU.md"
+    "research/monarch_cam_gecko_batch5/PRELIMINARY_QC_AND_CORRECTIONS_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch5/EXTERNAL_FEATURE_CORRECTION_RECEIPT.json",
+    "research/monarch_cam_gecko_batch5/V5_CORRECTION_RECHECK_ROMAN_URDU.md"
   ],
   "next_required": [
-    "QC04:resolve placeholderclaws/exactfootclaims and biologicalrig/anatomyhold,not anothergenerictoeprototype",
-    "QC05:actual listening for scientificterms/prosody/seam/effectsbalance; technical checks not substitute",
-    "QC06:wholecut mobileframing/hook/pacing craftreview/corrections; then QC08 final checks/private delivery"
+    "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
+    "QC05:actual listening pronunciation/prosody/seam/effects balance; audio unchanged this pass",
+    "QC06/08:whole-cut mobile/nativeAVcraftreview and finalhash/credits/export/private delivery signoff"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -193,5 +195,14 @@
     "final_signoff": "NOT READY",
     "batch4_full_pass": false,
     "inspection_scope": "66v3one-secondsamplesactuallyviewed;8v4correctionpoints;notwhole-nativeAVplayback"
+  },
+  "review_v5": {
+    "file": "studio/runtime/gecko/claw-framing-pass/cut/gecko-english-review-cut-v5.mp4",
+    "receipt": "research/monarch_cam_gecko_batch5/EXTERNAL_FEATURE_CORRECTION_RECEIPT.json",
+    "recheck": "research/monarch_cam_gecko_batch5/V5_CORRECTION_RECHECK_ROMAN_URDU.md",
+    "visible_claw_rod_defect": "corrected with taperedcurvedschematic;notexactmorphologyapproval",
+    "inspection": "lateralclawdiagnostic+ventralfirstframe+12sampledcandidatepoints",
+    "full_decode": "exit0,noerrors",
+    "final_pass": false
   }
 }

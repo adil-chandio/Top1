@@ -1,0 +1,45 @@
+{
+  "file": "studio/runtime/gecko/claw-framing-pass/cut/gecko-english-review-cut-v5.mp4",
+  "sha256": "1263e6babbabc4fdd6a014b438393a2c293e9350a4066add50f0601399de1116",
+  "seconds": 66,
+  "resolution": [
+    540,
+    960
+  ],
+  "fps": 24,
+  "hero_crop": [
+    13,
+    22,
+    413,
+    451
+  ],
+  "pad_crop": [
+    60,
+    90,
+    460,
+    425
+  ],
+  "macro_crop": [
+    45,
+    100,
+    490,
+    425
+  ],
+  "external_feature_check": {
+    "claws": [
+      "II",
+      "III",
+      "IV",
+      "V"
+    ],
+    "clawless_digit": "I",
+    "shortest_digit": "I",
+    "form": "original taper/recurve; illustrative not measured morphology",
+    "biological_joint_validation": false
+  },
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "final_pass": false,
+  "scope": "source-informed external schematic; not exact anatomy or bone/tendonrig",
+  "audio": "same mastered draft; listeningQC still open"
+}
