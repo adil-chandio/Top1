@@ -1,0 +1,19 @@
+name: Gecko identified anatomy references
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_gecko_batch2/recover_anatomy_figures.py, .github/workflows/gecko-anatomy-references.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  recover:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: python -m pip install Pillow==11.3.0
+      - run: python research/monarch_cam_gecko_batch2/recover_anatomy_figures.py
+        env:
+          GH_TOKEN: ${{ github.token }}
