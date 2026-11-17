@@ -1,0 +1,38 @@
+{
+  "file": "studio/runtime/gecko/full-review-v1/gecko-complete-english-review-v1.mp4",
+  "sha256": "1264765d17bda70c2bc1df5025694045bc567048749ba0de9941197d9d1fb254",
+  "bytes": 3728575,
+  "seconds": 63.68,
+  "frames": 1592,
+  "fps": 25,
+  "output_resolution": [
+    720,
+    1280
+  ],
+  "source_3d_resolution": [
+    432,
+    768
+  ],
+  "source_release_pose_rate_hz": 12,
+  "source_release_pose_count": 132,
+  "composition": "3D rendered plates with2D camera reframing, continuous3D release sampled12Hz, original2D schematic inserts, English caption overlays",
+  "audio_source_sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+  "audio_source_seconds": 63.68,
+  "audio_user_approved": true,
+  "new_narration": false,
+  "decode_exit": 0,
+  "decode_errors": "",
+  "quality_or_anatomy_pass": false,
+  "native_av_listened_by_assistant": false,
+  "publication_authorized": false,
+  "scope": "User explicitly requested full script-length private review movie and Drive upload; no public permissions change",
+  "drive": {
+    "id": "1tyDnpOMVw1qHp9_JMPJx1tzNpTwwOcDa",
+    "url": "https://drive.google.com/file/d/1tyDnpOMVw1qHp9_JMPJx1tzNpTwwOcDa/view",
+    "bytes": 3728575,
+    "md5": "5c61a01aaa1b9ae7cd5a9d696c1418cc",
+    "readback_size_md5_match": true,
+    "owner_only_permissions_verified": true
+  },
+  "sampled_visual_review": "11 composited samples inspected; microscopic contact-gap corrected and corrected contact sample inspected. Craft/anatomy remain below target; no native AV listening claim."
+}
