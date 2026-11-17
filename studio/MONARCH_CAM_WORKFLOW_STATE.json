@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "batch5_v6_private_drive_review_handoff_verified_finalheld",
+  "state": "creative_baseline_reset_user_correction_preproduction_report_required",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -192,7 +192,7 @@
     "technical_audit": "research/monarch_cam_gecko_batch4/WHOLE_CUT_TECHNICAL_AUDIT.json",
     "candidate_file": "studio/runtime/gecko/caption-readability/gecko-english-review-cut-v6.mp4",
     "candidate_receipt": "research/monarch_cam_gecko_batch5/CAPTION_READABILITY_RECEIPT.json",
-    "final_signoff": "NOT READY",
+    "final_signoff": "CREATIVE REWORK REQUIRED; anatomy/listening/native AV holds also remain",
     "batch4_full_pass": false,
     "inspection_scope": "66v3one-secondsamplesactuallyviewed;8v4correctionpoints;notwhole-nativeAVplayback"
   },
@@ -239,6 +239,15 @@
     "bundle_url": "https://drive.google.com/file/d/13ACNdZirpbJjhnFYadp7JKw39M3NwTbP/view",
     "owner_only_permissions_verified": true,
     "remote_size_md5_match": true,
+    "final_pass": false
+  },
+  "creative_correction": {
+    "reason": "User says current gecko 3D animation/editing is below established prior work; inspect prior work and report before making video",
+    "report": "research/monarch_cam_gecko_batch5/CRAFT_BASELINE_RESET_BEFORE_PRODUCTION_ROMAN_URDU.md",
+    "current_v6_status": "technical review artifact; creative rework required, not near-final",
+    "new_render_permitted_at_this_checkpoint": false,
+    "historical_evidence_inspected": "3existingimagefiles+6decodedNightShiftframes+source/brief; no native whole playback/audio listening",
+    "next_step": "explain prior craft baseline and proposed treatment before further video production",
     "final_pass": false
   }
 }
