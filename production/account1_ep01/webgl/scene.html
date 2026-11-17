@@ -320,6 +320,38 @@ window.__PEHRA_INIT__ = async (timeline) => {
   monarch.add(srgb);
   monarch.position.set(0, 1.05, -8.5);
   scene.add(monarch);
+  /* Everything placed, with its world extent. Without this the probe was
+     blind: a stray object could sit in frame and never be named. */
+  window.__ASSET_BOUNDS__ = (() => {
+    const boxOf = (o) => {
+      const b = new THREE.Box3().setFromObject(o);
+      const sz = new THREE.Vector3(), c = new THREE.Vector3();
+      b.getSize(sz); b.getCenter(c);
+      return { size: sz.toArray().map(x=>+x.toFixed(2)),
+               center: c.toArray().map(x=>+x.toFixed(2)) };
+    };
+    return {
+      source: { head: boxOf(headG.scene), mask: boxOf(maskG.scene),
+                soldier: boxOf(soldierG.scene), plant: boxOf(plantG.scene),
+                lantern: boxOf(lanternG.scene), holder: boxOf(holderG.scene),
+                ground: boxOf(ground), moonDisc: boxOf(moonDisc),
+                gate: boxOf(gate) },
+      ground_y: +ground.position.y.toFixed(2),
+      camera_range: { near: camera.near, far: camera.far, fov: camera.fov },
+    };
+  })();
+
+  window.__MASK_MESHES__ = (() => {
+    maskG.scene.updateWorldMatrix(true, true);
+    const out = [];
+    maskG.scene.traverse((o) => {
+      if (!o.isMesh || !o.geometry?.attributes?.position) return;
+      out.push({ name: o.name || '(unnamed)',
+                 v: o.geometry.attributes.position.count });
+    });
+    return out;
+  })();
+
   window.__MASK_PLACED__ = { headSize: hb.size.map(v=>+v.toFixed(2)),
                              curioSize: mb.size.map(v=>+v.toFixed(3)),
                              headScale:+HEAD_SCALE.toFixed(3),
