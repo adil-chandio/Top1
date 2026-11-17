@@ -8,6 +8,19 @@ def check(name,summary):
  body={'name':name,'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':name,'summary':summary}}
  req=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/check-runs',data=json.dumps(body,ensure_ascii=False).encode(),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'})
  with urllib.request.urlopen(req,timeout=30) as f:json.load(f)
+# Clear previously inspected image transport using the same Actions app identity.
+headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
+for sha in os.environ.get('CLEAR_SHAS','f73a621').split(','):
+ if not sha:continue
+ request=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/commits/'+sha+'/check-runs?per_page=100',headers=headers)
+ with urllib.request.urlopen(request,timeout=30) as f:old=json.load(f)
+ for c in old['check_runs']:
+  if c['name'].startswith(('archive-survey-','archive-dense-')):
+   body={'output':{'title':'Inspected image transport cleared','summary':'Frame data cleared after actual inspection; retain text findings only.'}}
+   request=urllib.request.Request('https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']+'/check-runs/'+str(c['id']),method='PATCH',data=json.dumps(body).encode(),headers=headers)
+   with urllib.request.urlopen(request,timeout=30) as f:json.load(f)
+if os.environ.get('CLEANUP_ONLY')=='true':
+ check('archive-frame-cleanup','Inspected frame check summaries cleared. No new media downloaded.');raise SystemExit(0)
 r={'visual_review_complete':False,'media_acquired':False,'frames_decoded':False,'metadata':[]}
 try:
  for ident in ['how-a-car-engine-works','the-densest-city-on-earth','youtube_-_UCnZeeKO8qVdtkrA4-uKhtTw_2023']:
@@ -31,14 +44,16 @@ try:
     h.update(block);out.write(block)
   r.update(media_acquired=True,bytes=total,sha256=h.hexdigest(),download_url=url)
   info=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format','-show_streams','-of','json',str(path)],timeout=30));r['probe']={'duration':info['format'].get('duration'),'streams':[{k:s.get(k) for k in ['codec_type','codec_name','width','height','r_frame_rate']} for s in info['streams']]}
-  # Whole-duration chronological survey: one frame per two seconds, sheets 8x5.
-  subprocess.run(['ffmpeg','-nostdin','-v','error','-i',str(path),'-vf',"fps=1/2,scale=160:-1,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=11:fontcolor=white:box=1:boxcolor=black@0.7,tile=8x5",'-q:v','6',str(root/'survey-%02d.jpg')],check=True,timeout=100)
+  # Native 24fps consecutive frames, four selected one-second windows.
+  r['dense_windows_seconds']=[11.5,53.5,95.5,446.5]
+  for start in r['dense_windows_seconds']:
+   subprocess.run(['ffmpeg','-nostdin','-v','error','-ss',str(start),'-i',str(path),'-t','1','-vf','scale=240:-1,tile=6x4','-frames:v','1','-q:v','5',str(root/('dense-'+str(start)+'.jpg'))],check=True,timeout=30)
   r['frames_decoded']=True
-  for image in sorted(root.glob('survey-*.jpg')):
+  for image in sorted(root.glob('dense-*.jpg')):
    encoded=base64.b64encode(image.read_bytes()).decode()
    # Split across check outputs to stay below GitHub's per-summary limit.
    for n in range(0,len(encoded),50000):check('archive-'+image.stem+'-'+str(n//50000),encoded[n:n+50000])
-  r['survey_sheet_count']=len(list(root.glob('survey-*.jpg')))
+  r['dense_sheet_count']=len(list(root.glob('dense-*.jpg')))
  r['temporary_media_deleted']=not Path(directory).exists()
 except Exception as e:r['error_type']=type(e).__name__;r['error_message']=str(e)[:300]
 finally:
