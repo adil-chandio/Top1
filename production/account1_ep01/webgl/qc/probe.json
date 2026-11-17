@@ -4,188 +4,193 @@
     [
       "launch",
       "ok",
-      0.3
+      1.7
     ],
     [
       "goto",
       "ok",
-      0.9
+      2.3
     ],
     [
       "webgl",
       "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
-      0.9
+      2.3
     ],
     [
       "asset:LeePerrySmith",
       "ok 9279v",
-      1.7
+      2.9
     ],
     [
       "asset:venice_mask",
       "ok 173876v",
-      1.7
+      2.9
     ],
     [
       "asset:Soldier",
       "ok 7434v",
-      1.7
+      2.9
     ],
     [
       "asset:DiffuseTransmissionPlant",
       "ok 50369v",
-      1.7
+      2.9
     ],
     [
       "asset:Lantern",
       "ok 4145v",
-      1.7
+      2.9
     ],
     [
       "asset:GlassHurricaneCandleHolder",
       "ok 2386v",
-      1.7
+      2.9
     ],
     [
       "init",
       "ok",
-      2.4
+      3.3
+    ],
+    [
+      "soldier_scale",
+      "{\"base\":[1.848,1.832,0.444],\"min\":[-0.924,0,-0.219],\"center\":[0,0.916,0.003],\"scale\":1.3373}",
+      3.3
     ],
     [
       "asset_bounds",
       "{\"source\":{\"head\":{\"size\":[8.55,7.95,5.18],\"center\":[0,0,0]},\"mask\":{\"size\":[0.03,0.06,0.02],\"center\":[0,0.03,0]},\"soldier\":{\"size\":[1.85,1.83,0.44],\"center\":[0,0.92,0]},\"plant\":{\"size\":[0.7,0.84,0.66],\"center\":[-0.05,0.42,-0.09]},\"lantern\":{\"size\":[15.49,25.66,4.63],\"center\":[3.82,13.02,0]},\"holder\":{\"size\":[0.19,0.31,0.19],\"center\":[0,0.15,0]},\"ground\":{\"size\":[140,0.7,140],\"center\":[0,-0.05,-45]},\"moonDisc\":{\"size\":[6.8,6.8,0],\"center\":[14,26,-58]},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20]}},\"placed\":{\"lantern\":{\"size\":[0.69,1.15,0.21],\"center\":[2.9,0,-5.2]},\"candleHolder\":{\"size\":[0.21,0.34,0.21],\"center\":[2.9,1.02,-5.2]},\"monarch\":{\"size\":[1.24,1.48,1.01],\"center\":[0,1.83,-8.37]},\"guardA\":{\"size\":[0.03,0.01,0.03],\"center\":[-6.41,0,-14.51]},\"guardB\":{\"size\":[0.03,0.01,0.03],\"center\":[6.41,0,-14.51]},\"plantA\":{\"size\":[5.9,0.91,3.32],\"center\":[0.23,0,-4.83]},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20]}},\"ground_y\":-0.05,\"camera_range\":{\"near\":0.1,\"far\":400,\"fov\":42}}",
-      2.4
+      3.3
     ],
     [
       "mask_meshes",
       "[{\"name\":\"yumao3_low_lambert4_0\",\"v\":37053},{\"name\":\"yumao3_low_lambert3_0\",\"v\":35303},{\"name\":\"yumao3_low_lambert2_0\",\"v\":77573},{\"name\":\"yumao3_low_lambert1_0\",\"v\":10585},{\"name\":\"zhu_low_lambert5_0\",\"v\":13362}]",
-      2.4
+      3.3
     ],
     [
       "hidden",
       "ground",
-      9.2
+      7.1
     ],
     [
       "hidden",
       "moonDisc",
-      13.7
+      9.4
     ],
     [
       "hidden",
       "moonHalo",
-      17.4
+      11.8
     ],
     [
       "hidden",
       "gate",
-      20.9
+      14
     ],
     [
       "hidden",
       "monarch",
-      23.9
+      15.6
     ],
     [
       "hidden",
       "guardA",
-      27.6
+      17.4
     ],
     [
       "hidden",
       "guardB",
-      31.4
+      19.5
     ],
     [
       "mask_placed",
       "{\"headSize\":[8.55,7.93,5.17],\"curioSize\":[0.033,0.065,0.018],\"headScale\":0.145,\"maskScale\":20.65,\"faceW\":1.24,\"maskPos\":[0.08,0.18,0.39]}",
-      31.4
+      19.5
     ],
     [
       "beat:B01_AERIAL_FIELD",
       "ok",
-      35.1
+      21.4
     ],
     [
       "beat:B02_GUARDED_FIELD",
       "ok",
-      35.6
+      21.6
     ],
     [
       "beat:B03_MASKED_TITLE",
       "ok",
-      39.6
+      23.7
     ],
     [
       "beat:B04_HUNGRY_PARIS",
       "ok",
-      42.9
+      25.3
     ],
     [
       "beat:B05_POTATO_PROMISE",
       "ok",
-      43.9
+      25.9
     ],
     [
       "beat:B06_POISONED_MIND",
       "ok",
-      47.9
+      27.8
     ],
     [
       "beat:B07_FREE_BASKETS",
       "ok",
-      49
+      28.3
     ],
     [
       "beat:B08_SILENT_PIVOT",
       "ok",
-      50.5
+      29.1
     ],
     [
       "beat:B09_FORTY_ACRES",
       "ok",
-      51.5
+      29.6
     ],
     [
       "beat:B10_WHISPERS",
       "ok",
-      52.5
+      30.1
     ],
     [
       "beat:B11_LAST_ORDER",
       "ok",
-      54.3
+      31
     ],
     [
       "beat:B12_SUNSET_WITHDRAWAL",
       "ok",
-      55.1
+      31.4
     ],
     [
       "beat:B13_NIGHT_THEFT",
       "ok",
-      58.8
+      33.2
     ],
     [
       "beat:B14_EMPTY_FIELD_DAWN",
       "ok",
-      62.5
+      34.9
     ],
     [
       "beat:B15_GRAVE_200_YEARS",
       "ok",
-      65.3
+      36.3
     ],
     [
       "beat:B16_FINAL_MONARCH",
       "ok",
-      67
+      37.1
     ],
     [
       "exception",
       "f is not defined",
-      67
+      37.1
     ]
   ],
-  "run": "44120548360"
+  "run": "44122136518"
 }
