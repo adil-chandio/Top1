@@ -1,0 +1,15 @@
+{
+  "file": "deliverables/MONARCH_MafiaTemple_3D_PanamaPlus_1920x1080.mp4",
+  "size_bytes": 7100714,
+  "size_mb": 6.77,
+  "width": 1920,
+  "height": 1080,
+  "r_frame_rate": "24/1",
+  "duration_sec": 20,
+  "audio_codec": "aac",
+  "audio_sample_rate": "48000",
+  "audio_lufs": -13.6,
+  "audio_true_peak_db": -1.5,
+  "total_frames": 480,
+  "qc_pass": true
+}

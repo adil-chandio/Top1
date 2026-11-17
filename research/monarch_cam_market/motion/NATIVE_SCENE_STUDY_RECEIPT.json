@@ -1,0 +1,53 @@
+{
+  "type": "actual_native_mesh_scene_voice_blocking_NOT_final",
+  "frames": 150,
+  "fps": 24,
+  "duration_seconds": 6.25,
+  "resolution": [
+    640,
+    360
+  ],
+  "actors": {
+    "orcas": 2,
+    "far_orca_phase_offset_seconds": 0.85,
+    "far_orca_relative_scale": 0.88,
+    "orca_vertices_each": 1656,
+    "humpback_vertices": 908,
+    "humpback_triangles": 1734
+  },
+  "camera_static": true,
+  "shared_zbuffer": true,
+  "independent_world_trajectories": true,
+  "actual_geometry_deformation": true,
+  "voice_only": true,
+  "speed_or_pitch_change": false,
+  "music_or_sfx_added": false,
+  "full_decode_passed": true,
+  "sha256": "dcadea200cf54b324d24551c700d2ecaadf49d5d5bede79db72126bde0b18ca1",
+  "bytes": 194819,
+  "source_orca_glb_sha256": "fe07098f13cc0cf35119cba9d82c62dd9486040c5952a5a68fcb363ae166d971",
+  "independent_review": false,
+  "actual_sound_listening": false,
+  "production_release": false,
+  "limits": [
+    "Low-LOD/CPU-lighting internal blocking, not final lookdev",
+    "No anatomically vetted prey asset yet, so hunt target remains unresolved",
+    "No collision, successful rescue or measured animal intent depicted",
+    "No independent, reference-AV or integrated sound-design gate cleared"
+  ],
+  "source_humpback_hashes": {
+    "humpback.bin": "b3a31801a393489331bc3dd4fd5be64cbad32ac4e159f5180e0eb028d489a92d",
+    "humpback.json": "c47390c365da1c8c6fa73bea4996bf51073a973770c1942e8993f545e283a354",
+    "humpback_albedo.png": "5daaa6727f5304aaa3b6f6ef86cedcebc7cf922376a5c0e7caad66c4f4a5efe1"
+  },
+  "renderer_source_sha256": "bbfad365fa0fff1e718267b58c05e160e2829d6aa72b4011d362ccec3f75d584",
+  "actual_producer_still_inspection": {
+    "opened": "out/native-scene-v1/native-scene-sheet.jpg",
+    "observations": "Opposing screen directions and two-species scale relationship visible. Hunt target absent, so this does not yet communicate a complete hunt. First version had overly synchronized cloned orca motion; v2 changes far animal scale and phase without a wrap discontinuity. V2 not independently reviewed.",
+    "independent": false
+  },
+  "raster_checks": {
+    "actual_draw_order_invariance_test": true,
+    "near_surface_occludes_far_surface": true
+  }
+}

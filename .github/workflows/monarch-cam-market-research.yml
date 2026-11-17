@@ -1,0 +1,49 @@
+name: Monarch Cam bounded market research
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths:
+      - research/monarch_cam_market/collect.py
+      - research/monarch_cam_market/enrich.py
+      - research/monarch_cam_market/deep_evidence.py
+      - .github/workflows/monarch-cam-market-research.yml
+permissions:
+  contents: write
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install public metadata extractor
+        run: python -m pip install --quiet yt-dlp youtube-transcript-api
+      - name: Collect public evidence without printing credentials
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YTAP1: ${{ secrets.YTAP1 }}
+          YTAPI1: ${{ secrets.YTAPI1 }}
+          YT_KEY: ${{ secrets.YT_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python research/monarch_cam_market/collect.py
+      - name: Compare candidate channel inventories and recent discovery
+        run: python research/monarch_cam_market/enrich.py
+      - name: Check public channel provenance and caption availability
+        run: python research/monarch_cam_market/deep_evidence.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: monarch-cam-market-evidence
+          path: research/monarch_cam_market/data/
+          retention-days: 14
+      - name: Preserve public snapshot on this session branch only
+        if: always()
+        run: |
+          git config user.name monarch-research-bot
+          git config user.email research-bot@users.noreply.github.com
+          git add research/monarch_cam_market/data/*.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "research: preserve public market collection receipt [skip ci]"
+          git push origin HEAD:arena/2a8ad29e-top1

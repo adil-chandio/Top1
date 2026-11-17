@@ -1,0 +1,43 @@
+name: Monarch primary media access
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_discovery_2026_11/source_media_probe.py]
+permissions:
+  contents: read
+  checks: write
+concurrency:
+  group: monarch-primary-media-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  inspect-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install bounded media-processing dependencies
+        run: |
+          python -m pip install imageio-ffmpeg==0.6.0 Pillow==11.3.0
+          if ! command -v ffmpeg; then
+            sudo apt-get update -qq
+            sudo apt-get install -y -qq ffmpeg
+          fi
+          ffmpeg -version | head -n 1
+      - name: Recover publisher-linked scientific media and attributed samples
+        env:
+          GH_TOKEN: '${{ github.token }}'
+        run: python research/monarch_cam_discovery_2026_11/source_media_probe.py
+      - name: Preserve bounded source excerpt and attribution for research
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: attributed-scientific-reference-excerpt
+          path: |
+            studio/runtime/primary-media/segment.mp4
+            studio/runtime/primary-media/receipt.json
+            studio/runtime/primary-media/sheet-*.jpg
+          retention-days: 3
+          if-no-files-found: error

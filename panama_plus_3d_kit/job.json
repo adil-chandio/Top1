@@ -1,0 +1,12 @@
+{
+  "title": "MONARCH Panama-Plus 3D Hero Test",
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 5,
+  "model_url": "",
+  "model_local": "assets/model.glb",
+  "theme": "ocean_deep",
+  "headline": "PANAMA-PLUS 3D ENGINE",
+  "subline": "1080x1920 · 30FPS · ZERO GPU"
+}

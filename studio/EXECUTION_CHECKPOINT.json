@@ -1,0 +1,67 @@
+{
+  "job_id": "monarch_cam-4f4f68fd7693",
+  "channel": "monarch_cam",
+  "scope": "original_script_continuous_opening_20_seconds",
+  "status": "paused_user_changed_topic",
+  "stage": "intelligence",
+  "stage_accepted": false,
+  "pending_role": "reviewer",
+  "creative_brief_sha256": "e266bd64c458b4afbc7b08512414b60b1d87f3250dce0191de776f1144cb4aee",
+  "recovery": {
+    "previous_job_id": "monarch_cam-d363f76eb8a3",
+    "reason": "Fresh checkout contained no ignored runtime. Current branch recovered by fast-forward from origin; new execution record continues same scope, not second video.",
+    "prior_runtime_available": false
+  },
+  "completed_this_pass": [
+    "Fresh primary-text and platform-discovery research",
+    "Actual paired thumbnail visual inspection",
+    "Original shot/edit/sound redesign WIP",
+    "Candidate evidence validated and submitted for independent review",
+    "Original 6-second silent proxy spatial study actually rendered: 144 frames, 960x540, 24 fps",
+    "Author inspected sample images and internally corrected contrast, entry and prey readability",
+    "Full video decode and numerical trajectory checks executed",
+    "Recovered existing original 17.72s narration from recorded GitHub blob, not newly generated voice",
+    "Rendered and muxed 6.25s voice-only proxy animatic, decoded all 150 frames",
+    "Recovered pinned whale/orca assets with hash checks",
+    "Evaluated native orca 12-joint skin at 9 time samples; caught implausible bounds and withheld compatibility pass",
+    "Supported Three.js GLTFLoader reproduced native skin distortion; cross-implementation displacement disagreement below 0.001 model units",
+    "Read upstream loader; corrected assumption that leftover animation was intended usable rig",
+    "Built original eight-bone metric rig; zero-pose bind error below 1e-5 and bounded deformation across nine samples",
+    "Rendered three actual textured-mesh pose diagnostics and visually inspected stills",
+    "Exported reusable animated metric-rig GLB with original geometry, two embedded source images and material preserved",
+    "Reimported GLB through supported loader and evaluated 144 frames, sub-1e-4 vertex roundtrip error",
+    "Fixed actual validator findings; final official glTF validation 0 errors/0 warnings with 11 unused-accessor informational notices",
+    "Rendered actual 6s UV-textured skinned-geometry motion diagnostic, decoded full file and inspected three still samples",
+    "Rendered actual two-species scene: two textured repaired orcas + native-tag-deformed humpback in shared depth-buffer space",
+    "Assembled 6.25s original-voice native-mesh blocking, 150 frames decoded",
+    "Producer inspected initial scene stills; corrected cloned orca motion with distinct phase/scale",
+    "Actual near/far surface and draw-order-invariance raster checks passed"
+  ],
+  "durable_work_product": "research/monarch_cam_market/OPENING_REDESIGN_EXECUTION_ROMAN_URDU.md",
+  "not_claimed": [
+    "independent_review_pass",
+    "reference_video_playback",
+    "reference_audio_listening",
+    "new_motion_proof",
+    "new_final_render",
+    "new_delivery"
+  ],
+  "background_service_started": false,
+  "work_in_progress": {
+    "kind": "combined_native_mesh_scene_voice_blocking",
+    "receipt": "research/monarch_cam_market/motion/NATIVE_SCENE_STUDY_RECEIPT.json",
+    "source": "research/monarch_cam_market/motion/render_native_scene_study.py",
+    "media_ignored_path": "research/monarch_cam_market/motion/out/native-scene-v2/NATIVE_SCENE_VOICE_INTERNAL.mp4",
+    "asset_schema_validated": true,
+    "av_feasibility_passed": false,
+    "independent_review_passed": false,
+    "user_approval_requested": false,
+    "known_editorial_defect": "No vetted prey asset yet; hunt target unclear. Low-LOD diagnostic is not final art direction."
+  },
+  "user_scope_change": {
+    "instruction": "Orca topic chorde; fresh Monarch Cam topic discovery from scratch",
+    "new_research": "research/monarch_cam_discovery_2026_11/TOPIC_SHORTLIST_ROMAN_URDU.md",
+    "recommendation_not_user_approved": "shrimp_orbital_hood",
+    "production_ready": false
+  }
+}

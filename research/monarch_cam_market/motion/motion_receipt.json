@@ -1,0 +1,48 @@
+{
+  "duration_s": 20,
+  "fps": 12,
+  "frames": 240,
+  "resolution": [
+    640,
+    360
+  ],
+  "camera": "fixed",
+  "root": "fixed",
+  "audio": false,
+  "scope": "whale-only diagnostic; no orcas, not selected-concept fidelity",
+  "motion": "native mesh part/span tags; custom Rodrigues fin rotation and vertical caudal bend; simplified, not expert-validated biomechanics",
+  "samples": [
+    {
+      "frame": 0,
+      "max_vertex_displacement_m": 0.37584245204925537,
+      "finite": true
+    },
+    {
+      "frame": 16,
+      "max_vertex_displacement_m": 0.6156161427497864,
+      "finite": true
+    },
+    {
+      "frame": 32,
+      "max_vertex_displacement_m": 0.6053470373153687,
+      "finite": true
+    },
+    {
+      "frame": 48,
+      "max_vertex_displacement_m": 0.36797016859054565,
+      "finite": true
+    },
+    {
+      "frame": 120,
+      "max_vertex_displacement_m": 0.17591921985149384,
+      "finite": true
+    },
+    {
+      "frame": 239,
+      "max_vertex_displacement_m": 0.1868961751461029,
+      "finite": true
+    }
+  ],
+  "video_bytes": 195264,
+  "sha256": "86626f35b13627e10b8fa743015bbd401f652dbf572480f9d08e7bf6afb99e7c"
+}

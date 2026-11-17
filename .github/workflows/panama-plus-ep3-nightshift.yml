@@ -1,0 +1,90 @@
+name: Panama-Plus EP3 Night Shift EP01 3D Render
+
+on:
+  push:
+    branches:
+      - arena/2a8ad29e-top1
+    paths:
+      - 'panama_plus_3d_kit/ep3_nightshift/build_audio.py'
+      - 'panama_plus_3d_kit/ep3_nightshift/scene.html'
+      - 'panama_plus_3d_kit/ep3_nightshift/render_webgl.mjs'
+      - '.github/workflows/panama-plus-ep3-nightshift.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-ep3-nightshift:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.11 & Node 20
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg, Audio Stack, Repo Earshot SFX, Three.js & Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python -m pip install --upgrade pip -q
+          python -m pip install -q numpy scipy soundfile edge-tts gTTS
+          mkdir -p /tmp/esrc
+          git clone --depth 1 https://github.com/Leonxlnx/earshot /tmp/esrc/earshot-main
+          npm install --no-save playwright three
+          npx playwright install --with-deps chromium
+
+      - name: Download Verified CC0/Public .glb 3D Models & Repo Night Wind Ambience
+        run: |
+          mkdir -p panama_plus_3d_kit/ep3_nightshift/assets
+          curl -L --fail https://raw.githubusercontent.com/Edu-Art-3D/Eduart-bear-3D/main/bear.glb -o panama_plus_3d_kit/ep3_nightshift/assets/bear.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-zombieapocalypsekit/models/vehicle_pickup/vehicle_pickup.glb -o panama_plus_3d_kit/ep3_nightshift/assets/vehicle_pickup.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-ultimaterpg/models/backpack/backpack.glb -o panama_plus_3d_kit/ep3_nightshift/assets/backpack.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/quaternius-ultimatemodularcharacters/models/casual_hoodie/casual_hoodie.glb -o panama_plus_3d_kit/ep3_nightshift/assets/casual_hoodie.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kenney-food-kit/models/sandwich/sandwich.glb -o panama_plus_3d_kit/ep3_nightshift/assets/sandwich.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kenney-food-kit/models/cookie_chocolate/cookie_chocolate.glb -o panama_plus_3d_kit/ep3_nightshift/assets/cookie_chocolate.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kenney-food-kit/models/bag/bag.glb -o panama_plus_3d_kit/ep3_nightshift/assets/bag.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kenney-city-kit-suburban/models/building_type_a/building_type_a.glb -o panama_plus_3d_kit/ep3_nightshift/assets/building_type_a.glb
+          curl -L --fail https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs/kaykit-city-builder-bits/models/streetlight/streetlight.glb -o panama_plus_3d_kit/ep3_nightshift/assets/streetlight.glb
+          curl -L --fail https://raw.githubusercontent.com/adil-chandio/Monarch.Overall.Work/arena/ba8d901e-monarch-overall-work/production/extinct-life/longform-mammoth/cinematic-rebuild/ambience-sources/felix-blume-wind-muges.ogg -o panama_plus_3d_kit/ep3_nightshift/assets/wind.ogg
+          python3 -c "
+          from pathlib import Path
+          for p in ['bear.glb','vehicle_pickup.glb','backpack.glb','casual_hoodie.glb','sandwich.glb','cookie_chocolate.glb','bag.glb','building_type_a.glb','streetlight.glb']:
+              f = Path('panama_plus_3d_kit/ep3_nightshift/assets') / p
+              assert f.read_bytes()[:4] == b'glTF', f'{p} bad header'
+              print(f'Verified {p}: {f.stat().st_size} bytes')
+          "
+
+      - name: Build Narration + Repo Earshot SFX Audio (-14 LUFS)
+        run: python3 panama_plus_3d_kit/ep3_nightshift/build_audio.py
+
+      - name: Render 1080x1920 @ 30fps Full 3D Video + Contact Sheet + QC
+        run: node panama_plus_3d_kit/ep3_nightshift/render_webgl.mjs
+
+      - name: Commit Failure Diagnostics if Render Failed
+        if: failure()
+        run: |
+          if [ -f panama_plus_3d_kit/ep3_nightshift/qc/render_error.log ]; then
+            git config user.name "MONARCH Render Bot"
+            git config user.email "workadilchandio@gmail.com"
+            git add -f panama_plus_3d_kit/ep3_nightshift/qc/render_error.log
+            git commit -m "debug(ep3-nightshift): capture render_error.log [skip ci]" || true
+            git push origin HEAD:arena/2a8ad29e-top1 || true
+          fi
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f deliverables/MONARCH_NightShift_EP01_SandwichHeist_PanamaPlus_1080x1920.mp4 panama_plus_3d_kit/ep3_nightshift/qc/contact_sheet.png panama_plus_3d_kit/ep3_nightshift/qc/qc_report.json
+          git commit -m "build(ep3-nightshift): deliver 1080x1920 30fps Night Shift EP01 3D master + QC [skip ci]"
+          git pull --rebase origin arena/2a8ad29e-top1 || true
+          git push origin HEAD:arena/2a8ad29e-top1

@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>MONARCH NIGHT SHIFT EP01 — The Sandwich Heist (Pure Cinema 3D)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #040814; }
+    #stage { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+    #vignette {
+      position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 50% 48%, transparent 52%, rgba(2, 5, 14, 0.58) 100%);
+    }
+    #flashOverlay {
+      position: fixed; inset: 0; pointer-events: none;
+      background: radial-gradient(circle at 58% 45%, rgba(255,255,255,0.98) 0%, rgba(210,235,255,0.85) 55%, rgba(160,210,255,0.35) 100%);
+      opacity: 0;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="stage"></canvas>
+  <div id="vignette"></div>
+  <div id="flashOverlay"></div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "/vendor/three/build/three.module.js",
+      "three/addons/": "/vendor/three/examples/jsm/"
+    }
+  }
+  </script>
+
+  <script type="module">
+  import * as THREE from 'three';
+  import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+  import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+  const canvas = document.getElementById('stage');
+  const flashOverlay = document.getElementById('flashOverlay');
+  const renderer = new THREE.WebGLRenderer({
+    canvas,
+    antialias: true,
+    powerPreference: 'high-performance',
+    preserveDrawingBuffer: true,
+  });
+  renderer.setSize(1080, 1920, false);
+  renderer.setPixelRatio(1);
+  renderer.shadowMap.enabled = false;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.48;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0x060c1c);
+  scene.fog = new THREE.FogExp2(0x081126, 0.022);
+
+  const camera = new THREE.PerspectiveCamera(42, 1080 / 1920, 0.05, 320);
+
+  // --- CINEMATIC 3 AM NIGHT LIGHTING ---
+  const hemi = new THREE.HemisphereLight(0x7aa4dc, 0x1b2236, 1.45);
+  scene.add(hemi);
+
+  const moonKey = new THREE.DirectionalLight(0xb2d4ff, 2.35);
+  moonKey.position.set(14, 24, -18);
+  scene.add(moonKey);
+
+  const porchLight = new THREE.PointLight(0xffa448, 22, 26, 1.4);
+  porchLight.position.set(-4.2, 3.6, -7.2);
+  scene.add(porchLight);
+
+  const streetGlow = new THREE.PointLight(0xffb866, 16, 22, 1.5);
+  streetGlow.position.set(5.4, 4.8, 3.5);
+  scene.add(streetGlow);
+
+  const cabMoonSpot = new THREE.PointLight(0xc2e2ff, 8.5, 9, 1.4);
+  cabMoonSpot.position.set(0.5, 2.2, 1.2);
+  scene.add(cabMoonSpot);
+
+  const flashLight = new THREE.PointLight(0xffffff, 0, 14, 1.0);
+  flashLight.position.set(1.8, 1.5, 0.4);
+  scene.add(flashLight);
+
+  const camFill = new THREE.PointLight(0x9ec5ff, 1.35, 16, 1.2);
+  scene.add(camFill);
+
+  // --- SKY DOME: STARFIELD + FULL MOON + VOLUMETRIC HALO ---
+  const starGeo = new THREE.BufferGeometry();
+  const starCount = 1400;
+  const starPos = new Float32Array(starCount * 3);
+  const starSizes = new Float32Array(starCount);
+  let seed = 4201;
+  const rnd = () => { seed = (seed * 1664525 + 1013904223) >>> 0; return seed / 4294967296; };
+  for (let i = 0; i < starCount; i++) {
+    const theta = rnd() * Math.PI * 2;
+    const phi = rnd() * Math.PI * 0.46;
+    const r = 135 + rnd() * 35;
+    starPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+    starPos[i * 3 + 1] = r * Math.cos(phi) + 8;
+    starPos[i * 3 + 2] = -Math.abs(r * Math.sin(phi) * Math.sin(theta)) - 10;
+    starSizes[i] = 0.4 + rnd() * 1.1;
+  }
+  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+  const starMat = new THREE.PointsMaterial({ color: 0xe6f2ff, size: 0.65, transparent: true, opacity: 0.92, fog: false });
+  scene.add(new THREE.Points(starGeo, starMat));
+
+  const moonGroup = new THREE.Group();
+  moonGroup.position.set(12, 34, -85);
+  const moonMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(5.6, 32, 32),
+    new THREE.MeshBasicMaterial({ color: 0xf4f8ff, fog: false })
+  );
+  moonGroup.add(moonMesh);
+  const haloMesh = new THREE.Mesh(
+    new THREE.SphereGeometry(9.5, 24, 24),
+    new THREE.MeshBasicMaterial({ color: 0x7cb8ff, transparent: true, opacity: 0.16, fog: false })
+  );
+  moonGroup.add(haloMesh);
+  scene.add(moonGroup);
+
+  // --- SUBURBAN GROUND & DRIVEWAY ---
+  const mistGroup = new THREE.Group(); // lightweight volumetric rim only in exterior shots
+  const moteCount = 180;
+  const moteGeo = new THREE.BufferGeometry();
+  const motePos = new Float32Array(moteCount * 3);
+  for (let i = 0; i < moteCount; i++) {
+    motePos[i * 3] = (rnd() - 0.5) * 12;
+    motePos[i * 3 + 1] = 0.3 + rnd() * 4.5;
+    motePos[i * 3 + 2] = -8 + rnd() * 20;
+  }
+  moteGeo.setAttribute('position', new THREE.BufferAttribute(motePos, 3));
+  const moteMat = new THREE.PointsMaterial({ color: 0xdbeeff, size: 0.05, transparent: true, opacity: 0.58 });
+  const motes = new THREE.Points(moteGeo, moteMat);
+  scene.add(motes);
+
+  // --- SUBURBAN GROUND & DRIVEWAY ---
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x101824, roughness: 0.88, metalness: 0.05 });
+  const ground = new THREE.Mesh(new THREE.PlaneGeometry(90, 90), groundMat);
+  ground.rotation.x = -Math.PI / 2;
+  scene.add(ground);
+
+  const asphaltMat = new THREE.MeshStandardMaterial({ color: 0x1c2230, roughness: 0.42, metalness: 0.18 });
+  const drivewaySlab = new THREE.Mesh(new THREE.BoxGeometry(5.2, 0.06, 26), asphaltMat);
+  drivewaySlab.position.set(0, 0.03, 2);
+  scene.add(drivewaySlab);
+
+  // --- GLB HELPERS ---
+  const loader = new GLTFLoader();
+  async function loadNormalizedGLB(url, targetHeight, targetCenter = false) {
+    try {
+      const gltf = await loader.loadAsync(url);
+      const root = gltf.scene;
+      root.updateMatrixWorld(true);
+      const box = new THREE.Box3().setFromObject(root);
+      const size = new THREE.Vector3();
+      const center = new THREE.Vector3();
+      box.getSize(size);
+      box.getCenter(center);
+      const h = Math.max(size.y, 0.001);
+      const scale = targetHeight / h;
+      const wrapper = new THREE.Group();
+      root.scale.setScalar(scale);
+      root.position.set(
+        -center.x * scale,
+        targetCenter ? -center.y * scale : -box.min.y * scale,
+        -center.z * scale
+      );
+      wrapper.add(root);
+      wrapper.traverse((o) => {
+        if (o.isMesh) {
+          o.frustumCulled = false;
+          if (o.material) o.material.needsUpdate = true;
+        }
+      });
+      console.log(`MODEL LOADED: ${url} (scale=${scale.toFixed(3)}, clips=${gltf.animations.length})`);
+      return { group: wrapper, animations: gltf.animations };
+    } catch (e) {
+      console.error(`MODEL FAILED ${url}:`, e);
+      return null;
+    }
+  }
+
+  // --- LOAD ALL VERIFIED GLB ASSETS ---
+  const [
+    bearAsset,
+    truckAsset,
+    backpackAsset,
+    hoodieAsset,
+    sandwichAsset,
+    cookieAsset,
+    bagAsset,
+    houseAsset,
+    streetLightAsset,
+  ] = await Promise.all([
+    loadNormalizedGLB('/assets/bear.glb', 0.96, false),
+    loadNormalizedGLB('/assets/vehicle_pickup.glb', 1.82, false),
+    loadNormalizedGLB('/assets/backpack.glb', 0.42, true),
+    loadNormalizedGLB('/assets/casual_hoodie.glb', 1.78, false),
+    loadNormalizedGLB('/assets/sandwich.glb', 0.16, true),
+    loadNormalizedGLB('/assets/cookie_chocolate.glb', 0.09, true),
+    loadNormalizedGLB('/assets/bag.glb', 0.24, true),
+    loadNormalizedGLB('/assets/building_type_a.glb', 5.8, false),
+    loadNormalizedGLB('/assets/streetlight.glb', 4.8, false),
+  ]);
+
+  // --- ENVIRONMENT PLACEMENT ---
+  let houseGroup = null;
+  if (houseAsset) {
+    houseGroup = new THREE.Group();
+    const h = houseAsset.group;
+    h.position.set(-5.8, 0, -9.5);
+    h.rotation.y = 0.28;
+    houseGroup.add(h);
+    const winGlow = new THREE.Mesh(
+      new THREE.PlaneGeometry(1.4, 1.3),
+      new THREE.MeshBasicMaterial({ color: 0xffb35c })
+    );
+    winGlow.position.set(-4.3, 2.3, -6.9);
+    winGlow.rotation.y = 0.28;
+    houseGroup.add(winGlow);
+    scene.add(houseGroup);
+  }
+  let streetLightGroup = null;
+  if (streetLightAsset) {
+    streetLightGroup = streetLightAsset.group;
+    streetLightGroup.position.set(4.9, 0, 3.8);
+    streetLightGroup.rotation.y = -Math.PI * 0.65;
+    scene.add(streetLightGroup);
+  }
+
+  // --- PICKUP TRUCK + ARTICULATED HINGED DOORS + CAB INTERIOR SET ---
+  const truckGroup = new THREE.Group();
+  truckGroup.position.set(0, 0, 0);
+  scene.add(truckGroup);
+
+  if (truckAsset) {
+    const tModel = truckAsset.group;
+    // Grey pickup truck tint while preserving details
+    tModel.traverse((o) => {
+      if (o.isMesh && o.material && o.material.color) {
+        const c = o.material.color;
+        if (c.r > 0.25 || c.g > 0.25 || c.b > 0.25) {
+          o.material = o.material.clone();
+          o.material.metalness = 0.38;
+          o.material.roughness = 0.42;
+        }
+      }
+    });
+    truckGroup.add(tModel);
+  }
+
+  // Hinged passenger door (+X side) & driver door (-X side) for realistic door-pull physics!
+  const doorMat = new THREE.MeshStandardMaterial({ color: 0x5c6778, metalness: 0.45, roughness: 0.36 });
+  const glassMat = new THREE.MeshStandardMaterial({ color: 0x99c4e8, transparent: true, opacity: 0.28, roughness: 0.1 });
+  const chromeMat = new THREE.MeshStandardMaterial({ color: 0xdbe4ee, metalness: 0.9, roughness: 0.18 });
+
+  function buildTruckDoor(sideSign) {
+    const hinge = new THREE.Group();
+    hinge.position.set(sideSign * 0.98, 0.96, 0.85);
+    const panel = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.68, 1.05), doorMat);
+    panel.position.set(0, 0, -0.52);
+    hinge.add(panel);
+    const frame = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.52, 0.98), doorMat);
+    frame.position.set(0, 0.56, -0.52);
+    hinge.add(frame);
+    const win = new THREE.Mesh(new THREE.BoxGeometry(0.02, 0.44, 0.86), glassMat);
+    win.position.set(0, 0.56, -0.52);
+    hinge.add(win);
+    const handle = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.045, 0.16), chromeMat);
+    handle.position.set(sideSign * 0.05, 0.16, -0.86);
+    hinge.add(handle);
+    return hinge;
+  }
+  const passDoorHinge = buildTruckDoor(1);
+  const driverDoorHinge = buildTruckDoor(-1);
+  truckGroup.add(passDoorHinge, driverDoorHinge);
+
+  // --- DEDICATED OPEN-SIDED CAB INTERIOR SET (for unobstructed Shot 0, Shot 2, Shot 3A, Shot 4A) ---
+  const cabGroup = new THREE.Group();
+  cabGroup.position.set(0, 0, 0);
+  scene.add(cabGroup);
+
+  const leatherMat = new THREE.MeshStandardMaterial({ color: 0x3b2d26, roughness: 0.62, metalness: 0.08 });
+  const dashMat = new THREE.MeshStandardMaterial({ color: 0x1b202b, roughness: 0.68 });
+  const cabWallMat = new THREE.MeshStandardMaterial({ color: 0x2a3342, roughness: 0.55, metalness: 0.25 });
+  const cabGlowMat = new THREE.MeshBasicMaterial({ color: 0x6fd4ff });
+
+  // Cab floor & rear wall & roof frame (open on front/sides so camera never hits a wall!)
+  const cabFloor = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.1, 1.8), dashMat);
+  cabFloor.position.set(0, 0.72, 0.25);
+  const cabRear = new THREE.Mesh(new THREE.BoxGeometry(1.9, 1.15, 0.1), cabWallMat);
+  cabRear.position.set(0, 1.32, -0.58);
+  const cabRoof = new THREE.Mesh(new THREE.BoxGeometry(1.9, 0.08, 1.55), cabWallMat);
+  cabRoof.position.set(0, 1.92, 0.15);
+  const cabPillarL = new THREE.Mesh(new THREE.BoxGeometry(0.1, 1.15, 0.12), cabWallMat);
+  cabPillarL.position.set(-0.90, 1.32, 0.85);
+  const cabPillarR = cabPillarL.clone();
+  cabPillarR.position.set(0.90, 1.32, 0.85);
+  cabGroup.add(cabFloor, cabRear, cabRoof, cabPillarL, cabPillarR);
+
+  // Passenger & Driver seats
+  const passSeatBase = new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.16, 0.64), leatherMat);
+  passSeatBase.position.set(0.46, 0.84, 0.16);
+  const passSeatBack = new THREE.Mesh(new THREE.BoxGeometry(0.66, 0.76, 0.16), leatherMat);
+  passSeatBack.position.set(0.46, 1.22, -0.16);
+  passSeatBack.rotation.x = -0.15;
+  const driverSeatBase = passSeatBase.clone();
+  driverSeatBase.position.set(-0.46, 0.84, 0.16);
+  const driverSeatBack = passSeatBack.clone();
+  driverSeatBack.position.set(-0.46, 1.22, -0.16);
+  const consoleBox = new THREE.Mesh(new THREE.BoxGeometry(0.26, 0.24, 0.68), dashMat);
+  consoleBox.position.set(0, 0.90, 0.16);
+  const dashboard = new THREE.Mesh(new THREE.BoxGeometry(1.80, 0.34, 0.42), dashMat);
+  dashboard.position.set(0, 1.05, 0.76);
+  const dashScreen = new THREE.Mesh(new THREE.PlaneGeometry(0.32, 0.14), cabGlowMat);
+  dashScreen.position.set(-0.45, 1.12, 0.54);
+  dashScreen.rotation.y = Math.PI;
+  const steerWheel = new THREE.Mesh(new THREE.TorusGeometry(0.17, 0.025, 10, 24), leatherMat);
+  steerWheel.position.set(-0.46, 1.18, 0.48);
+  steerWheel.rotation.x = 0.35;
+  cabGroup.add(passSeatBase, passSeatBack, driverSeatBase, driverSeatBack, consoleBox, dashboard, dashScreen, steerWheel);
+
+  // --- THE PRIZE: SANDWICH, CHIPS BAG, COOKIES ---
+  const prizeGroup = new THREE.Group();
+  prizeGroup.position.set(0.46, 0.96, 0.20);
+  scene.add(prizeGroup);
+
+  let sandwichObj = null;
+  if (sandwichAsset) {
+    sandwichObj = sandwichAsset.group;
+    sandwichObj.scale.setScalar(1.35);
+    sandwichObj.position.set(0.0, 0.02, 0.04);
+    sandwichObj.rotation.y = 0.4;
+    prizeGroup.add(sandwichObj);
+  }
+  if (bagAsset) {
+    const chips = bagAsset.group;
+    chips.traverse((o) => {
+      if (o.isMesh && o.material) {
+        o.material = o.material.clone();
+        o.material.color.setHex(0xd6362c);
+      }
+    });
+    chips.position.set(-0.18, 0.04, -0.06);
+    chips.rotation.set(0.2, -0.35, 0.15);
+    prizeGroup.add(chips);
+  }
+  if (cookieAsset) {
+    const c1 = cookieAsset.group;
+    c1.scale.setScalar(1.25);
+    c1.position.set(0.18, 0.0, -0.05);
+    const c2 = SkeletonUtils.clone(c1);
+    c2.position.set(0.22, 0.025, 0.03);
+    c2.rotation.y = 0.8;
+    prizeGroup.add(c1, c2);
+  }
+
+  // --- BANDIT: BEAR CUB + CINNAMON MUZZLE + RED BACKPACK + LEFT EAR NOTCH ---
+  function createBanditRig() {
+    const root = new THREE.Group();
+    if (bearAsset) {
+      const b = SkeletonUtils.clone(bearAsset.group);
+      // bear.glb natively faces +Z forward
+      b.traverse((o) => {
+        if (o.isMesh && o.material) {
+          o.material = o.material.clone();
+          o.material.color.multiplyScalar(0.36);
+          o.material.roughness = 0.84;
+        }
+      });
+      root.add(b);
+    }
+    // Signature Red Backpack mounted proudly on top of Bandit's back
+    if (backpackAsset) {
+      const bp = SkeletonUtils.clone(backpackAsset.group);
+      bp.traverse((o) => {
+        if (o.isMesh && o.material) {
+          o.material = o.material.clone();
+          o.material.color.setHex(0xd92626);
+          o.material.roughness = 0.48;
+        }
+      });
+      bp.scale.setScalar(1.05);
+      bp.position.set(0, 0.86, -0.08);
+      bp.rotation.x = 0.28;
+      root.add(bp);
+    } else {
+      const bpFallback = new THREE.Mesh(
+        new THREE.BoxGeometry(0.32, 0.36, 0.20),
+        new THREE.MeshStandardMaterial({ color: 0xd92626, roughness: 0.5 })
+      );
+      bpFallback.position.set(0, 0.86, -0.08);
+      root.add(bpFallback);
+    }
+    // Cinnamon muzzle accent on +Z face
+    const muzzleMat = new THREE.MeshStandardMaterial({ color: 0xc2814b, roughness: 0.75 });
+    const muzzle = new THREE.Mesh(new THREE.SphereGeometry(0.11, 20, 16), muzzleMat);
+    muzzle.scale.set(1.0, 0.85, 1.25);
+    muzzle.position.set(0, 0.68, 0.52);
+    root.add(muzzle);
+
+    return root;
+  }
+
+  const bandit = createBanditRig();
+  scene.add(bandit);
+
+  // Held sandwich in Bandit's paw for Shots 2, 4, 6
+  const heldSandwich = sandwichAsset ? SkeletonUtils.clone(sandwichAsset.group) : new THREE.Group();
+  heldSandwich.scale.setScalar(1.25);
+  bandit.add(heldSandwich);
+  heldSandwich.position.set(0.22, 0.54, 0.38);
+
+  // Dedicated Pixar-Quality Close-Up Furry Paw (for Shot 0: 0.0-2.8s)
+  const pawGroup = new THREE.Group();
+  const darkFurMat = new THREE.MeshStandardMaterial({ color: 0x181412, roughness: 0.88 });
+  const padMat = new THREE.MeshStandardMaterial({ color: 0x9b643b, roughness: 0.72 });
+  const armMesh = new THREE.Mesh(new THREE.CapsuleGeometry(0.068, 0.42, 10, 18), darkFurMat);
+  armMesh.rotation.x = Math.PI / 2;
+  armMesh.position.set(0, 0, -0.22);
+  const pawPalm = new THREE.Mesh(new THREE.SphereGeometry(0.088, 18, 16), darkFurMat);
+  pawPalm.scale.set(1.15, 0.75, 1.15);
+  pawGroup.add(armMesh, pawPalm);
+  for (let f = -1.5; f <= 1.5; f += 1) {
+    const toe = new THREE.Mesh(new THREE.SphereGeometry(0.028, 12, 12), darkFurMat);
+    toe.position.set(f * 0.042, -0.01, 0.085);
+    pawGroup.add(toe);
+  }
+  const palmPad = new THREE.Mesh(new THREE.SphereGeometry(0.05, 14, 12), padMat);
+  palmPad.scale.set(1.1, 0.45, 0.95);
+  palmPad.position.set(0, -0.045, 0.01);
+  pawGroup.add(palmPad);
+  scene.add(pawGroup);
+
+  // --- DEDICATED PIXAR-STYLE BANDIT SMIRK HERO HEAD (FOR SHOT 5 THUMBNAIL ECU: 27.5-31.0s) ---
+  const heroHeadGroup = new THREE.Group();
+  heroHeadGroup.position.set(0, -50, 0); // isolated studio stage below ground for ultra-clean macro framing
+  scene.add(heroHeadGroup);
+
+  const headSphere = new THREE.Mesh(new THREE.SphereGeometry(0.36, 36, 32), darkFurMat);
+  headSphere.scale.set(1.06, 0.98, 1.02);
+  heroHeadGroup.add(headSphere);
+
+  // Right ear (intact) & Left ear (with TORN NOTCH per Character Bible!)
+  const earR = new THREE.Mesh(new THREE.SphereGeometry(0.12, 20, 18), darkFurMat);
+  earR.scale.set(1.0, 1.0, 0.45);
+  earR.position.set(-0.27, 0.30, -0.03);
+  const earRInner = new THREE.Mesh(new THREE.SphereGeometry(0.065, 16, 14), padMat);
+  earRInner.scale.set(1, 1, 0.35);
+  earRInner.position.set(-0.27, 0.29, 0.02);
+
+  // Left ear built from two offset lobes leaving a clean V-shaped notch on its outer rim!
+  const earLUpper = new THREE.Mesh(new THREE.SphereGeometry(0.105, 18, 16), darkFurMat);
+  earLUpper.scale.set(0.85, 0.95, 0.45);
+  earLUpper.position.set(0.24, 0.33, -0.03);
+  const earLLower = new THREE.Mesh(new THREE.SphereGeometry(0.085, 18, 16), darkFurMat);
+  earLLower.scale.set(0.95, 0.72, 0.45);
+  earLLower.position.set(0.29, 0.23, -0.03);
+  const earLInner = new THREE.Mesh(new THREE.SphereGeometry(0.055, 14, 12), padMat);
+  earLInner.scale.set(1, 1, 0.35);
+  earLInner.position.set(0.26, 0.28, 0.02);
+  heroHeadGroup.add(earR, earRInner, earLUpper, earLLower, earLInner);
+
+  // Cinnamon Muzzle + Nose + Mischievous Smirk + Crumb
+  const heroMuzzle = new THREE.Mesh(new THREE.SphereGeometry(0.18, 28, 24), new THREE.MeshStandardMaterial({ color: 0xc2814b, roughness: 0.78 }));
+  heroMuzzle.scale.set(1.08, 0.85, 1.15);
+  heroMuzzle.position.set(0, -0.07, 0.31);
+  const nose = new THREE.Mesh(new THREE.SphereGeometry(0.058, 18, 16), new THREE.MeshStandardMaterial({ color: 0x100c0b, roughness: 0.25, metalness: 0.2 }));
+  nose.scale.set(1.25, 0.85, 0.9);
+  nose.position.set(0, 0.01, 0.48);
+  const crumb = new THREE.Mesh(new THREE.DodecahedronGeometry(0.022, 0), new THREE.MeshStandardMaterial({ color: 0xe6b86a, roughness: 0.85 }));
+  crumb.position.set(0.095, -0.10, 0.45);
+  heroHeadGroup.add(heroMuzzle, nose, crumb);
+
+  // Expressive Eyes & Animated Eyebrows
+  const scleraMat = new THREE.MeshStandardMaterial({ color: 0xf8f9fb, roughness: 0.15 });
+  const irisMat = new THREE.MeshStandardMaterial({ color: 0x7a4218, roughness: 0.12 });
+  const pupilMat = new THREE.MeshBasicMaterial({ color: 0x050505 });
+  const glintMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+
+  function makeEye(xPos) {
+    const eg = new THREE.Group();
+    eg.position.set(xPos, 0.09, 0.315);
+    const sc = new THREE.Mesh(new THREE.SphereGeometry(0.062, 20, 18), scleraMat);
+    sc.scale.set(1, 1.08, 0.72);
+    const ir = new THREE.Mesh(new THREE.SphereGeometry(0.040, 18, 16), irisMat);
+    ir.position.set(0, 0, 0.026);
+    const pu = new THREE.Mesh(new THREE.SphereGeometry(0.024, 16, 14), pupilMat);
+    pu.position.set(0, 0, 0.044);
+    const gl = new THREE.Mesh(new THREE.SphereGeometry(0.011, 10, 10), glintMat);
+    gl.position.set(0.014, 0.016, 0.056);
+    eg.add(sc, ir, pu, gl);
+    return eg;
+  }
+  const eyeL = makeEye(0.135);
+  const eyeR = makeEye(-0.135);
+  heroHeadGroup.add(eyeL, eyeR);
+
+  const browMat = new THREE.MeshStandardMaterial({ color: 0x2a1f1b, roughness: 0.8 });
+  const browL = new THREE.Mesh(new THREE.CapsuleGeometry(0.018, 0.09, 8, 12), browMat);
+  browL.rotation.z = Math.PI / 2;
+  browL.position.set(0.14, 0.185, 0.34);
+  const browR = browL.clone();
+  browR.position.set(-0.14, 0.185, 0.34);
+  heroHeadGroup.add(browL, browR);
+
+  // Smirk mouth curve
+  const smirkCurve = new THREE.TorusGeometry(0.07, 0.012, 10, 24, Math.PI * 0.78);
+  const smirkMesh = new THREE.Mesh(smirkCurve, new THREE.MeshStandardMaterial({ color: 0x1a0f0c, roughness: 0.5 }));
+  smirkMesh.position.set(0.03, -0.115, 0.455);
+  smirkMesh.rotation.set(0.15, 0.18, Math.PI * 1.12);
+  heroHeadGroup.add(smirkMesh);
+
+  // Red backpack straps + furry shoulders under Bandit's hero close-up head
+  const heroTorso = new THREE.Mesh(new THREE.SphereGeometry(0.46, 24, 20), darkFurMat);
+  heroTorso.scale.set(1.15, 0.85, 0.85);
+  heroTorso.position.set(0, -0.52, -0.05);
+  heroHeadGroup.add(heroTorso);
+
+  const strapMat = new THREE.MeshStandardMaterial({ color: 0xd92626, roughness: 0.55 });
+  const strapL = new THREE.Mesh(new THREE.BoxGeometry(0.085, 0.34, 0.16), strapMat);
+  strapL.position.set(0.25, -0.38, 0.14);
+  strapL.rotation.z = -0.18;
+  const strapR = strapL.clone();
+  strapR.position.set(-0.25, -0.38, 0.14);
+  strapR.rotation.z = 0.18;
+  heroHeadGroup.add(strapL, strapR);
+
+  const heroHeadLight = new THREE.PointLight(0xd2e6ff, 5.5, 8);
+  heroHeadLight.position.set(0.9, -49.2, 1.4);
+  const heroWarmBounce = new THREE.PointLight(0xffb46b, 3.2, 6);
+  heroWarmBounce.position.set(-0.8, -50.3, 1.2);
+  scene.add(heroHeadLight, heroWarmBounce);
+
+  // --- THE HUMAN (Soft silhouette in grey hoodie + Phone + Wooden Plank) ---
+  const human = hoodieAsset ? hoodieAsset.group : new THREE.Group();
+  human.traverse((o) => {
+    if (o.isMesh && o.material) {
+      o.material = o.material.clone();
+      o.material.color.setHex(0x434a54); // grey hoodie silhouette
+      o.material.roughness = 0.85;
+    }
+  });
+  scene.add(human);
+
+  const phoneMesh = new THREE.Mesh(
+    new THREE.BoxGeometry(0.09, 0.17, 0.015),
+    new THREE.MeshStandardMaterial({ color: 0x11151c, emissive: 0x77baff, emissiveIntensity: 1.8 })
+  );
+  phoneMesh.position.set(0.28, 1.38, 0.34);
+  human.add(phoneMesh);
+
+  const plankMesh = new THREE.Mesh(
+    new THREE.BoxGeometry(0.12, 0.045, 2.35),
+    new THREE.MeshStandardMaterial({ color: 0x8f6339, roughness: 0.82 })
+  );
+  plankMesh.position.set(0.32, 1.08, 0.65);
+  plankMesh.rotation.x = -0.14;
+  human.add(plankMesh);
+
+  // --- FLYING CRUMB PARTICLES (Physics parabola for Shot 2 mid-bite) ---
+  const crumbs = [];
+  const crumbGeo = new THREE.DodecahedronGeometry(0.015, 0);
+  const crumbMat = new THREE.MeshStandardMaterial({ color: 0xe8bc6b, roughness: 0.8 });
+  for (let i = 0; i < 16; i++) {
+    const c = new THREE.Mesh(crumbGeo, crumbMat);
+    c.visible = false;
+    scene.add(c);
+    crumbs.push({ mesh: c, vx: (rnd() - 0.5) * 0.6, vy: 0.35 + rnd() * 0.45, vz: 0.25 + rnd() * 0.4, phase: (i / 16) * 2.2 });
+  }
+
+  let TL = null;
+  window.__MONARCH_INIT__ = async (timeline) => {
+    TL = timeline;
+  };
+
+  function clamp01(v) { return Math.max(0, Math.min(1, v)); }
+  function smoothstep(a, b, t) {
+    const u = clamp01((t - a) / Math.max(0.0001, b - a));
+    return u * u * (3 - 2 * u);
+  }
+  function lerp(a, b, u) { return a + (b - a) * u; }
+
+  window.__MONARCH_FRAME__ = (frameIdx) => {
+    const fps = TL?.fps || 30;
+    const t = frameIdx / fps;
+
+    // Gentle floating 3 AM dust motes & mist
+    const mArr = moteGeo.attributes.position.array;
+    for (let i = 0; i < moteCount; i++) {
+      mArr[i * 3 + 1] += Math.sin(t * 0.8 + i) * 0.0006;
+    }
+    moteGeo.attributes.position.needsUpdate = true;
+    mistGroup.children.forEach((m, idx) => {
+      m.position.x += Math.sin(t * 0.25 + idx) * 0.003;
+    });
+
+    // Reset dynamic visibility & per-shot culling (3x faster SwiftShader rasterization!)
+    pawGroup.visible = false;
+    prizeGroup.visible = true;
+    human.visible = false;
+    phoneMesh.visible = false;
+    plankMesh.visible = false;
+    heldSandwich.visible = false;
+    bandit.visible = true;
+    truckGroup.visible = true;
+    cabGroup.visible = true;
+    heroHeadGroup.visible = false;
+    const isExterior = (t >= 2.8 && t < 8.8) || (t >= 16.5 && t < 27.5) || t >= 31.0;
+    if (houseGroup) houseGroup.visible = isExterior;
+    if (streetLightGroup) streetLightGroup.visible = isExterior;
+    moonGroup.visible = isExterior;
+    ground.visible = isExterior;
+    drivewaySlab.visible = isExterior;
+    crumbs.forEach((c) => (c.mesh.visible = false));
+    flashLight.intensity = 0;
+    flashOverlay.style.opacity = '0';
+    passDoorHinge.rotation.y = 0;
+    driverDoorHinge.rotation.y = 0;
+
+    // =========================================================
+    // SHOT 0 (0.0-2.8s): EXTREME CLOSE-UP ON PRIZE + PAW GRAB
+    // =========================================================
+    if (t < 2.8) {
+      truckGroup.visible = false; // open-sided cabGroup gives unobstructed macro view!
+      cabGroup.visible = true;
+      bandit.visible = false;
+      prizeGroup.position.set(0.46, 0.98, 0.18);
+      if (sandwichObj) {
+        const grabU = smoothstep(1.45, 2.30, t);
+        sandwichObj.position.set(lerp(0.0, 0.26, grabU), lerp(0.02, 0.26, grabU), lerp(0.04, 0.34, grabU));
+        sandwichObj.rotation.z = grabU * 0.35;
+      }
+      pawGroup.visible = true;
+      const reachU = smoothstep(0.65, 1.52, t);
+      const pullBackU = smoothstep(1.58, 2.45, t);
+      pawGroup.position.set(
+        lerp(1.18, 0.48, reachU) + pullBackU * 0.26,
+        lerp(1.06, 1.03, reachU) + pullBackU * 0.24,
+        lerp(0.72, 0.22, reachU) + pullBackU * 0.34
+      );
+      pawGroup.rotation.set(-0.18, -0.55, lerp(0.25, -0.08, reachU));
+
+      const push = smoothstep(0.0, 2.8, t);
+      camera.position.set(lerp(0.78, 0.62, push), lerp(1.36, 1.24, push), lerp(0.86, 0.66, push));
+      camera.lookAt(0.44, 0.98, 0.16);
+    }
+
+    // =========================================================
+    // SHOT 1 (2.8-8.8s): WIDE 3 AM DRIVEWAY + DOOR HANDLE PULL
+    // =========================================================
+    else if (t < 8.8) {
+      truckGroup.visible = true;
+      cabGroup.visible = false;
+      prizeGroup.visible = false;
+      if (sandwichObj) sandwichObj.position.set(0, 0.02, 0.04);
+      const walkU = smoothstep(3.0, 6.1, t);
+      const standU = smoothstep(6.0, 6.7, t);
+      const doorU = smoothstep(6.65, 7.8, t);
+      const hopInU = smoothstep(7.8, 8.75, t);
+
+      const bx = lerp(3.6, 1.45, walkU) - hopInU * 0.85;
+      const bz = lerp(4.2, 0.42, walkU) - hopInU * 0.22;
+      const bob = walkU < 0.98 ? Math.abs(Math.sin(t * 7.2)) * 0.07 : 0;
+      const hopArc = Math.sin(hopInU * Math.PI) * 0.42;
+
+      bandit.position.set(bx, bob + hopInU * 0.72 + hopArc, bz);
+      bandit.rotation.set(standU * -0.25, lerp(-Math.PI * 0.72, -Math.PI * 0.50, standU), Math.sin(t * 7.2) * (1 - standU) * 0.06);
+      bandit.scale.set(1, 1 + standU * 0.18, 1);
+
+      passDoorHinge.rotation.y = doorU * 1.18;
+
+      const camU = smoothstep(2.8, 8.8, t);
+      camera.position.set(lerp(5.4, 2.85, camU), lerp(1.22, 1.05, camU), lerp(7.6, 3.25, camU));
+      camera.lookAt(lerp(0.9, 0.75, camU), lerp(0.92, 1.02, camU), 0.25);
+    }
+
+    // =========================================================
+    // SHOT 2 (8.8-14.5s): CAB INTERIOR MID-BITE -> HUMAN FREEZE!
+    // =========================================================
+    else if (t < 14.5) {
+      truckGroup.visible = false; // open-sided cab interior: zero wall obstruction!
+      cabGroup.visible = true;
+      prizeGroup.visible = true;
+      if (sandwichObj) sandwichObj.visible = false;
+      heldSandwich.visible = true;
+      passDoorHinge.rotation.y = lerp(0.25, 1.28, smoothstep(10.8, 11.7, t));
+
+      const isFrozen = t >= 11.95;
+      const chewT = isFrozen ? 11.95 : t;
+      bandit.position.set(0.45, 0.86, 0.16);
+      bandit.scale.set(1, 1, 1);
+      bandit.rotation.set(
+        isFrozen ? -0.05 : Math.sin(chewT * 10) * 0.07,
+        isFrozen ? 0.95 : 0.35 + Math.sin(chewT * 3) * 0.08,
+        0
+      );
+      heldSandwich.position.set(0.18, 0.58 + (isFrozen ? 0.02 : Math.sin(chewT * 10) * 0.04), 0.42);
+
+      crumbs.forEach((c) => {
+        const dt = (chewT - 8.9 - c.phase);
+        if (dt > 0 && dt < 1.3) {
+          c.mesh.visible = true;
+          c.mesh.position.set(
+            0.48 + c.vx * dt,
+            1.44 + c.vy * dt - 4.9 * dt * dt * 0.35,
+            0.46 + c.vz * dt
+          );
+        }
+      });
+
+      if (t >= 11.0) {
+        human.visible = true;
+        const stepIn = smoothstep(11.0, 11.75, t);
+        human.position.set(lerp(2.4, 1.48, stepIn), 0.12, 0.18);
+        human.rotation.y = -Math.PI * 0.52;
+      }
+
+      const push = smoothstep(11.95, 14.5, t);
+      camera.position.set(lerp(-0.42, -0.22, push), lerp(1.48, 1.42, push), lerp(1.42, 1.18, push));
+      camera.lookAt(lerp(0.50, 0.78, smoothstep(11.1, 12.2, t)), 1.32, 0.18);
+    }
+
+    // =========================================================
+    // SHOT 3 (14.5-21.0s): CAMERA FLASH POP -> HUMAN WITH WOOD PLANK
+    // =========================================================
+    else if (t < 21.0) {
+      if (sandwichObj) sandwichObj.visible = false;
+      heldSandwich.visible = true;
+      passDoorHinge.rotation.y = 1.25;
+      human.visible = true;
+
+      if (t < 16.5) {
+        // Part A (14.5-16.5s): Open cab interior, phone raised -> BLINDING FLASH POP!
+        truckGroup.visible = false;
+        cabGroup.visible = true;
+        bandit.position.set(0.45, 0.86, 0.16);
+        bandit.rotation.set(0, 0.92, 0);
+        human.position.set(1.48, 0.12, 0.18);
+        human.rotation.y = -Math.PI * 0.52;
+        phoneMesh.visible = true;
+
+        const dtFlash = Math.abs(t - 15.28);
+        if (dtFlash < 0.24) {
+          const pulse = Math.pow(1 - dtFlash / 0.24, 2.0);
+          flashLight.intensity = 65 * pulse;
+          flashOverlay.style.opacity = String(0.90 * pulse);
+        }
+        camera.position.set(-0.35, 1.44, 1.28);
+        camera.lookAt(0.75, 1.34, 0.18);
+      } else {
+        // Part B (16.5-21.0s): Exterior driveway, Human marches with plank; Bandit peeks on hood/cab!
+        truckGroup.visible = true;
+        cabGroup.visible = false;
+        plankMesh.visible = true;
+        const marchU = smoothstep(16.55, 20.8, t);
+        human.position.set(lerp(4.2, 2.15, marchU), Math.abs(Math.sin(t * 8.5)) * 0.05, lerp(-0.8, 0.6, marchU));
+        human.rotation.y = -Math.PI * 0.45;
+
+        // Bandit sitting cleanly on truck hood/step watching unimpressed with head tilt
+        bandit.position.set(1.15, 0.96, 0.42);
+        bandit.rotation.set(0, 0.85, -0.34 * smoothstep(17.2, 18.2, t));
+
+        camera.position.set(lerp(3.2, 2.65, marchU), 1.48, lerp(4.2, 3.3, marchU));
+        camera.lookAt(lerp(2.2, 1.55, marchU), 1.25, 0.35);
+      }
+    }
+
+    // =========================================================
+    // SHOT 4 (21.0-27.0s): CONSOLE HOP -> SLOW-MO DIGNIFIED EXIT
+    // =========================================================
+    else if (t < 27.0) {
+      if (sandwichObj) sandwichObj.visible = false;
+      heldSandwich.visible = true;
+      passDoorHinge.rotation.y = 1.1;
+
+      if (t < 23.4) {
+        truckGroup.visible = false; // open cab console hop!
+        cabGroup.visible = true;
+        const hopU = smoothstep(21.1, 23.0, t);
+        const hopArc = Math.sin(hopU * Math.PI) * 0.28;
+        bandit.position.set(lerp(0.45, -0.48, hopU), 0.86 + hopArc, 0.18);
+        bandit.rotation.set(0, lerp(0.5, -Math.PI * 0.55, hopU), 0);
+
+        camera.position.set(-1.35, 1.52, 1.85);
+        camera.lookAt(-0.10, 1.18, 0.18);
+      } else {
+        truckGroup.visible = true;
+        cabGroup.visible = false;
+        driverDoorHinge.rotation.y = -1.18;
+        const slowU = smoothstep(23.4, 27.0, t);
+        const slowBob = Math.abs(Math.sin(t * 3.1)) * 0.045;
+        bandit.position.set(lerp(-1.25, -2.25, slowU), lerp(0.48, 0.0, smoothstep(23.4, 24.0, t)) + slowBob, lerp(0.35, 2.25, slowU));
+        bandit.rotation.set(-0.04, -0.32, Math.sin(t * 3.1) * 0.03);
+
+        camera.position.set(lerp(-2.8, -3.4, slowU), 0.78, lerp(3.6, 4.5, slowU));
+        camera.lookAt(bandit.position.x, 0.58, bandit.position.z);
+      }
+    }
+
+    // =========================================================
+    // SHOT 5 (27.5-31.0s): THUMBNAIL ECU — SMIRK + RAISED EYEBROW
+    // =========================================================
+    else if (t < 31.0) {
+      bandit.visible = false;
+      truckGroup.visible = false;
+      cabGroup.visible = false;
+      prizeGroup.visible = false;
+      heroHeadGroup.visible = true;
+
+      const u = smoothstep(27.5, 30.8, t);
+      const browU = smoothstep(28.15, 28.85, t);
+      const smirkU = smoothstep(28.3, 29.4, t);
+
+      browL.position.y = 0.185 + browU * 0.055;
+      browL.rotation.z = Math.PI / 2 - browU * 0.24;
+      browR.position.y = 0.185 - browU * 0.012;
+      smirkMesh.scale.set(1 + smirkU * 0.22, 1 + smirkU * 0.25, 1);
+      heroHeadGroup.rotation.set(lerp(0.06, -0.04, u), lerp(0.18, -0.08, u), lerp(0.04, -0.05, u));
+
+      camera.position.set(lerp(0.20, 0.08, u), -49.98, lerp(1.75, 1.48, u));
+      camera.lookAt(0.0, -50.06, 0.18);
+    }
+
+    // =========================================================
+    // SHOT 6 (31.0-40.0s): STARRY DRIVEWAY WALK + EPIC CRANE-UP
+    // =========================================================
+    else {
+      truckGroup.visible = true;
+      cabGroup.visible = false;
+      prizeGroup.visible = false;
+      if (sandwichObj) sandwichObj.visible = false;
+      heldSandwich.visible = true;
+      const walkU = smoothstep(31.0, 38.0, t);
+      const holdU = smoothstep(38.0, 40.0, t);
+      const walkPos = lerp(2.2, 8.2, walkU);
+      const stepBob = t < 38.2 ? Math.abs(Math.sin(t * 5.6)) * 0.04 : 0;
+
+      bandit.position.set(-1.45, stepBob, walkPos);
+      bandit.rotation.set(0, 0.08, 0);
+
+      const craneU = smoothstep(32.2, 38.0, t);
+      camera.position.set(
+        lerp(-1.95, -0.4, craneU),
+        lerp(1.25, 6.2, craneU),
+        lerp(0.6, -1.8, craneU)
+      );
+      camera.lookAt(
+        lerp(-1.4, 2.2, craneU),
+        lerp(0.65, 9.5 + holdU * 0.4, craneU),
+        lerp(walkPos, -25.0, craneU)
+      );
+    }
+
+    camFill.position.copy(camera.position);
+    renderer.render(scene, camera);
+  };
+  </script>
+</body>
+</html>

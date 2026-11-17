@@ -1,0 +1,28 @@
+name: Bounded FreeTube dependency route test
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/freetube_route_test.mjs, .github/workflows/freetube-route-test.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - run: npm install --no-save --ignore-scripts youtubei.js@18.3.0
+      - name: One public reference, no account or routing changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: timeout 180 node research/monarch_cam_restart_batch1/freetube_route_test.mjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: freetube-route-evidence
+          path: evidence/
+          retention-days: 1
