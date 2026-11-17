@@ -11,13 +11,14 @@ permissions:
   contents: write
 
 concurrency:
+  # Keyed on the trigger generation so a stranded run cannot block a retry.
   group: pehra-full-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 env:
   BLENDER_VERSION: "4.2.15"
   BLENDER_DIR: "blender-4.2.15-linux-x64"
-  SAMPLES: "8"
+  SAMPLES: "4"
 
 jobs:
   bootstrap:

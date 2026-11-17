@@ -155,6 +155,22 @@ def set_volume_density(frame: int, density: float) -> None:
         pass
 
 
+def action_fcurves(action):
+    """Yield every F-Curve in an Action on Blender 4.x and 5.x.
+
+    4.x keeps a flat Action.fcurves list. 5.0 made actions layered, so curves
+    live under layers -> strips -> channelbags.
+    """
+    flat = getattr(action, "fcurves", None)
+    if flat is not None:
+        yield from flat
+        return
+    for layer in getattr(action, "layers", ()):
+        for strip in getattr(layer, "strips", ()):
+            for bag in getattr(strip, "channelbags", ()):
+                yield from getattr(bag, "fcurves", ())
+
+
 def rebalance_scene(light_scale=0.55, volume_scale=0.18) -> None:
     """Tame CI exposure: scale all practical lights and volumetric fog after scene build."""
     for light in bpy.data.lights:
@@ -168,7 +184,7 @@ def rebalance_scene(light_scale=0.55, volume_scale=0.18) -> None:
         except Exception:
             action = None
         if action:
-            for fc in action.fcurves:
+            for fc in action_fcurves(action):
                 for kp in fc.keyframe_points:
                     try:
                         kp.co[1] *= light_scale
@@ -187,7 +203,7 @@ def rebalance_scene(light_scale=0.55, volume_scale=0.18) -> None:
         except Exception:
             action = None
         if action:
-            for fc in action.fcurves:
+            for fc in action_fcurves(action):
                 if "Density" not in fc.data_path:
                     continue
                 for kp in fc.keyframe_points:
@@ -201,11 +217,7 @@ def rebalance_scene(light_scale=0.55, volume_scale=0.18) -> None:
 
 def smooth_all_fcurves() -> None:
     for action in bpy.data.actions:
-        try:
-            fcurves = action.fcurves
-        except Exception:
-            continue
-        for fc in fcurves:
+        for fc in action_fcurves(action):
             for kp in fc.keyframe_points:
                 try:
                     kp.interpolation = "BEZIER"
@@ -1411,8 +1423,13 @@ def make_monarch_setup(mats, procedural_only=True):
     skin = mats.get("monarch_skin", mats["obsidian"])
     bust_h = 0.92
 
-    # --- torso/head: real photogrammetry marble bust (Poly Haven, CC0) ------
+    # --- torso/head: real photogrammetry bust -------------------------------
+    # Prefer the Poly Haven marble bust; when the CDN is unreachable fall back
+    # to the CC0 laser-scanned LeePerrySmith head, which is the same class of
+    # asset and reads correctly once it wears the mask.
     bust = try_append_blend("marble_bust_01", "PH_MARBLE_BUST")
+    if bust is None:
+        bust = try_append_glb("LeePerrySmith.glb", "SCANNED_HEAD_BUST")
     if bust:
         fit_group(bust, bust_h, use="z", center_xy=(0, 0), bottom_z=0.50)
         override_material_recursive(bust, mats.get("monarch_marble", mats["black"]))
@@ -1432,6 +1449,18 @@ def make_monarch_setup(mats, procedural_only=True):
     # --- the mask: real scanned Venetian half-mask, worn on the face --------
     mask = try_append_glb("venice_mask.glb", "MONARCH_VENICE_MASK")
     if mask:
+        # The scan includes display plaques. Keep the biggest mesh (the mask)
+        # and drop the rest so no props intrude on a close-up.
+        meshes = [o for o in mask.children_recursive
+                  if o.type == "MESH" and o.data and o.data.vertices]
+        if len(meshes) > 1:
+            def _vert_count(o):
+                return len(o.data.vertices)
+            keep = max(meshes, key=_vert_count)
+            for o in meshes:
+                if o is not keep:
+                    bpy.data.objects.remove(o, do_unlink=True)
+        bpy.context.view_layer.update()
         bpy.context.view_layer.update()
         mlo, mhi = bbox_group(mask)
         scale = face_w / max(mhi.x - mlo.x, 1e-4)
@@ -1464,6 +1493,24 @@ def make_monarch_setup(mats, procedural_only=True):
 # ---------------------------------------------------------------------------
 # Scene setup
 # ---------------------------------------------------------------------------
+def compositor_tree():
+    """Return a writable compositor node tree on both Blender 4.x and 5.x.
+
+    4.x exposes Scene.node_tree. 5.0 replaced it with an explicit node group
+    on Scene.compositing_node_group, so create one when it is missing.
+    """
+    tree = getattr(SCENE, "node_tree", None)
+    if tree is not None:
+        tree.nodes.clear()
+        return tree
+    group = getattr(SCENE, "compositing_node_group", None)
+    if group is None:
+        group = bpy.data.node_groups.new("PEHRA_COMPOSITOR", "CompositorNodeTree")
+        SCENE.compositing_node_group = group
+    group.nodes.clear()
+    return group
+
+
 def setup_world_and_render(args, shot_start, shot_end, render_start, render_end):
     global SCENE, VOLUME_NODE
     bpy.ops.wm.read_factory_settings(use_empty=True)
@@ -1544,8 +1591,7 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
     VOLUME_NODE = vol
 
     SCENE.use_nodes = True
-    comp = SCENE.node_tree
-    comp.nodes.clear()
+    comp = compositor_tree()
     rl = comp.nodes.new("CompositorNodeRLayers")
     glare = comp.nodes.new("CompositorNodeGlare")
     safe_set(glare, "glare_type", "FOG_GLOW")
@@ -1553,7 +1599,21 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
     safe_set(glare, "threshold", 0.92)
     safe_set(glare, "size", 7)
     safe_set(glare, "mix", -0.88)
-    composite = comp.nodes.new("CompositorNodeComposite")
+    # 4.x terminates in CompositorNodeComposite; 5.0 removed it in favour of a
+    # group interface output on the compositor node group.
+    composite = None
+    for node_type in ("CompositorNodeComposite", "NodeGroupOutput"):
+        try:
+            composite = comp.nodes.new(node_type)
+            break
+        except Exception:
+            continue
+    if composite is None:
+        raise RuntimeError("no compositor output node available")
+    if composite.bl_idname == "NodeGroupOutput":
+        if not comp.interface.items_tree:
+            comp.interface.new_socket(name="Image", in_out="OUTPUT",
+                                      socket_type="NodeSocketColor")
     glare_input = None
     try:
         glare_input = glare.inputs.get("Image")
@@ -1577,6 +1637,16 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
     if composite_input is None:
         composite_input = composite.inputs[0]
     comp.links.new(glare_output, composite_input)
+
+    # PEHRA_NO_VOLUME=1 drops the volumetric fog. The fog is the single most
+    # expensive term in these frames (every ray marches it), so a local pass
+    # can trade atmosphere for wall-clock when the deadline is the binding
+    # constraint. Post grade re-adds a hint of haze.
+    if os.environ.get("PEHRA_NO_VOLUME") == "1":
+        for node in nt.nodes:
+            if node.bl_idname == "ShaderNodeVolumePrincipled":
+                node.inputs["Density"].default_value = 0.0
+        warn("volumetrics disabled by PEHRA_NO_VOLUME")
 
     SCENE.frame_start = render_start
     SCENE.frame_end = render_end
