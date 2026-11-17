@@ -31,9 +31,9 @@
     "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json"
   ],
   "next_required": [
-    "reference-validated identified Tokay foot/digit/claw layout and anatomy/rights review",
-    "species-specific pad/foot geometry rather than generic prototype polishing",
-    "validate engagement/shear mechanism and release within anatomical rig"
+    "verify anatomy transport cleanup44045775261",
+    "extract relevant quantitative phalangeal/scale relationships from source, then species-grounded3Dfoot blocking",
+    "validate claw/articulation and LDT-zone mapping before motion rig"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -72,5 +72,21 @@
     "workflow": "success",
     "independent_api_reread": "11 checks clear",
     "receipt": "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json"
+  },
+  "anatomy_checkpoint": {
+    "species": "Gekko gecko",
+    "target": "left pes ventral",
+    "primary_source": "DOI10.1111/joa.70251; chunks0\u20134of33 read",
+    "actual_pixels_inspected": [
+      "Fig1 left pes ventral drawing",
+      "Fig2 right manus/pes dorsal radiographs"
+    ],
+    "pinned": [
+      "digitI shortest/clawless;II\u2013V claw-bearing",
+      "pes phalanges2-3-4-5-4;manus2-3-4-5-3",
+      "external enlarged scales alone do not define adhesive LDT zone"
+    ],
+    "deliverable": "original labelled2Dlayout; proportions/clawshape/pivots not validated",
+    "source_copy_cleanup": "localcopies deleted; workflow44045775261 queued"
   }
 }

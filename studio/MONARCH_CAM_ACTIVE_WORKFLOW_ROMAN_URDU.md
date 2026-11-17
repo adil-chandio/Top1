@@ -79,3 +79,6 @@ Runtime44038761446 success; hashes verified and bpy4.2 imported.36frame original
 
 ## Continuous-cycle checkpoint (supersedes release-only prototype)
 60frame continuous procedural pad approach/contact/symbolic proximal-load arrow/release/clear rendered.5geometry tests passed, camera bounds checked all vertices/all frames, consecutive36–40 visually inspected after framing revision. No actual adhesive force or species anatomy pass. Gecko transport cleanup44040935377 success; independent reread11checks clear. Next: pin identified Tokay foot/digit/claw references before additional generic polish. Receipt: research/monarch_cam_gecko_batch2/CONTINUOUS_CYCLE_QC_RECEIPT.json.
+
+## Tokay anatomy checkpoint
+2026primarysource DOI10.1111/joa.70251 chunks0–4of33read; actual labelled Fig1leftpesventral and Fig2rightmanus/pesradiographs hash-verified, pixel-inspected then local-deleted. Original labelled left-pes2Dlayout built;Ishortest/clawless,II–Vclaw-bearing;pesphalanges2-3-4-5-4,notmanus2-3-4-5-3. These counts do not validate exact jointpivots. Unmeasured proportions and placeholder clawshapes remain. Anatomytransportcleanup44045775261 queued; prior11runtimechecks independentlyclear. See TOKAY_ANATOMY_CONSTRAINTS_ROMAN_URDU.md.
