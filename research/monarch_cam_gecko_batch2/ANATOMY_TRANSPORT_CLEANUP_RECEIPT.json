@@ -1,0 +1,32 @@
+{
+  "run": 44045775261,
+  "workflow_conclusion": "success",
+  "independent_api_reread_clear": true,
+  "count": 6,
+  "checks": [
+    {
+      "id": 133910137376,
+      "name": "gecko-anatomy-fig2-radiograph-right-manus-pes-1"
+    },
+    {
+      "id": 133910132588,
+      "name": "gecko-anatomy-fig2-radiograph-right-manus-pes-0"
+    },
+    {
+      "id": 133910125849,
+      "name": "gecko-anatomy-fig1-ventral-left-pes-3"
+    },
+    {
+      "id": 133910121302,
+      "name": "gecko-anatomy-fig1-ventral-left-pes-2"
+    },
+    {
+      "id": 133910116874,
+      "name": "gecko-anatomy-fig1-ventral-left-pes-1"
+    },
+    {
+      "id": 133910112352,
+      "name": "gecko-anatomy-fig1-ventral-left-pes-0"
+    }
+  ]
+}

@@ -1,13 +1,13 @@
 {
   "channel": "Monarch Cam",
-  "active_batch": 2,
-  "state": "gecko_direction_user_approved_science_anatomy_technical_test_in_progress",
+  "active_batch": 3,
+  "state": "batch2_conditional_go_for_script_only_batch3_written_draft_complete_timing_pending",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
     "1": "market_research_delivered_cleanup_independently_verified",
-    "2": "user_approved_direction_science_anatomy_rights_test_not_passed",
-    "3": "not_started",
+    "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
+    "3": "complete_written_script_and_film_blueprint_v1; actual_voice_timing_pending",
     "4": "not_started",
     "5": "not_started"
   },
@@ -28,12 +28,15 @@
     "research/monarch_cam_gecko_batch2/SCIENCE_MOTION_UPDATE_ROMAN_URDU.md",
     "research/monarch_cam_gecko_batch2/ASSET_AND_REFERENCE_LEDGER.json",
     "research/monarch_cam_gecko_batch2/CONTINUOUS_CYCLE_QC_RECEIPT.json",
-    "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json"
+    "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json",
+    "research/monarch_cam_gecko_batch2/BATCH2_EXIT_DECISION_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch2/ANATOMY_TRANSPORT_CLEANUP_RECEIPT.json",
+    "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ROMAN_URDU.md"
   ],
   "next_required": [
-    "verify anatomy transport cleanup44045775261",
-    "extract relevant quantitative phalangeal/scale relationships from source, then species-grounded3Dfoot blocking",
-    "validate claw/articulation and LDT-zone mapping before motion rig"
+    "voice audition then actual narration generation and measured beat timing (written windows are estimates)",
+    "resolve binding anatomy/rights holds before final production visuals",
+    "Batch4 actual craft-reference inspection and full film production; no further Batch2generic-polish loop"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -87,6 +90,18 @@
       "external enlarged scales alone do not define adhesive LDT zone"
     ],
     "deliverable": "original labelled2Dlayout; proportions/clawshape/pivots not validated",
-    "source_copy_cleanup": "localcopies deleted; workflow44045775261 queued"
+    "source_copy_cleanup": "localcopies deleted;workflow44045775261 success;independent_api_reread6checks clear"
+  },
+  "batch2_gate": {
+    "decision": "conditional_go",
+    "scope": "Batch3 script/design only",
+    "full_pass": false,
+    "decision_file": "research/monarch_cam_gecko_batch2/BATCH2_EXIT_DECISION_ROMAN_URDU.md",
+    "production_holds": [
+      "exact_tokayanatomy_joint_claw_LDT_validation",
+      "final_connected_animation_and_consecutive_frame_QC",
+      "per_asset_rights",
+      "actual_narration_timing"
+    ]
   }
 }
