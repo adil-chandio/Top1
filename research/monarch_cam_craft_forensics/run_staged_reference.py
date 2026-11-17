@@ -7,6 +7,7 @@ LABEL=os.environ['REFERENCE_LABEL']
 TARGETS={
  'microchips':('branch-education','How are Microchips Made_ 🖥️🛠️ CPU Manufacturing Process Steps.ia.mp4',[0,124,154,470,626,1096,1398]),
  'storm':('youtube-ZcEyC-Ixf-g','ZcEyC-Ixf-g.webm',[0,3.5,10,18,26,34,40,46]),
+ 'watch':('youtube-9_QsCLYs2mY',None,[0,43,95,133,249,397]),
 }
 BASE='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
 HEAD={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
@@ -30,7 +31,16 @@ def main():
   log(stage,identifier=ident)
   meta=getjson('https://archive.org/metadata/'+ident);m=meta.get('metadata',{})
   if meta.get('is_dark') or m.get('access-restricted-item'):raise RuntimeError('restricted source')
-  chosen=next(f for f in meta['files'] if f['name']==name);assert 0<int(chosen['size'])<=180000000
+  if name is None:
+   candidates=[f for f in meta.get('files',[]) if f['name'].lower().endswith(('.mp4','.webm')) and 0<int(f.get('size',0))<=180000000]
+   if not candidates:
+    query='identifier:9_QsCLYs2mY OR (title:"How a Mechanical Watch Works" AND creator:Animagraffs)'
+    discovery=getjson('https://archive.org/advancedsearch.php?'+urllib.parse.urlencode({'q':query,'output':'json','rows':15}))
+    result['discovery']=discovery.get('response',{})
+    raise RuntimeError('No bounded public media at exact source identifier; discovery results preserved for inspection')
+   chosen=min(candidates,key=lambda f:int(f['size']));name=chosen['name'];result['selected_file']=name
+  else:chosen=next(f for f in meta['files'] if f['name']==name)
+  assert 0<int(chosen['size'])<=180000000
   result['source_metadata']={k:m.get(k) for k in ['title','creator','source','licenseurl']};result['listed_bytes']=int(chosen['size'])
   stage='download';log(stage,bytes=int(chosen['size']))
   with tempfile.TemporaryDirectory() as folder:
@@ -55,7 +65,9 @@ def main():
    run(['ffmpeg','-nostdin','-v','error','-i',str(path),'-map','0:v:0','-an','-vf',"fps=1,scale=200:-1,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=12:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x5",'-q:v','12',str(root/'survey-%03d.jpg')],300)
    stage='dense';log(stage,windows=windows)
    for i,t in enumerate(windows):
-    run(['ffmpeg','-nostdin','-v','error','-ss',str(t),'-i',str(path),'-map','0:v:0','-an','-vf','scale=240:-1,tile=6x4','-frames:v','1','-q:v','10',str(root/f'dense-{i:02}.jpg')],45)
+    vf="scale=320:-1,setpts=PTS+"+str(t)+"/TB,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=14:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x4"
+    run(['ffmpeg','-nostdin','-v','error','-ss',str(t),'-i',str(path),'-map','0:v:0','-an','-vf',vf,'-frames:v','3','-q:v','8',str(root/f'dense-{i:02}-%02d.jpg')],60)
+   result['dense_method']='72 consecutive decoded frames per seek, in three24-cell sheets; displayed filter PTS plus requested seek offset, not independent demuxer packet-PTS verification'
    result['dense_windows']=windows
    stage='transport';images=sorted(root.glob('*.jpg'));log(stage,sheets=len(images));manifest=[]
    for image in images:
