@@ -1,13 +1,14 @@
 """Stage-visible, time-bounded research decoder. Never asserts actual inspection.
 Temporary raw copies only; no production/republication permission implied.
 """
-import base64,hashlib,json,os,subprocess,tempfile,time,urllib.parse,urllib.request
+import base64,hashlib,json,os,subprocess,tempfile,time,urllib.parse,urllib.request,urllib.error
 from pathlib import Path
 LABEL=os.environ['REFERENCE_LABEL']
 TARGETS={
  'microchips':('branch-education','How are Microchips Made_ 🖥️🛠️ CPU Manufacturing Process Steps.ia.mp4',[0,124,154,470,626,1096,1398]),
  'storm':('youtube-ZcEyC-Ixf-g','ZcEyC-Ixf-g.webm',[0,3.5,10,18,26,34,40,46]),
  'watch':('youtube-9_QsCLYs2mY',None,[0,43,95,133,249,397]),
+ 'microchips-actions':('branch-education','How are Microchips Made_ 🖥️🛠️ CPU Manufacturing Process Steps.ia.mp4',[346,357,375,1120,1141,1447]),
 }
 BASE='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
 HEAD={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
@@ -15,7 +16,15 @@ def publish(name,obj):
  text=obj if isinstance(obj,str) else json.dumps(obj,ensure_ascii=False)
  body={'name':'cs-'+LABEL+'-'+name,'head_sha':os.environ['GITHUB_SHA'],'status':'completed','conclusion':'neutral','output':{'title':'Research transport: '+name,'summary':text}}
  req=urllib.request.Request(BASE+'/check-runs',data=json.dumps(body).encode(),headers=HEAD,method='POST')
- with urllib.request.urlopen(req,timeout=20) as r:return json.load(r)['id']
+ for attempt in range(5):
+  try:
+   with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)['id']
+  except urllib.error.HTTPError as e:
+   if e.code not in (403,429,500,502,503,504) or attempt==4:raise
+   time.sleep(min(60,int(e.headers.get('Retry-After',5*(attempt+1)))))
+  except (TimeoutError,urllib.error.URLError):
+   if attempt==4:raise
+   time.sleep(3*(attempt+1))
 def log(stage,**kw):
  data={'stage':stage,**kw};print(json.dumps(data),flush=True);publish('stage-'+stage,data)
 def getjson(url):
@@ -75,7 +84,9 @@ def main():
    duration=float(probe['format']['duration']);result.update(duration=duration,video={k:video.get(k) for k in ['width','height','r_frame_rate','nb_frames']},survey_interval=1)
    stage='survey';log(stage,duration=duration)
    # Full-duration every-second survey. PTS is resampled: not exact source cut timing.
-   run(['ffmpeg','-nostdin','-v','error','-i',str(path),'-map','0:v:0','-an','-vf',"fps=1,scale=200:-1,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=12:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x5",'-q:v','12',str(root/'survey-%03d.jpg')],300)
+   if not LABEL.endswith('-actions'):
+    run(['ffmpeg','-nostdin','-v','error','-i',str(path),'-map','0:v:0','-an','-vf',"fps=1,scale=200:-1,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=12:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x5",'-q:v','12',str(root/'survey-%03d.jpg')],300)
+   else:result['survey_interval']=None;result['survey_omitted']='Action drill-down only; full1fps survey already inspected in48f4e79'
    stage='dense';log(stage,windows=windows)
    for i,t in enumerate(windows):
     vf="scale=320:-1,setpts=PTS+"+str(t)+"/TB,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=14:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x4"
