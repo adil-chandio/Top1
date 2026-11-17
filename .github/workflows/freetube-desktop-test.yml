@@ -1,0 +1,44 @@
+name: Full FreeTube desktop execution
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/freetube_desktop_test.cjs, .github/workflows/freetube-desktop-test.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  desktop:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Install desktop automation and runtime libraries
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.56.0
+          sudo apt-get update -qq
+          sudo apt-get install -y xvfb libnss3 libatk-bridge2.0-0 libgtk-3-0 libasound2t64 libgbm1
+      - name: Acquire official packaged desktop application
+        run: |
+          curl --fail --location --max-time 120 https://github.com/FreeTubeApp/FreeTube/releases/download/v0.26.0-beta/freetube-0.26.0-beta-linux-x64-portable.zip -o /tmp/freetube.zip
+          mkdir /tmp/freetube-app
+          unzip -q /tmp/freetube.zip -d /tmp/freetube-app
+          APP=$(find /tmp/freetube-app -type f -iname freetube | head -1)
+          test -n "$APP"
+          chmod +x "$APP"
+          echo "FREETUBE_EXE=$APP" >> "$GITHUB_ENV"
+      - name: Launch real desktop and test video playback
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: xvfb-run -a node research/monarch_cam_restart_batch1/freetube_desktop_test.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: freetube-full-desktop-evidence
+          path: evidence/
+          retention-days: 1
+      - name: Remove application and temporary profile
+        if: always()
+        run: rm -rf /tmp/freetube-app /tmp/freetube.zip /tmp/freetube-test-profile
