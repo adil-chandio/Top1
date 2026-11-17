@@ -72,8 +72,11 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install the audio stack
-        run: python -m pip install --disable-pip-version-check -q numpy scipy pillow
+      - name: Install the audio stack and ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --disable-pip-version-check -q numpy scipy pillow
 
       - name: Restore the Urdu narration performance
         run: python -u production/account1_ep01/restore_narration.py
