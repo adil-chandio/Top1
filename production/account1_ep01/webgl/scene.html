@@ -677,7 +677,15 @@ window.__PEHRA_FRAME__ = (frame) => {
 
 window.__SET_TIMELINE__ = (tl) => { window.__TIMELINE__ = tl; };
 window.__THREE__ = THREE;
-window.__DEBUG__ = { scene, camera, ground, field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB };
+/* Lazy getters: this object is built before init runs, so a plain literal would
+   capture the nulls the actors start as. */
+window.__DEBUG__ = {
+  scene, camera, ground, field, bank, moonDisc, moonHalo, dust, gate,
+  get monarch() { return monarch; },
+  get guardA() { return guardA; },
+  get guardB() { return guardB; },
+  get lantern() { return lantern; },
+};
 window.__HIDE__ = (name, on) => {
   const m = { ground, field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, soldierGrp, lantern }[name];
   if (m) m.visible = !on;
