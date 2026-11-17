@@ -336,6 +336,43 @@ window.__PEHRA_INIT__ = async (timeline) => {
   monarch.add(srgb);
   monarch.position.set(0, 1.05, -8.5);
   scene.add(monarch);
+  window.__MASK_PLACED__ = { headSize: hb.size.map(v=>+v.toFixed(2)),
+                             curioSize: mb.size.map(v=>+v.toFixed(3)),
+                             headScale:+HEAD_SCALE.toFixed(3),
+                             maskScale:+maskScale.toFixed(2),
+                             faceW:+faceW.toFixed(2),
+                             maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
+  /* two soldiers flanking the gate */
+  const mk = (x, z, rotY, targetLen) => {
+    const g = new THREE.Group();
+    const inner = normalize(SkeletonUtils.clone(soldierG.scene), targetLen, 0);
+    g.add(inner);
+    g.position.set(x, 0, z);
+    g.rotation.y = rotY;
+    scene.add(g);
+    return g;
+  };
+  guardA = mk(-6.4, -14.5, 0.52, 2.55);
+  guardB = mk( 6.4, -14.5, -0.52, 2.55);
+
+  /* vegetation along the furrows */
+  plantA = new THREE.Group();
+  for (let i = 0; i < 6; i++) {
+    const p = normalize(SkeletonUtils.clone(plantG.scene), 0.62 + rnd(i) * 0.35, 0);
+    p.position.set((i % 3) * 2.4 - 2.6 + rnd(i + 2) * 0.6, 0, -Math.floor(i / 3) * 2.4 - 3.6);
+    p.rotation.y = rnd(i + 4) * 6.28;
+    plantA.add(p);
+  }
+  scene.add(plantA);
+
+  /* lantern + hurricane holder as the practical light source */
+  lantern = normalize(SkeletonUtils.clone(lanternG.scene), 1.15, 0);
+  lantern.position.set(2.9, 0, -5.2);
+  scene.add(lantern);
+  candleHolder = normalize(SkeletonUtils.clone(holderG.scene), 0.34, 0);
+  candleHolder.position.set(2.9, 1.02, -5.2);
+  scene.add(candleHolder);
+
   /* Everything placed, with its world extent. Without this the probe was
      blind: a stray object could sit in frame and never be named. */
   window.__ASSET_BOUNDS__ = (() => {
@@ -381,42 +418,6 @@ window.__PEHRA_INIT__ = async (timeline) => {
     return out;
   })();
 
-  window.__MASK_PLACED__ = { headSize: hb.size.map(v=>+v.toFixed(2)),
-                             curioSize: mb.size.map(v=>+v.toFixed(3)),
-                             headScale:+HEAD_SCALE.toFixed(3),
-                             maskScale:+maskScale.toFixed(2),
-                             faceW:+faceW.toFixed(2),
-                             maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
-  /* two soldiers flanking the gate */
-  const mk = (x, z, rotY, targetLen) => {
-    const g = new THREE.Group();
-    const inner = normalize(SkeletonUtils.clone(soldierG.scene), targetLen, 0);
-    g.add(inner);
-    g.position.set(x, 0, z);
-    g.rotation.y = rotY;
-    scene.add(g);
-    return g;
-  };
-  guardA = mk(-6.4, -14.5, 0.52, 2.55);
-  guardB = mk( 6.4, -14.5, -0.52, 2.55);
-
-  /* vegetation along the furrows */
-  plantA = new THREE.Group();
-  for (let i = 0; i < 6; i++) {
-    const p = normalize(SkeletonUtils.clone(plantG.scene), 0.62 + rnd(i) * 0.35, 0);
-    p.position.set((i % 3) * 2.4 - 2.6 + rnd(i + 2) * 0.6, 0, -Math.floor(i / 3) * 2.4 - 3.6);
-    p.rotation.y = rnd(i + 4) * 6.28;
-    plantA.add(p);
-  }
-  scene.add(plantA);
-
-  /* lantern + hurricane holder as the practical light source */
-  lantern = normalize(SkeletonUtils.clone(lanternG.scene), 1.15, 0);
-  lantern.position.set(2.9, 0, -5.2);
-  scene.add(lantern);
-  candleHolder = normalize(SkeletonUtils.clone(holderG.scene), 0.34, 0);
-  candleHolder.position.set(2.9, 1.02, -5.2);
-  scene.add(candleHolder);
 };
 
 /* ----------------------------------------------------------------- palette */
