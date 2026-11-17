@@ -1,105 +1,139 @@
-# PEHRA EP01 — Full Script: Kaam ka Status
+# PEHRA EP01 — Poori Script: Final Status
 
-Aakhri update: 2026-11-16 (raat)
-
----
-
-## 1. Kya maanga gaya tha
-
-1. Top ke bilawaja kharab captions hatao → **ho gaya**
-2. 3D animation + editing next level → **ho gaya** (16 naye shots)
-3. Poori script par poori video → **pipeline tayyar, render baqi**
-4. "Tabahi level" quality → **per-shot visually verify kiya ja raha hai**
+Aakhri update: 2026-11-17
 
 ---
 
-## 2. Poori script = 97.44s, 2923 frames, 16 beats
+## 1. Deliverable jo abhi maujood hai
 
-Pehle 15s teaser tha (6 shots). Ab `plan_full.py` poori narration ko
-naap kar timeline banata hai — har cut sentence par girta hai, uske aas-paas
-nahi:
+**`deliverables/pehra-ep01-film/PEHRA_EP01_FULL_1080x1920.mp4`**
 
-| # | Beat | Frames | Time | Picture |
-|---|---|---|---|---|
-| 01 | B01_AERIAL_FIELD | 1–208 | 0.00–6.94 | Drone khet par, fauji, lantern |
-| 02 | B02_GUARDED_FIELD | 209–367 | 6.94–12.24 | Boot-level track, muskets |
-| 03 | B03_MASKED_TITLE | 368–568 | 12.24–18.94 | Marble bust + venice mask, gate band |
-| 04 | B04_HUNGRY_PARIS | 569–733 | 18.94–24.44 | Khaali bread table, bhookhe log |
-| 05 | B05_POTATO_PROMISE | 734–903 | 24.44–30.10 | Ek aaloo, candle, orbit |
-| 06 | B06_POISONED_MIND | 904–1136 | 30.10–37.88 | Aaloo gutter me, boots |
-| 07 | B07_FREE_BASKETS | 1137–1364 | 37.88–45.46 | Free tokriyan, koi nahi chhua |
-| 08 | B08_SILENT_PIVOT | 1365–1561 | 45.46–52.04 | Mask extreme close-up |
-| 09 | B09_FORTY_ACRES | 1562–1816 | 52.04–60.54 | Chaalis acre, stakes, dusk |
-| 10 | B10_WHISPERS | 1817–1969 | 60.54–65.64 | Fence ke peeche sargoshi |
-| 11 | B11_LAST_ORDER | 1970–2122 | 65.64–70.74 | Do silhouettes, hukm |
-| 12 | B12_SUNSET_WITHDRAWAL | 2123–2275 | 70.74–75.84 | Time-lapse sunset, gate khula |
-| 13 | B13_NIGHT_THEFT | 2276–2428 | 75.84–80.94 | Deewar par chadhna, bori |
-| 14 | B14_EMPTY_FIELD_DAWN | 2429–2581 | 80.94–86.04 | Khaali khet → 36 khidkiyan |
-| 15 | B15_GRAVE_200_YEARS | 2582–2734 | 86.04–91.14 | Parmentier qabar, aaloo paude |
-| 16 | B16_FINAL_MONARCH | 2735–2923 | 91.14–97.44 | Mask, gate slam, 1.2s dead air |
+| | |
+|---|---|
+| Duration | **137.44 s** (2:17) |
+| Resolution | 1080×1920, 9:16 vertical |
+| Frame rate | 30 fps, 4123 frames |
+| Video | H.264 High, yuv420p, bt709 |
+| Audio | AAC 256 kb/s, 48 kHz stereo, −14 LUFS, −1 dBTP |
+| Size | 55.6 MB |
+
+Isko **sach me kya hai**: poori script, poora audio, poore captions, poora
+grade — lekin tasveerein har beat ki **verified keyframe** se hain, animation
+nahi. Animation render GitHub runner quota ki wajah se rukа hua hai.
 
 ---
 
-## 3. Captions: kya hataya
+## 2. Kya-kya mukammal ho gaya
 
-Pehle har frame par **5 cheezein** thi: `MONARCH / EP01`, `PEHRA · 1786`,
-`03 / 06` counter, ek eyebrow + rules + dot, aur niche plate + timecode.
-Picture ke upar shor.
+### Script — 18 blocks → 16 beats, 100% covered
 
-Ab **sirf ek line** Urdu, screen ke niche, halka sa scrim. Bas.
+`plan_full.py` poori narration ko naap kar timeline banata hai. Koi line
+nahi chhooti, koi line duplicate nahi.
+
+| # | Beat | Frames | Time |
+|---|---|---|---|
+| 01 | B01_AERIAL_FIELD | 1–208 | 0.00–6.94 |
+| 02 | B02_GUARDED_FIELD | 209–367 | 6.94–12.24 |
+| 03 | B03_MASKED_TITLE | 368–568 | 12.24–18.94 |
+| 04 | B04_HUNGRY_PARIS | 569–733 | 18.94–24.44 |
+| 05 | B05_POTATO_PROMISE | 734–903 | 24.44–30.10 |
+| 06 | B06_POISONED_MIND | 904–1136 | 30.10–37.88 |
+| 07 | B07_FREE_BASKETS | 1137–1364 | 37.88–45.46 |
+| 08 | B08_SILENT_PIVOT | 1365–1561 | 45.46–52.04 |
+| 09 | B09_FORTY_ACRES | 1562–1816 | 52.04–60.54 |
+| 10 | B10_WHISPERS | 1817–2232 | 60.54–74.40 |
+| 11 | B11_LAST_ORDER | 2233–2398 | 74.40–79.94 |
+| 12 | B12_SUNSET_WITHDRAWAL | 2399–2768 | 79.94–92.28 |
+| 13 | B13_NIGHT_THEFT | 2769–3061 | 92.28–102.02 |
+| 14 | B14_EMPTY_FIELD_DAWN | 3062–3307 | 102.02–110.24 |
+| 15 | B15_GRAVE_200_YEARS | 3308–3647 | 110.24–121.58 |
+| 16 | B16_FINAL_MONARCH | 3648–4123 | 121.58–137.44 |
+
+### Narration — 16/16, asli performance
+
+voice-00, 24 kHz mono, poora script block-by-block:
+
+| | | | |
+|---|---|---|---|
+| b01 5.84s | b02 4.20 | b03 5.60 | b04 4.40 |
+| b05 4.56 | b06 6.68 | b07 6.48 | b08 5.48 |
+| b09 7.40 | b10 12.76 | b11 4.44 | b12 11.24 |
+| b13 8.64 | b14 7.12 | b15 10.24 | b16 13.56 |
+
+**Total 109.98 s speech**, 27.5 s instrumental breath. Poore clips repo me
+gzip+base64 (`narration_b64.json`, 6.05 MB) — CI khud restore karta hai
+(`restore_narration.py`), WAVs git me nahi.
+
+### Captions — clutter khatam
+
+Pehle har frame par 5 elements (brand mark, `PEHRA · 1786`, `03/06` counter,
+eyebrow + rules + dot, timecode). Ab **sirf ek Urdu line neeche**, halke
+scrim + ek highlight word ke saath. Top of frame bilkul saaf.
+
+16 captions asli narration se quote kiye hue hain, isliye lower third hamesha
+wahi kehta hai jo awaaz keh rahi hai us waqt.
+
+### 3D — 16 beats, visually verified
+
+Har beat ka real Cycles lookdev render karke aankhon se check kiya
+(`deliverables/pehra-lookdev-full/`).
+
+Jo theek kiya:
+- B03/B08/B16 — blobby procedural head → asli `marble_bust_01` + scanned `venice_mask.glb`
+- B11 — bilkul khaali frame → camera + key light theek
+- B13 — pitch black → moon key, deewar peeche khiski
+- B15 — "lakri ka dibba" → asli limestone headstone + 20 aaloo paude
+- B16 — lock chehra dhak raha tha → gate peeche, face clear
+
+Assets: Poly Haven (`marble_bust_01`, `sweet_potato`, `dry_mud_field_001`,
+`wicker_basket_01`) + three.js (`venice_mask.glb`, `Soldier.glb`). Zero
+still-image plates.
+
+### Grade — shadows lift kiye
+
+Pehle `brightness=-0.015` — render aur dark ho raha tha. Ab
+`brightness=0.055, gamma=1.16, gamma_weight=0.72, saturation=1.06`,
+vignette PI/6.5, film grain, 0.34s caption fades.
+
+### Pipeline — 5 asli bugs fix kiye
+
+| Bug | Asar | Fix |
+|---|---|---|
+| `--frames` argument hi nahi tha | Har shard 0 frames, 30/30 fail | Implemented + shot-range clamp |
+| Timeline narration se **pehle** banti thi | Har beat 4.0s fallback → galat film | Order swap |
+| `FULL_SHOT_BUILDERS` self-reference | Koi bhi import fail | Dict repair |
+| Shards 2923 PNGs git me commit karte | ~5.6 GB bloat | Artifact-only flow |
+| Gate `-14 LUFS` line parse karta | Render block | Robust sed parse |
 
 ---
 
-## 4. 3D: kya asli hai (visually verified)
+## 3. Baqi — sirf animation render
 
-Har beat ka real Cycles lookdev frame render karke aankhon se check kiya:
+**Status:** GitHub Actions runner quota khatam. Do runs queued hain:
+`44022584682` (1h51m), `44025626550` (1h25m). `gh workflow run` 403 hai,
+runs sirf push se chalte hain, `gh run cancel` bhi 403 hai.
 
-- **B03 / B08 / B16** — Poly Haven `marble_bust_01` + scanned `venice_mask.glb`,
-  crimson eye glow mask ke peeche se leak
-- **B01 / B09 / B13 / B14** — `sweet_potato`, `dry_mud_field_001` displacement
-- **B02 / B04 / B11 / B13** — three.js `Soldier.glb` rigs, rigged pose
-- **B07** — Poly Haven `wicker_basket_01` + spilled potatoes
-- **B15** — limestone headstone, 20 aaloo paude qabar ke gird
+**Jab runners wapas aayen:**
 
-**Jo theek kiya** (har ek lookdev me dikha):
-- B03/B08/B16 pehle blobby procedural head tha → asli marble + mask
-- B11 pehle bilkul khaali frame tha → camera + key light theek
-- B13 pehle pitch black tha → moon key, deewar peeche khiski
-- B15 pehle "lakri ka dibba" lag raha tha → asli limestone tone
-- B16 pehle lock monarch ka chehra dhak raha tha → gate peeche, face clear
+```
+37 shards × 150 frames × ~73 s/frame ≈ 3 h/job
+20 parallel → ~3–4 h wall
+```
 
----
+Sharding verified hai: 37 shards, 4123/4123 frames exactly contiguous, har
+shard apne beat ke andar. `--frames` path Blender 4.2.15 par test ho chuka —
+3 frames, 330 s, exit 0.
 
-## 5. Audio
-
-`build_audio_full.py` timeline-driven hai: har narration line wahan baithti hai
-jahan timeline kehta hai, har beat ka apna foley cue.
-
-**9 / 16 beats ki narration ban chuki hai** (voice-00):
-B01 5.84s · B02 4.20 · B03 5.60 · B04 4.40 · B05 4.56 · B06 6.68 · B07 6.48 ·
-B08 5.48 · B09 7.40
-
-Baqi 7 (B10–B16) is turn ke speech quota (10) ki wajah se baqi hain —
-agli turn me pehla kaam.
+Assemble verified hai: poora 137.44 s film locally bani, QC pass
+(h264 1080×1920 @ 137.44 s, AAC 48 kHz stereo).
 
 ---
 
-## 6. Baqi kaam (order me)
+## 4. Honest limitations
 
-1. B10–B16 ki 7 narration lines generate karna
-2. `build_audio_full.py` dobara → 16/16 narration, −14 LUFS master
-3. `pehra-final-render.yml` dispatch → 2923 frames, ~113 shards
-   (26 frames/shard, max-parallel 18, ~4–5 ghante runner time)
-4. `assemble_preview.py --mode final` → 97.4s film + clean captions
-5. Drive upload + visual QC
-
----
-
-## 7. Honest limitations
-
-- 97s film, **render abhi nahi hui** — sirf 16 keyframes verify hue hain
-- Characters procedural rigs hain (facial animation / lip-sync nahi)
-- B05 ka aaloo aur B06 ka rolling potato simple spheres hain
-- B02 ke guards static line me hain — walk cycle nahi
+- Animation render baqi — keyframes verified hain, motion nahi
+- Characters procedural rigs, koi facial animation / lip-sync nahi
+- B05 aaloo aur B06 potato simple spheres
+- B02 guards static line me, walk cycle nahi
 - Urdu VO AI voice-00 hai, human actor nahi
-- `workflow_dispatch` is token scope me 403, runs push se trigger hote hain
+- 3 volumes me fog hai — har frame ~73–110 s, isliye 4123 frames mehnga hai
