@@ -1,0 +1,40 @@
+name: Clear inspected digit reference transport
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [.github/workflows/gecko-digit-cleanup.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Clear nine inspected image transport parts only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          from pathlib import Path
+          d=json.loads(Path('research/monarch_cam_gecko_batch2/DIGIT_REFERENCE_RECOVERY.json').read_text())
+          ids=[]
+          for f in d['figures']:
+              assert f['hash_verified'] and f['pixels_inspected'] and f['inspection_report']
+              ids+=f['check_ids']
+          assert len(set(ids))==9
+          base='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          def call(i,body=None):
+              req=urllib.request.Request(base+'/check-runs/'+str(i),headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'},data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
+              with urllib.request.urlopen(req,timeout=30) as r:return json.load(r)
+          for i in ids:
+              c=call(i)
+              assert c['head_sha']==d['head_sha'] and c['name'].startswith('gecko-anatomy-fig')
+          for i in ids:
+              call(i,{'output':{'title':'Inspected digit reference transport cleared','summary':'Temporary image payload cleared after hash-verified recovery and actual pixel inspection. Evidence: DIGIT_REFERENCE_RECOVERY.json; findings: DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md. No production approval or reuse permission implied.'}})
+              assert call(i)['output']['summary'].startswith('Temporary image payload cleared')
+          print(json.dumps({'cleared_readback_verified':ids}))
+          PY
