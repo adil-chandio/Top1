@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "research_derived_english_edit_map_and_hybrid_rig_decision_design_only_production_held",
+  "state": "context_photos_actually_inspected_exterior_and_live_motion_unvalidated_production_held",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -48,7 +48,11 @@
     "research/monarch_cam_gecko_batch4/WHOLE_CUT_TECHNICAL_AUDIT.json",
     "research/monarch_cam_gecko_batch5/PRELIMINARY_QC_AND_CORRECTIONS_ROMAN_URDU.md",
     "research/monarch_cam_gecko_batch5/EXTERNAL_FEATURE_CORRECTION_RECEIPT.json",
-    "research/monarch_cam_gecko_batch5/V5_CORRECTION_RECHECK_ROMAN_URDU.md"
+    "research/monarch_cam_gecko_batch5/V5_CORRECTION_RECHECK_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch2/DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md",
+    "research/monarch_cam_gecko_batch2/DIGIT_REFERENCE_RECOVERY.json",
+    "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_DECISION.md",
+    "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_INSPECTION.json"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -344,5 +348,15 @@
       "structural_tests_passed": 7,
       "tests_are_not_craft_or_audio_pass": true
     }
+  },
+  "anatomy_context_checkpoint": {
+    "date": "2026-11-14",
+    "digit_figures_inspected": true,
+    "legacy_exterior_promotion": "rejected",
+    "context_photos_inspected": 3,
+    "tokay_left_pes_identity_confirmed_for_context_photos": false,
+    "live_motion_inspected": false,
+    "next_bounded_target": "Autumn2014 Tokay toe-peeling Video3 legitimate-source acquisition and actual inspection",
+    "production_approved": false
   }
 }

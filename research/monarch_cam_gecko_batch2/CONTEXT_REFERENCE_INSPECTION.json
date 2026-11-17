@@ -1,0 +1,28 @@
+{
+  "checkpoint": "2026-11-14",
+  "images": [
+    {
+      "path": "studio/runtime/gecko/context-references/commons-ventral.jpg",
+      "sha256": "c8b55627a927ed09b8dcfa1adbad51e0233b6efebf0d3aac6d4fc96f6ec87abb",
+      "bytes": 143246,
+      "pixels_inspected": true,
+      "method": "read_file image viewer; search-delivered copy, not original-byte authentication"
+    },
+    {
+      "path": "studio/runtime/gecko/context-references/earthdate-flat.jpg",
+      "sha256": "31ce2a9eaffa93f411297664168d728e6ef865fa9fc238a65d1b578c42bde764",
+      "bytes": 21425,
+      "pixels_inspected": true,
+      "method": "read_file image viewer; search-delivered copy, not original-byte authentication"
+    },
+    {
+      "path": "studio/runtime/gecko/context-references/earthdate-hyperextended.jpg",
+      "sha256": "9b108ea97587fd8571767c95f8d0c322d490c15815ed670a6b928f4ce77910bd",
+      "bytes": 20007,
+      "pixels_inspected": true,
+      "method": "read_file image viewer; search-delivered copy, not original-byte authentication"
+    }
+  ],
+  "report": "CONTEXT_REFERENCE_DECISION.md",
+  "production_approved": false
+}
