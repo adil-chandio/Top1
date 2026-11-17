@@ -2565,6 +2565,12 @@ def parse_args():
     parser.add_argument("--timeline", default=str(BASE / "build" / "timeline_15s.json"))
     parser.add_argument("--assets", default=str(BASE / "assets"))
     parser.add_argument("--out", default=str(BASE / "frames"))
+    parser.add_argument(
+        "--frames",
+        default=None,
+        help="Frame range to render, e.g. '120-180'. Defaults to the shot's "
+             "own range in final mode and to the lookdev frame in lookdev mode.",
+    )
     return parser.parse_args(argv)
 
 
@@ -2595,6 +2601,24 @@ def main():
     else:
         render_start, render_end = shot_start, shot_end
         samples = int(args.samples)
+
+    # A shard may request any sub-range of its own shot. Clamp to the shot so a
+    # mis-specified shard can never render another beat's frames.
+    if args.frames:
+        try:
+            lo_s, hi_s = str(args.frames).split("-", 1)
+            lo, hi = int(lo_s), int(hi_s)
+        except Exception as exc:
+            raise SystemExit(
+                f"--frames must look like '120-180', got {args.frames!r} ({exc})"
+            )
+        if lo > hi:
+            raise SystemExit(f"--frames range is inverted: {args.frames!r}")
+        if lo < shot_start or hi > shot_end:
+            raise SystemExit(
+                f"--frames {lo}-{hi} is outside {args.shot} ({shot_start}-{shot_end})"
+            )
+        render_start, render_end = lo, hi
 
     info(
         f"Building {args.shot}: full shot {shot_start}-{shot_end}, "
