@@ -14,7 +14,7 @@ const steps = [];
 const t0 = Date.now();
 const log = (k, v) => { steps.push([k, v, +((Date.now()-t0)/1000).toFixed(1)]); console.log(k, v); };
 
-const MIME={'.html':'text/html','.js':'application/javascript','.mjs':'application/javascript','.json':'application/json','.glb':'model/gltf-binary'};
+const MIME={'.html':'text/html','.js':'application/javascript','.mjs':'application/javascript','.json':'application/json','.glb':'model/gltf-binary','.wasm':'application/wasm'};
 const srv=http.createServer((req,res)=>{
   const u=(req.url||'/').split('?')[0]; let fp;
   if(u==='/'||u==='/scene.html') fp=path.join(HERE,'scene.html');
@@ -46,6 +46,25 @@ try {
     const d=g.getExtension('WEBGL_debug_renderer_info');
     return d?g.getParameter(d.UNMASKED_RENDERER_WEBGL):g.getParameter(g.VERSION);});
   log('webgl', String(gl).slice(0,120));
+  /* load each GLB on its own first, so a single bad asset names itself */
+  const each = await page.evaluate(async()=>{
+    const THREE = await import('/vendor/three/build/three.module.js');
+    const { GLTFLoader } = await import('/vendor/three/examples/jsm/loaders/GLTFLoader.js');
+    const { DRACOLoader } = await import('/vendor/three/examples/jsm/loaders/DRACOLoader.js');
+    const l = new GLTFLoader(); const d = new DRACOLoader();
+    d.setDecoderPath('/vendor/three/examples/jsm/libs/draco/'); l.setDRACOLoader(d);
+    const names = ['LeePerrySmith','venice_mask','Soldier','DiffuseTransmissionPlant','Lantern','GlassHurricaneCandleHolder'];
+    const out = {};
+    for (const n of names) {
+      try {
+        const g = await new Promise((res, rej) => l.load(`/assets/${n}.glb`, res, undefined, rej));
+        let v = 0; g.scene.traverse(o => { if (o.isMesh) v += o.geometry.attributes.position.count; });
+        out[n] = `ok ${v}v`;
+      } catch (e) { out[n] = 'ERR ' + e.message.slice(0, 90); }
+    }
+    return out;
+  });
+  for (const [k, v] of Object.entries(each)) log('asset:' + k, v);
   const init = await page.evaluate(async(tl)=>{try{window.__SET_TIMELINE__(tl);await window.__PEHRA_INIT__(tl);return 'ok';}catch(e){return 'ERR '+e.message;}},tl);
   log('init', init);
   const f = await page.evaluate(()=>{try{window.__PEHRA_FRAME__(60);return 'ok';}catch(e){return 'ERR '+e.message;}});

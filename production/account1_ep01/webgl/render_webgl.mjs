@@ -57,6 +57,7 @@ const MIME = {
   '.html': 'text/html; charset=utf-8', '.js': 'application/javascript',
   '.mjs': 'application/javascript', '.json': 'application/json',
   '.glb': 'model/gltf-binary', '.css': 'text/css',
+  '.wasm': 'application/wasm', '.js': 'application/javascript',
 };
 
 const server = http.createServer((req, res) => {

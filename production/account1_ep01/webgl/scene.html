@@ -20,6 +20,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
 const W = 1080, H = 1920;
 
@@ -182,7 +183,12 @@ moonHalo.position.copy(moonDisc.position).add(new THREE.Vector3(0, 0, 0.5));
 scene.add(moonHalo);
 
 /* --------------------------------------------------------------- GLB actors */
+/* The shipped GLBs are Draco-compressed, so the loader needs the decoder.
+   Without it every model fails to parse and the beats silently see nulls. */
 const loader = new GLTFLoader();
+const draco = new DRACOLoader();
+draco.setDecoderPath('/vendor/three/examples/jsm/libs/draco/');
+loader.setDRACOLoader(draco);
 const loadGLTF = (u) => new Promise((res, rej) => loader.load(u, res, undefined, rej));
 
 let monarch = null, mask = null, guardA = null, guardB = null;
