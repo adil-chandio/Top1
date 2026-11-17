@@ -1,0 +1,6 @@
+NSS_3.2 { global: *; };
+NSS_3.3 { global: *; } NSS_3.2;
+NSS_3.4 { global: *; } NSS_3.3;
+NSS_3.6 { global: *; } NSS_3.4;
+NSS_3.9.2 { global: *; } NSS_3.6;
+NSS_3.30 { global: *; } NSS_3.9.2;

@@ -1,0 +1,192 @@
+name: "PEHRA EP01 — WebGL 3D Render"
+
+# The Panama-Plus recipe, ported to PEHRA. Three.js + headless Chromium with
+# SwiftShader WebGL draws each frame as a screenshot, so a full-script pass is
+# minutes of wall clock rather than the hours a path-tracer needs.
+
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths:
+      - "production/account1_ep01/webgl/**"
+      - ".github/workflows/pehra-webgl.yml"
+      - "production/account1_ep01/WEBGL_TRIGGER.txt"
+  workflow_dispatch:
+    inputs:
+      first_beat:
+        description: "First beat id (blank = start)"
+        required: false
+        default: ""
+        type: string
+      last_beat:
+        description: "Last beat id (blank = same as first)"
+        required: false
+        default: ""
+        type: string
+      workers:
+        description: "Parallel page workers"
+        required: true
+        default: "4"
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pehra-webgl-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+
+jobs:
+  bootstrap:
+    name: "Restore narration, timeline, and soundtrack"
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    outputs:
+      first_beat: ${{ steps.cfg.outputs.first_beat }}
+      last_beat: ${{ steps.cfg.outputs.last_beat }}
+      workers: ${{ steps.cfg.outputs.workers }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Resolve the beat range
+        id: cfg
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "first_beat=${{ github.event.inputs.first_beat }}" >> "$GITHUB_OUTPUT"
+            echo "last_beat=${{ github.event.inputs.last_beat }}"   >> "$GITHUB_OUTPUT"
+            echo "workers=${{ github.event.inputs.workers }}"       >> "$GITHUB_OUTPUT"
+          else
+            FIRST="$(tr -d '\r\n ' < production/account1_ep01/WEBGL_FIRST.txt 2>/dev/null || true)"
+            LAST="$(tr -d '\r\n ' < production/account1_ep01/WEBGL_LAST.txt 2>/dev/null || true)"
+            echo "first_beat=$FIRST" >> "$GITHUB_OUTPUT"
+            echo "last_beat=$LAST"   >> "$GITHUB_OUTPUT"
+            echo "workers=4"         >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Restore the Urdu narration performance
+        run: python -u production/account1_ep01/restore_narration.py
+
+      - name: Build the full-script timeline
+        run: python -u production/account1_ep01/plan_full.py
+
+      - name: Install the audio stack and build the soundtrack
+        run: |
+          python -m pip install --disable-pip-version-check -q numpy scipy pillow
+          python -u production/account1_ep01/build_audio_full.py
+
+      - name: Verify the prepared bundle
+        run: |
+          set -euo pipefail
+          test -f production/account1_ep01/build/timeline_full.json
+          test -f production/account1_ep01/build/master_full.m4a
+          python - <<'PY'
+          import json
+          tl = json.load(open('production/account1_ep01/build/timeline_full.json'))
+          assert len(tl['shots']) == 16, len(tl['shots'])
+          assert max(s['f_end'] for s in tl['shots']) == 4123
+          print(f"timeline ok: {len(tl['shots'])} beats, "
+                f"{max(s['f_end'] for s in tl['shots'])} frames")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: pehra-webgl-bundle-${{ github.run_id }}
+          path: |
+            production/account1_ep01/build/timeline_full.json
+            production/account1_ep01/build/master_full.m4a
+            production/account1_ep01/assets/glb
+            production/account1_ep01/webgl
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 1
+
+  render:
+    name: "WebGL frames and encode"
+    needs: bootstrap
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Chromium, ffmpeg, and the render stack
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg xz-utils
+          npm install --no-save --no-audit --no-fund three@0.169.0 playwright
+          npx playwright install --with-deps chromium
+
+      - name: Download the prepared bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: pehra-webgl-bundle-${{ github.run_id }}
+          path: production/account1_ep01
+
+      - name: Confirm the stage assets arrived
+        run: |
+          set -euo pipefail
+          ls -la production/account1_ep01/assets/glb
+          ls -la production/account1_ep01/webgl
+          test -f production/account1_ep01/build/timeline_full.json
+          test -f production/account1_ep01/webgl/scene.html
+
+      - name: Render every frame in WebGL and encode the film
+        env:
+          FIRST_BEAT: ${{ needs.bootstrap.outputs.first_beat }}
+          LAST_BEAT: ${{ needs.bootstrap.outputs.last_beat }}
+          WORKERS: ${{ needs.bootstrap.outputs.workers }}
+        run: |
+          set -euo pipefail
+          ARGS="--workers ${WORKERS:-4} --timeline production/account1_ep01/build/timeline_full.json --audio production/account1_ep01/build/master_full.m4a --out production/account1_ep01/renders/PEHRA_EP01_WEBGL_1080x1920.mp4"
+          if [ -n "${FIRST_BEAT:-}" ]; then ARGS="$ARGS --first-beat $FIRST_BEAT"; fi
+          if [ -n "${LAST_BEAT:-}" ]; then  ARGS="$ARGS --last-beat $LAST_BEAT";  fi
+          node production/account1_ep01/webgl/render_webgl.mjs $ARGS
+
+      - name: Upload the render
+        uses: actions/upload-artifact@v4
+        with:
+          name: pehra-webgl-film-${{ github.run_id }}
+          path: |
+            production/account1_ep01/renders
+            production/account1_ep01/webgl/qc
+          if-no-files-found: error
+          retention-days: 14
+          compression-level: 1
+
+      - name: Publish the deliverable to the branch
+        run: |
+          set -euo pipefail
+          DEST="deliverables/pehra-webgl"
+          mkdir -p "$DEST"
+          cp -a production/account1_ep01/renders/. "$DEST/"
+          cp -a production/account1_ep01/webgl/qc/webgl_qc.json "$DEST/" 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f "$DEST"
+          if git diff --cached --quiet; then
+            echo "nothing new"
+          else
+            git commit -m "Publish PEHRA WebGL render (run ${{ github.run_id }})"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Summary
+        run: |
+          {
+            echo "## PEHRA EP01 — WebGL"
+            echo ""
+            python -c "import json;d=json.load(open('production/account1_ep01/webgl/qc/webgl_qc.json'));print('\n'.join(f'- {k}: {v}' for k,v in d.items()))"
+          } >> "$GITHUB_STEP_SUMMARY"

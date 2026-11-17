@@ -1,0 +1,366 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PEHRA — EP01 3D stage</title>
+<style>
+  html,body{margin:0;padding:0;background:#000;overflow:hidden}
+  #stage{display:block;width:1080px;height:1920px}
+</style>
+<script type="importmap">
+{ "imports": {
+    "three": "/vendor/three/build/three.module.js",
+    "three/addons/": "/vendor/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<canvas id="stage" width="1080" height="1920"></canvas>
+<script type="module">
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import * as SkeletonUtils from 'three/addons/utils/SkeletonUtils.js';
+
+const W = 1080, H = 1920;
+
+/* ---------------------------------------------------------------- renderer */
+const canvas = document.getElementById('stage');
+const renderer = new THREE.WebGLRenderer({
+  canvas, antialias: true, preserveDrawingBuffer: true,
+  alpha: false, powerPreference: 'high-performance',
+});
+renderer.setPixelRatio(1);
+renderer.setSize(W, H, false);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.18;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x070a12);
+scene.fog = new THREE.FogExp2(0x070a12, 0.020);
+
+const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 400);
+
+/* ------------------------------------------------------------------ palettes
+   Each beat carries a palette name in the timeline. These are the exact
+   moods the render script had, expressed as light rigs.                     */
+const PALETTES = {
+  moon:    { bg:0x070c18, fog:0x070c18, hemiA:0x9dc4ff, hemiB:0x05070f,
+             key:0xbfd6ff, keyI:2.6, rim:0x6f9dff, rimI:2.2, fill:0xffc98a, fillI:0.9,  fogD:0.020 },
+  amber:   { bg:0x160d06, fog:0x160d06, hemiA:0xffcf9a, hemiB:0x0a0603,
+             key:0xffc073, keyI:3.2, rim:0xff8a3d, rimI:2.0, fill:0x7fa8ff, fillI:0.7,  fogD:0.024 },
+  crimson: { bg:0x12060a, fog:0x12060a, hemiA:0xff9a8a, hemiB:0x080305,
+             key:0xff5a4a, keyI:3.0, rim:0xff2030, rimI:2.6, fill:0x6f9dff, fillI:0.8,  fogD:0.022 },
+  dusk:    { bg:0x1a0d10, fog:0x1a0d10, hemiA:0xffb37a, hemiB:0x0d0608,
+             key:0xff9a5a, keyI:3.4, rim:0xff4a6a, rimI:2.2, fill:0x8fb0ff, fillI:0.6,  fogD:0.018 },
+  gold:    { bg:0x140f04, fog:0x140f04, hemiA:0xffe0a0, hemiB:0x0a0702,
+             key:0xffd166, keyI:3.6, rim:0xff9a2a, rimI:2.4, fill:0x9db8ff, fillI:0.7,  fogD:0.016 },
+  night:   { bg:0x04060e, fog:0x04060e, hemiA:0x7f9fd8, hemiB:0x02040a,
+             key:0xa8c4ff, keyI:2.2, rim:0x4a6fd8, rimI:2.8, fill:0xffd08a, fillI:1.0,  fogD:0.026 },
+  dawn:    { bg:0x141824, fog:0x141824, hemiA:0xffd0b0, hemiB:0x0a0d14,
+             key:0xffe0c0, keyI:3.0, rim:0x8fb0ff, rimI:1.8, fill:0xffb080, fillI:1.2,  fogD:0.017 },
+};
+
+/* ------------------------------------------------------------------- lights */
+const hemi   = new THREE.HemisphereLight(0xffffff, 0x000000, 1.4);
+const keyLt  = new THREE.DirectionalLight(0xffffff, 3.0);
+const rimLt  = new THREE.DirectionalLight(0xffffff, 2.4);
+const fillLt = new THREE.DirectionalLight(0xffffff, 1.0);
+const gateLt = new THREE.PointLight(0xffb060, 0, 26, 2);   // warm gate lamp
+const moonLt = new THREE.PointLight(0xbfd6ff, 0, 90, 1.6); // cold moon pool
+scene.add(hemi, keyLt, rimLt, fillLt, gateLt, moonLt, keyLt.target, rimLt.target);
+
+/* --------------------------------------------------------------- shared geo */
+function displacedPlane(w, d, seg, amp, freq, color, rough, metal) {
+  const g = new THREE.PlaneGeometry(w, d, seg, seg);
+  const p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i);
+    p.setZ(i, Math.sin(x * freq) * amp + Math.cos(y * freq * 0.85) * amp * 0.9
+             + Math.sin((x + y) * freq * 2.1) * amp * 0.28);
+  }
+  g.computeVertexNormals();
+  const m = new THREE.MeshStandardMaterial({ color, roughness: rough, metalness: metal });
+  const mesh = new THREE.Mesh(g, m);
+  mesh.rotation.x = -Math.PI / 2;
+  return mesh;
+}
+
+/* the field: dark tilled earth, ridged in rows */
+const field = displacedPlane(150, 150, 96, 0.42, 0.30, 0x120d08, 0.94, 0.02);
+scene.add(field);
+
+/* a second, closer furrow bank so the aerial has depth under it */
+const bank = displacedPlane(70, 26, 48, 0.55, 0.55, 0x171008, 0.96, 0.01);
+bank.position.set(-8, 0.08, -14);
+scene.add(bank);
+
+/* ------------------------------------------------------------- potato prop */
+function potato(scale = 1) {
+  const g = new THREE.SphereGeometry(0.34 * scale, 14, 10);
+  const p = g.attributes.position;
+  for (let i = 0; i < p.count; i++) {
+    const x = p.getX(i), y = p.getY(i), z = p.getZ(i);
+    const n = 1 + Math.sin(x * 7.1 + y * 5.3) * 0.10 + Math.cos(z * 6.7) * 0.08;
+    p.setXYZ(i, x * n * 1.28, y * n * 0.86, z * n);
+  }
+  g.computeVertexNormals();
+  return new THREE.Mesh(
+    g,
+    new THREE.MeshStandardMaterial({ color: 0x8a5a30, roughness: 0.86, metalness: 0.02 })
+  );
+}
+
+const potatoes = [];
+const rnd = (i) => { const v = Math.sin(i * 127.1 + 311.7) * 43758.5453; return v - Math.floor(v); };
+for (let i = 0; i < 130; i++) {
+  const s = 0.62 + rnd(i) * 0.55;
+  const m = potato(s);
+  const row = Math.floor(i / 9);
+  m.position.set(
+    (i % 9) * 1.55 - 6.2 + rnd(i + 7) * 0.5,
+    0.30 * s,
+    row * 2.35 - 9.5 + rnd(i + 13) * 0.7
+  );
+  m.rotation.set(rnd(i + 3) * 0.6, rnd(i + 5) * 6.28, rnd(i + 9) * 0.4);
+  scene.add(m);
+  potatoes.push(m);
+}
+
+/* ---------------------------------------------------------- the iron gate */
+const gate = new THREE.Group();
+const barMat = new THREE.MeshStandardMaterial({ color: 0x1a1a1e, roughness: 0.42, metalness: 0.92 });
+for (let i = 0; i < 15; i++) {
+  const bar = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.075, 5.2, 10), barMat);
+  bar.position.set(-5.6 + i * 0.8, 2.6, 0);
+  gate.add(bar);
+  const tip = new THREE.Mesh(new THREE.ConeGeometry(0.13, 0.42, 10), barMat);
+  tip.position.set(-5.6 + i * 0.8, 5.4, 0);
+  gate.add(tip);
+}
+for (const y of [0.45, 2.5, 4.7]) {
+  const rail = new THREE.Mesh(new THREE.BoxGeometry(11.5, 0.15, 0.15), barMat);
+  rail.position.set(0, y, 0);
+  gate.add(rail);
+}
+gate.position.set(0, 0, -20);
+scene.add(gate);
+
+/* ------------------------------------------------------------ soldier stand */
+const soldierGrp = new THREE.Group();
+scene.add(soldierGrp);
+
+/* --------------------------------------------------------- atmosphere bits */
+const dustCount = 900;
+const dustGeo = new THREE.BufferGeometry();
+const dustPos = new Float32Array(dustCount * 3);
+for (let i = 0; i < dustCount; i++) {
+  dustPos[i * 3]     = (rnd(i * 3) - 0.5) * 70;
+  dustPos[i * 3 + 1] = rnd(i * 3 + 1) * 16 + 0.3;
+  dustPos[i * 3 + 2] = (rnd(i * 3 + 2) - 0.5) * 70;
+}
+dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+const dust = new THREE.Points(dustGeo, new THREE.PointsMaterial({
+  color: 0xffd9a0, size: 0.075, transparent: true, opacity: 0.42,
+  blending: THREE.AdditiveBlending, depthWrite: false,
+}));
+scene.add(dust);
+
+/* moon disc + halo, used by the night beats */
+const moonDisc = new THREE.Mesh(
+  new THREE.CircleGeometry(3.4, 48),
+  new THREE.MeshBasicMaterial({ color: 0xdfe9ff, transparent: true, opacity: 0.85 })
+);
+moonDisc.position.set(14, 26, -58);
+scene.add(moonDisc);
+const moonHalo = new THREE.Mesh(
+  new THREE.CircleGeometry(9.5, 48),
+  new THREE.MeshBasicMaterial({ color: 0x8fb0ff, transparent: true, opacity: 0.10,
+    blending: THREE.AdditiveBlending, depthWrite: false })
+);
+moonHalo.position.copy(moonDisc.position).add(new THREE.Vector3(0, 0, 0.5));
+scene.add(moonHalo);
+
+/* --------------------------------------------------------------- GLB actors */
+const loader = new GLTFLoader();
+const loadGLTF = (u) => new Promise((res, rej) => loader.load(u, res, undefined, rej));
+
+let monarch = null, mask = null, guardA = null, guardB = null;
+let plantA = null, lantern = null, candleHolder = null;
+
+function normalize(root, targetLen, yOff = 0) {
+  const box = new THREE.Box3().setFromObject(root);
+  const size = new THREE.Vector3(), center = new THREE.Vector3();
+  box.getSize(size); box.getCenter(center);
+  const s = targetLen / Math.max(size.x, size.y, size.z, 0.001);
+  root.scale.setScalar(s);
+  root.position.set(-center.x * s, -center.y * s + yOff, -center.z * s);
+  root.traverse((o) => {
+    if (o.isMesh && o.material) {
+      o.material = o.material.clone();
+      o.material.roughness = Math.min(o.material.roughness ?? 0.6, 0.62);
+      o.material.envMapIntensity = 1.1;
+    }
+  });
+  return root;
+}
+
+window.__PEHRA_INIT__ = async (timeline) => {
+  const [headG, maskG, soldierG, plantG, lanternG, holderG] = await Promise.all([
+    loadGLTF('/assets/LeePerrySmith.glb'),
+    loadGLTF('/assets/venice_mask.glb'),
+    loadGLTF('/assets/Soldier.glb'),
+    loadGLTF('/assets/DiffuseTransmissionPlant.glb'),
+    loadGLTF('/assets/Lantern.glb'),
+    loadGLTF('/assets/GlassHurricaneCandleHolder.glb'),
+  ]);
+
+  /* the masked monarch: scanned head wearing the venetian mask */
+  monarch = new THREE.Group();
+  const head = normalize(SkeletonUtils.clone(headG.scene), 1.05, 0);
+  head.position.y += 0.62;
+  monarch.add(head);
+
+  mask = normalize(SkeletonUtils.clone(maskG.scene), 0.86, 0);
+  mask.position.set(0, 0.66, 0.30);
+  monarch.add(mask);
+  monarch.position.set(0, 1.05, -8.5);
+  scene.add(monarch);
+
+  /* two soldiers flanking the gate */
+  const mk = (x, z, rotY, targetLen) => {
+    const g = new THREE.Group();
+    const inner = SkeletonUtils.clone(soldierG.scene);
+    normalize(inner, targetLen, 0);
+    g.add(inner);
+    g.position.set(x, 0, z);
+    g.rotation.y = rotY;
+    scene.add(g);
+    return g;
+  };
+  guardA = mk(-6.4, -14.5, 0.52, 2.55);
+  guardB = mk( 6.4, -14.5, -0.52, 2.55);
+
+  /* vegetation along the furrows */
+  plantA = new THREE.Group();
+  for (let i = 0; i < 14; i++) {
+    const p = normalize(SkeletonUtils.clone(plantG.scene), 0.62 + rnd(i) * 0.35, 0);
+    p.position.set((i % 7) * 1.9 - 6.0 + rnd(i + 2) * 0.6, 0, -Math.floor(i / 7) * 2.6 - 3.4);
+    p.rotation.y = rnd(i + 4) * 6.28;
+    plantA.add(p);
+  }
+  scene.add(plantA);
+
+  /* lantern + hurricane holder as the practical light source */
+  lantern = normalize(SkeletonUtils.clone(lanternG.scene), 1.15, 0);
+  lantern.position.set(2.9, 0, -5.2);
+  scene.add(lantern);
+  candleHolder = normalize(SkeletonUtils.clone(holderG.scene), 0.34, 0);
+  candleHolder.position.set(2.9, 1.02, -5.2);
+  scene.add(candleHolder);
+};
+
+/* ----------------------------------------------------------------- palette */
+function applyPalette(name) {
+  const p = PALETTES[name] || PALETTES.moon;
+  scene.background = new THREE.Color(p.bg);
+  scene.fog = new THREE.FogExp2(p.fog, p.fogD);
+  hemi.color.setHex(p.hemiA); hemi.groundColor.setHex(p.hemiB); hemi.intensity = 1.35;
+  keyLt.color.setHex(p.key);   keyLt.intensity = p.keyI;
+  rimLt.color.setHex(p.rim);   rimLt.intensity = p.rimI;
+  fillLt.color.setHex(p.fill); fillLt.intensity = p.fillI;
+}
+
+/* ------------------------------------------------------------------- beats
+   One block per timeline beat id. Each receives local progress t in [0,1)
+   and is responsible for camera + actor motion. This is where the film's
+   movement lives, so every beat has a deliberate move rather than a drift.  */
+const BEATS = {
+  B01_AERIAL_FIELD(t) {                        // high drone drift over the field
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-9 + e * 7.5, 13.5 - e * 3.2, 13 - e * 6.5);
+    camera.lookAt(0, 0.4, -4 - e * 3);
+    keyLt.position.set(-14, 22, 8);
+    rimLt.position.set(16, 9, -26);
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 0; moonLt.intensity = 6;
+    moonLt.position.set(14, 26, -58);
+    dust.material.opacity = 0.34;
+  },
+  B02_GUARDED_FIELD(t) {                       // low track along the guards' boots
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-8.5 + e * 17, 0.62, -6.2 - e * 3.4);
+    camera.lookAt(-2 + e * 6, 2.1, -15.5);
+    keyLt.position.set(-7, 6, -8);
+    rimLt.position.set(9, 5, -22);
+    gateLt.position.set(0, 3.4, -20); gateLt.intensity = 26; moonLt.intensity = 0;
+    dust.material.opacity = 0.26;
+  },
+  B03_MASKED_TITLE(t) {                        // masked monarch push-in, gate closes
+    const e = 1 - Math.pow(1 - t, 3);
+    camera.position.set(0.2 - e * 0.1, 1.62 + e * 0.1, -3.2 - e * 2.6);
+    camera.lookAt(0, 1.62, -8.5);
+    monarch.position.z = -8.5 + e * 1.1;
+    monarch.rotation.y = Math.sin(t * 3.6) * 0.10;
+    keyLt.position.set(-5, 4.5, -5);
+    rimLt.position.set(4.5, 3.2, -12);
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 34; moonLt.intensity = 0;
+    dust.material.opacity = 0.30;
+  },
+  B04_HUNGRY_PARIS(t) {                        // wide, starving city at dusk
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(10 - e * 5, 4.2 - e * 1.0, 10 - e * 5);
+    camera.lookAt(0, 1.0, -6);
+    keyLt.position.set(18, 6, 6);
+    rimLt.position.set(-16, 5, -18);
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 18; moonLt.intensity = 0;
+    dust.material.opacity = 0.22;
+  },
+  B05_POTATO_PROMISE(t) {                      // macro over the potatoes
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-3.2 + e * 2.4, 0.82 + e * 0.3, 1.4 - e * 2.2);
+    camera.lookAt(0.4, 0.35, -2.6);
+    keyLt.position.set(-3, 5, 4);
+    rimLt.position.set(4, 3, -9);
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 20; moonLt.intensity = 0;
+    dust.material.opacity = 0.30;
+  },
+};
+
+/* fallback so no beat is ever a hard cut to nothing */
+const BEAT_IDS = Object.keys(BEATS);
+
+function beatFor(frame, timeline) {
+  const shots = timeline.shots;
+  for (let i = 0; i < shots.length; i++) {
+    const s = shots[i];
+    if (frame >= s.f_start && frame <= s.f_end) {
+      const span = Math.max(1, s.f_end - s.f_start);
+      return { shot: s, t: (frame - s.f_start) / span, idx: i };
+    }
+  }
+  return { shot: shots[shots.length - 1], t: 0, idx: shots.length - 1 };
+}
+
+/* ------------------------------------------------------------- frame driver */
+window.__PEHRA_FRAME__ = (frame) => {
+  const { shot, t } = beatFor(frame, window.__TIMELINE__);
+  applyPalette(shot.palette || 'moon');
+
+  const fn = BEATS[shot.id];
+  if (fn) fn(t, shot);
+
+  /* subtle global motion so even a static beat breathes */
+  const tt = frame / 30;
+  dust.rotation.y = tt * 0.012;
+  dust.position.y = Math.sin(tt * 0.7) * 0.10;
+  moonHalo.material.opacity = 0.09 + Math.sin(tt * 0.9) * 0.015;
+  lantern.position.y = Math.sin(tt * 1.7) * 0.012;
+  gateLt.intensity *= 1 + Math.sin(tt * 9.0) * 0.035;
+
+  renderer.render(scene, camera);
+};
+
+window.__SET_TIMELINE__ = (tl) => { window.__TIMELINE__ = tl; };
+</script>
+</body>
+</html>

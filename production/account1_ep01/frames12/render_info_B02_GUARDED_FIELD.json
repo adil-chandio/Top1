@@ -1,0 +1,21 @@
+{
+  "shot": "B02_GUARDED_FIELD",
+  "mode": "final",
+  "shot_frame_range": [
+    209,
+    367
+  ],
+  "render_frame_range": [
+    329,
+    367
+  ],
+  "samples": 4,
+  "resolution_percentage": 45,
+  "output_resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "bpy_version": "5.0.1",
+  "blender_binary": ""
+}
