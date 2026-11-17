@@ -1,14 +1,14 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 4,
-  "state": "batch4_fullrate_motion_and_sounddraft_integrated_finalreview_holds_open",
+  "state": "batch4_reviewcut_v3_macro_animation_captionterms_credits_ready_holds_open",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
     "1": "market_research_delivered_cleanup_independently_verified",
     "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
     "3": "written English script + generated63.68svoice + approximate acoustic cue map +66sanimatic available; conditional handoff with audioQC/finesync holds",
-    "4": "66sEnglish motionmixcut;180new24fpsreleaseframes +36herowarpframes;original3transitiontextures,technicalmaster; exactanatomy/listening/finalcraftQC not passed",
+    "4": "66sreviewcutv3:48newmacroframes+prior180release/36hero;protected-termcaptions/Englishcreditssheet; sampledvisual/full-decodepassed,finalanatomy/listeningQCnotpassed",
     "5": "not_started"
   },
   "current_artifacts": [
@@ -40,12 +40,15 @@
     "research/monarch_cam_gecko_batch4/CRAFT_APPLICATION_AND_VISUAL_PASS_ROMAN_URDU.md",
     "research/monarch_cam_gecko_batch4/MOTION_CUT_RECEIPT.json",
     "research/monarch_cam_gecko_batch4/MOTION_EXPORT_CHECKS.json",
-    "research/monarch_cam_gecko_batch4/SOUND_DRAFT_RECEIPT.json"
+    "research/monarch_cam_gecko_batch4/SOUND_DRAFT_RECEIPT.json",
+    "research/monarch_cam_gecko_batch4/REVIEW_CUT_RECEIPT.json",
+    "research/monarch_cam_gecko_batch4/REVIEW_V3_NOTES_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch4/CREDITS_AND_SOURCES_ENGLISH.md"
   ],
   "next_required": [
-    "exactanatomy/claw/LDT/biologicalrig hold remains; currentfootwarp is illustrative,not a measuredrig",
-    "remaining macroshot motion,scale-transitions/mobilelegibility/credits polish and craftcomparison",
-    "actual pronunciation/prosody/seam/effects balance listening plus final picture/audio/combinedQC before private delivery"
+    "bounded whole-cut science/picture/credits defect audit with explicit findings; exactanatomy/claw/LDT/biologicalrig hold not waived by schematiclabel",
+    "actual pronunciation/prosody/seam/effects-balance listening and full AV craftreview remain open",
+    "final mobilelegibility/credits/exportQC and privatefinaldelivery only after corrections/signoff"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -169,5 +172,14 @@
       "MOTION_CUT_RECEIPT.json",
       "MOTION_EXPORT_CHECKS.json"
     ]
+  },
+  "review_v3": {
+    "file": "studio/runtime/gecko/macro-pass/cut/gecko-english-review-cut-v3.mp4",
+    "macro_frames": 48,
+    "macro_fps": 24,
+    "inspection": "12storysamples+8decodedconsecutivemacroframes at17s; not wholeplayback",
+    "credits": "research/monarch_cam_gecko_batch4/CREDITS_AND_SOURCES_ENGLISH.md",
+    "receipt": "research/monarch_cam_gecko_batch4/REVIEW_CUT_RECEIPT.json",
+    "final_pass": false
   }
 }

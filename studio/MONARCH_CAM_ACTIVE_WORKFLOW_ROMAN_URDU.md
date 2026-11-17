@@ -100,3 +100,6 @@ English story66sanimatic actually exported540x960/24fps with63.68svoice,8beats a
 
 ## Latest full-rate motion and sound draft
 66sEnglishmotionmix exported:180newper-frame512pxreleaseposes at24fps plus36frameoriginalfootwarp. Transparentbackground removesgreycard; noopticalflow/frameblend.12samplestoryframes and currentexport8consecutivedecodedframes37.5s actually inspected; all8unique. Full decodepass. Original3quieteditorialtextures/noBGM;48kHzstereodraftmaster. AACmeasured-16.31LUFS/-4.81dBTP; these are technicalchecks,notlisteningapproval. Macro still,exactanatomy/claw/LDT,rigvalidation and pronunciation/prosody/seam/effects balance remain. See Batch4MOTION_CUT_RECEIPT.json.
+
+## Latest reviewcut v3
+Full66sEnglishcut now includes48newmacrocontactframes at24fps, replacesstaticuprightsetaeimage. Protectedscientifictermcaptions +Englishcredits/source sheet ready.12samplepoints and8decodedconsecutivemacroframes17s viewed on currentexport;full decodepass. Counts/angles/motion explicitlyschematic, not literal microscopy. Anatomy/claw/LDT/biologicalrig and actualaudio/listening/fullAVQC remain open. See Batch4REVIEW_V3_NOTES_ROMAN_URDU.md; nofinalpass.

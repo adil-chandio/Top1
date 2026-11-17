@@ -1,0 +1,30 @@
+{
+  "file": "studio/runtime/gecko/macro-pass/cut/gecko-english-review-cut-v3.mp4",
+  "sha256": "faaf5aef02f6f3c45d0697755a70ebf156637f07478fd4db667739f269306ee6",
+  "seconds": 66,
+  "resolution": [
+    540,
+    960
+  ],
+  "fps": 24,
+  "macro_frames": 48,
+  "macro_fps": 24,
+  "macro_active_start": 16.14,
+  "macro_kind": "qualitative original approach/contact animation; no measured setal engagement trajectory",
+  "caption_cues": "REVIEW_CAPTION_CUES.json; supplied script + approximate acoustic timing",
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "sound": "same technically mastered draft,not newly listening-reviewed",
+  "holds": [
+    "exactanatomy/claw/LDT/biologicalrig",
+    "pronunciation/prosody/seam/effects listening review",
+    "full picture/audio/combined craftQC and finalcreditsdelivery"
+  ],
+  "final_pass": false,
+  "decoded_macro_check": {
+    "start_seconds": 17,
+    "count": 8,
+    "unique_frames": 8,
+    "note": "pixel uniqueness is not biological validation"
+  }
+}
