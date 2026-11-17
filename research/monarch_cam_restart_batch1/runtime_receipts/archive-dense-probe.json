@@ -1,0 +1,99 @@
+{
+  "visual_review_complete": false,
+  "media_acquired": true,
+  "frames_decoded": true,
+  "metadata": [
+    {
+      "identifier": "how-a-car-engine-works",
+      "metadata": {
+        "title": "How A Car Engine Works",
+        "creator": null,
+        "description": "Animation showing how a car engine works.<br />",
+        "source": null,
+        "external-identifier": null,
+        "licenseurl": null
+      },
+      "files": [
+        {
+          "name": "How a Car Engine Works.mp4",
+          "size": "147417520",
+          "format": "MPEG4",
+          "source": "original",
+          "original": null
+        }
+      ],
+      "restricted": false
+    },
+    {
+      "identifier": "the-densest-city-on-earth",
+      "metadata": {
+        "title": "The Densest City On Earth",
+        "creator": "Neo",
+        "description": "kowloon walled city\u00a0",
+        "source": null,
+        "external-identifier": null,
+        "licenseurl": null
+      },
+      "files": [
+        {
+          "name": "The Densest City on Earth.mp4",
+          "size": "897487246",
+          "format": "MPEG4",
+          "source": "original",
+          "original": null
+        }
+      ],
+      "restricted": false
+    },
+    {
+      "identifier": "youtube_-_UCnZeeKO8qVdtkrA4-uKhtTw_2023",
+      "metadata": {
+        "title": "YouTube - UCnZeeKO8qVdtkrA4-uKhtTw (2023)",
+        "creator": "@animagraffs",
+        "description": "An archive of videos from the YouTube channel \"UCnZeeKO8qVdtkrA4-uKhtTw\" from 2023.<br /><br />* channel_id: UCnZeeKO8qVdtkrA4-uKhtTw<br />* uploader_id: @animagraffs<br />* uploader: Animagraffs<br />* url: <a href=\"https://www.youtube.com/channel/UCnZeeKO8qVdtkrA4-uKhtTw\" rel=\"ugc nofollow\">https://www.youtube.com/channel/UCnZeeKO8qVdtkrA4-uKhtTw</a>",
+        "source": null,
+        "external-identifier": null,
+        "licenseurl": null
+      },
+      "files": [],
+      "restricted": false
+    }
+  ],
+  "chosen_file": {
+    "name": "How a Car Engine Works.mp4",
+    "size": "147417520",
+    "format": "MPEG4",
+    "source": "original",
+    "original": null
+  },
+  "bytes": 147417520,
+  "sha256": "941bc082de2b59110810074f686c3dcf69cd96168c9d377cfb457c419620cb52",
+  "download_url": "https://archive.org/download/how-a-car-engine-works/How%20a%20Car%20Engine%20Works.mp4",
+  "probe": {
+    "duration": "474.639093",
+    "streams": [
+      {
+        "codec_type": "video",
+        "codec_name": "h264",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      },
+      {
+        "codec_type": "audio",
+        "codec_name": "aac",
+        "width": null,
+        "height": null,
+        "r_frame_rate": "0/0"
+      }
+    ]
+  },
+  "dense_windows_seconds": [
+    11.5,
+    53.5,
+    95.5,
+    446.5
+  ],
+  "dense_sheet_count": 4,
+  "temporary_media_deleted": true
+}

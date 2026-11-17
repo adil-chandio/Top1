@@ -17,4 +17,6 @@ jobs:
       - name: One temporary public archive reference
         env:
           GH_TOKEN: ${{ github.token }}
+          CLEAR_SHAS: f73a621,c657dc5
+          CLEANUP_ONLY: 'true'
         run: python research/monarch_cam_restart_batch1/archive_reference_probe.py
