@@ -1,0 +1,21 @@
+{
+  "source_url": "https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091839",
+  "retrieval_error": {
+    "type": "HTTPError",
+    "message": "HTTP Error 403: Forbidden"
+  },
+  "video_blocks": [],
+  "media_links": [],
+  "pixels_inspected": false,
+  "rights": "Publisher: Copyright2014 Annual Reviews, all rights reserved. Research only, no production reuse.",
+  "diagnostic_run_id": 44114656406,
+  "check_id": 134149427343,
+  "source_commit": "b756198",
+  "initial_failed_run_id": 44114244109,
+  "initial_failure_detail": "Job exited1; log retrieval EOF, original exception not recovered. Diagnostic run separately establishes403.",
+  "article_text_accessed": true,
+  "movie_acquired": false,
+  "frames_inspected": 0,
+  "status": "blocked_403_no_bypass",
+  "next_action": "Do not repeat publisher URL unchanged. Seek an explicitly public author/institution-hosted copy with independently verified provenance, or owner-supplied lawful reference. No access-control bypass."
+}

@@ -52,7 +52,8 @@
     "research/monarch_cam_gecko_batch2/DIGIT_IV_EVIDENCE_AND_EXTERIOR_GATE.md",
     "research/monarch_cam_gecko_batch2/DIGIT_REFERENCE_RECOVERY.json",
     "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_DECISION.md",
-    "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_INSPECTION.json"
+    "research/monarch_cam_gecko_batch2/CONTEXT_REFERENCE_INSPECTION.json",
+    "research/monarch_cam_gecko_batch2/LIVE_MOTION_PUBLISHER_DISCOVERY.json"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -356,7 +357,8 @@
     "context_photos_inspected": 3,
     "tokay_left_pes_identity_confirmed_for_context_photos": false,
     "live_motion_inspected": false,
-    "next_bounded_target": "Autumn2014 Tokay toe-peeling Video3 legitimate-source acquisition and actual inspection",
-    "production_approved": false
+    "next_bounded_target": "Find explicitly public author/institution motion reference with verified Tokay provenance; do not retry403 or infer motion from captions",
+    "production_approved": false,
+    "live_motion_acquisition": "Annual Reviews Video3 identified; direct retrieval diagnostic HTTP403, zero movie frames"
   }
 }
