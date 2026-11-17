@@ -1,0 +1,21 @@
+{
+  "shot": "B12_SUNSET_WITHDRAWAL",
+  "mode": "final",
+  "shot_frame_range": [
+    2399,
+    2768
+  ],
+  "render_frame_range": [
+    2439,
+    2478
+  ],
+  "samples": 4,
+  "resolution_percentage": 45,
+  "output_resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "bpy_version": "5.0.1",
+  "blender_binary": ""
+}

@@ -236,9 +236,14 @@ function largestMeshOnly(root) {
     const v = m.geometry?.attributes?.position?.count ?? 0;
     if (v > bestV) { bestV = v; best = m; }
   }
-  const keep = new THREE.Group();
-  keep.add(best.clone());
-  return keep;
+  /* Remove the other meshes from their parents rather than re-parenting the
+     winner, so the ancestor transform chain (which carries the real scale)
+     survives. Reparenting a bare mesh loses it and the asset shrinks to
+     centimetres. */
+  for (const m of meshes) {
+    if (m !== best && m.parent) m.parent.remove(m);
+  }
+  return root;
 }
 
 function boundsOf(root) {
