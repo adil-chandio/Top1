@@ -4,198 +4,198 @@
     [
       "launch",
       "ok",
-      0.4
+      1.8
     ],
     [
       "goto",
       "ok",
-      1
+      2.4
     ],
     [
       "webgl",
       "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
-      1
+      2.4
     ],
     [
       "asset:LeePerrySmith",
       "ok 9279v",
-      1.8
+      2.9
     ],
     [
       "asset:venice_mask",
       "ok 173876v",
-      1.8
+      2.9
     ],
     [
       "asset:Soldier",
       "ok 7434v",
-      1.8
+      2.9
     ],
     [
       "asset:DiffuseTransmissionPlant",
       "ok 50369v",
-      1.8
+      2.9
     ],
     [
       "asset:Lantern",
       "ok 4145v",
-      1.8
+      2.9
     ],
     [
       "asset:GlassHurricaneCandleHolder",
       "ok 2386v",
-      1.8
+      2.9
     ],
     [
       "init",
       "ok",
-      2.5
+      3.4
     ],
     [
       "soldier_scale",
-      "{\"base\":{\"x\":184.7945785522461,\"y\":44.38627815246582,\"z\":183.22029057517648},\"min\":{\"x\":-92.38803100585938,\"y\":-22.48186683654785,\"z\":-0.03700200095772743},\"center\":{\"x\":0.009258270263671875,\"y\":-0.2887277603149414,\"z\":91.57314328663051},\"scale\":null}",
-      2.5
+      "null",
+      3.4
     ],
     [
       "guard_probe",
-      "{\"children\":1,\"scale\":[1,1,1],\"pos\":[-6.4,0,-14.5],\"meshes\":[{\"name\":\"vanguard_Mesh\",\"localSize\":[184.795,44.386,183.22],\"worldScale\":[null,null,null]},{\"name\":\"vanguard_visor\",\"localSize\":[11.577,5.831,12.24],\"worldScale\":[null,null,null]}],\"bones\":49,\"skinned\":2}",
-      2.5
+      "{\"children\":1,\"scale\":[1,1,1],\"pos\":[-6.4,0,-14.5],\"meshes\":[{\"name\":\"vanguard_Mesh\",\"localSize\":[184.795,44.386,183.22],\"worldScale\":[0.01,0.01,0.01]},{\"name\":\"vanguard_visor\",\"localSize\":[11.577,5.831,12.24],\"worldScale\":[0.01,0.01,0.01]}],\"bones\":49,\"skinned\":2}",
+      3.4
     ],
     [
       "asset_bounds",
-      "{\"source\":{\"head\":{\"size\":[8.5,7.92,5.12],\"center\":[-0.01,0,0.01],\"skinned\":false},\"mask\":{\"size\":[0.03,0.06,0.02],\"center\":[0,0.03,0],\"skinned\":false},\"soldier\":{\"size\":[1.77,1.55,0.25],\"center\":[0,0.79,-0.01],\"skinned\":true},\"plant\":{\"size\":[0.7,0.82,0.65],\"center\":[-0.05,0.41,-0.09],\"skinned\":false},\"lantern\":{\"size\":[15.49,25.66,4.63],\"center\":[3.82,13.02,0],\"skinned\":false},\"holder\":{\"size\":[0.19,0.31,0.19],\"center\":[0,0.15,0],\"skinned\":false},\"ground\":{\"size\":[137.45,0.68,140],\"center\":[-1.27,-0.05,-45],\"skinned\":false},\"moonDisc\":{\"size\":[6.8,6.8,0],\"center\":[14,26,-58],\"skinned\":false},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20],\"skinned\":false}},\"placed\":{\"lantern\":{\"size\":[0.69,1.15,0.21],\"center\":[2.9,0,-5.2]},\"candleHolder\":{\"size\":[0.21,0.34,0.21],\"center\":[2.9,1.02,-5.2]},\"monarch\":{\"size\":[1.24,1.48,1.01],\"center\":[0,1.83,-8.37]},\"guardA\":{\"size\":[null,null,null],\"center\":[null,null,null]},\"guardB\":{\"size\":[null,null,null],\"center\":[null,null,null]},\"plantA\":{\"size\":[5.9,0.91,3.32],\"center\":[0.23,0,-4.83]},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20]}},\"ground_y\":-0.05,\"camera_range\":{\"near\":0.1,\"far\":400,\"fov\":42}}",
-      2.5
+      "{\"source\":{\"head\":{\"size\":[8.5,7.92,5.12],\"center\":[-0.01,0,0.01],\"skinned\":false},\"mask\":{\"size\":[0.03,0.06,0.02],\"center\":[0,0.03,0],\"skinned\":false},\"soldier\":{\"size\":[1.77,1.55,0.25],\"center\":[0,0.79,-0.01],\"skinned\":true},\"plant\":{\"size\":[0.7,0.82,0.65],\"center\":[-0.05,0.41,-0.09],\"skinned\":false},\"lantern\":{\"size\":[15.49,25.66,4.63],\"center\":[3.82,13.02,0],\"skinned\":false},\"holder\":{\"size\":[0.19,0.31,0.19],\"center\":[0,0.15,0],\"skinned\":false},\"ground\":{\"size\":[137.45,0.68,140],\"center\":[-1.27,-0.05,-45],\"skinned\":false},\"moonDisc\":{\"size\":[6.8,6.8,0],\"center\":[14,26,-58],\"skinned\":false},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20],\"skinned\":false}},\"placed\":{\"lantern\":{\"size\":[0.69,1.15,0.21],\"center\":[2.9,0,-5.2]},\"candleHolder\":{\"size\":[0.21,0.34,0.21],\"center\":[2.9,1.02,-5.2]},\"monarch\":{\"size\":[1.24,1.48,1.01],\"center\":[0,1.83,-8.37]},\"guardA\":{\"size\":[0.02,0.02,0.01],\"center\":[-6.4,-0.01,-14.5]},\"guardB\":{\"size\":[0.02,0.02,0.01],\"center\":[6.4,-0.01,-14.5]},\"plantA\":{\"size\":[5.9,0.91,3.32],\"center\":[0.23,0,-4.83]},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20]}},\"ground_y\":-0.05,\"camera_range\":{\"near\":0.1,\"far\":400,\"fov\":42}}",
+      3.4
     ],
     [
       "mask_meshes",
       "[{\"name\":\"yumao3_low_lambert4_0\",\"v\":37053},{\"name\":\"yumao3_low_lambert3_0\",\"v\":35303},{\"name\":\"yumao3_low_lambert2_0\",\"v\":77573},{\"name\":\"yumao3_low_lambert1_0\",\"v\":10585},{\"name\":\"zhu_low_lambert5_0\",\"v\":13362}]",
-      2.5
+      3.4
     ],
     [
       "hidden",
       "ground",
-      8.3
+      7.5
     ],
     [
       "hidden",
       "moonDisc",
-      12.2
+      9.6
     ],
     [
       "hidden",
       "moonHalo",
-      16.9
+      12.1
     ],
     [
       "hidden",
       "gate",
-      21.2
+      14.6
     ],
     [
       "hidden",
       "monarch",
-      24.2
+      16.8
     ],
     [
       "hidden",
       "guardA",
-      27.7
+      19
     ],
     [
       "hidden",
       "guardB",
-      31.3
+      21.1
     ],
     [
       "mask_placed",
       "{\"headSize\":[8.55,7.93,5.17],\"curioSize\":[0.033,0.065,0.018],\"headScale\":0.145,\"maskScale\":20.65,\"faceW\":1.24,\"maskPos\":[0.08,0.18,0.39]}",
-      31.3
+      21.1
     ],
     [
       "beat:B01_AERIAL_FIELD",
       "ok",
-      34.9
+      23.2
     ],
     [
       "beat:B02_GUARDED_FIELD",
       "ok",
-      35.5
+      23.5
     ],
     [
       "beat:B03_MASKED_TITLE",
       "ok",
-      39.4
+      25.6
     ],
     [
       "beat:B04_HUNGRY_PARIS",
       "ok",
-      42.7
+      27.4
     ],
     [
       "beat:B05_POTATO_PROMISE",
       "ok",
-      43.7
+      28
     ],
     [
       "beat:B06_POISONED_MIND",
       "ok",
-      47.5
+      30.3
     ],
     [
       "beat:B07_FREE_BASKETS",
       "ok",
-      48.5
+      30.8
     ],
     [
       "beat:B08_SILENT_PIVOT",
       "ok",
-      50
+      31.7
     ],
     [
       "beat:B09_FORTY_ACRES",
       "ok",
-      51
+      32.2
     ],
     [
       "beat:B10_WHISPERS",
       "ok",
-      52
+      32.8
     ],
     [
       "beat:B11_LAST_ORDER",
       "ok",
-      53.8
+      33.8
     ],
     [
       "beat:B12_SUNSET_WITHDRAWAL",
       "ok",
-      54.6
+      34.3
     ],
     [
       "beat:B13_NIGHT_THEFT",
       "ok",
-      58.2
+      36.4
     ],
     [
       "beat:B14_EMPTY_FIELD_DAWN",
       "ok",
-      61.6
+      38.3
     ],
     [
       "beat:B15_GRAVE_200_YEARS",
       "ok",
-      64.3
+      39.9
     ],
     [
       "beat:B16_FINAL_MONARCH",
       "ok",
-      65.9
+      40.8
     ],
     [
       "exception",
       "f is not defined",
-      65.9
+      40.8
     ]
   ],
-  "run": "44128229916"
+  "run": "44129748409"
 }
