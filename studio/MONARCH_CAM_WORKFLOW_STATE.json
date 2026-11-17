@@ -1,14 +1,14 @@
 {
   "channel": "Monarch Cam",
-  "active_batch": 3,
-  "state": "batch3_english_narration_generated_duration_measured_audioQC_finesync_pending",
+  "active_batch": 4,
+  "state": "batch4_story_animatic_assembly_started_craft_research_and_final_production_pending",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
     "1": "market_research_delivered_cleanup_independently_verified",
     "2": "conditional_go_script_design_only; full_anatomy_and_production_not_passed",
-    "3": "English written script and blueprint complete; user-selected voice09 synthesized;actual63.68s measured;audioQC and fine sync pending",
-    "4": "not_started",
+    "3": "written English script + generated63.68svoice + approximate acoustic cue map +66sanimatic available; conditional handoff with audioQC/finesync holds",
+    "4": "assembly_started: complete66sstoryanimatic; actual craft-reference inspection and final production NOT passed",
     "5": "not_started"
   },
   "current_artifacts": [
@@ -31,12 +31,16 @@
     "research/monarch_cam_gecko_batch2/TRANSPORT_CLEANUP_RECEIPT.json",
     "research/monarch_cam_gecko_batch2/BATCH2_EXIT_DECISION_ROMAN_URDU.md",
     "research/monarch_cam_gecko_batch2/ANATOMY_TRANSPORT_CLEANUP_RECEIPT.json",
-    "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ROMAN_URDU.md"
+    "research/monarch_cam_gecko_batch3/SCRIPT_AND_FILM_BLUEPRINT_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch3/ENGLISH_WORD_ALIGNMENT.json",
+    "research/monarch_cam_gecko_batch3/ENGLISH_CAPTION_CUES.json",
+    "research/monarch_cam_gecko_batch3/STORY_ANIMATIC_RECEIPT.json",
+    "research/monarch_cam_gecko_batch3/STORY_ANIMATIC_REVIEW_ROMAN_URDU.md"
   ],
   "next_required": [
-    "review English pronunciation/prosody and clip seam; final audio QC not yet passed",
-    "derive precise beat/word boundaries from actual audio,not writing estimates",
-    "resolve anatomy/rights holds and perform Batch4craft-reference inspection/full production"
+    "Batch4 actual craft-reference inspection leading to authored final shot/camera/edit choices",
+    "resolve carried anatomy/asset-rights and narration-pronunciation/prosody/seam holds",
+    "replace schematic storyboard with final production visuals; complete sound design and final QC before delivery"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -121,6 +125,19 @@
       30.48
     ],
     "audio_listening_QC": "pending; not claimed",
-    "receipt": "research/monarch_cam_gecko_batch3/NARRATION_TIMING_RECEIPT.json"
+    "receipt": "research/monarch_cam_gecko_batch3/NARRATION_TIMING_RECEIPT.json",
+    "word_alignment": "PocketSphinx5.1.1 transcript-constrained approximate acoustic boundaries; not independent speech/listening QC"
+  },
+  "story_animatic": {
+    "seconds": 66,
+    "resolution": [
+      540,
+      960
+    ],
+    "fps": 24,
+    "file": "studio/runtime/gecko/story-animatic/gecko-english-story-animatic-v1.mp4",
+    "full_decode": "exit0,noerrors",
+    "visual_check": "12sampled story frames; not full playback/audioQC",
+    "receipt": "research/monarch_cam_gecko_batch3/STORY_ANIMATIC_RECEIPT.json"
   }
 }

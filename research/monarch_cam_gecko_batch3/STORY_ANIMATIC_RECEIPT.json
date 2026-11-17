@@ -1,0 +1,75 @@
+{
+  "file": "studio/runtime/gecko/story-animatic/gecko-english-story-animatic-v1.mp4",
+  "sha256": "faf4cc96b840cb8b31f000f38896b69626705ba2df0f1cba9ea8b0e0da3a80d0",
+  "seconds": 66,
+  "fps": 24,
+  "size": [
+    540,
+    960
+  ],
+  "audio_seconds": 63.68,
+  "end_hold_seconds": 2.32,
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "beat_bounds_method": "approximate transcript-constrained acoustic alignment; not listening-verified",
+  "beat_bounds": [
+    [
+      "B1",
+      0,
+      5.71,
+      "STRONG GRIP.",
+      "HOW DOES IT LET GO?"
+    ],
+    [
+      "B2",
+      5.71,
+      11.08,
+      "NOT JUST STRENGTH",
+      "CONTROL"
+    ],
+    [
+      "B3",
+      11.08,
+      20.27,
+      "UNDER THE TOE",
+      "SETAE"
+    ],
+    [
+      "B4",
+      20.27,
+      26.59,
+      "NOT SUCTION",
+      "CLOSE CONTACT"
+    ],
+    [
+      "B5",
+      26.59,
+      33.2,
+      "DIRECTION MATTERS",
+      "PROXIMAL SHEAR"
+    ],
+    [
+      "B6",
+      33.2,
+      44.02,
+      "TIP-FIRST RELEASE",
+      "CONTACT BREAKS IN SEQUENCE"
+    ],
+    [
+      "B7",
+      44.02,
+      52.19,
+      "DIGITAL HYPEREXTENSION",
+      "TOE MOVEMENT"
+    ],
+    [
+      "B8",
+      52.19,
+      66,
+      "GRIP + RELEASE",
+      "WORKING TOGETHER"
+    ]
+  ],
+  "status": "story animatic only, final production/anatomy/audioQC not passed",
+  "no_bgm_or_sfx": true
+}
