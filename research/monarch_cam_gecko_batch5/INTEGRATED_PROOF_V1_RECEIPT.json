@@ -1,0 +1,41 @@
+{
+  "movie": "studio/runtime/gecko/integrated-proof-v1/gecko-integrated-visual-proof-v1.mp4",
+  "sha256": "5f9ddb40edc6d3909c3fc74d5c21ca5e630faccfc5637a31a0927ebcf6337337",
+  "frames": 120,
+  "fps": 24,
+  "seconds": 5,
+  "resolution": [
+    540,
+    960
+  ],
+  "audio": "silent visual-only proof; approved narration unchanged",
+  "anatomy_approved": false,
+  "native_av_approved": false,
+  "production_scope": "explicit user permission for4\u20136s proof only",
+  "decode_exit": 0,
+  "decode_errors": "",
+  "png_frames": 120,
+  "unique_motion_region_pngs": 80,
+  "motion_region_frame_indices": [
+    20,
+    99
+  ],
+  "intentional_holds": "initial0\u201319 and final100\u2013119; not a unique-frames-everywhere claim",
+  "minimum_hero_skin_z": 0.029999999999999985,
+  "geometry_qc_limit": "hero skin only; does not certify lamella/substrate contact, collision-free whole scene or anatomy",
+  "sampled_frame_review_pending": false,
+  "native_speed_review_by_assistant": false,
+  "user_visual_approval": false,
+  "sampled_frames_opened": [
+    0,
+    24,
+    48,
+    60,
+    72,
+    96,
+    119
+  ],
+  "inspection_method": "read_file image viewer: corrected full frames0/60/119 plus six-pose sheet0/24/48/72/96/119",
+  "review_report": "INTEGRATED_PROOF_V1_REVIEW.md",
+  "quality_approved": false
+}
