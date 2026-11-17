@@ -71,6 +71,25 @@ try {
      inspected from the branch without waiting on a full render */
   const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
   log('soldier_scale', JSON.stringify(await page.evaluate(()=>window.__SOLDIER_SCALE__ || null)));
+  log('guard_probe', JSON.stringify(await page.evaluate(()=>{
+    const g = window.__DEBUG__.guardA;
+    if (!g) return 'no guardA';
+    g.updateWorldMatrix(true, true);
+    const out = { children: g.children.length, scale: g.scale.toArray(),
+                  pos: g.position.toArray(), meshes: [], bones: 0, skinned: 0 };
+    const THREE = window.__THREE__;
+    g.traverse(n => {
+      if (n.isSkinnedMesh) { out.skinned++; out.bones = Math.max(out.bones, n.skeleton.bones.length); }
+      if (n.isMesh) {
+        n.geometry.computeBoundingBox();
+        const bb = n.geometry.boundingBox;
+        out.meshes.push({ name: n.name || n.type,
+          localSize: [bb.max.x-bb.min.x, bb.max.y-bb.min.y, bb.max.z-bb.min.z].map(v=>+v.toFixed(3)),
+          worldScale: n.getWorldScale(new (n.position.constructor)()).toArray().map(v=>+v.toFixed(4)) });
+      }
+    });
+    return out;
+  })));
   const ab = await page.evaluate(()=>window.__ASSET_BOUNDS__ || null);
   log('asset_bounds', JSON.stringify(ab));
   const meshes = await page.evaluate(()=>window.__MASK_MESHES__ || null);
