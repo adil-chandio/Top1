@@ -3,7 +3,7 @@
   "active_batch": 1,
   "state": "research_reopened_in_progress",
   "topic_locked": false,
-  "candidate_seatbelt": "held_provisional",
+  "candidate_seatbelt": "not_active_selection; historical only",
   "batch_status": {
     "1": "in_progress",
     "2": "paused_not_passed",
@@ -16,11 +16,14 @@
     "research/monarch_cam_restart_batch1/REOPENED_MARKET_FINDINGS_ROMAN_URDU.md"
   ],
   "next_required": [
-    "broad channel cohorts and typical performers",
-    "primary performance verification",
-    "actual thumbnail inspection",
-    "evidence-derived original shortlist"
+    "broad channel landscape and evidence-based relevance screening",
+    "channel audience/promise/topic/format inventory",
+    "within-channel performance cohorts",
+    "actual title-thumbnail comparisons",
+    "opportunities then original shortlist"
   ],
   "autonomous_background_workers_running": false,
-  "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt"
+  "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
+  "research_start": "fresh_broad_channel_discovery_before_any_deep_channel_comparison",
+  "prior_pair_study": "historical auxiliary evidence; excluded from fresh-start completion"
 }
