@@ -1,0 +1,16 @@
+{
+  "image": "studio/runtime/gecko/rebuilt-hero-v2/rebuilt-gecko-hero-v2.png",
+  "sha256": "7971a3bacd7e737a23941750b36e0b535ee964e8e4a37ec305807433acf6a011",
+  "resolution": [
+    720,
+    1280
+  ],
+  "type": "actual3D render; look-development still only",
+  "measured_anatomy": false,
+  "motion_validated": false,
+  "user_approved": false,
+  "third_party_image_textures": false,
+  "pixels_inspected": true,
+  "self_review": "Not a passed hero: raised scales read as regular beads, digit/palm/limb transitions remain synthetic, finite masonry ends against empty background. Do not animate or promote this asset as beyond prior Bear standard.",
+  "quality_gate_passed": false
+}

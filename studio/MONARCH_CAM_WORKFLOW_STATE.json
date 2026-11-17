@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "integrated_proof_v1_rejected_prior_episode_baseline_audited_no_new_render",
+  "state": "enhancement_requested_fresh_hero_rendered_self_review_failed_asset_gate",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -66,7 +66,9 @@
     "research/monarch_cam_gecko_batch5/build_integrated_proof.py",
     "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_RECEIPT.json",
     "research/monarch_cam_gecko_batch5/INTEGRATED_PROOF_V1_REVIEW.md",
-    "research/monarch_cam_craft_forensics/PRIOR_EPISODE_BASELINE_ACTUAL_AUDIT.md"
+    "research/monarch_cam_craft_forensics/PRIOR_EPISODE_BASELINE_ACTUAL_AUDIT.md",
+    "research/monarch_cam_gecko_batch5/build_rebuilt_hero.py",
+    "research/monarch_cam_gecko_batch5/REBUILT_HERO_V2_RECEIPT.json"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -423,5 +425,14 @@
     "full_films_watched": false,
     "audio_listened_by_assistant": false,
     "new_render_authorized": false
+  },
+  "enhanced_rebuild": {
+    "user_requested": true,
+    "source": "research/monarch_cam_gecko_batch5/build_rebuilt_hero.py",
+    "receipt": "research/monarch_cam_gecko_batch5/REBUILT_HERO_V2_RECEIPT.json",
+    "status": "fresh_original_3D_hero_rendered_and_opened_not_passed",
+    "full_animation_started": false,
+    "approved_audio_unchanged": true,
+    "next": "Replace primitive-based exterior approach with suitable sculpted/source-grounded asset; do not spend full animation render on bead-scale/tube geometry."
   }
 }
