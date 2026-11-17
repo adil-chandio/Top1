@@ -346,51 +346,34 @@ window.__PEHRA_INIT__ = async (timeline) => {
                              faceW:+faceW.toFixed(2),
                              maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
   /* two soldiers flanking the gate */
-  /* Soldier.glb's geometry is ~184 units tall and carries a 0.0134 scale on an
-     inner node. Measuring it through the world matrix bakes that 0.0134 in, so
-     the derived multiplier came out 100x too small and the guards were 3 cm.
-     Measure the raw geometry instead, then let the clone's own scale stand. */
-  const soldierBase = (() => {
-    const b = new THREE.Box3();
-    soldierG.scene.updateWorldMatrix(true, false);
-    soldierG.scene.traverse((o) => {
-      if (!o.isMesh || !o.geometry?.attributes?.position) return;
-      const g = o.geometry;
-      if (!g.boundingBox) g.computeBoundingBox();
-      b.union(g.boundingBox);
-    });
-    const sz = new THREE.Vector3(), c = new THREE.Vector3();
-    b.getSize(sz); b.getCenter(c);
-    return { size: sz, center: c, min: b.min.clone(), max: b.max.clone() };
-  })();
-  /* the asset already scales itself; only the extra factor toward 2.45 m is ours */
-  soldierG.scene.updateWorldMatrix(true, true);
-  const assetScale = new THREE.Vector3();
-  soldierG.scene.traverse((o) => { if (o.isMesh) { o.getWorldScale(assetScale); return; } });
-  const assetHeight = soldierBase.size[1] * (assetScale.y || 1);
-  const soldierScale = 2.45 / Math.max(assetHeight, 1e-6);
-  const mk = (x, z, rotY) => {
+  /* Soldier.glb is authored lying in its rest pose: geometry is 184 x 44 x 183
+     with the longest axis horizontal, plus a 0.0134 scale on an inner node.
+     Stand it up, then size it to 2.45 m. */
+  const mkGuard = (x, z, rotY) => {
     const g = new THREE.Group();
     const inner = SkeletonUtils.clone(soldierG.scene);
-    inner.scale.setScalar(soldierScale);
-    inner.position.set(
-      -soldierBase.center[0] * soldierScale,
-      -soldierBase.min[1] * soldierScale,
-      -soldierBase.center[2] * soldierScale
-    );
-    const wrap = new THREE.Group();
-    wrap.add(inner);
-    g.add(wrap);
+    const b = new THREE.Box3();
+    inner.updateWorldMatrix(true, true);
+    inner.traverse((o) => {
+      if (!o.isMesh || !o.geometry) return;
+      if (!o.geometry.boundingBox) o.geometry.computeBoundingBox();
+      b.union(o.geometry.boundingBox);
+    });
+    const sz = new THREE.Vector3(); b.getSize(sz);
+    /* stand it up: the long horizontal axis becomes the vertical one */
+    inner.rotation.x = -Math.PI / 2;
+    const heightAfter = Math.max(sz.z, sz.y);        // what becomes vertical
+    const k = 2.45 / Math.max(heightAfter * 0.0134, 1e-6);
+    inner.scale.multiplyScalar(k);
+    inner.position.set(0, 0, 0);
+    g.add(inner);
     g.position.set(x, 0, z);
     g.rotation.y = rotY;
     scene.add(g);
-    window.__SOLDIER_SCALE__ = { base: soldierBase.size, min: soldierBase.min,
-                                 center: soldierBase.center,
-                                 scale: +soldierScale.toFixed(4) };
     return g;
   };
-  guardA = mk(-6.4, -14.5, 0.52);
-  guardB = mk( 6.4, -14.5, -0.52);
+  guardA = mkGuard(-6.4, -14.5, 0.52);
+  guardB = mkGuard( 6.4, -14.5, -0.52);
 
   /* vegetation along the furrows */
   plantA = new THREE.Group();

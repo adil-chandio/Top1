@@ -180,7 +180,6 @@ jobs:
   render:
     name: "WebGL frames and encode"
     needs: [bootstrap, probe]
-    if: github.event_name == 'workflow_dispatch' || vars.PEHRA_RENDER == '1'
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
