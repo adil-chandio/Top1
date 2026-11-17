@@ -346,11 +346,29 @@ window.__PEHRA_INIT__ = async (timeline) => {
                              faceW:+faceW.toFixed(2),
                              maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
   /* two soldiers flanking the gate */
-  /* Soldier.glb measures ~1.85 units tall with its own inner scale, but the
-     scene-wide normaliser is shared with props that carry wildly different
-     internal units, so the guards get an explicit height instead. */
-  const soldierBase = boundsOf(soldierG.scene);
-  const soldierScale = 2.45 / Math.max(soldierBase.size[1], 1e-6);
+  /* Soldier.glb's geometry is ~184 units tall and carries a 0.0134 scale on an
+     inner node. Measuring it through the world matrix bakes that 0.0134 in, so
+     the derived multiplier came out 100x too small and the guards were 3 cm.
+     Measure the raw geometry instead, then let the clone's own scale stand. */
+  const soldierBase = (() => {
+    const b = new THREE.Box3();
+    soldierG.scene.updateWorldMatrix(true, false);
+    soldierG.scene.traverse((o) => {
+      if (!o.isMesh || !o.geometry?.attributes?.position) return;
+      const g = o.geometry;
+      if (!g.boundingBox) g.computeBoundingBox();
+      b.union(g.boundingBox);
+    });
+    const sz = new THREE.Vector3(), c = new THREE.Vector3();
+    b.getSize(sz); b.getCenter(c);
+    return { size: sz, center: c, min: b.min.clone(), max: b.max.clone() };
+  })();
+  /* the asset already scales itself; only the extra factor toward 2.45 m is ours */
+  soldierG.scene.updateWorldMatrix(true, true);
+  const assetScale = new THREE.Vector3();
+  soldierG.scene.traverse((o) => { if (o.isMesh) { o.getWorldScale(assetScale); return; } });
+  const assetHeight = soldierBase.size[1] * (assetScale.y || 1);
+  const soldierScale = 2.45 / Math.max(assetHeight, 1e-6);
   const mk = (x, z, rotY) => {
     const g = new THREE.Group();
     const inner = SkeletonUtils.clone(soldierG.scene);
