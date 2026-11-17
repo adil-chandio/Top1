@@ -202,3 +202,4 @@ drwxr-xr-x 2 runner runner    4096 Nov 17 04:54 .
 drwxr-xr-x 7 runner runner    4096 Nov 17 04:51 ..
 -rw-r--r-- 1 runner runner 1910608 Nov 17 04:54 f_000400.png
 -rw-r--r-- 1 runner runner     358 Nov 17 04:52 render_info_B03_MASKED_TITLE.json
+ls: cannot access 'production/account1_ep01/frames': No such file or directory
