@@ -1,0 +1,10 @@
+{
+  "tool": "pytube",
+  "video_id": "ZQvfHyfgBtA",
+  "media_acquired": false,
+  "frames_decoded": false,
+  "visual_review_complete": false,
+  "version": "15.0.0",
+  "error_type": "HTTPError",
+  "http_status": 400
+}
