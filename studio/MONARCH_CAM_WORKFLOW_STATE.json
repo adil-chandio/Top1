@@ -1,12 +1,12 @@
 {
   "channel": "Monarch Cam",
-  "active_batch": 1,
-  "state": "market_decision_delivered_operational_cleanup_pending",
-  "topic_locked": false,
+  "active_batch": 2,
+  "state": "gecko_direction_user_approved_science_anatomy_technical_test_in_progress",
+  "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
-    "1": "research_delivered_operational_close_pending",
-    "2": "initial_primary_science_started_not_passed",
+    "1": "market_research_delivered_cleanup_independently_verified",
+    "2": "user_approved_direction_science_anatomy_rights_test_not_passed",
     "3": "not_started",
     "4": "not_started",
     "5": "not_started"
@@ -24,12 +24,14 @@
     "research/monarch_cam_restart_batch1/THUMBNAIL_INSPECTION_REGISTER.json",
     "research/monarch_cam_restart_batch1/SECONDARY_PLATFORM_EVIDENCE.json",
     "research/monarch_cam_restart_batch1/TIERZOO_PRIMARY_CONTROLS.json",
-    "research/monarch_cam_restart_batch1/BATCH2_GECKO_INITIAL_CLAIM_LEDGER_ROMAN_URDU.md"
+    "research/monarch_cam_restart_batch1/BATCH2_GECKO_INITIAL_CLAIM_LEDGER_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch2/SCIENCE_MOTION_UPDATE_ROMAN_URDU.md",
+    "research/monarch_cam_gecko_batch2/ASSET_AND_REFERENCE_LEDGER.json"
   ],
   "next_required": [
-    "verify queued remote thumbnail cleanup receipt; report private upload/checksum/permissions verified",
-    "complete gecko primary science/anatomy/rights ledger",
-    "execute and inspect hardest credible articulated toe-contact/release technical test"
+    "verify gecko transport cleanup after workflow",
+    "species-specific continuous toe/foot geometry and anatomy/rights review",
+    "engagement and shear-loading test, then anatomically grounded release"
   ],
   "autonomous_background_workers_running": false,
   "note": "Agent workflow checkpoint; not an executable coordinator migration or stage-pass receipt",
@@ -47,7 +49,7 @@
   "secondary_original_posts": 7,
   "recommended_batch2_candidate": "gecko directional attachment and release; tokay scope provisional",
   "thumbnail_cleanup_run": 44036505583,
-  "thumbnail_cleanup_status": "queued after first partial cleanup failure; recheck pending",
+  "thumbnail_cleanup_status": "workflow failed; independent API reread verified all59 payloads clear; THUMBNAIL_FINAL_CLEANUP_RECEIPT.json",
   "market_report_drive": {
     "file_id": "1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl",
     "url": "https://drive.google.com/file/d/1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl/view",
@@ -56,5 +58,11 @@
     "md5": "46d4df9c4384195d011abeb5232390fb",
     "local_md5_matches": true,
     "permissions_verified": "one owner user; no anyone/domain permission; no sharing changed"
-  }
+  },
+  "runtime_recovery": {
+    "run": 44038761446,
+    "last_verified_status": "success; archive and individual libraries hash verified; bpy4.2 imported",
+    "render_exists": true
+  },
+  "toe_test": "36frame original schematic rendered, revised3times, consecutive10\u201318 inspected; not species-anatomy/production pass"
 }

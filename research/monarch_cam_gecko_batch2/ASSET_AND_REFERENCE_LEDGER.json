@@ -16,6 +16,48 @@
       "production_reuse_status": "not selected for on-screen use; source licence verified but derivative share-alike obligations and species identity must be resolved if used",
       "attribution_if_used": "Lamellae \u2014 FurryScaly, CC BY-SA 2.0, via Wikimedia Commons/Flickr; indicate crop/other changes; no endorsement implied",
       "local_copy_deleted_after_notes": true
+    },
+    {
+      "id": "research-figure-Hu2012-fig5",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC3479896/",
+      "figure": 5,
+      "copy_sha256": "eb27b171610222f85c45c1f547f600fedff10f1b2ec6410793a3a73f6d9e585f",
+      "actual_pixels_inspected": true,
+      "caption_crosschecked": "article chunk4 identifies DH distal-to-proximal and shoe-disabled limb-motion proximal-to-distal",
+      "observations_roman_urdu": "Left orange toe pad curls back at distal tip, yellow setae detach sequentially, red separation-front arrow moves toward proximal side. Right grey gecko-shoe restricts bending; limb lift starts opposite front. This is an authored schematic, not live motion/anatomical measurement.",
+      "license": "no production reuse permission established; copyright Royal Society2012",
+      "production_reuse_status": "research-only; do not insert figure into film",
+      "local_copy_deleted_after_notes": true
+    },
+    {
+      "id": "S2-fig2",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c243/2607396/f9aa1be74e14/rsif20071077f02.jpg",
+      "source_size": [
+        457,
+        377
+      ],
+      "source_sha256": "4eb5f2fa1a82f851c7cc6554f88a3e106c901607971d6ce211ce4289848b10fe",
+      "copy_sha256": "eb89f97acffc70bb39a628921ef1a0d28a91f9d0fbf5e7a3a0965f326ccaff32",
+      "rights": "research inspection only; no production reuse licence established",
+      "actual_pixels_inspected": true,
+      "production_reuse_status": "reference only; no production licence established",
+      "local_copy_deleted_after_notes": true,
+      "observations": "Fig1: five splayed digits, transverse lamellae, progressively magnified arrays/seta/spatula; Fig2: toe distal/proximal orientation and isolated sensor/slide paths30/150deg. Neither is a filmed whole-foot gait sequence."
+    },
+    {
+      "id": "S2-fig1",
+      "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/c243/2607396/8e8151f1124b/rsif20071077f01.jpg",
+      "source_size": [
+        446,
+        430
+      ],
+      "source_sha256": "bb956b947b164ed37ee849f04603afceaed3c61e1bf2ef1cd38a96a2845faaa3",
+      "copy_sha256": "b4426bc08362b5f1a96c9fb1887eb72de42d2ed9ff76570115c18348e5a7a708",
+      "rights": "research inspection only; no production reuse licence established",
+      "actual_pixels_inspected": true,
+      "production_reuse_status": "reference only; no production licence established",
+      "local_copy_deleted_after_notes": true,
+      "observations": "Fig1: five splayed digits, transverse lamellae, progressively magnified arrays/seta/spatula; Fig2: toe distal/proximal orientation and isolated sensor/slide paths30/150deg. Neither is a filmed whole-foot gait sequence."
     }
   ],
   "production_licensed_gecko_model": null,
