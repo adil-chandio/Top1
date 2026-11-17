@@ -115,3 +115,6 @@ Unconstrained PocketSphinx defaultmodelrecognition run; scientifictermconfusions
 
 ## Latest V6 caption readability / V5 full-duration sample survey
 CurrentV5all1584framesdecoded/66one-secondframesactuallyviewed4sheets; this is sampled picture survey,not nativeAVplayback.8captionheuristicflags correctedV6:34→29exactwordgroups,min0.7s,max20cps. No voice rewrite; AACstream copied/hashidentical. V6full-decodepassed/8decodedcorrectionpoints+55.1s supplementactuallyviewed. Latestreviewcandidate nowcaption-readability/gecko-english-review-cut-v6.mp4. V5ZIP remainshistorical,notupdatedV6. Listening/anatomy/biologicalrig/nativeAVcraft/finalsignoffheld. See Batch5V6_READABILITY_REVIEW_ROMAN_URDU.md.
+
+## Latest V6 interactive review desk / honest stopping boundary
+Native-speedreviewdeskavailableatport8765;exactV6hashverifiedatstartup.8timestampedreviewareas/player/credits/download/local-onlydraft/exportJSON. Noautopassfromseek/playback;exportsretainfinalsignoff/publicationfalse.6HTTP/rangetests+JSsyntax+dependency-freeDOMharnesspassed;nonativebrowser/listeningtestclaimed. NoV7ornewmediaregeneration. Actual listening/nativewholeAVobservationsandqualifiedbiologicalreview are now the next required evidence;technicalchecks cannot replacethem. Routine “Aage” does not clear these holds. Server/procedure:research/monarch_cam_gecko_batch5/review_desk/README.md.

@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "batch5_v5_whole_duration_sample_survey_v6_caption_readability_corrected_finalheld",
+  "state": "batch5_v6_review_desk_available_perceptual_and_specialist_signoff_blocked",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -220,5 +220,17 @@
     "aac_identical_to_v5": true,
     "actual_listening": false,
     "final_pass": false
+  },
+  "review_desk": {
+    "path": "research/monarch_cam_gecko_batch5/review_desk",
+    "port": 8765,
+    "process_id": "monarch-cam-v6-review-desk-e190827c",
+    "candidate": "v6",
+    "six_http_tests": "PASS",
+    "frontend_DOM_harness": "PASS; not native browser playback",
+    "agent_listening_performed": false,
+    "human_review_received": false,
+    "final_pass": false,
+    "next_evidence_required": "actual listening/native whole AV observations; qualified biology review for exact anatomy claims; do not automatically clear holds from exported review notes"
   }
 }
