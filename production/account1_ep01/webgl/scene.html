@@ -584,6 +584,11 @@ window.__HIDE__ = (name, on) => {
   const m = { field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, soldierGrp, lantern }[name];
   if (m) m.visible = !on;
 };
+window.__ONLY_ALL_OFF__ = (on) => {
+  for (const h of Object.values({ field, bank, moonDisc, moonHalo, dust, gate, monarch, guardA, guardB, planet: null })) {
+    if (h) h.visible = !on;
+  }
+};
 </script>
 </body>
 </html>

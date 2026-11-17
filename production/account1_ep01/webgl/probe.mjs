@@ -75,7 +75,7 @@ try {
   /* B01 keeps showing a smeared plate in the upper left. Render it with the
      candidates hidden one at a time so the culprit names itself instead of
      being guessed at. */
-  for (const hide of ['bank', 'moonDisc', 'field', 'dust']) {
+  for (const hide of ['bank','moonDisc','moonHalo','field','dust','gate','monarch','guardA','guardB']) {
     await page.evaluate((h) => {
       window.__HIDE__(h, true);
       window.__PEHRA_FRAME__(104);
