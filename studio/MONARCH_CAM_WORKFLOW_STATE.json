@@ -298,12 +298,22 @@
       "Revised English treatment before production"
     ],
     "watch_acquisition": {
-      "run_id": 44085898064,
-      "source_commit": "0bd51e20efc586b68caa3cdee530aa261f609aca",
-      "last_verified_status": "queued",
+      "run_id": 44087213323,
+      "source_commit": "0d551e616fca419c11f75493b09abb92107cb429",
+      "last_verified_status": "queued; exact attempt44085898064 failed, broader metadata recovery pending",
       "actual_watch_visual_inspection": false,
       "progress_report": "research/monarch_cam_craft_forensics/WATCH_STUDY_PLAN_AND_PROGRESS_ROMAN_URDU.md"
     },
-    "draft_treatment": "research/monarch_cam_craft_forensics/GECKO_RESEARCH_DERIVED_SHOT_TREATMENT_DRAFT.md"
+    "draft_treatment": "research/monarch_cam_craft_forensics/GECKO_RESEARCH_DERIVED_SHOT_TREATMENT_DRAFT.md",
+    "staged_cleanup": {
+      "run_id": 44086750704,
+      "conclusion": "failure",
+      "independent_api_readback": {
+        "authorized_checks": 176,
+        "cleared": 151,
+        "uncleared": 25
+      },
+      "recovery": "idempotent resume with retry/backoff, pending"
+    }
   }
 }

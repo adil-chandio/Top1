@@ -139,3 +139,5 @@ Run44082684752: Microchips aur Storm dono acquisition successful. 73 hash-verifi
 
 ### Next independent long acquisition queued
 Animagraffs watch primary YouTube page refreshed; actual-media run44085898064 last checked QUEUED (no new visual claim). Dense decoder now72 consecutive frames/seek with timestamp overlays. `WATCH_STUDY_PLAN_AND_PROGRESS_ROMAN_URDU.md` has retrieval plan/limits. `GECKO_RESEARCH_DERIVED_SHOT_TREATMENT_DRAFT.md` is design-only seven-beat causal treatment, not production approval or voice alignment. Prior73sheet cleanup requested separately, success not yet verified.
+
+Watch exact run44085898064 now FAILED(metadata/no matching media), no frames. Broader creator-metadata recovery44087213323 queued; prior queued note historical. Cleanup44086750704 partial failure:151/176image checks independently cleared,25remaining; retry/backoff idempotent resume prepared. Detailed progress file authoritative for these attempts.

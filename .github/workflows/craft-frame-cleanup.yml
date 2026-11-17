@@ -18,7 +18,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           python - <<'PY'
-          import json,os,urllib.request
+          import json,os,time,urllib.request,urllib.error
           from pathlib import Path
           evidence=json.loads(Path('research/monarch_cam_craft_forensics/STAGED_RECOVERY_48f4e79.json').read_text())
           assert len(evidence['recovered_sheets'])==73
@@ -28,7 +28,15 @@ jobs:
           headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
           def call(path,body=None):
               r=urllib.request.Request(base+path,headers=headers,data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
-              with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
+              for attempt in range(5):
+                  try:
+                      with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
+                  except urllib.error.HTTPError as e:
+                      if e.code not in (403,429,500,502,503,504) or attempt==4:raise
+                      time.sleep(min(60,int(e.headers.get('Retry-After',5*(attempt+1)))))
+                  except (TimeoutError,urllib.error.URLError):
+                      if attempt==4:raise
+                      time.sleep(3*(attempt+1))
           found={};page=1
           while True:
               items=call('/commits/'+evidence['source_commit']+'/check-runs?per_page=100&page='+str(page))['check_runs']
@@ -40,6 +48,8 @@ jobs:
               page+=1
           assert set(found)==authorized, 'Must resolve every authorized transport before changing any'
           for ident in sorted(authorized):
+              if (found[ident]['output']['summary'] or '').startswith('Temporary image payload cleared'):continue
+              time.sleep(0.3)
               call('/check-runs/'+str(ident),{'output':{'title':'Inspected reference frame transport cleared','summary':'Temporary image payload cleared after SHA256 recovery and actual visual inspection. Local review records: STAGED_RECOVERY_48f4e79.json; findings: MICROCHIPS_STORM_ACTUAL_FORENSICS_ROMAN_URDU.md. No reuse rights implied.'}})
           verified=[]
           for ident in sorted(authorized):

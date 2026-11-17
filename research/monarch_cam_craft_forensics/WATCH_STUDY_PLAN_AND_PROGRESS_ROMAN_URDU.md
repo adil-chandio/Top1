@@ -21,3 +21,5 @@ Primary-page chapters: Intro0:00, Crown0:44, Mainspring1:36, Wheel Train2:14, Je
 
 ## Subsequent result — exact attempt completed
 Run44085898064 FAILED at metadata; exact identifier no bounded media, narrow metadata search numFound0. Receipt saved in WATCH_EXACT_IDENTIFIER_ATTEMPT.json. No watch frames acquired/inspected. Materially different recovery now scans broader creator search (up to25metadata results, first12 unrestricted candidates) for matching original-ID/watch filenames; no unrelated film substitution. Original queued note above is historical.
+
+Broader recovery run44087213323 (0d551e6), watcher watch-reference-recovery-ed105a9e, last seen queued. Prior-sheet cleanup44086750704 failed partially: independent API pagination found176authorized image checks,151cleared/25remaining. Failure logs host inaccessible; annotations only report exit1, so exact exception unknown (transient/rate-limit not proven). Idempotent resume now skips cleared IDs and adds bounded HTTP retry/backoff; no cleanup completion claim.
