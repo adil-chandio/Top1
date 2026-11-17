@@ -8,6 +8,7 @@ TARGETS={
  'microchips':('branch-education','How are Microchips Made_ 🖥️🛠️ CPU Manufacturing Process Steps.ia.mp4',[0,124,154,470,626,1096,1398]),
  'storm':('youtube-ZcEyC-Ixf-g','ZcEyC-Ixf-g.webm',[0,3.5,10,18,26,34,40,46]),
  'watch':('youtube-9_QsCLYs2mY',None,[0,43,95,133,249,397]),
+ 'diesel':('youtube-cIQ0yIZgQeE',None,[31,157,191,239,255,898,1019]),
  'microchips-actions':('branch-education','How are Microchips Made_ 🖥️🛠️ CPU Manufacturing Process Steps.ia.mp4',[346,357,375,1120,1141,1447]),
 }
 BASE='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
@@ -42,6 +43,9 @@ def main():
   if meta.get('is_dark') or m.get('access-restricted-item'):raise RuntimeError('restricted source')
   if name is None:
    candidates=[f for f in meta.get('files',[]) if f['name'].lower().endswith(('.mp4','.webm')) and 0<int(f.get('size',0))<=180000000]
+   if not candidates and LABEL!='watch':
+    result['available_media']=[{k:f.get(k) for k in ('name','size','format')} for f in meta.get('files',[]) if f['name'].lower().endswith(('.mp4','.webm'))]
+    raise RuntimeError('No eligible bounded media at independent original identifier; available files preserved')
    if not candidates:
     query='animagraffs OR "9_QsCLYs2mY"'
     discovery=getjson('https://archive.org/advancedsearch.php?'+urllib.parse.urlencode({'q':query,'output':'json','rows':25,'fl[]':['identifier','title','creator']},doseq=True))
