@@ -1,36 +1,66 @@
 {
-  "verdict": "FAIL",
+  "verdict": "PASS",
   "steps": [
     [
       "launch",
       "ok",
-      1.6
+      1.4
     ],
     [
       "goto",
       "ok",
-      2.2
+      2
     ],
     [
       "webgl",
       "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
-      2.2
+      2
+    ],
+    [
+      "asset:LeePerrySmith",
+      "ok 9279v",
+      2.8
+    ],
+    [
+      "asset:venice_mask",
+      "ok 173876v",
+      2.8
+    ],
+    [
+      "asset:Soldier",
+      "ok 7434v",
+      2.8
+    ],
+    [
+      "asset:DiffuseTransmissionPlant",
+      "ok 50369v",
+      2.8
+    ],
+    [
+      "asset:Lantern",
+      "ok 4145v",
+      2.8
+    ],
+    [
+      "asset:GlassHurricaneCandleHolder",
+      "ok 2386v",
+      2.8
     ],
     [
       "init",
-      "ERR THREE.GLTFLoader: No DRACOLoader instance provided.",
-      2.3
+      "ok",
+      3.4
     ],
     [
       "frame",
-      "ERR Cannot read properties of null (reading 'position')",
-      2.4
+      "ok",
+      3.8
     ],
     [
       "screenshot",
       "ok",
-      2.5
+      6.5
     ]
   ],
-  "run": "44085464988"
+  "run": "44086840382"
 }
