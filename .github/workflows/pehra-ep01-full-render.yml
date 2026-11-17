@@ -17,7 +17,7 @@ concurrency:
 env:
   BLENDER_VERSION: "4.2.15"
   BLENDER_DIR: "blender-4.2.15-linux-x64"
-  SAMPLES: "24"
+  SAMPLES: "12"
 
 jobs:
   bootstrap:
@@ -180,7 +180,7 @@ jobs:
           : > "$SHARD_LOG"
           chmod +x "$BLENDER_BIN"
           FRAME=$F_START
-          CHUNK=13
+          CHUNK=30
           RC_TOTAL=0
           while [ "$FRAME" -le "$F_END" ]; do
             LAST=$((FRAME + CHUNK - 1)); [ "$LAST" -gt "$F_END" ] && LAST=$F_END
