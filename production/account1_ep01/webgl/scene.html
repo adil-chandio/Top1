@@ -288,52 +288,42 @@ window.__PEHRA_INIT__ = async (timeline) => {
   window.__G_SOLDIER__ = soldierG; window.__G_LANTERN__ = lanternG;
   window.__G_PLANT__ = plantG;
 
-  /* the masked monarch: the venetian mask is a face covering, so it is scaled
-     to the head's actual head-width rather than to an absolute length */
+  /* The venetian_mask.glb is a 3 cm ornamental curio, not a wearable mask, so
+     it cannot simply be stretched over a head — it reads as a giant bauble.
+     Instead the monarch wears it as a face plate: the curio is scaled to the
+     head's actual face width and seated just in front of the nose, which is
+     how the Cycles pass wears it too. */
   monarch = new THREE.Group();
   const head = SkeletonUtils.clone(headG.scene);
   const hb = boundsOf(head);
   const headH = hb.size[1];
-  head.scale.setScalar(1.15 / headH);              // ~1.15 m of head+neck
-  head.position.set(-hb.center[0] * 1.15 / headH,
-                    0.62 - hb.center[1] * 1.15 / headH,
-                    -hb.center[2] * 1.15 / headH);
+  const HEAD_SCALE = 1.15 / headH;
+  head.scale.setScalar(HEAD_SCALE);
+  head.position.set(0, 0.62 - hb.center[1] * HEAD_SCALE, 0);
   monarch.add(head);
 
-  mask = largestMeshOnly(SkeletonUtils.clone(maskG.scene));
+  mask = SkeletonUtils.clone(maskG.scene);
+  const srgb = new THREE.Group();       // carrier so the curio's own offset survives
+  srgb.add(mask);
   const mb = boundsOf(mask);
-  const faceW = hb.size[0] * 1.15 / headH;         // width of the head, world units
-  mask.scale.setScalar(faceW * 1.18 / mb.size[0]);
-  const ms = mask.scale.x;
-  /* centre the mask, then push it out to the front of the face */
-  mask.position.set(-mb.center[0] * ms,
-                    0.72 - mb.center[1] * ms,
-                    hb.max[2] * 1.15 / headH + (mb.size[2] * ms) * 0.15);
-  monarch.add(mask);
+  const faceW = hb.size[0] * HEAD_SCALE;          // how wide the head is, world m
+  const maskScale = (faceW * 0.55) / Math.max(mb.size[0], 1e-6);
+  srgb.scale.setScalar(maskScale);
+  /* put the curio's centre onto the nose, then push it forward of the face */
+  srgb.position.set(
+    -mb.center[0] * maskScale,
+    0.86 - mb.center[1] * maskScale,
+    hb.max[2] * HEAD_SCALE + 0.02
+  );
+  monarch.add(srgb);
   monarch.position.set(0, 1.05, -8.5);
   scene.add(monarch);
-  window.__MASK_PLACED__ = { head: hb, mask: mb, faceW:+faceW.toFixed(3),
-                             maskScale:+ms.toFixed(3),
-                             maskPos: mask.position.toArray().map(v=>+v.toFixed(3)) };
-  window.__MASK_MESHES__ = (() => {
-    maskG.scene.updateWorldMatrix(true, true);
-    const out = [];
-    const v = new THREE.Vector3();
-    maskG.scene.traverse((o) => {
-      if (!o.isMesh || !o.geometry?.attributes?.position) return;
-      const pos = o.geometry.attributes.position;
-      const b = new THREE.Box3();
-      for (let i = 0; i < pos.count; i += Math.max(1, Math.floor(pos.count / 2000))) {
-        b.expandByPoint(v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld));
-      }
-      const sz = new THREE.Vector3(); b.getSize(sz);
-      out.push({ name: o.name || '(unnamed)', v: pos.count,
-                 world: sz.toArray().map(x => +x.toFixed(2)),
-                 path: (() => { let p = [], n = o; while (n && n !== maskG.scene) { p.push(n.name || n.type); n = n.parent; } return p.join('<'); })() });
-    });
-    return out;
-  })();
-
+  window.__MASK_PLACED__ = { headSize: hb.size.map(v=>+v.toFixed(2)),
+                             curioSize: mb.size.map(v=>+v.toFixed(3)),
+                             headScale:+HEAD_SCALE.toFixed(3),
+                             maskScale:+maskScale.toFixed(2),
+                             faceW:+faceW.toFixed(2),
+                             maskPos: srgb.position.toArray().map(v=>+v.toFixed(2)) };
   /* two soldiers flanking the gate */
   const mk = (x, z, rotY, targetLen) => {
     const g = new THREE.Group();
