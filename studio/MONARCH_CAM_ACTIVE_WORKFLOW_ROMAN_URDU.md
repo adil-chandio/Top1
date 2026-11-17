@@ -26,6 +26,17 @@ Video ke andar ki deep inspection — story execution, cuts/transitions, animati
 | 4 — Video craft research + full production | Relevant reference videos actually inspect: story execution, editing/cuts/transitions, animation, camera, pacing, captions aur visual payoff; findings se authored production decisions. Articulated realistic animation, lighting, purposeful camera, custom graphics/compositing/typography, narration, selective SFX/music, complete edit/mix | Puri coherent video + source project/assets/provenance; hardest-shot proof ko full film substitute nahin banana | NOT STARTED |
 | 5 — QC, corrections aur private delivery | Picture-only, audio-only, combined craft review; scientific/visual checks; references ke muqable specific defects; title/thumb promise; credits, export/full decode, private existing Drive folder upload | Exact final-file/hash-bound review findings; corrections and recheck; export specs, rights/credits, Drive receipt/link. No publication | NOT STARTED |
 
+## Persistent problem-solving aur no-silent-omissions contract
+Yeh rule har batch/department par apply hai: ideas, research, science, script, assets, production, sound, editing aur QC.
+
+- Pehli access/tool/runtime failure final conclusion nahin. Root cause diagnose karo; official docs, maintained GitHub projects, alternate legitimate sources, compatible runtimes aur implementation routes investigate karo. Relevant solutions actually run/test aur output inspect karo; source-only dismissal nahin.
+- Same failed command ko blindly repeat nahin: har retry evidence se informed ho. Ek candidate ka bounded trial budget overall zaroori requirement ko abandon karne ka bahana nahin; approach badlo aur successful knowledge preserve karo.
+- Har required item ki checklist aur evidence/status rakho. Missing requirement ko silently omit, weaker substitute se relabel, ya unresolved ko passed nahin banana. Known defect par correction aur relevant recheck zaroori.
+- User ko routine debugging/credentials/files/worker setup delegate karke rukna nahin. Independently available tools/routes se meaningful recovery execute karo. Actual authorization/rights/credentials boundary ko bypass nahin karna; no paid spend/publication permission implied.
+- Progress report mein sirf 'nahin hua' par baat khatam nahin: tested routes, root-cause evidence, materially different recovery aur actual outcome preserve karo. Genuinely unresolved state honestly label hogi, fabricated success ya false certainty nahin.
+- Zero mistakes/perfect accuracy ki unverifiable guarantee nahin; target thorough verified completion hai. Actual inspection, cross-checks, defect correction aur no knowingly skipped requirements se quality establish karni hai.
+- Successful workaround ko reproducible steps/version/evidence/limitations ke saath save karo, taake agle stage mein wahi discovery dobara zero se na karni pade.
+
 ## Har batch ke andar structure
 1. Input/evidence inspect karo; text-only discovery ko watched/heard evidence na banao.
 2. Actual work execute karo; artifact aur findings preserve karo.
