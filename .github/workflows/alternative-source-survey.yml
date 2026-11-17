@@ -1,0 +1,19 @@
+name: Alternative public reference source survey
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/alternative_source_survey.py, .github/workflows/alternative-source-survey.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  survey:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Query public creator sites, archive and dataset APIs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/monarch_cam_restart_batch1/alternative_source_survey.py
