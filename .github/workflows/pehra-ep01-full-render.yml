@@ -17,7 +17,7 @@ concurrency:
 env:
   BLENDER_VERSION: "4.2.15"
   BLENDER_DIR: "blender-4.2.15-linux-x64"
-  SAMPLES: "12"
+  SAMPLES: "8"
 
 jobs:
   bootstrap:
@@ -36,10 +36,10 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --quiet requests numpy scipy soundfile pydub
-      - name: Build the full-script timeline
-        run: python -u production/account1_ep01/plan_full.py
       - name: Restore the Urdu narration performance
         run: python -u production/account1_ep01/restore_narration.py
+      - name: Build the full-script timeline
+        run: python -u production/account1_ep01/plan_full.py
       - name: Build the full-script soundtrack and gate on narration
         run: |
           set -euo pipefail
@@ -85,7 +85,7 @@ jobs:
           import json, re
           from pathlib import Path
           tl = json.loads(Path("production/account1_ep01/build/timeline_full.json").read_text())
-          SHARD = 30          # ~30 frames/shard, ~20 min at 24 samples with OIDN
+          SHARD = 150         # 4123 frames / 150 = 28 shards, under the job cap
           rows = []
           for s in tl["shots"]:
               slug = re.sub(r"[^a-z0-9]+", "_", s["id"].lower()).strip("_")
@@ -128,7 +128,7 @@ jobs:
     name: "Render ${{ matrix.shot.id }} @ ${{ matrix.shot.f_start }}-${{ matrix.shot.f_end }}"
     needs: bootstrap
     runs-on: ubuntu-latest
-    timeout-minutes: 175
+    timeout-minutes: 340
     strategy:
       fail-fast: false
       max-parallel: 20
