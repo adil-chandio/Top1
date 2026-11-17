@@ -1,0 +1,19 @@
+name: Market thumbnail inspection recovery
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/thumbnail_recovery.py, .github/workflows/market-thumbnail-recovery.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  thumbnails:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: python -m pip install Pillow==11.3.0
+      - run: python research/monarch_cam_restart_batch1/thumbnail_recovery.py
+        env:
+          GH_TOKEN: ${{ github.token }}
