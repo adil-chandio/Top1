@@ -1,0 +1,35 @@
+name: Clear inspected craft research frame transport
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [.github/workflows/craft-frame-cleanup.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  cleanup:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 8
+    steps:
+      - name: Clear only locally recovered and inspected short sheets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json,os,urllib.request
+          base='https://api.github.com/repos/'+os.environ['GITHUB_REPOSITORY']
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json','Content-Type':'application/json'}
+          def call(path,body=None):
+              r=urllib.request.Request(base+path,headers=headers,data=None if body is None else json.dumps(body).encode(),method='GET' if body is None else 'PATCH')
+              with urllib.request.urlopen(r,timeout=30) as f:return json.load(f)
+          ids=[];page=1
+          while True:
+              items=call('/commits/c8d388e767bebd2ea725f92baa36d2301c2e1f35/check-runs?per_page=100&page='+str(page))['check_runs']
+              for c in items:
+                  if not c['name'].startswith('cf-short-image-'):continue
+                  call('/check-runs/'+str(c['id']),{'output':{'title':'Inspected reference frame transport cleared','summary':'Temporary image payload cleared after local SHA256 recovery and actual inspection. Text findings retained in PENCIL_ACTUAL_FORENSICS_ROMAN_URDU.md; no reuse rights implied.'}})
+                  ids.append(c['id'])
+              if len(items)<100:break
+              page+=1
+          print(json.dumps({'cleared':len(ids),'ids':ids,'scope':'short sheets only; long not touched'}))
+          PY

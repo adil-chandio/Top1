@@ -1,0 +1,61 @@
+grid_second,inspection,visible_observation,evidence_sheet,timing_limit,audio_listened
+0,actually viewed,Desk/chair/monitor/shelf establish room,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+1,actually viewed,Desk closer; workstation remains context,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+2,actually viewed,Blue pencil isolated above tool holder,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+3,actually viewed,Blue pencil fills more frame,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+4,actually viewed,Whole pencil cutaway; downward action arrow,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+5,actually viewed,Inner Barrel callout on green assembly,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+6,actually viewed,Full cutaway retains action direction,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+7,actually viewed,Lower mechanism closer; Spring callout,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+8,actually viewed,Spring and finger region remain readable,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+9,actually viewed,Technical note appears above mechanism,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+10,actually viewed,Plastic Fingers callout added,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+11,actually viewed,Lead/graphite callout begins appearing,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+12,actually viewed,Lead/Graphite callout readable below,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+13,actually viewed,Same cutaway orientation; component labels retained,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+14,actually viewed,Flexing Slots added near teal fingers,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+15,actually viewed,Ring callout begins; lower region closer,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+16,actually viewed,Yellow Ring label visible,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+17,actually viewed,Close mechanism; ring/fingers relationship retained,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+18,actually viewed,Ring and teal fingers hold visible relationship,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+19,actually viewed,Same orientation; detailed outer housing retained,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+20,actually viewed,Ring/Flexing Slots labels remain localized,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+21,actually viewed,Relative ring/finger state changes slightly,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+22,actually viewed,"Mechanism remains close, no new scene",survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+23,actually viewed,Lead below finger structure remains visible,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+24,actually viewed,Ring/finger region shifts relative to housing,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+25,actually viewed,Blue directional cues near finger region,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+26,actually viewed,Lower finger state visibly advanced,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+27,actually viewed,Ring shoulder region emphasized by unchanged orientation,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+28,actually viewed,Magenta/local taper region visible,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+29,actually viewed,Taper callout appears,survey-01.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+30,actually viewed,Taper label retained near shoulder,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+31,actually viewed,Finger/ring state differs from earlier close view,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+32,actually viewed,Fingers spread/open compared with earlier state,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+33,actually viewed,Open finger state retained,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+34,actually viewed,"Same close state, lead remains central",survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+35,actually viewed,Open/repositioned lower finger region,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+36,actually viewed,Stable close explanation continues,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+37,actually viewed,Ring/finger contact region remains focus,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+38,actually viewed,"Same stage, changed local finger position",survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+39,actually viewed,Same cutaway; no unrelated angle inserted,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+40,actually viewed,Finger and ring alignment continues,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+41,actually viewed,Open-state mechanism still readable,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+42,actually viewed,Small click annotation near ring,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+43,actually viewed,Click annotation retained as event marker,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+44,actually viewed,View begins returning to wider spring region,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+45,actually viewed,Wider mechanism and Spring callout,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+46,actually viewed,Spring/finger region in wider view,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+47,actually viewed,Same orientation during reset explanation,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+48,actually viewed,Wider cutaway persists,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+49,actually viewed,Finger assembly nearer reset configuration,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+50,actually viewed,Blue arrow cues near finger ring,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+51,actually viewed,Finger/lead alignment reset progression,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+52,actually viewed,Assembly remains in outer pencil context,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+53,actually viewed,Reset phase remains visible,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+54,actually viewed,Whole mechanism shown before exterior return,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+55,actually viewed,Blue external pencil replaces cutaway,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+56,actually viewed,Exterior pencil floating against original room,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+57,actually viewed,Pencil in original workstation context,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+58,actually viewed,Branch Education end branding appears,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false
+59,actually viewed,End branding and exterior pencil retained,survey-02.jpg,"fps1 resampled label; about +/-0.5s, not exact cut time",false

@@ -1,0 +1,865 @@
+{
+  "source_commit": "c8d388e767bebd2ea725f92baa36d2301c2e1f35",
+  "receipts": [
+    {
+      "check_id": 134023575388,
+      "name": "cf-zack-receipt-youtube-caf8mwyrYeY",
+      "receipt": {
+        "identifier": "youtube-caf8mwyrYeY",
+        "actual_visual_inspection": false,
+        "media_acquired": false,
+        "metadata": {
+          "title": null,
+          "creator": null,
+          "description": null,
+          "source": null,
+          "date": null,
+          "licenseurl": null,
+          "external-identifier": null
+        },
+        "restricted": false,
+        "media_files": [],
+        "error_type": "RuntimeError",
+        "error": "No small unrestricted media"
+      }
+    },
+    {
+      "check_id": 134023274354,
+      "name": "cf-short-receipt-branch-education",
+      "receipt": {
+        "identifier": "branch-education",
+        "actual_visual_inspection": false,
+        "media_acquired": true,
+        "metadata": {
+          "title": "Branch Education",
+          "creator": "Branch Education",
+          "description": "<div>How do Microchips work?\u00a0 How does your smartphone camera work?\u00a0 How does Bluetooth work?\u00a0 At Branch Education, we dive deep into the science, engineering, and technology in our modern world using 3D animation and incredibly detailed models.\u00a0</div><div><br /></div><div>Founder of Branch Education: Theodore J Tablante</div><div><br /></div><div>Want to support in-depth engineering and technology education? Support us on Patreon:\u00a0 http://www.patreon.com/brancheducation</div><div><br /></div><div>Modeling is done in Blender 4.2.3 LTS Eevee and Cycles Render Engine, Adobe Premiere, and Reaper</div><div><br /></div><div><a href=\"https://branch.education/\" rel=\"ugc nofollow\">https://branch.education/</a></div><div><br /></div><div><i>Go <a href=\"https://www.youtube.com/@BranchEducation\" rel=\"ugc nofollow\">watch the real thing</a> as long as it is still exist, this is just an archive for history and for the coming generations!</i></div>",
+          "source": null,
+          "date": "2018",
+          "licenseurl": null,
+          "external-identifier": null
+        },
+        "restricted": false,
+        "media_files": [
+          {
+            "name": "3-Way Light Switches Explained!! Engineering Inside Light Switches and How They Work.ia.mp4",
+            "size": "93408876",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "3-Way Light Switches Explained!! Engineering Inside Light Switches and How They Work.mp4",
+            "size": "93408876",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How Do Noise Canceling Headphones Work_.ia.mp4",
+            "size": "213766459",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How Do Noise Canceling Headphones Work_.mp4",
+            "size": "213766459",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How Do Touchscreens Work_.ia.mp4",
+            "size": "134992523",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How Do Touchscreens Work_.mp4",
+            "size": "134992523",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How Do Trees Extract CO2_.ia.mp4",
+            "size": "92876271",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How Do Trees Extract CO2_.mp4",
+            "size": "92876271",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How are Images Compressed_  [46MB \u2198\u2198 4.07MB] JPEG In Depth.ia.mp4",
+            "size": "358436352",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How are Images Compressed_  [46MB \u2198\u2198 4.07MB] JPEG In Depth.mp4",
+            "size": "358436352",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.ia.mp4",
+            "size": "161987008",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.mp4",
+            "size": "2372987217",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do CPU Water Coolers Work_ #pcbuild #watercooling #computerhardware.ia.mp4",
+            "size": "4450153",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do CPU Water Coolers Work_ #pcbuild #watercooling #computerhardware.mp4",
+            "size": "67283208",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do CPUs Work_  The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb.ia.mp4",
+            "size": "213507404",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do CPUs Work_  The Engineering that Runs the Digital World \ud83d\udee0\ufe0f\u2699\ufe0f\ud83d\udcbb.mp4",
+            "size": "2359541123",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Computer Keyboards Work_ \ud83e\udd14\u2328\u2328\ud83d\udee0.ia.mp4",
+            "size": "64964807",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Computer Keyboards Work_ \ud83e\udd14\u2328\u2328\ud83d\udee0.mp4",
+            "size": "560073235",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Desktop Computers Work_ #pcbuild #computerhardware.ia.mp4",
+            "size": "5580662",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Desktop Computers Work_ #pcbuild #computerhardware.mp4",
+            "size": "96398361",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Digital and Analog Clocks Work_.ia.mp4",
+            "size": "318424229",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Digital and Analog Clocks Work_.mp4",
+            "size": "318424229",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Electron Microscopes Work_ \ud83d\udd2c\ud83d\udee0\ud83d\udd2c Taking Pictures of Atoms.ia.mp4",
+            "size": "116328093",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Electron Microscopes Work_ \ud83d\udd2c\ud83d\udee0\ud83d\udd2c Taking Pictures of Atoms.mp4",
+            "size": "862564568",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Graphics Cards Work_  Exploring GPU Architecture.ia.mp4",
+            "size": "166805488",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Graphics Cards Work_  Exploring GPU Architecture.mp4",
+            "size": "2217376040",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Hard Disk Drives Work_  \ud83d\udcbb\ud83d\udcbf\ud83d\udee0.ia.mp4",
+            "size": "275126988",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Hard Disk Drives Work_  \ud83d\udcbb\ud83d\udcbf\ud83d\udee0.mp4",
+            "size": "275126988",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do LEDs & Batteries Work_.ia.mp4",
+            "size": "227933921",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do LEDs & Batteries Work_.mp4",
+            "size": "227933921",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Lithium-ion Batteries Work_.ia.mp4",
+            "size": "224329931",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Lithium-ion Batteries Work_.mp4",
+            "size": "224329931",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Mechanical Pencils Work_ #shorts.ia.mp4",
+            "size": "13829875",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Mechanical Pencils Work_ #shorts.mp4",
+            "size": "13829875",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Power Supplies Work_ #pcbuild #powersupply #gamingpc.ia.mp4",
+            "size": "4547871",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Power Supplies Work_ #pcbuild #powersupply #gamingpc.mp4",
+            "size": "72421033",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do SSDs Work_  How to fit 3 WEEKS of TV in a microchip the size of a dime!!  Explained in 3min..ia.mp4",
+            "size": "80999098",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do SSDs Work_  How to fit 3 WEEKS of TV in a microchip the size of a dime!!  Explained in 3min..mp4",
+            "size": "80999098",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do SSDs Work_ _ How does your Smartphone store data_ _  Insanely Complex Nanoscopic Structures!.ia.mp4",
+            "size": "358261578",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do SSDs Work_ _ How does your Smartphone store data_ _  Insanely Complex Nanoscopic Structures!.mp4",
+            "size": "358261578",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Scroll Wheels Work_ \ud83d\uddb1\ud83d\udee0\ud83d\udd2c.ia.mp4",
+            "size": "61388342",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Scroll Wheels Work_ \ud83d\uddb1\ud83d\udee0\ud83d\udd2c.mp4",
+            "size": "283360981",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Smartphone CPUs Work_  __  Inside the System on a Chip.ia.mp4",
+            "size": "639140311",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Smartphone CPUs Work_  __  Inside the System on a Chip.mp4",
+            "size": "639140311",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Soap Bottle Pumps Work_  __  Inside Animation of a Soap Pump Dispenser.ia.mp4",
+            "size": "17069221",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Soap Bottle Pumps Work_  __  Inside Animation of a Soap Pump Dispenser.mp4",
+            "size": "17069221",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Steam Engines Work_.ia.mp4",
+            "size": "223246259",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Steam Engines Work_.mp4",
+            "size": "223246259",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Transistors Build into a CPU_  \ud83d\udda5\ufe0f\ud83e\udd14  How do Transistors Work_ \ud83d\udda5\ufe0f\ud83e\udd14.ia.mp4",
+            "size": "156817342",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Transistors Build into a CPU_  \ud83d\udda5\ufe0f\ud83e\udd14  How do Transistors Work_ \ud83d\udda5\ufe0f\ud83e\udd14.mp4",
+            "size": "1425874449",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Video Game Controllers Work_  __ Exploring a PS4 Game Controller.ia.mp4",
+            "size": "163930149",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Video Game Controllers Work_  __ Exploring a PS4 Game Controller.mp4",
+            "size": "163930149",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Video Game Graphics Work_.ia.mp4",
+            "size": "122853494",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Video Game Graphics Work_.mp4",
+            "size": "1371536762",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do Wireless Headphones Work_.ia.mp4",
+            "size": "37985142",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do Wireless Headphones Work_.mp4",
+            "size": "37985142",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do microSD Cards Store 2 TB in such a TINY space_.ia.mp4",
+            "size": "34924035",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do microSD Cards Store 2 TB in such a TINY space_.mp4",
+            "size": "367050248",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How do speakers work_  Incredibly small, yet impressively loud.ia.mp4",
+            "size": "112751102",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How do speakers work_  Incredibly small, yet impressively loud.mp4",
+            "size": "112751102",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Bluetooth Work_.ia.mp4",
+            "size": "418581789",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Bluetooth Work_.mp4",
+            "size": "418581789",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Computer Cache, Memory, and Storage Work_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.ia.mp4",
+            "size": "159874419",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Computer Cache, Memory, and Storage Work_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.mp4",
+            "size": "2223915750",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Computer Hardware Work_  \ud83d\udcbb\ud83d\udee0\ud83d\udd2c  [3D Animated Teardown].ia.mp4",
+            "size": "101354088",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Computer Hardware Work_  \ud83d\udcbb\ud83d\udee0\ud83d\udd2c  [3D Animated Teardown].mp4",
+            "size": "1452711307",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Computer Memory Work_ \ud83d\udcbb\ud83d\udee0.ia.mp4",
+            "size": "614246953",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Computer Memory Work_ \ud83d\udcbb\ud83d\udee0.mp4",
+            "size": "614246953",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Multitouch work_.ia.mp4",
+            "size": "199761765",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Multitouch work_.mp4",
+            "size": "199761765",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does NAND Flash Work_  Reading from TLC _ Triple Level Cells  __  Exploring Solid State Drives.ia.mp4",
+            "size": "210995527",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does NAND Flash Work_  Reading from TLC _ Triple Level Cells  __  Exploring Solid State Drives.mp4",
+            "size": "210995527",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Ray Tracing Work in Video Games and Movies_.ia.mp4",
+            "size": "171930082",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Ray Tracing Work in Video Games and Movies_.mp4",
+            "size": "1933722148",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does Starlink Satellite Internet Work_\ud83d\udce1\u2604\ud83d\udda5.ia.mp4",
+            "size": "472454240",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does Starlink Satellite Internet Work_\ud83d\udce1\u2604\ud83d\udda5.mp4",
+            "size": "472454240",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does a Mouse know when you move it_  __  How Does a Computer Mouse Work_.ia.mp4",
+            "size": "67592849",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does a Mouse know when you move it_  __  How Does a Computer Mouse Work_.mp4",
+            "size": "459042061",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does a camera work_.ia.mp4",
+            "size": "230763603",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does a camera work_.mp4",
+            "size": "230763603",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How does this SSD store 8TB of Data_  __  Inside the Engineering of Solid-State Drive Architecture.ia.mp4",
+            "size": "236312674",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How does this SSD store 8TB of Data_  __  Inside the Engineering of Solid-State Drive Architecture.mp4",
+            "size": "236312674",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "How to Make Lemon Batteries!.ia.mp4",
+            "size": "72918874",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "How to Make Lemon Batteries!.mp4",
+            "size": "72918874",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "Inside the Original iPod #shorts.ia.mp4",
+            "size": "17205364",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "Inside the Original iPod #shorts.mp4",
+            "size": "17205364",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "Technology Size Comparison  \ud83e\udd2f\ud83e\udd2f  3D Animation.ia.mp4",
+            "size": "22291437",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "Technology Size Comparison  \ud83e\udd2f\ud83e\udd2f  3D Animation.mp4",
+            "size": "192119146",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The $200M Machine that Prints Microchips_  The EUV Photolithography System.ia.mp4",
+            "size": "226174130",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The $200M Machine that Prints Microchips_  The EUV Photolithography System.mp4",
+            "size": "2233783919",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The Engineering Inside Wireless Earbuds __ How do Wireless Earbuds and Audio Codecs Work_.ia.mp4",
+            "size": "329533261",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The Engineering Inside Wireless Earbuds __ How do Wireless Earbuds and Audio Codecs Work_.mp4",
+            "size": "329533261",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The Engineering Puzzle of Storing Trillions of Bits in your Smartphone _ SSD using Quantum Mechanics.ia.mp4",
+            "size": "199064846",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The Engineering Puzzle of Storing Trillions of Bits in your Smartphone _ SSD using Quantum Mechanics.mp4",
+            "size": "199064846",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The Incredible Evolution of Computers.ia.mp4",
+            "size": "197354128",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The Incredible Evolution of Computers.mp4",
+            "size": "890334922",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The Intricate Engineering Inside Foldable Smartphones.ia.mp4",
+            "size": "159509201",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The Intricate Engineering Inside Foldable Smartphones.mp4",
+            "size": "159509201",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "The Speed of Sound & How does Sound Travel_  A Fundamental Understanding.ia.mp4",
+            "size": "153537517",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "The Speed of Sound & How does Sound Travel_  A Fundamental Understanding.mp4",
+            "size": "153537517",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "What are PCBs_ __ How do PCBs Work_.ia.mp4",
+            "size": "228270401",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "What are PCBs_ __ How do PCBs Work_.mp4",
+            "size": "228270401",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "What does a Star Wars battle actually sound like_.ia.mp4",
+            "size": "114352852",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "What does a Star Wars battle actually sound like_.mp4",
+            "size": "114352852",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "What is Sound_  The Fundamental Science Behind Sound.ia.mp4",
+            "size": "166961005",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "What is Sound_  The Fundamental Science Behind Sound.mp4",
+            "size": "166961005",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "What is the First Engine Ever_.ia.mp4",
+            "size": "216301961",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "What is the First Engine Ever_.mp4",
+            "size": "216301961",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "What's Inside a Smartphone_.ia.mp4",
+            "size": "56637292",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "What's Inside a Smartphone_.mp4",
+            "size": "56637292",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "Why Don\u2019t Computers Just Use One Type of Memory_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.ia.mp4",
+            "size": "159874276",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "Why Don\u2019t Computers Just Use One Type of Memory_ \ud83d\udda5\ufe0f\ud83d\udcbf\ud83d\udee0\ufe0f.mp4",
+            "size": "1686277162",
+            "format": "MPEG4",
+            "source": "original"
+          },
+          {
+            "name": "Why are Smoke Detectors Radioactive_  And How do Smoke Detectors Work_.ia.mp4",
+            "size": "108648940",
+            "format": "h.264 IA",
+            "source": "derivative"
+          },
+          {
+            "name": "Why are Smoke Detectors Radioactive_  And How do Smoke Detectors Work_.mp4",
+            "size": "475326149",
+            "format": "MPEG4",
+            "source": "original"
+          }
+        ],
+        "chosen": {
+          "name": "How do Mechanical Pencils Work_ #shorts.ia.mp4",
+          "size": "13829875",
+          "format": "h.264 IA",
+          "source": "derivative"
+        },
+        "bytes": 13829875,
+        "sha256": "89827df9cec8b6f0186ff4e0de974342024b9ef0c7eb66fc0b367b4cc5cdbb9d",
+        "duration": 59.722,
+        "video": [
+          {
+            "width": 1080,
+            "height": 1920,
+            "r_frame_rate": "30/1"
+          },
+          {
+            "width": 480,
+            "height": 360,
+            "r_frame_rate": "90000/1"
+          }
+        ],
+        "survey_interval": 1,
+        "scene_candidates_seconds": [],
+        "dense_windows": [
+          0,
+          4,
+          12,
+          20,
+          28
+        ],
+        "sheets": 7,
+        "temporary_media_deleted": true
+      }
+    }
+  ],
+  "recovered_sheets": [
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__dense-00.jpg",
+      "sha256": "1e856d2bf74118a0a73fc38b4d4ce17612064482a6e5a815d429bdafd65f0479",
+      "bytes": 189083,
+      "transport_check_ids": [
+        134023011875,
+        134023017896,
+        134023024685,
+        134023030931,
+        134023037464
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__dense-01.jpg",
+      "sha256": "a17298ebd3578482bdaee62eac82c8dd9bf331f8d43de1624b1d370e289c42a7",
+      "bytes": 84605,
+      "transport_check_ids": [
+        134023043546,
+        134023049563,
+        134023055904
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__dense-02.jpg",
+      "sha256": "0ff6dc564b8fe8dcfdb990d5bd8fd8bb27839794c2a15553d638187630f10d58",
+      "bytes": 218934,
+      "transport_check_ids": [
+        134023061574,
+        134023068717,
+        134023075450,
+        134023081995,
+        134023088141,
+        134023093753
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__dense-03.jpg",
+      "sha256": "79f5782868e67e29c1a031508b89781386ec732167a77226c39c43e3fc23d8f1",
+      "bytes": 240727,
+      "transport_check_ids": [
+        134023099718,
+        134023105832,
+        134023111966,
+        134023117933,
+        134023124256,
+        134023130629
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__dense-04.jpg",
+      "sha256": "816505de92ff6a1e8b405af16422c865bccfef5e90f08298a611aa595caf2a1e",
+      "bytes": 265966,
+      "transport_check_ids": [
+        134023137776,
+        134023144407,
+        134023151687,
+        134023158598,
+        134023164504,
+        134023170868,
+        134023177069
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__survey-01.jpg",
+      "sha256": "9e3483c595cae32940229a09ac3cb2bed6b1dfe77d6509ab70527d782118e59c",
+      "bytes": 278142,
+      "transport_check_ids": [
+        134023183607,
+        134023189649,
+        134023196015,
+        134023203062,
+        134023210746,
+        134023216904,
+        134023223364
+      ],
+      "actually_inspected": true
+    },
+    {
+      "file": "studio/runtime/craft-forensics/c8d388e/cf-short-image-branch-education__survey-02.jpg",
+      "sha256": "f2a92c25c84ec27fb998ca9f129a41513cb8fdd02524a3dd5de3c142331bdb68",
+      "bytes": 286810,
+      "transport_check_ids": [
+        134023230260,
+        134023237275,
+        134023243768,
+        134023250135,
+        134023255903,
+        134023262128,
+        134023268081
+      ],
+      "actually_inspected": true
+    }
+  ],
+  "actual_listening": false,
+  "full_every_frame_review": false
+}

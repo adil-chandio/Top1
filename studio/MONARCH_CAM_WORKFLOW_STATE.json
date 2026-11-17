@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "youtube_original_deep_craft_research_requested_actual_media_access_blocked_productionheld",
+  "state": "fresh_craft_forensics_executing_short_actually_inspected_long_acquisition_running_productionheld",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -259,12 +259,28 @@
       "dX9CGRZwD-w",
       "9_QsCLYs2mY"
     ],
-    "actual_new_seconds_inspected": 0,
-    "actual_new_native_frames_inspected": 0,
+    "actual_new_seconds_inspected": "60one-secondgridpositions for59.722s pencil short; not60seconds everyframe",
+    "actual_new_native_frames_inspected": 120,
     "native_video_watched": false,
     "audio_listened": false,
     "deep_study_complete": false,
     "production_held": true,
-    "blocker": "text-only web retrieval; no accessible original media/playback; do not bypass network restrictions"
+    "blocker": "Earlier blanket impossibility statement corrected: established GitHubActions archive/frame workflow works; direct YouTube native playback still not available"
+  },
+  "craft_forensics_execution": {
+    "run": "https://github.com/adil-chandio/Top1/actions/runs/44078009625",
+    "source_commit": "c8d388e767bebd2ea725f92baa36d2301c2e1f35",
+    "short_report": "research/monarch_cam_craft_forensics/PENCIL_ACTUAL_FORENSICS_ROMAN_URDU.md",
+    "short_per_second": "research/monarch_cam_craft_forensics/PENCIL_PER_SECOND.csv",
+    "recovery": "research/monarch_cam_craft_forensics/RECOVERY_c8d388e.json",
+    "short_sheets_viewed": 7,
+    "short_native_frames_viewed": 120,
+    "short_source_seconds": 59.722,
+    "long_status": "acquisition/decoding in progress; no long images recovered/inspected yet",
+    "zack_gecko_status": "no small unrestricted media at tested archive identifier; not watched",
+    "short_transport_cleanup": "workflow requested; not verified yet",
+    "actual_listening": false,
+    "deep_study_complete": false,
+    "production_held": true
   }
 }
