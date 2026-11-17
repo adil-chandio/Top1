@@ -1,0 +1,19 @@
+{
+  "run_id": 44085898064,
+  "check_id": 134052100311,
+  "receipt": {
+    "identifier": "youtube-9_QsCLYs2mY",
+    "selected_file": null,
+    "actual_visual_inspection": false,
+    "audio_listened": false,
+    "stages": [],
+    "discovery": {
+      "numFound": 0,
+      "start": 0,
+      "docs": []
+    },
+    "success": false,
+    "failed_stage": "metadata",
+    "error": "RuntimeError: No bounded public media at exact source identifier; discovery results preserved for inspection"
+  }
+}

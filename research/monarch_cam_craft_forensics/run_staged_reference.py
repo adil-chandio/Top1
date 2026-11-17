@@ -34,10 +34,23 @@ def main():
   if name is None:
    candidates=[f for f in meta.get('files',[]) if f['name'].lower().endswith(('.mp4','.webm')) and 0<int(f.get('size',0))<=180000000]
    if not candidates:
-    query='identifier:9_QsCLYs2mY OR (title:"How a Mechanical Watch Works" AND creator:Animagraffs)'
-    discovery=getjson('https://archive.org/advancedsearch.php?'+urllib.parse.urlencode({'q':query,'output':'json','rows':15}))
+    query='animagraffs OR "9_QsCLYs2mY"'
+    discovery=getjson('https://archive.org/advancedsearch.php?'+urllib.parse.urlencode({'q':query,'output':'json','rows':25,'fl[]':['identifier','title','creator']},doseq=True))
     result['discovery']=discovery.get('response',{})
-    raise RuntimeError('No bounded public media at exact source identifier; discovery results preserved for inspection')
+    for doc in result['discovery'].get('docs',[])[:12]:
+     candidate_ident=doc.get('identifier')
+     if not candidate_ident:continue
+     candidate_meta=getjson('https://archive.org/metadata/'+urllib.parse.quote(candidate_ident))
+     cm=candidate_meta.get('metadata',{})
+     if candidate_meta.get('is_dark') or cm.get('access-restricted-item'):continue
+     for f in candidate_meta.get('files',[]):
+      fn=f['name'].lower()
+      if not(fn.endswith(('.mp4','.webm')) and 0<int(f.get('size',0))<=180000000):continue
+      if '9_qsclys2my' in fn or ('mechanical watch' in fn and 'animagraffs' in json.dumps(cm).lower()):
+       candidates.append(f);meta=candidate_meta;m=cm;ident=candidate_ident
+     if candidates:break
+    if not candidates:raise RuntimeError('Exact identifier and broader creator metadata scan yielded no bounded matching watch media; discovery preserved')
+    result['identifier']=ident
    chosen=min(candidates,key=lambda f:int(f['size']));name=chosen['name'];result['selected_file']=name
   else:chosen=next(f for f in meta['files'] if f['name']==name)
   assert 0<int(chosen['size'])<=180000000

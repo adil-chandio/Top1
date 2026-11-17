@@ -18,3 +18,6 @@ Primary-page chapters: Intro0:00, Crown0:44, Mainspring1:36, Wheel Train2:14, Je
 3. Review crown state-switch and escapement contact/release at larger scale; selected offsets alone are not proof of action coverage.
 4. Contrast hold duration, object continuity, opacity/ghosting, occlusion, labels and before/after states against Pencil/Microchips/Storm. Sound/nativeAV remain separate open tasks.
 5. Revise English treatment before any production. Gecko remains HELD; no publication or paid spend.
+
+## Subsequent result — exact attempt completed
+Run44085898064 FAILED at metadata; exact identifier no bounded media, narrow metadata search numFound0. Receipt saved in WATCH_EXACT_IDENTIFIER_ATTEMPT.json. No watch frames acquired/inspected. Materially different recovery now scans broader creator search (up to25metadata results, first12 unrestricted candidates) for matching original-ID/watch filenames; no unrelated film substitution. Original queued note above is historical.
