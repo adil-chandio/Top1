@@ -73,3 +73,6 @@ Reference bytes one at a time; inspected findings preserve karke temporary copie
 
 ## Agla actual gate
 Market cleanup resolved by independent receipt. Checked market report private upload complete, checksum/permissions verified: https://drive.google.com/file/d/1-tceVyxZPWvHwTr2pPVfMJe6h-gP_8vl/view . Gecko Batch2: full primary claim ledger, exact anatomy/rights/assets, actual hardest technical test. Initial ledger already saved; none of these remaining gates silently passed. Deep frame/cut/animation study ko Batch1 mein dobara expand nahin karna; woh Batch4 video work ka hissa hai.
+
+## Latest Batch2 technical checkpoint
+Runtime44038761446 success; hashes verified and bpy4.2 imported.36frame original schematic release rendered,3revisions, consecutive10–18 inspected. Basic rendering/contact-release demonstration only; blocky linked strip is not approved tokay anatomy. Engagement/shear-loading and species-specific continuous mesh remain. Cleanup44040935377 queued; separate from completed market cleanup. See gecko Batch2 TOE_TEST_QC_RECEIPT.json.

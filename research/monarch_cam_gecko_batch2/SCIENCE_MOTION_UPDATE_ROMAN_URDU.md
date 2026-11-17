@@ -32,3 +32,7 @@ Create original, explicitly schematic articulated single digit before building w
 ## Runtime blocker (last verified)
 
 GitHub run44038761446 job133887942831 queried directly: **queued**, not running/completed. Earlier watch display only showed pending job. No libraries recovered and no render exists. Local bpy still blocked by OS dependencies. OpenCV/pygame wheel downloads are runtime experiments, not a renderer pass. Temporary check payloads must be cleared if that workflow later creates them.
+
+## Subsequent verified progress
+
+Runtime recovery44038761446 succeeded. Archive and10individual library hashes verified; bpy4.2 imported. Original36frame schematic release test rendered and revised3times; final consecutive10–18 plus24/30/36 visually inspected. See TOE_TEST_QC_RECEIPT.json for bounded result and remaining failures. Temporary runtime/figure transport cleanup44040935377 queued, not yet verified. Prior runtime-blocker paragraph is historical, superseded by this update.
