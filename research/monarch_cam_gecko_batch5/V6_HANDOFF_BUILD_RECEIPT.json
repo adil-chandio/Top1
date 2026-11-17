@@ -1,0 +1,14 @@
+{
+  "bundle": "studio/runtime/gecko/v6-private-handoff/monarch-cam-gecko-v6-review-bundle.zip",
+  "bundle_bytes": 2548601,
+  "bundle_sha256": "2911f3338b90ef716ff092a8dd37f622d957e15774affa679affc1fc8d59daed",
+  "bundle_md5": "2c1fe1c39efa4766915fc2d2bf91cc83",
+  "video": "studio/runtime/gecko/caption-readability/gecko-english-review-cut-v6.mp4",
+  "video_bytes": 2034266,
+  "video_sha256": "cebe198ec2cb2b7ae95145aad00c65879cd30c95a13a7f264d6b952dba1e9994",
+  "video_md5": "cb75ee5d4c9f2f208c0a724a97ec704e",
+  "payload_files": 9,
+  "zip_integrity": "PASS",
+  "manifest_hash_checks": "PASS",
+  "final_signoff": false
+}

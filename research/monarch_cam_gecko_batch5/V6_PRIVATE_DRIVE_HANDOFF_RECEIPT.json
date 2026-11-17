@@ -1,0 +1,40 @@
+{
+  "status": "PRIVATE REVIEW HANDOFF COMPLETE \u2014 NOT FINAL DELIVERY",
+  "folder_id": "1a2C3rWC1rwiz_2TNFAmpEndc3xKkETyF",
+  "folder_nontrashed": true,
+  "preflight_duplicate_search": "zero matching V6 files, no next page; incomplete_search=false",
+  "files": [
+    {
+      "kind": "video",
+      "id": "15FmEMVkXxs_ovw0ENdyqD8KvoFahGLcd",
+      "url": "https://drive.google.com/file/d/15FmEMVkXxs_ovw0ENdyqD8KvoFahGLcd/view",
+      "bytes": 2034266,
+      "md5": "cb75ee5d4c9f2f208c0a724a97ec704e",
+      "local_bytes_match": true,
+      "local_md5_match": true,
+      "permission_scope": "one user owner; no next page"
+    },
+    {
+      "kind": "bundle",
+      "id": "13ACNdZirpbJjhnFYadp7JKw39M3NwTbP",
+      "url": "https://drive.google.com/file/d/13ACNdZirpbJjhnFYadp7JKw39M3NwTbP/view",
+      "bytes": 2548601,
+      "md5": "2c1fe1c39efa4766915fc2d2bf91cc83",
+      "local_bytes_match": true,
+      "local_md5_match": true,
+      "permission_scope": "one user owner; no next page"
+    }
+  ],
+  "sharing_permissions_modified": false,
+  "notifications_sent": false,
+  "remote_native_playback_checked": false,
+  "agent_listening_performed": false,
+  "final_signoff": false,
+  "publication_authorized": false,
+  "holds": [
+    "actual listening of negation/terms/prosody/seam/mix",
+    "whole-native-AV craft review",
+    "specialist exact anatomy/biological rig validation"
+  ],
+  "verification_note": "Connector upload size/MD5 compared with local content; post-upload list_permissions checked each file. Cloud playback/transcoding success not inferred."
+}

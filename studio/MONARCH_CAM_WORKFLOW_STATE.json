@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "batch5_v6_review_desk_available_perceptual_and_specialist_signoff_blocked",
+  "state": "batch5_v6_private_drive_review_handoff_verified_finalheld",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -232,5 +232,13 @@
     "human_review_received": false,
     "final_pass": false,
     "next_evidence_required": "actual listening/native whole AV observations; qualified biology review for exact anatomy claims; do not automatically clear holds from exported review notes"
+  },
+  "private_v6_handoff": {
+    "receipt": "research/monarch_cam_gecko_batch5/V6_PRIVATE_DRIVE_HANDOFF_RECEIPT.json",
+    "video_url": "https://drive.google.com/file/d/15FmEMVkXxs_ovw0ENdyqD8KvoFahGLcd/view",
+    "bundle_url": "https://drive.google.com/file/d/13ACNdZirpbJjhnFYadp7JKw39M3NwTbP/view",
+    "owner_only_permissions_verified": true,
+    "remote_size_md5_match": true,
+    "final_pass": false
   }
 }
