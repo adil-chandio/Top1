@@ -247,7 +247,19 @@ function largestMeshOnly(root) {
 }
 
 function boundsOf(root) {
-  const b = new THREE.Box3().setFromObject(root);
+  root.updateWorldMatrix(true, true);
+  const b = new THREE.Box3();
+  const v = new THREE.Vector3();
+  root.traverse((o) => {
+    if (!o.isMesh || !o.geometry) return;
+    const pos = o.geometry.attributes.position;
+    if (!pos) return;
+    for (let i = 0; i < pos.count; i += Math.max(1, Math.floor(pos.count / 4000))) {
+      v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld);
+      b.expandByPoint(v);
+    }
+  });
+  if (b.isEmpty()) b.setFromObject(root);
   const sz = new THREE.Vector3(), c = new THREE.Vector3();
   b.getSize(sz); b.getCenter(c);
   return { size: sz.toArray().map(v => +v.toFixed(3)),
