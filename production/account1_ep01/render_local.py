@@ -52,8 +52,19 @@ def plan_shards(shots: list[dict], block: int, only: set[str] | None) -> list[di
     return rows
 
 
-def missing_in(row: dict, out: Path) -> int:
-    return sum(1 for f in range(row["f_start"], row["f_end"] + 1)
+def sampled_frames(lo: int, hi: int, step: float) -> list[int]:
+    """Timeline frames to actually render at the requested cadence."""
+    if step <= 1.0:
+        return list(range(lo, hi + 1))
+    out, f = [], lo
+    while f <= hi + 1e-9:
+        out.append(int(round(f)))
+        f += step
+    return sorted(set(out))
+
+
+def missing_in(row: dict, out: Path, step: float = 1.0) -> int:
+    return sum(1 for f in sampled_frames(row["f_start"], row["f_end"], step)
                if not frame_path(out, f).exists())
 
 
@@ -68,6 +79,8 @@ def main() -> int:
     ap.add_argument("--res-pct", type=int, default=100)
     ap.add_argument("--only", default="", help="comma separated shot ids")
     ap.add_argument("--deadline-hours", type=float, default=0.0)
+    ap.add_argument("--every", type=float, default=1.0,
+                    help="render one frame every N timeline frames (12fps == 2.5)")
     args = ap.parse_args()
 
     timeline = json.loads(Path(args.timeline).read_text())
@@ -76,8 +89,9 @@ def main() -> int:
     only = {x.strip() for x in args.only.split(",") if x.strip()} or None
 
     rows = plan_shards(timeline["shots"], args.block, only)
-    todo = [r for r in rows if missing_in(r, out) > 0]
-    total_frames = sum(r["f_end"] - r["f_start"] + 1 for r in todo)
+    todo = [r for r in rows if missing_in(r, out, args.every) > 0]
+    total_frames = sum(len(sampled_frames(r["f_start"], r["f_end"], args.every))
+                       for r in todo)
     done_frames = sum(r["f_end"] - r["f_start"] + 1 for r in rows) - total_frames
     print(f"=== {len(todo)} blocks, {total_frames} frames to render "
           f"({done_frames} already on disk) with {args.workers} workers ===")
@@ -95,6 +109,7 @@ def main() -> int:
                "--shot", row["id"], "--mode", "final",
                "--samples", str(args.samples), "--res-pct", str(args.res_pct),
                "--frames", f"{row['f_start']}-{row['f_end']}",
+               "--every", str(args.every),
                "--timeline", args.timeline, "--assets", args.assets,
                "--out", str(out)]
         log = open(BASE / "render_local.log", "a")
@@ -118,9 +133,9 @@ def main() -> int:
                 continue
             running.remove(item)
             completed += 1
-            got = sum(1 for f in range(row["f_start"], row["f_end"] + 1)
+            got = sum(1 for f in sampled_frames(row["f_start"], row["f_end"], args.every)
                       if frame_path(out, f).exists())
-            want = row["f_end"] - row["f_start"] + 1
+            want = len(sampled_frames(row["f_start"], row["f_end"], args.every))
             elapsed = time.time() - t0
             rate = elapsed / max(got, 1)
             print(f"  [done] {row['id']} {row['f_start']}-{row['f_end']}: "
@@ -130,8 +145,7 @@ def main() -> int:
         if deadline and time.time() > deadline and not running:
             break
 
-    have = sum(1 for f in range(1, max(s["f_end"] for s in timeline["shots"]) + 1)
-               if frame_path(out, f).exists())
+    have = len(list(out.glob("f_*.png")))
     total = max(s["f_end"] for s in timeline["shots"])
     print(f"=== frames on disk: {have}/{total} in {(time.time()-started)/60:.1f} min ===")
     return 0 if have == total else 1

@@ -1532,7 +1532,8 @@ def setup_world_and_render(args, shot_start, shot_end, render_start, render_end)
     safe_set(SCENE.cycles, "volume_bounces", 1)
     safe_set(SCENE.cycles, "transparent_max_bounces", 4)
     safe_set(SCENE.cycles, "use_light_tree", True)
-    safe_set(SCENE.cycles, "use_denoising", True)
+    _denoise = os.environ.get("PEHRA_DENOISE", "1") != "0"
+    safe_set(SCENE.cycles, "use_denoising", _denoise)
     safe_set(SCENE.cycles, "denoiser", "OPENIMAGEDENOISE")
     safe_set(SCENE.cycles, "denoising_input_passes", "RGB_ALBEDO_NORMAL")
     safe_set(SCENE.cycles, "sample_clamp_indirect", 3.0)
@@ -2635,6 +2636,8 @@ def parse_args():
     parser.add_argument("--timeline", default=str(BASE / "build" / "timeline_15s.json"))
     parser.add_argument("--assets", default=str(BASE / "assets"))
     parser.add_argument("--out", default=str(BASE / "frames"))
+    parser.add_argument("--every", type=float, default=1.0,
+        help="render one timeline frame every N (12fps from a 30fps timeline = 2.5)")
     parser.add_argument(
         "--frames",
         default=None,
@@ -2709,6 +2712,17 @@ def main():
 
     out_dir = Path(args.out).resolve()
     out_dir.mkdir(parents=True, exist_ok=True)
+    # Sub-sample the timeline when asked: rendering every 2.5th frame of a
+    # 30 fps timeline yields a 12 fps master at 40% of the cost.
+    step = float(getattr(args, "every", 1.0) or 1.0)
+    frames_to_render = [render_start]
+    if render_start != render_end:
+        frames_to_render, f = [], render_start
+        while f <= render_end + 1e-9:
+            frames_to_render.append(int(round(f)))
+            f += step
+        frames_to_render = sorted(set(frames_to_render))
+        info(f"sub-sampling every {step} frames -> {len(frames_to_render)} frames")
     SCENE.frame_start = render_start
     SCENE.frame_end = render_end
     SCENE.frame_set(render_start)
@@ -2734,14 +2748,18 @@ def main():
     )
 
     t0 = time.time()
-    if render_start == render_end:
-        SCENE.render.filepath = str(out_dir / f"f_{render_start:06d}.png")
-        info(f"Rendering single lookdev frame -> {SCENE.render.filepath}")
+    # Render frame by frame so --every can skip, and so a crash keeps whatever
+    # already landed on disk instead of losing the whole block.
+    for frame in frames_to_render:
+        target = out_dir / f"f_{frame:06d}.png"
+        if target.exists():
+            continue
+        SCENE.frame_set(frame)
+        SCENE.render.filepath = str(target)
         bpy.ops.render.render(write_still=True)
-    else:
-        SCENE.render.filepath = str(out_dir / "f_######")
-        info(f"Rendering animation sequence -> {SCENE.render.filepath}")
-        bpy.ops.render.render(animation=True)
+        if (frame - frames_to_render[0]) % 10 == 0:
+            el = time.time() - t0
+            info(f"  frame {frame} done, {el:.0f}s elapsed")
     info(f"Render complete in {time.time() - t0:.1f}s")
     return 0
 
