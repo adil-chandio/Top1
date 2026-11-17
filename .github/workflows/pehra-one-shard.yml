@@ -51,8 +51,8 @@ jobs:
           mkdir -p production/account1_ep01/frames deliverables/pehra-probe
           "$BLENDER_BIN" -b --factory-startup \
             --python production/account1_ep01/render_scene.py -- \
-            --shot B03_MASKED_TITLE --mode final --samples 24 --res-pct 100 \
-            --frames 400-400 \
+            --shot B03_MASKED_TITLE --mode final --samples 12 --res-pct 100 \
+            --frames 400-402 \
             --timeline production/account1_ep01/build/timeline_full.json \
             --assets production/account1_ep01/assets \
             --out production/account1_ep01/frames > /tmp/probe.log 2>&1 || true

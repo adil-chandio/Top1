@@ -218,10 +218,12 @@ def build_video(
         f"scale={width}:{height}:flags=lanczos",
         "setsar=1",
         "format=rgb24",
-        "eq=contrast=1.055:brightness=-0.015:saturation=0.93",
+        # The renders are lit for a dark-room cinema, so the grade lifts the
+        # shadows and warms the mids instead of crushing them further.
+        "eq=contrast=1.085:brightness=0.055:gamma=1.16:gamma_weight=0.72:saturation=1.06",
         "unsharp=5:5:0.30:5:5:0.0",
         "noise=alls=5:allf=t",
-        "vignette=PI/5",
+        "vignette=PI/6.5",
         "fade=t=in:st=0:d=0.18",
         f"fade=t=out:st={duration - 0.28:.3f}:d=0.28",
         "format=rgba",
@@ -231,11 +233,11 @@ def build_video(
     for i, (shot, cap) in enumerate(zip(shots, caption_paths), 1):
         t0 = float(shot["t_start"])
         t1 = float(shot["t_end"])
-        fade_out = max(t0, t1 - 0.18)
+        fade_out = max(t0, t1 - 0.34)
         chains.append(
             f"[{i}:v]setpts=PTS-STARTPTS,format=rgba,"
-            f"fade=t=in:st={t0:.3f}:d=0.18:alpha=1,"
-            f"fade=t=out:st={fade_out:.3f}:d=0.18:alpha=1[cap{i}]"
+            f"fade=t=in:st={t0:.3f}:d=0.34:alpha=1,"
+            f"fade=t=out:st={fade_out:.3f}:d=0.34:alpha=1[cap{i}]"
         )
         chains.append(
             f"[{prev}][cap{i}]overlay=0:0:enable='between(t,{t0:.3f},{t1:.3f})'[v{i}]"
