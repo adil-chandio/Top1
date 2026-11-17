@@ -70,6 +70,8 @@ try {
   /* one representative frame per beat, so the look of every beat can be
      inspected from the branch without waiting on a full render */
   const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
+  const ab = await page.evaluate(()=>window.__ASSET_BOUNDS__ || null);
+  log('asset_bounds', JSON.stringify(ab));
   const meshes = await page.evaluate(()=>window.__MASK_MESHES__ || null);
   log('mask_meshes', JSON.stringify(meshes));
   /* B01 keeps showing a smeared plate in the upper left. Render it with the
