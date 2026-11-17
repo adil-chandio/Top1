@@ -26,7 +26,7 @@ const W = 1080, H = 1920;
 /* ---------------------------------------------------------------- renderer */
 const canvas = document.getElementById('stage');
 const renderer = new THREE.WebGLRenderer({
-  canvas, antialias: true, preserveDrawingBuffer: true,
+  canvas, antialias: false, preserveDrawingBuffer: true,
   alpha: false, powerPreference: 'high-performance',
 });
 renderer.setPixelRatio(1);
@@ -196,11 +196,22 @@ function normalize(root, targetLen, yOff = 0) {
   root.scale.setScalar(s);
   root.position.set(-center.x * s, -center.y * s + yOff, -center.z * s);
   root.traverse((o) => {
-    if (o.isMesh && o.material) {
-      o.material = o.material.clone();
-      o.material.roughness = Math.min(o.material.roughness ?? 0.6, 0.62);
-      o.material.envMapIntensity = 1.1;
-    }
+    if (!o.isMesh || !o.material) return;
+    const src = o.material;
+    /* Transmission materials make three.js run a second full-screen render
+       pass per object. Under SwiftShader that is ruinous, and the look is
+       indistinguishable at this size, so translucent props come through as
+       plain standard surfaces instead. */
+    o.material = new THREE.MeshStandardMaterial({
+      color: src.color ? src.color.clone() : new THREE.Color(0x999999),
+      map: src.map || null,
+      roughness: Math.min(src.roughness ?? 0.6, 0.7),
+      metalness: src.metalness ?? 0.0,
+      transparent: false,
+      side: THREE.FrontSide,
+    });
+    o.material.name = src.name || '';
+    o.castShadow = false; o.receiveShadow = false;
   });
   return root;
 }
@@ -243,9 +254,9 @@ window.__PEHRA_INIT__ = async (timeline) => {
 
   /* vegetation along the furrows */
   plantA = new THREE.Group();
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < 6; i++) {
     const p = normalize(SkeletonUtils.clone(plantG.scene), 0.62 + rnd(i) * 0.35, 0);
-    p.position.set((i % 7) * 1.9 - 6.0 + rnd(i + 2) * 0.6, 0, -Math.floor(i / 7) * 2.6 - 3.4);
+    p.position.set((i % 3) * 2.4 - 2.6 + rnd(i + 2) * 0.6, 0, -Math.floor(i / 3) * 2.4 - 3.6);
     p.rotation.y = rnd(i + 4) * 6.28;
     plantA.add(p);
   }
@@ -269,6 +280,7 @@ function applyPalette(name) {
   keyLt.color.setHex(p.key);   keyLt.intensity = p.keyI;
   rimLt.color.setHex(p.rim);   rimLt.intensity = p.rimI;
   fillLt.color.setHex(p.fill); fillLt.intensity = p.fillI;
+  keyLt.visible = rimLt.visible = fillLt.visible = true;
 }
 
 /* ------------------------------------------------------------------- beats
@@ -282,7 +294,7 @@ const BEATS = {
     camera.lookAt(0, 0.4, -4 - e * 3);
     keyLt.position.set(-14, 22, 8);
     rimLt.position.set(16, 9, -26);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 0; moonLt.intensity = 6;
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 0; gateLt.visible = false; moonLt.intensity = 6; moonLt.visible = true;
     moonLt.position.set(14, 26, -58);
     dust.material.opacity = 0.34;
   },
@@ -303,7 +315,7 @@ const BEATS = {
     monarch.rotation.y = Math.sin(t * 3.6) * 0.10;
     keyLt.position.set(-5, 4.5, -5);
     rimLt.position.set(4.5, 3.2, -12);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 34; moonLt.intensity = 0;
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 34; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
     dust.material.opacity = 0.30;
   },
   B04_HUNGRY_PARIS(t) {                        // wide, starving city at dusk
@@ -312,7 +324,7 @@ const BEATS = {
     camera.lookAt(0, 1.0, -6);
     keyLt.position.set(18, 6, 6);
     rimLt.position.set(-16, 5, -18);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 18; moonLt.intensity = 0;
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 18; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
     dust.material.opacity = 0.22;
   },
   B05_POTATO_PROMISE(t) {                      // macro over the potatoes
@@ -321,7 +333,7 @@ const BEATS = {
     camera.lookAt(0.4, 0.35, -2.6);
     keyLt.position.set(-3, 5, 4);
     rimLt.position.set(4, 3, -9);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 20; moonLt.intensity = 0;
+    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 20; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
     dust.material.opacity = 0.30;
   },
 };
@@ -355,7 +367,7 @@ window.__PEHRA_FRAME__ = (frame) => {
   dust.position.y = Math.sin(tt * 0.7) * 0.10;
   moonHalo.material.opacity = 0.09 + Math.sin(tt * 0.9) * 0.015;
   lantern.position.y = Math.sin(tt * 1.7) * 0.012;
-  gateLt.intensity *= 1 + Math.sin(tt * 9.0) * 0.035;
+  if (gateLt.visible) gateLt.intensity *= 1 + Math.sin(tt * 9.0) * 0.035;
 
   renderer.render(scene, camera);
 };
