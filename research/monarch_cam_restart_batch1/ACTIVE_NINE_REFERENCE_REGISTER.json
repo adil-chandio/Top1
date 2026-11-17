@@ -1,0 +1,123 @@
+{
+  "date_basis": "2026-11-14 system local date; not runner clock",
+  "warning": "metadata records; visual-review state must come from actual inspection findings",
+  "references": [
+    {
+      "video_id": "ZQvfHyfgBtA",
+      "channel": "Animagraffs",
+      "title": "How a Car Engine Works",
+      "url": "https://www.youtube.com/watch?v=ZQvfHyfgBtA",
+      "upload_date": "2021-03-13",
+      "views_snapshot": 19697556,
+      "format": "long",
+      "age_days_on_2026_11_14": 2072,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "ZcEyC-Ixf-g",
+      "channel": "Zack D. Films",
+      "title": "She Poured Concrete Into A Storm Drain",
+      "url": "https://www.youtube.com/watch?v=ZcEyC-Ixf-g",
+      "upload_date": "2026-01-11",
+      "views_snapshot": 43365725,
+      "format": "short",
+      "age_days_on_2026_11_14": 307,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "pI2GAoIfJ-8",
+      "channel": "Zack D. Films",
+      "title": "Goldfish Survives 7 Years In A Filtration Tank",
+      "url": "https://www.youtube.com/watch?v=pI2GAoIfJ-8",
+      "upload_date": "2026-01-13",
+      "views_snapshot": 40252686,
+      "format": "short",
+      "age_days_on_2026_11_14": 305,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "KkCCQXdAh24",
+      "channel": "Zack D. Films",
+      "title": "Can Being Underwater Protect You From Bullets?",
+      "url": "https://www.youtube.com/watch?v=KkCCQXdAh24",
+      "upload_date": "2026-02-03",
+      "views_snapshot": 16810192,
+      "format": "short",
+      "age_days_on_2026_11_14": 284,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "2Vlq6nov9yI",
+      "channel": "Zack D. Films",
+      "title": "How To Make A Cup From A Coconut",
+      "url": "https://www.youtube.com/watch?v=2Vlq6nov9yI",
+      "upload_date": "2026-10-02",
+      "views_snapshot": 10959119,
+      "format": "short",
+      "age_days_on_2026_11_14": 43,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "sgrUtubX7Pk",
+      "channel": "Zack D. Films",
+      "title": "How We Should Handle Streakers",
+      "url": "https://www.youtube.com/watch?v=sgrUtubX7Pk",
+      "upload_date": "2026-10-01",
+      "views_snapshot": 21137342,
+      "format": "short",
+      "age_days_on_2026_11_14": 44,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "x-VfmexNHpE",
+      "channel": "Branch Education",
+      "title": "How do CPU Water Coolers Work?",
+      "url": "https://www.youtube.com/watch?v=x-VfmexNHpE",
+      "upload_date": "2025-10-14",
+      "views_snapshot": 428871,
+      "format": "short-control",
+      "age_days_on_2026_11_14": 396,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "7aWL2iEb6y4",
+      "channel": "Real Science",
+      "title": "Why Crows Are as Smart as 7 Year Old Humans",
+      "url": "https://www.youtube.com/watch?v=7aWL2iEb6y4",
+      "upload_date": "2022-05-31",
+      "views_snapshot": 8565505,
+      "format": "long",
+      "age_days_on_2026_11_14": 1628,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    },
+    {
+      "video_id": "DxL2HoqLbyA",
+      "channel": "Veritasium",
+      "title": "The Most Misunderstood Concept in Physics",
+      "url": "https://www.youtube.com/watch?v=DxL2HoqLbyA",
+      "upload_date": "2023-07-01",
+      "views_snapshot": 31630032,
+      "format": "long",
+      "age_days_on_2026_11_14": 1232,
+      "metadata_source": "Primary YouTube watch-page text fetched by fetch_page; snapshot not realtime API",
+      "relative_outlier": null,
+      "visual_review_complete": false
+    }
+  ]
+}

@@ -6,11 +6,23 @@ on:
 permissions:
   contents: read
   checks: write
+  actions: write
 jobs:
   research:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-22.04
     timeout-minutes: 25
     steps:
+      - name: Prevent duplicate acquisition from the unassigned older queue entry
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          status=$(gh api repos/${{ github.repository }}/actions/runs/44023314588 --jq .status)
+          if [ "$status" = "queued" ]; then
+            gh api --method POST repos/${{ github.repository }}/actions/runs/44023314588/cancel
+          elif [ "$status" != "completed" ]; then
+            echo "Older run has started; refusing duplicate acquisition."
+            exit 1
+          fi
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
       - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
