@@ -13,6 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with: {persist-credentials: false}
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+      - run: python -m pip install yt-dlp Pillow==11.3.0
       - run: python research/monarch_cam_gecko_batch2/recover_live_motion.py
         env:
           GH_TOKEN: ${{ github.token }}
