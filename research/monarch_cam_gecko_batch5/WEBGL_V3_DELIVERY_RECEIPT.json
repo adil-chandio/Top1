@@ -1,0 +1,94 @@
+{
+  "file": "studio/runtime/gecko/webgl-production/monarch-gecko-complete-webgl-v3.mp4",
+  "bytes": 27937523,
+  "sha256": "0f380da262a540483f1df7f6574ef6e2fd45e11dc5cedd48a56231cfe8173d0f",
+  "md5": "f6c08d9c7bbd6c06818738f32367362b",
+  "duration_seconds": 63.68,
+  "frames": 1592,
+  "fps": 25,
+  "native_webgl_resolution": [
+    720,
+    1280
+  ],
+  "source": "Original illustrative geometry; 3D microscopic schematic, authored continuous single-digit curl; whole animal static pose with perspective camera moves. No reference image pixels or audio used.",
+  "audio_approved_source_sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+  "audio_changed": false,
+  "technical_decode_pass": true,
+  "quality_user_approved": false,
+  "anatomy_validated": false,
+  "native_av_listened_by_assistant": false,
+  "limitations": [
+    "Original subject still illustrative, not anatomically validated",
+    "Local toe motion is qualitative, not a measured living gait",
+    "Microscopic world schematic, not microscopy",
+    "No claim of exceeding prior episode benchmark",
+    "No added music or SFX; approved narration only"
+  ],
+  "public_sharing_authorized": false,
+  "independent_decoded_frame_count": 1592,
+  "metadata_duration": "00:01:03.68",
+  "sampled_visual_review": "Twelve new rendered shot samples opened, plus initial full-resolution exterior, corrected macro framing and release-start sample. Not native playback/listening or full frame-by-frame visual certification. Encoded MP4 frame at38s also extracted and opened.",
+  "drive": {
+    "id": "1QEmbQcaRqCQpdWUi2fRGIec7-WBqoX4M",
+    "url": "https://drive.google.com/file/d/1QEmbQcaRqCQpdWUi2fRGIec7-WBqoX4M/view",
+    "bytes": 27937523,
+    "md5": "f6c08d9c7bbd6c06818738f32367362b",
+    "readback_matches": true,
+    "permissions_owner_only_verified": true
+  },
+  "requested_premium_benchmark_met": false,
+  "input_hashes": {
+    "research/monarch_cam_gecko_batch5/webgl/production.html": "a5f05ea36795c6ff9395e6de58f51ef6e7cf520b3245a67dff893ee6c0e3ae36",
+    "studio/runtime/gecko/webgl-production/subject.glb": "c9222c45f8e86de69822fbf1714a880a0a512bfa360e5f54ab2e8fb63514a869",
+    "research/monarch_cam_gecko_batch3/ENGLISH_CAPTION_CUES.json": "312732954341a97c4eaa855e75894b39e07888f2e5363ae8ff1dc961f0213a89"
+  },
+  "motion_qc": {
+    "sampled_checks": [
+      {
+        "t": 33.2,
+        "lift": 0,
+        "tip_height": 0.052,
+        "min_lamellar_z": -0.02500000037252903,
+        "substrate_z": -0.025
+      },
+      {
+        "t": 35,
+        "lift": 0.11589353422269826,
+        "tip_height": 0.16701097646529353,
+        "min_lamellar_z": -0.02500000037252903,
+        "substrate_z": -0.025
+      },
+      {
+        "t": 38,
+        "lift": 0.6527946265849571,
+        "tip_height": 0.6728889974522108,
+        "min_lamellar_z": -0.02500000037252903,
+        "substrate_z": -0.025
+      },
+      {
+        "t": 44.02,
+        "lift": 1.57,
+        "tip_height": 1.254574786709357,
+        "min_lamellar_z": -0.02500000037252903,
+        "substrate_z": -0.025
+      }
+    ],
+    "qualitative_only": true,
+    "anatomy_validated": false
+  },
+  "subject_export_process_exit": 139,
+  "subject_export_separate_validation": "GLB magic/version/declared length matched actual9656000bytes; successful GLTFLoader import with no page errors",
+  "production_progress_final": {
+    "last_frame": 1575,
+    "frames_completed": 1592,
+    "total": 1592,
+    "elapsed_seconds": 790.888493257,
+    "new_frames": 1050,
+    "seconds_per_new_frame": 0.7532271364352382,
+    "samples_only": false,
+    "page_errors": [],
+    "quality_pass": false,
+    "complete": true,
+    "note": "Checkpoint progress written every25 frames; final completion independently checked by encoder and decoded frame count."
+  }
+}
