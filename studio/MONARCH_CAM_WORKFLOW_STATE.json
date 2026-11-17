@@ -12,7 +12,9 @@
     "5": "not_started"
   },
   "current_artifacts": [
-    "research/monarch_cam_restart_batch1/ANIMAL_CHANNEL_SCREEN_ROMAN_URDU.md"
+    "research/monarch_cam_restart_batch1/ANIMAL_CHANNEL_SCREEN_ROMAN_URDU.md",
+    "research/monarch_cam_restart_batch1/ANIMAL_PERFORMANCE_COHORTS.json",
+    "research/monarch_cam_restart_batch1/ANIMAL_COHORT_FINDINGS_ROMAN_URDU.md"
   ],
   "next_required": [
     "broad channel landscape and evidence-based relevance screening",
@@ -27,5 +29,9 @@
   "prior_pair_study": "historical auxiliary evidence; excluded from fresh-start completion",
   "channel_identity_source": "studio/config.json channels.monarch_cam.focus",
   "channel_focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
-  "research_fit_rule": "Direct animal/nature audience competitors first; cross-niche packaging controls explicitly separate; no preselected species/episode"
+  "research_fit_rule": "Direct animal/nature audience competitors first; cross-niche packaging controls explicitly separate; no preselected species/episode",
+  "thumbnail_recovery_run": 44033622263,
+  "thumbnail_recovery_status": "queued at last observation; not inspected",
+  "fresh_primary_watch_metadata_records": 16,
+  "batch1_passed": false
 }
