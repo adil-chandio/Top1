@@ -94,7 +94,9 @@ def main():
    stage='dense';log(stage,windows=windows)
    for i,t in enumerate(windows):
     vf="scale=320:-1,setpts=PTS+"+str(t)+"/TB,drawtext=text='%{pts\\:hms}':x=2:y=2:fontsize=14:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x4"
-    run(['ffmpeg','-nostdin','-v','error','-ss',str(t),'-i',str(path),'-map','0:v:0','-an','-vf',vf,'-frames:v','3','-q:v','8',str(root/f'dense-{i:02}-%02d.jpg')],60)
+    run(['ffmpeg','-nostdin','-v','error','-ss',str(t),'-i',str(path),'-map','0:v:0','-an','-vf',vf,'-vsync','0','-frames:v','3','-q:v','8',str(root/f'dense-{i:02}-%02d.jpg')],60)
+    pages=sorted(root.glob(f'dense-{i:02}-*.jpg'))
+    assert len(pages)==3 and len({hashlib.sha256(p.read_bytes()).hexdigest() for p in pages})==3,'Dense window requires three distinct timestamped pages; duplicate-output coverage rejected'
    result['dense_method']='72 consecutive decoded frames per seek, in three24-cell sheets; displayed filter PTS plus requested seek offset, not independent demuxer packet-PTS verification'
    result['dense_windows']=windows
    stage='transport';images=sorted(root.glob('*.jpg'));log(stage,sheets=len(images));manifest=[]
