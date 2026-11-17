@@ -72,6 +72,18 @@ try {
   const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
   const meshes = await page.evaluate(()=>window.__MASK_MESHES__ || null);
   log('mask_meshes', JSON.stringify(meshes));
+  /* B01 keeps showing a smeared plate in the upper left. Render it with the
+     candidates hidden one at a time so the culprit names itself instead of
+     being guessed at. */
+  for (const hide of ['bank', 'moonDisc', 'field', 'dust']) {
+    await page.evaluate((h) => {
+      window.__HIDE__(h, true);
+      window.__PEHRA_FRAME__(104);
+    }, hide);
+    await page.screenshot({path:path.join(OUT, `hide_${hide}.jpg`), type:'jpeg', quality:88});
+    await page.evaluate((h) => window.__HIDE__(h, false), hide);
+    log('hidden', hide);
+  }
   const placed = await page.evaluate(()=>window.__MASK_PLACED__ || null);
   log('mask_placed', JSON.stringify(placed));
   for (const s of picks) {
