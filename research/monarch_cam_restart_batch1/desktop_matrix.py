@@ -30,7 +30,8 @@ with tempfile.TemporaryDirectory(prefix='gui-matrix-') as work:
     # Clipboard paste is ordinary GUI interaction, no injected application code.
     subprocess.run(['xclip','-selection','clipboard'],input=URL.encode(),timeout=5)
     gui.click(450,115);gui.hotkey('ctrl','v');time.sleep(2);gui.press('enter');r['input_attempted']=True;time.sleep(30)
-   shot=gui.screenshot();shot.save(root/(stage+'.png'))
+   subprocess.run(['scrot',str(root/(stage+'.png'))],check=True,timeout=10)
+   shot=Image.open(root/(stage+'.png'))
    ocr=subprocess.run(['tesseract',str(root/(stage+'.png')),'stdout'],capture_output=True,text=True,timeout=20)
    r[stage+'_ui_text']=ocr.stdout[:4200]
    shot.thumbnail((1000,700));b=io.BytesIO();shot.convert('RGB').save(b,'JPEG',quality=40)
