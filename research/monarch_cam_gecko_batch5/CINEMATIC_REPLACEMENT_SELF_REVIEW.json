@@ -1,0 +1,17 @@
+{
+  "user_authorized_rebuild": true,
+  "image": "studio/runtime/gecko/cinematic-replacement/replacement-establishing.png",
+  "actual_image_opened": true,
+  "rejected_mesh_imported": false,
+  "approach": "Original continuous remeshed whole-animal geometry; perspective camera; procedural skin; directional warm/cool staging",
+  "quality_pass": false,
+  "issues": [
+    "Toy-like eye proportions and surface response",
+    "Recognizable lizard silhouette but not credible Tokay anatomy",
+    "Overexposed pastel skin and indistinct scale detail",
+    "Cropped right limbs and empty upper composition",
+    "Feature film benchmark not met; do not promote this asset into full animation"
+  ],
+  "full_video_completed": false,
+  "next_required_work": "Resolve credible subject asset and material/staging before full-film rendering; no cosmetic re-encode of rejected cut"
+}

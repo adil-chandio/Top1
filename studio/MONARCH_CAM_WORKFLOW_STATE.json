@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "user_rejected_complete_review_below_prior_multi_episode_quality",
+  "state": "rebuild_authorized_replacement_asset_rendered_self_review_failed_not_promoted",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -478,5 +478,6 @@
     "accepted": false,
     "requested_benchmark": "Above prior 4\u20135 3D videos made together, triggered from another Arena chat",
     "next_action": "Open requested branch PR; no new rendering or quality approval implied"
-  }
+  },
+  "replacement_asset_review": "research/monarch_cam_gecko_batch5/CINEMATIC_REPLACEMENT_SELF_REVIEW.json"
 }
