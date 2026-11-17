@@ -109,3 +109,6 @@ Wholev3survey:66decoded1sframes actually viewed/4sheets;1584frames decoded,nobla
 
 ## Latest V5externalfeature/framing correction
 Rodclawforms replacedbytapered/recurvedschematicsonII–V;Ishortest/clawless assertions retained.36hero frames rerendered; lateral diagnostic/ventralframe +12v5samplepoints inspected. Stableheroalphacrop and enlargedpad/macro framing implemented;continuity/recap/creditsfixespreserved.Fullv5decodeexit0. Rodformdefectclosed,notexactanatomy/biologicalrigapproval. Sameaudiodraft,no listeningpass.Finalheld.See Batch5V5_CORRECTION_RECHECK_ROMAN_URDU.md.
+
+## Latest independent audio diagnostic / compact review delivery
+Unconstrained PocketSphinx defaultmodelrecognition run; scientifictermconfusions and critical “aren't/are suctioncups” discrepancy flagged. This is NOT proof of wrong spoken content; no agentlistening performed.18.10s isolated narration excerpts + exactscriptSRT + currentv5 + credits + limits/manifest assembled into local ZIP, integritychecked. No new pictureversion or voice rewrite. Driveproductionfolder confirmedowneronly/nontrashed; candidate notuploaded. Finalanatomy/listening/nativewholeAVcraftreview/signoffstillheld. See Batch5REVIEW_PACKAGE_RECEIPT.json and INDEPENDENT_ASR_DIAGNOSTIC.json.

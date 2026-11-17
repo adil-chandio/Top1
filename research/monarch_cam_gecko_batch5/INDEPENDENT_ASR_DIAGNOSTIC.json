@@ -1,0 +1,1131 @@
+{
+  "method": "PocketSphinx5.1.1 default acoustic/language model; no script-constrained search or custom vocabulary",
+  "hypothesis": "a gecko can hold on to old wall so how is it let go with every step the secret he isn't just a strong grip how that gripped is controlled a burrito cage echoes toast or tackling hair like structures called c topic you're preaching to to make extremely close contact with the surface they are suction cups that tiny scale of the inner walls forces help both to to get your butter when she matters uphold the word the base of the toll on the surface help support the great to release the toe start crawling back a bit bit contact progress of the breaks from the tipped were debate rather than the whole pad lifting it wants that whole movement is called digital hypertension don't confuse it with the angles of the microscopic here is beneath it to the gecko doesn't simply you think its foot off the wall close contact the direction of loading and controlled whole movement work together to make a gripping the and letting go possible",
+  "segments": [
+    {
+      "word": "<s>",
+      "start": 0.0,
+      "end": 0.26
+    },
+    {
+      "word": "a",
+      "start": 0.26,
+      "end": 0.35
+    },
+    {
+      "word": "gecko",
+      "start": 0.35,
+      "end": 0.87
+    },
+    {
+      "word": "can(2)",
+      "start": 0.87,
+      "end": 1.08
+    },
+    {
+      "word": "hold",
+      "start": 1.08,
+      "end": 1.5
+    },
+    {
+      "word": "on(2)",
+      "start": 1.5,
+      "end": 1.75
+    },
+    {
+      "word": "to",
+      "start": 1.75,
+      "end": 1.92
+    },
+    {
+      "word": "old",
+      "start": 1.92,
+      "end": 2.08
+    },
+    {
+      "word": "wall",
+      "start": 2.08,
+      "end": 2.54
+    },
+    {
+      "word": "<sil>",
+      "start": 2.54,
+      "end": 2.92
+    },
+    {
+      "word": "so",
+      "start": 2.92,
+      "end": 3.17
+    },
+    {
+      "word": "how",
+      "start": 3.17,
+      "end": 3.42
+    },
+    {
+      "word": "is",
+      "start": 3.42,
+      "end": 3.57
+    },
+    {
+      "word": "it",
+      "start": 3.57,
+      "end": 3.64
+    },
+    {
+      "word": "let",
+      "start": 3.64,
+      "end": 3.86
+    },
+    {
+      "word": "go",
+      "start": 3.86,
+      "end": 4.23
+    },
+    {
+      "word": "with(2)",
+      "start": 4.23,
+      "end": 4.45
+    },
+    {
+      "word": "every(2)",
+      "start": 4.45,
+      "end": 4.74
+    },
+    {
+      "word": "step",
+      "start": 4.74,
+      "end": 5.19
+    },
+    {
+      "word": "<sil>",
+      "start": 5.19,
+      "end": 5.45
+    },
+    {
+      "word": "<sil>",
+      "start": 5.45,
+      "end": 5.71
+    },
+    {
+      "word": "the(2)",
+      "start": 5.71,
+      "end": 5.8
+    },
+    {
+      "word": "secret(2)",
+      "start": 5.8,
+      "end": 6.31
+    },
+    {
+      "word": "<sil>",
+      "start": 6.31,
+      "end": 6.36
+    },
+    {
+      "word": "he",
+      "start": 6.36,
+      "end": 6.45
+    },
+    {
+      "word": "isn't(2)",
+      "start": 6.45,
+      "end": 6.73
+    },
+    {
+      "word": "just",
+      "start": 6.73,
+      "end": 7.05
+    },
+    {
+      "word": "a",
+      "start": 7.05,
+      "end": 7.09
+    },
+    {
+      "word": "strong",
+      "start": 7.09,
+      "end": 7.6
+    },
+    {
+      "word": "grip",
+      "start": 7.6,
+      "end": 8.12
+    },
+    {
+      "word": "<sil>",
+      "start": 8.12,
+      "end": 8.61
+    },
+    {
+      "word": "how",
+      "start": 8.61,
+      "end": 8.94
+    },
+    {
+      "word": "that",
+      "start": 8.94,
+      "end": 9.13
+    },
+    {
+      "word": "gripped",
+      "start": 9.13,
+      "end": 9.53
+    },
+    {
+      "word": "is",
+      "start": 9.53,
+      "end": 9.66
+    },
+    {
+      "word": "controlled",
+      "start": 9.66,
+      "end": 10.46
+    },
+    {
+      "word": "<sil>",
+      "start": 10.46,
+      "end": 10.74
+    },
+    {
+      "word": "<sil>",
+      "start": 10.74,
+      "end": 11.06
+    },
+    {
+      "word": "a",
+      "start": 11.06,
+      "end": 11.16
+    },
+    {
+      "word": "burrito",
+      "start": 11.16,
+      "end": 11.59
+    },
+    {
+      "word": "cage",
+      "start": 11.59,
+      "end": 11.85
+    },
+    {
+      "word": "echoes",
+      "start": 11.85,
+      "end": 12.17
+    },
+    {
+      "word": "<sil>",
+      "start": 12.17,
+      "end": 12.21
+    },
+    {
+      "word": "toast",
+      "start": 12.21,
+      "end": 12.62
+    },
+    {
+      "word": "or",
+      "start": 12.62,
+      "end": 12.78
+    },
+    {
+      "word": "tackling",
+      "start": 12.78,
+      "end": 13.42
+    },
+    {
+      "word": "hair",
+      "start": 13.42,
+      "end": 13.79
+    },
+    {
+      "word": "like",
+      "start": 13.79,
+      "end": 14.05
+    },
+    {
+      "word": "structures",
+      "start": 14.05,
+      "end": 14.65
+    },
+    {
+      "word": "called",
+      "start": 14.65,
+      "end": 14.97
+    },
+    {
+      "word": "c",
+      "start": 14.97,
+      "end": 15.29
+    },
+    {
+      "word": "topic",
+      "start": 15.29,
+      "end": 15.71
+    },
+    {
+      "word": "[NOISE]",
+      "start": 15.71,
+      "end": 15.97
+    },
+    {
+      "word": "<sil>",
+      "start": 15.97,
+      "end": 16.17
+    },
+    {
+      "word": "you're",
+      "start": 16.17,
+      "end": 16.28
+    },
+    {
+      "word": "preaching",
+      "start": 16.28,
+      "end": 16.79
+    },
+    {
+      "word": "to(2)",
+      "start": 16.79,
+      "end": 16.99
+    },
+    {
+      "word": "to(3)",
+      "start": 16.99,
+      "end": 17.16
+    },
+    {
+      "word": "make",
+      "start": 17.16,
+      "end": 17.38
+    },
+    {
+      "word": "extremely",
+      "start": 17.38,
+      "end": 18.26
+    },
+    {
+      "word": "close",
+      "start": 18.26,
+      "end": 18.57
+    },
+    {
+      "word": "contact",
+      "start": 18.57,
+      "end": 19.11
+    },
+    {
+      "word": "with(2)",
+      "start": 19.11,
+      "end": 19.23
+    },
+    {
+      "word": "the",
+      "start": 19.23,
+      "end": 19.29
+    },
+    {
+      "word": "surface",
+      "start": 19.29,
+      "end": 19.8
+    },
+    {
+      "word": "[NOISE]",
+      "start": 19.8,
+      "end": 20.12
+    },
+    {
+      "word": "<sil>",
+      "start": 20.12,
+      "end": 20.32
+    },
+    {
+      "word": "they",
+      "start": 20.32,
+      "end": 20.45
+    },
+    {
+      "word": "are(2)",
+      "start": 20.45,
+      "end": 20.58
+    },
+    {
+      "word": "<sil>",
+      "start": 20.58,
+      "end": 20.61
+    },
+    {
+      "word": "suction",
+      "start": 20.61,
+      "end": 21.04
+    },
+    {
+      "word": "cups",
+      "start": 21.04,
+      "end": 21.38
+    },
+    {
+      "word": "[NOISE]",
+      "start": 21.38,
+      "end": 21.69
+    },
+    {
+      "word": "<sil>",
+      "start": 21.69,
+      "end": 21.98
+    },
+    {
+      "word": "that",
+      "start": 21.98,
+      "end": 22.23
+    },
+    {
+      "word": "tiny",
+      "start": 22.23,
+      "end": 22.67
+    },
+    {
+      "word": "scale",
+      "start": 22.67,
+      "end": 23.16
+    },
+    {
+      "word": "<sil>",
+      "start": 23.16,
+      "end": 23.35
+    },
+    {
+      "word": "of",
+      "start": 23.35,
+      "end": 23.48
+    },
+    {
+      "word": "the(2)",
+      "start": 23.48,
+      "end": 23.62
+    },
+    {
+      "word": "inner",
+      "start": 23.62,
+      "end": 23.82
+    },
+    {
+      "word": "walls",
+      "start": 23.82,
+      "end": 24.2
+    },
+    {
+      "word": "forces",
+      "start": 24.2,
+      "end": 24.61
+    },
+    {
+      "word": "help",
+      "start": 24.61,
+      "end": 24.92
+    },
+    {
+      "word": "both",
+      "start": 24.92,
+      "end": 25.15
+    },
+    {
+      "word": "to(2)",
+      "start": 25.15,
+      "end": 25.3
+    },
+    {
+      "word": "to(3)",
+      "start": 25.3,
+      "end": 25.42
+    },
+    {
+      "word": "get(2)",
+      "start": 25.42,
+      "end": 25.73
+    },
+    {
+      "word": "your(2)",
+      "start": 25.73,
+      "end": 26.03
+    },
+    {
+      "word": "<sil>",
+      "start": 26.03,
+      "end": 26.34
+    },
+    {
+      "word": "<sil>",
+      "start": 26.34,
+      "end": 26.59
+    },
+    {
+      "word": "butter",
+      "start": 26.59,
+      "end": 26.87
+    },
+    {
+      "word": "when",
+      "start": 26.87,
+      "end": 27.11
+    },
+    {
+      "word": "<sil>",
+      "start": 27.11,
+      "end": 27.18
+    },
+    {
+      "word": "she",
+      "start": 27.18,
+      "end": 27.35
+    },
+    {
+      "word": "matters",
+      "start": 27.35,
+      "end": 27.9
+    },
+    {
+      "word": "[NOISE]",
+      "start": 27.9,
+      "end": 28.22
+    },
+    {
+      "word": "<sil>",
+      "start": 28.22,
+      "end": 28.41
+    },
+    {
+      "word": "uphold",
+      "start": 28.41,
+      "end": 28.87
+    },
+    {
+      "word": "<sil>",
+      "start": 28.87,
+      "end": 28.92
+    },
+    {
+      "word": "the(2)",
+      "start": 28.92,
+      "end": 29.1
+    },
+    {
+      "word": "word",
+      "start": 29.1,
+      "end": 29.37
+    },
+    {
+      "word": "the",
+      "start": 29.37,
+      "end": 29.44
+    },
+    {
+      "word": "base",
+      "start": 29.44,
+      "end": 29.84
+    },
+    {
+      "word": "of",
+      "start": 29.84,
+      "end": 29.94
+    },
+    {
+      "word": "the",
+      "start": 29.94,
+      "end": 30.02
+    },
+    {
+      "word": "toll",
+      "start": 30.02,
+      "end": 30.42
+    },
+    {
+      "word": "on(2)",
+      "start": 30.42,
+      "end": 30.92
+    },
+    {
+      "word": "the",
+      "start": 30.92,
+      "end": 30.98
+    },
+    {
+      "word": "surface",
+      "start": 30.98,
+      "end": 31.51
+    },
+    {
+      "word": "<sil>",
+      "start": 31.51,
+      "end": 31.67
+    },
+    {
+      "word": "help",
+      "start": 31.67,
+      "end": 31.94
+    },
+    {
+      "word": "support",
+      "start": 31.94,
+      "end": 32.44
+    },
+    {
+      "word": "the",
+      "start": 32.44,
+      "end": 32.54
+    },
+    {
+      "word": "great",
+      "start": 32.54,
+      "end": 32.77
+    },
+    {
+      "word": "<sil>",
+      "start": 32.77,
+      "end": 32.99
+    },
+    {
+      "word": "<sil>",
+      "start": 32.99,
+      "end": 33.46
+    },
+    {
+      "word": "to",
+      "start": 33.46,
+      "end": 33.62
+    },
+    {
+      "word": "release",
+      "start": 33.62,
+      "end": 34.24
+    },
+    {
+      "word": "[NOISE]",
+      "start": 34.24,
+      "end": 34.39
+    },
+    {
+      "word": "the",
+      "start": 34.39,
+      "end": 34.55
+    },
+    {
+      "word": "toe",
+      "start": 34.55,
+      "end": 34.9
+    },
+    {
+      "word": "start",
+      "start": 34.9,
+      "end": 35.28
+    },
+    {
+      "word": "<sil>",
+      "start": 35.28,
+      "end": 35.31
+    },
+    {
+      "word": "crawling",
+      "start": 35.31,
+      "end": 35.87
+    },
+    {
+      "word": "back",
+      "start": 35.87,
+      "end": 36.28
+    },
+    {
+      "word": "a",
+      "start": 36.28,
+      "end": 36.33
+    },
+    {
+      "word": "bit",
+      "start": 36.33,
+      "end": 36.51
+    },
+    {
+      "word": "<sil>",
+      "start": 36.51,
+      "end": 36.68
+    },
+    {
+      "word": "bit",
+      "start": 36.68,
+      "end": 37.04
+    },
+    {
+      "word": "<sil>",
+      "start": 37.04,
+      "end": 37.47
+    },
+    {
+      "word": "contact",
+      "start": 37.47,
+      "end": 38.08
+    },
+    {
+      "word": "progress(2)",
+      "start": 38.08,
+      "end": 38.59
+    },
+    {
+      "word": "of",
+      "start": 38.59,
+      "end": 38.71
+    },
+    {
+      "word": "the(2)",
+      "start": 38.71,
+      "end": 38.8
+    },
+    {
+      "word": "breaks",
+      "start": 38.8,
+      "end": 39.31
+    },
+    {
+      "word": "from",
+      "start": 39.31,
+      "end": 39.47
+    },
+    {
+      "word": "the",
+      "start": 39.47,
+      "end": 39.55
+    },
+    {
+      "word": "tipped",
+      "start": 39.55,
+      "end": 40.08
+    },
+    {
+      "word": "were",
+      "start": 40.08,
+      "end": 40.26
+    },
+    {
+      "word": "debate",
+      "start": 40.26,
+      "end": 40.85
+    },
+    {
+      "word": "[NOISE]",
+      "start": 40.85,
+      "end": 41.14
+    },
+    {
+      "word": "rather",
+      "start": 41.14,
+      "end": 41.45
+    },
+    {
+      "word": "than(2)",
+      "start": 41.45,
+      "end": 41.59
+    },
+    {
+      "word": "the",
+      "start": 41.59,
+      "end": 41.65
+    },
+    {
+      "word": "whole",
+      "start": 41.65,
+      "end": 41.96
+    },
+    {
+      "word": "pad",
+      "start": 41.96,
+      "end": 42.41
+    },
+    {
+      "word": "lifting",
+      "start": 42.41,
+      "end": 42.76
+    },
+    {
+      "word": "it",
+      "start": 42.76,
+      "end": 42.84
+    },
+    {
+      "word": "wants(2)",
+      "start": 42.84,
+      "end": 43.31
+    },
+    {
+      "word": "[NOISE]",
+      "start": 43.31,
+      "end": 43.66
+    },
+    {
+      "word": "<sil>",
+      "start": 43.66,
+      "end": 44.02
+    },
+    {
+      "word": "that",
+      "start": 44.02,
+      "end": 44.4
+    },
+    {
+      "word": "whole",
+      "start": 44.4,
+      "end": 44.58
+    },
+    {
+      "word": "movement",
+      "start": 44.58,
+      "end": 45.06
+    },
+    {
+      "word": "is",
+      "start": 45.06,
+      "end": 45.18
+    },
+    {
+      "word": "called",
+      "start": 45.18,
+      "end": 45.57
+    },
+    {
+      "word": "<sil>",
+      "start": 45.57,
+      "end": 45.65
+    },
+    {
+      "word": "digital(2)",
+      "start": 45.65,
+      "end": 46.2
+    },
+    {
+      "word": "hypertension",
+      "start": 46.2,
+      "end": 47.32
+    },
+    {
+      "word": "<sil>",
+      "start": 47.32,
+      "end": 47.93
+    },
+    {
+      "word": "don't(2)",
+      "start": 47.93,
+      "end": 48.12
+    },
+    {
+      "word": "confuse",
+      "start": 48.12,
+      "end": 48.59
+    },
+    {
+      "word": "it",
+      "start": 48.59,
+      "end": 48.69
+    },
+    {
+      "word": "with(2)",
+      "start": 48.69,
+      "end": 48.85
+    },
+    {
+      "word": "the(2)",
+      "start": 48.85,
+      "end": 49.0
+    },
+    {
+      "word": "<sil>",
+      "start": 49.0,
+      "end": 49.08
+    },
+    {
+      "word": "angles",
+      "start": 49.08,
+      "end": 49.52
+    },
+    {
+      "word": "of",
+      "start": 49.52,
+      "end": 49.63
+    },
+    {
+      "word": "the",
+      "start": 49.63,
+      "end": 49.7
+    },
+    {
+      "word": "microscopic",
+      "start": 49.7,
+      "end": 50.46
+    },
+    {
+      "word": "here",
+      "start": 50.46,
+      "end": 50.79
+    },
+    {
+      "word": "is",
+      "start": 50.79,
+      "end": 50.88
+    },
+    {
+      "word": "beneath",
+      "start": 50.88,
+      "end": 51.25
+    },
+    {
+      "word": "it",
+      "start": 51.25,
+      "end": 51.44
+    },
+    {
+      "word": "[NOISE]",
+      "start": 51.44,
+      "end": 51.75
+    },
+    {
+      "word": "<sil>",
+      "start": 51.75,
+      "end": 52.16
+    },
+    {
+      "word": "to(3)",
+      "start": 52.16,
+      "end": 52.42
+    },
+    {
+      "word": "<sil>",
+      "start": 52.42,
+      "end": 52.5
+    },
+    {
+      "word": "the",
+      "start": 52.5,
+      "end": 52.6
+    },
+    {
+      "word": "gecko",
+      "start": 52.6,
+      "end": 53.02
+    },
+    {
+      "word": "doesn't",
+      "start": 53.02,
+      "end": 53.41
+    },
+    {
+      "word": "simply",
+      "start": 53.41,
+      "end": 53.76
+    },
+    {
+      "word": "you",
+      "start": 53.76,
+      "end": 53.89
+    },
+    {
+      "word": "think",
+      "start": 53.89,
+      "end": 54.22
+    },
+    {
+      "word": "its",
+      "start": 54.22,
+      "end": 54.38
+    },
+    {
+      "word": "foot",
+      "start": 54.38,
+      "end": 54.59
+    },
+    {
+      "word": "off",
+      "start": 54.59,
+      "end": 54.77
+    },
+    {
+      "word": "the",
+      "start": 54.77,
+      "end": 54.85
+    },
+    {
+      "word": "wall",
+      "start": 54.85,
+      "end": 55.29
+    },
+    {
+      "word": "[NOISE]",
+      "start": 55.29,
+      "end": 55.54
+    },
+    {
+      "word": "<sil>",
+      "start": 55.54,
+      "end": 55.81
+    },
+    {
+      "word": "close",
+      "start": 55.81,
+      "end": 56.21
+    },
+    {
+      "word": "contact",
+      "start": 56.21,
+      "end": 56.88
+    },
+    {
+      "word": "[NOISE]",
+      "start": 56.88,
+      "end": 57.05
+    },
+    {
+      "word": "the",
+      "start": 57.05,
+      "end": 57.2
+    },
+    {
+      "word": "direction(4)",
+      "start": 57.2,
+      "end": 57.67
+    },
+    {
+      "word": "of",
+      "start": 57.67,
+      "end": 57.77
+    },
+    {
+      "word": "loading",
+      "start": 57.77,
+      "end": 58.23
+    },
+    {
+      "word": "and(2)",
+      "start": 58.23,
+      "end": 58.63
+    },
+    {
+      "word": "controlled",
+      "start": 58.63,
+      "end": 59.41
+    },
+    {
+      "word": "whole",
+      "start": 59.41,
+      "end": 59.63
+    },
+    {
+      "word": "movement",
+      "start": 59.63,
+      "end": 60.12
+    },
+    {
+      "word": "work",
+      "start": 60.12,
+      "end": 60.44
+    },
+    {
+      "word": "together",
+      "start": 60.44,
+      "end": 60.96
+    },
+    {
+      "word": "to(3)",
+      "start": 60.96,
+      "end": 61.1
+    },
+    {
+      "word": "make",
+      "start": 61.1,
+      "end": 61.3
+    },
+    {
+      "word": "a",
+      "start": 61.3,
+      "end": 61.34
+    },
+    {
+      "word": "gripping",
+      "start": 61.34,
+      "end": 61.88
+    },
+    {
+      "word": "<sil>",
+      "start": 61.88,
+      "end": 62.0
+    },
+    {
+      "word": "the(2)",
+      "start": 62.0,
+      "end": 62.15
+    },
+    {
+      "word": "and",
+      "start": 62.15,
+      "end": 62.24
+    },
+    {
+      "word": "letting",
+      "start": 62.24,
+      "end": 62.53
+    },
+    {
+      "word": "go",
+      "start": 62.53,
+      "end": 62.84
+    },
+    {
+      "word": "possible",
+      "start": 62.84,
+      "end": 63.4
+    },
+    {
+      "word": "</s>",
+      "start": 63.4,
+      "end": 63.67
+    }
+  ],
+  "listening": false,
+  "warning": "ASR discrepancies may be model errors; not pronunciation or finalaudio approval",
+  "audio_sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+  "review_flags": [
+    {
+      "expected": "They aren't suction cups",
+      "ASR": "they are suction cups",
+      "decision": "critical negation discrepancy; could be ASR error; no claim actual speech reversed"
+    },
+    {
+      "expected": "Tokay / setae / van der Waals / digital hyperextension",
+      "ASR": "burrito cage / c topic / inner walls / digital hypertension",
+      "decision": "model confusion; terms need actual listening, not automatic voice rewrite"
+    }
+  ],
+  "diagnostic_clip_map": [
+    {
+      "topic": "Tokay and setae",
+      "original_start": 10.7,
+      "original_end": 16.0,
+      "diagnostic_start": 0,
+      "diagnostic_end": 5.3
+    },
+    {
+      "topic": "Negation and van der Waals",
+      "original_start": 20.0,
+      "original_end": 26.3,
+      "diagnostic_start": 5.9,
+      "diagnostic_end": 12.2
+    },
+    {
+      "topic": "Part join",
+      "original_start": 32.8,
+      "original_end": 33.8,
+      "diagnostic_start": 12.8,
+      "diagnostic_end": 13.8
+    },
+    {
+      "topic": "Digital hyperextension",
+      "original_start": 44.0,
+      "original_end": 47.7,
+      "diagnostic_start": 14.4,
+      "diagnostic_end": 18.1
+    }
+  ]
+}

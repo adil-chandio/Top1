@@ -1,0 +1,36 @@
+{
+  "file": "studio/runtime/gecko/review-package/critical-audio-review.wav",
+  "seconds": 18.1,
+  "source": "studio/runtime/gecko/narration/english-narration-v1.wav",
+  "segments": [
+    {
+      "topic": "Tokay and setae",
+      "original_start": 10.7,
+      "original_end": 16.0,
+      "diagnostic_start": 0,
+      "diagnostic_end": 5.3
+    },
+    {
+      "topic": "Negation and van der Waals",
+      "original_start": 20.0,
+      "original_end": 26.3,
+      "diagnostic_start": 5.9,
+      "diagnostic_end": 12.2
+    },
+    {
+      "topic": "Part join",
+      "original_start": 32.8,
+      "original_end": 33.8,
+      "diagnostic_start": 12.8,
+      "diagnostic_end": 13.8
+    },
+    {
+      "topic": "Digital hyperextension",
+      "original_start": 44.0,
+      "original_end": 47.7,
+      "diagnostic_start": 14.4,
+      "diagnostic_end": 18.1
+    }
+  ],
+  "agent_listening_performed": false
+}

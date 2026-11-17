@@ -1,0 +1,54 @@
+{
+  "package": "studio/runtime/gecko/monarch-cam-gecko-v5-review-package.zip",
+  "bytes": 2547204,
+  "sha256": "0c23bace6ef6935c37c93895eb92a4bbefcfb28c54fe25f2e895e4f653e2727d",
+  "zip_integrity": "PASS",
+  "manifest": {
+    "status": "REVIEW ONLY \u2014 NOT FINAL",
+    "video_version": "v5",
+    "actual_listening_pass": false,
+    "anatomy_pass": false,
+    "native_whole_AV_pass": false,
+    "final_signoff": false,
+    "publication_authorized": false,
+    "files": [
+      {
+        "name": "CREDITS_AND_SOURCES_ENGLISH.md",
+        "bytes": 5123,
+        "sha256": "89f1fd31bd93773fd5767a1087e8432692b725012278c00b89b0e10a24d19da7"
+      },
+      {
+        "name": "INDEPENDENT_AUDIO_CHECK.md",
+        "bytes": 1078,
+        "sha256": "86572edae448afd8c245ca3fa4d04d07f42254c0b833b57370cff3d1098f6ad7"
+      },
+      {
+        "name": "README_ENGLISH.md",
+        "bytes": 2805,
+        "sha256": "a7e5eff2903b099973852dfa480d5c00f981780f607981a7eb847808db34967e"
+      },
+      {
+        "name": "V5_CORRECTION_RECHECK_ROMAN_URDU.md",
+        "bytes": 3898,
+        "sha256": "ecf4708d8437ac53e69d7caa3d6e1196d7afb3a400a7aa2c60a8347ca4c33f80"
+      },
+      {
+        "name": "critical-audio-review.wav",
+        "bytes": 868844,
+        "sha256": "8c6729228f699859c1add5df6ddc37af36d22853ac63ce5a577e6304f79c7b70"
+      },
+      {
+        "name": "english-captions-review.srt",
+        "bytes": 2075,
+        "sha256": "5aba2e244b9aee0af4e2e778e09ba58fbfc421106e2ea5f4e3b5cfe67e60eb0a"
+      },
+      {
+        "name": "gecko-english-review-cut-v5.mp4",
+        "bytes": 2032384,
+        "sha256": "1263e6babbabc4fdd6a014b438393a2c293e9350a4066add50f0601399de1116"
+      }
+    ]
+  },
+  "cloud_upload_performed": false,
+  "folder_check": "Production Drive folder confirmed nontrashed/owner-only; no candidate upload performed"
+}

@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "batch5_targeted_v5_externalclaw_and_framing_corrections_rechecked_finalheld",
+  "state": "batch5_independent_ASR_flags_and_private_review_package_finalheld",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -190,8 +190,8 @@
   "batch5_preliminary": {
     "report": "research/monarch_cam_gecko_batch5/PRELIMINARY_QC_AND_CORRECTIONS_ROMAN_URDU.md",
     "technical_audit": "research/monarch_cam_gecko_batch4/WHOLE_CUT_TECHNICAL_AUDIT.json",
-    "candidate_file": "studio/runtime/gecko/audit-corrected/gecko-english-review-cut-v4.mp4",
-    "candidate_receipt": "research/monarch_cam_gecko_batch4/AUDIT_CORRECTION_RECEIPT.json",
+    "candidate_file": "studio/runtime/gecko/review-package/gecko-english-review-cut-v5.mp4",
+    "candidate_receipt": "research/monarch_cam_gecko_batch5/EXTERNAL_FEATURE_CORRECTION_RECEIPT.json",
     "final_signoff": "NOT READY",
     "batch4_full_pass": false,
     "inspection_scope": "66v3one-secondsamplesactuallyviewed;8v4correctionpoints;notwhole-nativeAVplayback"
@@ -203,6 +203,12 @@
     "visible_claw_rod_defect": "corrected with taperedcurvedschematic;notexactmorphologyapproval",
     "inspection": "lateralclawdiagnostic+ventralfirstframe+12sampledcandidatepoints",
     "full_decode": "exit0,noerrors",
+    "final_pass": false
+  },
+  "review_package": {
+    "receipt": "research/monarch_cam_gecko_batch5/REVIEW_PACKAGE_RECEIPT.json",
+    "audio_diagnostic": "research/monarch_cam_gecko_batch5/INDEPENDENT_ASR_DIAGNOSTIC.json",
+    "listening": false,
     "final_pass": false
   }
 }
