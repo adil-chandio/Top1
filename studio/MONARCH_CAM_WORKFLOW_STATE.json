@@ -276,11 +276,12 @@
     "short_sheets_viewed": 7,
     "short_native_frames_viewed": 120,
     "short_source_seconds": 59.722,
-    "long_status": "acquisition/decoding in progress; no long images recovered/inspected yet",
+    "long_status": "15minutejobtimeout;0longframepayloads recovered, no actual longinspection; next attempt needs stageprogress/total timebounds",
     "zack_gecko_status": "no small unrestricted media at tested archive identifier; not watched",
-    "short_transport_cleanup": "workflow requested; not verified yet",
+    "short_transport_cleanup": "PASS;41checks cleared and independently reread",
     "actual_listening": false,
     "deep_study_complete": false,
-    "production_held": true
+    "production_held": true,
+    "long_attempt_receipt": "research/monarch_cam_craft_forensics/LONG_ATTEMPT_RECEIPT.json"
   }
 }

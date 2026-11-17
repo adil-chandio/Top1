@@ -1,0 +1,15 @@
+{
+  "workflow_run": 44078009625,
+  "job": 134020951087,
+  "candidate": "BranchEducation How areMicrochipsMade dX9CGRZwD-w",
+  "selected_archive_file": "How are Microchips Made_ \ud83d\udda5\ufe0f\ud83d\udee0\ufe0f CPU Manufacturing Process Steps.ia.mp4",
+  "archive_listed_bytes": 161987008,
+  "conclusion": "cancelled:15minutejobexecutionlimit",
+  "verified_annotation": "The job has exceeded the maximum execution time of 15m0s",
+  "long_frame_payloads_received": 0,
+  "long_visual_inspection": false,
+  "stage_at_timeout": "Decode reference without retaining raw footage step; precise internal substage unknown because old pipeline publishes final receipt only",
+  "next_required_fix": "stage progress and total download/time bounds before another attempt; do not rerun unchanged",
+  "temporary_runner_workdir": "ephemeral runner; explicit temporarymedia-deletion receipt unavailable after hardtimeout",
+  "study_complete": false
+}
