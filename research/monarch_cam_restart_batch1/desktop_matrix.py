@@ -29,7 +29,12 @@ with tempfile.TemporaryDirectory(prefix='gui-matrix-') as work:
    if stage=='after':
     # Clipboard paste is ordinary GUI interaction, no injected application code.
     subprocess.run(['xclip','-selection','clipboard'],input=URL.encode(),timeout=5)
-    gui.click(450,115);gui.hotkey('ctrl','v');time.sleep(2);gui.press('enter');r['input_attempted']=True;time.sleep(30)
+    if kind=='tyrrrz':
+     gui.click(760,478);time.sleep(2)  # Close the actually observed first-run notice.
+     gui.click(590,128);gui.hotkey('ctrl','a');gui.hotkey('ctrl','v');time.sleep(1);gui.click(870,128)
+    else:
+     gui.click(290,36);gui.hotkey('ctrl','a');gui.hotkey('ctrl','v');time.sleep(1);gui.click(612,36)
+    r['input_attempted']=True;time.sleep(40)
    subprocess.run(['scrot',str(root/(stage+'.png'))],check=True,timeout=10)
    shot=Image.open(root/(stage+'.png'))
    ocr=subprocess.run(['tesseract',str(root/(stage+'.png')),'stdout'],capture_output=True,text=True,timeout=20)

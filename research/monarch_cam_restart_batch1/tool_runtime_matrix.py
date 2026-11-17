@@ -40,7 +40,16 @@ try:
    time.sleep(15)
    try:
     with urllib.request.urlopen('http://127.0.0.1:1200/youtube/channel/UCnZeeKO8qVdtkrA4-uKhtTw',timeout=80) as response:
-     text=response.read(30000).decode();r.update(http_status=response.status,feed_item_count=text.count('<item>'),response_excerpt=text[:2500])
+     text=response.read(1500000).decode()
+     import xml.etree.ElementTree as ET
+     def parse_feed(text):
+      channel=ET.fromstring(text).find('channel')
+      return {'channel':channel.findtext('title'),'items':[{'title':i.findtext('title'),'url':i.findtext('link'),'feed_date_unverified':i.findtext('pubDate')} for i in channel.findall('item')[:12]]}
+     r.update(http_status=response.status,feed_item_count=text.count('<item>'),feeds=[parse_feed(text)],date_warning='Feed dates may be reconstructed from relative ages; verify exact upload dates independently.')
+     for handle in ['fern-tv','zackdfilms','neoexplains','realscience','veritasium','BranchEducation']:
+      try:
+       with urllib.request.urlopen('http://127.0.0.1:1200/youtube/user/@'+handle,timeout=25) as other:r['feeds'].append(parse_feed(other.read(1500000).decode()))
+      except Exception as exc:r.setdefault('feed_failures',[]).append({'handle':handle,'error_type':type(exc).__name__})
    except urllib.error.HTTPError as e:r.update(http_status=e.code,response_excerpt=e.read(4500).decode(errors='replace'))
    finally:subprocess.run(['docker','stop','rsshub-test'],capture_output=True,timeout=30)
   else:r['startup_error']=p.stderr[-2500:]
