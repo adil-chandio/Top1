@@ -112,3 +112,6 @@ Rodclawforms replacedbytapered/recurvedschematicsonII–V;Ishortest/clawless ass
 
 ## Latest independent audio diagnostic / compact review delivery
 Unconstrained PocketSphinx defaultmodelrecognition run; scientifictermconfusions and critical “aren't/are suctioncups” discrepancy flagged. This is NOT proof of wrong spoken content; no agentlistening performed.18.10s isolated narration excerpts + exactscriptSRT + currentv5 + credits + limits/manifest assembled into local ZIP, integritychecked. No new pictureversion or voice rewrite. Driveproductionfolder confirmedowneronly/nontrashed; candidate notuploaded. Finalanatomy/listening/nativewholeAVcraftreview/signoffstillheld. See Batch5REVIEW_PACKAGE_RECEIPT.json and INDEPENDENT_ASR_DIAGNOSTIC.json.
+
+## Latest V6 caption readability / V5 full-duration sample survey
+CurrentV5all1584framesdecoded/66one-secondframesactuallyviewed4sheets; this is sampled picture survey,not nativeAVplayback.8captionheuristicflags correctedV6:34→29exactwordgroups,min0.7s,max20cps. No voice rewrite; AACstream copied/hashidentical. V6full-decodepassed/8decodedcorrectionpoints+55.1s supplementactuallyviewed. Latestreviewcandidate nowcaption-readability/gecko-english-review-cut-v6.mp4. V5ZIP remainshistorical,notupdatedV6. Listening/anatomy/biologicalrig/nativeAVcraft/finalsignoffheld. See Batch5V6_READABILITY_REVIEW_ROMAN_URDU.md.

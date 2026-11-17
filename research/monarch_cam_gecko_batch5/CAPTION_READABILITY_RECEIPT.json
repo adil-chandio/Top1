@@ -1,0 +1,32 @@
+{
+  "file": "studio/runtime/gecko/caption-readability/gecko-english-review-cut-v6.mp4",
+  "sha256": "cebe198ec2cb2b7ae95145aad00c65879cd30c95a13a7f264d6b952dba1e9994",
+  "seconds": 66,
+  "fps": 24,
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "caption_count_before": 34,
+  "caption_count_after": 29,
+  "caption_flags_before": 8,
+  "caption_flags_after": 0,
+  "rule": "duration >=0.7s and <=20characters/second; not reading/listening signoff",
+  "exact_word_sequence_preserved": true,
+  "aac_stream_identical": true,
+  "aac_adts_sha256": "64d92cdddde049c829c752f6924e4302e7142ed064171875fe3d38778ea69a2b",
+  "decoded_correction_sample_times": [
+    2,
+    8,
+    19,
+    21.4,
+    32.8,
+    49.7,
+    55.3,
+    63.1
+  ],
+  "decoded_samples_inspected": true,
+  "same_underlying_v5_picture_mechanism": true,
+  "actual_listening": false,
+  "final_pass": false,
+  "inspection_note": "8decoded correction samples viewed;55.3s seek lands after cue ends, so55.1s supplementary sample extracted",
+  "supplementary_decoded_sample_55_1_inspected": true
+}

@@ -1,0 +1,152 @@
+{
+  "method": "exact script regrouped; approximate alignment; no independent listening approval",
+  "cues": [
+    {
+      "start": 0.26,
+      "end": 2.54,
+      "text": "A gecko can hold onto a wall."
+    },
+    {
+      "start": 2.94,
+      "end": 4.23,
+      "text": "So how does it let go"
+    },
+    {
+      "start": 4.23,
+      "end": 5.19,
+      "text": "with every step?"
+    },
+    {
+      "start": 5.71,
+      "end": 8.12,
+      "text": "The secret isn't just a strong grip."
+    },
+    {
+      "start": 8.46,
+      "end": 10.46,
+      "text": "It's how that grip is controlled."
+    },
+    {
+      "start": 11.08,
+      "end": 12.78,
+      "text": "Under a Tokay gecko's toes are"
+    },
+    {
+      "start": 12.78,
+      "end": 15.4,
+      "text": "tiny, hair like structures called setae."
+    },
+    {
+      "start": 16.14,
+      "end": 19.79,
+      "text": "Their branching tips make extremely close contact with the surface."
+    },
+    {
+      "start": 20.27,
+      "end": 21.52,
+      "text": "They aren't suction cups."
+    },
+    {
+      "start": 21.79,
+      "end": 23.16,
+      "text": "At that tiny scale,"
+    },
+    {
+      "start": 23.4,
+      "end": 25.15,
+      "text": "van der Waals forces help those"
+    },
+    {
+      "start": 25.15,
+      "end": 26.03,
+      "text": "tips adhere."
+    },
+    {
+      "start": 26.59,
+      "end": 27.91,
+      "text": "But direction matters."
+    },
+    {
+      "start": 28.41,
+      "end": 29.92,
+      "text": "A pull toward the base of"
+    },
+    {
+      "start": 29.92,
+      "end": 32.0,
+      "text": "the toe, along the surface, helps"
+    },
+    {
+      "start": 32.0,
+      "end": 32.85,
+      "text": "support the grip."
+    },
+    {
+      "start": 33.46,
+      "end": 35.87,
+      "text": "To release, the toe starts curling"
+    },
+    {
+      "start": 35.87,
+      "end": 37.06,
+      "text": "back at its tip."
+    },
+    {
+      "start": 37.5,
+      "end": 39.95,
+      "text": "Contact progressively breaks from the tip"
+    },
+    {
+      "start": 39.95,
+      "end": 41.65,
+      "text": "toward the base, rather than the"
+    },
+    {
+      "start": 41.65,
+      "end": 43.31,
+      "text": "whole pad lifting at once."
+    },
+    {
+      "start": 44.02,
+      "end": 45.76,
+      "text": "That toe movement is called"
+    },
+    {
+      "start": 45.76,
+      "end": 47.32,
+      "text": "digital hyperextension."
+    },
+    {
+      "start": 47.95,
+      "end": 51.42,
+      "text": "Don't confuse it with the angles of the microscopic hairs beneath it."
+    },
+    {
+      "start": 52.19,
+      "end": 54.23,
+      "text": "So a gecko doesn't simply yank"
+    },
+    {
+      "start": 54.23,
+      "end": 55.33,
+      "text": "its foot off the wall."
+    },
+    {
+      "start": 55.82,
+      "end": 58.21,
+      "text": "Close contact, the direction of loading,"
+    },
+    {
+      "start": 58.21,
+      "end": 60.96,
+      "text": "and controlled toe movement work together"
+    },
+    {
+      "start": 60.96,
+      "end": 63.4,
+      "text": "to make gripping, and letting go, possible."
+    }
+  ],
+  "target_max_cps": 20,
+  "minimum_duration": 0.7
+}
