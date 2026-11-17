@@ -1,0 +1,19 @@
+{
+  "checkpoint_date": "2026-11-14",
+  "user_statement": "Han ijazat ha",
+  "in_response_to": "Permission request for a 4–6 second original integrated foot–limb–wall qualitative release proof, not full film/publication",
+  "authorized": {
+    "one_bounded_integrated_visual_proof": true,
+    "duration_seconds_range": [4, 6],
+    "original_exterior_context_and_qualitative_toe_release": true
+  },
+  "not_authorized_or_not_validated": {
+    "full_film_production": true,
+    "publication": true,
+    "paid_spend": true,
+    "exact_biological_reconstruction_claim": true,
+    "anatomy_or_measured_motion_approval": true
+  },
+  "audio": "Retained English narration separately approved; no new synthesis required. Current proof is silent visual-only, not a final mix or native-AV pass.",
+  "prior_holds": "User specifically permits this bounded proof despite disclosed unresolved anatomy limits; all broader production holds remain."
+}

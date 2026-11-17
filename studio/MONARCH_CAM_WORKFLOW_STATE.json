@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "context_photos_actually_inspected_exterior_and_live_motion_unvalidated_production_held",
+  "state": "user_authorized_bounded_visual_proof_in_progress_full_production_held",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -61,7 +61,9 @@
     "research/monarch_cam_gecko_batch2/DIGIT_TRANSPORT_CLEANUP.json",
     "research/monarch_cam_gecko_batch5/USER_ENGLISH_AUDIO_APPROVAL.json",
     "research/monarch_cam_craft_forensics/PROSPECTIVE_ASSET_RIGHTS_LEDGER.json",
-    "research/monarch_cam_craft_forensics/DEJAVU_FONT_NOTICE.txt"
+    "research/monarch_cam_craft_forensics/DEJAVU_FONT_NOTICE.txt",
+    "research/monarch_cam_gecko_batch5/USER_INTEGRATED_PROOF_AUTHORIZATION.json",
+    "research/monarch_cam_gecko_batch5/build_integrated_proof.py"
   ],
   "next_required": [
     "QC04remaining:source/specimen-grounded joint/clawdimension/LDT/biologicalrig review if claiming realistic anatomy;rodformalreadycorrected",
@@ -390,5 +392,22 @@
     "sfx": "none_selected_for_rebuild",
     "font_notice_inspected": true,
     "final_asset_rights_gate_passed": false
+  },
+  "bounded_integrated_proof": {
+    "user_authorized": true,
+    "user_statement": "Han ijazat ha",
+    "authorization_receipt": "research/monarch_cam_gecko_batch5/USER_INTEGRATED_PROOF_AUTHORIZATION.json",
+    "scope": "one4\u20136s original integrated visual feasibility proof despite disclosed unresolved anatomy; no full production/publication/spend",
+    "status": "render_in_progress",
+    "target_seconds": 5,
+    "target_frames": 120,
+    "fps": 24,
+    "resolution": [
+      540,
+      960
+    ],
+    "audio": "silent visual proof; approved voice unchanged",
+    "anatomy_approved": false,
+    "native_av_approved": false
   }
 }
