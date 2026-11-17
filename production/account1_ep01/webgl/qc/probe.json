@@ -4,7 +4,7 @@
     [
       "launch",
       "ok",
-      0.2
+      0.3
     ],
     [
       "goto",
@@ -19,183 +19,183 @@
     [
       "asset:LeePerrySmith",
       "ok 9279v",
-      1.5
+      1.7
     ],
     [
       "asset:venice_mask",
       "ok 173876v",
-      1.5
+      1.7
     ],
     [
       "asset:Soldier",
       "ok 7434v",
-      1.5
+      1.7
     ],
     [
       "asset:DiffuseTransmissionPlant",
       "ok 50369v",
-      1.5
+      1.7
     ],
     [
       "asset:Lantern",
       "ok 4145v",
-      1.5
+      1.7
     ],
     [
       "asset:GlassHurricaneCandleHolder",
       "ok 2386v",
-      1.5
+      1.7
     ],
     [
       "init",
       "ok",
-      1.9
+      2.4
     ],
     [
       "soldier_scale",
       "null",
-      1.9
+      2.4
     ],
     [
       "guard_probe",
       "{\"children\":1,\"scale\":[1,1,1],\"pos\":[-6.4,0,-14.5],\"meshes\":[{\"name\":\"vanguard_Mesh\",\"localSize\":[184.795,44.386,183.22],\"worldScale\":[0.01,0.01,0.01]},{\"name\":\"vanguard_visor\",\"localSize\":[11.577,5.831,12.24],\"worldScale\":[0.01,0.01,0.01]}],\"bones\":49,\"skinned\":2}",
-      1.9
+      2.4
     ],
     [
       "asset_bounds",
       "{\"source\":{\"head\":{\"size\":[8.5,7.92,5.12],\"center\":[-0.01,0,0.01],\"skinned\":false},\"mask\":{\"size\":[0.03,0.06,0.02],\"center\":[0,0.03,0],\"skinned\":false},\"soldier\":{\"size\":[1.77,1.55,0.25],\"center\":[0,0.79,-0.01],\"skinned\":true},\"plant\":{\"size\":[0.7,0.82,0.65],\"center\":[-0.05,0.41,-0.09],\"skinned\":false},\"lantern\":{\"size\":[15.49,25.66,4.63],\"center\":[3.82,13.02,0],\"skinned\":false},\"holder\":{\"size\":[0.19,0.31,0.19],\"center\":[0,0.15,0],\"skinned\":false},\"ground\":{\"size\":[137.45,0.68,140],\"center\":[-1.27,-0.05,-45],\"skinned\":false},\"moonDisc\":{\"size\":[6.8,6.8,0],\"center\":[14,26,-58],\"skinned\":false},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20],\"skinned\":false}},\"placed\":{\"lantern\":{\"size\":[0.69,1.15,0.21],\"center\":[2.9,0,-5.2]},\"candleHolder\":{\"size\":[0.21,0.34,0.21],\"center\":[2.9,1.02,-5.2]},\"monarch\":{\"size\":[1.24,1.48,1.01],\"center\":[0,1.83,-8.37]},\"guardA\":{\"size\":[0.02,0.02,0.01],\"center\":[-6.4,-0.01,-14.5]},\"guardB\":{\"size\":[0.02,0.02,0.01],\"center\":[6.4,-0.01,-14.5]},\"plantA\":{\"size\":[5.9,0.91,3.32],\"center\":[0.23,0,-4.83]},\"gate\":{\"size\":[11.5,5.61,0.26],\"center\":[0,2.81,-20]}},\"ground_y\":-0.05,\"camera_range\":{\"near\":0.1,\"far\":400,\"fov\":42}}",
-      1.9
+      2.4
     ],
     [
       "mask_meshes",
       "[{\"name\":\"yumao3_low_lambert4_0\",\"v\":37053},{\"name\":\"yumao3_low_lambert3_0\",\"v\":35303},{\"name\":\"yumao3_low_lambert2_0\",\"v\":77573},{\"name\":\"yumao3_low_lambert1_0\",\"v\":10585},{\"name\":\"zhu_low_lambert5_0\",\"v\":13362}]",
-      1.9
+      2.4
     ],
     [
       "hidden",
       "ground",
-      5.6
+      8.8
     ],
     [
       "hidden",
       "moonDisc",
-      7.8
+      13.2
     ],
     [
       "hidden",
       "moonHalo",
-      10
+      16.9
     ],
     [
       "hidden",
       "gate",
-      12.2
+      20.4
     ],
     [
       "hidden",
       "monarch",
-      13.7
+      23.3
     ],
     [
       "hidden",
       "guardA",
-      15.5
+      27
     ],
     [
       "hidden",
       "guardB",
-      17.4
+      30.9
     ],
     [
       "mask_placed",
       "{\"headSize\":[8.55,7.93,5.17],\"curioSize\":[0.033,0.065,0.018],\"headScale\":0.145,\"maskScale\":20.65,\"faceW\":1.24,\"maskPos\":[0.08,0.18,0.39]}",
-      17.4
+      30.9
     ],
     [
       "beat:B01_AERIAL_FIELD",
       "ok",
-      19.2
+      34.5
     ],
     [
       "beat:B02_GUARDED_FIELD",
       "ok",
-      19.5
+      35
     ],
     [
       "beat:B03_MASKED_TITLE",
       "ok",
-      21.5
+      39.2
     ],
     [
       "beat:B04_HUNGRY_PARIS",
       "ok",
-      23.1
+      42.5
     ],
     [
       "beat:B05_POTATO_PROMISE",
       "ok",
-      23.6
+      43.6
     ],
     [
       "beat:B06_POISONED_MIND",
       "ok",
-      25.5
+      47.6
     ],
     [
       "beat:B07_FREE_BASKETS",
       "ok",
-      26
+      48.5
     ],
     [
       "beat:B08_SILENT_PIVOT",
       "ok",
-      26.8
+      50
     ],
     [
       "beat:B09_FORTY_ACRES",
       "ok",
-      27.3
+      51
     ],
     [
       "beat:B10_WHISPERS",
       "ok",
-      27.9
+      52
     ],
     [
       "beat:B11_LAST_ORDER",
       "ok",
-      28.9
+      53.8
     ],
     [
       "beat:B12_SUNSET_WITHDRAWAL",
       "ok",
-      29.3
+      54.7
     ],
     [
       "beat:B13_NIGHT_THEFT",
       "ok",
-      31.2
+      58.3
     ],
     [
       "beat:B14_EMPTY_FIELD_DAWN",
       "ok",
-      32.9
+      61.7
     ],
     [
       "beat:B15_GRAVE_200_YEARS",
       "ok",
-      34.2
+      64.5
     ],
     [
       "beat:B16_FINAL_MONARCH",
       "ok",
-      35.2
+      66.2
     ],
     [
       "exception",
       "f is not defined",
-      35.2
+      66.2
     ]
   ],
-  "run": "44172082851"
+  "run": "44196707319"
 }
