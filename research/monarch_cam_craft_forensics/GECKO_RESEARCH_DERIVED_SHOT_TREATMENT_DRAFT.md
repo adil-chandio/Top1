@@ -1,5 +1,7 @@
 # How Does a Gecko Let Go? — research-derived treatment draft
 
+**Superseding handoff:** `ENGLISH_EDIT_AND_RIG_DECISION.md` and `ENGLISH_RESEARCH_DERIVED_EDIT_MAP.json` resolve spoken-order, timing and rig-scope conflicts below. The seven provisional windows in this file are historical design exploration, not the active edit schedule.
+
 Status: DESIGN ONLY, not production approval. English film, selected voice-09. Prior V6 is rejected creative baseline, not a shot-quality target. Timing below is editorial allocation, not biological measurement or a locked voice alignment. Independent second-long visual study, action-centered reference scrutiny, audio review and anatomy constraints remain open.
 
 ## Creative proposition

@@ -1,7 +1,7 @@
 {
   "channel": "Monarch Cam",
   "active_batch": 5,
-  "state": "independent_long_and_corrected_action_frames_actually_reviewed_production_held",
+  "state": "research_derived_english_edit_map_and_hybrid_rig_decision_design_only_production_held",
   "topic_locked": true,
   "candidate_seatbelt": "withdrawn: channel-fit not established",
   "batch_status": {
@@ -293,9 +293,9 @@
     "audio_listened": false,
     "every_native_frame_review": false,
     "next": [
-      "Revised English script/voice-to-shot map",
-      "Explicit specimen-grounded realistic versus schematic rig decision",
-      "Audio/nativeAV and scientific/rights review before production"
+      "Close source-grounded exterior foot/context asset and anatomy evidence without schematic-only final downgrade",
+      "Outstanding actual audio/nativeAV/reference-depth review",
+      "Production-ready scene/asset/edit specification only after holds resolved"
     ],
     "watch_acquisition": {
       "run_id": 44087213323,
@@ -326,6 +326,23 @@
       "actually_opened_sheets": 18,
       "unique_dense_frame_cells": 432,
       "report": "research/monarch_cam_craft_forensics/MICROCHIPS_ACTION_DRILLDOWN_AND_DECODER_AUDIT.md"
+    },
+    "edit_handoff": {
+      "document": "research/monarch_cam_craft_forensics/ENGLISH_EDIT_AND_RIG_DECISION.md",
+      "map": "research/monarch_cam_craft_forensics/ENGLISH_RESEARCH_DERIVED_EDIT_MAP.json",
+      "status": "design only; no render or asset/anatomy approval",
+      "voice_id": "voice-09",
+      "existing_audio_seconds": 63.68,
+      "audio_sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+      "picture_seconds_proposed": 70,
+      "timing_regions": 14,
+      "continuous_release_editorial_interval": [
+        33.2,
+        44.02
+      ],
+      "rig_decision": "hybrid proposed, exterior context asset still unapproved; qualitative digit insert; no full walk cycle requirement",
+      "structural_tests_passed": 7,
+      "tests_are_not_craft_or_audio_pass": true
     }
   }
 }
