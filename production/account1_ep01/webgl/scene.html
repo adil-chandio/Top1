@@ -197,12 +197,28 @@ let monarch = null, mask = null, guardA = null, guardB = null;
 let plantA = null, lantern = null, candleHolder = null;
 
 function normalize(root, targetLen, yOff = 0) {
-  const box = new THREE.Box3().setFromObject(root);
+  root.updateWorldMatrix(true, true);
   const size = new THREE.Vector3(), center = new THREE.Vector3();
-  box.getSize(size); box.getCenter(center);
+  {
+    const b = new THREE.Box3(), v = new THREE.Vector3();
+    root.traverse((o) => {
+      if (!o.isMesh || !o.geometry?.attributes?.position) return;
+      const pos = o.geometry.attributes.position;
+      for (let i = 0; i < pos.count; i += Math.max(1, Math.floor(pos.count / 1200))) {
+        b.expandByPoint(v.fromBufferAttribute(pos, i).applyMatrix4(o.matrixWorld));
+      }
+    });
+    if (b.isEmpty()) b.setFromObject(root);
+    b.getSize(size); b.getCenter(center);
+  }
   const s = targetLen / Math.max(size.x, size.y, size.z, 0.001);
-  root.scale.setScalar(s);
+  /* The GLBs carry their own scale on an inner node; multiplying on the root
+     compounds with it. Wrapping in a fresh carrier replaces it outright. */
+  const carrier = new THREE.Group();
+  root.scale.multiplyScalar(s);
   root.position.set(-center.x * s, -center.y * s + yOff, -center.z * s);
+  carrier.add(root);
+  return carrier;
   root.traverse((o) => {
     if (!o.isMesh || !o.material) return;
     const src = o.material;
@@ -361,8 +377,7 @@ window.__PEHRA_INIT__ = async (timeline) => {
   /* two soldiers flanking the gate */
   const mk = (x, z, rotY, targetLen) => {
     const g = new THREE.Group();
-    const inner = SkeletonUtils.clone(soldierG.scene);
-    normalize(inner, targetLen, 0);
+    const inner = normalize(SkeletonUtils.clone(soldierG.scene), targetLen, 0);
     g.add(inner);
     g.position.set(x, 0, z);
     g.rotation.y = rotY;
@@ -603,7 +618,7 @@ window.__PEHRA_FRAME__ = (frame) => {
   dust.rotation.y = tt * 0.012;
   dust.position.y = Math.sin(tt * 0.7) * 0.10;
   moonHalo.material.opacity = 0.09 + Math.sin(tt * 0.9) * 0.015;
-  lantern.position.y = Math.sin(tt * 1.7) * 0.012;
+  candleHolder.position.y = 1.02 + Math.sin(tt * 1.7) * 0.010;
   if (gateLt.visible) gateLt.intensity *= 1 + Math.sin(tt * 9.0) * 0.035;
 
   renderer.render(scene, camera);
