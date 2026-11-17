@@ -70,6 +70,8 @@ try {
   /* one representative frame per beat, so the look of every beat can be
      inspected from the branch without waiting on a full render */
   const picks = tl.shots.filter(s => s.f_start >= +process.env.P_F0 && s.f_start <= +process.env.P_F1);
+  const placed = await page.evaluate(()=>window.__MASK_PLACED__ || null);
+  log('mask_placed', JSON.stringify(placed));
   for (const s of picks) {
     const f = await page.evaluate((idx)=>{try{window.__PEHRA_FRAME__(idx);return 'ok';}catch(e){return 'ERR '+e.message;}}, s.lookdev_frame);
     await page.screenshot({path:path.join(OUT, `${s.id}.jpg`), type:'jpeg', quality:92});

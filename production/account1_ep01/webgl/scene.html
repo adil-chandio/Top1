@@ -119,9 +119,9 @@ for (let i = 0; i < 130; i++) {
   const m = potato(s);
   const row = Math.floor(i / 9);
   m.position.set(
-    (i % 9) * 1.05 - 4.2 + rnd(i + 7) * 0.35,
-    0.20 * s,
-    row * 1.65 - 7.5 + rnd(i + 13) * 0.5
+    (i % 9) * 0.62 - 2.5 + rnd(i + 7) * 0.22,
+    0.11 * s,
+    row * 1.05 - 6.0 + rnd(i + 13) * 0.30
   );
   m.rotation.set(rnd(i + 3) * 0.6, rnd(i + 5) * 6.28, rnd(i + 9) * 0.4);
   scene.add(m);
@@ -222,6 +222,25 @@ function normalize(root, targetLen, yOff = 0) {
   return root;
 }
 
+/* Asset bounds are the difference between a mask that sits on a face and one
+   that ends up buried inside a skull. Dump them so placement is measured. */
+function boundsOf(root) {
+  const b = new THREE.Box3().setFromObject(root);
+  const sz = new THREE.Vector3(), c = new THREE.Vector3();
+  b.getSize(sz); b.getCenter(c);
+  return { size: sz.toArray().map(v => +v.toFixed(3)),
+           center: c.toArray().map(v => +v.toFixed(3)),
+           min: b.min.toArray().map(v => +v.toFixed(3)),
+           max: b.max.toArray().map(v => +v.toFixed(3)) };
+}
+
+window.__PEHRA_BOUNDS__ = (kind) => {
+  const src = { head: window.__G_HEAD__, mask: window.__G_MASK__,
+                soldier: window.__G_SOLDIER__, lantern: window.__G_LANTERN__,
+                plant: window.__G_PLANT__ }[kind];
+  return src ? boundsOf(src.scene) : null;
+};
+
 window.__PEHRA_INIT__ = async (timeline) => {
   const [headG, maskG, soldierG, plantG, lanternG, holderG] = await Promise.all([
     loadGLTF('/assets/LeePerrySmith.glb'),
@@ -231,18 +250,37 @@ window.__PEHRA_INIT__ = async (timeline) => {
     loadGLTF('/assets/Lantern.glb'),
     loadGLTF('/assets/GlassHurricaneCandleHolder.glb'),
   ]);
+  window.__G_HEAD__ = headG; window.__G_MASK__ = maskG;
+  window.__G_SOLDIER__ = soldierG; window.__G_LANTERN__ = lanternG;
+  window.__G_PLANT__ = plantG;
 
-  /* the masked monarch: scanned head wearing the venetian mask */
+  /* the masked monarch: the venetian mask is a face covering, so it is scaled
+     to the head's actual head-width rather than to an absolute length */
   monarch = new THREE.Group();
-  const head = normalize(SkeletonUtils.clone(headG.scene), 1.05, 0);
-  head.position.y += 0.62;
+  const head = SkeletonUtils.clone(headG.scene);
+  const hb = boundsOf(head);
+  const headH = hb.size[1];
+  head.scale.setScalar(1.15 / headH);              // ~1.15 m of head+neck
+  head.position.set(-hb.center[0] * 1.15 / headH,
+                    0.62 - hb.center[1] * 1.15 / headH,
+                    -hb.center[2] * 1.15 / headH);
   monarch.add(head);
 
-  mask = normalize(SkeletonUtils.clone(maskG.scene), 0.92, 0);
-  mask.position.set(0, 0.06, 0.34);   // relative to the head, on the face
-  head.add(mask);
+  mask = SkeletonUtils.clone(maskG.scene);
+  const mb = boundsOf(mask);
+  const faceW = hb.size[0] * 1.15 / headH;         // width of the head, world units
+  mask.scale.setScalar(faceW * 1.18 / mb.size[0]);
+  const ms = mask.scale.x;
+  /* centre the mask, then push it out to the front of the face */
+  mask.position.set(-mb.center[0] * ms,
+                    0.72 - mb.center[1] * ms,
+                    hb.max[2] * 1.15 / headH + (mb.size[2] * ms) * 0.15);
+  monarch.add(mask);
   monarch.position.set(0, 1.05, -8.5);
   scene.add(monarch);
+  window.__MASK_PLACED__ = { head: hb, mask: mb, faceW:+faceW.toFixed(3),
+                             maskScale:+ms.toFixed(3),
+                             maskPos: mask.position.toArray().map(v=>+v.toFixed(3)) };
 
   /* two soldiers flanking the gate */
   const mk = (x, z, rotY, targetLen) => {
