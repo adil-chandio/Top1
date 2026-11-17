@@ -1,0 +1,21 @@
+{
+  "file": "studio/runtime/gecko/visual-pass/cut/gecko-english-3d-visual-cut-v1.mp4",
+  "sha256": "bd36ecebd57409b8200ab24e585df28c4921f0b31bc2e1531437baba0517878b",
+  "seconds": 66,
+  "fps": 24,
+  "resolution": [
+    540,
+    960
+  ],
+  "audio": "same selected voice09,63.68s,not newly listening-reviewed",
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "assets": "original Blender procedural foot,microstructure,pad-shotassets",
+  "limitations": [
+    "schematic unmeasured foot and placeholder claws; no anatomically solved gait",
+    "pad keyframes sampled/held; not final smooth motion",
+    "foot/microstructure use rendered stills with scale moves, not articulated animation",
+    "noBGM/SFX/finalmix",
+    "not final production or anatomy/audioQC pass"
+  ]
+}

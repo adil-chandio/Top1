@@ -94,3 +94,6 @@ User-selected English audition09 / voice-09 generated in two clips33.20s+30.48s.
 
 ## Latest checkpoint — Batch4 assembly started, NOT final-production pass
 English story66sanimatic actually exported540x960/24fps with63.68svoice,8beats and captions. Approximate161word acoustic alignment (transcript-constrained, not independent transcription/listening QC). Full MP4decode exit0;12sample story frames visually inspected and defects corrected. Batch3 conditional handoff to Batch4; exact anatomy, audio listening/seam, per-asset rights and fine-sync holds carried. Batch4actual craft-reference inspection/full production and Batch5remain open. STORY_ANIMATIC_REVIEW_ROMAN_URDU.md is the detailed bounded receipt. No final-film or full-review claim.
+
+## Latest Batch4 visual-development checkpoint
+66sEnglish3Dvisualcut exported/full-decoded. Originalfoot/setae/padsceneassets integrated; initially disconnected digit corrected, external skin1component17620vertices verified.12samplepoints and corrected65sdecodedframe actually inspected; earlier2Dtip composite leak fixed. Historical actualcraft findings applied, not new fullreferencewatching. Footclaws/proportions/LDT, fullratesmoothmotion, unifiedbackground and audiolistening/mix still open. See research/monarch_cam_gecko_batch4/CRAFT_APPLICATION_AND_VISUAL_PASS_ROMAN_URDU.md; no finalfilm/anatomy/audioQCpass.

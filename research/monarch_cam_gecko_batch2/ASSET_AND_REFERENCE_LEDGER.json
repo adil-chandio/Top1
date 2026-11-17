@@ -92,6 +92,24 @@
       "local_copy_deleted_after_notes": true,
       "production_status": "reference only; original study contains no source pixels",
       "observations": "Fig1b labelled left pes ventral: I at upper-right clawless; II upper-right, III upper, IV left, V lower-left in THIS pose; transverse enlarged scales and smaller plantar scales. Fig1a distal claw sits above enlarged scale series, not a suction disk."
+    },
+    {
+      "id": "original3d-foot-ventral.png",
+      "provenance": "procedurally authored in render_visual_pass.py; no reference pixels embedded",
+      "sha256": "76a6b687ce7e9c4f28be20c4b081e90eecb19ba1ef50aded2798f93caca334e1",
+      "actual_pixels_inspected": true,
+      "reuse": "original project asset",
+      "production_status": "visualdevelopment only; exact anatomy/realism not passed",
+      "source_facts": "Tokay Fig1/2 DOI10.1111/joa.70251 for foot identity; branching setae qualitative for macro"
+    },
+    {
+      "id": "original3d-setae-contact.png",
+      "provenance": "procedurally authored in render_visual_pass.py; no reference pixels embedded",
+      "sha256": "2e2afc7b5aaa7747d7509b95f7456518e66f473837c56af8104e525a7da7a6a4",
+      "actual_pixels_inspected": true,
+      "reuse": "original project asset",
+      "production_status": "visualdevelopment only; exact anatomy/realism not passed",
+      "source_facts": "Tokay Fig1/2 DOI10.1111/joa.70251 for foot identity; branching setae qualitative for macro"
     }
   ],
   "production_licensed_gecko_model": null,
