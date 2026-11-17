@@ -33,12 +33,12 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(1);
 renderer.setSize(W, H, false);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.18;
+renderer.toneMappingExposure = 1.34;
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x070a12);
-scene.fog = new THREE.FogExp2(0x070a12, 0.020);
+scene.fog = new THREE.FogExp2(0x070a12, 0.014);
 
 const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 400);
 
@@ -46,24 +46,24 @@ const camera = new THREE.PerspectiveCamera(42, W / H, 0.1, 400);
    Each beat carries a palette name in the timeline. These are the exact
    moods the render script had, expressed as light rigs.                     */
 const PALETTES = {
-  moon:    { bg:0x070c18, fog:0x070c18, hemiA:0x9dc4ff, hemiB:0x05070f,
+  moon:    { bg:0x121a2e, fog:0x121a2e, hemiA:0x9dc4ff, hemiB:0x05070f,
              key:0xbfd6ff, keyI:2.6, rim:0x6f9dff, rimI:2.2, fill:0xffc98a, fillI:0.9,  fogD:0.020 },
-  amber:   { bg:0x160d06, fog:0x160d06, hemiA:0xffcf9a, hemiB:0x0a0603,
+  amber:   { bg:0x241408, fog:0x241408, hemiA:0xffcf9a, hemiB:0x0a0603,
              key:0xffc073, keyI:3.2, rim:0xff8a3d, rimI:2.0, fill:0x7fa8ff, fillI:0.7,  fogD:0.024 },
-  crimson: { bg:0x12060a, fog:0x12060a, hemiA:0xff9a8a, hemiB:0x080305,
+  crimson: { bg:0x1e0a12, fog:0x1e0a12, hemiA:0xff9a8a, hemiB:0x080305,
              key:0xff5a4a, keyI:3.0, rim:0xff2030, rimI:2.6, fill:0x6f9dff, fillI:0.8,  fogD:0.022 },
-  dusk:    { bg:0x1a0d10, fog:0x1a0d10, hemiA:0xffb37a, hemiB:0x0d0608,
+  dusk:    { bg:0x2a1418, fog:0x2a1418, hemiA:0xffb37a, hemiB:0x0d0608,
              key:0xff9a5a, keyI:3.4, rim:0xff4a6a, rimI:2.2, fill:0x8fb0ff, fillI:0.6,  fogD:0.018 },
-  gold:    { bg:0x140f04, fog:0x140f04, hemiA:0xffe0a0, hemiB:0x0a0702,
+  gold:    { bg:0x241a08, fog:0x241a08, hemiA:0xffe0a0, hemiB:0x0a0702,
              key:0xffd166, keyI:3.6, rim:0xff9a2a, rimI:2.4, fill:0x9db8ff, fillI:0.7,  fogD:0.016 },
-  night:   { bg:0x04060e, fog:0x04060e, hemiA:0x7f9fd8, hemiB:0x02040a,
+  night:   { bg:0x0a0f1e, fog:0x0a0f1e, hemiA:0x7f9fd8, hemiB:0x02040a,
              key:0xa8c4ff, keyI:2.2, rim:0x4a6fd8, rimI:2.8, fill:0xffd08a, fillI:1.0,  fogD:0.026 },
-  dawn:    { bg:0x141824, fog:0x141824, hemiA:0xffd0b0, hemiB:0x0a0d14,
+  dawn:    { bg:0x222838, fog:0x222838, hemiA:0xffd0b0, hemiB:0x0a0d14,
              key:0xffe0c0, keyI:3.0, rim:0x8fb0ff, rimI:1.8, fill:0xffb080, fillI:1.2,  fogD:0.017 },
 };
 
 /* ------------------------------------------------------------------- lights */
-const hemi   = new THREE.HemisphereLight(0xffffff, 0x000000, 1.4);
+const hemi   = new THREE.HemisphereLight(0xffffff, 0x2a1d12, 1.9);
 const keyLt  = new THREE.DirectionalLight(0xffffff, 3.0);
 const rimLt  = new THREE.DirectionalLight(0xffffff, 2.4);
 const fillLt = new THREE.DirectionalLight(0xffffff, 1.0);
@@ -88,12 +88,12 @@ function displacedPlane(w, d, seg, amp, freq, color, rough, metal) {
 }
 
 /* the field: dark tilled earth, ridged in rows */
-const field = displacedPlane(150, 150, 96, 0.42, 0.30, 0x120d08, 0.94, 0.02);
+const field = displacedPlane(150, 150, 110, 0.30, 0.55, 0x2b2018, 0.97, 0.01);
 scene.add(field);
 
 /* a second, closer furrow bank so the aerial has depth under it */
-const bank = displacedPlane(70, 26, 48, 0.55, 0.55, 0x171008, 0.96, 0.01);
-bank.position.set(-8, 0.08, -14);
+const bank = displacedPlane(70, 22, 44, 0.40, 0.60, 0x33261c, 0.97, 0.01);
+bank.position.set(-16, 0.06, -30);
 scene.add(bank);
 
 /* ------------------------------------------------------------- potato prop */
@@ -108,7 +108,7 @@ function potato(scale = 1) {
   g.computeVertexNormals();
   return new THREE.Mesh(
     g,
-    new THREE.MeshStandardMaterial({ color: 0x8a5a30, roughness: 0.86, metalness: 0.02 })
+    new THREE.MeshStandardMaterial({ color: 0xa9763f, roughness: 0.78, metalness: 0.03 })
   );
 }
 
@@ -119,9 +119,9 @@ for (let i = 0; i < 130; i++) {
   const m = potato(s);
   const row = Math.floor(i / 9);
   m.position.set(
-    (i % 9) * 1.55 - 6.2 + rnd(i + 7) * 0.5,
-    0.30 * s,
-    row * 2.35 - 9.5 + rnd(i + 13) * 0.7
+    (i % 9) * 1.05 - 4.2 + rnd(i + 7) * 0.35,
+    0.20 * s,
+    row * 1.65 - 7.5 + rnd(i + 13) * 0.5
   );
   m.rotation.set(rnd(i + 3) * 0.6, rnd(i + 5) * 6.28, rnd(i + 9) * 0.4);
   scene.add(m);
@@ -238,9 +238,9 @@ window.__PEHRA_INIT__ = async (timeline) => {
   head.position.y += 0.62;
   monarch.add(head);
 
-  mask = normalize(SkeletonUtils.clone(maskG.scene), 0.86, 0);
-  mask.position.set(0, 0.66, 0.30);
-  monarch.add(mask);
+  mask = normalize(SkeletonUtils.clone(maskG.scene), 0.92, 0);
+  mask.position.set(0, 0.06, 0.34);   // relative to the head, on the face
+  head.add(mask);
   monarch.position.set(0, 1.05, -8.5);
   scene.add(monarch);
 
@@ -296,53 +296,170 @@ function applyPalette(name) {
 const BEATS = {
   B01_AERIAL_FIELD(t) {                        // high drone drift over the field
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-9 + e * 7.5, 13.5 - e * 3.2, 13 - e * 6.5);
-    camera.lookAt(0, 0.4, -4 - e * 3);
-    keyLt.position.set(-14, 22, 8);
-    rimLt.position.set(16, 9, -26);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 0; gateLt.visible = false; moonLt.intensity = 6; moonLt.visible = true;
+    camera.position.set(-13 + e * 10, 16.5 - e * 4.0, 20 - e * 9);
+    camera.lookAt(0, 0.8, -6);
+    keyLt.position.set(-16, 24, 10); keyLt.intensity = 2.9;
+    rimLt.position.set(18, 10, -30);  rimLt.intensity = 2.4;
+    gateLt.visible = false; moonLt.visible = true; moonLt.intensity = 7;
     moonLt.position.set(14, 26, -58);
-    dust.material.opacity = 0.34;
+    dust.material.opacity = 0.30;
   },
-  B02_GUARDED_FIELD(t) {                       // low track along the guards' boots
+  B02_GUARDED_FIELD(t) {                       // low track along the guards
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-8.5 + e * 17, 0.62, -6.2 - e * 3.4);
-    camera.lookAt(-2 + e * 6, 2.1, -15.5);
-    keyLt.position.set(-7, 6, -8);
-    rimLt.position.set(9, 5, -22);
-    gateLt.position.set(0, 3.4, -20); gateLt.intensity = 26; moonLt.intensity = 0;
+    camera.position.set(-7.5 + e * 15, 1.55, -8.5 - e * 4.5);
+    camera.lookAt(-3 + e * 7, 2.4, -15.5);
+    keyLt.position.set(-8, 7, -6); keyLt.intensity = 2.4;
+    rimLt.position.set(10, 5, -24); rimLt.intensity = 2.8;
+    gateLt.visible = true; gateLt.intensity = 30;
+    moonLt.visible = false;
+    dust.material.opacity = 0.24;
+  },
+  B03_MASKED_TITLE(t) {                        // masked monarch push-in
+    const e = 1 - Math.pow(1 - t, 3);
+    camera.position.set(0.1, 1.95 + e * 0.08, -4.6 - e * 2.2);
+    camera.lookAt(0, 1.72, -8.5);
+    monarch.rotation.y = Math.sin(t * 3.2) * 0.09;
+    keyLt.position.set(-5, 5, -4); keyLt.intensity = 3.1;
+    rimLt.position.set(5, 3.4, -13); rimLt.intensity = 3.0;
+    gateLt.visible = true; gateLt.intensity = 30;
+    moonLt.visible = false;
     dust.material.opacity = 0.26;
   },
-  B03_MASKED_TITLE(t) {                        // masked monarch push-in, gate closes
-    const e = 1 - Math.pow(1 - t, 3);
-    camera.position.set(0.2 - e * 0.1, 1.62 + e * 0.1, -3.2 - e * 2.6);
-    camera.lookAt(0, 1.62, -8.5);
-    monarch.position.z = -8.5 + e * 1.1;
-    monarch.rotation.y = Math.sin(t * 3.6) * 0.10;
-    keyLt.position.set(-5, 4.5, -5);
-    rimLt.position.set(4.5, 3.2, -12);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 34; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
-    dust.material.opacity = 0.30;
-  },
-  B04_HUNGRY_PARIS(t) {                        // wide, starving city at dusk
+  B04_HUNGRY_PARIS(t) {                        // wide starving city at dusk
     const e = t * t * (3 - 2 * t);
-    camera.position.set(10 - e * 5, 4.2 - e * 1.0, 10 - e * 5);
-    camera.lookAt(0, 1.0, -6);
-    keyLt.position.set(18, 6, 6);
-    rimLt.position.set(-16, 5, -18);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 18; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
+    camera.position.set(13 - e * 6, 5.2, 16 - e * 6);
+    camera.lookAt(-1, 1.6, -9);
+    keyLt.position.set(20, 8, 8); keyLt.intensity = 3.0;
+    rimLt.position.set(-18, 6, -20); rimLt.intensity = 2.2;
+    gateLt.visible = true; gateLt.intensity = 20;
+    moonLt.visible = false;
+    dust.material.opacity = 0.20;
+  },
+  B05_POTATO_PROMISE(t) {                      // macro glide over the crop
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-3.6 + e * 2.8, 1.30, 1.2 - e * 2.4);
+    camera.lookAt(0.3, 0.30, -3.4);
+    keyLt.position.set(-4, 6, 5); keyLt.intensity = 2.6;
+    rimLt.position.set(5, 4, -10); rimLt.intensity = 2.5;
+    gateLt.visible = true; gateLt.intensity = 22;
+    moonLt.visible = false;
+    dust.material.opacity = 0.28;
+  },
+  B06_POISONED_MIND(t) {                       // the poisoned-mind insert
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(5.5 - e * 2.0, 2.0, -2.5 - e * 2.5);
+    camera.lookAt(0, 1.0, -7);
+    keyLt.position.set(6, 5, 0); keyLt.intensity = 2.3;
+    rimLt.position.set(-7, 4, -12); rimLt.intensity = 2.7;
+    gateLt.visible = true; gateLt.intensity = 26;
+    moonLt.visible = false;
+    dust.material.opacity = 0.26;
+  },
+  B07_FREE_BASKETS(t) {                        // baskets offered in the market
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-4.0 + e * 3.0, 1.85, 0.5 - e * 2.2);
+    camera.lookAt(0.5, 0.7, -5.0);
+    keyLt.position.set(-5, 6, 3); keyLt.intensity = 2.8;
+    rimLt.position.set(6, 4, -11); rimLt.intensity = 2.4;
+    gateLt.visible = true; gateLt.intensity = 24;
+    moonLt.visible = false;
+    dust.material.opacity = 0.24;
+  },
+  B08_SILENT_PIVOT(t) {                        // the monarch's mask, closer
+    const e = 1 - Math.pow(1 - t, 3);
+    camera.position.set(-1.2 + e * 0.9, 1.86, -5.6 - e * 1.6);
+    camera.lookAt(0, 1.78, -8.5);
+    monarch.rotation.y = -0.16 + Math.sin(t * 2.6) * 0.12;
+    keyLt.position.set(-4.5, 5, -5); keyLt.intensity = 3.0;
+    rimLt.position.set(4.5, 3.6, -13); rimLt.intensity = 3.2;
+    gateLt.visible = true; gateLt.intensity = 32;
+    moonLt.visible = false;
     dust.material.opacity = 0.22;
   },
-  B05_POTATO_PROMISE(t) {                      // macro over the potatoes
+  B09_FORTY_ACRES(t) {                         // pull back: forty walled acres
     const e = t * t * (3 - 2 * t);
-    camera.position.set(-3.2 + e * 2.4, 0.82 + e * 0.3, 1.4 - e * 2.2);
-    camera.lookAt(0.4, 0.35, -2.6);
-    keyLt.position.set(-3, 5, 4);
-    rimLt.position.set(4, 3, -9);
-    gateLt.position.set(0, 3.2, -20); gateLt.intensity = 20; gateLt.visible = true; moonLt.intensity = 0; moonLt.visible = false;
+    camera.position.set(-16 + e * 8, 9.5 - e * 2.5, 16 - e * 6);
+    camera.lookAt(0, 1.2, -12);
+    keyLt.position.set(-18, 20, 8); keyLt.intensity = 2.6;
+    rimLt.position.set(16, 9, -28); rimLt.intensity = 2.6;
+    gateLt.visible = true; gateLt.intensity = 24;
+    moonLt.visible = false;
+    dust.material.opacity = 0.22;
+  },
+  B10_WHISPERS(t) {                            // among the people, low and close
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(3.2 - e * 2.2, 1.62, -1.5 - e * 2.0);
+    camera.lookAt(-1.0, 1.5, -8.0);
+    keyLt.position.set(4, 6, 0); keyLt.intensity = 2.4;
+    rimLt.position.set(-6, 4, -13); rimLt.intensity = 2.8;
+    gateLt.visible = true; gateLt.intensity = 28;
+    moonLt.visible = false;
     dust.material.opacity = 0.30;
   },
+  B11_LAST_ORDER(t) {                          // the order, delivered
+    const e = 1 - Math.pow(1 - t, 3);
+    camera.position.set(0, 2.15, -3.4 - e * 1.8);
+    camera.lookAt(0, 1.85, -8.5);
+    monarch.rotation.y = 0.08 + Math.sin(t * 2.2) * 0.06;
+    keyLt.position.set(-3, 5.5, -4); keyLt.intensity = 3.2;
+    rimLt.position.set(3.5, 4, -13); rimLt.intensity = 2.8;
+    gateLt.visible = true; gateLt.intensity = 34;
+    moonLt.visible = false;
+    dust.material.opacity = 0.24;
+  },
+  B12_SUNSET_WITHDRAWAL(t) {                   // dusk, the gate clears
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-11 + e * 8, 4.6, 12 - e * 5);
+    camera.lookAt(0, 2.0, -12);
+    keyLt.position.set(-20, 9, 6); keyLt.intensity = 3.4;
+    rimLt.position.set(14, 5, -26); rimLt.intensity = 2.4;
+    gateLt.visible = true; gateLt.intensity = 18;
+    moonLt.visible = false;
+    dust.material.opacity = 0.20;
+  },
+  B13_NIGHT_THEFT(t) {                         // night: over the wall, in
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(6.5 - e * 4.5, 3.2 - e * 0.6, 4.0 - e * 4.0);
+    camera.lookAt(-1, 1.0, -12);
+    keyLt.position.set(10, 14, 2); keyLt.intensity = 1.9;
+    rimLt.position.set(-12, 8, -26); rimLt.intensity = 3.0;
+    gateLt.visible = false; moonLt.visible = true; moonLt.intensity = 8;
+    moonLt.position.set(-10, 24, -52);
+    dust.material.opacity = 0.32;
+  },
+  B14_EMPTY_FIELD_DAWN(t) {                    // dawn: the field is stripped
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-9 + e * 6, 6.5 - e * 1.5, 12 - e * 5);
+    camera.lookAt(0, 0.9, -8);
+    keyLt.position.set(-14, 16, 8); keyLt.intensity = 3.2;
+    rimLt.position.set(12, 7, -24); rimLt.intensity = 2.2;
+    gateLt.visible = false; moonLt.visible = true; moonLt.intensity = 5;
+    moonLt.position.set(16, 30, -60);
+    dust.material.opacity = 0.20;
+  },
+  B15_GRAVE_200_YEARS(t) {                     // the grave, two centuries on
+    const e = t * t * (3 - 2 * t);
+    camera.position.set(-2.4 + e * 1.6, 1.05, 1.6 - e * 1.8);
+    camera.lookAt(0.2, 0.35, -3.2);
+    keyLt.position.set(-3, 4, 3); keyLt.intensity = 2.7;
+    rimLt.position.set(4, 3, -9); rimLt.intensity = 2.6;
+    gateLt.visible = true; gateLt.intensity = 16;
+    moonLt.visible = false;
+    dust.material.opacity = 0.26;
+  },
+  B16_FINAL_MONARCH(t) {                       // final: the monarch, the gate
+    const e = 1 - Math.pow(1 - t, 2);
+    camera.position.set(0.6, 2.05, -3.0 - e * 2.4);
+    camera.lookAt(0, 1.78, -8.5);
+    monarch.rotation.y = Math.sin(t * 1.8) * 0.10;
+    keyLt.position.set(-4, 5.6, -4.5); keyLt.intensity = 3.3;
+    rimLt.position.set(4, 4.2, -13); rimLt.intensity = 3.4;
+    gateLt.visible = true; gateLt.intensity = 36;
+    moonLt.visible = false;
+    dust.material.opacity = 0.28;
+  },
 };
+
 
 /* fallback so no beat is ever a hard cut to nothing */
 const BEAT_IDS = Object.keys(BEATS);
