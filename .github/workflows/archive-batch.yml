@@ -1,0 +1,19 @@
+name: Sequential archive reference research
+on:
+  push:
+    branches: [arena/2a8ad29e-top1]
+    paths: [research/monarch_cam_restart_batch1/archive_batch.py, research/monarch_cam_restart_batch1/archive_batch_config.json, .github/workflows/archive-batch.yml]
+permissions:
+  contents: read
+  checks: write
+jobs:
+  research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: python research/monarch_cam_restart_batch1/archive_batch.py
