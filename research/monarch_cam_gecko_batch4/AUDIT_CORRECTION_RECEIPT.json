@@ -1,0 +1,23 @@
+{
+  "file": "studio/runtime/gecko/audit-corrected/gecko-english-review-cut-v4.mp4",
+  "sha256": "25db7f79fe0530aed61e681c187998b904f7c431c56a15f9fd2c66b801cba64b",
+  "seconds": 66,
+  "fps": 24,
+  "resolution": [
+    540,
+    960
+  ],
+  "corrections": [
+    "B7detachedposeheld44.02\u201352.19s",
+    "recapcontactresetexplicit52.19\u201355.82s",
+    "readablebriefsourcesandcompanioncreditspointer63.68\u201366s"
+  ],
+  "full_decode_exit": 0,
+  "full_decode_errors": "",
+  "final_pass": false,
+  "holds": [
+    "exactanatomy/claw/LDT/biologicalrig",
+    "actualaudio/listening/fullAVQC",
+    "remainingfinalcraftsignoff"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "video": "studio/runtime/gecko/macro-pass/cut/gecko-english-review-cut-v3.mp4",
+  "sha256": "faaf5aef02f6f3c45d0697755a70ebf156637f07478fd4db667739f269306ee6",
+  "decoder_metadata": {
+    "ffmpeg_version": "n9.0.2-17-g2a571b6068-20260930 built with gcc 16.2.0 (crosstool-NG 1.29.0.7_b1a94f6)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 24.0,
+    "source_size": [
+      540,
+      960
+    ],
+    "size": [
+      540,
+      960
+    ],
+    "rotate": 0,
+    "duration": 66.0
+  },
+  "decoded_video_frames": 1584,
+  "expected_frames": 1584,
+  "nearblack_frame_indices": [],
+  "one_second_picture_samples": 66,
+  "picture_survey_method": "ffmpeg fps=1, approximately second-centred samples; not frame-exact cut detection",
+  "audio_silence_threshold": "-45dB >=0.3s; pauses can be intentional",
+  "silence_intervals": [
+    {
+      "start": 5.308021,
+      "end": 5.724208,
+      "seconds": 0.416187
+    },
+    {
+      "start": 10.599375,
+      "end": 11.003667,
+      "seconds": 0.404292
+    },
+    {
+      "start": 20.005229,
+      "end": 20.347188,
+      "seconds": 0.341958
+    },
+    {
+      "start": 26.194208,
+      "end": 26.634271,
+      "seconds": 0.440062
+    },
+    {
+      "start": 32.897583,
+      "end": 33.263542,
+      "seconds": 0.365958
+    },
+    {
+      "start": 37.070604,
+      "end": 37.520708,
+      "seconds": 0.450104
+    },
+    {
+      "start": 43.477208,
+      "end": 44.062729,
+      "seconds": 0.585521
+    },
+    {
+      "start": 47.509042,
+      "end": 47.907438,
+      "seconds": 0.398396
+    },
+    {
+      "start": 51.630271,
+      "end": 52.059438,
+      "seconds": 0.429167
+    },
+    {
+      "start": 55.440479,
+      "end": 55.847458,
+      "seconds": 0.406979
+    },
+    {
+      "start": 63.386937,
+      "end": 66.0,
+      "seconds": 2.613062
+    }
+  ],
+  "part_seam_measurement": {
+    "seconds": 33.2,
+    "adjacent_sample_jump": 0.00048828125,
+    "previous50ms_rms": 0.00019802553650054893,
+    "following50ms_rms": 0.00027898975639526375,
+    "note": "signal measures,not listening/click/prosody approval"
+  },
+  "listening_performed": false,
+  "signoff": false
+}
