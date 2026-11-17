@@ -352,6 +352,19 @@ window.__PEHRA_INIT__ = async (timeline) => {
                 lantern: boxOf(lanternG.scene), holder: boxOf(holderG.scene),
                 ground: boxOf(ground), moonDisc: boxOf(moonDisc),
                 gate: boxOf(gate) },
+      placed: (() => {
+        const boxOf = (o) => {
+          if (!o) return null;
+          const b = new THREE.Box3().setFromObject(o);
+          const sz = new THREE.Vector3(), c = new THREE.Vector3();
+          b.getSize(sz); b.getCenter(c);
+          return { size: sz.toArray().map(x=>+x.toFixed(2)),
+                   center: c.toArray().map(x=>+x.toFixed(2)) };
+        };
+        return { lantern: boxOf(lantern), candleHolder: boxOf(candleHolder),
+                 monarch: boxOf(monarch), guardA: boxOf(guardA), guardB: boxOf(guardB),
+                 plantA: boxOf(plantA), gate: boxOf(gate) };
+      })(),
       ground_y: +ground.position.y.toFixed(2),
       camera_range: { near: camera.near, far: camera.far, fov: camera.fov },
     };
