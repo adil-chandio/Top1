@@ -234,20 +234,35 @@ jobs:
           retention-days: 14
           compression-level: 1
 
-      - name: Publish the deliverable to the branch
+      - name: Split the film into transferable chunks
         run: |
           set -euo pipefail
-          DEST="deliverables/pehra-webgl"
-          mkdir -p "$DEST"
-          cp -a production/account1_ep01/renders/. "$DEST/"
-          cp -a production/account1_ep01/webgl/qc/webgl_qc.json "$DEST/" 2>/dev/null || true
+          MP4="$(find production/account1_ep01/renders -maxdepth 1 -name '*.mp4' | head -1)"
+          echo "film: $MP4"
+          SIZE=$(stat -c%s "$MP4")
+          echo "bytes: $SIZE"
+          OUT="production/account1_ep01/webgl/transfer"
+          rm -rf "$OUT"; mkdir -p "$OUT"
+          split -b 8388608 -d -a 3 "$MP4" "$OUT/part_"
+          PARTS=$(ls "$OUT"/part_* | wc -l)
+          ls -la "$OUT" | head
+          printf '{\n  "file": "%s",\n  "bytes": %s,\n  "parts": %s,\n  "run": "%s"\n}\n' \
+            "$(basename "$MP4")" "$SIZE" "$PARTS" "${{ github.run_id }}" > "$OUT/MANIFEST.json"
+          cat "$OUT/MANIFEST.json"
+          sha256sum "$MP4" > "$OUT/SHA256SUMS.txt"
+          cat "$OUT/SHA256SUMS.txt"
+
+      - name: Commit the chunks so they can be collected
+        run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f "$DEST"
+          git add -f production/account1_ep01/webgl/transfer
+          git add -f production/account1_ep01/webgl/qc || true
           if git diff --cached --quiet; then
-            echo "nothing new"
+            echo "nothing to commit"
           else
-            git commit -m "Publish PEHRA WebGL render (run ${{ github.run_id }})"
+            git commit -m "PEHRA WebGL film, chunked for collection (run ${{ github.run_id }})"
             git push origin "HEAD:${GITHUB_REF_NAME}"
           fi
 
