@@ -29,6 +29,7 @@ for ident in cfg['identifiers']:
    d=get('https://archive.org/download/'+ident+'/'+urllib.parse.quote(f['name']));r.setdefault('original_metadata',[]).append({k:d.get(k) for k in ['id','title','channel','channel_id','webpage_url','duration','view_count','upload_date','license']})
   if cfg['mode']=='metadata':publish('ab-meta-'+ident,r);continue
   choices=[f for f in r['media_files'] if int(f.get('size') or 0)<cfg.get('max_bytes',180000000)]
+  if ident in cfg.get('files',{}):choices=[f for f in choices if f['name']==cfg['files'][ident]]
   if r['restricted'] or not choices:raise RuntimeError('No small unrestricted media')
   chosen=min(choices,key=lambda f:int(f['size']));r['chosen']=chosen
   with tempfile.TemporaryDirectory() as folder:
@@ -42,9 +43,15 @@ for ident in cfg['identifiers']:
      h.update(b);out.write(b)
    r.update(media_acquired=True,bytes=total,sha256=h.hexdigest())
    probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format','-show_streams','-of','json',str(path)],timeout=30));duration=float(probe['format']['duration']);r['duration']=duration;r['video']=[{k:s.get(k) for k in ['width','height','r_frame_rate']} for s in probe['streams'] if s['codec_type']=='video']
-   interval=cfg.get('interval',2);r['survey_interval']=interval
+   interval=cfg.get('interval',2) if duration<90 else cfg.get('long_interval',4);r['survey_interval']=interval
    subprocess.run(['ffmpeg','-nostdin','-v','error','-i',str(path),'-vf',f"fps=1/{interval},scale=200:-1,drawtext=text='%{{pts\\:hms}}':x=2:y=2:fontsize=12:fontcolor=white:box=1:boxcolor=black@0.7,tile=6x5",'-q:v','6',str(root/'survey-%02d.jpg')],check=True,timeout=150)
-   windows=cfg.get('windows',{}).get(ident,[0,max(0,duration/2-0.5),max(0,duration-1.1)])
+   # Detect candidate scene boundaries, then inspect native consecutive frames around them.
+   import re
+   scenes=subprocess.run(['ffmpeg','-nostdin','-hide_banner','-i',str(path),'-vf',"select='gt(scene,0.3)',showinfo",'-an','-f','null','-'],capture_output=True,text=True,timeout=150)
+   boundaries=[float(t) for t in re.findall(r'pts_time:([0-9.]+)',scenes.stderr)]
+   r['scene_candidates_seconds']=boundaries
+   selected=boundaries[:3] if duration<90 else [boundaries[i] for i in sorted(set([0,len(boundaries)//2,len(boundaries)-1]))] if boundaries else []
+   windows=cfg.get('windows',{}).get(ident,[0]+[max(0,t-0.35) for t in selected]+[max(0,duration-1.1)])
    r['dense_windows']=windows
    for i,start in enumerate(windows):
     # consecutive native frames, 24 per sheet; duration varies with source fps.
