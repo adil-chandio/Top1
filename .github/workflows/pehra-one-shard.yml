@@ -48,20 +48,19 @@ jobs:
       - name: Render ONE final frame, full debug
         run: |
           set -uo pipefail
-          mkdir -p production/account1_ep01/frames
+          mkdir -p production/account1_ep01/frames deliverables/pehra-probe
           "$BLENDER_BIN" -b --factory-startup \
             --python production/account1_ep01/render_scene.py -- \
             --shot B03_MASKED_TITLE --mode final --samples 24 --res-pct 100 \
             --frames 400-400 \
             --timeline production/account1_ep01/build/timeline_full.json \
             --assets production/account1_ep01/assets \
-            --out production/account1_ep01/frames > /tmp/probe.log 2>&1
-          echo "exit=$?"
-          echo "--- last 50 lines ---"
-          tail -50 /tmp/probe.log
-          echo "--- frames ---"
-          ls -la production/account1_ep01/frames | head
-          cp /tmp/probe.log deliverables/pehra-probe/probe.log 2>/dev/null || { mkdir -p deliverables/pehra-probe; cp /tmp/probe.log deliverables/pehra-probe/probe.log; }
+            --out production/account1_ep01/frames > /tmp/probe.log 2>&1 || true
+          echo "--- last 60 lines ---"
+          tail -60 /tmp/probe.log || true
+          ls -la production/account1_ep01/frames | head || true
+          cp /tmp/probe.log deliverables/pehra-probe/probe.log || true
+          { tail -60 /tmp/probe.log; echo; echo "--- frames ---"; ls -la production/account1_ep01/frames; } > deliverables/pehra-probe/summary.txt 2>&1 || true
       - name: Publish probe log
         if: always()
         run: |
