@@ -1,0 +1,21 @@
+{
+  "shot": "B09_FORTY_ACRES",
+  "mode": "final",
+  "shot_frame_range": [
+    1562,
+    1816
+  ],
+  "render_frame_range": [
+    1802,
+    1816
+  ],
+  "samples": 4,
+  "resolution_percentage": 45,
+  "output_resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "bpy_version": "5.0.1",
+  "blender_binary": ""
+}
