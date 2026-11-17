@@ -165,6 +165,7 @@ jobs:
           name: pehra-final-bundle-${{ github.run_id }}
           path: production/account1_ep01
       - name: Render frames for this shard
+        id: render
         continue-on-error: true
         env:
           SLUG: ${{ matrix.shot.slug }}
@@ -172,29 +173,32 @@ jobs:
           F_END: ${{ matrix.shot.f_end }}
           SHOT_ID: ${{ matrix.shot.id }}
         run: |
-          set -euo pipefail
+          set -uo pipefail
           rm -rf production/account1_ep01/frames
-          mkdir -p production/account1_ep01/frames
-          export SHARD_MARKER="production/account1_ep01/shards/${SLUG}.done"
-          mkdir -p production/account1_ep01/shards
+          mkdir -p production/account1_ep01/frames production/account1_ep01/shards
+          export SHARD_LOG="production/account1_ep01/shards/${SLUG}.log"
+          : > "$SHARD_LOG"
           chmod +x "$BLENDER_BIN"
-          # Render in chunks so partial progress survives a timeout.
           FRAME=$F_START
           CHUNK=13
+          RC_TOTAL=0
           while [ "$FRAME" -le "$F_END" ]; do
             LAST=$((FRAME + CHUNK - 1)); [ "$LAST" -gt "$F_END" ] && LAST=$F_END
+            echo "=== $SLUG chunk $FRAME-$LAST ===" >> "$SHARD_LOG"
             "$BLENDER_BIN" -b --factory-startup \
               --python production/account1_ep01/render_scene.py -- \
               --shot "$SHOT_ID" --mode final --samples "$SAMPLES" --res-pct 100 \
               --frames "$FRAME-$LAST" \
               --timeline production/account1_ep01/build/timeline_full.json \
               --assets production/account1_ep01/assets \
-              --out production/account1_ep01/frames >> /tmp/shard.log 2>&1
+              --out production/account1_ep01/frames >> "$SHARD_LOG" 2>&1
             RC=$?
-            tail -3 /tmp/shard.log
-            echo "[chunk] $SLUG: rendered $FRAME-$LAST (rc=$RC)"
+            [ "$RC" -ne 0 ] && RC_TOTAL=$RC
+            echo "[chunk] $SLUG $FRAME-$LAST rc=$RC"
             FRAME=$((LAST + 1))
           done
+          tail -40 "$SHARD_LOG" || true
+          exit $RC_TOTAL
       - name: Record shard result
         if: always()
         env:
@@ -205,10 +209,12 @@ jobs:
           set -uo pipefail
           N=$(find production/account1_ep01/frames -maxdepth 1 -name "f_*.png" 2>/dev/null | wc -l)
           echo "[done] $SLUG produced $N frames"
-          mkdir -p production/account1_ep01/shards
-          cp /tmp/shard.log "production/account1_ep01/shards/${SLUG}.log" 2>/dev/null || true
+          echo "### $SLUG: $N frames" >> "$GITHUB_STEP_SUMMARY"
           if [ "$N" -lt 1 ]; then
-            echo "::error::$SLUG produced no frames (see shards/${SLUG}.log)"
+            echo "::error::$SLUG produced no frames"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
+            tail -60 "production/account1_ep01/shards/${SLUG}.log" >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "no log" >> "$GITHUB_STEP_SUMMARY"
+            echo '```' >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
       - name: Upload the shard log

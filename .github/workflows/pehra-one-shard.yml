@@ -1,0 +1,75 @@
+name: PEHRA one-shard probe
+on:
+  push:
+    branches: [arena/944c619c-top1]
+    paths: ['production/account1_ep01/PROBE_TRIGGER.txt']
+permissions:
+  contents: write
+concurrency:
+  group: pehra-probe-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  BLENDER_VERSION: "4.2.15"
+  BLENDER_DIR: "blender-4.2.15-linux-x64"
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install FFmpeg + DSP deps
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --quiet requests numpy scipy
+      - name: Build timeline + assets
+        run: |
+          set -euo pipefail
+          python -u production/account1_ep01/plan_full.py
+          python -u production/account1_ep01/fetch_assets.py
+          du -sh production/account1_ep01/assets
+          ls production/account1_ep01/assets | head
+      - name: Install Blender
+        run: |
+          set -euo pipefail
+          sudo apt-get install -y -qq --no-install-recommends \
+            xz-utils libgl1 libegl1 libglu1-mesa libx11-6 libxcb1 libxi6 \
+            libxrender1 libxfixes3 libxkbcommon0 libxrandr2 libxinerama1 \
+            libxxf86vm1 libsm6 libice6 libfontconfig1 libgomp1
+          mkdir -p "$HOME/b"
+          curl -fsSL --retry 3 -o /tmp/b.tar.xz \
+            "https://download.blender.org/release/Blender4.2/blender-$BLENDER_VERSION-linux-x64.tar.xz"
+          tar -xf /tmp/b.tar.xz -C "$HOME/b"
+          BIN="$HOME/b/$BLENDER_DIR/blender"; chmod +x "$BIN"
+          echo "BLENDER_BIN=$BIN" >> "$GITHUB_ENV"
+          "$BIN" --version | head -2
+      - name: Render ONE final frame, full debug
+        run: |
+          set -uo pipefail
+          mkdir -p production/account1_ep01/frames
+          "$BLENDER_BIN" -b --factory-startup \
+            --python production/account1_ep01/render_scene.py -- \
+            --shot B03_MASKED_TITLE --mode final --samples 24 --res-pct 100 \
+            --frames 400-400 \
+            --timeline production/account1_ep01/build/timeline_full.json \
+            --assets production/account1_ep01/assets \
+            --out production/account1_ep01/frames > /tmp/probe.log 2>&1
+          echo "exit=$?"
+          echo "--- last 50 lines ---"
+          tail -50 /tmp/probe.log
+          echo "--- frames ---"
+          ls -la production/account1_ep01/frames | head
+          cp /tmp/probe.log deliverables/pehra-probe/probe.log 2>/dev/null || { mkdir -p deliverables/pehra-probe; cp /tmp/probe.log deliverables/pehra-probe/probe.log; }
+      - name: Publish probe log
+        if: always()
+        run: |
+          set -uo pipefail
+          cp /tmp/probe.log deliverables/pehra-probe/probe.log 2>/dev/null || true
+          ls -la production/account1_ep01/frames >> deliverables/pehra-probe/probe.log 2>&1 || true
+          git config user.name "pehra-render-bot"
+          git config user.email "pehra-render@users.noreply.github.com"
+          git add -f deliverables/pehra-probe
+          git commit -q -m "Probe: one final frame log (run ${{ github.run_id }})" || echo nothing
+          git push origin "HEAD:${GITHUB_REF_NAME}" || echo "push failed"
