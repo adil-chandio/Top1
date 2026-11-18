@@ -56,3 +56,28 @@ jobs:
               except Exception as e: text='ERROR '+str(e)
               print('::notice title=archive '+vid+'::'+text.replace('%','%25').replace('\n','%0A')[:3000])
           PY
+      - name: Check public alternative frontends
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json,subprocess
+          for host in ['yewtu.be','invidious.privacydev.net','vid.priv.au','invidious.private.coffee']:
+            try:
+              req=urllib.request.Request('https://'+host+'/api/v1/videos/UnHFiv5M0i4',headers={'User-Agent':'Mozilla/5.0'})
+              with urllib.request.urlopen(req,timeout=15) as r: data=json.load(r)
+              formats=data.get('formatStreams',[]); streams=[x for x in formats if x.get('url')]
+              result='title='+str(data.get('title'))+' streams='+str(len(streams))+' error='+str(data.get('error'))
+              if streams:
+                url=streams[0]['url']
+                p=subprocess.run(['ffmpeg','-loglevel','error','-ss','5','-i',url,'-frames:v','1','-y','/tmp/alternative.jpg'],capture_output=True,timeout=30)
+                result+=' sample_exit='+str(p.returncode)+' '+p.stderr.decode('utf-8','replace')[:250]
+              print('::notice title=frontend '+host+'::'+result.replace('%','%25').replace('\n','%0A'))
+              if streams and p.returncode==0:
+                from PIL import Image
+                import io,base64
+                f=io.BytesIO();Image.open('/tmp/alternative.jpg').convert('RGB').resize((320,180)).save(f,'JPEG',quality=30)
+                b=base64.b64encode(f.getvalue()).decode(); parts=[b[i:i+3000] for i in range(0,len(b),3000)]
+                if len(parts)<=8:
+                  for i,c in enumerate(parts):print(f'::notice title=alt-{i:02d}-of-{len(parts):02d}::{c}')
+                break
+            except Exception as e:print('::notice title=frontend '+host+'::ERROR '+str(e).replace('%','%25'))
+          PY
