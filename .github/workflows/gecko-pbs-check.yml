@@ -1,4 +1,4 @@
-name: PBS gecko media feasibility
+name: PBS gecko visual samples
 on:
   push:
     branches: [arena/b040eefc-top1]
@@ -6,17 +6,25 @@ on:
 permissions:
   contents: read
 jobs:
-  check:
+  sample:
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 8
+    strategy:
+      matrix:
+        start: [0, 55, 110, 165]
     steps:
-      - name: Test public PBS official source
+      - name: Capture time-limited visual reference for internal study
         run: |
+          set -e
           python3 -m pip install -q yt-dlp
-          yt-dlp --no-playlist -f 'worst[ext=mp4]/worst' -o '/tmp/pbs.%(ext)s' 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/' >/tmp/log 2>&1 || true
+          yt-dlp --quiet --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/pbs.mp4 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/'
+          ffmpeg -v error -ss ${{ matrix.start }} -t 55 -i /tmp/pbs.mp4 -vf 'fps=1/3,scale=240:-2,tile=4x5' -frames:v 1 -q:v 7 /tmp/sheet.jpg
+          ffmpeg -v error -ss ${{ matrix.start }} -t 4 -i /tmp/pbs.mp4 -vf 'fps=5,scale=160:-2' -loop 0 /tmp/motion.gif
           python3 - <<'PY'
-          from pathlib import Path
-          s=Path('/tmp/log').read_text()[-3000:].replace('%','%25').replace('\r','%0D').replace('\n','%0A')
-          print('::notice title=PBS diagnostic::'+s)
+          import base64,pathlib
+          for name in ['sheet.jpg','motion.gif']:
+            data=base64.b64encode(pathlib.Path('/tmp/'+name).read_bytes()).decode()
+            c=[data[i:i+3400] for i in range(0,len(data),3400)]
+            if len(c)>45: raise RuntimeError(f'{name} is too big: {len(c)} chunks')
+            for i,v in enumerate(c): print(f'::notice title={name}-{i:03d}-of-{len(c):03d}::{v}')
           PY
-          ls -l /tmp/pbs.* || true
