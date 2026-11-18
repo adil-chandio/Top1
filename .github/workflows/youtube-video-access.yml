@@ -1,0 +1,41 @@
+name: YouTube public video access test
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/youtube-video-access.yml]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        video: [YMuYyQBTl1c, r5cqJTU5D5I, p6QmV1EbVnI]
+        client: [web, ios]
+    steps:
+      - name: Try public player with JavaScript runtime
+        shell: bash
+        run: |
+          python3 -m pip install -q yt-dlp imageio-ffmpeg
+          yt-dlp --no-progress --no-playlist --js-runtimes node --remote-components ejs:github --extractor-args 'youtube:player_client=${{ matrix.client }}' -f 'worst[ext=mp4]/worst' -o /tmp/video.mp4 'https://www.youtube.com/watch?v=${{ matrix.video }}' >/tmp/result 2>&1 || true
+          python3 - <<'PY'
+          import pathlib
+          s=pathlib.Path('/tmp/result').read_text()[-2800:].replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+          print('::notice title=Public player result::'+s)
+          PY
+      - name: Capture video-frame sample if access succeeded
+        shell: bash
+        run: |
+          if test -s /tmp/video.mp4; then
+            FFMPEG=$(python3 -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')
+            "$FFMPEG" -v error -i /tmp/video.mp4 -vf 'fps=1/3,scale=120:-2,tile=4x5' -frames:v 1 -q:v 15 /tmp/sheet.jpg
+            python3 - <<'PY'
+          import base64, pathlib
+          s=base64.b64encode(pathlib.Path('/tmp/sheet.jpg').read_bytes()).decode()
+          a=[s[i:i+3400] for i in range(0,len(s),3400)]
+          assert len(a)<=10,len(a)
+          for i,v in enumerate(a): print(f'::notice title=sheet-{i:03d}-of-{len(a):03d}::{v}')
+          PY
+          else echo 'No video available'; fi
