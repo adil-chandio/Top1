@@ -28,7 +28,7 @@ jobs:
           r=requests.get(urls[int('${{ matrix.item }}')],timeout=30); print('::notice title=Source status::HTTP '+str(r.status_code)+' bytes '+str(len(r.content)));r.raise_for_status();pathlib.Path('/tmp/clip.gif').write_bytes(r.content)
           PY
           F=$(python3 -c 'import imageio_ffmpeg; print(imageio_ffmpeg.get_ffmpeg_exe())')
-          "$F" -v error -i /tmp/clip.gif -vf 'fps=4,scale=120:-2,tile=4x4' -frames:v 1 -q:v 12 /tmp/sheet.jpg
+          "$F" -v error -i /tmp/clip.gif -vf 'fps=4,scale=96:-2,tile=4x4' -frames:v 1 -q:v 22 /tmp/sheet.jpg
           python3 - <<'PY'
           import base64,pathlib
           data=base64.b64encode(pathlib.Path('/tmp/sheet.jpg').read_bytes()).decode();parts=[data[i:i+3400] for i in range(0,len(data),3400)];assert len(parts)<=9
