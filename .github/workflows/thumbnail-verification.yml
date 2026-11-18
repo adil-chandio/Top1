@@ -1,0 +1,34 @@
+name: One-shot thumbnail verification
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths:
+      - .github/workflows/thumbnail-verification.yml
+      - channels/monarch_cam/intel/verify_thumbnail_sources.py
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ensure JPEG validation tool is available
+        run: |
+          if ! command -v identify >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install -y imagemagick
+          fi
+      - name: Capture and validate official thumbnails
+        run: |
+          mkdir -p thumbnail-captures
+          python3 channels/monarch_cam/intel/verify_thumbnail_sources.py --output thumbnail-captures | tee thumbnail-captures/results.json
+          exit "${PIPESTATUS[0]}"
+      - name: Save results and captured images
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-thumbnail-captures
+          path: thumbnail-captures/
+          if-no-files-found: error
+          retention-days: 7
