@@ -1,0 +1,43 @@
+{
+  "channel": "TierZoo",
+  "rows": [
+    {
+      "id": "J4qFuPAVmS0",
+      "title": "How to play Swordfish",
+      "url": "https://www.youtube.com/watch?v=J4qFuPAVmS0",
+      "upload_date": "2026-10-01",
+      "duration_seconds": 644,
+      "views": 1418836,
+      "age_days": 44,
+      "format_note": "Creator description explicitly calls this a new video format; life-stage playthrough, not silently pooled with ability assessments",
+      "thumbnail_inspected": false,
+      "playback": false
+    },
+    {
+      "id": "vvwrEsysMnc",
+      "title": "Are Stingrays Overpowered?",
+      "url": "https://www.youtube.com/watch?v=vvwrEsysMnc",
+      "upload_date": "2026-07-21",
+      "duration_seconds": 691,
+      "views": 1065602,
+      "age_days": 116,
+      "format_note": "Ability assessment; multiple ray groups; not single exact species",
+      "thumbnail_inspected": false,
+      "playback": false
+    },
+    {
+      "id": "qOJdxg97bl4",
+      "title": "Are Spiders Overpowered?",
+      "url": "https://www.youtube.com/watch?v=qOJdxg97bl4",
+      "upload_date": "2025-08-13",
+      "duration_seconds": 801,
+      "views": 1402226,
+      "age_days": 458,
+      "format_note": "Watch-page body metadata recovered despite401 shell; much older",
+      "thumbnail_inspected": false,
+      "playback": false
+    }
+  ],
+  "performance_median": null,
+  "reason": "unequal ages, explicitly new format, only three selected controls"
+}

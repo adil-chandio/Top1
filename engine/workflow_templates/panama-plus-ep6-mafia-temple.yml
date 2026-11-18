@@ -1,0 +1,93 @@
+name: Panama-Plus EP6 Mafia Temple 3D Render
+
+on:
+  push:
+    branches:
+      - main
+      - arena/2a8ad29e-top1
+    paths:
+      - 'panama_plus_3d_kit/ep6_mafia_temple/**'
+      - '.github/workflows/panama-plus-ep6-mafia-temple.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render-ep6-mafia-temple:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python 3.11 & Node 20
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install FFmpeg, Python Audio Stack, Earshot SFX, Three.js & Chromium
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg curl git
+          python -m pip install --upgrade pip -q
+          python -m pip install -q numpy scipy
+          npm install --no-save playwright three
+          npx playwright install --with-deps chromium
+          mkdir -p panama_plus_3d_kit/ep6_mafia_temple/assets
+          git clone --depth 1 https://github.com/Leonxlnx/earshot.git /tmp/earshot || true
+          if [ -d /tmp/earshot/takes ]; then
+            cp -r /tmp/earshot/takes panama_plus_3d_kit/ep6_mafia_temple/assets/earshot_takes
+          fi
+
+      - name: Download Verified CC0 3D Temple/Suit/Scan Assets & CC0 Audio
+        run: |
+          BASE_CC0="https://raw.githubusercontent.com/Papyszoo/CC0-Public-Domain-Models/main/packs"
+          DEST="panama_plus_3d_kit/ep6_mafia_temple/assets"
+          mkdir -p "$DEST"
+          curl -L --fail "$BASE_CC0/quaternius-ultimatemodularcharacters/models/suit/suit.glb" -o "$DEST/suit.glb"
+          curl -L --fail "$BASE_CC0/the-base-mesh/models/stone_archway_01/stone_archway_01.glb" -o "$DEST/stone_archway_01.glb"
+          curl -L --fail "$BASE_CC0/the-base-mesh/models/pagoda_pillar/pagoda_pillar.glb" -o "$DEST/pagoda_pillar.glb"
+          curl -L --fail "$BASE_CC0/the-base-mesh/models/japanese_stone_lantern_01/japanese_stone_lantern_01.glb" -o "$DEST/japanese_stone_lantern_01.glb"
+          curl -L --fail "$BASE_CC0/kaykit-dungeon-remastered/models/pillar_decorated/pillar_decorated.glb" -o "$DEST/pillar_decorated.glb"
+          curl -L --fail "$BASE_CC0/kaykit-city-builder-bits/models/streetlight/streetlight.glb" -o "$DEST/streetlight.glb"
+          curl -L --fail "https://raw.githubusercontent.com/adil-chandio/Monarch.Overall.Work/arena/a70e2f8c-monarch-overall-work/production/mafia-temple/assets/face-scan/LeePerrySmith.glb" -o "$DEST/LeePerrySmith.glb"
+          curl -L --fail "https://raw.githubusercontent.com/adil-chandio/Monarch.Overall.Work/arena/a70e2f8c-monarch-overall-work/production/mafia-temple/assets/face-scan/Map-COL.jpg" -o "$DEST/Map-COL.jpg"
+          curl -L --fail "https://raw.githubusercontent.com/powerbassist/World-simulator/main/assets/audio/music/searching.ogg" -o "$DEST/searching.ogg"
+          curl -L --fail "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/amb/rain.wav" -o "$DEST/rain.wav"
+          curl -L --fail "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/amb/wind.wav" -o "$DEST/wind.wav"
+          for i in 1 2 3 4; do
+            curl -L --fail "https://raw.githubusercontent.com/evanlin23/blocky-stories/main/assets/audio/steps/stone/stone_0${i}.wav" -o "$DEST/stone_0${i}.wav"
+          done
+
+      - name: Build Searching Score + Stone Steps + Rain + Earshot Cuts (-14 LUFS)
+        run: python3 panama_plus_3d_kit/ep6_mafia_temple/build_audio.py
+
+      - name: Render 1920x1080 @ 24fps Mafia Temple 3D Video + Contact Sheet + QC
+        run: node panama_plus_3d_kit/ep6_mafia_temple/render_webgl.mjs
+
+      - name: Commit Failure Diagnostics if Render Failed
+        if: failure()
+        run: |
+          if [ -f panama_plus_3d_kit/ep6_mafia_temple/qc/render_error.log ]; then
+            git pull --rebase origin arena/2a8ad29e-top1 || true
+            git config user.name "MONARCH Render Bot"
+            git config user.email "workadilchandio@gmail.com"
+            git add -f panama_plus_3d_kit/ep6_mafia_temple/qc/render_error.log
+            git commit -m "debug(ep6-mafia-temple): capture render_error.log [skip ci]" || true
+            git push origin HEAD:arena/2a8ad29e-top1 || true
+          fi
+
+      - name: Commit Deliverable, Contact Sheet & QC Report back to branch
+        run: |
+          git config user.name "MONARCH Render Bot"
+          git config user.email "workadilchandio@gmail.com"
+          git add -f deliverables/MONARCH_MafiaTemple_3D_PanamaPlus_1920x1080.mp4 panama_plus_3d_kit/ep6_mafia_temple/qc/contact_sheet.png panama_plus_3d_kit/ep6_mafia_temple/qc/qc_report.json
+          git commit -m "build(ep6-mafia-temple): deliver 1920x1080 24fps Mafia Temple 3D master + QC [skip ci]"
+          for i in 1 2 3 4; do
+            git pull --rebase origin arena/2a8ad29e-top1 && git push origin HEAD:arena/2a8ad29e-top1 && break || sleep 6
+          done

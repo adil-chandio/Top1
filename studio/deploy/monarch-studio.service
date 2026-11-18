@@ -1,0 +1,26 @@
+[Unit]
+Description=Monarch Cam bounded unattended coordinator
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=studio
+Group=studio
+WorkingDirectory=/opt/top1
+EnvironmentFile=/etc/monarch-studio/runtime.env
+Environment=PYTHONDONTWRITEBYTECODE=1
+ExecStartPre=/opt/top1/.venv/bin/python -m studio.runtime_probe --output /var/lib/monarch-studio/live_probe.json
+ExecStart=/opt/top1/.venv/bin/python -m studio.supervisor --root /var/lib/monarch-studio/jobs --max-ticks 30 --max-seconds 3600
+TimeoutStartSec=7500
+TimeoutStopSec=15
+KillMode=control-group
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/monarch-studio
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

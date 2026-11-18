@@ -1,0 +1,128 @@
+{
+  "fps": 24,
+  "width": 1920,
+  "height": 1080,
+  "total_sec": 100.5,
+  "total_frames": 2412,
+  "title": "The Largest Bear That Ever Hunted Humans",
+  "beats": [
+    {
+      "id": "B1",
+      "name": "Cold Open — Skull on a Rock",
+      "vo_file": "vo/beat_01_cold_open.wav",
+      "vo_start": 0.5,
+      "vo_dur": 10.87,
+      "vo_end": 11.37,
+      "beat_start": 0.0,
+      "beat_end": 12.22,
+      "chapter": "01 · CHAUVET CHAMBER",
+      "cards": [
+        { "t0": 0.8, "t1": 4.2, "text": "37,000 YEARS AGO", "sub": "CHAUVET CAVE · FRANCE" },
+        { "t0": 8.4, "t1": 11.7, "text": "PLACED.", "sub": "NOT DROPPED. NOT THROWN." }
+      ]
+    },
+    {
+      "id": "B2",
+      "name": "The Doorway Reveal — 600 KG",
+      "vo_file": "vo/beat_02_size_twist.wav",
+      "vo_start": 12.22,
+      "vo_dur": 11.19,
+      "vo_end": 23.41,
+      "beat_start": 12.22,
+      "beat_end": 24.11,
+      "chapter": "02 · THE LARGEST BEAR",
+      "cards": [
+        { "t0": 15.6, "t1": 20.0, "text": "600 KG", "sub": "URSUS SPELAEUS · SAME MASS AS A KODIAK" }
+      ]
+    },
+    {
+      "id": "B3",
+      "name": "Anatomical Forensics — Steep Forehead & Molars",
+      "vo_file": "vo/beat_03_anatomy.wav",
+      "vo_start": 24.11,
+      "vo_dur": 9.91,
+      "vo_end": 34.02,
+      "beat_start": 24.11,
+      "beat_end": 34.67,
+      "chapter": "03 · THE SHAPE",
+      "cards": [
+        { "t0": 25.4, "t1": 29.6, "text": "STEEP FOREHEAD", "sub": "HEAVY BONES · REINFORCED SKULL" },
+        { "t0": 30.0, "t1": 34.1, "text": "GRINDING, NOT SLICING", "sub": "BROAD FLAT MOLARS" }
+      ]
+    },
+    {
+      "id": "B4",
+      "name": "The Subversion — It Ate Plants",
+      "vo_file": "vo/beat_04_plants_twist.wav",
+      "vo_start": 34.67,
+      "vo_dur": 9.91,
+      "vo_end": 44.58,
+      "beat_start": 34.67,
+      "beat_end": 45.93,
+      "chapter": "04 · HARMLESS?",
+      "cards": [
+        { "t0": 37.8, "t1": 41.4, "text": "MOSTLY PLANTS", "sub": "TROPHIC LEVEL 2.0 · HERBIVORE" },
+        { "t0": 42.6, "t1": 45.5, "text": "THE OPPOSITE.", "sub": "" }
+      ]
+    },
+    {
+      "id": "B5",
+      "name": "The Predator's Calculation — Wolf vs Bear",
+      "vo_file": "vo/beat_05_wolf_calc.wav",
+      "vo_start": 45.93,
+      "vo_dur": 11.51,
+      "vo_end": 57.44,
+      "beat_start": 45.93,
+      "beat_end": 58.19,
+      "chapter": "05 · NO CALCULATION",
+      "cards": [
+        { "t0": 47.4, "t1": 51.4, "text": "A WOLF CALCULATES", "sub": "RISK VS REWARD" },
+        { "t0": 52.8, "t1": 57.6, "text": "FURNITURE IN THE WAY", "sub": "YOU CANNOT BLUFF IT" }
+      ]
+    },
+    {
+      "id": "B6",
+      "name": "The Same Address — One Door",
+      "vo_file": "vo/beat_06_same_address.wav",
+      "vo_start": 58.19,
+      "vo_dur": 13.11,
+      "vo_end": 71.3,
+      "beat_start": 58.19,
+      "beat_end": 72.15,
+      "chapter": "06 · THE SAME ADDRESS",
+      "cards": [
+        { "t0": 65.8, "t1": 71.4, "text": "ONE DOOR", "sub": "WINTER SHELTER · NO OTHER EXIT" }
+      ]
+    },
+    {
+      "id": "B7",
+      "name": "What the Bones Admit — Flint & Red Ochre",
+      "vo_file": "vo/beat_07_bones_admit.wav",
+      "vo_start": 72.15,
+      "vo_dur": 13.43,
+      "vo_end": 85.58,
+      "beat_start": 72.15,
+      "beat_end": 86.43,
+      "chapter": "07 · WHAT REMAINS",
+      "cards": [
+        { "t0": 73.8, "t1": 78.2, "text": "HOHLE FELS · GERMANY", "sub": "FLINT POINT STILL IN VERTEBRA" },
+        { "t0": 78.6, "t1": 85.6, "text": "1,700+ CUT BONES", "sub": "RIO SECCO · CHAUVET RED BEARS" }
+      ]
+    },
+    {
+      "id": "B8",
+      "name": "The Room — Not a Bear's Anymore",
+      "vo_file": "vo/beat_08_the_room.wav",
+      "vo_start": 86.43,
+      "vo_dur": 12.47,
+      "vo_end": 98.9,
+      "beat_start": 86.43,
+      "beat_end": 100.5,
+      "chapter": "08 · THE ROOM",
+      "cards": [
+        { "t0": 87.2, "t1": 92.5, "text": "SOMEBODY ELSE'S BEDROOM", "sub": "" },
+        { "t0": 95.8, "t1": 100.0, "text": "NOT A BEAR'S ANYMORE.", "sub": "" }
+      ]
+    }
+  ]
+}

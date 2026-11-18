@@ -1,0 +1,17 @@
+{
+  "checkpoint_date": "2026-11-14",
+  "decision": "approved_by_user",
+  "user_statement": "Audio approved",
+  "scope": "Retained English voice-09 narration presented for listening; not final mix or native audiovisual review",
+  "file": "studio/runtime/gecko/narration/english-narration-v1.wav",
+  "sha256": "1d7a3284670a93ded1ad21f24aee980f3f39eba2766daa6a16e85580c3e41cc8",
+  "duration_seconds": 63.68,
+  "file_hash_reverified": true,
+  "assistant_listening_claim": false,
+  "new_synthesis": false,
+  "anatomy_approved": false,
+  "native_av_approved": false,
+  "rights_cleared": false,
+  "production_authorized": false,
+  "publication_or_spend_authorized": false
+}

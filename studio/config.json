@@ -1,0 +1,41 @@
+{
+  "channels": {
+    "monarch_cam": {
+      "name": "Monarch Cam",
+      "focus": "Animal behaviour aur mechanisms; observations aur hypotheses alag; anatomy, locomotion aur rights checks.",
+      "reference": "channels/monarch_cam/archive_gecko/SCRIPT_AND_FILM_BLUEPRINT_ENGLISH.md",
+      "content_language": "en",
+      "conversation_language": "Roman Urdu"
+    },
+    "extinct_life": {
+      "name": "Extinct Life",
+      "focus": "Fossils aur palaeoenvironment; known, inferred, speculative traits explicitly separated.",
+      "reference": null
+    },
+    "monarchs_edit": {
+      "name": "MONARCHs Edit",
+      "focus": "Existing editorial identity pehle research se establish karo; doosre channels ka format copy mat karo.",
+      "reference": null
+    }
+  },
+  "stages": [
+    "intelligence",
+    "idea",
+    "story",
+    "script",
+    "feasibility",
+    "production",
+    "qc",
+    "packaging",
+    "delivery"
+  ],
+  "max_attempts": 3,
+  "worker_timeout_seconds": 1800,
+  "research_max_age_hours": 72,
+  "paid_spend_allowed": false,
+  "publishing_allowed": false,
+  "worker_command_env": "STUDIO_WORKER_COMMAND",
+  "reviewer_command_env": "STUDIO_REVIEWER_COMMAND",
+  "active_channel": "monarch_cam",
+  "channel_switch_requires_user_approval": true
+}

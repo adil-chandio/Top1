@@ -1,0 +1,104 @@
+name: One-Shot Disk & Artifact Cleanup
+
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths:
+      - '.github/workflows/disk-cleanup.yml'
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  purge-stale-artifacts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+    steps:
+      - name: Delete stale Actions artifacts and caches (preserve latest PEHRA runs)
+        run: |
+          python3 - <<'PY'
+          import json, os, subprocess, time
+          from concurrent.futures import ThreadPoolExecutor, as_completed
+
+          REPO = os.environ["REPO"]
+          KEEP_RUNS = {44196707319, 44196707483}
+
+          # 1. Collect every artifact across all pages before deleting
+          all_arts = []
+          page = 1
+          while True:
+              raw = subprocess.check_output(
+                  ["gh", "api", f"repos/{REPO}/actions/artifacts?per_page=100&page={page}"]
+              )
+              data = json.loads(raw)
+              arts = data.get("artifacts", [])
+              if not arts:
+                  break
+              all_arts.extend(arts)
+              if len(all_arts) >= data.get("total_count", 0):
+                  break
+              page += 1
+
+          by_id = {a["id"]: a for a in all_arts if not a.get("expired")}
+          to_delete = [a for a in by_id.values() if (a.get("workflow_run") or {}).get("id") not in KEEP_RUNS]
+          to_keep = [a for a in by_id.values() if (a.get("workflow_run") or {}).get("id") in KEEP_RUNS]
+
+          del_gb = sum(a["size_in_bytes"] for a in to_delete) / (1024 ** 3)
+          keep_gb = sum(a["size_in_bytes"] for a in to_keep) / (1024 ** 3)
+          print(f"Found {len(by_id)} active artifacts.")
+          print(f"Deleting: {len(to_delete)} stale artifacts ({del_gb:.2f} GB)")
+          print(f"Keeping : {len(to_keep)} latest PEHRA artifacts ({keep_gb:.2f} GB) from runs {sorted(KEEP_RUNS)}", flush=True)
+
+          def del_artifact(a):
+              aid = a["id"]
+              for attempt in range(3):
+                  p = subprocess.run(
+                      ["gh", "api", "-X", "DELETE", f"repos/{REPO}/actions/artifacts/{aid}"],
+                      capture_output=True, text=True
+                  )
+                  if p.returncode == 0 or "404" in p.stderr or "Not Found" in p.stderr:
+                      return True, ""
+                  time.sleep(0.5 * (attempt + 1))
+              return False, f"{aid}: {p.stderr.strip()[:160]}"
+
+          t0 = time.time()
+          ok = 0
+          errs = []
+          with ThreadPoolExecutor(max_workers=20) as ex:
+              futs = [ex.submit(del_artifact, a) for a in to_delete]
+              for i, f in enumerate(as_completed(futs), 1):
+                  success, msg = f.result()
+                  if success:
+                      ok += 1
+                  else:
+                      errs.append(msg)
+                  if i % 200 == 0 or i == len(to_delete):
+                      print(f"  progress: {i}/{len(to_delete)} deleted={ok} errs={len(errs)} ({time.time()-t0:.1f}s)", flush=True)
+
+          print(f"Artifact purge done: deleted={ok}/{len(to_delete)}, errs={len(errs)}, freed={del_gb:.2f} GB")
+          if errs:
+              print("Sample errors:", errs[:10])
+
+          # 2. Delete stale Actions caches
+          caches_raw = subprocess.check_output(["gh", "api", f"repos/{REPO}/actions/caches"])
+          caches = json.loads(caches_raw).get("actions_caches", [])
+          cache_freed = 0
+          for c in caches:
+              p = subprocess.run(
+                  ["gh", "api", "-X", "DELETE", f"repos/{REPO}/actions/caches/{c['id']}"],
+                  capture_output=True, text=True
+              )
+              if p.returncode == 0:
+                  cache_freed += c["size_in_bytes"]
+                  print(f"Deleted cache {c['id']} ({c['key']}, {c['size_in_bytes']/(1024**2):.1f} MB)")
+              else:
+                  print(f"Cache {c['id']} delete err: {p.stderr.strip()[:160]}")
+
+          print(f"Total cache freed: {cache_freed/(1024**2):.1f} MB")
+          if errs:
+              raise SystemExit(1)
+          PY

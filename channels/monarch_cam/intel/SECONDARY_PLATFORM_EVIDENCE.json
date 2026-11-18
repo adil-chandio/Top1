@@ -1,0 +1,106 @@
+{
+  "status": "secondary platform text-metadata sample; no audio/video or cover image inspection",
+  "instagram": {
+    "account": "animalogicshow",
+    "source": "https://www.instagram.com/animalogicshow/",
+    "rows": [
+      {
+        "id": "DYNh0m5JipI",
+        "url": "https://www.instagram.com/p/DYNh0m5JipI/",
+        "caption": "The Mites that Live on Your Eyelashes",
+        "date": "2026-05-11",
+        "plays": 2517,
+        "likes": 104,
+        "comments": 2,
+        "duration_seconds": null,
+        "source": "individual original Reel page corroborates profile"
+      },
+      {
+        "id": "DYQCCwJJIUr",
+        "url": "https://www.instagram.com/p/DYQCCwJJIUr/",
+        "caption": "We Know Exactly What These Dinos Looked Like",
+        "date": "2026-05-12",
+        "plays": 6044,
+        "likes": 579,
+        "comments": 4,
+        "duration_seconds": null,
+        "source": "individual original Reel page corroborates profile"
+      },
+      {
+        "id": "DZx1KZAgb5d",
+        "url": "https://www.instagram.com/p/DZx1KZAgb5d/",
+        "caption": "These Animals Sleep WEIRD",
+        "date": "2026-06-19",
+        "plays": 1083,
+        "likes": 48,
+        "comments": 0,
+        "duration_seconds": null,
+        "source": "individual original Reel page corroborates profile"
+      }
+    ]
+  },
+  "tiktok": {
+    "account": "deeplookofficial",
+    "rows": [
+      {
+        "id": "7195233776602025258",
+        "url": "https://www.tiktok.com/@deeplookofficial/video/7195233776602025258",
+        "caption_summary": "Pill bugs have gills but cannot survive underwater",
+        "date": "2023-02-01",
+        "duration_seconds": 90,
+        "views": 36947,
+        "likes": 1380,
+        "comments": 11,
+        "shares": 44,
+        "saves": 110,
+        "source": "individual original post page"
+      },
+      {
+        "id": "7426401854633807146",
+        "url": "https://www.tiktok.com/@deeplookofficial/video/7426401854633807146",
+        "caption_summary": "Ladybug wings and migration",
+        "date": "2024-10-16",
+        "duration_seconds": 32,
+        "views": 212189,
+        "likes": 2667,
+        "comments": 24,
+        "shares": 148,
+        "saves": 198,
+        "source": "individual original post page"
+      },
+      {
+        "id": "7425637043490917678",
+        "url": "https://www.tiktok.com/@deeplookofficial/video/7425637043490917678",
+        "caption_summary": "Ladybug larvae predation",
+        "date": "2024-10-14",
+        "duration_seconds": 103,
+        "views": 402428,
+        "likes": 8213,
+        "comments": 89,
+        "shares": 689,
+        "saves": 836,
+        "source": "individual original post page"
+      },
+      {
+        "id": "7278702850996276523",
+        "url": "https://www.tiktok.com/@deeplookofficial/video/7278702850996276523",
+        "caption_summary": "Cockroach hydraulic press pressure tolerance",
+        "date": "2023-09-14",
+        "duration_seconds": 41,
+        "views": 6376256,
+        "likes": 315591,
+        "comments": 2192,
+        "shares": 19912,
+        "saves": 17544,
+        "source": "individual original post page"
+      }
+    ]
+  },
+  "recovery": "TikTok profile400; exact creator original-post URLs discovered via web search fetched successfully. Generic /video route400 is not content or impossibility proof.",
+  "exclusions": [
+    "KQED Science mixed news Instagram not a Deep Look-only baseline; profile says moved to kqednews; apparent future-dated Nov15 row excluded against instructed Nov14 basis",
+    "Wrong guessed deeplookofficial Instagram404; correct creator-linked kqedscience recovered",
+    "No pooled cross-platform median; plays and views definitions not equated",
+    "Historical TikTok2023/2024 not current2026 typical performance; selected search results success bias"
+  ]
+}

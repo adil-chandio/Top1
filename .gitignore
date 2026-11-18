@@ -1,0 +1,60 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / WebGL runtimes
+node_modules/
+.npm/
+
+# Studio runtime & transient work (never commit to Git)
+studio/runtime/
+studio/state/
+_frames/
+frames/
+frames12/
+renders/
+build/
+dist/
+out/
+tmp/
+*.log
+
+# Heavy media & 3D binaries (deliver to Google Drive / Releases, never Git)
+*.mp4
+*.mov
+*.mkv
+*.webm
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.ogg
+*.opus
+*.glb
+*.gltf
+*.blend
+*.blend1
+*.fbx
+*.obj
+*.exr
+*.hdr
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.whl
+*.so
+
+# Secrets & credentials
+.env
+.env.*
+*credentials*.json
+*secret*.json
+*.pem
+*.key
