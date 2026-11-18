@@ -9,6 +9,7 @@ jobs:
   sample:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         item: [walk, climb]
     steps:
@@ -17,6 +18,7 @@ jobs:
           ITEM: ${{ matrix.item }}
         run: |
           set -e
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           if [ "$ITEM" = walk ]; then uuid=3797e775-dea2-41f2-99a0-e58ef5f62b6c; else uuid=2097b0cb-9bf1-442c-afa2-8e68f15bfb01; fi
           url="https://video-previews.elements.envatousercontent.com/$uuid/watermarked_preview/watermarked_preview.mp4"
           curl -fL --max-time 60 "$url" -o /tmp/preview.mp4
