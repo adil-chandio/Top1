@@ -13,7 +13,7 @@ jobs:
       - name: Test public PBS official source
         run: |
           python3 -m pip install -q yt-dlp
-          yt-dlp --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/pbs.\%(ext\)s 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/' >/tmp/log 2>&1 || true
+          yt-dlp --no-playlist -f 'worst[ext=mp4]/worst' -o '/tmp/pbs.%(ext)s' 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/' >/tmp/log 2>&1 || true
           python3 - <<'PY'
           from pathlib import Path
           s=Path('/tmp/log').read_text()[-3000:].replace('%','%25').replace('\r','%0D').replace('\n','%0A')
