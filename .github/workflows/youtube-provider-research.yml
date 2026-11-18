@@ -22,7 +22,7 @@ jobs:
           for id in UnHFiv5M0i4 r5cqJTU5D5I; do
             echo "==== $id ===="
             yt-dlp -v --no-playlist --js-runtimes node --remote-components ejs:github --extractor-args 'youtube:player-client=web,mweb,android_vr' --extractor-args 'youtubepot-bgutilscript:server_home=/tmp/bgutil-ytdlp-pot-provider/server' -F "https://www.youtube.com/watch?v=$id" > /tmp/$id.log 2>&1 || true
-            grep -E 'PO Token|Generating|LOGIN_REQUIRED|ERROR|format code|Available formats|Sign in' /tmp/$id.log | tail -20 | while IFS= read -r line; do echo "::notice title=$id diagnostic::$line"; done || true
+            python3 -c 'import sys; s=open(sys.argv[1]).readlines(); print("::notice title="+sys.argv[2]+" diagnostic::"+" | ".join(x.strip() for x in s if any(y in x for y in ["PO Token Providers:","Generating a","playability status:","ERROR:","Available formats"]))[:3000])' /tmp/$id.log $id
             if grep -q 'Available formats' /tmp/$id.log; then
               yt-dlp --no-playlist --js-runtimes node --remote-components ejs:github --extractor-args 'youtube:player-client=web,mweb,android_vr' --extractor-args 'youtubepot-bgutilscript:server_home=/tmp/bgutil-ytdlp-pot-provider/server' --download-sections '*0-30' -f 'best[height<=360]/best' -o /tmp/$id.mp4 "https://www.youtube.com/watch?v=$id" || true
               ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/$id.mp4 || true
@@ -43,4 +43,16 @@ jobs:
             f=io.BytesIO();out.save(f,format='JPEG',quality=25);data=base64.b64encode(f.getvalue()).decode();parts=[data[i:i+3000] for i in range(0,len(data),3000)]
             if len(parts)>9: print('::notice title=Too large::'+name);continue
             for i,c in enumerate(parts):print(f'::notice title={name}-{i:02d}-of-{len(parts):02d}::{c}')
+          PY
+      - name: Check public archive indexes
+        run: |
+          python3 - <<'PY'
+          import urllib.request,urllib.parse,json
+          for vid in ['UnHFiv5M0i4','r5cqJTU5D5I']:
+            urls=['https://archive.org/advancedsearch.php?'+urllib.parse.urlencode({'q':vid,'output':'json','fl[]':'identifier','rows':10}), 'https://web.archive.org/cdx/search/cdx?'+urllib.parse.urlencode({'url':'youtube.com/watch?v='+vid,'output':'json','filter':'statuscode:200','collapse':'digest','limit':5})]
+            for url in urls:
+              try:
+                with urllib.request.urlopen(url,timeout=20) as r: text=r.read(3000).decode('utf-8','replace')
+              except Exception as e: text='ERROR '+str(e)
+              print('::notice title=archive '+vid+'::'+text.replace('%','%25').replace('\n','%0A')[:3000])
           PY
