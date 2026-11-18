@@ -32,7 +32,7 @@ jobs:
           print('::notice title=access '+os.environ['NAME']+'::'+s.replace('%','%25')[:3000])
           PY
           if grep -q 'Available formats' /tmp/formats.log; then
-            yt-dlp --no-playlist --download-sections '*0-35' -f 'best[height<=360]/best' -o /tmp/clip.\'%(ext)s\' "$URL" > /tmp/download.log 2>&1 || true
+            yt-dlp --no-playlist --download-sections '*0-35' -f 'best[height<=360]/best' -o '/tmp/clip.%(ext)s' "$URL" > /tmp/download.log 2>&1 || true
             python3 - <<'PY'
           import glob,subprocess,os,base64,io
           from PIL import Image,ImageDraw
