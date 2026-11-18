@@ -1,0 +1,32 @@
+name: Gecko film visual detail research
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/platform-detail.yml]
+permissions:
+  contents: read
+jobs:
+  frame:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      fail-fast: false
+      matrix:
+        second: [12, 24, 36, 48]
+    steps:
+      - name: Inspect selected timestamps
+        env:
+          SEC: ${{ matrix.second }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python3 -m pip install -q -U yt-dlp pillow
+          yt-dlp --no-playlist --download-sections '*0-62' -f 'best[height<=480]/best' -o /tmp/gecko.mp4 https://www.dailymotion.com/video/x6i0u21 > /tmp/download.log 2>&1 || { tail -10 /tmp/download.log; exit 1; }
+          ffmpeg -loglevel error -ss "$SEC" -i /tmp/gecko.mp4 -frames:v 1 -vf 'scale=320:-1' /tmp/frame.jpg
+          python3 - <<'PY'
+          from PIL import Image
+          import base64,io,os
+          im=Image.open('/tmp/frame.jpg').convert('RGB'); f=io.BytesIO();im.save(f,'JPEG',quality=32)
+          data=base64.b64encode(f.getvalue()).decode();parts=[data[i:i+3000] for i in range(0,len(data),3000)];print('::notice title=details::size='+str(im.size)+' chunks='+str(len(parts)))
+          assert len(parts)<=9
+          for i,p in enumerate(parts):print(f'::notice title=frame-{os.environ["SEC"]}-{i:02d}-of-{len(parts):02d}::{p}')
+          PY
