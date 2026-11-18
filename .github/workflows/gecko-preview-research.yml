@@ -1,0 +1,39 @@
+name: Gecko motion preview research
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/gecko-preview-research.yml]
+permissions:
+  contents: read
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        item: [walk, climb]
+    steps:
+      - name: Download official preview and extract frames
+        env:
+          ITEM: ${{ matrix.item }}
+        run: |
+          set -e
+          if [ "$ITEM" = walk ]; then uuid=3797e775-dea2-41f2-99a0-e58ef5f62b6c; else uuid=2097b0cb-9bf1-442c-afa2-8e68f15bfb01; fi
+          url="https://video-previews.elements.envatousercontent.com/$uuid/watermarked_preview/watermarked_preview.mp4"
+          curl -fL --max-time 60 "$url" -o /tmp/preview.mp4
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=width,height,avg_frame_rate -of json /tmp/preview.mp4
+          mkdir /tmp/frames
+          ffmpeg -loglevel error -i /tmp/preview.mp4 -vf 'fps=4,scale=180:-1' /tmp/frames/%02d.jpg
+          python3 -m pip install -q pillow
+          python3 - <<'PY'
+          from PIL import Image,ImageDraw
+          import glob,io,base64,os
+          files=sorted(glob.glob('/tmp/frames/*.jpg'))[:12]
+          assert files, 'No decoded frames'
+          ims=[Image.open(f).convert('RGB') for f in files]; w,h=ims[0].size
+          sheet=Image.new('RGB',(w*4,(h+18)*((len(ims)+3)//4)),'white'); draw=ImageDraw.Draw(sheet)
+          for i,im in enumerate(ims):
+            x=(i%4)*w;y=(i//4)*(h+18);sheet.paste(im,(x,y));draw.text((x+2,y+h),f'{i/4:.2f}s',fill='black')
+          buf=io.BytesIO();sheet.save(buf,format='JPEG',quality=30);b=base64.b64encode(buf.getvalue()).decode();parts=[b[i:i+3000] for i in range(0,len(b),3000)];print('::notice title=info::frames='+str(len(files))+' parts='+str(len(parts)))
+          assert len(parts)<=9
+          for i,p in enumerate(parts):print(f'::notice title={os.environ["ITEM"]}-{i:02d}-of-{len(parts):02d}::{p}')
+          PY
