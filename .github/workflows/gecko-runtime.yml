@@ -16,7 +16,7 @@ jobs:
       - name: Locate runtime libraries
         run: |
           python3 - <<'PY'
-          import ctypes.util, glob, os, subprocess, tarfile, io, base64
+          import ctypes.util, glob, os, subprocess, tarfile, io, base64, gzip
           names=['libGL.so.1','libICE.so.6','libSM.so.6','libXfixes.so.3','libXi.so.6','libXrender.so.1','libXxf86vm.so.1','libxkbcommon.so.0']
           entries=subprocess.check_output(['ldconfig','-p'],text=True)
           paths={}
@@ -25,9 +25,12 @@ jobs:
               if not lines: raise RuntimeError('Missing '+name)
               paths[name]=lines[0].split(' => ')[1]
           buf=io.BytesIO()
-          with tarfile.open(fileobj=buf,mode='w:gz') as tar:
-              for name,path in paths.items(): tar.add(os.path.realpath(path),arcname=name)
-          data=base64.b64encode(buf.getvalue()).decode()
+          with tarfile.open(fileobj=buf,mode='w') as tar:
+              for name,path in paths.items():
+                  payload=open(os.path.realpath(path),'rb').read()
+                  info=tarfile.TarInfo(name); info.size=len(payload); info.mode=0o755; info.mtime=0
+                  tar.addfile(info,io.BytesIO(payload))
+          data=base64.b64encode(gzip.compress(buf.getvalue(),mtime=0)).decode()
           chunks=[data[i:i+3500] for i in range(0,len(data),3500)]
           if len(chunks)>160: raise RuntimeError('Runtime payload exceeds transfer budget')
           os.makedirs('/tmp/runtime-chunks', exist_ok=True)
