@@ -1,0 +1,46 @@
+name: YouTube provider research
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/youtube-provider-research.yml]
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Install dependencies
+        run: |
+          python3 -m pip install -U yt-dlp bgutil-ytdlp-pot-provider pillow
+          git clone -q --depth 1 --branch 2.0.2 https://github.com/Brainicism/bgutil-ytdlp-pot-provider.git /tmp/bgutil-ytdlp-pot-provider
+          cd /tmp/bgutil-ytdlp-pot-provider/server
+          npm ci --silent
+          npx tsc
+      - name: Check public video formats with provider
+        run: |
+          for id in UnHFiv5M0i4 r5cqJTU5D5I; do
+            echo "==== $id ===="
+            yt-dlp -v --no-playlist --js-runtimes node --remote-components ejs:github --extractor-args 'youtube:player-client=web,mweb,android_vr' --extractor-args 'youtubepot-bgutilscript:script_path=/tmp/bgutil-ytdlp-pot-provider/server/build/generate_once.js' -F "https://www.youtube.com/watch?v=$id" > /tmp/$id.log 2>&1 || true
+            grep -E 'PO Token|Generating|LOGIN_REQUIRED|ERROR|format code|Available formats|Sign in' /tmp/$id.log | tail -20 || true
+            if grep -q 'Available formats' /tmp/$id.log; then
+              yt-dlp --no-playlist --js-runtimes node --remote-components ejs:github --extractor-args 'youtube:player-client=web,mweb,android_vr' --extractor-args 'youtubepot-bgutilscript:script_path=/tmp/bgutil-ytdlp-pot-provider/server/build/generate_once.js' --download-sections '*0-30' -f 'best[height<=360]/best' -o /tmp/$id.mp4 "https://www.youtube.com/watch?v=$id" || true
+              ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/$id.mp4 || true
+              for n in 0 5 10 15 20; do ffmpeg -loglevel error -ss $n -i /tmp/$id.mp4 -frames:v 1 /tmp/$id-$n.jpg || true; done
+            fi
+          done
+      - name: Publish inspected sample data if any
+        run: |
+          python3 - <<'PY'
+          import glob,base64,io
+          from PIL import Image
+          for name in ['UnHFiv5M0i4','r5cqJTU5D5I']:
+            paths=sorted(glob.glob('/tmp/'+name+'-*.jpg'))
+            if not paths: continue
+            imgs=[Image.open(p).convert('RGB').resize((160,90)) for p in paths]
+            out=Image.new('RGB',(160*len(imgs),90))
+            for i,img in enumerate(imgs):out.paste(img,(160*i,0))
+            f=io.BytesIO();out.save(f,format='JPEG',quality=25);data=base64.b64encode(f.getvalue()).decode();parts=[data[i:i+3000] for i in range(0,len(data),3000)]
+            if len(parts)>9: print('::notice title=Too large::'+name);continue
+            for i,c in enumerate(parts):print(f'::notice title={name}-{i:02d}-of-{len(parts):02d}::{c}')
+          PY
