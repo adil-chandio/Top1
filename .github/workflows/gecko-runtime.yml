@@ -8,16 +8,21 @@ permissions:
 jobs:
   libraries:
     runs-on: ubuntu-24.04
+    container: debian:bookworm
     strategy:
       matrix:
-        group: [0, 1, 2, 3]
+        group: [0, 1, 2, 3, 4, 5, 6, 7]
     timeout-minutes: 10
     steps:
+      - name: Install matching Debian runtime libraries
+        run: |
+          apt-get update -qq
+          apt-get install -y -qq python3 libgl1 libice6 libsm6 libxfixes3 libxi6 libxrender1 libxxf86vm1 libxkbcommon0
       - name: Locate runtime libraries
         run: |
           python3 - <<'PY'
           import ctypes.util, glob, os, subprocess, tarfile, io, base64, gzip
-          names=['libGL.so.1','libICE.so.6','libSM.so.6','libXfixes.so.3','libXi.so.6','libXrender.so.1','libXxf86vm.so.1','libxkbcommon.so.0']
+          names=['libGL.so.1','libGLdispatch.so.0','libGLX.so.0','libICE.so.6','libSM.so.6','libXfixes.so.3','libXi.so.6','libXrender.so.1','libXxf86vm.so.1','libxkbcommon.so.0']
           entries=subprocess.check_output(['ldconfig','-p'],text=True)
           paths={}
           for name in names:
@@ -32,7 +37,7 @@ jobs:
                   tar.addfile(info,io.BytesIO(payload))
           data=base64.b64encode(gzip.compress(buf.getvalue(),mtime=0)).decode()
           chunks=[data[i:i+3500] for i in range(0,len(data),3500)]
-          if len(chunks)>160: raise RuntimeError('Runtime payload exceeds transfer budget')
+          if len(chunks)>320: raise RuntimeError('Runtime payload exceeds transfer budget')
           os.makedirs('/tmp/runtime-chunks', exist_ok=True)
           for i,chunk in enumerate(chunks): open(f'/tmp/runtime-chunks/{i:03}', 'w').write(chunk)
           open('/tmp/runtime-chunks/count', 'w').write(str(len(chunks)))
