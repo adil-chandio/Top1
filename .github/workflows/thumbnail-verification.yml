@@ -18,6 +18,14 @@ jobs:
           mkdir -p thumbnail-captures
           python3 channels/monarch_cam/intel/verify_thumbnail_sources.py --skip-decoder --output thumbnail-captures | tee thumbnail-captures/results.json
           exit "${PIPESTATUS[0]}"
+      - name: Publish small JPEG payloads to run annotations
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import base64, pathlib
+          for image in pathlib.Path('thumbnail-captures').glob('*.jpg'):
+              print(f'::notice title={image.name}::{base64.b64encode(image.read_bytes()).decode()}')
+          PY
       - name: Save results and captured images
         if: always()
         uses: actions/upload-artifact@v4
