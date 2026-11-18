@@ -18,7 +18,7 @@ jobs:
         shell: bash
         run: |
           python3 -m pip install -q yt-dlp imageio-ffmpeg
-          yt-dlp --no-progress --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/source.mp4 'https://vimeo.com/${{ matrix.id }}' >/tmp/log 2>&1 || true
+          yt-dlp --no-progress --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/source.mp4 'https://player.vimeo.com/video/${{ matrix.id }}' >/tmp/log 2>&1 || true
           python3 - <<'PY'
           from pathlib import Path
           s=Path('/tmp/log').read_text()[-2500:].replace('%','%25').replace('\r','%0D').replace('\n','%0A')
