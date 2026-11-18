@@ -1,0 +1,169 @@
+name: Animal mechanism visual study
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/animal-mechanisms.yml]
+permissions:
+  contents: read
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        video: [xb7obma, xaioehi]
+    steps:
+      - name: Decode complete Dailymotion film
+        env:
+          VID: ${{ matrix.video }}
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+          python3 -m pip install -q -U yt-dlp pillow
+          timeout 90 yt-dlp --socket-timeout 12 --retries 1 --no-playlist -f 'best[height<=360]/best' -o /tmp/film.mp4 https://www.dailymotion.com/video/$VID > /tmp/short.log 2>&1 || { tail -10 /tmp/short.log | while IFS= read -r line; do echo "::notice title=short failure::$line"; done; exit 1; }
+          ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/film.mp4 | sed 's/^/::notice title=duration::/'
+          mkdir /tmp/frames /tmp/sheets
+          ffmpeg -loglevel error -i /tmp/film.mp4 -vf 'fps=1,scale=160:-1' /tmp/frames/%03d.jpg
+          python3 - <<'PYSCRIPT'
+          from PIL import Image,ImageDraw
+          import glob,io,base64,os
+          files=sorted(glob.glob('/tmp/frames/*.jpg'));print('::notice title=coverage::'+str(len(files))+' sampled frames at 1 fps')
+          for k in range(0,len(files),8):
+            ims=[Image.open(p).convert('RGB') for p in files[k:k+8]];w,h=ims[0].size
+            sheet=Image.new('RGB',(w*4,(h+17)*2),'black');d=ImageDraw.Draw(sheet)
+            for i,im in enumerate(ims):
+              x=(i%4)*w;y=(i//4)*(h+17);sheet.paste(im,(x,y));d.text((x+2,y+h),str(k+i)+'s',fill='white')
+            f=io.BytesIO();sheet.save(f,'JPEG',quality=26);data=base64.b64encode(f.getvalue()).decode();open('/tmp/sheets/%02d.txt'%(k//8),'w').write(data)
+          PYSCRIPT
+      - name: Publish sheet 00
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/00.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 00 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-00-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 01
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/01.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 01 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-01-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 02
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/02.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 02 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-02-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 03
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/03.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 03 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-03-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 04
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/04.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 04 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-04-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 05
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/05.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 05 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-05-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 06
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/06.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 06 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-06-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 07
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/07.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 07 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-07-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 08
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/08.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 08 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-08-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 09
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/09.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 09 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-09-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 10
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/10.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 10 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-10-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
+      - name: Publish sheet 11
+        run: |
+          python3 - <<'PYSCRIPT'
+          import os
+          path='/tmp/sheets/11.txt'
+          if os.path.exists(path):
+            data=open(path).read();parts=[data[j:j+3000] for j in range(0,len(data),3000)]
+            print('::notice title=sheet info::sheet 11 chunks='+str(len(parts)))
+            assert len(parts)<=9
+            for n,chunk in enumerate(parts): print(f'::notice title=sheet-11-{n:02d}-of-{len(parts):02d}::{chunk}')
+          PYSCRIPT
