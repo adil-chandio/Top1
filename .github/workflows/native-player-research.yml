@@ -27,15 +27,15 @@ jobs:
               let result={name,url};
               try {
                 await p.goto(url,{waitUntil:'domcontentloaded',timeout:35000}); await p.waitForTimeout(7000);
-                result.title=await p.title();result.body=(await p.locator('body').innerText()).slice(0,1400);
+                result.title=await p.title();result.body=(await p.locator('body').innerText({timeout:6000})).slice(0,1400);
                 let v=p.locator('video').first();
                 if (await v.count()) {
-                  await v.evaluate(e=>{e.muted=true; return e.play().catch(()=>{});});
+                  await v.evaluate(e=>{e.muted=true; e.play().catch(()=>{});});
                   let t1=await v.evaluate(e=>e.currentTime);await p.waitForTimeout(7000);
                   let state=await v.evaluate(e=>({time:e.currentTime,paused:e.paused,ready:e.readyState,width:e.videoWidth,height:e.videoHeight,error:e.error&&e.error.message}));
                   result.video=state;result.initial=t1;
                   if(state.time>t1+1 && state.width>0){
-                    for(let i=0;i<5;i++){await v.screenshot({path:`/tmp/${name}-${i}.png`});await p.waitForTimeout(700);}
+                    for(let i=0;i<5;i++){await v.screenshot({path:`/tmp/${name}-${i}.png`,timeout:5000});await p.waitForTimeout(700);}
                   }
                 }
               }catch(e){result.error=String(e).slice(0,500)}
