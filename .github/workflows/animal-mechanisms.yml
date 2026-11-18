@@ -20,7 +20,7 @@ jobs:
         run: |
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           python3 -m pip install -q -U yt-dlp pillow
-          timeout 90 yt-dlp --socket-timeout 12 --retries 1 --no-playlist -f 'best[height<=360]/best' -o /tmp/film.mp4 https://www.dailymotion.com/video/$VID > /tmp/short.log 2>&1 || { tail -10 /tmp/short.log | while IFS= read -r line; do echo "::notice title=short failure::$line"; done; exit 1; }
+          timeout 45 yt-dlp --socket-timeout 12 --retries 1 --no-playlist -F https://www.dailymotion.com/video/$VID > /tmp/short.log 2>&1 || { tail -10 /tmp/short.log | while IFS= read -r line; do echo "::notice title=short failure::$line"; done; exit 1; }
           ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/film.mp4 | sed 's/^/::notice title=duration::/'
           mkdir /tmp/frames /tmp/sheets
           ffmpeg -loglevel error -i /tmp/film.mp4 -vf 'fps=1,scale=160:-1' /tmp/frames/%03d.jpg
