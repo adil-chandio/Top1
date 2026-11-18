@@ -234,36 +234,51 @@ jobs:
           retention-days: 14
           compression-level: 1
 
-      - name: Encode the film as collectable text chunks
+      - name: Split the film into parts and push them in batches
         run: |
           set -euo pipefail
           MP4="$(find production/account1_ep01/renders -maxdepth 1 -name '*.mp4' | head -1)"
           echo "film: $MP4"
-          SIZE=$(stat -c%s "$MP4")
-          echo "bytes: $SIZE"
+          SIZE=$(stat -c%s "$MP4"); echo "bytes: $SIZE"
           OUT="production/account1_ep01/webgl/collect"
           rm -rf "$OUT"; mkdir -p "$OUT"
-          # Base64 into 4 MB text files: every blob stays small enough for a
-          # normal git push, and the agent can reassemble them from the branch.
-          base64 -w0 "$MP4" | split -b 4194304 -d -a 3 - "$OUT/part_"
+          split -b 8388608 -d -a 3 "$MP4" "$OUT/part_"
           PARTS=$(ls "$OUT"/part_* | wc -l)
-          printf '{\n  "file": "%s",\n  "bytes": %s,\n  "parts": %s,\n  "encoding": "base64",\n  "run": "%s"\n}\n' \
+          printf '{\n  "file": "%s",\n  "bytes": %s,\n  "parts": %s,\n  "chunk_bytes": 8388608,\n  "run": "%s"\n}\n' \
             "$(basename "$MP4")" "$SIZE" "$PARTS" "${{ github.run_id }}" > "$OUT/MANIFEST.json"
-          cat "$OUT/MANIFEST.json"
-          du -sh "$OUT"
+          sha256sum "$MP4" | awk '{print $1}' > "$OUT/SHA256SUMS.txt"
+          cat "$OUT/MANIFEST.json"; cat "$OUT/SHA256SUMS.txt"
 
-      - name: Commit the collectable chunks
-        run: |
-          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -f production/account1_ep01/webgl/collect
-          if git diff --cached --quiet; then
-            echo "nothing to commit"
-          else
-            git commit -m "PEHRA WebGL film, encoded for collection (run ${{ github.run_id }})"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
-          fi
+          git config http.postBuffer 524288000
+
+          git add -f "$OUT/MANIFEST.json" "$OUT/SHA256SUMS.txt"
+          git commit -m "PEHRA film manifest (run ${{ github.run_id }})" || true
+          git push origin "HEAD:${GITHUB_REF_NAME}" || true
+
+          n=0
+          for f in "$OUT"/part_*; do
+            n=$((n+1))
+            git add -f "$f"
+            if [ $((n % 3)) -eq 0 ]; then
+              git commit -m "PEHRA film part $n (run ${{ github.run_id }})" || true
+              for attempt in 1 2 3; do
+                if git push origin "HEAD:${GITHUB_REF_NAME}"; then break; fi
+                echo "retry $attempt"; sleep 8
+                git fetch -q origin "${GITHUB_REF_NAME}"
+                git rebase --autostash FETCH_HEAD >/dev/null 2>&1 || git rebase --abort || true
+              done
+            fi
+          done
+          git commit -m "PEHRA film remaining parts (run ${{ github.run_id }})" || true
+          for attempt in 1 2 3; do
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then echo PUSHED; break; fi
+            sleep 8
+            git fetch -q origin "${GITHUB_REF_NAME}"
+            git rebase --autostash FETCH_HEAD >/dev/null 2>&1 || git rebase --abort || true
+          done
+          echo "collected $(ls "$OUT"/part_* | wc -l) parts"
 
       - name: Summary
         run: |
