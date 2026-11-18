@@ -1,0 +1,31 @@
+name: Temporary gecko runtime library inspection
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/gecko-runtime.yml]
+permissions:
+  contents: read
+jobs:
+  libraries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Locate runtime libraries
+        run: |
+          python3 - <<'PY'
+          import ctypes.util, glob, os, subprocess, tarfile, io, base64
+          names=['libGL.so.1','libICE.so.6','libSM.so.6','libXfixes.so.3','libXi.so.6','libXrender.so.1','libXxf86vm.so.1','libxkbcommon.so.0']
+          entries=subprocess.check_output(['ldconfig','-p'],text=True)
+          paths={}
+          for name in names:
+              lines=[line for line in entries.splitlines() if line.strip().startswith(name+' ')]
+              if not lines: raise RuntimeError('Missing '+name)
+              paths[name]=lines[0].split(' => ')[1]
+          buf=io.BytesIO()
+          with tarfile.open(fileobj=buf,mode='w:gz') as tar:
+              for name,path in paths.items(): tar.add(os.path.realpath(path),arcname=name)
+          data=base64.b64encode(buf.getvalue()).decode()
+          chunks=[data[i:i+20000] for i in range(0,len(data),20000)]
+          print('::notice title=runtime-count::'+str(len(chunks)))
+          for i,chunk in enumerate(chunks): print(f'::notice title=runtime-{i:03}::{chunk}')
+          PY
