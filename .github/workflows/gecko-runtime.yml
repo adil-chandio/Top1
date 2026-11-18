@@ -26,6 +26,20 @@ jobs:
               for name,path in paths.items(): tar.add(os.path.realpath(path),arcname=name)
           data=base64.b64encode(buf.getvalue()).decode()
           chunks=[data[i:i+20000] for i in range(0,len(data),20000)]
-          print('::notice title=runtime-count::'+str(len(chunks)))
-          for i,chunk in enumerate(chunks): print(f'::notice title=runtime-{i:03}::{chunk}')
+          os.makedirs('/tmp/runtime-chunks', exist_ok=True)
+          for i,chunk in enumerate(chunks): open(f'/tmp/runtime-chunks/{i:03}', 'w').write(chunk)
+          open('/tmp/runtime-chunks/count', 'w').write(str(len(chunks)))
           PY
+      - name: Transfer runtime chunks 0 to 7
+        run: |
+          for i in $(seq -f '%03g' 0 7); do test ! -f /tmp/runtime-chunks/$i || echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; done
+      - name: Transfer runtime chunks 8 to 15
+        run: |
+          for i in $(seq -f '%03g' 8 15); do test ! -f /tmp/runtime-chunks/$i || echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; done
+      - name: Transfer runtime chunks 16 to 23
+        run: |
+          for i in $(seq -f '%03g' 16 23); do test ! -f /tmp/runtime-chunks/$i || echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; done
+      - name: Transfer runtime remaining chunks
+        run: |
+          echo "::notice title=runtime-count::$(cat /tmp/runtime-chunks/count)"
+          for i in $(seq -f '%03g' 24 31); do test ! -f /tmp/runtime-chunks/$i || echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; done
