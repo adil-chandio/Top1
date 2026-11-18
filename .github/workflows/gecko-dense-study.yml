@@ -12,10 +12,10 @@ jobs:
     steps:
       - name: Decode complete Dailymotion film
         run: |
-          ffmpeg -version | head -1
-          python3 -m pip install -q -U yt-dlp pillow
+          python3 -m pip install -q -U yt-dlp pillow imageio-ffmpeg
+          ln -s "$(python3 -c 'import imageio_ffmpeg;print(imageio_ffmpeg.get_ffmpeg_exe())')" /tmp/ffmpeg
+          export PATH="/tmp:$PATH"
           timeout 90 yt-dlp --socket-timeout 10 --retries 1 --fragment-retries 1 --no-playlist -f 'best[height<=360]/best' -o /tmp/film.mp4 https://www.dailymotion.com/video/x6i0u21
-          ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/film.mp4 | sed 's/^/::notice title=duration::/'
           mkdir /tmp/frames /tmp/sheets
           ffmpeg -loglevel error -i /tmp/film.mp4 -vf 'fps=2,scale=128:-1' /tmp/frames/%03d.jpg
           python3 - <<'PYSCRIPT'
