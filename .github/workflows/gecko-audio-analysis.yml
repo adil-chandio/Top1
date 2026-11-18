@@ -30,20 +30,17 @@ jobs:
           try:
             model=ClapModel.from_pretrained('laion/clap-htsat-unfused').eval()
             proc=ClapProcessor.from_pretrained('laion/clap-htsat-unfused')
+            results=[]
             with torch.no_grad():
               for start in range(0,int(np.ceil(len(y)/sr)),5):
                 segment=y[start*sr:min((start+5)*sr,len(y))]
                 if len(segment)<sr: continue
-                inp=proc(text=labels,audios=segment,sampling_rate=sr,return_tensors='pt',padding=True)
+                inp=proc(text=labels,audio=segment,sampling_rate=sr,return_tensors='pt',padding=True)
                 scores=model(**inp).logits_per_audio[0].softmax(dim=-1)
                 best=torch.topk(scores,3)
-                print('::notice title=CLAP '+str(start)+'s::'+ '; '.join(labels[i]+': '+str(round(v.item(),3)) for v,i in zip(best.values,best.indices)))
+                results.append(str(start)+'s '+ '; '.join(labels[i]+': '+str(round(v.item(),3)) for v,i in zip(best.values,best.indices)))
+            print('::notice title=CLAP 0-30::'+' | '.join(results[:7]))
+            print('::notice title=CLAP 35-end::'+' | '.join(results[7:]))
           except Exception as e:
             print('::warning title=CLAP failed::'+str(e).replace('\n',' ')[:900])
-          try:
-            asr=pipeline('automatic-speech-recognition',model='openai/whisper-tiny.en',device=-1)
-            result=asr({'raw':y[::3], 'sampling_rate':16000},chunk_length_s=20,return_timestamps=True)
-            print('::notice title=ASR hypothesis::'+str(result)[:2500])
-          except Exception as e:
-            print('::warning title=ASR failed::'+str(e).replace('\n',' ')[:900])
           PY
