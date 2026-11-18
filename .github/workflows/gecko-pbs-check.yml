@@ -17,6 +17,7 @@ jobs:
         run: |
           set -e
           python3 -m pip install -q yt-dlp
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           yt-dlp --quiet --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/pbs.mp4 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/'
           ffmpeg -v error -ss ${{ matrix.start }} -t 55 -i /tmp/pbs.mp4 -vf 'fps=1/3,scale=240:-2,tile=4x5' -frames:v 1 -q:v 7 /tmp/sheet.jpg
           ffmpeg -v error -ss ${{ matrix.start }} -t 4 -i /tmp/pbs.mp4 -vf 'fps=5,scale=160:-2' -loop 0 /tmp/motion.gif
