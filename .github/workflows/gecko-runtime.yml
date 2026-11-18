@@ -8,6 +8,9 @@ permissions:
 jobs:
   libraries:
     runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        group: [0, 1, 2, 3]
     timeout-minutes: 10
     steps:
       - name: Locate runtime libraries
@@ -31,65 +34,35 @@ jobs:
           for i,chunk in enumerate(chunks): open(f'/tmp/runtime-chunks/{i:03}', 'w').write(chunk)
           open('/tmp/runtime-chunks/count', 'w').write(str(len(chunks)))
           PY
-      - name: Runtime chunk group 1
+      - name: Runtime chunk segment 1
+        env:
+          GROUP: ${{ matrix.group }}
         run: |
-          for i in $(seq -f '%03g' 0 7); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 2
+          start=$((GROUP*40+0)); end=$((start+7))
+          for i in $(seq -f '%03g' "$start" "$end"); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
+      - name: Runtime chunk segment 2
+        env:
+          GROUP: ${{ matrix.group }}
         run: |
-          for i in $(seq -f '%03g' 8 15); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 3
+          start=$((GROUP*40+8)); end=$((start+7))
+          for i in $(seq -f '%03g' "$start" "$end"); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
+      - name: Runtime chunk segment 3
+        env:
+          GROUP: ${{ matrix.group }}
         run: |
-          for i in $(seq -f '%03g' 16 23); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 4
+          start=$((GROUP*40+16)); end=$((start+7))
+          for i in $(seq -f '%03g' "$start" "$end"); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
+      - name: Runtime chunk segment 4
+        env:
+          GROUP: ${{ matrix.group }}
         run: |
-          for i in $(seq -f '%03g' 24 31); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 5
+          start=$((GROUP*40+24)); end=$((start+7))
+          for i in $(seq -f '%03g' "$start" "$end"); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
+      - name: Runtime chunk segment 5
+        env:
+          GROUP: ${{ matrix.group }}
         run: |
-          for i in $(seq -f '%03g' 32 39); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 6
-        run: |
-          for i in $(seq -f '%03g' 40 47); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 7
-        run: |
-          for i in $(seq -f '%03g' 48 55); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 8
-        run: |
-          for i in $(seq -f '%03g' 56 63); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 9
-        run: |
-          for i in $(seq -f '%03g' 64 71); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 10
-        run: |
-          for i in $(seq -f '%03g' 72 79); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 11
-        run: |
-          for i in $(seq -f '%03g' 80 87); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 12
-        run: |
-          for i in $(seq -f '%03g' 88 95); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 13
-        run: |
-          for i in $(seq -f '%03g' 96 103); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 14
-        run: |
-          for i in $(seq -f '%03g' 104 111); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 15
-        run: |
-          for i in $(seq -f '%03g' 112 119); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 16
-        run: |
-          for i in $(seq -f '%03g' 120 127); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 17
-        run: |
-          for i in $(seq -f '%03g' 128 135); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 18
-        run: |
-          for i in $(seq -f '%03g' 136 143); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 19
-        run: |
-          for i in $(seq -f '%03g' 144 151); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
-      - name: Runtime chunk group 20
-        run: |
-          for i in $(seq -f '%03g' 152 159); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
+          start=$((GROUP*40+32)); end=$((start+7))
+          for i in $(seq -f '%03g' "$start" "$end"); do if test -f /tmp/runtime-chunks/$i; then echo "::notice title=runtime-$i::$(cat /tmp/runtime-chunks/$i)"; fi; done
       - name: Runtime chunk count
         run: echo "::notice title=runtime-count::$(cat /tmp/runtime-chunks/count)"
