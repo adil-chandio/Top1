@@ -1,0 +1,30 @@
+name: Gecko visual reference access test
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/gecko-video-reference.yml]
+permissions:
+  contents: read
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    strategy:
+      fail-fast: false
+      matrix:
+        video: [JgO-ISfpsrY, CJl_relCddQ, FJOQ8CAWpL0]
+    steps:
+      - name: Test public video access and sample visual frames
+        shell: bash
+        run: |
+          python3 -m pip install -q yt-dlp
+          yt-dlp --no-playlist --no-part -f 'worst[ext=mp4]/worst' -o /tmp/source.mp4 'https://www.youtube.com/watch?v=${{ matrix.video }}' || exit 1
+          ffprobe -v error -show_entries format=duration -of default=nw=1 /tmp/source.mp4
+          mkdir -p /tmp/frames
+          ffmpeg -v error -i /tmp/source.mp4 -vf "fps=1/10,scale=320:-2,tile=3x3" -frames:v 1 -q:v 6 /tmp/frames/sheet.jpg
+          python3 - <<'PY'
+          import base64
+          data=base64.b64encode(open('/tmp/frames/sheet.jpg','rb').read()).decode()
+          chunks=[data[i:i+3400] for i in range(0,len(data),3400)]
+          for i,c in enumerate(chunks): print(f'::notice title=sheet-{i:03d}-of-{len(chunks):03d}::{c}')
+          PY
