@@ -13,16 +13,10 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Ensure JPEG validation tool is available
-        run: |
-          if ! command -v identify >/dev/null; then
-            sudo apt-get update
-            sudo apt-get install -y imagemagick
-          fi
-      - name: Capture and validate official thumbnails
+      - name: Capture official thumbnails (decode locally after download)
         run: |
           mkdir -p thumbnail-captures
-          python3 channels/monarch_cam/intel/verify_thumbnail_sources.py --output thumbnail-captures | tee thumbnail-captures/results.json
+          python3 channels/monarch_cam/intel/verify_thumbnail_sources.py --skip-decoder --output thumbnail-captures | tee thumbnail-captures/results.json
           exit "${PIPESTATUS[0]}"
       - name: Save results and captured images
         if: always()

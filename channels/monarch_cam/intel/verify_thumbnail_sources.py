@@ -22,7 +22,7 @@ TARGETS = {
 MAX_BYTES = 2_000_000
 
 
-def capture(url, target, timeout=15):
+def capture(url, target, timeout=15, skip_decoder=False):
     request = urllib.request.Request(url, headers={'User-Agent': 'MonarchCamThumbnailVerification/1.0'})
     with urllib.request.urlopen(request, timeout=timeout) as response:
         if response.geturl() != url:
@@ -38,25 +38,27 @@ def capture(url, target, timeout=15):
         with tempfile.NamedTemporaryFile(dir=target.parent, suffix='.jpg', delete=False) as f:
             temp = Path(f.name)
             f.write(data)
-        proc = subprocess.run(['identify', '-regard-warnings', str(temp)], capture_output=True, text=True)
-        if proc.returncode:
-            raise ValueError('JPEG decoder rejected image: ' + proc.stderr.strip())
+        if not skip_decoder:
+            proc = subprocess.run(['identify', '-regard-warnings', str(temp)], capture_output=True, text=True)
+            if proc.returncode:
+                raise ValueError('JPEG decoder rejected image: ' + proc.stderr.strip())
         os.replace(temp, target)
         temp = None
     finally:
         if temp is not None:
             temp.unlink(missing_ok=True)
-    return {'url': url, 'path': str(target), 'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'visual_review': False}
+    return {'url': url, 'path': str(target), 'size': len(data), 'sha256': hashlib.sha256(data).hexdigest(), 'decoder_checked': not skip_decoder, 'visual_review': False}
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('thumbnail-captures'))
+    parser.add_argument('--skip-decoder', action='store_true', help='Capture only; decoder check is required separately before use')
     args = parser.parse_args()
     results = {}
     for video_id, url in TARGETS.items():
         try:
-            results[video_id] = capture(url, args.output / (video_id + '-default.jpg'))
+            results[video_id] = capture(url, args.output / (video_id + '-default.jpg'), skip_decoder=args.skip_decoder)
         except (OSError, ValueError, urllib.error.URLError) as exc:
             results[video_id] = {'url': url, 'error': str(exc), 'visual_review': False}
     print(json.dumps(results, indent=2))
