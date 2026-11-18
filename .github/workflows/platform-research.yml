@@ -13,10 +13,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - name: bilibili-gecko
-            url: https://www.bilibili.com/video/BV1SX4y1p7RK/
-          - name: dailymotion-lizard
-            url: https://www.dailymotion.com/video/x8273cc
+          - name: dailymotion-gecko
+            url: https://www.dailymotion.com/video/x6i0u21
     steps:
       - name: Get public information and sample if accessible
         env:
@@ -32,14 +30,14 @@ jobs:
           print('::notice title=access '+os.environ['NAME']+'::'+s.replace('%','%25')[:3000])
           PY
           if grep -q 'Available formats' /tmp/formats.log; then
-            yt-dlp --no-playlist --download-sections '*0-35' -f 'best[height<=360]/best' -o '/tmp/clip.%(ext)s' "$URL" > /tmp/download.log 2>&1 || true
+            yt-dlp --no-playlist --download-sections '*0-65' -f 'best[height<=360]/best' -o '/tmp/clip.%(ext)s' "$URL" > /tmp/download.log 2>&1 || true
             python3 - <<'PY'
           import glob,subprocess,os,base64,io
           from PIL import Image,ImageDraw
           files=[p for p in glob.glob('/tmp/clip.*') if not p.endswith('.part')];print('::notice title=download '+os.environ['NAME']+'::files='+str([os.path.basename(p) for p in files]))
           if not files: exit()
           frames=[]
-          for t in [0,7,14,21,28]:
+          for t in [0,12,24,36,48,60]:
             p=subprocess.run(['ffmpeg','-loglevel','error','-ss',str(t),'-i',files[0],'-frames:v','1','-f','image2pipe','-vcodec','png','-'],capture_output=True,timeout=25)
             if p.returncode==0 and p.stdout:
               im=Image.open(io.BytesIO(p.stdout)).convert('RGB');im.thumbnail((160,90));frames.append((im,t))
