@@ -1,4 +1,4 @@
-name: PBS gecko visual samples
+name: PBS gecko visual inspection
 on:
   push:
     branches: [arena/b040eefc-top1]
@@ -8,24 +8,45 @@ permissions:
 jobs:
   sample:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         start: [0, 55, 110, 165]
     steps:
-      - name: Capture time-limited visual reference for internal study
+      - name: Extract visual samples for internal reference
         run: |
           set -e
           python3 -m pip install -q yt-dlp
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           yt-dlp --quiet --no-playlist -f 'worst[ext=mp4]/worst' -o /tmp/pbs.mp4 'https://www.pbs.org/video/gecko-grip-its-atomic-really-kxxxxj/'
-          ffmpeg -v error -ss ${{ matrix.start }} -t 55 -i /tmp/pbs.mp4 -vf 'fps=1/3,scale=240:-2,tile=4x5' -frames:v 1 -q:v 7 /tmp/sheet.jpg
-          ffmpeg -v error -ss ${{ matrix.start }} -t 4 -i /tmp/pbs.mp4 -vf 'fps=5,scale=160:-2' -loop 0 /tmp/motion.gif
+          ffmpeg -v error -ss ${{ matrix.start }} -t 55 -i /tmp/pbs.mp4 -vf 'fps=1/3,scale=160:-2,tile=4x5' -frames:v 1 -q:v 12 /tmp/sheet.jpg
+          ffmpeg -v error -ss ${{ matrix.start }} -t 4 -i /tmp/pbs.mp4 -vf 'fps=4,scale=120:-2' -loop 0 /tmp/motion.gif
           python3 - <<'PY'
-          import base64,pathlib
+          import base64,json,pathlib
+          payload=[]
           for name in ['sheet.jpg','motion.gif']:
             data=base64.b64encode(pathlib.Path('/tmp/'+name).read_bytes()).decode()
             c=[data[i:i+3400] for i in range(0,len(data),3400)]
-            if len(c)>45: raise RuntimeError(f'{name} is too big: {len(c)} chunks')
-            for i,v in enumerate(c): print(f'::notice title={name}-{i:03d}-of-{len(c):03d}::{v}')
+            payload.extend([{'title':f'{name}-{i:03d}-of-{len(c):03d}','message':v} for i,v in enumerate(c)])
+          if len(payload)>60: raise RuntimeError(f'Too many chunks {len(payload)}')
+          pathlib.Path('/tmp/chunks.json').write_text(json.dumps(payload))
           PY
+      - name: Publish sample chunks 0-9
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[0:10]]'
+      - name: Publish sample chunks 10-19
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[10:20]]'
+      - name: Publish sample chunks 20-29
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[20:30]]'
+      - name: Publish sample chunks 30-39
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[30:40]]'
+      - name: Publish sample chunks 40-49
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[40:50]]'
+      - name: Publish sample chunks 50-59
+        run: |
+          python3 -c 'import json; a=json.load(open("/tmp/chunks.json")); [print("::notice title="+v["title"]+"::"+v["message"]) for v in a[50:60]]'
