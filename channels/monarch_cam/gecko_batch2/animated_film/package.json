@@ -1,0 +1,8 @@
+{
+  "name": "monarch-gecko-webgl-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "render": "node render.mjs" },
+  "dependencies": { "playwright-core": "1.65.1", "three": "0.183.2", "vite": "7.3.8" }
+}
