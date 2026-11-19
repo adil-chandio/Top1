@@ -79,6 +79,28 @@ jobs:
                   dst.parent.mkdir(exist_ok=True)
                   dst.write_bytes(archive.extractfile(member).read())
           PY
+      - name: Provision and verify the video encoder before tracing
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/creature/bin"
+          mkdir -p "$dir"
+          if ! command -v ffmpeg >/dev/null; then
+            python3 -m pip install --disable-pip-version-check --quiet --no-deps --target "$RUNNER_TEMP/creature/ffmpeg" imageio-ffmpeg==0.8.1
+            decoder=$(find "$RUNNER_TEMP/creature/ffmpeg" -type f -name 'ffmpeg-linux-x86_64*' -print -quit)
+            test -x "$decoder"
+            ln -s "$decoder" "$dir/ffmpeg"
+          fi
+          if ! command -v ffprobe >/dev/null; then
+            npm install --no-audit --no-fund --prefix "$RUNNER_TEMP/creature/probe" @ffprobe-installer/linux-x64@5.2.0
+            ln -s "$RUNNER_TEMP/creature/probe/node_modules/@ffprobe-installer/linux-x64/ffprobe" "$dir/ffprobe"
+          fi
+          export PATH="$dir:$PATH"
+          command -v openssl
+          ffmpeg -version | sed -n '1p'
+          ffprobe -version | sed -n '1p'
+          ffmpeg -nostdin -hide_banner -v error -f lavfi -i color=s=16x16:r=24 -frames:v 1 -c:v libx264 -f null -
+          echo "$dir" >> "$GITHUB_PATH"
       - name: Trace native frames with Blender Cycles
         shell: bash
         run: |
@@ -97,6 +119,7 @@ jobs:
           set -euo pipefail
           umask 077
           cd "$RUNNER_TEMP/creature"
+          trap 'echo "::error title=Seal step failure::line $LINENO (exit $?)"' ERR
           trap 'rm -f run.mp4 sealed.cms transport.json cert.pem' EXIT
           ffmpeg -nostdin -hide_banner -v error -y -filter_threads 1 -framerate 24 -start_number "$FIRST" -i plate/%04d.png \
             -frames:v "$((END-FIRST))" -vf 'scale=in_range=full:out_range=tv:out_color_matrix=bt709,format=yuv420p' \
