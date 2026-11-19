@@ -1,4 +1,5 @@
 import { AIR_CRUSH } from './air-crush.js';
+import { REFLECTOR } from './reflector.js';
 
 export const DEMOS = [
   AIR_CRUSH,
@@ -71,7 +72,7 @@ export const DEMOS = [
 ];
 
 export function findDemo(id) {
-  return DEMOS.find((film) => film.id === id);
+  return DEMOS.find((film) => film.id === id) ?? (id === REFLECTOR.id ? REFLECTOR : undefined);
 }
 
 export function demoAssetName(id, extension) {

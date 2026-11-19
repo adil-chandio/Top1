@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0d111a" />
+    <meta name="description" content="Monarch Studio Project 002: a 50-second 3D film about a bicycle reflector, with Roman Urdu captions, a shot guide, and a frame-by-frame research file." />
+    <link rel="icon" type="image/svg+xml" href="../monarch.svg" />
+    <title>Monarch Studio — The Light With No Battery</title>
+    <script type="module" src="./project.js"></script>
+  </head>
+  <body class="project-002">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="studio-header">
+      <div class="studio-wrap header-inner">
+        <a href="../" class="studio-mark" aria-label="Monarch Studio home">
+          <img src="../monarch.svg" width="38" height="38" alt="" />
+          <span>Monarch <span>Studio</span></span>
+        </a>
+        <nav class="studio-nav" aria-label="Studio navigation">
+          <a href="#screening">The film</a>
+          <a href="#shots">Shot guide</a>
+          <a href="#reference">Reference study</a>
+        </nav>
+        <a class="store-link" href="../../"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left" /></svg> Top1 Kits</a>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="studio-wrap premiere" aria-labelledby="film-title">
+        <div class="premiere-copy">
+          <p class="eyebrow project-id"><span class="studio-dot"></span> PROJECT 002 <span class="divider">/</span> OPTICS</p>
+          <h1 id="film-title">The Light <span>With No Battery</span></h1>
+          <p class="lede">A bicycle reflector looks like it lights up. Move away from the headlight and the glow fades. What happens inside the red plastic?</p>
+          <div class="studio-actions">
+            <a class="studio-button primary" data-studio-play href="/demos/reflector-no-battery.mp4"><svg class="icon" aria-hidden="true"><use href="/icons.svg#play" /></svg> Watch 50s film</a>
+            <a class="studio-button secondary" href="/demos/reflector-no-battery.mp4" download><svg class="icon" aria-hidden="true"><use href="/icons.svg#download" /></svg> Save MP4</a>
+          </div>
+          <dl class="film-specs">
+            <div><dt>Runtime</dt><dd>50.00s</dd></div>
+            <div><dt>Camera setups</dt><dd>18</dd></div>
+            <div><dt>Vertical frame</dt><dd>9:16</dd></div>
+          </dl>
+          <a class="study-jump" href="#reference">Explore the 1,200-frame reference study <svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></a>
+        </div>
+        <figure class="screening" id="screening" aria-label="Film screening">
+          <div class="screen-stage">
+            <span class="stage-id" aria-hidden="true">SCREENING / 002</span>
+            <div class="screen-frame">
+              <a class="screen-cover" id="studio-cover" data-studio-play href="/demos/reflector-no-battery.mp4" aria-label="Play The Light With No Battery">
+                <img src="/demos/reflector-no-battery.webp" width="1080" height="1920" fetchpriority="high" alt="" />
+                <span class="screen-play" aria-hidden="true"><svg class="icon"><use href="/icons.svg#play" /></svg></span>
+              </a>
+              <video id="studio-video" controls playsinline preload="none" hidden tabindex="0" width="1080" height="1920" poster="/demos/reflector-no-battery.webp" aria-label="The Light With No Battery"></video>
+            </div>
+            <span class="stage-export" aria-hidden="true">1080P <span></span> 24 FPS</span>
+          </div>
+          <figcaption class="screen-caption">
+            <span>Urdu voice <span class="divider">·</span> Roman Urdu captions</span>
+            <a href="#transcript">Read transcript <svg class="icon" aria-hidden="true"><use href="/icons.svg#chevron" /></svg></a>
+          </figcaption>
+          <p class="playback-note" role="status" id="playback-note" hidden></p>
+        </figure>
+      </section>
+
+      <section class="studio-section studio-wrap" id="shots" aria-labelledby="shot-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="section-number">01</span> / THREE KEY MOMENTS</p><h2 id="shot-title">Follow the light.</h2></div>
+          <p>From the molded red lens to the path inside one enlarged corner. Tap a frame to play from that shot.</p>
+        </div>
+        <ul class="beat-grid" aria-label="Standout shots">
+          <li><a class="beat-link" href="/demos/reflector-no-battery.mp4#t=21.12" data-studio-shot="8">
+            <img src="./stills/layers.webp" width="600" height="360" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:21.12</span><strong>Open the reflector</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+          <li><a class="beat-link" href="/demos/reflector-no-battery.mp4#t=37.15" data-studio-shot="14">
+            <img src="./stills/return.webp" width="600" height="360" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:37.15</span><strong>See the return path</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+          <li><a class="beat-link" href="/demos/reflector-no-battery.mp4#t=44" data-studio-shot="16">
+            <img src="./stills/blackout.webp" width="600" height="360" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:44.00</span><strong>Switch the lamp off</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+        </ul>
+        <details class="studio-details" id="all-shots" hidden>
+          <summary><span>Full shot list <span class="detail-count" id="shot-count"></span></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#chevron" /></svg></summary>
+          <ol class="chapter-list" id="chapter-list"></ol>
+        </details>
+        <noscript><p class="fallback">For all 18 shots, <a href="/samples/reflector-blueprint.md" download>save the shot plan</a>.</p></noscript>
+      </section>
+
+      <section class="studio-section studio-wrap" id="reference" aria-labelledby="study-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="section-number">02</span> / REFERENCE STUDY</p><h2 id="study-title">What the frames show.</h2></div>
+          <p>One source video, decoded and reviewed in order. Measured picture changes are separated from visually confirmed transitions.</p>
+        </div>
+        <div class="research-card">
+          <div>
+            <p class="eyebrow">REFERENCE / XAC3WL6</p>
+            <h3>How The Ring And Chain Trick Works</h3>
+            <p>Reviewed on <a href="https://www.dailymotion.com/video/xac3wl6">Dailymotion</a>, where the listing credits Zack D. Films. The uploader is unverified. The inspection copy excludes audio; this is a picture-only study.</p>
+            <div class="file-actions">
+              <a class="studio-button primary" href="/samples/reflector-reference-audit.md" download><svg class="icon" aria-hidden="true"><use href="/icons.svg#download" /></svg> Save visual audit</a>
+              <a class="studio-button secondary" href="/samples/reflector-reference-frames.csv" download>Frame data CSV <svg class="icon" aria-hidden="true"><use href="/icons.svg#file" /></svg></a>
+            </div>
+          </div>
+          <dl class="research-stats">
+            <div><dt>Frames reviewed</dt><dd>1,200</dd></div>
+            <div><dt>Source duration</dt><dd>40.04s</dd></div>
+            <div><dt>Native frame rate</dt><dd>29.97</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="studio-section studio-wrap" id="making-of" aria-labelledby="process-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="section-number">03</span> / THE PRODUCTION FILE</p><h2 id="process-title">Built to explain.</h2></div>
+          <p>Original models, camera motion, narration and sound. The reference study informed the pacing, not the footage.</p>
+        </div>
+        <ol class="process-grid">
+          <li><span class="eyebrow">01 / STREET</span><h3>Keep the lamp on</h3><p>Change the camera angle first. The same headlight illuminates the reflector, but away from the return direction the lens looks dimmer.</p></li>
+          <li><span class="eyebrow">02 / BENCH</span><h3>One corner, three bounces</h3><p>Trace one accepted ray through three perpendicular faces. It leaves parallel to the incoming path, but in the opposite direction and slightly offset. The timing is slowed for illustration.</p></li>
+          <li><span class="eyebrow">03 / PAYOFF</span><h3>Pull the light away</h3><p>Hold the wide view as the lamp turns off. Bring back the red flash on the original bike. No light source inside the reflector and no road-safety performance claim.</p></li>
+          <li><span class="eyebrow">04 / DELIVERY</span><h3>Make it readable on a phone</h3><p>Roman Urdu phrases animate in place while brief sound cues mark each contact. The MP4 uses standard H.264 picture and AAC stereo audio.</p></li>
+        </ol>
+        <details class="studio-details transcript" id="transcript">
+          <summary>Read the Roman Urdu narration <svg class="icon" aria-hidden="true"><use href="/icons.svg#chevron" /></svg></summary>
+          <ol lang="ur-Latn">
+            <li><span class="timecode">0:00</span> Ye light jalti dikhti hai. Lekin is mein battery hi nahi.</li>
+            <li><span class="timecode">0:04</span> Ye cycle ka reflector hai. Headlight padi, toh laal chamak uthi.</li>
+            <li><span class="timecode">0:09</span> Ab zara side se dekho. Headlight wohi hai, chamak kam ho gayi.</li>
+            <li><span class="timecode">0:14</span> Aam aaine par tirchhi kiran pade, toh doosri taraf nikal jaati hai.</li>
+            <li><span class="timecode">0:20</span> Is plastic ke peechhe chhote kone hain. Har kone ki teen satahein hain, ek doosre se nabbe degree par.</li>
+            <li><span class="timecode">0:27</span> Kiran andar gayi. Pehli satah se takraayi, phir doosri, phir teesri. Ab rukh bilkul ulta.</li>
+            <li><span class="timecode">0:35</span> Thori si hat kar bhi, kiran headlight ki taraf laut ti hai. Isliye driver ko zyada chamak dikhti hai.</li>
+            <li><span class="timecode">0:44</span> Isne roshni banayi hi nahi. Jo mili, bas wohi wapas kar di.</li>
+          </ol>
+        </details>
+        <div class="file-actions">
+          <a class="studio-button primary" href="/samples/reflector-blueprint.md" download><svg class="icon" aria-hidden="true"><use href="/icons.svg#download" /></svg> Save worked script + shot plan</a>
+          <a class="studio-button secondary" href="../../?demo=reflector#builder">Open editable prompt <svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="studio-footer">
+      <div class="studio-wrap footer-inner">
+        <p>Monarch Studio <span class="divider">/</span> A Top1 production space</p>
+        <a class="store-link" href="../"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left" /></svg> Project 001: Who Crushed the Can?</a>
+      </div>
+    </footer>
+  </body>
+</html>

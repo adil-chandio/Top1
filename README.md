@@ -33,7 +33,9 @@ This preview has **no live checkout, customer accounts, or order submissions**. 
 
 ## Monarch Studio
 
-[Monarch Studio](monarch-studio/) is a separately branded screening and production space at **`/monarch-studio/`**. The first project is *Who Crushed the Can? — Cinema Edition*, with the original film, 11 playable chapter cues, the Roman Urdu transcript, and [detailed production notes](monarch-studio/PRODUCTION.md). Open it from **Open Monarch Studio** on the homepage or from the can film's player. Its separate HTML entry ships in the same static build and shares the original MP4 and blueprint rather than duplicating them. The store, kit preview and prompt builder remain at their existing routes.
+[Monarch Studio](monarch-studio/) is a separately branded screening and production space at **`/monarch-studio/`**. The first project is *Who Crushed the Can? — Cinema Edition*, with the original film, 11 playable chapter cues, the Roman Urdu transcript, and [detailed production notes](monarch-studio/PRODUCTION.md). Open it from **Open Monarch Studio** on the homepage or from the can film's player. Project 001 shares the original MP4 and blueprint with the storefront rather than duplicating them. The store, kit preview and prompt builder remain at their existing routes.
+
+**Project 002 — [The Light With No Battery](monarch-studio/reflector/)** is a finished 50-second Urdu film about bicycle reflectors, at `/monarch-studio/reflector/`. Open the **NEW 002** link on the homepage or the new project card inside Monarch Studio. It has 18 chapter cues and an [editable worked example](public/samples/reflector-blueprint.md). The separate [Dailymotion visual audit](public/samples/reflector-reference-audit.md) covers the 1,200 decoded source frames, with [numerical measurements](public/samples/reflector-reference-frames.csv) and no third-party imagery. The original reflector and corner-cube model are animated in Three.js; the road brightness is illustrative, not a visibility test.
 
 ## Original cinema cuts
 
@@ -48,6 +50,7 @@ The MP4/WebP pairs in `public/demos/` are the required delivery files. The Lab f
 ```sh
 CHROMIUM=/path/to/chromium FFMPEG=/path/to/ffmpeg npm run render:demos
 CHROMIUM=/path/to/chromium FFMPEG=/path/to/ffmpeg npm run render:demos -- air-crush
+CHROMIUM=/path/to/chromium FFMPEG=/path/to/ffmpeg npm run render:demos -- reflector
 ```
 
 Rendering builds an isolated Three.js compositor in scratch space; no shop server or outside service is required. The default balances software render time and output detail (the Cinema Edition composites captions at 1080 × 1920 over a 691 × 1229 3D plate). Set `TOP1_FULL_QUALITY=1` for native-resolution 3D rasterization, `TOP1_STILLS=1` for shot-review stills (`TOP1_STILL_TIMES` optionally selects comma-separated seconds), or `TOP1_RENDER_OUT` to review renders in another folder before publishing. The shop only serves the final files and never runs the compositor.

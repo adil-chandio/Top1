@@ -54,6 +54,15 @@ figure, h1, h2, h3, p, dl, dd { margin: 0; }
 .studio-nav a:hover, .store-link:hover { color: var(--copper); }
 .header-inner > .store-link { justify-self: end; }
 
+.studio-premiere { margin-top: clamp(14px, 2.3vw, 30px); }
+.studio-premiere > a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: clamp(10px, 2vw, 24px); min-height: 74px; padding: 9px clamp(12px, 2.9vw, 32px) 9px 9px; border: 1px solid #653849; border-radius: 12px; background: linear-gradient(106deg, #271c28, #101a2a); }
+.studio-premiere > a:hover { border-color: #ff9d8d; }
+.studio-premiere img { width: clamp(48px, 9vw, 102px); height: 57px; object-fit: cover; object-position: center 50%; border-radius: 6px; background: #111520; }
+.studio-premiere .eyebrow { display: block; margin-bottom: .13rem; color: #ffc1b6; }
+.premiere-link-copy strong { display: block; font: 660 clamp(1rem, 2.7vw, 1.55rem)/1.12 var(--display); letter-spacing: -.025em; }
+.premiere-link-go { display: inline-flex; align-items: center; gap: .6rem; color: #ffc1b6; font-size: .9rem; font-weight: 680; }
+@media (max-width: 600px) { .premiere-link-go > span { display: none; } }
+
 .premiere { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.03fr); align-items: center; gap: clamp(38px, 6.4vw, 92px); padding-block: clamp(44px, 5.4vw, 74px) clamp(40px, 5.2vw, 68px); }
 .eyebrow, .edition, .stage-id, .stage-export, .timecode, .detail-count, .chapter-index { font: 650 .73rem/1.35 var(--mono); letter-spacing: .08em; }
 .eyebrow { color: var(--muted); }
