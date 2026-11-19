@@ -1,0 +1,38 @@
+name: Stage headless creature render libraries
+on:
+  push:
+    branches: [arena/868808e3-top1]
+    paths: [.github/workflows/creature-runtime.yml]
+permissions:
+  contents: write
+jobs:
+  runtime:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 4
+    steps:
+      - name: Package the runner's redistributable display libraries for headless Cycles
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          mkdir gecko-libs
+          for s in libXrender.so.1 libXxf86vm.so.1 libXfixes.so.3 libXi.so.6 libxkbcommon.so.0 libSM.so.6 libICE.so.6 libGL.so.1 libGLX.so.0 libGLdispatch.so.0 libxcb-glx.so.0; do
+            src="/usr/lib/x86_64-linux-gnu/$s"
+            test -f "$src"
+            cp -L "$src" "gecko-libs/$s"
+            owner=$(dpkg -S "$(realpath "$src")" | sed -n '1s/: .*//p')
+            license="/usr/share/doc/${owner%:amd64}/copyright"
+            if test -f "$license"; then cp "$license" "gecko-libs/$s.copyright"; fi
+          done
+          tar -czf gecko-libs.tar.gz -C gecko-libs .
+          python3 - <<'PY'
+          import base64, json
+          from pathlib import Path
+          data = Path('gecko-libs.tar.gz').read_bytes()
+          assert len(data) <= 3_000_000
+          Path('gecko-libs.json').write_text(json.dumps({'encoding':'base64', 'content':base64.b64encode(data).decode()}))
+          PY
+          sha=$(gh api -X POST "repos/$GITHUB_REPOSITORY/git/blobs" --input gecko-libs.json --jq .sha)
+          echo "::notice title=Headless libraries blob::$sha"
