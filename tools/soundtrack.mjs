@@ -8,6 +8,27 @@ const score = {
   'last-signal': { notes: [41.20, 61.74, 103.83, 164.81], cues: [[.30, 'air'], [4, 'hit'], [4.37, 'signal'], [4.83, 'signal'], [5.29, 'signal'], [5.75, 'signal'], [8.03, 'hit'], [8.24, 'glass'], [9.3, 'signal']] },
 };
 
+const PI2 = Math.PI * 2;
+const sin = (frequency, t, phase = 0) => Math.sin(PI2 * t * frequency + phase);
+
+// Place the original repo's Foley kernels on a new edit without copying its
+// soundtrack bed or dialogue from an earlier master.
+export function soundtrackCue(type, a, filtered, upper) {
+  if (a < 0 || a > 1.85) return 0;
+  if (type === 'hit') {
+    const phase = PI2 * (37 * a + 19 * (1 - Math.exp(-16 * a)) / 16);
+    return Math.sin(phase) * .22 * Math.min(1, a * 200) * Math.exp(-a * 6.2)
+      + filtered * .12 * Math.min(1, a * 110) * Math.exp(-a * 15);
+  }
+  if (type === 'tick') return (filtered * .16 + sin(443, a) * .072 + sin(872, a) * .024) * Math.min(1, a * 270) * Math.exp(-a * 37);
+  if (type === 'signal') return sin(784, a, sin(191, a) * .21) * .062 * Math.min(1, a * 60) * Math.exp(-a * 7.3);
+  if (type === 'glass') {
+    const amp = Math.min(1, a * 34) * Math.exp(-a * 3.1);
+    return amp * (sin(upper * 2, a) * .083 + sin(upper * 4.01, a) * .018);
+  }
+  return filtered * Math.sin(Math.PI * Math.min(.999, a / 1.2)) ** 6 * .085;
+}
+
 export function soundtrack(film) {
   const rate = 48000;
   const frames = film.duration * rate;
@@ -17,8 +38,6 @@ export function soundtrack(film) {
   wav.writeUInt32LE(rate, 24); wav.writeUInt32LE(rate * 4, 28); wav.writeUInt16LE(4, 32); wav.writeUInt16LE(16, 34);
   wav.write('data', 36); wav.writeUInt32LE(frames * 4, 40);
   const { notes: [sub, alto, bloom, upper], cues } = score[film.id];
-  const PI2 = Math.PI * 2;
-  const sin = (frequency, t, phase = 0) => Math.sin(PI2 * t * frequency + phase);
   const final = film.shots.at(-1).at;
   let seed = 731 + film.duration;
   let filtered = 0;
@@ -36,20 +55,9 @@ export function soundtrack(film) {
     for (const [at, type] of cues) {
       const a = t - at;
       if (a < 0 || a > 1.85) continue;
-      if (type === 'hit') {
-        const phase = PI2 * (37 * a + 19 * (1 - Math.exp(-16 * a)) / 16);
-        center += Math.sin(phase) * .22 * Math.min(1, a * 200) * Math.exp(-a * 6.2);
-        center += filtered * .12 * Math.min(1, a * 110) * Math.exp(-a * 15);
-      } else if (type === 'tick') {
-        center += (filtered * .16 + sin(443, a) * .072 + sin(872, a) * .024) * Math.min(1, a * 270) * Math.exp(-a * 37);
-      } else if (type === 'signal') {
-        spread += sin(784, a, sin(191, a) * .21) * .062 * Math.min(1, a * 60) * Math.exp(-a * 7.3);
-      } else if (type === 'glass') {
-        const amp = Math.min(1, a * 34) * Math.exp(-a * 3.1);
-        spread += amp * (sin(upper * 2, a) * .083 + sin(upper * 4.01, a) * .018);
-      } else {
-        spread += filtered * Math.sin(Math.PI * Math.min(.999, a / 1.2)) ** 6 * .085;
-      }
+      const cue = soundtrackCue(type, a, filtered, upper);
+      if (type === 'hit' || type === 'tick') center += cue;
+      else spread += cue;
     }
     low += filtered * .026 * swells;
     const left = Math.tanh((center + low + voicing + spread) * 1.23) * fade;

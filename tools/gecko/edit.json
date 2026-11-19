@@ -1,0 +1,41 @@
+{
+  "id": "gecko",
+  "title": "How Does a Gecko Let Go?",
+  "fps": 24,
+  "frames": 1488,
+  "duration": 62,
+  "voiceDuration": 60.8,
+  "marks": {
+    "microContact": 18.8,
+    "shear": 29.25,
+    "curlStart": 34.96,
+    "digitRelease": 38.86,
+    "footClear": 39.95,
+    "replayContact": 42.85,
+    "lastResolve": 58.8
+  },
+  "shots": [
+    {"frame": 0, "kind": "eye", "note": "Side-lit Tokay eye and wall"},
+    {"frame": 64, "kind": "step", "note": "Pad comes off and finds a new fixed foothold"},
+    {"frame": 130, "kind": "climb", "note": "Full silhouette and split-diagonal support"},
+    {"frame": 191, "kind": "through", "note": "View through the dry panel"},
+    {"frame": 253, "kind": "foot", "note": "Ventral fan and subdigital ridges"},
+    {"frame": 305, "kind": "lamella", "note": "Dive into one setal region"},
+    {"frame": 372, "kind": "setae", "note": "Dense rows of inclined setae"},
+    {"frame": 406, "kind": "branched", "note": "Branching terminal paddles approach surface"},
+    {"frame": 488, "kind": "field", "note": "Grazing view of dry contact; no suction cup"},
+    {"frame": 537, "kind": "vanderwaals", "note": "Tiny gap and close-contact adhesion"},
+    {"frame": 652, "kind": "axis", "note": "Shafts lean in their preferred direction"},
+    {"frame": 690, "kind": "shear", "note": "Load parallel to substrate, towards the toe base"},
+    {"frame": 819, "kind": "peel-wide", "note": "Side view: the distal end goes first"},
+    {"frame": 874, "kind": "peel-side", "note": "Same continuous curl from closer, lower angle"},
+    {"frame": 920, "kind": "peeled", "note": "Whole foot releases only after the toes curl"},
+    {"frame": 987, "kind": "replay", "note": "Digital hyperextension in the opposite oblique view"},
+    {"frame": 1074, "kind": "angles", "note": "Magnified setal deflection is not the toe joint angle"},
+    {"frame": 1177, "kind": "walk-out", "note": "Return to a supported step on the original wall"},
+    {"frame": 1264, "kind": "recap-contact", "note": "Close contact, from glass level"},
+    {"frame": 1298, "kind": "recap-shear", "note": "Parallel loading capped by actual narration timing"},
+    {"frame": 1331, "kind": "recap-peel", "note": "The same toe mechanism, close on distal roll"},
+    {"frame": 1388, "kind": "hero", "note": "Conclude on the live movement on the wall"}
+  ]
+}
