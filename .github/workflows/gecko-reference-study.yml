@@ -46,12 +46,12 @@ jobs:
           set -eu
           bin="$RUNNER_TEMP/gecko-bin"
           mkdir -p "$bin"
-          if ! command -v ffmpeg >/dev/null; then
-            python3 -m pip install --quiet --no-deps --target "$RUNNER_TEMP/decoder" imageio-ffmpeg==0.8.1
-            ffmpeg=$(find "$RUNNER_TEMP/decoder" -type f -name 'ffmpeg-linux-x86_64*' -print -quit)
-            test -x "$ffmpeg"
-            ln -s "$ffmpeg" "$bin/ffmpeg"
-          fi
+          # Use the same reproducible FFmpeg build as the previous reference study.
+          python3 -m pip install --quiet --no-deps --target "$RUNNER_TEMP/decoder" imageio-ffmpeg==0.8.1
+          ffmpeg=$(find "$RUNNER_TEMP/decoder" -type f -name 'ffmpeg-linux-x86_64*' -print -quit)
+          test -x "$ffmpeg"
+          ln -s "$ffmpeg" "$bin/ffmpeg"
+          "$bin/ffmpeg" -version | sed -n '1p'
           if ! command -v ffprobe >/dev/null; then
             npm install --no-audit --no-fund --prefix "$RUNNER_TEMP/probe" @ffprobe-installer/linux-x64@5.2.0
             ln -s "$RUNNER_TEMP/probe/node_modules/@ffprobe-installer/linux-x64/ffprobe" "$bin/ffprobe"
@@ -134,10 +134,10 @@ jobs:
                   output.unlink(missing_ok=True)
                   try:
                       proc = subprocess.run(
-                          ['ffmpeg', '-nostdin', '-hide_banner', '-v', 'error', '-xerror', '-y',
-                           '-rw_timeout', '12000000', '-protocol_whitelist', 'https,tls,tcp',
+                          ['ffmpeg', '-nostdin', '-hide_banner', '-v', 'error', '-y',
+                           '-rw_timeout', '12000000', '-protocol_whitelist', 'http,https,tls,tcp,crypto',
                            '-user_agent', agent, '-referer', page, '-i', url, '-t', '67',
-                           '-map', '0:v:0', '-map', '0:a:0?', '-sn', '-dn',
+                           '-sn', '-dn',
                            '-vf', "scale='min(1280,iw)':-2:flags=lanczos", '-fps_mode', 'passthrough',
                            '-threads', '2', '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '18',
                            '-maxrate', '1400k', '-bufsize', '2800k', '-pix_fmt', 'yuv420p',
@@ -145,8 +145,13 @@ jobs:
                           stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=78)
                       if proc.returncode:
                           codes = sorted({m.decode() for m in re.findall(rb'HTTP error ([0-9]{3})', proc.stderr)})
+                          # Preserve diagnostics without publishing signed delivery URLs.
+                          log = proc.stderr.decode(errors='replace')
+                          log = re.sub(r'https?[^\s\'"<>]*', '[delivery URL]', log)
+                          log = re.sub(r'auth=[^\s\'"<>]*', 'auth=[redacted]', log)
                           report['attempts'].append({'quality': quality, 'failure': 'HTTP ' + '/'.join(codes)
-                                                     if codes else f'decode exit {proc.returncode}'})
+                                                     if codes else f'decode exit {proc.returncode}',
+                                                     'diagnostic': '\n'.join(log.strip().splitlines()[-7:])[:900]})
                           continue
                       probe = json.loads(subprocess.check_output(
                           ['ffprobe', '-v', 'error', '-count_frames', '-show_entries',
