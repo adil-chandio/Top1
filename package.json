@@ -1,0 +1,22 @@
+{
+  "name": "top1-kits",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node --test",
+    "render:demos": "node tools/render-demos.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/dm-sans": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.65.1",
+    "three": "^0.183.2",
+    "vite": "^7.3.8"
+  }
+}

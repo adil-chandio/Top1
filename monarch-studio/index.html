@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#131210" />
+    <meta name="description" content="Monarch Studio’s first production file: watch Who Crushed the Can? and explore its 11-shot edit, Urdu narration, and original 3D production." />
+    <link rel="icon" type="image/svg+xml" href="./monarch.svg" />
+    <title>Monarch Studio — Who Crushed the Can?</title>
+    <script type="module" src="./studio.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="studio-header">
+      <div class="studio-wrap header-inner">
+        <a href="./" class="studio-mark" aria-label="Monarch Studio home">
+          <img src="./monarch.svg" width="38" height="38" alt="" />
+          <span>Monarch <span>Studio</span></span>
+        </a>
+        <nav class="studio-nav" aria-label="Studio navigation">
+          <a href="#screening">The film</a>
+          <a href="#shots">Shot guide</a>
+          <a href="#making-of">Making of</a>
+        </nav>
+        <a class="store-link" href="../"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left" /></svg> Top1 Kits</a>
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="studio-wrap premiere" aria-labelledby="film-title">
+        <div class="premiere-copy">
+          <p class="eyebrow"><span class="studio-dot"></span> PROJECT 001 <span class="divider">/</span> ORIGINAL 3D SHORT</p>
+          <h1 id="film-title">Who Crushed <span>the Can?</span></h1>
+          <p class="edition">Cinema Edition</p>
+          <p class="lede">An aluminium can folds with no one touching its sides. Follow the steam, the waterline, and the pressure that makes the metal give way.</p>
+          <div class="studio-actions">
+            <a class="studio-button primary" data-studio-play href="/demos/air-crush-cinema-edition.mp4"><svg class="icon" aria-hidden="true"><use href="/icons.svg#play" /></svg> Watch the film</a>
+            <a class="studio-button secondary" href="#making-of">Behind the scenes <svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></a>
+          </div>
+          <dl class="film-specs">
+            <div><dt>Run time</dt><dd>0:29</dd></div>
+            <div><dt>Camera setups</dt><dd>11</dd></div>
+            <div><dt>Vertical format</dt><dd>9:16</dd></div>
+          </dl>
+        </div>
+
+        <figure class="screening" id="screening" aria-label="Film screening">
+          <div class="screen-stage">
+            <span class="stage-id" aria-hidden="true">FEATURE / 001</span>
+            <div class="screen-frame">
+              <a class="screen-cover" id="studio-cover" data-studio-play href="/demos/air-crush-cinema-edition.mp4" aria-label="Play Who Crushed the Can?">
+                <img src="/demos/air-crush-cinema-edition.webp" width="1080" height="1920" fetchpriority="high" alt="" />
+                <span class="screen-play" aria-hidden="true"><svg class="icon"><use href="/icons.svg#play" /></svg></span>
+              </a>
+              <video id="studio-video" controls playsinline preload="none" hidden width="1080" height="1920" poster="/demos/air-crush-cinema-edition.webp" aria-label="Who Crushed the Can? — Cinema Edition"></video>
+            </div>
+            <span class="stage-export" aria-hidden="true">01 <span></span> 1080P</span>
+          </div>
+          <figcaption class="screen-caption">
+            <span>Urdu voice <span class="divider">·</span> Roman Urdu captions</span>
+            <a href="/demos/air-crush-cinema-edition.mp4" download><svg class="icon" aria-hidden="true"><use href="/icons.svg#download" /></svg> Save MP4</a>
+          </figcaption>
+          <p class="playback-note" role="status" id="playback-note" hidden></p>
+        </figure>
+      </section>
+
+      <section class="studio-section studio-wrap" id="shots" aria-labelledby="shot-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="section-number">01</span> / THE TIMELINE</p><h2 id="shot-title">Shot guide</h2></div>
+          <p>Jump straight to the flip, the cutaway, or the fold. Each timecode plays from inside that shot.</p>
+        </div>
+        <ul class="beat-grid" aria-label="Standout shots">
+          <li><a class="beat-link" href="/demos/air-crush-cinema-edition.mp4#t=10.4" data-studio-shot="4">
+            <img src="./stills/flip.webp" width="540" height="330" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:10.40</span><strong>Flip &amp; splash</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+          <li><a class="beat-link" href="/demos/air-crush-cinema-edition.mp4#t=15.75" data-studio-shot="6">
+            <img src="./stills/condensation.webp" width="540" height="330" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:15.75</span><strong>Inside the can</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+          <li><a class="beat-link" href="/demos/air-crush-cinema-edition.mp4#t=23.85" data-studio-shot="9">
+            <img src="./stills/slow-replay.webp" width="540" height="330" alt="" loading="lazy" decoding="async" />
+            <span class="beat-caption"><span><span class="timecode">0:23.85</span><strong>Slow-motion fold</strong></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></span>
+          </a></li>
+        </ul>
+        <details class="studio-details" id="all-shots" hidden>
+          <summary><span>Full shot list <span class="detail-count" id="shot-count"></span></span><svg class="icon" aria-hidden="true"><use href="/icons.svg#chevron" /></svg></summary>
+          <ol class="chapter-list" id="chapter-list"></ol>
+        </details>
+        <noscript><p class="fallback">For all 11 shots, <a href="/samples/air-crush-blueprint.md" download>save the script and shot plan</a>.</p></noscript>
+      </section>
+
+      <section class="studio-section studio-wrap" id="making-of" aria-labelledby="process-title">
+        <div class="section-heading">
+          <div><p class="eyebrow"><span class="section-number">02</span> / THE PRODUCTION FILE</p><h2 id="process-title">How it was made</h2></div>
+          <p>A custom 3D scene, timed to the Urdu narration. No stock footage or text-to-video export.</p>
+        </div>
+        <ol class="process-grid">
+          <li><span class="eyebrow">01 / STORY</span><h3>Start with the snap</h3><p lang="ur-Latn">Pehle can pichakti hai. Phir cutaway dikhata hai ke bhaap kahan jaati hai, opening kaise seal hoti hai, aur andar ka pressure kyun girta hai.</p></li>
+          <li><span class="eyebrow">02 / 3D SET</span><h3>Build the can in layers</h3><p lang="ur-Latn">Three.js mein patli metal shell, asli opening wala lid aur alag base banaye. Warm lights aur cool reflections se brushed metal ki folds nazar aati hain.</p></li>
+          <li><span class="eyebrow">03 / MOTION &amp; VFX</span><h3>Time the water contact</h3><p lang="ur-Latn">Rig can ko lift, flip aur lower karti hai. <span class="timecode">0:10.25</span> par opening paani chhooti hai; ripples, drops aur splash sound isi cue se start hote hain. Ye authored animation hai, lab simulation nahi.</p></li>
+          <li><span class="eyebrow">04 / EDIT &amp; MIX</span><h3>Leave room for the crack</h3><p lang="ur-Latn">Arena ki selected Urdu voice, Roman Urdu captions aur code se bani Foley ko sync kiya. Replay par voice aur captions rukte hain taake metal ki awaz clear ho. FFmpeg ne 29-second MP4 export ki.</p></li>
+        </ol>
+        <details class="studio-details transcript">
+          <summary>Read the Roman Urdu narration <svg class="icon" aria-hidden="true"><use href="/icons.svg#chevron" /></svg></summary>
+          <ol lang="ur-Latn">
+            <li><span class="timecode">0:00</span> Is can ko kisi ne dabaya nahi. Phir ye pichak kaise gaya?</li>
+            <li><span class="timecode">0:03.8</span> Can ke andar paani garam hua. Bhaap uthi, aur zyada tar hawa bahar nikal gayi.</li>
+            <li><span class="timecode">0:08.9</span> Phir iska munh thande paani mein dooba. Hawa ke wapas aane ka raasta band.</li>
+            <li><span class="timecode">0:13.6</span> Andar ki bhaap thandi hote hi boondein ban gayi. Andar ka pressure tezi se gir gaya.</li>
+            <li><span class="timecode">0:19.2</span> Lekin bahar ki hawa utne hi zor se dhakka de rahi thi.</li>
+            <li lang="en"><span class="timecode">0:22.9</span> <em>Metal crack and water splash; no narration.</em></li>
+            <li><span class="timecode">0:24.6</span> Paani ne bas raasta band kiya. Can ko hawa ne kuchla.</li>
+          </ol>
+        </details>
+        <div class="file-actions">
+          <a class="studio-button primary" href="/samples/air-crush-blueprint.md" download><svg class="icon" aria-hidden="true"><use href="/icons.svg#download" /></svg> Save script + shot plan</a>
+          <a class="studio-button secondary" id="production-file" href="https://github.com/adil-chandio/Top1/blob/main/monarch-studio/PRODUCTION.md">Detailed production notes <svg class="icon" aria-hidden="true"><use href="/icons.svg#file" /></svg></a>
+          <a class="studio-button secondary" href="../?demo=air-crush#builder">Open editable prompt <svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-up-right" /></svg></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="studio-footer">
+      <div class="studio-wrap footer-inner">
+        <p>Monarch Studio <span class="divider">/</span> A Top1 production space</p>
+        <a class="store-link" href="../#demos"><svg class="icon" aria-hidden="true"><use href="/icons.svg#arrow-left" /></svg> Back to Cinema Cuts</a>
+      </div>
+    </footer>
+  </body>
+</html>
