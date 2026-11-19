@@ -1,0 +1,94 @@
+name: Monarch Studio public player frame study
+on:
+  push:
+    branches: [arena/868808e3-top1]
+    paths: [.github/workflows/monarch-reference-study.yml]
+permissions:
+  contents: read
+jobs:
+  decode:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    env:
+      RECIPIENT: |
+        -----BEGIN CERTIFICATE-----
+        MIIEMzCCApugAwIBAgIUGc44h8+iXb1YSpzM9Q3fD0497vUwDQYJKoZIhvcNAQEL
+        BQAwKTEnMCUGA1UEAwweTW9uYXJjaCBsb2NhbCBmcmFtZSBpbnNwZWN0aW9uMB4X
+        DTI2MTExOTAwMTkyNFoXDTI2MTEyMDAwMTkyNFowKTEnMCUGA1UEAwweTW9uYXJj
+        aCBsb2NhbCBmcmFtZSBpbnNwZWN0aW9uMIIBojANBgkqhkiG9w0BAQEFAAOCAY8A
+        MIIBigKCAYEArZ3qSUgBWHdbBPx/2AF/x7N+sN6ScGE1yLoxN9L9wIu0JnCGUzZf
+        T7yrsUzG0UpkpS9J81ckCHSJiScqEUmXXiAFlnUGEqY0vjIFOVDzNbzW/W+R/lfz
+        tMle6h/Ar7c31EIaSe5splimV90O7klbaKv06RXcMjcKkJB0Lpys3WwRiKfD6tfS
+        IqURdvpR8rnaCL13XhPAH5jqaO0MrSyoz6OEiq773FA10exOiYPICGKfm0FCKUJE
+        q21zklx36r8by2bbrDbe62R2Fy+Tdf8Y22qoFWIQEMVDyMOCsSqxL4DqFUgVRYT9
+        +u446E1xfSRTAuvIugMX4qyGjmRPeoFRtAq81ydTtgOifhkMq4Woy6KVz7sUfgcJ
+        RGx4mOjDN4HOzfqy1vmLaGjT2wxT+nKREtiHHx3lJw7cSqGvp1Hm2eWY0aZqRrSK
+        lNn5RRD4nB6SrP/8WuU7qccUp/VxAVSUs6q2te8M6q0eMJbAx1/XMCrXJu554jaE
+        tCcF0OGK2cYrAgMBAAGjUzBRMB0GA1UdDgQWBBQx/yvcpN2C7bNTi5tUE+HvW8MR
+        2DAfBgNVHSMEGDAWgBQx/yvcpN2C7bNTi5tUE+HvW8MR2DAPBgNVHRMBAf8EBTAD
+        AQH/MA0GCSqGSIb3DQEBCwUAA4IBgQB+zdXhfiWoohs9Qv/BgTRIUNeR3AT+r+7Q
+        +T+DCb088H05kKwweWuMUXALvCrXEx5ogaKGKN/7LKp4ME9diqm0pZuVD6Mm7rRi
+        XdFaJEDrFDxS/giRD3lFmVTL6yAhvrJjMGVVHkQ/mLQ+sf+wBo9+BKcweIg8DOA6
+        p5YpV7+/ZS8OYzPLAn3oXCdzYnUvhwRAIIPxCfB4Pi6E9Arkr4CqM5iO+qzl9nYa
+        YxLsfgCd5Pw6hkOgb4GgPt7LfO2sxJoJrsCPdcKUtM/7YN5e2ae8kz5LLKXS5EV3
+        FjiENDW5T2/Brvv2izGxKS1fGdnD+GmFoon7/tS/9fGGA88457c7ucHq1qDaDeHV
+        P4auQPfnb9pPWnZGjdjBxI3tPlei/sT+aGl78/c+0bpSJO8VcLki8ccCcZ0Q+ZAz
+        T/lQJh6Fqi1IaGyjxPksXRyzl/0tX6+9dTKGARJ5oRrYqk6QWli8vHhJ3+6Td0y/
+        5IOwgjUT0K56NkwkHYRSJvwfCscQVOk=
+        -----END CERTIFICATE-----
+    steps:
+      - name: Inspect the public Dailymotion player
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          mkdir -p study transport
+          trap 'rm -rf "$RUNNER_TEMP/study"' EXIT
+          printf '%s\n' "$RECIPIENT" > study/recipient.pem
+          curl --fail --silent --show-error --max-time 22 -H 'Accept: application/json' 'https://www.dailymotion.com/player/metadata/video/xac3wl6' -o study/player.json
+          python3 - <<'PYWORK'
+          import json, re, subprocess
+          from urllib.parse import urlsplit
+          from pathlib import Path
+          meta = json.loads(Path('study/player.json').read_text())
+          if (meta.get('private') is not False or meta.get('protected_delivery') is not False or
+              meta.get('is_password_protected') is not False or meta.get('mode') != 'vod' or meta.get('id') != 'xac3wl6'):
+              raise SystemExit('No public unprotected VOD. Stop.')
+          if not 38 <= meta.get('duration', 0) <= 42:
+              raise SystemExit('Public player metadata did not identify the expected 40-second clip.')
+          playlist = next(item['url'] for item in meta['qualities']['auto'] if item['type'] == 'application/x-mpegURL')
+          origin = urlsplit(playlist)
+          if origin.scheme != 'https' or origin.hostname != 'cdndirector.dailymotion.com':
+              raise SystemExit('Unexpected player delivery origin; not requesting it.')
+          # Use only the ordinary playable stream advertised by this public player.
+          # Preserve its frame cadence. No source audio or public screenshots.
+          try:
+              proc = subprocess.run(['ffmpeg','-nostdin','-hide_banner','-v','error','-xerror',
+                '-rw_timeout','12000000','-i',playlist,'-t','42','-an','-sn','-dn','-vf',
+                'scale=720:-2:flags=lanczos','-fps_mode','passthrough','-threads','2','-c:v','libx264',
+                '-preset','veryfast','-crf','17','-pix_fmt','yuv420p','study/viewport.mp4'],
+                stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, timeout=135)
+          except subprocess.TimeoutExpired:
+              raise SystemExit('Public playback timed out; no access workaround attempted.')
+          if proc.returncode:
+              statuses = sorted(set(re.findall(rb'HTTP error ([0-9]{3})', proc.stderr)))
+              raise SystemExit('Public playback could not be decoded. HTTP statuses: ' + (', '.join(s.decode() for s in statuses) or 'none reported'))
+          data = json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v:0','-count_frames',
+            '-show_entries','stream=width,height,avg_frame_rate,nb_read_frames,duration','-of','json','study/viewport.mp4']))['streams'][0]
+          if not 38 <= float(data['duration']) <= 42 or int(data['nb_read_frames']) < 900:
+              raise SystemExit('Received stream was incomplete; not packaging it.')
+          report = {'id':meta['id'],'title':meta['title'],'listing_owner':meta['owner']['username'],'verified_listing':meta.get('verified'), 'inspection_encode':data}
+          Path('transport/receipt.json').write_text(json.dumps(report,indent=2))
+          print(json.dumps(report,ensure_ascii=False))
+          PYWORK
+          # The repository is public. Transport the temporary viewing copy only
+          # to this session's local reader; the corresponding key is not on GitHub.
+          openssl cms -encrypt -binary -aes256 -in study/viewport.mp4 -outform DER -out transport/viewport.cms study/recipient.pem
+      - name: Transfer one-day sealed inspection copy
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: monarch-xac3wl6-inspection
+          path: ${{ runner.temp }}/transport/
+          if-no-files-found: error
+          retention-days: 1
+          compression-level: 0
