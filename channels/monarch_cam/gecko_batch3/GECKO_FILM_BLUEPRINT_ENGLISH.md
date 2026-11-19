@@ -6,6 +6,8 @@
 
 **Format:** English, vertical 9:16, approximately 64 seconds of narration, plus a possible short end hold. Topic: a **pad-bearing Tokay gecko**, not all geckos. Visual quality goal: an organically modeled, textured, articulated animal integrated into a believable environment, with purposeful action, close-up photography, lighting and editing. The current procedural concept does not yet meet this goal.
 
+**Update:** `SCRIPT_REVISED_ENGLISH.md` now supersedes this document’s narration wording and approximate beat times. The old recording approval remains historical; it does not approve the revision.
+
 ## Original narration — historical user-approved recording text
 
 This retains the existing draft verbatim to preserve the user's previous approval of its English voice recording; it is not an assertion that every sentence has passed the present science review. The release passage is a **material wording review hold** (below); if changed, the affected recording must be regenerated or edited and approved, not silently presented as the approved original.
