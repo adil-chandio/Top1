@@ -1,0 +1,23 @@
+# Creature realism benchmark: Jorge Baldeón’s *Gecko Animation*
+
+[User-supplied Dailymotion upload](https://www.dailymotion.com/video/x6i0u21) · [CGMeetup mirror](https://www.youtube.com/watch?v=6rrfO7vY0LE)
+
+## What was verified
+
+The page did not play in the sandbox. The first [Actions run](https://github.com/adil-chandio/Top1/actions/runs/44446108619) recovered the public scrubber filmstrip but failed to decode motion. The [second run](https://github.com/adil-chandio/Top1/actions/runs/44446232931) decoded Dailymotion’s ordinary public HLS stream. The locally verified inspection encode is 64.625 seconds, with 1,549 decodable video frames at nominal 24 fps and AAC stereo at 44.1 kHz. The plate is 512×288 with letterboxing (active picture approximately 512×220); this is **not** a full-resolution source master. We reviewed chronological frames across the entire cut and denser sequences at the turn, climb and hold. The review copy and frame sheets are study-only in `.cache/monarch-gecko/reference-baldeon/`, not in a commit, website build or final film. The temporary workflow has been retired.
+
+Times below refer to the decoded review file. Fades are approximate; timestamps for hard cuts are the first frames after the cut.
+
+| Time | Observation from the decoded frames | What to apply, without copying the shot |
+| --- | --- | --- |
+| ~14–21.58 s | The gecko starts crouched low on granular ground. Around 19–21 s the head turns out of the dark pose and the amber eye becomes readable. | Sculpt the head, socket and jaw as a connected form. Make the animal read through a grounded pose and moving highlights, rather than a constant camera move. |
+| 21.58–35.46 s | Wider eye-level view with a pale throat/bright eye, then overhead branches partially block the back before another tight side view. Rim and diffuse light give different surfaces different responses. | Give the Tokay distinct dorsal skin, soft throat and pad materials. Put near branches, the animal and the lit background at different depths. Keep enough fill for mobile readability; do not copy the reference’s underexposure. |
+| 35.46–40.96 s | Low walk toward camera. The animal turns from side-on to near-front view; the forelegs reach in separate beats and the body remains close to the ground. | Animate supporting feet, shoulder and belly weight together. Separate the head’s intent, body travel and tail follow-through. |
+| 40.96–47.25 s | The gecko approaches the pane, reaches and splays its forefeet, then the belly and hips follow upward. The tail trails behind and gets clear of the floor later. | Hold prior footholds while a new foot reaches. Show establishment of contact before advancing the body; prove this in an uninterrupted shot before cutting tighter. |
+| 47.25–55.17 s | At first the side view moves past soft branches by the glass. After the cut at 50.96 s, the splayed forefoot stays visually fixed in silhouette while the tail flexes and settles (especially ~52–54.4 s). | Reveal the contact through parallax and controlled reflections, not a bright glass effect. Let secondary motion continue while the supporting toe remains fixed. |
+
+Stereo audio decodes and has a regular low pulse early and denser harmonic/broadband energy later. The inspection encode meters −7.4 LUFS integrated, about +1.4 dBTP; this is not a level target for a narration-led short. Individual Foley, instruments and perceived balance were not verified by listening.
+
+## Direction for the next edition
+
+The existing Premiere is a readable, stylized explainer; its forest climb still has a relatively uniform skin sheen and a simpler, less spatially grounded environment. Prioritize a connected Tokay sculpt (eye seating, mouthline and toes), irregular relief/roughness, realistic support transfer, and lighting/foreground occlusion over additional resolution or effects. Keep our own Tokay colors and setting. Use an original, short continuous climb → planted hold → distal-first release proof to check contact and focus at phone size, then carry the approved treatment into the **full** 62-second edit. Keep the hook fast rather than adopting this reference’s slow title sequence. Keep English v2 narration and captions at their established timing, preserve the directed parallel loading and distal-to-proximal release, and keep micro shots explicitly illustrative. This resolution shows gross gait and pad silhouette, not individual lamella mechanics. Use an original VO-led score and contact-matched, restrained Foley; no sampled reference audio or literal molecular suction sounds. Preserve the already-delivered Classic and Premiere masters.

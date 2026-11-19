@@ -1,0 +1,40 @@
+{
+  "id": "gecko-premiere",
+  "title": "How Does a Gecko Let Go? — Premiere Edition",
+  "fps": 24, "frames": 1488, "duration": 62, "voiceDuration": 60.8,
+  "marks": {
+    "microContact": 18.80, "shear": 29.25, "curlStart": 34.96, "digitRelease": 38.86,
+    "footClear": 39.95, "replayContact": 42.85, "lastResolve": 58.80
+  },
+  "shots": [
+    {"frame": 0, "kind": "eye", "note": "Specular catch on Tokay at a rainforest window"},
+    {"frame": 28, "kind": "grip-anchor", "note": "Live foot, oblique and anchored to the dry surface"},
+    {"frame": 56, "kind": "step", "note": "Follow that foot as the tip rolls and the pad lands"},
+    {"frame": 119, "kind": "climb", "note": "Reveal the animal and diagonal support on the wall"},
+    {"frame": 189, "kind": "through", "note": "Track the same push through the transparent panel"},
+    {"frame": 253, "kind": "foot", "note": "Foot underside with five digits and adhesive folds"},
+    {"frame": 304, "kind": "lamella", "note": "Track down a single lamella into the field"},
+    {"frame": 371, "kind": "setae", "note": "Setal field; layered focus and flattened terminal structures"},
+    {"frame": 405, "kind": "branched", "note": "One set of spatulate branches descends toward the glass"},
+    {"frame": 465, "kind": "contact-ground", "note": "At glass level, terminal surfaces nearly meet"},
+    {"frame": 491, "kind": "field", "note": "Shallow angle shows dry directional fibres, no cavity"},
+    {"frame": 537, "kind": "vanderwaals", "note": "Representative terminal end: close contact not suction"},
+    {"frame": 608, "kind": "vd-detail", "note": "Keep one contact point in focus for the adhesion payoff"},
+    {"frame": 652, "kind": "axis", "note": "Orientation of the setal field before the shear shot"},
+    {"frame": 690, "kind": "shear", "note": "Load vector parallel to the surface and toward toe base"},
+    {"frame": 755, "kind": "shear-locked", "note": "Take the same loaded toe down to the contact edge"},
+    {"frame": 819, "kind": "peel-wide", "note": "Continuous take: distal end starts peeling"},
+    {"frame": 873, "kind": "peel-side", "note": "Same phase, close to the moving contact line"},
+    {"frame": 918, "kind": "peeled", "note": "Fan of curled toes, then palm lift; not a yank"},
+    {"frame": 987, "kind": "replay", "note": "Reverse-angle slow view of digital hyperextension"},
+    {"frame": 1074, "kind": "angles", "note": "Cut to the microscale: deformed setal shaft, not a joint"},
+    {"frame": 1126, "kind": "angle-detail", "note": "Microscopic tip opens away at full magnification"},
+    {"frame": 1176, "kind": "walk-out", "note": "Return to the live climb, without a jerky pull"},
+    {"frame": 1226, "kind": "no-yank", "note": "Late swing and stance land under the comparison"},
+    {"frame": 1264, "kind": "recap-contact", "note": "Contact held low at the interface"},
+    {"frame": 1298, "kind": "recap-shear", "note": "Load held in the plane"},
+    {"frame": 1331, "kind": "recap-peel", "note": "Distal roll in a quick mechanical recall"},
+    {"frame": 1388, "kind": "hero", "note": "Re-establish the full Tokay and final two grounded steps"},
+    {"frame": 1451, "kind": "hero-eye", "note": "Settle into the same window reflection and resolve"}
+  ]
+}

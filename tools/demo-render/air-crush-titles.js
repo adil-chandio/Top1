@@ -7,13 +7,13 @@ const clean = (word) => word.toLowerCase().replace(/[^a-z]/g, '');
 
 // Small editorial phrases rather than an animated wall of title cards. The
 // layout is settled first, so the active word never pushes neighbours around.
-export function airCrushTitles(ctx, W, H) {
+export function kineticPhrases(ctx, W, H, cues, keywords, accent, baseline = () => .825) {
   const sx = W / 720;
   const shade = ctx.createLinearGradient(0, H * .64, 0, H * .982);
   shade.addColorStop(0, '#040a1000');
   shade.addColorStop(.62, '#040a1048');
   shade.addColorStop(1, '#040a10a8');
-  const white = '#f5f8f7', copper = '#ffcbab', ice = '#aeeaf8';
+  const white = '#f5f8f7';
   let cached;
 
   function prepare(cue) {
@@ -30,7 +30,7 @@ export function airCrushTitles(ctx, W, H) {
       const width = lengths.reduce((x, v) => x + v, space * (items.length - 1));
       let x = (W - width) / 2;
       return items.map((v, i) => {
-        const item = { word: v, accent: keyedWords.has(clean(v)), row, x: x + lengths[i] / 2, width: lengths[i] };
+        const item = { word: v, accent: keywords.has(clean(v)), row, x: x + lengths[i] / 2, width: lengths[i] };
         x += lengths[i] + space;
         return item;
       });
@@ -47,7 +47,7 @@ export function airCrushTitles(ctx, W, H) {
     const exit = smooth((end - t) / .112);
     const emphasisAt = start + Math.min(.65, (end - start) * .31);
     const lineHeight = 55 * sx;
-    const y = H * .825 - (rows - 1) * lineHeight;
+    const y = H * baseline(t) - (rows - 1) * lineHeight;
     ctx.save();
     ctx.textAlign = 'center';
     ctx.textBaseline = 'alphabetic';
@@ -55,7 +55,7 @@ export function airCrushTitles(ctx, W, H) {
     ctx.strokeStyle = '#07101780';
     ctx.lineWidth = 1.18 * sx;
     ctx.lineJoin = 'round';
-    const ink = t < 9 || t > 24 ? copper : ice;
+    const ink = accent(t);
     for (let j = 0; j < words.length; j++) {
       const item = words[j];
       const rise = openEase((t - start + .032 - Math.min(.14, j * .019 + item.row * .022)) / .18);
@@ -74,14 +74,21 @@ export function airCrushTitles(ctx, W, H) {
     ctx.restore();
   }
 
-  return function draw(t, cut) {
-    // Keep a clean screen in the wordless replay: no logo, tag, or diagram.
-    const cue = AIR_CRUSH_CAPTIONS.find(([start, end]) => t >= start && t < end);
+  return function draw(t) {
+    const cue = cues.find(([start, end]) => t >= start && t < end);
     if (cue) {
       ctx.fillStyle = shade;
       ctx.fillRect(0, H * .64, W, H * .36);
       caption(t, cue);
     }
+  };
+}
+
+export function airCrushTitles(ctx, W, H) {
+  const sx = W / 720;
+  const phrases = kineticPhrases(ctx, W, H, AIR_CRUSH_CAPTIONS, keyedWords, (t) => t < 9 || t > 24 ? '#ffcbab' : '#aeeaf8');
+  return (t, cut) => {
+    phrases(t);
     // A small, transient diagram note only on the first interior view.
     if (cut.index === 2) {
       const visibility = smooth(cut.age / .29) * smooth(cut.remaining / .29);

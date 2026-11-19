@@ -3,9 +3,9 @@ import { defineConfig } from 'vite';
 
 function redirectStudioDirectory(server) {
   server.middlewares.use((request, response, next) => {
-    const match = request.url?.match(/^\/monarch-studio(\?.*)?$/);
+    const match = request.url?.match(/^(\/monarch-studio(?:\/reflector)?)(\?.*)?$/);
     if (!match) return next();
-    response.writeHead(308, { Location: `/monarch-studio/${match[1] ?? ''}` });
+    response.writeHead(308, { Location: `${match[1]}/${match[2] ?? ''}` });
     response.end();
   });
 }
@@ -25,6 +25,7 @@ export default defineConfig({
         home: fileURLToPath(new URL('./index.html', import.meta.url)),
         kit: fileURLToPath(new URL('./kit.html', import.meta.url)),
         monarch: fileURLToPath(new URL('./monarch-studio/index.html', import.meta.url)),
+        reflector: fileURLToPath(new URL('./monarch-studio/reflector/index.html', import.meta.url)),
       },
     },
   },

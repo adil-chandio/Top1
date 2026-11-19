@@ -9,6 +9,8 @@ import { build } from 'vite';
 import { DEMOS, demoAssetName, findDemo } from '../src/demos.js';
 import { soundtrack } from './soundtrack.mjs';
 import { airCrushScore } from './air-crush-score.mjs';
+import { reflectorMix, reflectorScore } from './reflector-score.mjs';
+import { REFLECTOR } from '../src/reflector.js';
 
 const FPS = 24;
 const ffmpeg = process.env.FFMPEG || 'ffmpeg';
@@ -18,8 +20,8 @@ const ORIGIN = 'http://top1-render.local';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const entry = fileURLToPath(new URL('./demo-render/index.html', import.meta.url));
 const IDs = process.argv.slice(2);
-const films = IDs.length ? IDs.map(findDemo) : DEMOS;
-if (films.some((film) => !film)) throw new Error(`Unknown demo ID. Use one of: ${DEMOS.map((film) => film.id).join(', ')}.`);
+const films = IDs.length ? IDs.map(findDemo) : [...DEMOS, REFLECTOR];
+if (films.some((film) => !film)) throw new Error(`Unknown demo ID. Use one of: ${[...DEMOS, REFLECTOR].map((film) => film.id).join(', ')}.`);
 
 function processResult(child) {
   return new Promise((resolve, reject) => {
@@ -31,21 +33,23 @@ function processResult(child) {
 async function encode(page, film, temp) {
   const audio = join(temp, `${film.id}.wav`);
   const lab = film.id === 'air-crush';
-  const voice = fileURLToPath(new URL('./demo-render/audio/air-crush-vo.m4a', import.meta.url));
-  await writeFile(audio, lab ? airCrushScore(film.duration) : soundtrack(film));
+  const optical = film.id === REFLECTOR.id;
+  const narrated = lab || optical;
+  const voice = fileURLToPath(new URL(`./demo-render/audio/${film.id}-vo.m4a`, import.meta.url));
+  await writeFile(audio, lab ? airCrushScore(film.duration) : optical ? reflectorScore(film.duration) : soundtrack(film));
   const file = join(temp, `${film.id}.mp4`);
   const child = spawn(ffmpeg, [
     '-hide_banner', '-loglevel', 'error', '-y', '-filter_threads', '1',
     '-f', 'image2pipe', '-framerate', String(FPS), '-c:v', 'mjpeg', '-i', 'pipe:0', '-i', audio,
-    ...(lab ? [
-      '-i', voice, '-filter_complex', '[1:a]volume=0.88[fx];[2:a]pan=stereo|FL=c0|FR=c0,volume=0.90[vo];[fx][vo]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89:latency=1[mix]', '-map', '0:v', '-map', '[mix]',
+    ...(narrated ? [
+      '-i', voice, '-filter_complex', optical ? reflectorMix() : '[1:a]volume=0.88[fx];[2:a]pan=stereo|FL=c0|FR=c0,volume=0.90[vo];[fx][vo]amix=inputs=2:duration=first:normalize=0,alimiter=limit=0.89:latency=1[mix]', '-map', '0:v', '-map', '[mix]',
     ] : ['-af', 'volume=5dB']),
     '-vf', 'scale=in_range=full:in_color_matrix=bt601:out_range=tv:out_color_matrix=bt709,format=yuv420p',
-    '-c:v', 'libx264', '-profile:v', 'high', '-level:v', lab ? '4.0' : '3.1', '-crf', '19', '-preset', lab ? 'fast' : 'veryfast', '-threads', '2',
-    ...(lab ? ['-g', '48', '-maxrate', '7M', '-bufsize', '14M'] : []),
+    '-c:v', 'libx264', '-profile:v', 'high', '-level:v', narrated ? '4.0' : '3.1', '-crf', '19', '-preset', lab ? 'fast' : 'veryfast', '-threads', '2',
+    ...(narrated ? ['-g', '48', '-maxrate', optical ? '6M' : '7M', '-bufsize', optical ? '12M' : '14M'] : []),
     '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709', '-color_range', 'tv',
     '-bsf:v', 'h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1:video_full_range_flag=0',
-    '-c:a', 'aac', '-b:a', lab ? '128k' : '96k', '-movflags', '+faststart+write_colr', '-shortest', file,
+    '-c:a', 'aac', '-b:a', narrated ? '128k' : '96k', '-movflags', '+faststart+write_colr', '-shortest', file,
   ], { stdio: ['pipe', 'inherit', 'inherit'] });
   const done = processResult(child);
   let failure;
