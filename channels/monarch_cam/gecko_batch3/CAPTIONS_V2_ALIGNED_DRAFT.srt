@@ -1,0 +1,78 @@
+1
+00:00:00,260 --> 00:00:02,520
+A gecko can hold onto a wall.
+
+2
+00:00:02,840 --> 00:00:04,970
+So how does it let go
+with every step?
+
+3
+00:00:05,480 --> 00:00:07,760
+The secret isn't just a strong grip.
+
+4
+00:00:08,050 --> 00:00:10,110
+It's how that grip is controlled.
+
+5
+00:00:10,790 --> 00:00:15,670
+Under a Tokay gecko's toes are tiny,
+hair-like structures called setae.
+
+6
+00:00:16,230 --> 00:00:19,970
+Their branching tips make extremely
+close contact with the surface.
+
+7
+00:00:20,560 --> 00:00:22,150
+They aren't suction cups.
+
+8
+00:00:22,380 --> 00:00:27,420
+At that tiny scale, van der Waals
+forces help those tips adhere.
+
+9
+00:00:27,420 --> 00:00:28,720
+But direction matters.
+
+10
+00:00:29,120 --> 00:00:33,970
+A pull toward the base of the toe,
+along the surface, helps support the grip.
+
+11
+00:00:34,400 --> 00:00:38,170
+To release, a gecko can curl
+its toes away from the surface.
+
+12
+00:00:38,600 --> 00:00:40,700
+This movement helps the foot detach.
+
+13
+00:00:41,320 --> 00:00:44,650
+That toe movement is called
+digital hyperextension.
+
+14
+00:00:45,100 --> 00:00:48,680
+Don't confuse it with the angles
+of the microscopic hairs beneath it.
+
+15
+00:00:49,260 --> 00:00:52,400
+So a gecko doesn't simply
+yank its foot off the wall.
+
+16
+00:00:53,000 --> 00:00:57,050
+Close contact, the direction of loading,
+and controlled toe movement
+
+17
+00:00:57,050 --> 00:01:00,500
+work together to make gripping
+and letting go possible.

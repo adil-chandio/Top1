@@ -1,0 +1,854 @@
+{
+  "method": "PocketSphinx transcript-constrained alignment on three 16 kHz conversions; manual dictionary entries for technical terms",
+  "not_independent_transcription": true,
+  "accuracy": "approximate; no listening, pronunciation or caption-sync certification",
+  "words": [
+    {
+      "word": "a",
+      "start": 0.26,
+      "end": 0.36
+    },
+    {
+      "word": "gecko",
+      "start": 0.36,
+      "end": 0.94
+    },
+    {
+      "word": "can",
+      "start": 0.94,
+      "end": 1.23
+    },
+    {
+      "word": "hold",
+      "start": 1.23,
+      "end": 1.52
+    },
+    {
+      "word": "onto",
+      "start": 1.52,
+      "end": 1.87
+    },
+    {
+      "word": "a",
+      "start": 1.87,
+      "end": 1.9
+    },
+    {
+      "word": "wall",
+      "start": 1.9,
+      "end": 2.52
+    },
+    {
+      "word": "so",
+      "start": 2.84,
+      "end": 3.07
+    },
+    {
+      "word": "how",
+      "start": 3.07,
+      "end": 3.26
+    },
+    {
+      "word": "does",
+      "start": 3.26,
+      "end": 3.42
+    },
+    {
+      "word": "it",
+      "start": 3.42,
+      "end": 3.51
+    },
+    {
+      "word": "let",
+      "start": 3.51,
+      "end": 3.73
+    },
+    {
+      "word": "go",
+      "start": 3.73,
+      "end": 4.06
+    },
+    {
+      "word": "with",
+      "start": 4.06,
+      "end": 4.25
+    },
+    {
+      "word": "every",
+      "start": 4.25,
+      "end": 4.44
+    },
+    {
+      "word": "step",
+      "start": 4.44,
+      "end": 4.97
+    },
+    {
+      "word": "the",
+      "start": 5.48,
+      "end": 5.58
+    },
+    {
+      "word": "secret",
+      "start": 5.58,
+      "end": 6.06
+    },
+    {
+      "word": "isn't",
+      "start": 6.06,
+      "end": 6.44
+    },
+    {
+      "word": "just",
+      "start": 6.44,
+      "end": 6.69
+    },
+    {
+      "word": "a",
+      "start": 6.69,
+      "end": 6.73
+    },
+    {
+      "word": "strong",
+      "start": 6.73,
+      "end": 7.26
+    },
+    {
+      "word": "grip",
+      "start": 7.26,
+      "end": 7.76
+    },
+    {
+      "word": "it's",
+      "start": 8.05,
+      "end": 8.2
+    },
+    {
+      "word": "how",
+      "start": 8.2,
+      "end": 8.56
+    },
+    {
+      "word": "that",
+      "start": 8.56,
+      "end": 8.77
+    },
+    {
+      "word": "grip",
+      "start": 8.77,
+      "end": 9.14
+    },
+    {
+      "word": "is",
+      "start": 9.14,
+      "end": 9.29
+    },
+    {
+      "word": "controlled",
+      "start": 9.29,
+      "end": 10.11
+    },
+    {
+      "word": "under",
+      "start": 10.79,
+      "end": 11.09
+    },
+    {
+      "word": "a",
+      "start": 11.09,
+      "end": 11.13
+    },
+    {
+      "word": "tokay",
+      "start": 11.13,
+      "end": 11.6
+    },
+    {
+      "word": "gecko's",
+      "start": 11.6,
+      "end": 12.05
+    },
+    {
+      "word": "toes",
+      "start": 12.05,
+      "end": 12.65
+    },
+    {
+      "word": "are",
+      "start": 12.65,
+      "end": 12.85
+    },
+    {
+      "word": "tiny",
+      "start": 12.85,
+      "end": 13.61
+    },
+    {
+      "word": "hair",
+      "start": 13.61,
+      "end": 13.93
+    },
+    {
+      "word": "like",
+      "start": 13.93,
+      "end": 14.21
+    },
+    {
+      "word": "structures",
+      "start": 14.21,
+      "end": 14.79
+    },
+    {
+      "word": "called",
+      "start": 14.79,
+      "end": 15.05
+    },
+    {
+      "word": "setae",
+      "start": 15.05,
+      "end": 15.67
+    },
+    {
+      "word": "their",
+      "start": 16.23,
+      "end": 16.36
+    },
+    {
+      "word": "branching",
+      "start": 16.36,
+      "end": 16.94
+    },
+    {
+      "word": "tips",
+      "start": 16.94,
+      "end": 17.31
+    },
+    {
+      "word": "make",
+      "start": 17.31,
+      "end": 17.59
+    },
+    {
+      "word": "extremely",
+      "start": 17.59,
+      "end": 18.43
+    },
+    {
+      "word": "close",
+      "start": 18.43,
+      "end": 18.75
+    },
+    {
+      "word": "contact",
+      "start": 18.75,
+      "end": 19.31
+    },
+    {
+      "word": "with",
+      "start": 19.31,
+      "end": 19.41
+    },
+    {
+      "word": "the",
+      "start": 19.41,
+      "end": 19.47
+    },
+    {
+      "word": "surface",
+      "start": 19.47,
+      "end": 19.97
+    },
+    {
+      "word": "they",
+      "start": 20.56,
+      "end": 20.92
+    },
+    {
+      "word": "aren't",
+      "start": 20.92,
+      "end": 21.19
+    },
+    {
+      "word": "suction",
+      "start": 21.19,
+      "end": 21.75
+    },
+    {
+      "word": "cups",
+      "start": 21.75,
+      "end": 22.15
+    },
+    {
+      "word": "at",
+      "start": 22.38,
+      "end": 22.64
+    },
+    {
+      "word": "that",
+      "start": 22.64,
+      "end": 22.87
+    },
+    {
+      "word": "tiny",
+      "start": 22.87,
+      "end": 23.29
+    },
+    {
+      "word": "scale",
+      "start": 23.29,
+      "end": 23.84
+    },
+    {
+      "word": "van",
+      "start": 24.06,
+      "end": 24.35
+    },
+    {
+      "word": "der",
+      "start": 24.35,
+      "end": 24.48
+    },
+    {
+      "word": "waals",
+      "start": 24.48,
+      "end": 24.98
+    },
+    {
+      "word": "forces",
+      "start": 24.98,
+      "end": 25.47
+    },
+    {
+      "word": "help",
+      "start": 25.47,
+      "end": 25.79
+    },
+    {
+      "word": "those",
+      "start": 25.79,
+      "end": 26.03
+    },
+    {
+      "word": "tips",
+      "start": 26.03,
+      "end": 26.35
+    },
+    {
+      "word": "adhere",
+      "start": 26.43,
+      "end": 27.42
+    },
+    {
+      "word": "but",
+      "start": 27.42,
+      "end": 27.65
+    },
+    {
+      "word": "direction",
+      "start": 27.65,
+      "end": 28.2
+    },
+    {
+      "word": "matters",
+      "start": 28.2,
+      "end": 28.72
+    },
+    {
+      "word": "a",
+      "start": 29.12,
+      "end": 29.19
+    },
+    {
+      "word": "pull",
+      "start": 29.19,
+      "end": 29.56
+    },
+    {
+      "word": "toward",
+      "start": 29.56,
+      "end": 30.12
+    },
+    {
+      "word": "the",
+      "start": 30.12,
+      "end": 30.19
+    },
+    {
+      "word": "base",
+      "start": 30.19,
+      "end": 30.55
+    },
+    {
+      "word": "of",
+      "start": 30.55,
+      "end": 30.65
+    },
+    {
+      "word": "the",
+      "start": 30.65,
+      "end": 30.73
+    },
+    {
+      "word": "toe",
+      "start": 30.73,
+      "end": 31.26
+    },
+    {
+      "word": "along",
+      "start": 31.26,
+      "end": 31.68
+    },
+    {
+      "word": "the",
+      "start": 31.68,
+      "end": 31.74
+    },
+    {
+      "word": "surface",
+      "start": 31.74,
+      "end": 32.28
+    },
+    {
+      "word": "helps",
+      "start": 32.55,
+      "end": 32.84
+    },
+    {
+      "word": "support",
+      "start": 32.84,
+      "end": 33.39
+    },
+    {
+      "word": "the",
+      "start": 33.39,
+      "end": 33.5
+    },
+    {
+      "word": "grip",
+      "start": 33.5,
+      "end": 33.97
+    },
+    {
+      "word": "to",
+      "start": 34.4,
+      "end": 34.5
+    },
+    {
+      "word": "release",
+      "start": 34.5,
+      "end": 35.04
+    },
+    {
+      "word": "a",
+      "start": 35.28,
+      "end": 35.34
+    },
+    {
+      "word": "gecko",
+      "start": 35.34,
+      "end": 35.73
+    },
+    {
+      "word": "can",
+      "start": 35.73,
+      "end": 35.91
+    },
+    {
+      "word": "curl",
+      "start": 35.91,
+      "end": 36.44
+    },
+    {
+      "word": "its",
+      "start": 36.44,
+      "end": 36.6
+    },
+    {
+      "word": "toes",
+      "start": 36.6,
+      "end": 37.0
+    },
+    {
+      "word": "away",
+      "start": 37.0,
+      "end": 37.42
+    },
+    {
+      "word": "from",
+      "start": 37.42,
+      "end": 37.61
+    },
+    {
+      "word": "the",
+      "start": 37.61,
+      "end": 37.68
+    },
+    {
+      "word": "surface",
+      "start": 37.68,
+      "end": 38.17
+    },
+    {
+      "word": "this",
+      "start": 38.6,
+      "end": 38.81
+    },
+    {
+      "word": "movement",
+      "start": 38.81,
+      "end": 39.22
+    },
+    {
+      "word": "helps",
+      "start": 39.22,
+      "end": 39.65
+    },
+    {
+      "word": "the",
+      "start": 39.65,
+      "end": 39.73
+    },
+    {
+      "word": "foot",
+      "start": 39.73,
+      "end": 40.02
+    },
+    {
+      "word": "detach",
+      "start": 40.02,
+      "end": 40.7
+    },
+    {
+      "word": "that",
+      "start": 41.32,
+      "end": 41.64
+    },
+    {
+      "word": "toe",
+      "start": 41.64,
+      "end": 41.92
+    },
+    {
+      "word": "movement",
+      "start": 41.92,
+      "end": 42.5
+    },
+    {
+      "word": "is",
+      "start": 42.5,
+      "end": 42.65
+    },
+    {
+      "word": "called",
+      "start": 42.65,
+      "end": 43.08
+    },
+    {
+      "word": "digital",
+      "start": 43.08,
+      "end": 43.46
+    },
+    {
+      "word": "hyperextension",
+      "start": 43.46,
+      "end": 44.65
+    },
+    {
+      "word": "don't",
+      "start": 45.1,
+      "end": 45.37
+    },
+    {
+      "word": "confuse",
+      "start": 45.37,
+      "end": 45.78
+    },
+    {
+      "word": "it",
+      "start": 45.78,
+      "end": 45.87
+    },
+    {
+      "word": "with",
+      "start": 45.87,
+      "end": 46.02
+    },
+    {
+      "word": "the",
+      "start": 46.02,
+      "end": 46.2
+    },
+    {
+      "word": "angles",
+      "start": 46.2,
+      "end": 46.78
+    },
+    {
+      "word": "of",
+      "start": 46.78,
+      "end": 46.87
+    },
+    {
+      "word": "the",
+      "start": 46.87,
+      "end": 46.97
+    },
+    {
+      "word": "microscopic",
+      "start": 46.97,
+      "end": 47.73
+    },
+    {
+      "word": "hairs",
+      "start": 47.73,
+      "end": 48.14
+    },
+    {
+      "word": "beneath",
+      "start": 48.14,
+      "end": 48.48
+    },
+    {
+      "word": "it",
+      "start": 48.48,
+      "end": 48.68
+    },
+    {
+      "word": "so",
+      "start": 49.26,
+      "end": 49.59
+    },
+    {
+      "word": "a",
+      "start": 49.59,
+      "end": 49.69
+    },
+    {
+      "word": "gecko",
+      "start": 49.69,
+      "end": 50.1
+    },
+    {
+      "word": "doesn't",
+      "start": 50.1,
+      "end": 50.42
+    },
+    {
+      "word": "simply",
+      "start": 50.42,
+      "end": 50.83
+    },
+    {
+      "word": "yank",
+      "start": 50.83,
+      "end": 51.31
+    },
+    {
+      "word": "its",
+      "start": 51.31,
+      "end": 51.5
+    },
+    {
+      "word": "foot",
+      "start": 51.5,
+      "end": 51.73
+    },
+    {
+      "word": "off",
+      "start": 51.73,
+      "end": 51.89
+    },
+    {
+      "word": "the",
+      "start": 51.89,
+      "end": 51.96
+    },
+    {
+      "word": "wall",
+      "start": 51.96,
+      "end": 52.4
+    },
+    {
+      "word": "close",
+      "start": 53.0,
+      "end": 53.33
+    },
+    {
+      "word": "contact",
+      "start": 53.33,
+      "end": 54.14
+    },
+    {
+      "word": "the",
+      "start": 54.14,
+      "end": 54.26
+    },
+    {
+      "word": "direction",
+      "start": 54.26,
+      "end": 54.76
+    },
+    {
+      "word": "of",
+      "start": 54.76,
+      "end": 54.86
+    },
+    {
+      "word": "loading",
+      "start": 54.86,
+      "end": 55.26
+    },
+    {
+      "word": "and",
+      "start": 55.26,
+      "end": 55.69
+    },
+    {
+      "word": "controlled",
+      "start": 55.69,
+      "end": 56.38
+    },
+    {
+      "word": "toe",
+      "start": 56.38,
+      "end": 56.67
+    },
+    {
+      "word": "movement",
+      "start": 56.67,
+      "end": 57.05
+    },
+    {
+      "word": "work",
+      "start": 57.05,
+      "end": 57.42
+    },
+    {
+      "word": "together",
+      "start": 57.42,
+      "end": 57.94
+    },
+    {
+      "word": "to",
+      "start": 57.94,
+      "end": 58.14
+    },
+    {
+      "word": "make",
+      "start": 58.14,
+      "end": 58.37
+    },
+    {
+      "word": "gripping",
+      "start": 58.37,
+      "end": 58.91
+    },
+    {
+      "word": "and",
+      "start": 58.91,
+      "end": 59.07
+    },
+    {
+      "word": "letting",
+      "start": 59.07,
+      "end": 59.42
+    },
+    {
+      "word": "go",
+      "start": 59.42,
+      "end": 59.74
+    },
+    {
+      "word": "possible",
+      "start": 59.74,
+      "end": 60.5
+    }
+  ],
+  "cues": [
+    {
+      "start": 0.26,
+      "end": 2.52,
+      "text": "A gecko can hold onto a wall."
+    },
+    {
+      "start": 2.84,
+      "end": 4.97,
+      "text": "So how does it let go with every step?"
+    },
+    {
+      "start": 5.48,
+      "end": 7.76,
+      "text": "The secret isn't just a strong grip."
+    },
+    {
+      "start": 8.05,
+      "end": 10.11,
+      "text": "It's how that grip is controlled."
+    },
+    {
+      "start": 10.79,
+      "end": 15.67,
+      "text": "Under a Tokay gecko's toes are tiny, hair-like structures called setae."
+    },
+    {
+      "start": 16.23,
+      "end": 19.97,
+      "text": "Their branching tips make extremely close contact with the surface."
+    },
+    {
+      "start": 20.56,
+      "end": 22.15,
+      "text": "They aren't suction cups."
+    },
+    {
+      "start": 22.38,
+      "end": 27.42,
+      "text": "At that tiny scale, van der Waals forces help those tips adhere."
+    },
+    {
+      "start": 27.42,
+      "end": 28.72,
+      "text": "But direction matters."
+    },
+    {
+      "start": 29.12,
+      "end": 33.97,
+      "text": "A pull toward the base of the toe, along the surface, helps support the grip."
+    },
+    {
+      "start": 34.4,
+      "end": 38.17,
+      "text": "To release, a gecko can curl its toes away from the surface."
+    },
+    {
+      "start": 38.6,
+      "end": 40.7,
+      "text": "This movement helps the foot detach."
+    },
+    {
+      "start": 41.32,
+      "end": 44.65,
+      "text": "That toe movement is called digital hyperextension."
+    },
+    {
+      "start": 45.1,
+      "end": 48.68,
+      "text": "Don't confuse it with the angles of the microscopic hairs beneath it."
+    },
+    {
+      "start": 49.26,
+      "end": 52.4,
+      "text": "So a gecko doesn't simply yank its foot off the wall."
+    },
+    {
+      "start": 53.0,
+      "end": 57.05,
+      "text": "Close contact, the direction of loading, and controlled toe movement"
+    },
+    {
+      "start": 57.05,
+      "end": 60.5,
+      "text": "work together to make gripping and letting go possible."
+    }
+  ]
+}
