@@ -9,8 +9,6 @@ name: Deploy 3D services site
 on:
   push:
     branches: [main, 'arena/**']
-    paths:
-      - 'services/website/site/**'
   workflow_dispatch:
 
 permissions:
