@@ -1,0 +1,342 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08070c" />
+    <meta name="description" content="Original 3D explainer films for Shorts and Reels. Scripted, modelled, voiced and verified before delivery." />
+    <title>Top1 — 3D films for ideas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./site.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="head">
+      <div class="wrap head-in">
+        <a class="mark" href="#top">
+          <span class="mark-dot"></span>
+          <span class="mark-txt">top1<span>.</span></span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="btn btn-sm" href="#brief" id="head-cta">Get a quote</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ───────────────────────── HERO ───────────────────────── -->
+      <section class="hero wrap" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> 3D Explainers · Shorts &amp; Reels</p>
+          <h1>Your idea,<br /><em>rendered.</em></h1>
+          <p class="lede">
+            Original 3D films for short video. Scripted, modelled, voiced and
+            technically verified before it reaches you. No stock footage. No templates.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="#brief">Get a quote</a>
+            <a class="btn btn-ghost" href="#work">Watch the films</a>
+          </div>
+          <ul class="proof">
+            <li><strong id="p-films">5</strong><span>finished films</span></li>
+            <li><strong>24</strong><span>fps, frame-timed</span></li>
+            <li><strong>9:16</strong><span>native vertical</span></li>
+          </ul>
+        </div>
+
+        <figure class="hero-film" id="hero-film">
+          <video
+            id="hero-video"
+            playsinline
+            muted
+            loop
+            preload="none"
+            aria-label="Featured 3D film"
+          ></video>
+          <button class="play" id="hero-play" type="button" aria-label="Play the featured film">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          </button>
+          <figcaption id="hero-caption"></figcaption>
+        </figure>
+      </section>
+
+      <!-- ───────────────────────── WORK ───────────────────────── -->
+      <section class="section wrap" id="work">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>01</span> / Selected work</p>
+            <h2>Every frame modelled.</h2>
+          </div>
+          <p class="sec-note">Five short films. Tap one to play it.</p>
+        </div>
+        <div class="grid" id="film-grid" role="list"></div>
+        <noscript><p class="sec-note">Enable JavaScript to watch the films.</p></noscript>
+      </section>
+
+      <!-- ───────────────────────── SERVICES ───────────────────────── -->
+      <section class="section dark" id="services">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <p class="kicker"><span>02</span> / Services</p>
+              <h2>Done for you.</h2>
+            </div>
+            <p class="sec-note">
+              Pick a length. You get a finished film, not a plan.
+            </p>
+          </div>
+
+          <div class="tiers" id="tiers"></div>
+
+          <div class="inc-exc">
+            <div>
+              <h3>Included</h3>
+              <ul id="included"></ul>
+            </div>
+            <div>
+              <h3 class="muted-h">Not included</h3>
+              <ul id="excluded"></ul>
+            </div>
+          </div>
+
+          <p class="fineprint">
+            Custom 3D model or character, extra revisions, square or landscape
+            versions and raw source files are quoted separately.
+            <a href="#brief">Ask for a quote</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── PROCESS ───────────────────────── -->
+      <section class="section wrap" id="process">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>03</span> / Process</p>
+            <h2>You approve twice<br />before we render.</h2>
+          </div>
+          <p class="sec-note">
+            The two approvals are why the timeline is short and the revisions are few.
+          </p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="step-n">01</span>
+            <h3>Brief</h3>
+            <p>You tell us the topic, audience and takeaway. We confirm scope and price.</p>
+            <span class="step-t">Day 0</span>
+          </li>
+          <li>
+            <span class="step-n">02</span>
+            <h3>Script</h3>
+            <p>Three beats, a voiceover script, and a word count that fits the runtime.</p>
+            <span class="step-t">Day 1–2</span>
+          </li>
+          <li class="is-gate">
+            <span class="step-n">03</span>
+            <h3>Still</h3>
+            <p>One frame at final quality: lighting, colour, camera. You approve the look.</p>
+            <span class="step-t">Day 2–3</span>
+          </li>
+          <li>
+            <span class="step-n">04</span>
+            <h3>Render</h3>
+            <p>Everything is modelled and animated, then each frame is checked.</p>
+            <span class="step-t">Day 3–6</span>
+          </li>
+          <li class="is-gate">
+            <span class="step-n">05</span>
+            <h3>Revision</h3>
+            <p>Watermarked preview. One round of picture notes included.</p>
+            <span class="step-t">Day 6–7</span>
+          </li>
+          <li>
+            <span class="step-n">06</span>
+            <h3>Delivery</h3>
+            <p>Final MP4, poster, captions and QA report. You publish when you want.</p>
+            <span class="step-t">Day 7</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────────────────────── BRIEF FORM ───────────────────────── -->
+      <section class="section dark" id="brief">
+        <div class="wrap brief-wrap">
+          <div class="brief-copy">
+            <p class="kicker"><span>04</span> / Start a project</p>
+            <h2>Tell us the idea.</h2>
+            <p class="sec-note">
+              Five questions. You get a quote and a timeline, usually within a day.
+            </p>
+            <div class="contact-direct" id="contact-direct"></div>
+          </div>
+
+          <form class="brief" id="brief-form" novalidate>
+            <div class="field">
+              <label for="f-topic">What is the video about?</label>
+              <input id="f-topic" name="topic" type="text" maxlength="200" required
+                     placeholder="e.g. How a pressure cooker works" />
+            </div>
+            <div class="field">
+              <label for="f-audience">Who is it for?</label>
+              <input id="f-audience" name="audience" type="text" maxlength="200" required
+                     placeholder="e.g. Home cooks on Instagram" />
+            </div>
+            <div class="field">
+              <label for="f-takeaway">What should they take away?</label>
+              <input id="f-takeaway" name="takeaway" type="text" maxlength="200" required
+                     placeholder="e.g. Steam does the cooking, not the flame" />
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="f-length">Length</label>
+                <select id="f-length" name="length">
+                  <option value="15 sec">15 sec</option>
+                  <option value="30 sec" selected>30 sec</option>
+                  <option value="50 sec">50 sec</option>
+                  <option value="Not sure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-language">Language</label>
+                <select id="f-language" name="language">
+                  <option value="Urdu">Urdu</option>
+                  <option value="English">English</option>
+                  <option value="Both">Both</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-email">Your email</label>
+              <input id="f-email" name="email" type="email" maxlength="200" required
+                     placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="f-ref">Reference link <span class="opt">(optional)</span></label>
+              <input id="f-ref" name="reference" type="url" maxlength="400"
+                     placeholder="https://" />
+            </div>
+            <button class="btn btn-block" type="submit" id="submit-btn">Send brief</button>
+            <p class="form-status" id="form-status" role="status"></p>
+            <p class="form-note">
+              We use this only to reply to you. No newsletter, no third parties.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── WORKFLOW (conditional) ───────────────────────── -->
+      <section class="section wrap" id="workflow" hidden>
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>05</span> / Systems</p>
+            <h2>One system.<br />Your channel.</h2>
+          </div>
+          <p class="sec-note">
+            For teams who need volume without templates.
+          </p>
+        </div>
+        <div class="flow">
+          <p class="flow-lede">
+            An agentic production pipeline that goes from topic to a finished,
+            QA-verified video in your own Google Drive. It writes an original script,
+            assembles the shot plan and renders the 3D. You upload.
+          </p>
+          <ol class="flow-steps" id="flow-steps"></ol>
+          <div class="flow-notes">
+            <div>
+              <h3>What it is</h3>
+              <ul>
+                <li>A production system that runs on your accounts</li>
+                <li>Original scripting and shot composition per video</li>
+                <li>QA report for every export</li>
+              </ul>
+            </div>
+            <div>
+              <h3>What it is not</h3>
+              <ul>
+                <li>A template pack or a preset library</li>
+                <li>A "make money" tool or a view guarantee</li>
+                <li>Access to our API keys</li>
+              </ul>
+            </div>
+          </div>
+          <p class="fineprint">
+            Every video is an original script and composition. Platforms judge
+            channels on whether content is templated or mass-produced — this system
+            is built the other way. Clients remain responsible for platform compliance.
+            <a href="#brief">Book a pilot</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── FAQ ───────────────────────── -->
+      <section class="section wrap" id="faq">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>06</span> / Questions</p>
+            <h2>Good to know.</h2>
+          </div>
+        </div>
+        <div class="faq" id="faq-list"></div>
+      </section>
+
+      <!-- ───────────────────────── CTA ───────────────────────── -->
+      <section class="band">
+        <div class="wrap band-in">
+          <h2>Have a topic in mind?</h2>
+          <p>Send it over. You will get a quote and a delivery date.</p>
+          <a class="btn btn-light" href="#brief">Start a brief</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <div class="foot-brand">
+          <span class="mark-txt">top1<span>.</span></span>
+          <p id="foot-tag">Original 3D films for short video.</p>
+        </div>
+        <div class="foot-cols">
+          <div>
+            <h4>Contact</h4>
+            <ul id="foot-contact"></ul>
+          </div>
+          <div>
+            <h4>Work</h4>
+            <ul>
+              <li><a href="#work">Films</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#process">Process</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Elsewhere</h4>
+            <ul id="foot-social"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="wrap foot-legal">
+        <p>© <span id="year"></span> Top1. All films shown are original work.</p>
+        <p>Prices in <span id="cur-label">PKR</span>. Quotes are per project.</p>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="lb-close" id="lb-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <video id="lb-video" controls playsinline preload="metadata"></video>
+      <p class="lb-title" id="lb-title"></p>
+    </dialog>
+
+    <script type="module" src="./site.js"></script>
+  </body>
+</html>
