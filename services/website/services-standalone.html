@@ -1,0 +1,2236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08070c" />
+    <meta name="description" content="Original 3D explainer films for Shorts and Reels. Scripted, modelled, voiced and verified before delivery." />
+    <title>Top1 — 3D films for ideas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=DM+Sans:opsz,wght@9..40,300..800&display=swap" rel="stylesheet" />
+    <style>
+/* ─────────────────────────────────────────────────────────
+   Top1 services site
+   Dark, film-first, mobile-first. No frameworks, no build step.
+   ───────────────────────────────────────────────────────── */
+
+:root {
+  --ink: #08070c;
+  --ink-2: #0e0d14;
+  --ink-3: #16151f;
+  --paper: #f4f2ee;
+  --paper-dim: #a8a4b4;
+  --line: #26242f;
+  --line-soft: #1d1b26;
+  --accent: #ffba72;
+  --accent-2: #7fd4ff;
+  --ok: #8ce99a;
+  --warn: #ff8f6b;
+
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+
+  --r: 14px;
+  --r-lg: 22px;
+  --wrap: 1180px;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, video { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: clamp(18px, 4vw, 40px);
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--accent);
+  color: var(--ink);
+  padding: 12px 20px;
+  z-index: 999;
+  font-weight: 700;
+}
+.skip:focus { left: 8px; top: 8px; }
+
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--accent-2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Header ─────────────────────────────────────────── */
+
+.head {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--ink) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.head-in {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  height: 66px;
+}
+
+.mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+}
+
+.mark-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 14px var(--accent);
+}
+
+.mark-txt span { color: var(--accent); }
+
+.nav {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 30px);
+  margin-left: auto;
+  font-size: 0.9rem;
+}
+
+.nav a {
+  color: var(--paper-dim);
+  transition: color 0.2s var(--ease);
+  position: relative;
+}
+.nav a:hover { color: var(--paper); }
+
+@media (max-width: 760px) {
+  .nav { display: none; }
+  .head-in { justify-content: space-between; }
+}
+
+/* ─── Buttons ────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.18s var(--ease), background 0.18s var(--ease),
+    box-shadow 0.18s var(--ease);
+  white-space: nowrap;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 26px rgba(255, 186, 114, 0.22);
+}
+.btn:active { transform: translateY(0); }
+
+.btn-sm { padding: 9px 18px; font-size: 0.86rem; }
+
+.btn-ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: var(--line);
+}
+.btn-ghost:hover {
+  border-color: var(--paper-dim);
+  box-shadow: none;
+}
+
+.btn-light {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+.btn-light:hover { box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3); }
+
+.btn-block { width: 100%; }
+
+.btn[disabled] {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* ─── Hero ───────────────────────────────────────────── */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(28px, 5vw, 70px);
+  align-items: center;
+  padding-block: clamp(44px, 7vw, 90px) clamp(50px, 8vw, 100px);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.76rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 22px;
+  font-weight: 600;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ok);
+  box-shadow: 0 0 10px var(--ok);
+  animation: pulse 2.6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 7vw, 4.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0 0 24px;
+}
+
+h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+
+.lede {
+  font-size: clamp(1rem, 1.5vw, 1.12rem);
+  color: var(--paper-dim);
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 42px;
+}
+
+.proof {
+  display: flex;
+  gap: clamp(22px, 4vw, 46px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line-soft);
+  padding-top: 24px;
+}
+
+.proof li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.proof strong {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.proof span {
+  font-size: 0.76rem;
+  color: var(--paper-dim);
+  letter-spacing: 0.04em;
+}
+
+/* Hero film */
+
+.hero-film {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--ink-3);
+  border: 1px solid var(--line);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.9);
+  max-height: 72vh;
+  justify-self: center;
+  width: 100%;
+}
+
+.hero-film video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  border: 0;
+  background: linear-gradient(to top, rgba(8, 7, 12, 0.72), transparent 45%);
+  cursor: pointer;
+  transition: opacity 0.25s var(--ease);
+}
+
+.play svg {
+  width: 62px;
+  height: 62px;
+  fill: var(--paper);
+  filter: drop-shadow(0 4px 20px rgba(0, 0, 0, 0.7));
+  transition: transform 0.22s var(--ease);
+}
+
+.play:hover svg { transform: scale(1.08); }
+
+.hero-film.is-playing .play { opacity: 0; pointer-events: none; }
+
+.hero-film figcaption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 18px 20px;
+  font-size: 0.83rem;
+  color: var(--paper);
+  background: linear-gradient(to top, rgba(8, 7, 12, 0.92), transparent);
+  pointer-events: none;
+}
+
+.hero-film figcaption strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.hero-film figcaption span { color: var(--paper-dim); }
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    padding-block: 34px 56px;
+  }
+  .hero-film {
+    max-height: none;
+    max-width: 360px;
+    order: -1;
+  }
+  .proof { justify-content: space-between; gap: 12px; }
+}
+
+/* ─── Sections ───────────────────────────────────────── */
+
+.section { padding-block: clamp(56px, 9vw, 110px); }
+
+.section.dark {
+  background: var(--ink-2);
+  border-block: 1px solid var(--line-soft);
+}
+
+.sec-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: clamp(30px, 4vw, 52px);
+}
+
+.kicker {
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 14px;
+  font-weight: 600;
+}
+
+.kicker span { color: var(--accent); }
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(1.7rem, 3.8vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.sec-note {
+  color: var(--paper-dim);
+  font-size: 0.94rem;
+  max-width: 38ch;
+  margin: 0;
+}
+
+/* ─── Film grid ──────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  background: var(--ink-3);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  transition: transform 0.28s var(--ease), border-color 0.28s var(--ease);
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease), opacity 0.3s var(--ease);
+}
+
+.card:hover img { transform: scale(1.045); }
+
+.card-body {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 16px 14px 14px;
+  background: linear-gradient(to top, rgba(8, 7, 12, 0.95) 30%, transparent);
+}
+
+.card-cat {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0 0 3px;
+  letter-spacing: -0.01em;
+}
+
+.card-time {
+  font-size: 0.74rem;
+  color: var(--paper-dim);
+}
+
+.card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: var(--ink);
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-weight: 800;
+}
+
+/* ─── Tiers ──────────────────────────────────────────── */
+
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.tier {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: 26px 22px;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+
+.tier:hover {
+  border-color: var(--paper-dim);
+  transform: translateY(-2px);
+}
+
+.tier.is-popular { border-color: var(--accent); }
+
+.tier-tag {
+  position: absolute;
+  top: -10px;
+  left: 22px;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  padding: 4px 11px;
+  border-radius: 999px;
+}
+
+.tier-name {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.tier-len {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0;
+}
+
+.tier-line {
+  font-size: 0.9rem;
+  color: var(--paper-dim);
+  margin: 8px 0 16px;
+  flex: 1;
+}
+
+.tier-price {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  margin: 0;
+}
+
+.tier-price small {
+  font-size: 0.72rem;
+  font-family: var(--font-body);
+  color: var(--paper-dim);
+  font-weight: 400;
+  display: block;
+  letter-spacing: 0;
+  margin-top: 2px;
+}
+
+.tier-days {
+  font-size: 0.8rem;
+  color: var(--paper-dim);
+  margin: 14px 0 0;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.tier-best {
+  font-size: 0.78rem;
+  color: var(--paper-dim);
+  margin: 8px 0 0;
+  font-style: italic;
+}
+
+.inc-exc {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 50px);
+  padding-top: 34px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.inc-exc h3 {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--ok);
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+
+.muted-h { color: var(--paper-dim) !important; }
+
+.inc-exc ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.inc-exc li {
+  display: flex;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--paper-dim);
+  line-height: 1.45;
+}
+
+.inc-exc li::before {
+  content: '✓';
+  color: var(--ok);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.inc-exc .muted-h ~ ul li::before {
+  content: '–';
+  color: var(--warn);
+}
+
+@media (max-width: 640px) {
+  .inc-exc { grid-template-columns: 1fr; gap: 28px; }
+}
+
+.fineprint {
+  font-size: 0.84rem;
+  color: var(--paper-dim);
+  margin: 32px 0 0;
+  max-width: 70ch;
+}
+
+.fineprint a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ─── Steps ──────────────────────────────────────────── */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--line-soft);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.steps li {
+  background: var(--ink);
+  padding: 24px 20px 22px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.steps li.is-gate { background: var(--ink-3); }
+
+.step-n {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.steps h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.steps p {
+  font-size: 0.85rem;
+  color: var(--paper-dim);
+  margin: 0;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.step-t {
+  font-size: 0.72rem;
+  color: var(--paper-dim);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.steps li.is-gate .step-n::after {
+  content: ' ●';
+  color: var(--accent-2);
+}
+
+/* ─── Brief form ─────────────────────────────────────── */
+
+.brief-wrap {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: clamp(30px, 5vw, 70px);
+  align-items: start;
+}
+
+.brief-copy h2 { margin-bottom: 16px; }
+
+.contact-direct {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-direct a {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.94rem;
+  color: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 3px;
+  width: fit-content;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.contact-direct a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact-direct .cd-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin-bottom: 2px;
+  font-weight: 700;
+}
+
+.brief {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.field { display: flex; flex-direction: column; gap: 7px; }
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--paper);
+  letter-spacing: 0.01em;
+}
+
+.opt { color: var(--paper-dim); font-weight: 400; }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--paper);
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.field input::placeholder { color: #5c5872; }
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--accent-2);
+  background: var(--ink-3);
+  outline: none;
+}
+
+.field select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23a8a4b4' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.field.has-error input { border-color: var(--warn); }
+
+.err {
+  font-size: 0.76rem;
+  color: var(--warn);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 520px) {
+  .row { grid-template-columns: 1fr; }
+}
+
+.form-status {
+  font-size: 0.86rem;
+  margin: 0;
+  min-height: 1.3em;
+  color: var(--ok);
+}
+
+.form-status.is-error { color: var(--warn); }
+
+.form-note {
+  font-size: 0.76rem;
+  color: var(--paper-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 860px) {
+  .brief-wrap { grid-template-columns: 1fr; }
+}
+
+/* ─── Workflow ───────────────────────────────────────── */
+
+.flow-lede {
+  font-size: clamp(1rem, 1.7vw, 1.18rem);
+  color: var(--paper-dim);
+  max-width: 62ch;
+  margin: 0 0 32px;
+}
+
+.flow-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 36px;
+  counter-reset: flow;
+}
+
+.flow-steps li {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  padding: 15px 14px;
+  font-size: 0.84rem;
+  background: var(--ink-2);
+  position: relative;
+  padding-top: 38px;
+}
+
+.flow-steps li::before {
+  counter-increment: flow;
+  content: counter(flow, decimal-leading-zero);
+  position: absolute;
+  top: 13px;
+  left: 14px;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+}
+
+.flow-notes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(20px, 4vw, 46px);
+  padding-top: 30px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.flow-notes h3 {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 14px;
+}
+
+.flow-notes ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.flow-notes li {
+  font-size: 0.88rem;
+  color: var(--paper-dim);
+  padding-left: 16px;
+  position: relative;
+}
+
+.flow-notes li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .flow-notes { grid-template-columns: 1fr; }
+}
+
+/* ─── FAQ ────────────────────────────────────────────── */
+
+.faq {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line-soft);
+}
+
+.faq details {
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.faq summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  list-style: none;
+  transition: color 0.2s var(--ease);
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary:hover { color: var(--accent); }
+
+.faq summary::after {
+  content: '+';
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--paper-dim);
+  flex-shrink: 0;
+  transition: transform 0.24s var(--ease);
+  line-height: 1;
+}
+
+.faq details[open] summary::after {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+
+.faq details p {
+  margin: 0 0 22px;
+  color: var(--paper-dim);
+  font-size: 0.92rem;
+  max-width: 72ch;
+  line-height: 1.65;
+}
+
+/* ─── Band CTA ───────────────────────────────────────── */
+
+.band {
+  background: var(--accent);
+  color: var(--ink);
+  padding-block: clamp(46px, 7vw, 80px);
+}
+
+.band-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.band h2 {
+  color: var(--ink);
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.band p {
+  margin: 0 0 18px;
+  color: color-mix(in srgb, var(--ink) 76%, transparent);
+  font-size: 1rem;
+}
+
+/* ─── Footer ─────────────────────────────────────────── */
+
+.foot {
+  background: var(--ink);
+  padding-block: clamp(40px, 6vw, 64px) 28px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.foot-in {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: clamp(28px, 5vw, 60px);
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.foot-brand .mark-txt {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.foot-brand .mark-txt span { color: var(--accent); }
+
+.foot-brand p {
+  color: var(--paper-dim);
+  font-size: 0.88rem;
+  margin: 10px 0 0;
+  max-width: 30ch;
+}
+
+.foot-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.foot-cols h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--paper-dim);
+  margin: 0 0 14px;
+  font-weight: 700;
+}
+
+.foot-cols ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.foot-cols li, .foot-cols a {
+  font-size: 0.88rem;
+  color: var(--paper);
+}
+
+.foot-cols a { transition: color 0.2s var(--ease); }
+.foot-cols a:hover { color: var(--accent); }
+
+.foot-legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 22px;
+  font-size: 0.76rem;
+  color: var(--paper-dim);
+}
+
+.foot-legal p { margin: 0; }
+
+@media (max-width: 720px) {
+  .foot-in { grid-template-columns: 1fr; }
+  .foot-cols { grid-template-columns: 1fr 1fr; }
+}
+
+/* ─── Lightbox ───────────────────────────────────────── */
+
+.lightbox {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  max-width: min(96vw, 460px);
+  width: 100%;
+  overflow: visible;
+}
+
+.lightbox::backdrop {
+  background: rgba(4, 3, 7, 0.94);
+  backdrop-filter: blur(6px);
+}
+
+.lightbox video {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: contain;
+  border-radius: var(--r);
+  background: #000;
+}
+
+.lb-close {
+  position: absolute;
+  top: -46px;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--ink-2);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.lb-close svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--paper);
+  stroke-width: 2;
+  fill: none;
+}
+
+.lb-title {
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--paper-dim);
+  margin: 12px 0 0;
+}
+
+/* ─── 16:9 support (Drive wide films) ────────────────── */
+
+.hero-film.is-wide {
+  aspect-ratio: 16 / 9;
+  max-height: none;
+  justify-self: stretch;
+}
+
+.card.is-wide {
+  aspect-ratio: 16 / 9;
+}
+
+.card.is-wide .card-body {
+  padding: 12px 12px 11px;
+}
+
+.card.is-wide h3 {
+  font-size: 0.9rem;
+}
+
+.card.is-wide .card-time {
+  font-size: 0.7rem;
+}
+
+.hero-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  z-index: 2;
+}
+
+.lightbox iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.lightbox.is-wide {
+  max-width: min(96vw, 940px);
+}
+
+.lightbox.is-wide video {
+  aspect-ratio: 16 / 9;
+}
+
+/* Drive cards ka poster thumbnail kabhi letterbox ho sakta hai */
+.card img {
+  background: var(--ink-3);
+}
+
+
+</style>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="head">
+      <div class="wrap head-in">
+        <a class="mark" href="#top">
+          <span class="mark-dot"></span>
+          <span class="mark-txt">top1<span>.</span></span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="#work">Work</a>
+          <a href="#services">Services</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <a class="btn btn-sm" href="#brief" id="head-cta">Get a quote</a>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ───────────────────────── HERO ───────────────────────── -->
+      <section class="hero wrap" id="top">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> 3D Explainers · Shorts &amp; Reels</p>
+          <h1>Your idea,<br /><em>rendered.</em></h1>
+          <p class="lede">
+            Original 3D films for short video. Scripted, modelled, voiced and
+            technically verified before it reaches you. No stock footage. No templates.
+          </p>
+          <div class="cta-row">
+            <a class="btn" href="#brief">Get a quote</a>
+            <a class="btn btn-ghost" href="#work">Watch the films</a>
+          </div>
+          <ul class="proof">
+            <li><strong id="p-films">5</strong><span>finished films</span></li>
+            <li><strong>24</strong><span>fps, frame-timed</span></li>
+            <li><strong>9:16</strong><span>native vertical</span></li>
+          </ul>
+        </div>
+
+        <figure class="hero-film" id="hero-film">
+          <video
+            id="hero-video"
+            playsinline
+            muted
+            loop
+            preload="none"
+            aria-label="Featured 3D film"
+          ></video>
+          <button class="play" id="hero-play" type="button" aria-label="Play the featured film">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" /></svg>
+          </button>
+          <figcaption id="hero-caption"></figcaption>
+        </figure>
+      </section>
+
+      <!-- ───────────────────────── WORK ───────────────────────── -->
+      <section class="section wrap" id="work">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>01</span> / Selected work</p>
+            <h2>Every frame modelled.</h2>
+          </div>
+          <p class="sec-note">Five short films. Tap one to play it.</p>
+        </div>
+        <div class="grid" id="film-grid" role="list"></div>
+        <noscript><p class="sec-note">Enable JavaScript to watch the films.</p></noscript>
+      </section>
+
+      <!-- ───────────────────────── SERVICES ───────────────────────── -->
+      <section class="section dark" id="services">
+        <div class="wrap">
+          <div class="sec-head">
+            <div>
+              <p class="kicker"><span>02</span> / Services</p>
+              <h2>Done for you.</h2>
+            </div>
+            <p class="sec-note">
+              Pick a length. You get a finished film, not a plan.
+            </p>
+          </div>
+
+          <div class="tiers" id="tiers"></div>
+
+          <div class="inc-exc">
+            <div>
+              <h3>Included</h3>
+              <ul id="included"></ul>
+            </div>
+            <div>
+              <h3 class="muted-h">Not included</h3>
+              <ul id="excluded"></ul>
+            </div>
+          </div>
+
+          <p class="fineprint">
+            Custom 3D model or character, extra revisions, square or landscape
+            versions and raw source files are quoted separately.
+            <a href="#brief">Ask for a quote</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── PROCESS ───────────────────────── -->
+      <section class="section wrap" id="process">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>03</span> / Process</p>
+            <h2>You approve twice<br />before we render.</h2>
+          </div>
+          <p class="sec-note">
+            The two approvals are why the timeline is short and the revisions are few.
+          </p>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <span class="step-n">01</span>
+            <h3>Brief</h3>
+            <p>You tell us the topic, audience and takeaway. We confirm scope and price.</p>
+            <span class="step-t">Day 0</span>
+          </li>
+          <li>
+            <span class="step-n">02</span>
+            <h3>Script</h3>
+            <p>Three beats, a voiceover script, and a word count that fits the runtime.</p>
+            <span class="step-t">Day 1–2</span>
+          </li>
+          <li class="is-gate">
+            <span class="step-n">03</span>
+            <h3>Still</h3>
+            <p>One frame at final quality: lighting, colour, camera. You approve the look.</p>
+            <span class="step-t">Day 2–3</span>
+          </li>
+          <li>
+            <span class="step-n">04</span>
+            <h3>Render</h3>
+            <p>Everything is modelled and animated, then each frame is checked.</p>
+            <span class="step-t">Day 3–6</span>
+          </li>
+          <li class="is-gate">
+            <span class="step-n">05</span>
+            <h3>Revision</h3>
+            <p>Watermarked preview. One round of picture notes included.</p>
+            <span class="step-t">Day 6–7</span>
+          </li>
+          <li>
+            <span class="step-n">06</span>
+            <h3>Delivery</h3>
+            <p>Final MP4, poster, captions and QA report. You publish when you want.</p>
+            <span class="step-t">Day 7</span>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ───────────────────────── BRIEF FORM ───────────────────────── -->
+      <section class="section dark" id="brief">
+        <div class="wrap brief-wrap">
+          <div class="brief-copy">
+            <p class="kicker"><span>04</span> / Start a project</p>
+            <h2>Tell us the idea.</h2>
+            <p class="sec-note">
+              Five questions. You get a quote and a timeline, usually within a day.
+            </p>
+            <div class="contact-direct" id="contact-direct"></div>
+          </div>
+
+          <form class="brief" id="brief-form" novalidate>
+            <div class="field">
+              <label for="f-topic">What is the video about?</label>
+              <input id="f-topic" name="topic" type="text" maxlength="200" required
+                     placeholder="e.g. How a pressure cooker works" />
+            </div>
+            <div class="field">
+              <label for="f-audience">Who is it for?</label>
+              <input id="f-audience" name="audience" type="text" maxlength="200" required
+                     placeholder="e.g. Home cooks on Instagram" />
+            </div>
+            <div class="field">
+              <label for="f-takeaway">What should they take away?</label>
+              <input id="f-takeaway" name="takeaway" type="text" maxlength="200" required
+                     placeholder="e.g. Steam does the cooking, not the flame" />
+            </div>
+            <div class="row">
+              <div class="field">
+                <label for="f-length">Length</label>
+                <select id="f-length" name="length">
+                  <option value="15 sec">15 sec</option>
+                  <option value="30 sec" selected>30 sec</option>
+                  <option value="50 sec">50 sec</option>
+                  <option value="Not sure">Not sure yet</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="f-language">Language</label>
+                <select id="f-language" name="language">
+                  <option value="Urdu">Urdu</option>
+                  <option value="English">English</option>
+                  <option value="Both">Both</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-email">Your email</label>
+              <input id="f-email" name="email" type="email" maxlength="200" required
+                     placeholder="you@example.com" />
+            </div>
+            <div class="field">
+              <label for="f-ref">Reference link <span class="opt">(optional)</span></label>
+              <input id="f-ref" name="reference" type="url" maxlength="400"
+                     placeholder="https://" />
+            </div>
+            <button class="btn btn-block" type="submit" id="submit-btn">Send brief</button>
+            <p class="form-status" id="form-status" role="status"></p>
+            <p class="form-note">
+              We use this only to reply to you. No newsletter, no third parties.
+            </p>
+          </form>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── WORKFLOW (conditional) ───────────────────────── -->
+      <section class="section wrap" id="workflow" hidden>
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>05</span> / Systems</p>
+            <h2>One system.<br />Your channel.</h2>
+          </div>
+          <p class="sec-note">
+            For teams who need volume without templates.
+          </p>
+        </div>
+        <div class="flow">
+          <p class="flow-lede">
+            An agentic production pipeline that goes from topic to a finished,
+            QA-verified video in your own Google Drive. It writes an original script,
+            assembles the shot plan and renders the 3D. You upload.
+          </p>
+          <ol class="flow-steps" id="flow-steps"></ol>
+          <div class="flow-notes">
+            <div>
+              <h3>What it is</h3>
+              <ul>
+                <li>A production system that runs on your accounts</li>
+                <li>Original scripting and shot composition per video</li>
+                <li>QA report for every export</li>
+              </ul>
+            </div>
+            <div>
+              <h3>What it is not</h3>
+              <ul>
+                <li>A template pack or a preset library</li>
+                <li>A "make money" tool or a view guarantee</li>
+                <li>Access to our API keys</li>
+              </ul>
+            </div>
+          </div>
+          <p class="fineprint">
+            Every video is an original script and composition. Platforms judge
+            channels on whether content is templated or mass-produced — this system
+            is built the other way. Clients remain responsible for platform compliance.
+            <a href="#brief">Book a pilot</a>.
+          </p>
+        </div>
+      </section>
+
+      <!-- ───────────────────────── FAQ ───────────────────────── -->
+      <section class="section wrap" id="faq">
+        <div class="sec-head">
+          <div>
+            <p class="kicker"><span>06</span> / Questions</p>
+            <h2>Good to know.</h2>
+          </div>
+        </div>
+        <div class="faq" id="faq-list"></div>
+      </section>
+
+      <!-- ───────────────────────── CTA ───────────────────────── -->
+      <section class="band">
+        <div class="wrap band-in">
+          <h2>Have a topic in mind?</h2>
+          <p>Send it over. You will get a quote and a delivery date.</p>
+          <a class="btn btn-light" href="#brief">Start a brief</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="wrap foot-in">
+        <div class="foot-brand">
+          <span class="mark-txt">top1<span>.</span></span>
+          <p id="foot-tag">Original 3D films for short video.</p>
+        </div>
+        <div class="foot-cols">
+          <div>
+            <h4>Contact</h4>
+            <ul id="foot-contact"></ul>
+          </div>
+          <div>
+            <h4>Work</h4>
+            <ul>
+              <li><a href="#work">Films</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#process">Process</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Elsewhere</h4>
+            <ul id="foot-social"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="wrap foot-legal">
+        <p>© <span id="year"></span> Top1. All films shown are original work.</p>
+        <p>Prices in <span id="cur-label">PKR</span>. Quotes are per project.</p>
+      </div>
+    </footer>
+
+    <dialog class="lightbox" id="lightbox">
+      <button class="lb-close" id="lb-close" type="button" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+      </button>
+      <video id="lb-video" controls playsinline preload="metadata"></video>
+      <p class="lb-title" id="lb-title"></p>
+    </dialog>
+
+    <script>
+/**
+ * YAHAN SAB KUCH BADLO. Koi code chhune ki zaroorat nahi.
+ *
+ * Jab tumhari videos aa jayein:
+ *   1. MP4 + WebP ko  assets/  folder mein daalo
+ *   2. Neeche FILMS array mein entry add karo
+ *   3. Bas. Site khud update ho jayegi.
+ */
+
+const CONFIG = {
+  // ─── Brand ────────────────────────────────────────────
+  brand: 'top1',
+  tagline: '3D films for ideas',
+
+  // ─── Contact — SABSE ZAROORI ──────────────────────────
+  // Ye 3 cheezein bharo, warna site par koi order nahi kar sakta.
+  email: 'alipvip19@gmail.com',  // brief form isi par jata hai
+  whatsapp: '',                 // e.g. '923001234567' (country code, no +, no spaces)
+  formspree: '',                // e.g. 'https://formspree.io/f/xxxxxxxx'
+                                // Free account: formspree.io — 50 submissions/month
+
+  // Brief form kahan bhejni hai. Options:
+  //   'mailto'      → user ka email client khulta hai
+  //   'formspree'   → formspree URL se bhejta hai
+  //   'none'        → form band, sirf email/WhatsApp dikhega
+  formMode: 'mailto',
+
+  // ─── Pricing (PKR) ────────────────────────────────────
+  // 0 rakho to "Get a quote" dikhega, price nahi.
+  pricing: {
+    short: 25000,     // 15 sec
+    standard: 45000,  // 30 sec
+    deep: 70000,      // 50 sec
+  },
+
+  // ─── Currency ─────────────────────────────────────────
+  // 'PKR' ya 'USD'
+  currency: 'PKR',
+
+  // ─── Socials (khali chhodo to hide ho jata hai) ───────
+  socials: {
+    instagram: '',
+    youtube: '',
+    linkedin: '',
+    fiverr: '',
+    upwork: '',
+  },
+
+  // ─── Offer C — sirf tab on karo jab pipeline chal jaye ─
+  showWorkflow: false,
+};
+
+/**
+ * FILMS
+ * ─────────────────────────────────────────────────────
+ * provider: 'file'  → apni MP4, site/assets/ atha public/demos/ se
+ *           'drive' → Google Drive, driveId se embed (koi download nahi)
+ * aspect:   '9:16' | '16:9' | '1:1'
+ *
+ * Drive videos ke liye: sirf driveId + poster ka thumbnail URL.
+ * File ko public karna zaroori hai (anyone with link = reader).
+ *
+ * Apni videos aane par: site/assets/ mein daalo, path '/assets/film.mp4'.
+ */
+const FILMS = [
+  {
+    id: 'gecko',
+    title: 'How Does a Gecko Let Go?',
+    category: 'Science',
+    duration: '62s',
+    aspect: '9:16',
+    featured: true,
+    provider: 'drive',
+    driveId: '1ONAFv4Q0Tff74c6UAiIgtEui2RbiqD8G',
+    driveId: '1ONAFv4Q0Tff74c6UAiIgtEui2RbiqD8G',
+    poster: 'https://drive.google.com/thumbnail?id=1ONAFv4Q0Tff74c6UAiIgtEui2RbiqD8G&sz=w1080',
+    line: 'A gecko holds a glass wall with no glue and no suction. Watch the toe peel.',
+  },
+  {
+    id: 'air-crush',
+    title: 'Who Crushed the Can?',
+    category: 'Mechanism',
+    duration: '29s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'drive',
+    driveId: '1nHCE1Z9e1ijY27NQBb-F-s9Qkro8btRm',
+    poster: 'https://drive.google.com/thumbnail?id=1nHCE1Z9e1ijY27NQBb-F-s9Qkro8btRm&sz=w1080',
+    line: 'An aluminium can buckles without anyone squeezing it.',
+  },
+  {
+    id: 'bear',
+    title: 'Ancient Bear',
+    category: 'Character',
+    duration: '100s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU',
+    driveId: '1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU',
+    poster: 'https://drive.google.com/thumbnail?id=1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU&sz=w1080',
+    line: 'A fully modelled creature in a cinematic 3D sequence.',
+  },
+  {
+    id: 'panama',
+    title: 'Panama — Premium Edit',
+    category: 'Cinematic',
+    duration: '47s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '1hPD7ffTwfkTvTLds3_zenpX6VWHcyH8O',
+    driveId: '1hPD7ffTwfkTvTLds3_zenpX6VWHcyH8O',
+    poster: 'https://drive.google.com/thumbnail?id=1hPD7ffTwfkTvTLds3_zenpX6VWHcyH8O&sz=w1080',
+    line: 'A premium 3D edit built for a wide frame.',
+  },
+  {
+    id: 'ant',
+    title: 'Camera Ant — Opening Pilot',
+    category: 'Character',
+    duration: '24s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '13MMMlFq2Dixd2mjThpCBj3na4rV8RH80',
+    driveId: '13MMMlFq2Dixd2mjThpCBj3na4rV8RH80',
+    poster: 'https://drive.google.com/thumbnail?id=13MMMlFq2Dixd2mjThpCBj3na4rV8RH80&sz=w1080',
+    line: 'An insect character pilot with full camera work.',
+  },
+  {
+    id: 'reflector',
+    title: 'The Light With No Battery',
+    category: 'Optics',
+    duration: '50s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'drive',
+    driveId: '1KhAISrU99cvF-Ioly2v19hry1tACYrTA',
+    poster: 'https://drive.google.com/thumbnail?id=1KhAISrU99cvF-Ioly2v19hry1tACYrTA&sz=w1080',
+    line: 'A bicycle reflector looks lit up. It has no power source.',
+  },
+  {
+    id: 'halo',
+    title: 'Halo Desk Lamp',
+    category: 'Product',
+    duration: '10s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'drive',
+    driveId: '153-qdpVbrJA-j1jZYhAVjT0D0BzDtPwK',
+    poster: 'https://drive.google.com/thumbnail?id=153-qdpVbrJA-j1jZYhAVjT0D0BzDtPwK&sz=w1080',
+    line: 'A machined switch, a copper ring, and a warm pool of light.',
+  },
+  {
+    id: 'phone-storage',
+    title: 'The Phone Storage Trap',
+    category: 'Explainer',
+    duration: '11s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'drive',
+    driveId: '1-27Y0vgVEvaRnvN-DBHBZGaT9fkqW40T',
+    poster: 'https://drive.google.com/thumbnail?id=1-27Y0vgVEvaRnvN-DBHBZGaT9fkqW40T&sz=w1080',
+    line: 'Files fill up a phone. A macro lens shows where the space goes.',
+  },
+  {
+    id: 'last-signal',
+    title: 'The Last Signal',
+    category: 'Story',
+    duration: '12s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'drive',
+    driveId: '1_Nsv-B12hXiK28kUhR0EpF92i2KKmHzr',
+    poster: 'https://drive.google.com/thumbnail?id=1_Nsv-B12hXiK28kUhR0EpF92i2KKmHzr&sz=w1080',
+    line: 'A probe sends one last pulse. Something answers.',
+  },
+];
+
+/** Tier definitions — pricing.CONFIG se price aata hai */
+const TIERS = [
+  {
+    id: 'short',
+    name: 'Short',
+    length: '15 seconds',
+    days: '5 days',
+    priceKey: 'short',
+    line: 'One clear mechanism or product reveal.',
+    best: 'Hooks, teasers, single-idea posts',
+  },
+  {
+    id: 'standard',
+    name: 'Standard',
+    length: '30 seconds',
+    days: '7 days',
+    priceKey: 'standard',
+    line: 'The three-beat explainer format.',
+    best: 'Most explainers and product films',
+    popular: true,
+  },
+  {
+    id: 'deep',
+    name: 'Deep',
+    length: '50 seconds',
+    days: '10 days',
+    priceKey: 'deep',
+    line: 'A full topic with cutaways and slow replay.',
+    best: 'Deep dives that need real evidence',
+  },
+];
+
+const INCLUDED = [
+  'Original 3D animation — no stock footage, no templates',
+  'Script + voiceover in Urdu or English',
+  'Captions burned in and as a separate .srt file',
+  'Poster image for the thumbnail',
+  'QA report: duration, loudness and decode verified',
+  'Two rounds of revisions',
+];
+
+const EXCLUDED = [
+  'Uploading to YouTube, Instagram or any platform',
+  'Views, monetization or subscriber guarantees',
+  'Raw 3D project files (available at extra cost)',
+  'Borrowed footage, models or music you do not own',
+];
+
+const FAQ = [
+  {
+    q: 'What exactly do I get?',
+    a: 'A finished 1080×1920 MP4 at 24fps, a poster image, a caption file, and a QA report. The QA report lists the duration, loudness and decode check we ran before delivery. Everything is ready to upload — you just publish it.',
+  },
+  {
+    q: 'How is this different from AI video tools?',
+    a: 'Those tools assemble clips from stock or generated stills. We model the object and animate the mechanism, then time every cut to the frame. That is why the can actually buckles and the reflector ray actually turns. It takes hours, not seconds — and it does not look mass-produced.',
+  },
+  {
+    q: 'Do you upload the video for me?',
+    a: 'No. We deliver the files and you publish them from your own account. That keeps your channel yours, and it means you keep full control of titles, tags and timing.',
+  },
+  {
+    q: 'What do you need from me to start?',
+    a: 'The topic, who it is for, the one takeaway you want, and any product photos or brand colours. That is it. If you have a reference video you like, send it — it helps.',
+  },
+  {
+    q: 'How many revisions are included?',
+    a: 'Two. One after the script, and one after you see the first render. We ask for the script sign-off and a single still frame before the full render, so problems get caught early instead of at the end.',
+  },
+  {
+    q: 'Can you do 16:9 or square?',
+    a: 'Yes. Shoot vertical by default because that is what Shorts and Reels want. A square or landscape version of the same film costs a small extra and adds about a day.',
+  },
+  {
+    q: 'What is your payment process?',
+    a: '50% to start, 50% before we hand over the final files. You see a watermarked preview first, so you know what you are paying for. Cancelling before the script is approved gets you a full refund.',
+  },
+  {
+    q: 'Who owns the video?',
+    a: 'You do, for commercial use, once it is paid for. We keep the right to show it in our portfolio unless you ask us not to in writing. You cannot resell it as a stock clip or template.',
+  },
+];
+
+
+/* ---- site ---- */
+/**
+ * Top1 services site — renders everything from config.js
+ * Koi dependency nahi, koi build step nahi.
+ */
+
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => [...document.querySelectorAll(sel)];
+
+const CURRENCY_SYMBOL = { PKR: 'PKR', USD: '$' };
+
+/**
+ * Drive video embed URL.
+ * Drive direct MP4 streaming block karta hai, isliye /preview iframe use hota hai.
+ * File public hona chahiye: anyone-with-link = reader.
+ */
+function driveEmbed(id) {
+  return `https://drive.google.com/file/d/${id}/preview`;
+}
+
+function isDrive(film) {
+  return film.provider === 'drive' && film.driveId;
+}
+
+function price(key) {
+  const value = CONFIG.pricing[key];
+  if (!value) return null;
+  const symbol = CURRENCY_SYMBOL[CONFIG.currency] ?? CONFIG.currency;
+  return `${symbol} ${value.toLocaleString('en-US')}`;
+}
+
+/* ─── Contact links ──────────────────────────────────── */
+
+function contactLinks() {
+  const links = [];
+  if (CONFIG.email) {
+    links.push({ label: 'Email', href: `mailto:${CONFIG.email}`, text: CONFIG.email });
+  }
+  if (CONFIG.whatsapp) {
+    const num = String(CONFIG.whatsapp).replace(/[^\d]/g, '');
+    links.push({
+      label: 'WhatsApp',
+      href: `https://wa.me/${num}`,
+      text: `+${num}`,
+    });
+  }
+  return links;
+}
+
+function renderContacts() {
+  const direct = $('#contact-direct');
+  const links = contactLinks();
+
+  if (!links.length) {
+    direct.innerHTML = `
+      <p class="cd-label">Setup needed</p>
+      <p style="font-size:.85rem;color:var(--warn);margin:0">
+        config.js mein email ya WhatsApp daalo, warna form email client par
+        bhejega aur koi reply nahi aayega.
+      </p>`;
+  } else {
+    direct.innerHTML =
+      '<p class="cd-label">Or write directly</p>' +
+      links.map((l) => `<a href="${l.href}">${l.label} · ${l.text}</a>`).join('');
+  }
+
+  const foot = $('#foot-contact');
+  foot.innerHTML = links.length
+    ? links.map((l) => `<li><a href="${l.href}">${l.label}</a></li>`).join('')
+    : '<li><a href="#brief">Send a brief</a></li>';
+
+  const social = $('#foot-social');
+  const entries = Object.entries(CONFIG.socials).filter(([, url]) => url);
+  social.innerHTML = entries.length
+    ? entries
+        .map(([k, url]) => `<li><a href="${url}" rel="me noopener" target="_blank">${k[0].toUpperCase() + k.slice(1)}</a></li>`)
+        .join('')
+    : '<li><a href="#brief">Start a brief</a></li>';
+}
+
+/* ─── Hero film ──────────────────────────────────────── */
+
+function renderHero() {
+  const film = FILMS.find((f) => f.featured) ?? FILMS[0];
+  if (!film) return;
+
+  const figure = $('#hero-film');
+  const video = $('#hero-video');
+  const playBtn = $('#hero-play');
+
+  // 16:9 hero ko squeeze na kare
+  if (film.aspect === '16:9') figure.classList.add('is-wide');
+
+  $('#hero-caption').innerHTML =
+    `<strong>${film.title}</strong><span>${film.category} · ${film.duration}</span>`;
+
+  if (isDrive(film)) {
+    // Drive: poster dikhao, click par iframe embed
+    video.remove();
+    const img = document.createElement('img');
+    img.src = film.poster;
+    img.alt = '';
+    img.width = 1080;
+    img.height = 1920;
+    img.fetchPriority = 'high';
+    figure.prepend(img);
+
+    const launch = () => {
+      const frame = document.createElement('iframe');
+      frame.src = `${driveEmbed(film.driveId)}?autoplay=1`;
+      frame.title = film.title;
+      frame.allow = 'autoplay; fullscreen; encrypted-media';
+      frame.allowFullscreen = true;
+      frame.className = 'hero-iframe';
+      figure.querySelector('img')?.remove();
+      figure.prepend(frame);
+      figure.classList.add('is-playing');
+    };
+
+    playBtn.addEventListener('click', launch);
+    return;
+  }
+
+  video.poster = film.poster;
+  video.src = film.path;
+
+  const start = () => {
+    figure.classList.add('is-playing');
+    video.muted = false;
+    video.loop = true;
+    video.play().catch(() => {
+      // Autoplay with sound blocked — fall back to muted
+      video.muted = true;
+      video.play().catch(() => figure.classList.remove('is-playing'));
+    });
+  };
+
+  playBtn.addEventListener('click', start);
+  video.addEventListener('click', () => {
+    if (figure.classList.contains('is-playing')) {
+      video.paused ? video.play() : video.pause();
+    }
+  });
+}
+
+/* ─── Film grid ──────────────────────────────────────── */
+
+function renderFilms() {
+  const grid = $('#film-grid');
+  const lb = $('#lightbox');
+  const lbVideo = $('#lb-video');
+  const lbTitle = $('#lb-title');
+
+  grid.innerHTML = FILMS.map((film) => {
+    const wide = film.aspect === '16:9' ? ' is-wide' : '';
+    const source = isDrive(film) ? 'Drive' : '';
+    return `
+    <button class="card${wide}" type="button" role="listitem"
+            data-id="${film.id}" aria-label="Play ${film.title}, ${film.duration}">
+      <img src="${film.poster}" alt="" loading="lazy" />
+      <span class="card-body">
+        <span class="card-cat">${film.category}${source ? ` · ${source}` : ''}</span>
+        <h3>${film.title}</h3>
+        <span class="card-time">${film.duration} · ${film.aspect}</span>
+      </span>
+      ${film.featured ? '<span class="card-badge">Featured</span>' : ''}
+    </button>`;
+  }).join('');
+
+  /** Clean up whatever is currently inside the dialog */
+  const resetLightbox = () => {
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+    lbVideo.hidden = false;
+    lb.querySelector('iframe')?.remove();
+  };
+
+  grid.addEventListener('click', (event) => {
+    const card = event.target.closest('.card');
+    if (!card) return;
+    const film = FILMS.find((f) => f.id === card.dataset.id);
+    if (!film) return;
+
+    resetLightbox();
+    lbTitle.textContent = `${film.title} · ${film.duration}`;
+
+    if (isDrive(film)) {
+      // Drive: iframe embed. 16:9 ho to dialog ko wide karo
+      lb.classList.toggle('is-wide', film.aspect === '16:9');
+      lbVideo.hidden = true;
+      const frame = document.createElement('iframe');
+      frame.src = `${driveEmbed(film.driveId)}?autoplay=1`;
+      frame.title = film.title;
+      frame.allow = 'autoplay; fullscreen; encrypted-media';
+      frame.allowFullscreen = true;
+      lbVideo.after(frame);
+    } else {
+      lb.classList.toggle('is-wide', film.aspect === '16:9');
+      lbVideo.src = film.path;
+      lbVideo.poster = film.poster;
+      lbVideo.play().catch(() => {});
+    }
+
+    lb.showModal();
+  });
+
+  const close = () => {
+    resetLightbox();
+    lb.close();
+  };
+
+  $('#lb-close').addEventListener('click', close);
+  lb.addEventListener('click', (e) => {
+    // Click on backdrop (dialog itself, not its children)
+    if (e.target === lb) close();
+  });
+  lb.addEventListener('close', resetLightbox);
+
+  $('#p-films').textContent = String(FILMS.length);
+}
+
+/* ─── Tiers ──────────────────────────────────────────── */
+
+function renderTiers() {
+  const host = $('#tiers');
+
+  host.innerHTML = TIERS.map((tier) => {
+    const amount = price(tier.priceKey);
+    return `
+      <article class="tier${tier.popular ? ' is-popular' : ''}">
+        ${tier.popular ? '<span class="tier-tag">Most picked</span>' : ''}
+        <h3 class="tier-name">${tier.name}</h3>
+        <p class="tier-len">${tier.length}</p>
+        <p class="tier-line">${tier.line}</p>
+        <p class="tier-price">
+          ${amount ?? 'Get a quote'}
+          <small>${amount ? 'per film' : 'quoted per project'}</small>
+        </p>
+        <p class="tier-days">${tier.days} delivery</p>
+        <p class="tier-best">${tier.best}</p>
+      </article>`;
+  }).join('');
+
+  $('#included').innerHTML = INCLUDED.map((i) => `<li>${i}</li>`).join('');
+  $('#excluded').innerHTML = EXCLUDED.map((i) => `<li>${i}</li>`).join('');
+}
+
+/* ─── FAQ ────────────────────────────────────────────── */
+
+function renderFaq() {
+  $('#faq-list').innerHTML = FAQ.map((item, i) => `
+    <details${i === 0 ? ' open' : ''}>
+      <summary>${item.q}</summary>
+      <p>${item.a}</p>
+    </details>
+  `).join('');
+}
+
+/* ─── Workflow ───────────────────────────────────────── */
+
+function renderWorkflow() {
+  if (!CONFIG.showWorkflow) return;
+  const section = $('#workflow');
+  section.hidden = false;
+
+  const steps = [
+    'Idea chosen against your niche and past episodes',
+    'Original script with a hook and a payoff',
+    'Voiceover and word-level caption timing',
+    'Frame-locked shot plan',
+    '3D assembly and render',
+    'QA: decode, loudness, caption bounds',
+    'Final files written to your Google Drive',
+  ];
+
+  $('#flow-steps').innerHTML = steps.map((s) => `<li>${s}</li>`).join('');
+}
+
+/* ─── Brief form ─────────────────────────────────────── */
+
+function briefText(data) {
+  return [
+    'New 3D video brief',
+    '',
+    `Topic: ${data.topic}`,
+    `Audience: ${data.audience}`,
+    `Takeaway: ${data.takeaway}`,
+    `Length: ${data.length}`,
+    `Language: ${data.language}`,
+    `Email: ${data.email}`,
+    data.reference ? `Reference: ${data.reference}` : '',
+    '',
+    `Sent from ${location.href}`,
+  ].filter(Boolean).join('\n');
+}
+
+function setupBrief() {
+  const form = $('#brief-form');
+  const status = $('#form-status');
+  const button = $('#submit-btn');
+
+  if (CONFIG.formMode === 'none') {
+    form.style.display = 'none';
+    return;
+  }
+
+  const setStatus = (message, isError = false) => {
+    status.textContent = message;
+    status.classList.toggle('is-error', isError);
+  };
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    // Native validation first
+    if (!form.checkValidity()) {
+      const firstInvalid = form.querySelector(':invalid');
+      firstInvalid?.focus();
+      setStatus('Please fill in the required fields.', true);
+      return;
+    }
+
+    const data = Object.fromEntries(new FormData(form).entries());
+
+    if (CONFIG.formMode === 'mailto') {
+      if (!CONFIG.email) {
+        setStatus(
+          'No email is configured yet. Add CONFIG.email in config.js — the form cannot send anywhere without it.',
+          true
+        );
+        return;
+      }
+      const subject = encodeURIComponent(`3D video brief — ${data.topic}`.slice(0, 120));
+      const body = encodeURIComponent(briefText(data));
+      window.location.href = `mailto:${CONFIG.email}?subject=${subject}&body=${body}`;
+      setStatus('Opening your email app. Send the draft to finish.');
+      return;
+    }
+
+    if (CONFIG.formMode === 'formspree') {
+      if (!CONFIG.formspree) {
+        setStatus('Formspree endpoint missing in config.js.', true);
+        return;
+      }
+      button.disabled = true;
+      button.textContent = 'Sending…';
+      try {
+        const response = await fetch(CONFIG.formspree, {
+          method: 'POST',
+          headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!response.ok) throw new Error(String(response.status));
+        form.reset();
+        setStatus('Brief sent. You will hear back within a day.');
+      } catch {
+        setStatus(
+          `Could not send. Email directly: ${CONFIG.email || 'add an email in config.js'}`,
+          true
+        );
+      } finally {
+        button.disabled = false;
+        button.textContent = 'Send brief';
+      }
+    }
+  });
+}
+
+/* ─── Misc ───────────────────────────────────────────── */
+
+function renderMisc() {
+  $('#year').textContent = String(new Date().getFullYear());
+  $('#cur-label').textContent = CONFIG.currency;
+
+  if (CONFIG.tagline) {
+    document.title = `Top1 — ${CONFIG.tagline}`;
+  }
+
+  // Header CTA: WhatsApp if present, else scroll to form
+  const headCta = $('#head-cta');
+  if (CONFIG.whatsapp) {
+    const num = String(CONFIG.whatsapp).replace(/[^\d]/g, '');
+    headCta.href = `https://wa.me/${num}`;
+    headCta.target = '_blank';
+    headCta.rel = 'noopener';
+    headCta.textContent = 'WhatsApp';
+  }
+}
+
+/* ─── Init ───────────────────────────────────────────── */
+
+renderMisc();
+renderHero();
+renderFilms();
+renderTiers();
+renderFaq();
+renderWorkflow();
+renderContacts();
+setupBrief();
+
+// Setup warning (sirf dev ke liye, console mein)
+if (!CONFIG.email && !CONFIG.whatsapp) {
+  console.warn(
+    '[Top1] config.js mein email ya WhatsApp set nahi hai. ' +
+    'Brief form kisi ko nahi bhejega. services/website/site/config.js kholo.'
+  );
+}
+
+</script>
+  </body>
+</html>

@@ -14,7 +14,7 @@ export const CONFIG = {
 
   // ─── Contact — SABSE ZAROORI ──────────────────────────
   // Ye 3 cheezein bharo, warna site par koi order nahi kar sakta.
-  email: '',                    // e.g. 'hello@top1.studio'
+  email: 'alipvip19@gmail.com',  // brief form isi par jata hai
   whatsapp: '',                 // e.g. '923001234567' (country code, no +, no spaces)
   formspree: '',                // e.g. 'https://formspree.io/f/xxxxxxxx'
                                 // Free account: formspree.io — 50 submissions/month
