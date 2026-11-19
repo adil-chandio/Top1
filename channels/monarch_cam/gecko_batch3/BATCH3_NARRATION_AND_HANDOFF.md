@@ -13,3 +13,7 @@ Use as editing guidance, not exact phonetic timing: hook 0.26–4.97, control 5.
 ## Gate and carry-forward
 
 The script, source map, shot plan and initial selected-voice recording are available; Batch 3 remains **not fully passed** because actual pronunciation, wording and natural joined delivery have not been independently heard/verified, nor have captions been checked against playback. Batch 2 was skipped at the user's direction, not passed: believable animated animal/foot, contact depiction, the actual viral reference benchmark and commercial rights remain open for Batch 4. Existing cartoon concepts do not meet the reference. Batch 4 production and Batch 5 final audiovisual checks are not complete. No publication or paid expenditure is authorized.
+
+## Independent recognition diagnostic
+
+Default PocketSphinx language-model decoding was also run on a 16 kHz conversion of the complete narration. It made many clear recognition errors (for example “Tokay gecko's toes” became “okay gecko stones”; “setae” became “seem to”). It rendered the opening as “a gecko can't hold on to a wall” instead of scripted “can,” and the suction sentence as “the arts suction cups” instead of “they aren't suction cups.” These are **ASR flags, not evidence that the synthesized voice actually says the wrong words**. They make the can/can't and aren't negations particularly important in the pending human/audio listening check. Transcript-constrained alignment cannot clear these flags because it assumes the text.
