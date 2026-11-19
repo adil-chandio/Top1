@@ -141,10 +141,16 @@ check('har tier ka priceKey CONFIG.pricing mein hai', () => {
 });
 
 check('films ke required fields hain aur ids unique hain', () => {
-  const required = ['id', 'title', 'category', 'duration', 'path', 'poster'];
+  const required = ['id', 'title', 'category', 'duration', 'poster'];
   for (const film of FILMS) {
     for (const field of required) {
       assert(film[field], `${film.id} missing ${field}`);
+    }
+    // drive films need driveId, not path; file films need path
+    if (film.provider === 'drive') {
+      assert(film.driveId, `${film.id} missing driveId`);
+    } else {
+      assert(film.path, `${film.id} missing path`);
     }
   }
   const ids = FILMS.map((f) => f.id);
