@@ -1,0 +1,24 @@
+name: Gecko scientific media inspection
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/gecko-paper-media.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Inspect publisher media links
+        run: |
+          python - <<'PY'
+          import urllib.request,re
+          url='https://www.annualreviews.org/content/journals/10.1146/annurev-ecolsys-120213-091839'
+          try:
+           req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'});text=urllib.request.urlopen(req,timeout=25).read().decode(errors='replace')
+           for term in ['.mp4','vimeo.com','youtube.com','Video 1']:
+            matches=list(re.finditer(re.escape(term),text,re.I));print('::notice title='+term+' count::'+str(len(matches)))
+            for m in matches[:2]:print('::notice title='+term+' excerpt::'+re.sub(r'\s+',' ',text[max(0,m.start()-200):m.end()+200]).replace('%','%25'))
+          except Exception as e:print('::warning title=publisher error::'+str(e))
+          PY
