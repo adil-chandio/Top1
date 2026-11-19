@@ -4,11 +4,11 @@ on:
     branches: [arena/868808e3-top1]
     paths: [.github/workflows/monarch-reference-study.yml]
 permissions:
-  contents: read
+  contents: write
 jobs:
   decode:
     runs-on: ubuntu-latest
-    timeout-minutes: 7
+    timeout-minutes: 10
     env:
       RECIPIENT: |
         -----BEGIN CERTIFICATE-----
@@ -37,6 +37,19 @@ jobs:
         5IOwgjUT0K56NkwkHYRSJvwfCscQVOk=
         -----END CERTIFICATE-----
     steps:
+      - name: Install pinned public media decoders
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet --no-deps --target "$RUNNER_TEMP/decoder" imageio-ffmpeg==0.8.1
+          npm install --no-audit --no-fund --prefix "$RUNNER_TEMP/probe" @ffprobe-installer/linux-x64@5.2.0
+          mkdir -p "$RUNNER_TEMP/bin"
+          FFMPEG=$(find "$RUNNER_TEMP/decoder" -name 'ffmpeg-linux-x86_64*' -type f | head -1)
+          ln -s "$FFMPEG" "$RUNNER_TEMP/bin/ffmpeg"
+          ln -s "$RUNNER_TEMP/probe/node_modules/@ffprobe-installer/linux-x64/ffprobe" "$RUNNER_TEMP/bin/ffprobe"
+          "$RUNNER_TEMP/bin/ffmpeg" -version | sed -n '1p'
+          "$RUNNER_TEMP/bin/ffprobe" -version | sed -n '1p'
+          echo "$RUNNER_TEMP/bin" >> "$GITHUB_PATH"
       - name: Inspect the public Dailymotion player
         shell: bash
         run: |
@@ -121,6 +134,26 @@ jobs:
                   note(name+' preview unavailable: '+issue(error))
           Path('transport/receipt.json').write_text(json.dumps(report,indent=2))
           PYWORK
+      - name: Make the sealed copy readable through the repository API
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP"
+          python3 - <<'PYWORK'
+          import base64, json, tarfile
+          from pathlib import Path
+          with tarfile.open('sealed.tar','w') as tar:
+              for f in sorted(Path('transport').iterdir()):
+                  tar.add(f,arcname=f.name,recursive=False)
+          raw=Path('sealed.tar').read_bytes()
+          if len(raw)>20000000: raise SystemExit('Sealed reference transport budget exceeded')
+          Path('sealed.json').write_text(json.dumps({'encoding':'base64','content':base64.b64encode(raw).decode()}))
+          PYWORK
+          blob=$(gh api -X POST "repos/$GITHUB_REPOSITORY/git/blobs" --input sealed.json --jq .sha)
+          echo "::notice title=Sealed transport blob::$blob"
+          rm sealed.tar sealed.json
       - name: Transfer one-day sealed inspection copy
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
