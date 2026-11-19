@@ -1,10 +1,16 @@
 name: Deploy 3D services site
 
-# Publishes services/website/site to GitHub Pages.
-# Free, no card, no token to rotate. URL: https://adil-chandio.github.io/Top1/
+# Publishes services/website/site to GitHub Pages — free, no card, no domain.
+# URL: https://adil-chandio.github.io/Top1/
 #
-# Because Pages serves this repo from a subpath, everything in the site must use
-# relative URLs (./site.css, not /site.css). Keep it that way.
+# ONE-TIME SETUP (owner must click this, a token cannot):
+#   https://github.com/adil-chandio/Top1/settings/pages
+#   Source: "GitHub Actions"
+#
+# After that this workflow redeploys on every push to main. Nothing else to do.
+#
+# Pages serves the repo from a subpath, so every URL in the site stays relative
+# (./site.css, not /site.css). Do not break that.
 
 on:
   push:
@@ -34,12 +40,9 @@ jobs:
           mkdir -p _site
           cp -R services/website/site/. _site/
           rm -f _site/site.test.mjs
-          cp services/website/site/index.html _site/404.html || true
+          cp services/website/site/index.html _site/404.html
 
       - uses: actions/configure-pages@v5
-        with:
-          # Turns Pages on for the repo if it has never been enabled.
-          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
