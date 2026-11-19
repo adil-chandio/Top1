@@ -1,0 +1,160 @@
+name: Creature Edition picture rendering
+on:
+  push:
+    branches: [arena/868808e3-top1]
+    paths: [.github/workflows/creature-edition-render.yml]
+permissions: {}
+jobs:
+  picture:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 26
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        include:
+          - {first: 0, end: 34}
+          - {first: 34, end: 68}
+          - {first: 68, end: 101}
+          - {first: 101, end: 135}
+          - {first: 135, end: 169}
+          - {first: 169, end: 203}
+          - {first: 203, end: 236}
+          - {first: 236, end: 270}
+          - {first: 270, end: 304}
+          - {first: 987, end: 1016}
+          - {first: 1016, end: 1045}
+          - {first: 1045, end: 1074}
+          - {first: 1176, end: 1205}
+          - {first: 1205, end: 1235}
+          - {first: 1235, end: 1264}
+          - {first: 1331, end: 1362}
+          - {first: 1362, end: 1394}
+          - {first: 1394, end: 1425}
+          - {first: 1425, end: 1457}
+          - {first: 1457, end: 1488}
+    name: Frames ${{ matrix.first }}–${{ matrix.end }} (exclusive)
+    env:
+      INPUT_BLOB: '51c4aab891d69ad2854aa50318bed5e455ade7f9'
+      INPUT_SHA256: '84c79cd489cc22c39b226fe2014f6ff6665930bfec148d974771704a060d3858'
+      FIRST: ${{ matrix.first }}
+      END: ${{ matrix.end }}
+      WIDTH: '648'
+      SAMPLES: '9'
+      OPENBLAS_NUM_THREADS: 1
+      OMP_NUM_THREADS: 4
+      RECIPIENT: |
+        -----BEGIN CERTIFICATE-----
+        MIIESzCCArOgAwIBAgIUJ1/QwMmJkGYkDd+KulgemQ+6LbkwDQYJKoZIhvcNAQEL
+        BQAwNTEzMDEGA1UEAwwqTW9uYXJjaCBDcmVhdHVyZSBFZGl0aW9uIHBpY3R1cmUg
+        cmVjaXBpZW50MB4XDTI2MTExOTA0MTgwNloXDTI2MTEyMjA0MTgwNlowNTEzMDEG
+        A1UEAwwqTW9uYXJjaCBDcmVhdHVyZSBFZGl0aW9uIHBpY3R1cmUgcmVjaXBpZW50
+        MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAxXyOLyIeCnTmX3Bq6tPz
+        kCPyV99c4mLydPlpQ4GkfYK6c1sVsjj8OQ1YMV7URaXSc5f/T7SwsU2Eb+sogCt8
+        O3z//gZzKWM77CFukKa/jRQbvCQbX1tRdDa46FT53/zJR6wIBLX5GfL7Poa5C77u
+        KdDIjgkFC5du2FUuepsib95BblXKBZTwI//cRgAQz/xsc7NjgWHHqKmrdsozte+E
+        Ko+1MKnOGnqBgepr8DsJ/WjDMzYeDGJlZIZtoBOsm3NCNzDAPpend170neTuWxFe
+        5NaKF/NjwO/iTAiVwA/oPyMXGKxTQzNyf1bY9Alfr/1ftm5+wjFb3dKAcBBV/noU
+        eSh9RA0kfLlbC64weDPGBdSbYQzVuu3ag2E7X22W9H/qz/+0kkPshKNYAeuu5eki
+        dmmPXGgtlDEGdz2Bv50lpn1JsAsye6ff73dvDjcpN7Zzm+VItnxHyb9zKV+eissM
+        PwRXVXK0qKocB8o7r8A1zfDmxz3wEBMcO7WZ3cV3MJzLAgMBAAGjUzBRMB0GA1Ud
+        DgQWBBQsWmHSRjHWglxohegk39Rdv40DDzAfBgNVHSMEGDAWgBQsWmHSRjHWglxo
+        hegk39Rdv40DDzAPBgNVHRMBAf8EBTADAQH/MA0GCSqGSIb3DQEBCwUAA4IBgQAw
+        B3ajj1fSpxWx7Gh1Z8u1TQsWyGuhzrX2ujHg5Ljk25nRg/CtU572fy4A4oNMNk+v
+        eZoi8BMWtMeeGK9XnWqyeSoPquIJfLpsFcIIBJg8x1lCa3WBxkRjHTmHPEuA0gc9
+        24vjTyfdfVOVthksQk+iJRtrd7BYh5jqZjor0CjvVesGhNpNIgbUCq3OjX4q/ySW
+        Q1aqmxJCeGfXCmwEVJu8CqfQHohUOzBjRScsM+CkAvJamB1PzFd0Hq8U/mKoI4dT
+        zyaydEtKhmGFoN8NNfF7+mmHeyxPHQ/bqQjw0XiK3ELthQqOymvmpy00Z4AfIQ9h
+        pLFty+Vywo/NbwQ3/XfBijjOb/F5pJ9zdoLrS/DqndJmTJBYAFo8VK9wXblwPurq
+        EN8KyyWwUWlXRAFXTZFLzAC4kzMnHSSS45YjHTik7jZWZIXK+x4jQ/o/ia38saZ7
+        0uZ9/OF/h7n8NJ/3DRWStxifJiUkb6m4FWFJhByFU7bq0fRCy7HbGaRKNVj+EzA=
+        -----END CERTIFICATE-----
+    steps:
+      - name: Rehydrate the original picture sources only
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir "$RUNNER_TEMP/creature"
+          cd "$RUNNER_TEMP/creature"
+          gh api "repos/$GITHUB_REPOSITORY/git/blobs/$INPUT_BLOB" --jq .content | base64 -d > rig.tgz
+          test "$(git hash-object rig.tgz)" = "$INPUT_BLOB"
+          printf '%s  rig.tgz\n' "$INPUT_SHA256" | sha256sum -c -
+          python3 - <<'PY'
+          import tarfile
+          from pathlib import Path
+          names = {'creature/geometry.py','creature/surface.py','creature/habitat.py','creature/assets/conservatory.jpg',
+                   'natural/render.py','natural/filmlight.py','natural/take.json'}
+          with tarfile.open('rig.tgz') as a:
+              assert len(a.getmembers()) == len(names) and {m.name for m in a.getmembers()} == names
+              for m in a.getmembers():
+                  assert m.isfile() and 0 < m.size <= 28_000_000
+                  p = Path(m.name)
+                  p.parent.mkdir(parents=True, exist_ok=True)
+                  p.write_bytes(a.extractfile(m).read())
+          PY
+      - name: Verify the video encoder before tracing
+        shell: bash
+        run: |
+          set -euo pipefail
+          dir="$RUNNER_TEMP/creature/bin"
+          mkdir "$dir"
+          if ! command -v ffmpeg >/dev/null; then
+            python3 -m pip install --disable-pip-version-check --quiet --no-deps --target "$RUNNER_TEMP/creature/ffmpeg" imageio-ffmpeg==0.8.1
+            decoder=$(find "$RUNNER_TEMP/creature/ffmpeg" -type f -name 'ffmpeg-linux-x86_64*' -print -quit)
+            test -x "$decoder"
+            ln -s "$decoder" "$dir/ffmpeg"
+          fi
+          if ! command -v ffprobe >/dev/null; then
+            npm install --no-audit --no-fund --prefix "$RUNNER_TEMP/creature/probe" @ffprobe-installer/linux-x64@5.2.0
+            ln -s "$RUNNER_TEMP/creature/probe/node_modules/@ffprobe-installer/linux-x64/ffprobe" "$dir/ffprobe"
+          fi
+          export PATH="$dir:$PATH"
+          command -v openssl
+          ffmpeg -version | sed -n '1p'
+          ffprobe -version | sed -n '1p'
+          ffmpeg -nostdin -hide_banner -v error -f lavfi -i color=s=16x16:r=24 -frames:v 1 -c:v libx264 -f null -
+          echo "$dir" >> "$GITHUB_PATH"
+      - name: Trace native frames with Blender Cycles
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/creature"
+          py=$(find /opt/hostedtoolcache/Python/3.11.*/x64/bin -name python3 -print | sort -V | tail -1)
+          test -x "$py"
+          "$py" -m pip install --disable-pip-version-check --quiet --target "$PWD/runtime" 'bpy==4.3.0' 'numpy==1.26.4'
+          export PYTHONPATH="$PWD/runtime"
+          "$py" -u natural/render.py --width "$WIDTH" --samples "$SAMPLES" --threads 4 --poses natural/take.json --out plate --range "$FIRST:$END"
+      - name: Seal picture segment without a public video artifact
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          cd "$RUNNER_TEMP/creature"
+          trap 'echo "::error title=Seal step failure::line $LINENO (exit $?)"' ERR
+          trap 'rm -f run.mp4 sealed.cms transport.json cert.pem' EXIT
+          ffmpeg -nostdin -hide_banner -v error -y -filter_threads 1 -framerate 24 -start_number "$FIRST" -i plate/%04d.png \
+            -frames:v "$((END-FIRST))" -vf 'scale=in_range=full:out_range=tv:out_color_matrix=bt709,format=yuv420p' \
+            -c:v libx264 -profile:v high -threads 3 -preset slow -crf 13 -g 48 -an -colorspace bt709 -color_range tv \
+            -color_trc bt709 -color_primaries bt709 -bsf:v 'h264_metadata=colour_primaries=1:transfer_characteristics=1:matrix_coefficients=1:video_full_range_flag=0' \
+            -video_track_timescale 24000 -movflags +faststart+write_colr run.mp4
+          n=$(ffprobe -v error -count_frames -select_streams v:0 -show_entries stream=nb_read_frames -of csv=p=0 run.mp4)
+          test "$n" = "$((END-FIRST))"
+          echo "$RECIPIENT" > cert.pem
+          openssl cms -encrypt -binary -aes256 -in run.mp4 -outform DER -out sealed.cms cert.pem
+          python3 - <<'PY'
+          import base64, json
+          from pathlib import Path
+          data = Path('sealed.cms').read_bytes()
+          assert 0 < len(data) < 8_000_000
+          Path('transport.json').write_text(json.dumps({'encoding':'base64','content':base64.b64encode(data).decode()}))
+          PY
+          blob=$(gh api -X POST "repos/$GITHUB_REPOSITORY/git/blobs" --input transport.json --jq .sha)
+          receipt=$(python3 -c 'import json; print(json.load(open("plate/picture.json"))["fingerprint"])')
+          sha=$(sha256sum run.mp4 | cut -d' ' -f1)
+          echo "::notice title=Sealed Creature Edition picture::$FIRST:$END:$blob:$sha:$receipt"
