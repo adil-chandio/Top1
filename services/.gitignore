@@ -1,0 +1,17 @@
+# Generated clips (FFmpeg output) — commit mat karo
+clips/out/
+
+# Drafts / scratch
+drafts/
+
+# Client-specific work (naam, briefs, files)
+clients/
+
+# Kit ke paid deliverables — public repo mein kabhi nahi
+deliverables/
+
+# Credentials
+.env
+.env.*
+*.json.key
+service-account*.json

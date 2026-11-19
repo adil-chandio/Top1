@@ -1,0 +1,41 @@
+{
+  "id": "pressure-cooker",
+  "title": "How a Pressure Cooker Works",
+  "fps": 24,
+  "duration": 29,
+  "width": 1080,
+  "height": 1920,
+  "language": "roman-urdu",
+  "posterAt": 26.5,
+  "marks": {
+    "sealLocks": 4.2,
+    "steamRises": 8.5,
+    "valveLifts": 16.0,
+    "foodTender": 23.0
+  },
+  "claims": [
+    { "text": "Band bartan mein bhaap pressure barhati hai", "status": "verified", "source": "standard physics" },
+    { "text": "Zyada pressure par paani 100C se upar ubalta hai", "status": "verified", "source": "standard physics" },
+    { "text": "Is video ka steam motion illustrative hai, CFD nahi", "status": "verified", "source": "internal" }
+  ],
+  "shots": [
+    { "frame": 0, "move": "mechanism", "tag": "THE LID", "note": "Cold open: lid band hota hai, seal click", "purpose": "hook", "jumpTo": 0.9,
+      "params": { "model": "cooker", "motion": "lidLock", "duration": 2.6 } },
+    { "frame": 62, "move": "cutaway", "tag": "INSIDE", "note": "Axial cutaway: andar paani aur khana", "purpose": "explain", "jumpTo": 3.2,
+      "params": { "model": "cooker", "axis": "x", "angle": 90 } },
+    { "frame": 140, "move": "mechanism", "tag": "STEAM RISES", "note": "Bhaap upar uthti hai, bahar nahi ja sakti", "purpose": "explain", "jumpTo": 6.4,
+      "params": { "model": "cooker", "motion": "steamTrapped", "duration": 4.0 } },
+    { "frame": 236, "move": "quantity", "tag": "PRESSURE BUILDS", "note": "Pressure bar chart 1.0 se 1.8 bar", "purpose": "evidence", "jumpTo": 10.3,
+      "params": { "values": [1.0, 1.3, 1.6, 1.8], "color": "#ffba72", "layout": "vertical" } },
+    { "frame": 340, "move": "mechanism", "tag": "THE VALVE", "note": "Valve uth kar extra steam chhodta hai — safety", "purpose": "explain", "jumpTo": 14.6,
+      "params": { "model": "cooker", "motion": "valveLift", "duration": 2.4 } },
+    { "frame": 424, "move": "overlay", "tag": "BOILING POINT", "note": "Water boiling point 121C par marker", "purpose": "evidence", "jumpTo": 18.0,
+      "params": { "type": "vector", "path": "vertical", "color": "#ffba72", "animated": true } },
+    { "frame": 496, "move": "compare", "tag": "WITH VS WITHOUT", "note": "Khula bartan 100C vs cooker 121C", "purpose": "evidence", "jumpTo": 21.0,
+      "params": { "stateA": "openPot", "stateB": "pressureCooker", "labels": true } },
+    { "frame": 578, "move": "slowReplay", "tag": "THE PAYOFF", "note": "Wahi steam, slow clock, food tender", "purpose": "payoff", "jumpTo": 24.5,
+      "params": { "sourceShot": 4, "clockRate": 0.55 } },
+    { "frame": 636, "move": "payoff", "tag": "WHY IT WORKS", "note": "Title + held image", "purpose": "payoff", "jumpTo": 27.0,
+      "params": { "text": "Bhaap, na ke aag", "holdSec": 2.4 } }
+  ]
+}

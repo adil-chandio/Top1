@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://top1.local/schemas/shot-plan.json",
+  "title": "Top1 Shot Plan",
+  "description": "Agent ka output: script se bana frame-locked shot plan. Ye schema tools/gecko/edit.json aur src/air-crush.js ke asli format se generalize kiya gaya hai.",
+  "type": "object",
+  "required": ["id", "title", "fps", "duration", "width", "height", "shots"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]{2,40}$" },
+    "title": { "type": "string", "minLength": 3, "maxLength": 80 },
+    "fps": { "const": 24, "description": "Abhi 24 fixed hai — cuts frame-aligned hone chahiye" },
+    "duration": { "type": "number", "minimum": 8, "maximum": 90 },
+    "width": { "const": 1080 },
+    "height": { "const": 1920 },
+    "language": { "enum": ["roman-urdu", "english"] },
+    "posterAt": { "type": "number", "minimum": 0, "description": "Poster frame ka second" },
+    "marks": {
+      "type": "object",
+      "description": "Editorial beats (jaise gecko edit.json ke marks). Free-form seconds.",
+      "additionalProperties": { "type": "number", "minimum": 0 }
+    },
+    "claims": {
+      "type": "array",
+      "description": "Har factual claim. QA isko check karta hai aur visuals ko 'illustration' label karta hai.",
+      "items": {
+        "type": "object",
+        "required": ["text", "status"],
+        "additionalProperties": false,
+        "properties": {
+          "text": { "type": "string" },
+          "status": { "enum": ["verified", "unsure", "fictional"] },
+          "source": { "type": "string" }
+        }
+      }
+    },
+    "shots": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 30,
+      "items": { "$ref": "#/$defs/shot" }
+    }
+  },
+  "$defs": {
+    "shot": {
+      "type": "object",
+      "required": ["frame", "move", "note"],
+      "additionalProperties": false,
+      "properties": {
+        "frame": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Cut ka frame number (frame/24 = second). Pehla shot frame 0 par."
+        },
+        "move": {
+          "enum": ["reveal", "cutaway", "mechanism", "compare", "quantity", "pushIn", "overlay", "freezeLabel", "slowReplay", "payoff"],
+          "description": "Parametric move ID — PARAMETRIC-MOVES.md"
+        },
+        "note": { "type": "string", "maxLength": 120, "description": "Is shot ka maqsad, insaan ke padhne ke liye" },
+        "purpose": { "enum": ["hook", "explain", "evidence", "payoff", "transition"] },
+        "params": {
+          "type": "object",
+          "description": "Move-specific. Schema validation move ke contract se hoti hai, yahan free-form.",
+          "additionalProperties": true
+        },
+        "tag": { "type": "string", "maxLength": 32, "description": "Editorial label, jaise 'THE SNAP'" },
+        "jumpTo": { "type": "number", "minimum": 0, "description": "Shot guide ka seek point" }
+      }
+    }
+  }
+}
