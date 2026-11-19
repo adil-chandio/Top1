@@ -39,6 +39,9 @@ jobs:
           cp services/website/site/index.html _site/404.html || true
 
       - uses: actions/configure-pages@v5
+        with:
+          # Turns Pages on for the repo if it has never been enabled.
+          enablement: true
 
       - uses: actions/upload-pages-artifact@v3
         with:
