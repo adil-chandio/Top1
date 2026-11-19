@@ -35,7 +35,59 @@ node services/website/site.test.mjs      # 21 checks
 
 ---
 
-## ⭐ Videos kaise daalni hain (2 steps)
+## Videos — abhi kya lagi hain
+
+**9 films. 4 Google Drive se, 5 local se.**
+
+| Film | Source | Aspect | Duration |
+| --- | --- | --- | --- |
+| How Does a Gecko Let Go? ⭐ | Drive | 9:16 | 62s |
+| Who Crushed the Can? | local | 9:16 | 29s |
+| Ancient Bear | Drive | 16:9 | 100s |
+| Panama — Premium Edit | Drive | 16:9 | 47s |
+| Camera Ant — Opening Pilot | Drive | 16:9 | 24s |
+| The Light With No Battery | local | 9:16 | 50s |
+| Halo Desk Lamp | local | 9:16 | 10s |
+| The Phone Storage Trap | local | 9:16 | 11s |
+| The Last Signal | local | 9:16 | 12s |
+
+Drive folder: `1xdVBLKSzKWUdasQDZ6DZeVuF6LwCZON8` (public, anyone-with-link)
+
+### Drive videos kaise kaam karte hain
+
+Drive direct MP4 streaming block karta hai, isliye site `/preview` iframe use karti hai.
+Poster Google ke thumbnail endpoint se aata hai:
+
+```js
+{
+  id: 'bear',
+  title: 'Ancient Bear',
+  category: 'Character',
+  duration: '100s',
+  aspect: '16:9',
+  provider: 'drive',                                    // ← ye
+  driveId: '1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU',
+  poster: 'https://drive.google.com/thumbnail?id=1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU&sz=w1080',
+  line: 'A fully modelled creature.',
+}
+```
+
+**Zaroori:** Drive file **public** honi chahiye (Share → Anyone with the link → Viewer).
+Private ho to thumbnail aur embed dono fail ho jayenge.
+
+### ⚠️ Drive ki kami
+
+- ❌ Player par **YouTube branding** dikhti hai
+- ❌ Mobile par slower load hota hai
+- ❌ SEO nahi milti (Google video ko index nahi karta)
+- ❌ Chromecast / Picture-in-Picture theek se kaam nahi karta
+
+**Long term better:** YouTube par daalo, `provider: 'youtube'` + `youtubeId` use karo.
+(Filhaal YouTube support code mein nahi hai — bolo to 20 minute mein add kar dunga.)
+
+---
+
+## ⭐ Nayi videos kaise daalni hain (2 steps)
 
 Abhi site **tumhari maujooda 5 films** dikha rahi hai (`public/demos/` se, read-only).
 

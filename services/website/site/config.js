@@ -53,36 +53,90 @@ export const CONFIG = {
 /**
  * FILMS
  * ─────────────────────────────────────────────────────
- * path:   '/assets/film.mp4'  (apni video)  ya
- *         '/public/demos/x.mp4' (maujooda films — server se)
- * poster: WebP thumbnail
- * aspect: '9:16' | '16:9' | '1:1'
+ * provider: 'file'  → apni MP4, site/assets/ atha public/demos/ se
+ *           'drive' → Google Drive, driveId se embed (koi download nahi)
+ * aspect:   '9:16' | '16:9' | '1:1'
  *
- * Servable paths repo root se resolve hote hain.
- * Apni videos aane par: site/assets/ mein daalo,
- * path '/assets/film.mp4' likho. Bas.
+ * Drive videos ke liye: sirf driveId + poster ka thumbnail URL.
+ * File ko public karna zaroori hai (anyone with link = reader).
+ *
+ * Apni videos aane par: site/assets/ mein daalo, path '/assets/film.mp4'.
  */
 export const FILMS = [
+  {
+    id: 'gecko',
+    title: 'How Does a Gecko Let Go?',
+    category: 'Science',
+    duration: '62s',
+    aspect: '9:16',
+    featured: true,
+    provider: 'drive',
+    driveId: '1ONAFv4Q0Tff74c6UAiIgtEui2RbiqD8G',
+    path: '/public/demos/gecko-let-go.mp4',
+    poster: 'https://drive.google.com/thumbnail?id=1ONAFv4Q0Tff74c6UAiIgtEui2RbiqD8G&sz=w1080',
+    line: 'A gecko holds a glass wall with no glue and no suction. Watch the toe peel.',
+  },
   {
     id: 'air-crush',
     title: 'Who Crushed the Can?',
     category: 'Mechanism',
     duration: '29s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'file',
     path: '/public/demos/air-crush-cinema-edition.mp4',
     poster: '/public/demos/air-crush-cinema-edition.webp',
-    aspect: '9:16',
-    featured: true,
     line: 'An aluminium can buckles without anyone squeezing it.',
+  },
+  {
+    id: 'bear',
+    title: 'Ancient Bear',
+    category: 'Character',
+    duration: '100s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU',
+    path: '/public/demos/ancient-bear.mp4',
+    poster: 'https://drive.google.com/thumbnail?id=1FbcyPfHGVK6HclfQUnfqLv5UWvGMAITU&sz=w1080',
+    line: 'A fully modelled creature in a cinematic 3D sequence.',
+  },
+  {
+    id: 'panama',
+    title: 'Panama — Premium Edit',
+    category: 'Cinematic',
+    duration: '47s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '1hPD7ffTwfkTvTLds3_zenpX6VWHcyH8O',
+    path: '/public/demos/panama.mp4',
+    poster: 'https://drive.google.com/thumbnail?id=1hPD7ffTwfkTvTLds3_zenpX6VWHcyH8O&sz=w1080',
+    line: 'A premium 3D edit built for a wide frame.',
+  },
+  {
+    id: 'ant',
+    title: 'Camera Ant — Opening Pilot',
+    category: 'Character',
+    duration: '24s',
+    aspect: '16:9',
+    featured: false,
+    provider: 'drive',
+    driveId: '13MMMlFq2Dixd2mjThpCBj3na4rV8RH80',
+    path: '/public/demos/camera-ant.mp4',
+    poster: 'https://drive.google.com/thumbnail?id=13MMMlFq2Dixd2mjThpCBj3na4rV8RH80&sz=w1080',
+    line: 'An insect character pilot with full camera work.',
   },
   {
     id: 'reflector',
     title: 'The Light With No Battery',
     category: 'Optics',
     duration: '50s',
+    aspect: '9:16',
+    featured: false,
+    provider: 'file',
     path: '/public/demos/reflector-no-battery.mp4',
     poster: '/public/demos/reflector-no-battery.webp',
-    aspect: '9:16',
-    featured: true,
     line: 'A bicycle reflector looks lit up. It has no power source.',
   },
   {
@@ -90,10 +144,11 @@ export const FILMS = [
     title: 'Halo Desk Lamp',
     category: 'Product',
     duration: '10s',
-    path: '/public/demos/halo-desk-lamp-cinema-cut.mp4',
-    poster: '/public/demos/halo-desk-lamp-cinema-cut.webp',
     aspect: '9:16',
     featured: false,
+    provider: 'file',
+    path: '/public/demos/halo-desk-lamp-cinema-cut.mp4',
+    poster: '/public/demos/halo-desk-lamp-cinema-cut.webp',
     line: 'A machined switch, a copper ring, and a warm pool of light.',
   },
   {
@@ -101,10 +156,11 @@ export const FILMS = [
     title: 'The Phone Storage Trap',
     category: 'Explainer',
     duration: '11s',
-    path: '/public/demos/phone-storage-cinema-cut.mp4',
-    poster: '/public/demos/phone-storage-cinema-cut.webp',
     aspect: '9:16',
     featured: false,
+    provider: 'file',
+    path: '/public/demos/phone-storage-cinema-cut.mp4',
+    poster: '/public/demos/phone-storage-cinema-cut.webp',
     line: 'Files fill up a phone. A macro lens shows where the space goes.',
   },
   {
@@ -112,10 +168,11 @@ export const FILMS = [
     title: 'The Last Signal',
     category: 'Story',
     duration: '12s',
-    path: '/public/demos/last-signal-cinema-cut.mp4',
-    poster: '/public/demos/last-signal-cinema-cut.webp',
     aspect: '9:16',
     featured: false,
+    provider: 'file',
+    path: '/public/demos/last-signal-cinema-cut.mp4',
+    poster: '/public/demos/last-signal-cinema-cut.webp',
     line: 'A probe sends one last pulse. Something answers.',
   },
 ];

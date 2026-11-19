@@ -151,17 +151,54 @@ check('films ke required fields hain aur ids unique hain', () => {
   assert(new Set(ids).size === ids.length, 'duplicate film ids');
 });
 
-check('film asset paths resolve hote hain (site/assets ya repo root)', () => {
+check('local film files exist (Drive entries exempt)', () => {
   for (const film of FILMS) {
-    for (const kind of ['path', 'poster']) {
-      const value = film[kind];
-      // Servable paths root-relative hote hain: /assets/x.mp4 ya /public/demos/x.mp4
-      const target = value.startsWith('/')
-        ? resolve(repoRoot, value.slice(1))
-        : resolve(dir, value);
-      assert(existsSync(target), `${film.id}: ${kind} not found — ${value}`);
+    if (film.provider === 'drive') {
+      assert(film.driveId, `${film.id}: drive provider without driveId`);
+      continue;
     }
+    const target = film.path.startsWith('/')
+      ? resolve(repoRoot, film.path.slice(1))
+      : resolve(dir, film.path);
+    assert(existsSync(target), `${film.id}: missing ${film.path}`);
   }
+});
+
+check('har film ka poster maujood hai (local file ya https URL)', () => {
+  for (const film of FILMS) {
+    if (film.poster.startsWith('https://')) continue;
+    const target = film.poster.startsWith('/')
+      ? resolve(repoRoot, film.poster.slice(1))
+      : resolve(dir, film.poster);
+    assert(existsSync(target), `${film.id}: missing poster ${film.poster}`);
+  }
+});
+
+check('Drive posters Google ke thumbnail endpoint se aate hain', () => {
+  for (const film of FILMS.filter((f) => f.provider === 'drive')) {
+    assert(
+      film.poster.startsWith('https://drive.google.com/thumbnail?id='),
+      `${film.id}: Drive poster should use drive.google.com/thumbnail`
+    );
+    assert(
+      film.poster.includes(film.driveId),
+      `${film.id}: poster id does not match driveId`
+    );
+  }
+});
+
+check('aspect ratio valid hai aur cards use karte hain', () => {
+  const allowed = ['9:16', '16:9', '1:1'];
+  for (const film of FILMS) {
+    assert(allowed.includes(film.aspect), `${film.id}: bad aspect ${film.aspect}`);
+  }
+});
+
+check('site.js Drive embed support karta hai', () => {
+  const source = readFileSync(resolve(dir, 'site.js'), 'utf8');
+  assert(source.includes('/preview'), 'no Drive /preview embed URL');
+  assert(source.includes('isDrive'), 'no Drive provider branch');
+  assert(!source.includes('export=download'), 'should not force-download Drive files');
 });
 
 check('kam az kam ek featured film hai', () => {

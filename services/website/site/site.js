@@ -10,6 +10,19 @@ const $$ = (sel) => [...document.querySelectorAll(sel)];
 
 const CURRENCY_SYMBOL = { PKR: 'PKR', USD: '$' };
 
+/**
+ * Drive video embed URL.
+ * Drive direct MP4 streaming block karta hai, isliye /preview iframe use hota hai.
+ * File public hona chahiye: anyone-with-link = reader.
+ */
+function driveEmbed(id) {
+  return `https://drive.google.com/file/d/${id}/preview`;
+}
+
+function isDrive(film) {
+  return film.provider === 'drive' && film.driveId;
+}
+
 function price(key) {
   const value = CONFIG.pricing[key];
   if (!value) return null;
@@ -69,19 +82,48 @@ function renderContacts() {
 /* ─── Hero film ──────────────────────────────────────── */
 
 function renderHero() {
-  const films = FILMS.filter((f) => f.featured);
-  const film = films[0] ?? FILMS[0];
+  const film = FILMS.find((f) => f.featured) ?? FILMS[0];
   if (!film) return;
 
+  const figure = $('#hero-film');
   const video = $('#hero-video');
-  video.poster = film.poster;
-  video.src = film.path;
+  const playBtn = $('#hero-play');
+
+  // 16:9 hero ko squeeze na kare
+  if (film.aspect === '16:9') figure.classList.add('is-wide');
 
   $('#hero-caption').innerHTML =
     `<strong>${film.title}</strong><span>${film.category} · ${film.duration}</span>`;
 
-  const figure = $('#hero-film');
-  const playBtn = $('#hero-play');
+  if (isDrive(film)) {
+    // Drive: poster dikhao, click par iframe embed
+    video.remove();
+    const img = document.createElement('img');
+    img.src = film.poster;
+    img.alt = '';
+    img.width = 1080;
+    img.height = 1920;
+    img.fetchPriority = 'high';
+    figure.prepend(img);
+
+    const launch = () => {
+      const frame = document.createElement('iframe');
+      frame.src = `${driveEmbed(film.driveId)}?autoplay=1`;
+      frame.title = film.title;
+      frame.allow = 'autoplay; fullscreen; encrypted-media';
+      frame.allowFullscreen = true;
+      frame.className = 'hero-iframe';
+      figure.querySelector('img')?.remove();
+      figure.prepend(frame);
+      figure.classList.add('is-playing');
+    };
+
+    playBtn.addEventListener('click', launch);
+    return;
+  }
+
+  video.poster = film.poster;
+  video.src = film.path;
 
   const start = () => {
     figure.classList.add('is-playing');
@@ -110,18 +152,30 @@ function renderFilms() {
   const lbVideo = $('#lb-video');
   const lbTitle = $('#lb-title');
 
-  grid.innerHTML = FILMS.map((film) => `
-    <button class="card" type="button" role="listitem"
+  grid.innerHTML = FILMS.map((film) => {
+    const wide = film.aspect === '16:9' ? ' is-wide' : '';
+    const source = isDrive(film) ? 'Drive' : '';
+    return `
+    <button class="card${wide}" type="button" role="listitem"
             data-id="${film.id}" aria-label="Play ${film.title}, ${film.duration}">
-      <img src="${film.poster}" alt="" loading="lazy" width="720" height="1280" />
+      <img src="${film.poster}" alt="" loading="lazy" />
       <span class="card-body">
-        <span class="card-cat">${film.category}</span>
+        <span class="card-cat">${film.category}${source ? ` · ${source}` : ''}</span>
         <h3>${film.title}</h3>
-        <span class="card-time">${film.duration}</span>
+        <span class="card-time">${film.duration} · ${film.aspect}</span>
       </span>
       ${film.featured ? '<span class="card-badge">Featured</span>' : ''}
-    </button>
-  `).join('');
+    </button>`;
+  }).join('');
+
+  /** Clean up whatever is currently inside the dialog */
+  const resetLightbox = () => {
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+    lbVideo.hidden = false;
+    lb.querySelector('iframe')?.remove();
+  };
 
   grid.addEventListener('click', (event) => {
     const card = event.target.closest('.card');
@@ -129,17 +183,31 @@ function renderFilms() {
     const film = FILMS.find((f) => f.id === card.dataset.id);
     if (!film) return;
 
-    lbVideo.src = film.path;
-    lbVideo.poster = film.poster;
+    resetLightbox();
     lbTitle.textContent = `${film.title} · ${film.duration}`;
+
+    if (isDrive(film)) {
+      // Drive: iframe embed. 16:9 ho to dialog ko wide karo
+      lb.classList.toggle('is-wide', film.aspect === '16:9');
+      lbVideo.hidden = true;
+      const frame = document.createElement('iframe');
+      frame.src = `${driveEmbed(film.driveId)}?autoplay=1`;
+      frame.title = film.title;
+      frame.allow = 'autoplay; fullscreen; encrypted-media';
+      frame.allowFullscreen = true;
+      lbVideo.after(frame);
+    } else {
+      lb.classList.toggle('is-wide', film.aspect === '16:9');
+      lbVideo.src = film.path;
+      lbVideo.poster = film.poster;
+      lbVideo.play().catch(() => {});
+    }
+
     lb.showModal();
-    lbVideo.play().catch(() => {});
   });
 
   const close = () => {
-    lbVideo.pause();
-    lbVideo.removeAttribute('src');
-    lbVideo.load();
+    resetLightbox();
     lb.close();
   };
 
@@ -148,9 +216,7 @@ function renderFilms() {
     // Click on backdrop (dialog itself, not its children)
     if (e.target === lb) close();
   });
-  lb.addEventListener('close', () => {
-    lbVideo.pause();
-  });
+  lb.addEventListener('close', resetLightbox);
 
   $('#p-films').textContent = String(FILMS.length);
 }
