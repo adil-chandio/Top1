@@ -1,0 +1,27 @@
+name: Gecko model source inspection
+on:
+  push:
+    branches: [arena/b040eefc-top1]
+    paths: [.github/workflows/gecko-assets-inspect.yml]
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Examine public listing metadata
+        run: |
+          python - <<'PY'
+          import urllib.request,re,json
+          urls={'poly':'https://poly.pizza/m/3FxwLOrGiNL','blendkit':'https://www.blenderkit.com/api/v1/search/?query=asset_base_id:303d820a-8d9c-4520-a534-e9acd8b98284'}
+          for name,url in urls.items():
+           try:
+            req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'});data=urllib.request.urlopen(req,timeout=25).read().decode();print('::notice title='+name+' bytes::'+str(len(data)))
+            if name=='poly':
+             for term in ['.glb','.gltf','download','3FxwLOrGiNL']:
+              i=data.lower().find(term.lower());part=re.sub(r'\s+',' ',data[max(0,i-150):i+350]) if i>=0 else 'absent';print('::notice title=poly '+term+'::'+part[:450].replace('%','%25'))
+            else:
+             j=json.loads(data);print('::notice title=blendkit metadata::'+json.dumps(j,default=str)[:2200].replace('%','%25'))
+           except Exception as e:print('::warning title='+name+' error::'+str(e))
+          PY
