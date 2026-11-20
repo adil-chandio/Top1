@@ -1,0 +1,29 @@
+{
+  "status": "Investigation Cut MP4 uploaded and relisted; private owner review, no publication",
+  "destination": "Monarch Extinct Channel / 3d animation",
+  "verified": {
+    "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut.mp4",
+    "bytes": 93022469,
+    "sha256": "32542211c4967daf925bdd392e7cb342076ab287870520169585f8f5b903b956",
+    "md5": "d8f9fcc14e4008aea98ded4982cad4ca"
+  },
+  "unchanged_sound_redesign": {
+    "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full-Sound-Redesign.mp4",
+    "bytes": 90664671,
+    "sha256": "ee55136ff6e180155c07d191dc23ea7cf8ed255096ebc3b14b62f89ff6a1c991",
+    "md5": "b3a907c43c58af97a3890ecf9384018e"
+  },
+  "reusable_existing_srt": {
+    "bytes": 11274,
+    "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+    "md5": "a3972319948a4ce6de3bd085dc116801",
+    "identical_to_revision_sidecar": true
+  },
+  "local_handoff": {
+    "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut-Handoff.md",
+    "bytes": 7731,
+    "sha256": "3634797473c148671329083cc74a8a237c3d5ec0afecaaee703ef5c88630874c",
+    "md5": "7593c179f7de86a87215bca02545c9be"
+  },
+  "permissions_changed": false
+}

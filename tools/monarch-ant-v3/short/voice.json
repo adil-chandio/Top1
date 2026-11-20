@@ -1,0 +1,35 @@
+{
+  "voice": "voice-01",
+  "language": "English",
+  "take_text": {
+    "01-hook": "That jump started with a bite.",
+    "02-trap": "Her feet are sliding. And at the bottom of the pit, there's an antlion.",
+    "03-air": "Those jaws can snap in midair. But the ant doesn't lift.",
+    "04-sand": "Same snap, this time against sand. One launch clears the rim.",
+    "05-wall": "Another hits the wall.",
+    "06-question": "Then researchers glued some ants' jaws shut. Same trap. But now, could they still get out?"
+  },
+  "edits": [
+    {"take":"01-hook","frame":4, "in":0.118,"out":1.814},
+    {"take":"02-trap","frame":65,"in":0.112,"out":4.624},
+    {"take":"03-air","frame":285,"in":0.111,"out":2.596},
+    {"take":"03-air","frame":367,"in":2.899,"out":4.952},
+    {"take":"04-sand","frame":430,"in":0.106,"out":2.914},
+    {"take":"04-sand","frame":539,"in":3.199,"out":5.076},
+    {"take":"05-wall","frame":687,"in":0.116,"out":1.723},
+    {"take":"06-question","frame":759,"in":0.118,"out":7.193}
+  ],
+  "captions": [
+    [0.18,1.81,"That jump started with a bite."],
+    [2.21,3.63,"Her feet are sliding."],
+    [3.82,6.64,"And at the bottom of the pit,\nthere's an antlion."],
+    [9.54,11.94,"Those jaws can snap in midair."],
+    [12.29,14.24,"But the ant doesn't lift."],
+    [14.38,17.12,"Same snap, this time against sand."],
+    [18.03,19.85,"One launch clears the rim."],
+    [22.95,24.48,"Another hits the wall."],
+    [25.36,28.27,"Then researchers glued\nsome ants' jaws shut."],
+    [28.48,29.32,"Same trap."],
+    [29.55,32.36,"But now, could they still get out?"]
+  ]
+}

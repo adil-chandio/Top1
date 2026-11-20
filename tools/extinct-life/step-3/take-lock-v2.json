@@ -1,0 +1,68 @@
+{
+  "repository_script_sha256": "85e843808cfe090efa115b6659d7635f52f202765c5186740e3586e3c3a9c308",
+  "script_sha256": "07c3e15ad033c880022f1bbc81fe26d400250d2b35dd55b8911a13c9e268d4c7",
+  "voice_selection": {
+    "language": "en",
+    "audition": "02",
+    "voice_id": "voice-02",
+    "scope": "Same session selection as English v1, not a clone."
+  },
+  "takes": {
+    "01": {
+      "file": "raw/01.wav",
+      "sha256": "ef1aec215611b37b911dc87c5a76bfc065e1487bb538a7618f629ad459be3f9a",
+      "spoken_text_sha256": "a6c014b41b975e9bbd4049a51197831c8ac4abf37a2ac6b36c206391d3e7943c",
+      "spoken_overrides": {}
+    },
+    "02": {
+      "file": "raw/02.wav",
+      "sha256": "03b0a6486c6ef6013b057c3056b86f66c153a746414311c37ba86ca82d859250",
+      "spoken_text_sha256": "e0d8483938a1c48fff01cd5c38c7e4589c29461035798cce3bd52c98a49cb729",
+      "spoken_overrides": {
+        "Koum": "Koom"
+      }
+    },
+    "03": {
+      "file": "raw/03.wav",
+      "sha256": "b693f6427bf8d8c39eb926e55f81a360c979276efe130f7a7c842b900915f14c",
+      "spoken_text_sha256": "85e562e15588747de85de1655cb5a683e4c31c324b3c9e9b5b40b0ff2aedd643",
+      "spoken_overrides": {
+        "Koum": "Koom"
+      }
+    },
+    "04": {
+      "file": "raw/04.wav",
+      "sha256": "22194144e6e8ec45b180217648bf4c4f4ab626516e2a4edb3c4284f8608f9269",
+      "spoken_text_sha256": "8a1194ea03be680d5f4c105fc211e8ff087b25820beff48882bcf99c0048c2a3",
+      "spoken_overrides": {}
+    },
+    "05": {
+      "file": "raw/05.wav",
+      "sha256": "b59e2f6b8299d9ff7f11ab64229727d327dcd76c2ca7783e8e84a35bf948bca3",
+      "spoken_text_sha256": "30f8b52f10884bc0580d0be6f78ce78a3605893b287cabd02e5484a46f9ea549",
+      "spoken_overrides": {
+        "Sousa": "Sohza"
+      }
+    },
+    "06": {
+      "file": "raw/06.wav",
+      "sha256": "9e3a101449ebc2b9f35fb91fb89fb2bcf29efe1dc92eb4c2d230aa0327e09c4e",
+      "spoken_text_sha256": "251b67b467c2d54ac98181d39ea221a84a1d3e53bb684d7d6cfc40a50553c015",
+      "spoken_overrides": {
+        "2024": "twenty twenty-four"
+      }
+    },
+    "07": {
+      "file": "raw/07.wav",
+      "sha256": "4b9c6cd3dfebd5cdd0ab11ebb007dbcbc708bfc95d386470f81f373be41d341b",
+      "spoken_text_sha256": "4982c59937e34b8f01eda9d499e1e87930810110437e14a713866610bc0acec3",
+      "spoken_overrides": {}
+    },
+    "08": {
+      "file": "raw/08.wav",
+      "sha256": "5d28c8d21303ce4e920d3bf95ee1f94b974f88a1c8a6718346b9edbf55a6d0b4",
+      "spoken_text_sha256": "c2b9fefc9f94e29f10afe2a32a1b57601d23a2db3cf05ffe756c6398828c833a",
+      "spoken_overrides": {}
+    }
+  }
+}

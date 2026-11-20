@@ -1,0 +1,21 @@
+{
+  "status": "Sound Redesign MP4 uploaded and relisted; for review, not published",
+  "destination": "Monarch Extinct Channel / 3d animation",
+  "verified": {
+    "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full-Sound-Redesign.mp4",
+    "bytes": 90664671,
+    "sha256": "ee55136ff6e180155c07d191dc23ea7cf8ed255096ebc3b14b62f89ff6a1c991",
+    "md5": "b3a907c43c58af97a3890ecf9384018e"
+  },
+  "reusable_existing_srt": {
+    "bytes": 11274,
+    "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+    "md5": "a3972319948a4ce6de3bd085dc116801",
+    "identical_to_revision_sidecar": true
+  },
+  "local_only_due_to_connector_upload_rate_limit": [
+    "deliverables/extinct-life-step-6/Extinct-Life-Atlantic-Tracks-Cinematic-Full-Sound-Redesign.en.srt",
+    "deliverables/extinct-life-step-6/Extinct-Life-Atlantic-Tracks-Cinematic-Full-Sound-Redesign-Handoff.md"
+  ],
+  "permissions_changed": false
+}

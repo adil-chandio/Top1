@@ -1,0 +1,2434 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "edition": "Cinema Edition",
+  "status": "Owner review only; not published",
+  "duration_s": 445.6666666666667,
+  "frames": 10696,
+  "fps": 24,
+  "original_archive": {
+    "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut.mp4",
+    "bytes": 93022469,
+    "sha256": "32542211c4967daf925bdd392e7cb342076ab287870520169585f8f5b903b956",
+    "md5": "d8f9fcc14e4008aea98ded4982cad4ca"
+  },
+  "streams": {
+    "vide": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 10696,
+      "edit_list": [
+        [
+          21392000,
+          4000
+        ]
+      ],
+      "codec_tag": "avc1",
+      "frames": 10696,
+      "ticks_per_frame": 2000,
+      "exact_presentation_grid": true,
+      "seekable_shot_starts": 66,
+      "decoding_timestamps_increase": true
+    },
+    "soun": {
+      "timescale": 48000,
+      "track_ticks": 21393024,
+      "packet_samples": 20892,
+      "edit_list": [
+        [
+          21392000,
+          1024
+        ]
+      ],
+      "codec_tag": "mp4a"
+    },
+    "sbtl": {
+      "timescale": 1000000,
+      "track_ticks": 438799000,
+      "packet_samples": 192,
+      "edit_list": [
+        [
+          21062352,
+          0
+        ]
+      ],
+      "codec_tag": "tx3g"
+    },
+    "text": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 9,
+      "edit_list": [
+        [
+          21392000,
+          0
+        ]
+      ],
+      "codec_tag": "text"
+    }
+  },
+  "track_fingerprints": {
+    "video": {
+      "sample_bytes_sha256": "72e871e111d1dacebf0260a4ddb8f74578029f6eedb0c493c07ac84232c1256e",
+      "sample_count": 10696,
+      "sample_description_sha256": "57fbe67be3492bb3e19e229e3eb319051cf41a004520e4dc31982e48eaabcb7e",
+      "stts_sha256": "56ada97ac5af1680483d9e7510f79cb3fef518490ca08226e002e10d9e00bef8",
+      "ctts_sha256": "95f17fa2106eb98b7f94482e81b506e12498089794eff7cbd64f6abfecdad474",
+      "stss_sha256": "3a14f6f0246c139c22dd009d12f1cc163d88ef72978e5e4676dc707baf735930",
+      "stsz_sha256": "62f706a9f9e3a56f1b8ca842f6cee5174be081b1e0f7c2996d87c7b240b90342",
+      "media_clock_language_sha256": "2e79494692ef881ef138f1ddd22f9472f3190d30c1353b9ebb75691327036c4a",
+      "edit_list_sha256": "6ce0699ad218d24db6517449ae7d003653a580d92cb080e6c8e9ed9743a3069b",
+      "handler_sha256": "c4b2bc4e21713245f4882d2bcfaa15603f781120fc28d288f1c7f153612e266c"
+    },
+    "subtitles": {
+      "sample_bytes_sha256": "7d362a2d62195671f1930078b07a420a6b6d2a88077e3d091f18c893a1e50ff1",
+      "sample_count": 192,
+      "sample_description_sha256": "8aacb1eb23166cca156457f2559058290fa416170130c898f46177da5232a209",
+      "stts_sha256": "9c07aaae921835b70202fd28b00a1d17c68e8a3c2681eaa080237e155a029d01",
+      "stsz_sha256": "75e5ce17b5ecb66a38a1e6cc82efd0da85ce80ebf039dd42bddeb535f8fda091",
+      "media_clock_language_sha256": "b1f15aa78d670897e3a0b52ed0e5db48d8ea4a10c29bf43c3636ae33367f6c4b",
+      "edit_list_sha256": "8ee14342a4a33ee3fdba693c4545864132d4e7b87d2752c99cad68ebd4eacff6",
+      "handler_sha256": "8cef3962931bcdb18b45a4cc04944fbf9eefb8f62b4b7ede30d4915cc63e1d8f"
+    },
+    "chapters": {
+      "sample_bytes_sha256": "87e0172077cc3e1a0e69d73d64892d3eaaad87f48cc7da383172c7256d77aad0",
+      "sample_count": 9,
+      "sample_description_sha256": "58d46910930e0b673a5da57bb707326bf0b4f3be2bdb3851b87bc78196e542f9",
+      "stts_sha256": "822e2ea854fed3dd2beff4da5e1b37ceef1f02b07dc099b9ff3340fe35f2035b",
+      "stsz_sha256": "e2eb5c39540c54b1c1faaf7bd7a50476e6bbdc56c64ea57821d286dba30711e3",
+      "media_clock_language_sha256": "823a7351b1689c88c1ded03b19454884a4953ffa96b4bac4fa987bb54f52b1ab",
+      "edit_list_sha256": "884e636c2a214edc75b4dffed92b629c07398c22f8228c800fb326429da7e673",
+      "handler_sha256": "5e28e67c4ed9931383a2061473bd29a8e06b808212524604d59a4e0d2853aaef"
+    }
+  },
+  "current_aac_packets": 20892,
+  "chapters": [
+    {
+      "title": "The ocean came later",
+      "start_frame": 0,
+      "end_frame": 869
+    },
+    {
+      "title": "Four pieces of ancient ground",
+      "start_frame": 869,
+      "end_frame": 2442
+    },
+    {
+      "title": "The big print has a problem",
+      "start_frame": 2442,
+      "end_frame": 3741
+    },
+    {
+      "title": "What the mud held onto",
+      "start_frame": 3741,
+      "end_frame": 5138
+    },
+    {
+      "title": "The other side of the comparison",
+      "start_frame": 5138,
+      "end_frame": 6496
+    },
+    {
+      "title": "Date the rocks, then move the continents",
+      "start_frame": 6496,
+      "end_frame": 7871
+    },
+    {
+      "title": "A route, not a trail",
+      "start_frame": 7871,
+      "end_frame": 9669
+    },
+    {
+      "title": "The journey we can follow",
+      "start_frame": 9669,
+      "end_frame": 10540
+    },
+    {
+      "title": "Sources and maps",
+      "start_frame": 10540,
+      "end_frame": 10696
+    }
+  ],
+  "caption_audit": {
+    "english_cues": 127,
+    "last_caption_out_ms": 438799,
+    "all_script_words": 1217,
+    "narrated_sections": 8,
+    "max_nonspace_break_chars_per_second": 19.649,
+    "same_spelling_and_punctuation_as_v2": true,
+    "identical_srt_round_trip": true,
+    "subtitle_language": "eng",
+    "not_burned_in": true
+  },
+  "picture": {
+    "frames_reviewed": 263,
+    "comparison_shots": [
+      {
+        "shot": 0,
+        "key": "sousa-intro",
+        "midframe": 31,
+        "mean_luma_std": 22.31,
+        "mean_rgb_change_vs_IC": 40.846,
+        "within_shot_rgb_delta": [
+          17.23,
+          18.74
+        ]
+      },
+      {
+        "shot": 1,
+        "key": "koum-intro",
+        "midframe": 81,
+        "mean_luma_std": 24.213,
+        "mean_rgb_change_vs_IC": 55.501,
+        "within_shot_rgb_delta": [
+          12.37,
+          12.62
+        ]
+      },
+      {
+        "shot": 2,
+        "key": "modern",
+        "midframe": 172,
+        "mean_luma_std": 46.513,
+        "mean_rgb_change_vs_IC": 40.19,
+        "within_shot_rgb_delta": [
+          16.94,
+          0.23
+        ]
+      },
+      {
+        "shot": 3,
+        "key": "rewind",
+        "midframe": 357,
+        "mean_luma_std": 46.723,
+        "mean_rgb_change_vs_IC": 34.793,
+        "within_shot_rgb_delta": [
+          21.35,
+          7.62
+        ]
+      },
+      {
+        "shot": 4,
+        "key": "title",
+        "midframe": 549,
+        "mean_luma_std": 40.853,
+        "mean_rgb_change_vs_IC": 50.467,
+        "within_shot_rgb_delta": [
+          13.87,
+          28.96
+        ]
+      },
+      {
+        "shot": 5,
+        "key": "koum-locate",
+        "midframe": 697,
+        "mean_luma_std": 47.118,
+        "mean_rgb_change_vs_IC": 37.878,
+        "within_shot_rgb_delta": [
+          41.22,
+          35.01
+        ]
+      },
+      {
+        "shot": 6,
+        "key": "first-horizons",
+        "midframe": 817,
+        "mean_luma_std": 28.934,
+        "mean_rgb_change_vs_IC": 10.441,
+        "within_shot_rgb_delta": [
+          14.88,
+          9.09
+        ]
+      },
+      {
+        "shot": 7,
+        "key": "mayo",
+        "midframe": 954,
+        "mean_luma_std": 37.546,
+        "mean_rgb_change_vs_IC": 25.304,
+        "within_shot_rgb_delta": [
+          14.04,
+          14.77
+        ]
+      },
+      {
+        "shot": 8,
+        "key": "survey",
+        "midframe": 1097,
+        "mean_luma_std": 23.247,
+        "mean_rgb_change_vs_IC": 28.593,
+        "within_shot_rgb_delta": [
+          19.74,
+          18.58
+        ]
+      },
+      {
+        "shot": 9,
+        "key": "step-weight",
+        "midframe": 1210,
+        "mean_luma_std": 30.361,
+        "mean_rgb_change_vs_IC": 27.623,
+        "within_shot_rgb_delta": [
+          27.89,
+          28.98
+        ]
+      },
+      {
+        "shot": 10,
+        "key": "trackways",
+        "midframe": 1310,
+        "mean_luma_std": 22.781,
+        "mean_rgb_change_vs_IC": 28.623,
+        "within_shot_rgb_delta": [
+          17.09,
+          16.37
+        ]
+      },
+      {
+        "shot": 11,
+        "key": "local-steps",
+        "midframe": 1405,
+        "mean_luma_std": 19.503,
+        "mean_rgb_change_vs_IC": 30.139,
+        "within_shot_rgb_delta": [
+          13.19,
+          13.22
+        ]
+      },
+      {
+        "shot": 12,
+        "key": "edge",
+        "midframe": 1503,
+        "mean_luma_std": 31.491,
+        "mean_rgb_change_vs_IC": 17.208,
+        "within_shot_rgb_delta": [
+          13.03,
+          13.28
+        ]
+      },
+      {
+        "shot": 13,
+        "key": "four",
+        "midframe": 1677,
+        "mean_luma_std": 30.405,
+        "mean_rgb_change_vs_IC": 10.699,
+        "within_shot_rgb_delta": [
+          17.75,
+          7.3
+        ]
+      },
+      {
+        "shot": 14,
+        "key": "erosion",
+        "midframe": 1912,
+        "mean_luma_std": 31.103,
+        "mean_rgb_change_vs_IC": 21.189,
+        "within_shot_rgb_delta": [
+          13.14,
+          12.89
+        ]
+      },
+      {
+        "shot": 15,
+        "key": "views",
+        "midframe": 2096,
+        "mean_luma_std": 28.515,
+        "mean_rgb_change_vs_IC": 8.174,
+        "within_shot_rgb_delta": [
+          7.72,
+          9.5
+        ]
+      },
+      {
+        "shot": 16,
+        "key": "mesh",
+        "midframe": 2237,
+        "mean_luma_std": 32.604,
+        "mean_rgb_change_vs_IC": 6.876,
+        "within_shot_rgb_delta": [
+          11.22,
+          11.84
+        ]
+      },
+      {
+        "shot": 17,
+        "key": "tease",
+        "midframe": 2372,
+        "mean_luma_std": 30.646,
+        "mean_rgb_change_vs_IC": 41.533,
+        "within_shot_rgb_delta": [
+          17.86,
+          17.64
+        ]
+      },
+      {
+        "shot": 18,
+        "key": "ruler",
+        "midframe": 2545,
+        "mean_luma_std": 28.92,
+        "mean_rgb_change_vs_IC": 34.305,
+        "within_shot_rgb_delta": [
+          17.2,
+          17.42
+        ]
+      },
+      {
+        "shot": 19,
+        "key": "diffuse",
+        "midframe": 2772,
+        "mean_luma_std": 30.289,
+        "mean_rgb_change_vs_IC": 37.764,
+        "within_shot_rgb_delta": [
+          29.89,
+          24.15
+        ]
+      },
+      {
+        "shot": 20,
+        "key": "press",
+        "midframe": 3031,
+        "mean_luma_std": 54.248,
+        "mean_rgb_change_vs_IC": 22.543,
+        "within_shot_rgb_delta": [
+          16.16,
+          19.17
+        ]
+      },
+      {
+        "shot": 21,
+        "key": "results",
+        "midframe": 3219,
+        "mean_luma_std": 60.834,
+        "mean_rgb_change_vs_IC": 16.887,
+        "within_shot_rgb_delta": [
+          17.56,
+          15.87
+        ]
+      },
+      {
+        "shot": 22,
+        "key": "changing",
+        "midframe": 3363,
+        "mean_luma_std": 27.808,
+        "mean_rgb_change_vs_IC": 38.705,
+        "within_shot_rgb_delta": [
+          25.98,
+          24.92
+        ]
+      },
+      {
+        "shot": 23,
+        "key": "makers",
+        "midframe": 3530,
+        "mean_luma_std": 30.993,
+        "mean_rgb_change_vs_IC": 12.353,
+        "within_shot_rgb_delta": [
+          8.14,
+          18.47
+        ]
+      },
+      {
+        "shot": 24,
+        "key": "underfoot",
+        "midframe": 3674,
+        "mean_luma_std": 29.737,
+        "mean_rgb_change_vs_IC": 12.33,
+        "within_shot_rgb_delta": [
+          8.86,
+          9.53
+        ]
+      },
+      {
+        "shot": 25,
+        "key": "ripples",
+        "midframe": 3800,
+        "mean_luma_std": 24.535,
+        "mean_rgb_change_vs_IC": 41.246,
+        "within_shot_rgb_delta": [
+          23.68,
+          20.45
+        ]
+      },
+      {
+        "shot": 26,
+        "key": "cracks",
+        "midframe": 3891,
+        "mean_luma_std": 20.881,
+        "mean_rgb_change_vs_IC": 42.575,
+        "within_shot_rgb_delta": [
+          14.01,
+          13.49
+        ]
+      },
+      {
+        "shot": 27,
+        "key": "clues",
+        "midframe": 3985,
+        "mean_luma_std": 31.258,
+        "mean_rgb_change_vs_IC": 12.254,
+        "within_shot_rgb_delta": [
+          8.63,
+          9.11
+        ]
+      },
+      {
+        "shot": 28,
+        "key": "drain",
+        "midframe": 4132,
+        "mean_luma_std": 20.539,
+        "mean_rgb_change_vs_IC": 47.952,
+        "within_shot_rgb_delta": [
+          16.75,
+          16.06
+        ]
+      },
+      {
+        "shot": 29,
+        "key": "wear",
+        "midframe": 4301,
+        "mean_luma_std": 17.56,
+        "mean_rgb_change_vs_IC": 39.28,
+        "within_shot_rgb_delta": [
+          16.51,
+          11.15
+        ]
+      },
+      {
+        "shot": 30,
+        "key": "cement",
+        "midframe": 4526,
+        "mean_luma_std": 15.291,
+        "mean_rgb_change_vs_IC": 24.93,
+        "within_shot_rgb_delta": [
+          3.29,
+          5.96
+        ]
+      },
+      {
+        "shot": 31,
+        "key": "mat",
+        "midframe": 4769,
+        "mean_luma_std": 19.721,
+        "mean_rgb_change_vs_IC": 21.181,
+        "within_shot_rgb_delta": [
+          5.49,
+          5.11
+        ]
+      },
+      {
+        "shot": 32,
+        "key": "burial",
+        "midframe": 4932,
+        "mean_luma_std": 28.961,
+        "mean_rgb_change_vs_IC": 9.592,
+        "within_shot_rgb_delta": [
+          12.68,
+          11.47
+        ]
+      },
+      {
+        "shot": 33,
+        "key": "preserved",
+        "midframe": 5065,
+        "mean_luma_std": 30.01,
+        "mean_rgb_change_vs_IC": 40.42,
+        "within_shot_rgb_delta": [
+          23.5,
+          22.58
+        ]
+      },
+      {
+        "shot": 34,
+        "key": "sousa",
+        "midframe": 5196,
+        "mean_luma_std": 38.335,
+        "mean_rgb_change_vs_IC": 37.871,
+        "within_shot_rgb_delta": [
+          39.46,
+          30.86
+        ]
+      },
+      {
+        "shot": 35,
+        "key": "sousa-water",
+        "midframe": 5303,
+        "mean_luma_std": 45.109,
+        "mean_rgb_change_vs_IC": 30.088,
+        "within_shot_rgb_delta": [
+          11.64,
+          11.9
+        ]
+      },
+      {
+        "shot": 36,
+        "key": "sousa-mat",
+        "midframe": 5423,
+        "mean_luma_std": 12.101,
+        "mean_rgb_change_vs_IC": 20.435,
+        "within_shot_rgb_delta": [
+          3.36,
+          5.81
+        ]
+      },
+      {
+        "shot": 37,
+        "key": "rim",
+        "midframe": 5566,
+        "mean_luma_std": 27.129,
+        "mean_rgb_change_vs_IC": 38.542,
+        "within_shot_rgb_delta": [
+          17.35,
+          17.82
+        ]
+      },
+      {
+        "shot": 38,
+        "key": "held",
+        "midframe": 5710,
+        "mean_luma_std": 26.39,
+        "mean_rgb_change_vs_IC": 11.025,
+        "within_shot_rgb_delta": [
+          6.73,
+          6.92
+        ]
+      },
+      {
+        "shot": 39,
+        "key": "conditions",
+        "midframe": 5905,
+        "mean_luma_std": 31.762,
+        "mean_rgb_change_vs_IC": 12.935,
+        "within_shot_rgb_delta": [
+          9.07,
+          8.85
+        ]
+      },
+      {
+        "shot": 40,
+        "key": "banks",
+        "midframe": 6158,
+        "mean_luma_std": 46.943,
+        "mean_rgb_change_vs_IC": 31.622,
+        "within_shot_rgb_delta": [
+          24.05,
+          9.61
+        ]
+      },
+      {
+        "shot": 41,
+        "key": "unmatched",
+        "midframe": 6393,
+        "mean_luma_std": 24.587,
+        "mean_rgb_change_vs_IC": 4.489,
+        "within_shot_rgb_delta": [
+          7.37,
+          5.48
+        ]
+      },
+      {
+        "shot": 42,
+        "key": "window",
+        "midframe": 6538,
+        "mean_luma_std": 25.136,
+        "mean_rgb_change_vs_IC": 27.382,
+        "within_shot_rgb_delta": [
+          9.75,
+          2.6
+        ]
+      },
+      {
+        "shot": 43,
+        "key": "pollen",
+        "midframe": 6655,
+        "mean_luma_std": 35.691,
+        "mean_rgb_change_vs_IC": 14.442,
+        "within_shot_rgb_delta": [
+          5.35,
+          3.63
+        ]
+      },
+      {
+        "shot": 44,
+        "key": "regional",
+        "midframe": 6814,
+        "mean_luma_std": 26.148,
+        "mean_rgb_change_vs_IC": 4.425,
+        "within_shot_rgb_delta": [
+          6.4,
+          4.85
+        ]
+      },
+      {
+        "shot": 45,
+        "key": "broad",
+        "midframe": 6985,
+        "mean_luma_std": 26.232,
+        "mean_rgb_change_vs_IC": 26.091,
+        "within_shot_rgb_delta": [
+          9.06,
+          2.33
+        ]
+      },
+      {
+        "shot": 46,
+        "key": "restore",
+        "midframe": 7151,
+        "mean_luma_std": 47.432,
+        "mean_rgb_change_vs_IC": 37.359,
+        "within_shot_rgb_delta": [
+          12.92,
+          12.49
+        ]
+      },
+      {
+        "shot": 47,
+        "key": "bedrock",
+        "midframe": 7286,
+        "mean_luma_std": 32.161,
+        "mean_rgb_change_vs_IC": 13.881,
+        "within_shot_rgb_delta": [
+          10.28,
+          10.65
+        ]
+      },
+      {
+        "shot": 48,
+        "key": "structures",
+        "midframe": 7420,
+        "mean_luma_std": 45.291,
+        "mean_rgb_change_vs_IC": 35.047,
+        "within_shot_rgb_delta": [
+          10.01,
+          9.55
+        ]
+      },
+      {
+        "shot": 49,
+        "key": "stretch",
+        "midframe": 7594,
+        "mean_luma_std": 30.986,
+        "mean_rgb_change_vs_IC": 15.517,
+        "within_shot_rgb_delta": [
+          12.38,
+          11.76
+        ]
+      },
+      {
+        "shot": 50,
+        "key": "fill",
+        "midframe": 7780,
+        "mean_luma_std": 31.676,
+        "mean_rgb_change_vs_IC": 14.796,
+        "within_shot_rgb_delta": [
+          10.4,
+          8.46
+        ]
+      },
+      {
+        "shot": 51,
+        "key": "land",
+        "midframe": 7927,
+        "mean_luma_std": 47.705,
+        "mean_rgb_change_vs_IC": 36.263,
+        "within_shot_rgb_delta": [
+          10.65,
+          10.24
+        ]
+      },
+      {
+        "shot": 52,
+        "key": "valleys",
+        "midframe": 8108,
+        "mean_luma_std": 37.499,
+        "mean_rgb_change_vs_IC": 29.486,
+        "within_shot_rgb_delta": [
+          19.78,
+          14.2
+        ]
+      },
+      {
+        "shot": 53,
+        "key": "possible",
+        "midframe": 8301,
+        "mean_luma_std": 47.585,
+        "mean_rgb_change_vs_IC": 34.7,
+        "within_shot_rgb_delta": [
+          10.78,
+          9.82
+        ]
+      },
+      {
+        "shot": 54,
+        "key": "generations",
+        "midframe": 8469,
+        "mean_luma_std": 25.563,
+        "mean_rgb_change_vs_IC": 5.108,
+        "within_shot_rgb_delta": [
+          6.41,
+          6.98
+        ]
+      },
+      {
+        "shot": 55,
+        "key": "fish",
+        "midframe": 8684,
+        "mean_luma_std": 12.339,
+        "mean_rgb_change_vs_IC": 16.756,
+        "within_shot_rgb_delta": [
+          3.99,
+          26.12
+        ]
+      },
+      {
+        "shot": 56,
+        "key": "fish-basins",
+        "midframe": 8922,
+        "mean_luma_std": 25.583,
+        "mean_rgb_change_vs_IC": 12.56,
+        "within_shot_rgb_delta": [
+          12.78,
+          39.39
+        ]
+      },
+      {
+        "shot": 57,
+        "key": "patterns",
+        "midframe": 9105,
+        "mean_luma_std": 29.565,
+        "mean_rgb_change_vs_IC": 9.362,
+        "within_shot_rgb_delta": [
+          3.82,
+          2.13
+        ]
+      },
+      {
+        "shot": 58,
+        "key": "tests",
+        "midframe": 9324,
+        "mean_luma_std": 27.21,
+        "mean_rgb_change_vs_IC": 3.645,
+        "within_shot_rgb_delta": [
+          38.96,
+          19.43
+        ]
+      },
+      {
+        "shot": 59,
+        "key": "still-possible",
+        "midframe": 9575,
+        "mean_luma_std": 46.299,
+        "mean_rgb_change_vs_IC": 34.659,
+        "within_shot_rgb_delta": [
+          10.45,
+          9.8
+        ]
+      },
+      {
+        "shot": 60,
+        "key": "rift",
+        "midframe": 9783,
+        "mean_luma_std": 29.483,
+        "mean_rgb_change_vs_IC": 13.627,
+        "within_shot_rgb_delta": [
+          11.4,
+          15.16
+        ]
+      },
+      {
+        "shot": 61,
+        "key": "return",
+        "midframe": 9976,
+        "mean_luma_std": 46.253,
+        "mean_rgb_change_vs_IC": 40.414,
+        "within_shot_rgb_delta": [
+          7.98,
+          7.4
+        ]
+      },
+      {
+        "shot": 62,
+        "key": "which-journey",
+        "midframe": 10112,
+        "mean_luma_std": 27.435,
+        "mean_rgb_change_vs_IC": 52.019,
+        "within_shot_rgb_delta": [
+          12.8,
+          8.94
+        ]
+      },
+      {
+        "shot": 63,
+        "key": "the-rocks",
+        "midframe": 10243,
+        "mean_luma_std": 27.477,
+        "mean_rgb_change_vs_IC": 29.147,
+        "within_shot_rgb_delta": [
+          21.15,
+          13.13
+        ]
+      },
+      {
+        "shot": 64,
+        "key": "last-print",
+        "midframe": 10428,
+        "mean_luma_std": 23.819,
+        "mean_rgb_change_vs_IC": 36.252,
+        "within_shot_rgb_delta": [
+          21.4,
+          45.13
+        ]
+      },
+      {
+        "shot": 65,
+        "key": "sources",
+        "midframe": 10618,
+        "mean_luma_std": 22.802,
+        "mean_rgb_change_vs_IC": 12.681,
+        "within_shot_rgb_delta": [
+          3.95,
+          4.15
+        ]
+      }
+    ],
+    "all_shots_differ_from_archive": true,
+    "median_shot_midpoint_delta": 27.503
+  },
+  "parts": [
+    {
+      "shot": 0,
+      "key": "sousa-intro",
+      "from_frame": 0,
+      "to_frame_exclusive": 63,
+      "frames": 63,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 543344,
+      "sha256": "52a292867746e4e85784bc75386fb0a77250b6f9f755fff692a8f81bf113f228",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 1,
+      "key": "koum-intro",
+      "from_frame": 63,
+      "to_frame_exclusive": 99,
+      "frames": 36,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 251863,
+      "sha256": "3196a4fa1a1057ebf996655244f194b94f09d9876b482aae0faaa5049b02b6ef",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 2,
+      "key": "modern",
+      "from_frame": 99,
+      "to_frame_exclusive": 245,
+      "frames": 146,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 659689,
+      "sha256": "3b73bc0469d242aec12524d6277edfe382e78502b314ade0cd5c4389e90248e1",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 3,
+      "key": "rewind",
+      "from_frame": 245,
+      "to_frame_exclusive": 470,
+      "frames": 225,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 1136476,
+      "sha256": "9abe13ad7892d77e48a2bf7ed8d3af69bb518372b99dd072b79e477cccca17dd",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 4,
+      "key": "title",
+      "from_frame": 470,
+      "to_frame_exclusive": 629,
+      "frames": 159,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1501367,
+      "sha256": "cca00ca81e3d49a61af8b75d0437b6370dabd4f2ab60b828c953734de8aa0b17",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 5,
+      "key": "koum-locate",
+      "from_frame": 629,
+      "to_frame_exclusive": 765,
+      "frames": 136,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 734106,
+      "sha256": "ba1ebe53a16e1252a8f4cce5662b9e7061d7e688b0c048936ca18d67d41481d3",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 6,
+      "key": "first-horizons",
+      "from_frame": 765,
+      "to_frame_exclusive": 869,
+      "frames": 104,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 746707,
+      "sha256": "525d56be9478eea9951af00b5ae12c3732d353a7bc9c7bb20bebd38ca53a6088",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 7,
+      "key": "mayo",
+      "from_frame": 869,
+      "to_frame_exclusive": 1040,
+      "frames": 171,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1552617,
+      "sha256": "229e8c329840084cabea6eb55f18fbe4ffb78c16937d9fb95eb5e69b6857943c",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 8,
+      "key": "survey",
+      "from_frame": 1040,
+      "to_frame_exclusive": 1154,
+      "frames": 114,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 922349,
+      "sha256": "f9eacc159173a166218e1fb258efe6416ee219f8c6b8ffbb0c86c1c2472123ec",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 9,
+      "key": "step-weight",
+      "from_frame": 1154,
+      "to_frame_exclusive": 1267,
+      "frames": 113,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 895955,
+      "sha256": "c38acb5d608d18b822d0f10445143497811a672a2aeb401e9479b471eadecca2",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 10,
+      "key": "trackways",
+      "from_frame": 1267,
+      "to_frame_exclusive": 1353,
+      "frames": 86,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 728099,
+      "sha256": "9616458055ba9bf47109af364e095de8f59a8384fcabb2c86018f921c559468e",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 11,
+      "key": "local-steps",
+      "from_frame": 1353,
+      "to_frame_exclusive": 1457,
+      "frames": 104,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 850020,
+      "sha256": "2cfb8456a6e70a4030848deedee916effcdc09424e5cae3a61ab4620131be8a7",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 12,
+      "key": "edge",
+      "from_frame": 1457,
+      "to_frame_exclusive": 1549,
+      "frames": 92,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 634187,
+      "sha256": "e4b9e30d8f4d5e6cbd3fc2be6ae4f362aa6605490c94616d2337f87b607213a8",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 13,
+      "key": "four",
+      "from_frame": 1549,
+      "to_frame_exclusive": 1805,
+      "frames": 256,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1721195,
+      "sha256": "19da505ea741987c518153fb340b7bdb5ce1dfaf076b9e50b4bacad4f8e60674",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 14,
+      "key": "erosion",
+      "from_frame": 1805,
+      "to_frame_exclusive": 2020,
+      "frames": 215,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1464957,
+      "sha256": "d588623bb2118432966cdd692464efb27248a1541d2a71ce7536ab06da4d25b5",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 15,
+      "key": "views",
+      "from_frame": 2020,
+      "to_frame_exclusive": 2172,
+      "frames": 152,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1157736,
+      "sha256": "26b8e4742116fa4003e1a1ed72098916625c5d346d53d51700b2f3c571f9997c",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 16,
+      "key": "mesh",
+      "from_frame": 2172,
+      "to_frame_exclusive": 2302,
+      "frames": 130,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 912786,
+      "sha256": "53139ea39fc0b76601af5a36671b4c1eed349d3ea73a161e5f93470c7df51b74",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 17,
+      "key": "tease",
+      "from_frame": 2302,
+      "to_frame_exclusive": 2442,
+      "frames": 140,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1139766,
+      "sha256": "fc744bb5759716cb6365e12ebc0e21f62873b0c133fb8a0e61b59798768e3e4a",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 18,
+      "key": "ruler",
+      "from_frame": 2442,
+      "to_frame_exclusive": 2648,
+      "frames": 206,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 1714113,
+      "sha256": "8cb1d9354a30ea74c0a75bcbee948a4a189274ef9e78b74ed014a8da99702ba5",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 19,
+      "key": "diffuse",
+      "from_frame": 2648,
+      "to_frame_exclusive": 2897,
+      "frames": 249,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2151873,
+      "sha256": "00aaae9a87f98ccded2830d1d9002c010f3353776cfbc3deca0ea6788bc78545",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 20,
+      "key": "press",
+      "from_frame": 2897,
+      "to_frame_exclusive": 3166,
+      "frames": 269,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2263358,
+      "sha256": "dcc1ee31392f71115d00666cd2e6fcde9419686463fec3a35c01ede6bdfe7658",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 21,
+      "key": "results",
+      "from_frame": 3166,
+      "to_frame_exclusive": 3273,
+      "frames": 107,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 839451,
+      "sha256": "89fad010e343eeed58b8dd5a798c81d64b195876877bbe1c9166bf8876a91103",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 22,
+      "key": "changing",
+      "from_frame": 3273,
+      "to_frame_exclusive": 3454,
+      "frames": 181,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1481499,
+      "sha256": "62e76e97f231a4edd617d6067d4354ce5a82555ab6d12807ecfd64a15bb9922b",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 23,
+      "key": "makers",
+      "from_frame": 3454,
+      "to_frame_exclusive": 3607,
+      "frames": 153,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1160567,
+      "sha256": "51dc67e057c5481da50cdbfa58901d6c0415972be52d201ce9814ad3777320cd",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 24,
+      "key": "underfoot",
+      "from_frame": 3607,
+      "to_frame_exclusive": 3741,
+      "frames": 134,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 912682,
+      "sha256": "d4a7b0790660d19131e6870c72be0ce0412008d62e02c7359bfb72e91a4bc8e1",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 25,
+      "key": "ripples",
+      "from_frame": 3741,
+      "to_frame_exclusive": 3860,
+      "frames": 119,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 962226,
+      "sha256": "7f9904c0a9a1b1cc9e567c08b70afb06e28b6a411c51c001e875ea5f360ec2b9",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 26,
+      "key": "cracks",
+      "from_frame": 3860,
+      "to_frame_exclusive": 3922,
+      "frames": 62,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 476924,
+      "sha256": "f7d0c7ba5f8445cc67eccbafa75dc21bff08ad459d19a0addf357fbe638402b5",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 27,
+      "key": "clues",
+      "from_frame": 3922,
+      "to_frame_exclusive": 4048,
+      "frames": 126,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 874246,
+      "sha256": "6b9459d68ba488c385da492e92dff788f2a2edcc84ea190bb6c0b03b151396d9",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 28,
+      "key": "drain",
+      "from_frame": 4048,
+      "to_frame_exclusive": 4217,
+      "frames": 169,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1538644,
+      "sha256": "25471a3173b5bffb2fc7acc641e3fa1fa1146115ef83c9ac7f824122969b34b1",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 29,
+      "key": "wear",
+      "from_frame": 4217,
+      "to_frame_exclusive": 4386,
+      "frames": 169,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1535245,
+      "sha256": "499edf00668c8b83c81dfb41c2511b41c29b2831ccdecfa4a87d35c076e93058",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 30,
+      "key": "cement",
+      "from_frame": 4386,
+      "to_frame_exclusive": 4667,
+      "frames": 281,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1993058,
+      "sha256": "66828146b7d755ba8771d08a24c7f6aa21dc4863bb2d41fc8c4b684525eef871",
+      "signature": "80a3960455a2fa4b27da775f16330aec91fccca41bdf1ea238e66089047d4431"
+    },
+    {
+      "shot": 31,
+      "key": "mat",
+      "from_frame": 4667,
+      "to_frame_exclusive": 4871,
+      "frames": 204,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1512676,
+      "sha256": "eaf9253d4b885e3b1651be22bdd432325a27b0e38f0c7535d3d2d8bdb6b01a78",
+      "signature": "80a3960455a2fa4b27da775f16330aec91fccca41bdf1ea238e66089047d4431"
+    },
+    {
+      "shot": 32,
+      "key": "burial",
+      "from_frame": 4871,
+      "to_frame_exclusive": 4993,
+      "frames": 122,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 831656,
+      "sha256": "ecfc6b9b5e304d798083102f0f499355b817383626ba7c9077cf08e8f0afb472",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 33,
+      "key": "preserved",
+      "from_frame": 4993,
+      "to_frame_exclusive": 5138,
+      "frames": 145,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1273123,
+      "sha256": "46f28466296106353433e78eb996891c6fbc576a2d7d5d9f43cf4a6d810bc54c",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 34,
+      "key": "sousa",
+      "from_frame": 5138,
+      "to_frame_exclusive": 5254,
+      "frames": 116,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 601237,
+      "sha256": "e4ecc91cf023477d7373e82e9e481166cdc499fd8bf5cc3923057418058dde76",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 35,
+      "key": "sousa-water",
+      "from_frame": 5254,
+      "to_frame_exclusive": 5352,
+      "frames": 98,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 901810,
+      "sha256": "89947c10d8d84cb878c5c6da75e60abd67e7542ce4bbcd93745ac06b7208de8f",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 36,
+      "key": "sousa-mat",
+      "from_frame": 5352,
+      "to_frame_exclusive": 5495,
+      "frames": 143,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1066657,
+      "sha256": "0eb08f3020909a2e835a9f0a6db36cdcb68c59eddcec38ff2cdcc6a790fe68b0",
+      "signature": "80a3960455a2fa4b27da775f16330aec91fccca41bdf1ea238e66089047d4431"
+    },
+    {
+      "shot": 37,
+      "key": "rim",
+      "from_frame": 5495,
+      "to_frame_exclusive": 5637,
+      "frames": 142,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1163733,
+      "sha256": "93059099e3fbb8c7bf23c5f434be24f12c7a4a907e3655a27184efed1c7b20e1",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 38,
+      "key": "held",
+      "from_frame": 5637,
+      "to_frame_exclusive": 5783,
+      "frames": 146,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1049546,
+      "sha256": "99bdfcb1cce25eb1a02bc7da79981e4d345c459805c0d02c02603fad1828a8ca",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 39,
+      "key": "conditions",
+      "from_frame": 5783,
+      "to_frame_exclusive": 6027,
+      "frames": 244,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1762110,
+      "sha256": "bd9cd30f7c10340c41c3ec2edbd7335ba332f3a506d2e606f69524899b5e42d6",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 40,
+      "key": "banks",
+      "from_frame": 6027,
+      "to_frame_exclusive": 6290,
+      "frames": 263,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2383159,
+      "sha256": "f3360c3d96ded019cccf97a1964d1673cb4c7fea7b81b638e5371ce6f36b0aa6",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 41,
+      "key": "unmatched",
+      "from_frame": 6290,
+      "to_frame_exclusive": 6496,
+      "frames": 206,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1404348,
+      "sha256": "63473b8dcf5011722eb9b547cf408076c34d438edbb46535cedb3ba6f9b922db",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 42,
+      "key": "window",
+      "from_frame": 6496,
+      "to_frame_exclusive": 6581,
+      "frames": 85,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 368582,
+      "sha256": "d3006d97d146e8660057bee25cdd3df571fc12e41d25c6b501e4a136e7eb9daa",
+      "signature": "075ec1949a053085aa389d4c9fa4865fecf920a64975682eef82cb805efae7bc"
+    },
+    {
+      "shot": 43,
+      "key": "pollen",
+      "from_frame": 6581,
+      "to_frame_exclusive": 6729,
+      "frames": 148,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 1229133,
+      "sha256": "7ce5a100bddd2611b0841cedcafb4d98280ffabd2cdcf5530c572fc2064df46a",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 44,
+      "key": "regional",
+      "from_frame": 6729,
+      "to_frame_exclusive": 6899,
+      "frames": 170,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1170332,
+      "sha256": "340c30961f9565b05d7710c5e2ba90bc22b6cf74b94e5e953cea77889f37ef2b",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 45,
+      "key": "broad",
+      "from_frame": 6899,
+      "to_frame_exclusive": 7072,
+      "frames": 173,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 752533,
+      "sha256": "23c2f8cae8d8fc2a73381ecd67241bfa0cfb1be259ff67656e6c3932d97668e2",
+      "signature": "075ec1949a053085aa389d4c9fa4865fecf920a64975682eef82cb805efae7bc"
+    },
+    {
+      "shot": 46,
+      "key": "restore",
+      "from_frame": 7072,
+      "to_frame_exclusive": 7230,
+      "frames": 158,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 864848,
+      "sha256": "55e321d716d9914a10838e34672d4601517d962fc1b1d03b3d594d1d60c0947f",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 47,
+      "key": "bedrock",
+      "from_frame": 7230,
+      "to_frame_exclusive": 7342,
+      "frames": 112,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 766398,
+      "sha256": "422c94b076c13c5a7bf631a00d236b71d64f4608a37385f582e293efc4c8cc37",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 48,
+      "key": "structures",
+      "from_frame": 7342,
+      "to_frame_exclusive": 7499,
+      "frames": 157,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 860101,
+      "sha256": "254d9713dd32d10d719ea9fd73e84eb4e5de4c78eced85e84729a25ac982260b",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 49,
+      "key": "stretch",
+      "from_frame": 7499,
+      "to_frame_exclusive": 7690,
+      "frames": 191,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1318802,
+      "sha256": "9206594d988c975da6d268df2b2b6709542f22bdf281353ed30e4c24e9d5ce10",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 50,
+      "key": "fill",
+      "from_frame": 7690,
+      "to_frame_exclusive": 7871,
+      "frames": 181,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1248638,
+      "sha256": "e7675a7a4e6ff249b917938d16a3e5a18811fe033d7aaa8568d82f1a4076cb26",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 51,
+      "key": "land",
+      "from_frame": 7871,
+      "to_frame_exclusive": 7984,
+      "frames": 113,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 566708,
+      "sha256": "932663fcaf3c47460ae8e5a98deaf5f5dceb79daa3700056e305322e33ae4d52",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 52,
+      "key": "valleys",
+      "from_frame": 7984,
+      "to_frame_exclusive": 8232,
+      "frames": 248,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2305339,
+      "sha256": "845601d229f30fe32cc30e1dba2e1970b0cb656cf462983c372db58f1a6ed741",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 53,
+      "key": "possible",
+      "from_frame": 8232,
+      "to_frame_exclusive": 8371,
+      "frames": 139,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 696680,
+      "sha256": "d90f2d3dca55b643cfce846bc966df3f69fe7a54c9bb44c803cb8962e52c326e",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 54,
+      "key": "generations",
+      "from_frame": 8371,
+      "to_frame_exclusive": 8568,
+      "frames": 197,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1362898,
+      "sha256": "818ffc4c01f05172d15d90343f5fa2d30a208b8d069337e510d6d035d42bf91e",
+      "signature": "80a3960455a2fa4b27da775f16330aec91fccca41bdf1ea238e66089047d4431"
+    },
+    {
+      "shot": 55,
+      "key": "fish",
+      "from_frame": 8568,
+      "to_frame_exclusive": 8801,
+      "frames": 233,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2324847,
+      "sha256": "8bce9d26d3101d5201d11e62a5892f6557535e83a3eb5470607c4b2cb88541ab",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 56,
+      "key": "fish-basins",
+      "from_frame": 8801,
+      "to_frame_exclusive": 9043,
+      "frames": 242,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1360760,
+      "sha256": "afd1e6fff7fcd92b2b13525d1014ace660850873f07d8f25cc9b5fee7f38767c",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 57,
+      "key": "patterns",
+      "from_frame": 9043,
+      "to_frame_exclusive": 9167,
+      "frames": 124,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 787648,
+      "sha256": "3c5f6c1980af3ba140816f5d6bc84c2c310d9e11c18fbe4dc890d0bb91a1ddd2",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 58,
+      "key": "tests",
+      "from_frame": 9167,
+      "to_frame_exclusive": 9481,
+      "frames": 314,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2450525,
+      "sha256": "015f54ad4560e0674ba846fc43d888084215c85352c882c799f012a406217d31",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 59,
+      "key": "still-possible",
+      "from_frame": 9481,
+      "to_frame_exclusive": 9669,
+      "frames": 188,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 983367,
+      "sha256": "c05483867fd58cf5d508a4f3d31130ca7b426d81e9387e3d09ac9d327fb68319",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 60,
+      "key": "rift",
+      "from_frame": 9669,
+      "to_frame_exclusive": 9897,
+      "frames": 228,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 2159745,
+      "sha256": "b50f99a0bb72d8cf8463ef69476fa75eb66eb27e0abf446f02d04988d31e2f34",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 61,
+      "key": "return",
+      "from_frame": 9897,
+      "to_frame_exclusive": 10055,
+      "frames": 158,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 881958,
+      "sha256": "04d4918d12bb43587cd6769d2d59cd81c9cdecd247115735205a48f7636e6adb",
+      "signature": "b697a8f1111a5ca8e6a360ebfcce249f494fce9b68c8e4b9b7cd87ea8dd5ff2d"
+    },
+    {
+      "shot": 62,
+      "key": "which-journey",
+      "from_frame": 10055,
+      "to_frame_exclusive": 10170,
+      "frames": 115,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 944837,
+      "sha256": "7998b8f53512423ac3575c74f3c5265e195390a8cd38fb65c9f3b1a7eac603b4",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 63,
+      "key": "the-rocks",
+      "from_frame": 10170,
+      "to_frame_exclusive": 10316,
+      "frames": 146,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1215788,
+      "sha256": "63b475318aa7ecc8c1b50a2afafe0a9c9f123aea4cbe9b4e6a4766619eda0f45",
+      "signature": "80a3960455a2fa4b27da775f16330aec91fccca41bdf1ea238e66089047d4431"
+    },
+    {
+      "shot": 64,
+      "key": "last-print",
+      "from_frame": 10316,
+      "to_frame_exclusive": 10540,
+      "frames": 224,
+      "native": [
+        960,
+        540
+      ],
+      "bytes": 1875204,
+      "sha256": "255a7369e38a8c29789a57a79b4043d8975066829d3e126278f847e38b78e008",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    },
+    {
+      "shot": 65,
+      "key": "sources",
+      "from_frame": 10540,
+      "to_frame_exclusive": 10696,
+      "frames": 156,
+      "native": [
+        1152,
+        648
+      ],
+      "bytes": 623213,
+      "sha256": "f22300e2000c7b17ba39c01a4d370b47d6cf8791a132e8476eda25bbe79959ef",
+      "signature": "07cdd9eec34d4b7a363a73322c536e5d1e597134f6a64af0cba983507420359c"
+    }
+  ],
+  "sync": {
+    "stamp-down": {
+      "frame": 1183,
+      "time_s": 49.291666666666664,
+      "recording_attack_ms": 0.875,
+      "foreground_onset_ms": 0.896,
+      "first_frame_rms_dbfs": -23.23
+    },
+    "stamp-up": {
+      "frame": 1208,
+      "time_s": 50.333333333333336,
+      "recording_attack_ms": 1.521,
+      "foreground_onset_ms": 1.542,
+      "first_frame_rms_dbfs": -27.888
+    },
+    "edge-chip": {
+      "frame": 1489,
+      "time_s": 62.041666666666664,
+      "recording_attack_ms": 1.375,
+      "foreground_onset_ms": 1.375,
+      "first_frame_rms_dbfs": -25.612
+    },
+    "erosion-pop": {
+      "frame": 1865,
+      "time_s": 77.70833333333333,
+      "recording_attack_ms": 0.562,
+      "foreground_onset_ms": 0.583,
+      "first_frame_rms_dbfs": -21.166
+    },
+    "test-down": {
+      "frame": 2981,
+      "time_s": 124.20833333333333,
+      "recording_attack_ms": 0.979,
+      "foreground_onset_ms": 0.958,
+      "first_frame_rms_dbfs": -24.487
+    },
+    "test-up": {
+      "frame": 3093,
+      "time_s": 128.875,
+      "recording_attack_ms": 1.25,
+      "foreground_onset_ms": 1.521,
+      "first_frame_rms_dbfs": -26.209
+    },
+    "slump": {
+      "frame": 3117,
+      "time_s": 129.875,
+      "recording_attack_ms": 2.125,
+      "foreground_onset_ms": 2.125,
+      "first_frame_rms_dbfs": -26.949
+    },
+    "impact-bank": {
+      "frame": 4174,
+      "time_s": 173.91666666666666,
+      "recording_attack_ms": 1.021,
+      "foreground_onset_ms": 1.062,
+      "first_frame_rms_dbfs": -25.163
+    },
+    "bury": {
+      "frame": 4886,
+      "time_s": 203.58333333333334,
+      "recording_attack_ms": 0.542,
+      "foreground_onset_ms": 0.604,
+      "first_frame_rms_dbfs": -28.344
+    },
+    "rift-down": {
+      "frame": 7530,
+      "time_s": 313.75,
+      "recording_attack_ms": 1.812,
+      "foreground_onset_ms": 1.833,
+      "first_frame_rms_dbfs": -24.812
+    },
+    "rift-fill": {
+      "frame": 7707,
+      "time_s": 321.125,
+      "recording_attack_ms": 1.771,
+      "foreground_onset_ms": 1.792,
+      "first_frame_rms_dbfs": -22.441
+    },
+    "rift-early": {
+      "frame": 9711,
+      "time_s": 404.625,
+      "recording_attack_ms": 1.646,
+      "foreground_onset_ms": 1.646,
+      "first_frame_rms_dbfs": -27.232
+    }
+  },
+  "audio": {
+    "voice_exact_before_aac": true,
+    "voice_original_samples": 21078604,
+    "voice_source_first_sample": 0,
+    "voice_added_tail_samples": 313396,
+    "decoded_samples_with_aac_frame_padding": 21392384,
+    "sync_windows": 127,
+    "window_onsets_ms_skipped_for_silence": [],
+    "all_offsets_samples": [
+      0
+    ],
+    "min_window_correlation": 0.99944255,
+    "aac_pcm_snr_db": 35.647,
+    "stereo_side_energy_ratio_vs_pcm": 0.9866,
+    "lufs_i": -17.2,
+    "peak_dbtp": -2.0,
+    "lra_lu": 3.2,
+    "bed_minus_narration_rms_db": -12.5482628399727,
+    "bed_gain": 1.0,
+    "aac_stereo": true,
+    "mix_sha256": "496be66c20a4249c67750cb476d400057d1186b039f5261101e872e0f443cbf7",
+    "bed_sha256": "749726e50b28b9da3b19f0d9baf186f7577c758fbee8797aff9a362ce238e5b2"
+  },
+  "decoded_phone_band": {
+    "mayo": {
+      "seconds": [
+        36.5,
+        42.25
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -33.396,
+          -37.581,
+          -24.283
+        ],
+        "presence_mono_2500–5000": [
+          -40.303,
+          -46.797,
+          -31.454
+        ]
+      }
+    },
+    "erosion": {
+      "seconds": [
+        177.13,
+        180.58
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -29.004,
+          -31.463,
+          -23.669
+        ],
+        "presence_mono_2500–5000": [
+          -35.257,
+          -39.691,
+          -33.166
+        ]
+      }
+    },
+    "valley": {
+      "seconds": [
+        334.63,
+        340.95
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -28.301,
+          -31.919,
+          -23.587
+        ],
+        "presence_mono_2500–5000": [
+          -33.422,
+          -39.339,
+          -33.765
+        ]
+      }
+    },
+    "mud": {
+      "seconds": [
+        124.1,
+        131.4
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -32.725,
+          -35.904,
+          -25.086
+        ],
+        "presence_mono_2500–5000": [
+          -41.344,
+          -46.917,
+          -31.731
+        ]
+      }
+    },
+    "fault": {
+      "seconds": [
+        313.57,
+        316.32
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -23.175,
+          -26.979,
+          -24.883
+        ],
+        "presence_mono_2500–5000": [
+          -33.775,
+          -38.721,
+          -29.666
+        ]
+      }
+    },
+    "sea_entry": {
+      "seconds": [
+        408.79,
+        409.14
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -26.547,
+          -34.013,
+          -27.454
+        ],
+        "presence_mono_2500–5000": [
+          -34.567,
+          -48.542,
+          -39.703
+        ]
+      }
+    },
+    "answer": {
+      "seconds": [
+        423.25,
+        426.8
+      ],
+      "old_new_voice_dbfs": {
+        "phone_mono_250–4800": [
+          -34.961,
+          -46.939,
+          -25.87
+        ],
+        "presence_mono_2500–5000": [
+          -65.664,
+          -65.264,
+          -32.023
+        ]
+      }
+    }
+  },
+  "stem_measurements": {
+    "mayo": {
+      "seconds": [
+        36.5,
+        42.25
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -30.351,
+        -37.067,
+        -33.356
+      ],
+      "new_overlay": [
+        -34.098,
+        -43.606,
+        -37.571
+      ],
+      "unchanged_vo": [
+        -21.244,
+        -31.454,
+        -24.283
+      ],
+      "upper_mid_difference_dB": -6.539
+    },
+    "erosion": {
+      "seconds": [
+        177.13,
+        180.58
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -26.13,
+        -32.202,
+        -28.955
+      ],
+      "new_overlay": [
+        -29.681,
+        -37.843,
+        -31.427
+      ],
+      "unchanged_vo": [
+        -20.614,
+        -33.166,
+        -23.669
+      ],
+      "upper_mid_difference_dB": -5.641
+    },
+    "valley": {
+      "seconds": [
+        334.63,
+        340.95
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -26.12,
+        -31.634,
+        -28.227
+      ],
+      "new_overlay": [
+        -29.816,
+        -37.385,
+        -31.867
+      ],
+      "unchanged_vo": [
+        -20.576,
+        -33.765,
+        -23.587
+      ],
+      "upper_mid_difference_dB": -5.751
+    },
+    "mud": {
+      "seconds": [
+        124.1,
+        131.4
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -30.863,
+        -40.773,
+        -32.692
+      ],
+      "new_overlay": [
+        -34.04,
+        -46.372,
+        -35.883
+      ],
+      "unchanged_vo": [
+        -21.972,
+        -31.731,
+        -25.086
+      ],
+      "upper_mid_difference_dB": -5.599
+    },
+    "fault": {
+      "seconds": [
+        313.57,
+        316.32
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -21.777,
+        -33.594,
+        -23.156
+      ],
+      "new_overlay": [
+        -25.478,
+        -38.558,
+        -26.957
+      ],
+      "unchanged_vo": [
+        -22.206,
+        -29.666,
+        -24.883
+      ],
+      "upper_mid_difference_dB": -4.964
+    },
+    "sea_entry": {
+      "seconds": [
+        408.79,
+        409.14
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -24.701,
+        -32.484,
+        -26.494
+      ],
+      "new_overlay": [
+        -32.318,
+        -48.309,
+        -34.002
+      ],
+      "unchanged_vo": [
+        -24.516,
+        -39.703,
+        -27.454
+      ],
+      "upper_mid_difference_dB": -15.825
+    },
+    "answer": {
+      "seconds": [
+        423.25,
+        426.8
+      ],
+      "dBFS_columns": [
+        "stereo_rms",
+        "2.5–5 kHz",
+        "phone_band_mono_250–4800 Hz"
+      ],
+      "previous_overlay": [
+        -32.986,
+        -70.46,
+        -34.96
+      ],
+      "new_overlay": [
+        -44.56,
+        -69.5,
+        -46.963
+      ],
+      "unchanged_vo": [
+        -22.545,
+        -32.023,
+        -25.87
+      ],
+      "upper_mid_difference_dB": 0.96
+    }
+  },
+  "sound_sources": [
+    {
+      "credit": "gluckose (Stream)",
+      "original_url": "https://freesound.org/s/333987/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "stream"
+      ]
+    },
+    {
+      "credit": "felix.blume (wind), edited by Porrumentzio",
+      "original_url": "https://freesound.org/s/217506/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "wind"
+      ]
+    },
+    {
+      "credit": "SamsterBirdies",
+      "original_url": "https://freesound.org/s/584270/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "river"
+      ]
+    },
+    {
+      "credit": "felix.blume",
+      "original_url": "https://freesound.org/s/411509/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "ocean"
+      ]
+    },
+    {
+      "credit": "guyburns",
+      "original_url": "https://freesound.org/s/464798/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "lake"
+      ]
+    },
+    {
+      "credit": "jc144940",
+      "original_url": "https://freesound.org/s/178735/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "plop1"
+      ]
+    },
+    {
+      "credit": "jc144940",
+      "original_url": "https://freesound.org/s/178732/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "plop3"
+      ]
+    },
+    {
+      "credit": "Robo9418",
+      "original_url": "https://freesound.org/s/841834/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "tap"
+      ]
+    },
+    {
+      "credit": "jakubp.jp",
+      "original_url": "https://freesound.org/s/554595/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "skip"
+      ]
+    },
+    {
+      "credit": "lolamadeus",
+      "original_url": "https://freesound.org/s/179341/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "gravel1",
+        "gravel2",
+        "pour",
+        "pour2"
+      ]
+    },
+    {
+      "credit": "worthahep88",
+      "original_url": "https://freesound.org/s/319224/",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "sand1",
+        "sand2"
+      ]
+    },
+    {
+      "credit": "Benboncan",
+      "original_url": "https://freesound.org/s/71823/",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "keys": [
+        "crack1",
+        "crack2"
+      ]
+    },
+    {
+      "credit": "Erdie",
+      "original_url": "https://freesound.org/s/41579/",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "keys": [
+        "hard1",
+        "hard2"
+      ]
+    },
+    {
+      "credit": "AGFX",
+      "original_url": "https://freesound.org/people/AGFX/packs/1253/",
+      "license": "CC-BY-3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/",
+      "keys": [
+        "wet1",
+        "wet2"
+      ]
+    },
+    {
+      "credit": "Kenney Vleugels (RPG Audio)",
+      "original_url": "https://kenney.nl/assets/rpg-audio",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "stone1",
+        "stone2",
+        "stone3"
+      ]
+    },
+    {
+      "credit": "Versilian Community Sample Library",
+      "original_url": "https://github.com/sgossner/VCSL",
+      "license": "CC0-1.0",
+      "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "keys": [
+        "vibeD",
+        "vibeA",
+        "vibeE",
+        "bowD",
+        "bowG",
+        "rub1",
+        "rub2",
+        "drum",
+        "shaker"
+      ]
+    }
+  ],
+  "voice_source_sha256": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+  "human_pronunciation_signoff": false,
+  "files": [
+    {
+      "name": "Atlantic-Tracks-Cinema-Edition.mp4",
+      "bytes": 94382672,
+      "sha256": "136f1cc16aa43c9db5f2b2ca966ffb6555fd005ea50704ac2f0fbd396b75b06a",
+      "md5": "f4721ffe826b0ad1710da761f924deca"
+    },
+    {
+      "name": "Atlantic-Tracks-Cinema-Edition.en.srt",
+      "bytes": 11274,
+      "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+      "md5": "a3972319948a4ce6de3bd085dc116801"
+    },
+    {
+      "name": "Atlantic-Tracks-Cinema-Edition-Handoff.md",
+      "bytes": 5680,
+      "sha256": "0d45b511f5928e520e43a39493a17c5fb5b587a8046f2de9ce8034b2c2a3e169",
+      "md5": "d6c2aa35d7d52e5dd80387fbcc9b917a"
+    }
+  ]
+}

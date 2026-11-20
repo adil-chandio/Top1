@@ -1,0 +1,107 @@
+{
+  "episode": "Monarch Cam #1A",
+  "film": "This Ant Bites the Ground to Escape",
+  "picture_version": "V3 Full Cinematic Cut",
+  "source": {
+    "frames": 8994,
+    "fps": 30,
+    "duration_seconds": 299.8
+  },
+  "titles": [
+    {
+      "title": "This Ant Escapes by Biting the Ground",
+      "angle": "Launch pick: an unexpected action with a clear survival payoff."
+    },
+    {
+      "title": "This Ant Jumps With Its Jaws",
+      "angle": "Mechanism angle: shorter and easier to scan."
+    },
+    {
+      "title": "How a Trap-Jaw Ant Escapes an Antlion Pit",
+      "angle": "Search angle: names the animal and the trap."
+    }
+  ],
+  "thumbnail_words": [
+    "NO",
+    "GRIP"
+  ],
+  "description_open": [
+    "The sand is sliding under a trap-jaw ant. With no steady foothold, it snaps its jaws into the slope—and lifts off.",
+    "How does a bite become a jump? Follow Odontomachus brunneus into an antlion pit, see why one launch falls short, and watch how researchers tested whether being able to snap helps an ant escape."
+  ],
+  "chapters": [
+    {
+      "frame": 0,
+      "title": "No grip, one bite"
+    },
+    {
+      "frame": 708,
+      "title": "Why the sand keeps sliding"
+    },
+    {
+      "frame": 2182,
+      "title": "Inside the trap jaw"
+    },
+    {
+      "frame": 3700,
+      "title": "What turns a snap into a jump?"
+    },
+    {
+      "frame": 5188,
+      "title": "The jump that falls short"
+    },
+    {
+      "frame": 5621,
+      "title": "What happened in 117 lab trials"
+    },
+    {
+      "frame": 6658,
+      "title": "Did the jaws really help?"
+    },
+    {
+      "frame": 8011,
+      "title": "Watch the bite again"
+    }
+  ],
+  "disclosure": "Cinematic CGI based on published research, not field footage or measured strike timing. The cover is illustrative artwork. Foley and score are designed, not recordings of insects.",
+  "references": [
+    "Larabee & Suarez (2015) — antlion encounters and jaw-restraint experiment: https://doi.org/10.1371/journal.pone.0124871",
+    "Sutton et al. (2022) — dual-spring jaw mechanism: https://doi.org/10.1242/jeb.244077",
+    "Büsse et al. (2021) — sand-pit maintenance, studied in a different antlion species: https://pmc.ncbi.nlm.nih.gov/articles/PMC8440033/"
+  ],
+  "credits": [
+    "Music samples: FluidR3_GM by Frank Wen and contributors, packaged by Benjamin Gleitzman. Excerpted, shaped and arranged for the film. CC BY 3.0 US: https://creativecommons.org/licenses/by/3.0/us/ · https://github.com/gleitz/midi-js-soundfonts/tree/044fab8e1456bfafc5776e86dfd6bb8697149aef",
+    "Foley (CC0): Kenney RPG Audio https://kenney.nl/assets/rpg-audio · crashoverride6 https://freesound.org/s/146408/ · BranndyBottle https://freesound.org/s/464699/ and https://freesound.org/s/464695/ · OwlStorm https://freesound.org/s/151214/ · VCKHaze https://freesound.org/s/332604/",
+    "Type: Space Grotesk (Florian Karsten and contributors) and IBM Plex Mono (IBM Corp.), SIL Open Font License 1.1."
+  ],
+  "hashtags": [
+    "#TrapJawAnt",
+    "#Antlion",
+    "#WildlifeScience"
+  ],
+  "tags": [
+    "trap jaw ant",
+    "trap-jaw ant",
+    "antlion pit",
+    "ant lion",
+    "Odontomachus brunneus",
+    "antlion larva",
+    "ant jumps with jaws",
+    "ant bites the ground",
+    "trap jaw ant escape jump",
+    "mandible powered jump",
+    "insect biomechanics",
+    "sand pit trap",
+    "insect behavior",
+    "wildlife science",
+    "macro CGI",
+    "Monarch Cam"
+  ],
+  "pinned_comment": "If that same jaw snap happens in open air, does the ant still jump? Make your guess before 02:16, then watch what changes when the tips touch sand.",
+  "community_copy": "Her feet are moving. So is the ground. How does a trap-jaw ant get out of an antlion pit?",
+  "studio": {
+    "category": "Science & Technology",
+    "video_language": "English",
+    "caption_language": "English"
+  }
+}

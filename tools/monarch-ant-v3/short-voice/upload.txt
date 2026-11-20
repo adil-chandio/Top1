@@ -1,0 +1,41 @@
+MONARCH CAM #1A · SHORT LAUNCH COPY
+For Monarch-Cam-01A-Bite-To-Jump-Short-Voice-Match.mp4 (34 seconds)
+
+TITLE — paste into Title
+This Ant Jumps by Biting Sand
+
+DESCRIPTION — paste the entire block below
+A trap-jaw ant snaps its jaws in midair. No lift. The same snap against the sand launches it.
+
+One jump clears the antlion pit. Another hits the wall and falls back in. In the lab, researchers glued the tips of some ants' jaws shut. Could they still escape without the snap?
+
+Monarch Cam #1A · Cinematic CGI reconstruction based on published research, not wildlife or lab footage. Sound and motion are illustrative.
+
+Research: Larabee & Suarez (2015), trap-jaw ant escapes and the jaw-restraint experiment: https://doi.org/10.1371/journal.pone.0124871
+Sutton et al. (2022), the dual-spring jaw mechanism: https://doi.org/10.1242/jeb.244077
+Music: Original arrangement using FluidR3_GM samples by Frank Wen and contributors, packaged by Benjamin Gleitzman. Samples excerpted and edited for the Short. CC BY 3.0 US: https://creativecommons.org/licenses/by/3.0/us/ · https://github.com/gleitz/midi-js-soundfonts/tree/044fab8e1456bfafc5776e86dfd6bb8697149aef
+Foley (CC0): Kenney RPG Audio https://kenney.nl/assets/rpg-audio · crashoverride6 https://freesound.org/s/146408/ · BranndyBottle https://freesound.org/s/464699/ and https://freesound.org/s/464695/ · OwlStorm https://freesound.org/s/151214/ · VCKHaze https://freesound.org/s/332604/
+Type: Space Grotesk, Florian Karsten and contributors, SIL Open Font License 1.1.
+
+#TrapJawAnt #Antlion #Shorts
+
+TAGS — paste into Tags, not Description
+trap jaw ant, trap-jaw ant, antlion, ant lion, antlion pit, antlion larva, Odontomachus brunneus, ant jumps with jaws, ant bites sand, insect biomechanics, insect behavior, Monarch Cam
+
+STUDIO SETTINGS
+Category: Science & Technology
+Video language: English
+Subtitles: English → Upload file → With timing → Monarch-Cam-01A-Bite-To-Jump-Short-Voice-Match.en.srt
+Audience: No, not made for kids, if this is intended as a general-audience science upload.
+Altered content: Yes — realistic CGI reconstruction.
+Short cover frame: around 00:00.13, where the ant is visible near the sand and the hook text is readable. This only refers to the Short, not the long film's selected thumbnail.
+
+RELATED VIDEO — set separately in Studio
+YouTube Studio → Content → open the Short → Related video → select “This Ant Escapes by Biting the Ground” → Save.
+Requires advanced features and the public or unlisted full film on the same channel. Use the native Related video field; there is no spoken or on-screen click prompt in the edit.
+https://support.google.com/youtube/answer/14075157?hl=en
+
+OPTIONAL PINNED COMMENT — after publishing
+If the jaws can't snap, would you bet on the ant climbing out or sliding back down?
+
+Use this copy instead of the previous Voice Match upload notes. The Short and long film are unchanged. Nothing has been published, scheduled, or linked on YouTube.

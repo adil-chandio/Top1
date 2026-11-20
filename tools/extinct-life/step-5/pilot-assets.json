@@ -1,0 +1,18 @@
+{
+  "materials": [
+    {
+      "name": "iron-silt.jpg",
+      "sha256": "235bf56facd7aca53ac0c0c10f363041c3a67fcaf5bf2c08becb79b517052d2f",
+      "purpose": "Generated diffuse albedo for an original ray-traced geological surface. Not a picture of a track site."
+    },
+    {
+      "name": "slate-silt.jpg",
+      "sha256": "61d4e93114bc24621ace585fb813892dafa7b885a2af056929257223c5e9b80e",
+      "purpose": "Generated diffuse albedo for an original ray-traced geological surface. Not a picture of a track site."
+    }
+  ],
+  "modern_relief": "NOAA NGDC ETOPO5 (1988), public domain, imported from the checksum-pinned 2048\u00d71024 average in voxiverse/voxiverse.",
+  "paleo_relief": "Scotese & Wright (2018) PALEOMAP PaleoDEMs v2, 125 Ma, CC BY 4.0, from the pinned 8-bit mirror in serroba/histeclipse; resampled and vertically exaggerated. https://doi.org/10.5281/zenodo.5460860",
+  "coasts": "Natural Earth v5.1.2 1:50m (public domain); Kocsis & Scotese PaleoCoastlines v7.1 125 Ma (CC BY 4.0).",
+  "other_assets": "Procedural environments, stamp geometry, audio and typography; map source and fonts notices in README."
+}

@@ -1,0 +1,20 @@
+# Edition 2: first-frame strike, shorter coverage, separate flight/wall angles.
+# model time is illustrative; pins are on the 30 fps editorial clock.
+0 61 0 70 v2_cold 3.335 3.820 5 3.420 18 3.495
+61 111 1 56 v2_tarsi .760 1.820
+111 160 10 50 funnel 4.971 6.260
+160 210 3 54 v2_predator 1.191 1.955 194 1.410
+210 232 22 3 slipping_grain .002 .999
+232 271 1 56 slide .641 1.888
+271 316 6 67 air_snap 2.683 3.132
+316 392 6 67 v2_air 3.133 3.680 328 3.170
+392 496 0 69 v2_contact 2.939 3.763 439 3.420 460 3.510
+496 551 0 71 v2_rise 3.764 4.354
+551 606 0 72 v2_apex 4.355 4.678
+606 660 0 72 over_the_rim 4.686 5.593
+660 692 4 73 second_launch 3.452 3.955
+692 759 4 74 short_of_rim 4.339 5.386 696 4.4728
+759 844 15 77 v2_lab 1.448 3.208 790 2.380
+844 932 12 83 held_shut 1.400 3.420
+932 989 10 80 same_pit 4.980 5.840
+989 1020 0 70 v2_loop 3.043 3.327

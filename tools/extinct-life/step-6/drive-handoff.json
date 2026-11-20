@@ -1,0 +1,27 @@
+{
+  "destination": "Monarch Extinct Channel / 3d animation",
+  "listed_again_after_upload": true,
+  "local_and_drive_hashes_match": true,
+  "opening_v1_v2_unchanged": true,
+  "publication_or_sharing_changes": false,
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full.mp4",
+      "bytes": 87457624,
+      "sha256": "39f7372783ade3b3d835b22fb34ac4f7b3d9816cec944b7e7824074b37e57b71",
+      "md5": "6d5b29080a5183e88d22b01bcb081db8"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full.en.srt",
+      "bytes": 11274,
+      "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+      "md5": "a3972319948a4ce6de3bd085dc116801"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full-Handoff.md",
+      "bytes": 4056,
+      "sha256": "e095fb6213e180c2210fb548dbd49cd0a7ef0ad9b1fb24afbe20da44ac438344",
+      "md5": "a013534be52d77a356cf04e0ce6fd3ce"
+    }
+  ]
+}

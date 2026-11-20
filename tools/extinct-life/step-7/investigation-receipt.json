@@ -1,0 +1,1886 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "status": "Investigation Cut · review only, not published",
+  "duration_s": 445.6666666666667,
+  "fps": 24,
+  "decoded_video_frames": 10696,
+  "picture_is_new": true,
+  "audio_is_remuxed_not_reencoded": true,
+  "red_sound_and_timing_lock": {
+    "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full-Sound-Redesign.mp4",
+    "bytes": 90664671,
+    "sha256": "ee55136ff6e180155c07d191dc23ea7cf8ed255096ebc3b14b62f89ff6a1c991",
+    "md5": "b3a907c43c58af97a3890ecf9384018e"
+  },
+  "visual_audit": {
+    "shot_probes": {
+      "0": {
+        "key": "sousa-intro",
+        "baseline_probe_rgb_mae": [
+          30.129,
+          32.127,
+          35.347
+        ],
+        "frames": [
+          6,
+          31,
+          61
+        ]
+      },
+      "1": {
+        "key": "koum-intro",
+        "baseline_probe_rgb_mae": [
+          43.892,
+          45.785,
+          47.066
+        ],
+        "frames": [
+          69,
+          81,
+          97
+        ]
+      },
+      "2": {
+        "key": "modern",
+        "baseline_probe_rgb_mae": [
+          41.249,
+          40.051,
+          39.075
+        ],
+        "frames": [
+          105,
+          172,
+          243
+        ]
+      },
+      "3": {
+        "key": "rewind",
+        "baseline_probe_rgb_mae": [
+          37.289,
+          35.297,
+          33.631
+        ],
+        "frames": [
+          251,
+          357,
+          468
+        ]
+      },
+      "4": {
+        "key": "title",
+        "baseline_probe_rgb_mae": [
+          33.747,
+          23.588,
+          25.828
+        ],
+        "frames": [
+          476,
+          549,
+          627
+        ]
+      },
+      "5": {
+        "key": "koum-locate",
+        "baseline_probe_rgb_mae": [
+          69.025,
+          62.931,
+          59.966
+        ],
+        "frames": [
+          635,
+          697,
+          763
+        ]
+      },
+      "6": {
+        "key": "first-horizons",
+        "baseline_probe_rgb_mae": [
+          66.532,
+          60.08,
+          57.681
+        ],
+        "frames": [
+          771,
+          817,
+          867
+        ]
+      },
+      "7": {
+        "key": "mayo",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          875,
+          954,
+          1038
+        ]
+      },
+      "8": {
+        "key": "survey",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          1046,
+          1097,
+          1152
+        ]
+      },
+      "9": {
+        "key": "step-weight",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          1160,
+          1210,
+          1265
+        ]
+      },
+      "10": {
+        "key": "trackways",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          1273,
+          1310,
+          1351
+        ]
+      },
+      "11": {
+        "key": "local-steps",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          1359,
+          1405,
+          1455
+        ]
+      },
+      "12": {
+        "key": "edge",
+        "baseline_probe_rgb_mae": [
+          14.624,
+          16.063,
+          18.082
+        ],
+        "frames": [
+          1463,
+          1503,
+          1547
+        ]
+      },
+      "13": {
+        "key": "four",
+        "baseline_probe_rgb_mae": [
+          13.35,
+          21.275,
+          19.085
+        ],
+        "frames": [
+          1555,
+          1677,
+          1803
+        ]
+      },
+      "14": {
+        "key": "erosion",
+        "baseline_probe_rgb_mae": [
+          24.448,
+          27.083,
+          18.485
+        ],
+        "frames": [
+          1811,
+          1912,
+          2018
+        ]
+      },
+      "15": {
+        "key": "views",
+        "baseline_probe_rgb_mae": [
+          17.687,
+          20.27,
+          23.537
+        ],
+        "frames": [
+          2026,
+          2096,
+          2170
+        ]
+      },
+      "16": {
+        "key": "mesh",
+        "baseline_probe_rgb_mae": [
+          15.087,
+          19.906,
+          21.237
+        ],
+        "frames": [
+          2178,
+          2237,
+          2300
+        ]
+      },
+      "17": {
+        "key": "tease",
+        "baseline_probe_rgb_mae": [
+          33.911,
+          32.728,
+          33.1
+        ],
+        "frames": [
+          2308,
+          2372,
+          2440
+        ]
+      },
+      "18": {
+        "key": "ruler",
+        "baseline_probe_rgb_mae": [
+          28.401,
+          27.457,
+          27.44
+        ],
+        "frames": [
+          2448,
+          2545,
+          2646
+        ]
+      },
+      "19": {
+        "key": "diffuse",
+        "baseline_probe_rgb_mae": [
+          30.928,
+          35.321,
+          35.797
+        ],
+        "frames": [
+          2654,
+          2772,
+          2895
+        ]
+      },
+      "20": {
+        "key": "press",
+        "baseline_probe_rgb_mae": [
+          28.513,
+          33.482,
+          37.629
+        ],
+        "frames": [
+          2903,
+          3031,
+          3164
+        ]
+      },
+      "21": {
+        "key": "results",
+        "baseline_probe_rgb_mae": [
+          38.703,
+          45.173,
+          41.406
+        ],
+        "frames": [
+          3172,
+          3219,
+          3271
+        ]
+      },
+      "22": {
+        "key": "changing",
+        "baseline_probe_rgb_mae": [
+          34.465,
+          34.642,
+          32.445
+        ],
+        "frames": [
+          3279,
+          3363,
+          3452
+        ]
+      },
+      "23": {
+        "key": "makers",
+        "baseline_probe_rgb_mae": [
+          22.568,
+          24.078,
+          37.921
+        ],
+        "frames": [
+          3460,
+          3530,
+          3605
+        ]
+      },
+      "24": {
+        "key": "underfoot",
+        "baseline_probe_rgb_mae": [
+          26.948,
+          28.346,
+          29.722
+        ],
+        "frames": [
+          3613,
+          3674,
+          3739
+        ]
+      },
+      "25": {
+        "key": "ripples",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          3747,
+          3800,
+          3858
+        ]
+      },
+      "26": {
+        "key": "cracks",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          3866,
+          3891,
+          3920
+        ]
+      },
+      "27": {
+        "key": "clues",
+        "baseline_probe_rgb_mae": [
+          29.343,
+          30.62,
+          31.812
+        ],
+        "frames": [
+          3928,
+          3985,
+          4046
+        ]
+      },
+      "28": {
+        "key": "drain",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          4054,
+          4132,
+          4215
+        ]
+      },
+      "29": {
+        "key": "wear",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          4223,
+          4301,
+          4384
+        ]
+      },
+      "30": {
+        "key": "cement",
+        "baseline_probe_rgb_mae": [
+          15.271,
+          21.952,
+          25.878
+        ],
+        "frames": [
+          4392,
+          4526,
+          4665
+        ]
+      },
+      "31": {
+        "key": "mat",
+        "baseline_probe_rgb_mae": [
+          15.409,
+          17.375,
+          18.418
+        ],
+        "frames": [
+          4673,
+          4769,
+          4869
+        ]
+      },
+      "32": {
+        "key": "burial",
+        "baseline_probe_rgb_mae": [
+          19.547,
+          22.803,
+          25.346
+        ],
+        "frames": [
+          4877,
+          4932,
+          4991
+        ]
+      },
+      "33": {
+        "key": "preserved",
+        "baseline_probe_rgb_mae": [
+          35.709,
+          36.104,
+          37.303
+        ],
+        "frames": [
+          4999,
+          5065,
+          5136
+        ]
+      },
+      "34": {
+        "key": "sousa",
+        "baseline_probe_rgb_mae": [
+          39.512,
+          34.744,
+          28.93
+        ],
+        "frames": [
+          5144,
+          5196,
+          5252
+        ]
+      },
+      "35": {
+        "key": "sousa-water",
+        "baseline_probe_rgb_mae": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "frames": [
+          5260,
+          5303,
+          5350
+        ]
+      },
+      "36": {
+        "key": "sousa-mat",
+        "baseline_probe_rgb_mae": [
+          14.29,
+          14.989,
+          17.476
+        ],
+        "frames": [
+          5358,
+          5423,
+          5493
+        ]
+      },
+      "37": {
+        "key": "rim",
+        "baseline_probe_rgb_mae": [
+          30.319,
+          32.912,
+          33.954
+        ],
+        "frames": [
+          5501,
+          5566,
+          5635
+        ]
+      },
+      "38": {
+        "key": "held",
+        "baseline_probe_rgb_mae": [
+          17.314,
+          17.213,
+          17.26
+        ],
+        "frames": [
+          5643,
+          5710,
+          5781
+        ]
+      },
+      "39": {
+        "key": "conditions",
+        "baseline_probe_rgb_mae": [
+          22.542,
+          24.958,
+          26.633
+        ],
+        "frames": [
+          5789,
+          5905,
+          6025
+        ]
+      },
+      "40": {
+        "key": "banks",
+        "baseline_probe_rgb_mae": [
+          29.584,
+          33.481,
+          33.296
+        ],
+        "frames": [
+          6033,
+          6158,
+          6288
+        ]
+      },
+      "41": {
+        "key": "unmatched",
+        "baseline_probe_rgb_mae": [
+          16.054,
+          17.352,
+          18.472
+        ],
+        "frames": [
+          6296,
+          6393,
+          6494
+        ]
+      },
+      "42": {
+        "key": "window",
+        "baseline_probe_rgb_mae": [
+          16.29,
+          24.287,
+          25.436
+        ],
+        "frames": [
+          6502,
+          6538,
+          6579
+        ]
+      },
+      "43": {
+        "key": "pollen",
+        "baseline_probe_rgb_mae": [
+          15.604,
+          17.167,
+          15.25
+        ],
+        "frames": [
+          6587,
+          6655,
+          6727
+        ]
+      },
+      "44": {
+        "key": "regional",
+        "baseline_probe_rgb_mae": [
+          18.143,
+          19.141,
+          18.902
+        ],
+        "frames": [
+          6735,
+          6814,
+          6897
+        ]
+      },
+      "45": {
+        "key": "broad",
+        "baseline_probe_rgb_mae": [
+          16.276,
+          23.568,
+          23.154
+        ],
+        "frames": [
+          6905,
+          6985,
+          7070
+        ]
+      },
+      "46": {
+        "key": "restore",
+        "baseline_probe_rgb_mae": [
+          35.57,
+          36.529,
+          34.685
+        ],
+        "frames": [
+          7078,
+          7151,
+          7228
+        ]
+      },
+      "47": {
+        "key": "bedrock",
+        "baseline_probe_rgb_mae": [
+          12.932,
+          14.005,
+          15.375
+        ],
+        "frames": [
+          7236,
+          7286,
+          7340
+        ]
+      },
+      "48": {
+        "key": "structures",
+        "baseline_probe_rgb_mae": [
+          37.6,
+          37.277,
+          37.177
+        ],
+        "frames": [
+          7348,
+          7420,
+          7497
+        ]
+      },
+      "49": {
+        "key": "stretch",
+        "baseline_probe_rgb_mae": [
+          12.884,
+          15.273,
+          15.401
+        ],
+        "frames": [
+          7505,
+          7594,
+          7688
+        ]
+      },
+      "50": {
+        "key": "fill",
+        "baseline_probe_rgb_mae": [
+          14.607,
+          16.086,
+          16.905
+        ],
+        "frames": [
+          7696,
+          7780,
+          7869
+        ]
+      },
+      "51": {
+        "key": "land",
+        "baseline_probe_rgb_mae": [
+          39.125,
+          38.262,
+          38.452
+        ],
+        "frames": [
+          7877,
+          7927,
+          7982
+        ]
+      },
+      "52": {
+        "key": "valleys",
+        "baseline_probe_rgb_mae": [
+          48.057,
+          49.805,
+          54.495
+        ],
+        "frames": [
+          7990,
+          8108,
+          8230
+        ]
+      },
+      "53": {
+        "key": "possible",
+        "baseline_probe_rgb_mae": [
+          34.87,
+          33.725,
+          35.115
+        ],
+        "frames": [
+          8238,
+          8301,
+          8369
+        ]
+      },
+      "54": {
+        "key": "generations",
+        "baseline_probe_rgb_mae": [
+          10.105,
+          11.438,
+          12.893
+        ],
+        "frames": [
+          8377,
+          8469,
+          8566
+        ]
+      },
+      "55": {
+        "key": "fish",
+        "baseline_probe_rgb_mae": [
+          5.06,
+          6.272,
+          39.264
+        ],
+        "frames": [
+          8574,
+          8684,
+          8799
+        ]
+      },
+      "56": {
+        "key": "fish-basins",
+        "baseline_probe_rgb_mae": [
+          24.983,
+          27.433,
+          34.27
+        ],
+        "frames": [
+          8807,
+          8922,
+          9041
+        ]
+      },
+      "57": {
+        "key": "patterns",
+        "baseline_probe_rgb_mae": [
+          24.108,
+          25.123,
+          25.163
+        ],
+        "frames": [
+          9049,
+          9105,
+          9165
+        ]
+      },
+      "58": {
+        "key": "tests",
+        "baseline_probe_rgb_mae": [
+          34.215,
+          19.199,
+          25.764
+        ],
+        "frames": [
+          9173,
+          9324,
+          9479
+        ]
+      },
+      "59": {
+        "key": "still-possible",
+        "baseline_probe_rgb_mae": [
+          39.18,
+          37.989,
+          37.904
+        ],
+        "frames": [
+          9487,
+          9575,
+          9667
+        ]
+      },
+      "60": {
+        "key": "rift",
+        "baseline_probe_rgb_mae": [
+          12.74,
+          13.947,
+          11.517
+        ],
+        "frames": [
+          9675,
+          9783,
+          9895
+        ]
+      },
+      "61": {
+        "key": "return",
+        "baseline_probe_rgb_mae": [
+          39.299,
+          39.698,
+          38.01
+        ],
+        "frames": [
+          9903,
+          9976,
+          10053
+        ]
+      },
+      "62": {
+        "key": "which-journey",
+        "baseline_probe_rgb_mae": [
+          74.145,
+          71.046,
+          69.852
+        ],
+        "frames": [
+          10061,
+          10112,
+          10168
+        ]
+      },
+      "63": {
+        "key": "the-rocks",
+        "baseline_probe_rgb_mae": [
+          49.533,
+          49.808,
+          50.913
+        ],
+        "frames": [
+          10176,
+          10243,
+          10314
+        ]
+      },
+      "64": {
+        "key": "last-print",
+        "baseline_probe_rgb_mae": [
+          31.139,
+          30.219,
+          34.6
+        ],
+        "frames": [
+          10322,
+          10428,
+          10538
+        ]
+      },
+      "65": {
+        "key": "sources",
+        "baseline_probe_rgb_mae": [
+          7.342,
+          10.839,
+          2.542
+        ],
+        "frames": [
+          10546,
+          10618,
+          10694
+        ]
+      }
+    },
+    "edited_original_shots": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      27,
+      30,
+      31,
+      32,
+      33,
+      34,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ],
+    "retained_original_shots": [
+      7,
+      8,
+      9,
+      10,
+      11,
+      25,
+      26,
+      28,
+      29,
+      35
+    ],
+    "anchor_probes": {
+      "edge-chip": {
+        "frame": 1489,
+        "s": 62.041666666666664,
+        "samples": 2978000
+      },
+      "erosion-pop": {
+        "frame": 1865,
+        "s": 77.70833333333333,
+        "samples": 3730000
+      },
+      "erosion-tail": {
+        "frame": 1887,
+        "s": 78.625,
+        "samples": 3774000
+      },
+      "scan-read": {
+        "frame": 2046,
+        "s": 85.25,
+        "samples": 4092000
+      },
+      "scan-side": {
+        "frame": 2078,
+        "s": 86.58333333333333,
+        "samples": 4156000
+      },
+      "photos": {
+        "frame": 2108,
+        "s": 87.83333333333333,
+        "samples": 4216000
+      },
+      "reconstruction": {
+        "frame": 2174,
+        "s": 90.58333333333333,
+        "samples": 4348000
+      },
+      "length": {
+        "frame": 2451,
+        "s": 102.125,
+        "samples": 4902000
+      },
+      "test-down": {
+        "frame": 2981,
+        "s": 124.20833333333333,
+        "samples": 5962000
+      },
+      "test-up": {
+        "frame": 3093,
+        "s": 128.875,
+        "samples": 6186000
+      },
+      "slump": {
+        "frame": 3117,
+        "s": 129.875,
+        "samples": 6234000
+      },
+      "firm-soft": {
+        "frame": 3176,
+        "s": 132.33333333333334,
+        "samples": 6352000
+      },
+      "drain": {
+        "frame": 4066,
+        "s": 169.41666666666666,
+        "samples": 8132000
+      },
+      "impact-bank": {
+        "frame": 4174,
+        "s": 173.91666666666666,
+        "samples": 8348000
+      },
+      "erosion-wash": {
+        "frame": 4257,
+        "s": 177.375,
+        "samples": 8514000
+      },
+      "cement": {
+        "frame": 4529,
+        "s": 188.70833333333334,
+        "samples": 9058000
+      },
+      "mat": {
+        "frame": 4718,
+        "s": 196.58333333333334,
+        "samples": 9436000
+      },
+      "bury": {
+        "frame": 4886,
+        "s": 203.58333333333334,
+        "samples": 9772000
+      },
+      "seal": {
+        "frame": 4967,
+        "s": 206.95833333333334,
+        "samples": 9934000
+      },
+      "pollen": {
+        "frame": 6609,
+        "s": 275.375,
+        "samples": 13218000
+      },
+      "age": {
+        "frame": 6918,
+        "s": 288.25,
+        "samples": 13836000
+      },
+      "fault-light": {
+        "frame": 7292,
+        "s": 303.8333333333333,
+        "samples": 14584000
+      },
+      "rift-down": {
+        "frame": 7530,
+        "s": 313.75,
+        "samples": 15060000
+      },
+      "rift-fill": {
+        "frame": 7707,
+        "s": 321.125,
+        "samples": 15414000
+      },
+      "valley-water": {
+        "frame": 8051,
+        "s": 335.4583333333333,
+        "samples": 16102000
+      },
+      "mawsonia": {
+        "frame": 8699,
+        "s": 362.4583333333333,
+        "samples": 17398000
+      },
+      "other-basins": {
+        "frame": 8817,
+        "s": 367.375,
+        "samples": 17634000
+      },
+      "more-sites": {
+        "frame": 9228,
+        "s": 384.5,
+        "samples": 18456000
+      },
+      "better-dates": {
+        "frame": 9289,
+        "s": 387.0416666666667,
+        "samples": 18578000
+      },
+      "better-fossils": {
+        "frame": 9375,
+        "s": 390.625,
+        "samples": 18750000
+      },
+      "rift-early": {
+        "frame": 9711,
+        "s": 404.625,
+        "samples": 19422000
+      },
+      "rift-late": {
+        "frame": 9811,
+        "s": 408.7916666666667,
+        "samples": 19622000
+      },
+      "gap-returns": {
+        "frame": 9973,
+        "s": 415.5416666666667,
+        "samples": 19946000
+      },
+      "rocks-answer": {
+        "frame": 10174,
+        "s": 423.9166666666667,
+        "samples": 20348000
+      },
+      "gentle-close": {
+        "frame": 10327,
+        "s": 430.2916666666667,
+        "samples": 20654000
+      }
+    },
+    "sample_frames": 392,
+    "representative_frames_not_viewer_retention_data": true
+  },
+  "encoded_parts": [
+    {
+      "shot": 0,
+      "key": "sousa-intro",
+      "from_frame": 0,
+      "to_frame_exclusive": 63,
+      "bytes": 553922,
+      "sha256": "6f150cd5b0fe063f24ffe812266e7c39d50f78addd818b57a21e7393e26fbf6d",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 1,
+      "key": "koum-intro",
+      "from_frame": 63,
+      "to_frame_exclusive": 99,
+      "bytes": 273224,
+      "sha256": "7e5465ec3e56265e1e724a2f6b164dcedd33118b3c51c4296a9ab2eb4f1e9353",
+      "pass": "refinement"
+    },
+    {
+      "shot": 2,
+      "key": "modern",
+      "from_frame": 99,
+      "to_frame_exclusive": 245,
+      "bytes": 645779,
+      "sha256": "b0e8e77f95c7cd55bd369f570f1098ff8a6d32e6996279093ab82474fdf309b8",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 3,
+      "key": "rewind",
+      "from_frame": 245,
+      "to_frame_exclusive": 470,
+      "bytes": 1015956,
+      "sha256": "10aa96c84a156a8026fd77a7d895dbbb6994406ef5273d65dbddee2816b31eb6",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 4,
+      "key": "title",
+      "from_frame": 470,
+      "to_frame_exclusive": 629,
+      "bytes": 1576309,
+      "sha256": "7a9885ac2dc8fd2ae5ef3d3303520aa3789ce1a2e32bba31706190e2fe853769",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 5,
+      "key": "koum-locate",
+      "from_frame": 629,
+      "to_frame_exclusive": 765,
+      "bytes": 771534,
+      "sha256": "4984fca02c1de54e466d93a90863955b966bdc487c8b4e00960b380c8ac19fbf",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 6,
+      "key": "first-horizons",
+      "from_frame": 765,
+      "to_frame_exclusive": 869,
+      "bytes": 764089,
+      "sha256": "588b371ff03393015a8a642408dc09e91dbff4953575ce2fd9655f72188d7336",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 7,
+      "key": "mayo",
+      "from_frame": 869,
+      "to_frame_exclusive": 1040,
+      "bytes": 1317115,
+      "sha256": "4c9cec7edf8a84d54234bc06f68fe41cebb9c94a8e01fb308f24ce85aaecc1ae",
+      "pass": "retained"
+    },
+    {
+      "shot": 8,
+      "key": "survey",
+      "from_frame": 1040,
+      "to_frame_exclusive": 1154,
+      "bytes": 834010,
+      "sha256": "fca616e4f501a301cee0270586501b73c2d2f62311919c262f737ebb7e9ec522",
+      "pass": "retained"
+    },
+    {
+      "shot": 9,
+      "key": "step-weight",
+      "from_frame": 1154,
+      "to_frame_exclusive": 1267,
+      "bytes": 796741,
+      "sha256": "10f203ce170a24384a96c907d9daea4decb74285cc3cb745763fe47db38efbf5",
+      "pass": "retained"
+    },
+    {
+      "shot": 10,
+      "key": "trackways",
+      "from_frame": 1267,
+      "to_frame_exclusive": 1353,
+      "bytes": 668701,
+      "sha256": "e54346141958f27aba28371ac2da80c7e005a61aba7ebb9267bb8dbbcbc22c22",
+      "pass": "retained"
+    },
+    {
+      "shot": 11,
+      "key": "local-steps",
+      "from_frame": 1353,
+      "to_frame_exclusive": 1457,
+      "bytes": 763400,
+      "sha256": "10f391c642478d9b9ac553fa382e81ac068285e2c5a3705faa4aceaf69d9938b",
+      "pass": "retained"
+    },
+    {
+      "shot": 12,
+      "key": "edge",
+      "from_frame": 1457,
+      "to_frame_exclusive": 1549,
+      "bytes": 669059,
+      "sha256": "16788c423ee7322be7025401957dce041a89af6afffc40d0d1a600d9811f4f89",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 13,
+      "key": "four",
+      "from_frame": 1549,
+      "to_frame_exclusive": 1805,
+      "bytes": 1761564,
+      "sha256": "3cd014de2a7d7d7ffb255b6af52781b638d79314a780d07e6da1669900125cf2",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 14,
+      "key": "erosion",
+      "from_frame": 1805,
+      "to_frame_exclusive": 2020,
+      "bytes": 1479514,
+      "sha256": "9e1a0c2066e43a93d9ddbf6278cc05eb279915a205d9c199e315557ee5e19082",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 15,
+      "key": "views",
+      "from_frame": 2020,
+      "to_frame_exclusive": 2172,
+      "bytes": 1150364,
+      "sha256": "72fcba9a87301dace153e648ec865e5a998e5b6095f5e1c64d5c1be07c2bfca1",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 16,
+      "key": "mesh",
+      "from_frame": 2172,
+      "to_frame_exclusive": 2302,
+      "bytes": 905370,
+      "sha256": "75ee069db4d42777e9c77ea757585481875c6b7c681fba0b0baf8767ca956114",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 17,
+      "key": "tease",
+      "from_frame": 2302,
+      "to_frame_exclusive": 2442,
+      "bytes": 938076,
+      "sha256": "d945c3bb5b631d93f0e19418db55c0871ef252b5bb26de190dea155e8b4a77fa",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 18,
+      "key": "ruler",
+      "from_frame": 2442,
+      "to_frame_exclusive": 2648,
+      "bytes": 1418402,
+      "sha256": "f98fc4521af789e25c204bce8f5d2f01ae66db69019d0764cfc16a1ec3ec031e",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 19,
+      "key": "diffuse",
+      "from_frame": 2648,
+      "to_frame_exclusive": 2897,
+      "bytes": 1818501,
+      "sha256": "8104a2f85f17aeead70068d6388fc3e1125c49b8789e04e44e1d514b44c255a6",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 20,
+      "key": "press",
+      "from_frame": 2897,
+      "to_frame_exclusive": 3166,
+      "bytes": 2530988,
+      "sha256": "f1ed0c88388692c882dd58f829e41188986600722e4e168a5127f84d11b7ac98",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 21,
+      "key": "results",
+      "from_frame": 3166,
+      "to_frame_exclusive": 3273,
+      "bytes": 909662,
+      "sha256": "22d41ca70aa8709b6246412b7bad89b26e8e0312e1f7749cd510b62b6e8fe162",
+      "pass": "refinement"
+    },
+    {
+      "shot": 22,
+      "key": "changing",
+      "from_frame": 3273,
+      "to_frame_exclusive": 3454,
+      "bytes": 1269381,
+      "sha256": "0b83dd0b2e22f00303217b313658dab216afbae1ca9beb98c837f63513e37e23",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 23,
+      "key": "makers",
+      "from_frame": 3454,
+      "to_frame_exclusive": 3607,
+      "bytes": 1165864,
+      "sha256": "3bae2b3bde67c74eefecc7084310bf9b4bdd7484dd0e5ff7b2277d4571568769",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 24,
+      "key": "underfoot",
+      "from_frame": 3607,
+      "to_frame_exclusive": 3741,
+      "bytes": 935463,
+      "sha256": "0baec0b8283bd0c906717b2b6bbde3bddb79ae623b080e65e0b1ac75432d4d54",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 25,
+      "key": "ripples",
+      "from_frame": 3741,
+      "to_frame_exclusive": 3860,
+      "bytes": 873394,
+      "sha256": "8926dcf05fe2243865ea8d6635e043aa972dbbdb6a3bae0653f8edea840b195e",
+      "pass": "retained"
+    },
+    {
+      "shot": 26,
+      "key": "cracks",
+      "from_frame": 3860,
+      "to_frame_exclusive": 3922,
+      "bytes": 440046,
+      "sha256": "87e6a9da2f57bc704951f45bd1afffb56bedfff5f5335644ed4aa7531c7202be",
+      "pass": "retained"
+    },
+    {
+      "shot": 27,
+      "key": "clues",
+      "from_frame": 3922,
+      "to_frame_exclusive": 4048,
+      "bytes": 882211,
+      "sha256": "50d6da00eb88ab369fc44588caa3ca756857a1e9593bfa0c77aff7f675968e2a",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 28,
+      "key": "drain",
+      "from_frame": 4048,
+      "to_frame_exclusive": 4217,
+      "bytes": 1349157,
+      "sha256": "a0989290a90849462aacf521ccdd25291e81febfcc69613e284e087fdb9dcc3d",
+      "pass": "retained"
+    },
+    {
+      "shot": 29,
+      "key": "wear",
+      "from_frame": 4217,
+      "to_frame_exclusive": 4386,
+      "bytes": 1297689,
+      "sha256": "d86810e024fb50de553f104f835af3b0ee3d8dea3da2f027642a1ff9b125d395",
+      "pass": "retained"
+    },
+    {
+      "shot": 30,
+      "key": "cement",
+      "from_frame": 4386,
+      "to_frame_exclusive": 4667,
+      "bytes": 2531785,
+      "sha256": "1bb967328d5f17301c9d546f14204af72e03687b74f4e3c00c6b2f3a04844737",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 31,
+      "key": "mat",
+      "from_frame": 4667,
+      "to_frame_exclusive": 4871,
+      "bytes": 1490493,
+      "sha256": "4131c108c7df62986a7e01590b44f5d8ac9d42a87d10375f0779c776ac9094de",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 32,
+      "key": "burial",
+      "from_frame": 4871,
+      "to_frame_exclusive": 4993,
+      "bytes": 1117138,
+      "sha256": "8e4aa31adaea7ccb2e47e94fa15c5d78ab4e23553bfa347586f24cc5ad83273b",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 33,
+      "key": "preserved",
+      "from_frame": 4993,
+      "to_frame_exclusive": 5138,
+      "bytes": 1077844,
+      "sha256": "98aa8174f217487cf61021a0ea0a87a43c8eaa0ba0aa123465258c26ec3b8d06",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 34,
+      "key": "sousa",
+      "from_frame": 5138,
+      "to_frame_exclusive": 5254,
+      "bytes": 570403,
+      "sha256": "ee6062926cb9e48c507b4409f76982717d7cdef5d1c5a85fe0bfb121ae1a5a6b",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 35,
+      "key": "sousa-water",
+      "from_frame": 5254,
+      "to_frame_exclusive": 5352,
+      "bytes": 787391,
+      "sha256": "500a3dbff6632c1372c8fca2436702f7d787441926f339398a07f769d849ea79",
+      "pass": "retained"
+    },
+    {
+      "shot": 36,
+      "key": "sousa-mat",
+      "from_frame": 5352,
+      "to_frame_exclusive": 5495,
+      "bytes": 1071225,
+      "sha256": "d9e22bf658534d2538540e96451eb42ca98ba1ee4c168423f829e7916d70cc85",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 37,
+      "key": "rim",
+      "from_frame": 5495,
+      "to_frame_exclusive": 5637,
+      "bytes": 968080,
+      "sha256": "1215f68070ca7d5eaa3a0448b2c94544e4dafafd2e4b716b0736f41090a16519",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 38,
+      "key": "held",
+      "from_frame": 5637,
+      "to_frame_exclusive": 5783,
+      "bytes": 1062190,
+      "sha256": "65cb84e6dcbce855b7a459d0941924d57f3ac4569fd60bc9e8e6020d57e884d0",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 39,
+      "key": "conditions",
+      "from_frame": 5783,
+      "to_frame_exclusive": 6027,
+      "bytes": 1765497,
+      "sha256": "135006a064903235ccf9e3235d489e7d230ad10ea15fc076f15d11c00c9257ac",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 40,
+      "key": "banks",
+      "from_frame": 6027,
+      "to_frame_exclusive": 6290,
+      "bytes": 2809495,
+      "sha256": "34b9325d78c0ed38e3d7e152921228ed2598ccc44f3093a8cd80645410ffff14",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 41,
+      "key": "unmatched",
+      "from_frame": 6290,
+      "to_frame_exclusive": 6496,
+      "bytes": 1419682,
+      "sha256": "04f77dabc81e29f6518cc41285b7077fc7742f3ce484f9e1c0e00e99b1b09c8f",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 42,
+      "key": "window",
+      "from_frame": 6496,
+      "to_frame_exclusive": 6581,
+      "bytes": 380831,
+      "sha256": "814178306f3869782d0758a3416e5bd3fa72389d5aed15dbd6a59fa541120e9b",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 43,
+      "key": "pollen",
+      "from_frame": 6581,
+      "to_frame_exclusive": 6729,
+      "bytes": 1040721,
+      "sha256": "1798dca28de98931655ef7739564762cca4b5bf2f49ecaf705712469141bbfb0",
+      "pass": "refinement"
+    },
+    {
+      "shot": 44,
+      "key": "regional",
+      "from_frame": 6729,
+      "to_frame_exclusive": 6899,
+      "bytes": 1185933,
+      "sha256": "c404c517bf3a16a04f9f12193d1cfc410790d7e434829e316654f14fc1a399d3",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 45,
+      "key": "broad",
+      "from_frame": 6899,
+      "to_frame_exclusive": 7072,
+      "bytes": 759546,
+      "sha256": "3fe4ae6053ea39a9e171ea064ee6fa1862a22bee4f8e29e4cdeb63e8c5049708",
+      "pass": "refinement"
+    },
+    {
+      "shot": 46,
+      "key": "restore",
+      "from_frame": 7072,
+      "to_frame_exclusive": 7230,
+      "bytes": 874984,
+      "sha256": "fef5121efb0d1821cda932713e36d90b0c369366b2cf142916d51a0fa731758c",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 47,
+      "key": "bedrock",
+      "from_frame": 7230,
+      "to_frame_exclusive": 7342,
+      "bytes": 782100,
+      "sha256": "25fd8f046a18ab2c21fcce30eeb3aaee50eec4bba5748e9adbce25ba2534a078",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 48,
+      "key": "structures",
+      "from_frame": 7342,
+      "to_frame_exclusive": 7499,
+      "bytes": 844488,
+      "sha256": "86db8bb44a20948b46eabe3696cc79012c449e4ab2da42fb4bfaff18f8f27ffa",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 49,
+      "key": "stretch",
+      "from_frame": 7499,
+      "to_frame_exclusive": 7690,
+      "bytes": 1258352,
+      "sha256": "b37fb90f5604256fffb9e0d6282c40cd8472c4ab1399faba4b283aca316c1291",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 50,
+      "key": "fill",
+      "from_frame": 7690,
+      "to_frame_exclusive": 7871,
+      "bytes": 1256801,
+      "sha256": "e5bda8b906852612b271ef27bc6cf3fea55f6b63aee5392bc885fe75025a50d4",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 51,
+      "key": "land",
+      "from_frame": 7871,
+      "to_frame_exclusive": 7984,
+      "bytes": 596088,
+      "sha256": "ef75282dc0ebec78c0359c9397332e5e9b39bd14341594da1480ac9ebbde4f92",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 52,
+      "key": "valleys",
+      "from_frame": 7984,
+      "to_frame_exclusive": 8232,
+      "bytes": 2587234,
+      "sha256": "8cf34751cb45f8484ae4d2f66e2288505e752d6210b9c2109610c579c83fb4a9",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 53,
+      "key": "possible",
+      "from_frame": 8232,
+      "to_frame_exclusive": 8371,
+      "bytes": 729365,
+      "sha256": "819a6d3a7a49ae5b15e6f6cc32fabb58bccd8274b0188210d135096da13a6fe2",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 54,
+      "key": "generations",
+      "from_frame": 8371,
+      "to_frame_exclusive": 8568,
+      "bytes": 1420621,
+      "sha256": "369ddedc10a63c9f2e1e63eb60f0465e87891f99c7fd94b56d1101092d0168db",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 55,
+      "key": "fish",
+      "from_frame": 8568,
+      "to_frame_exclusive": 8801,
+      "bytes": 2466822,
+      "sha256": "4d7cb2111a80e72c1b85cf9206f26f6f8dd7f753ac0fb522fb980ff8bc2a79dc",
+      "pass": "refinement"
+    },
+    {
+      "shot": 56,
+      "key": "fish-basins",
+      "from_frame": 8801,
+      "to_frame_exclusive": 9043,
+      "bytes": 1300911,
+      "sha256": "f63e43705efd125a5285bbed693cd9964808fb598e240e3b50780faf04460e46",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 57,
+      "key": "patterns",
+      "from_frame": 9043,
+      "to_frame_exclusive": 9167,
+      "bytes": 614785,
+      "sha256": "a130c8b3e07c270cebad4de7ab2586d195ccdaf4c959f8705603bad354e3c236",
+      "pass": "refinement"
+    },
+    {
+      "shot": 58,
+      "key": "tests",
+      "from_frame": 9167,
+      "to_frame_exclusive": 9481,
+      "bytes": 2240371,
+      "sha256": "cea72b0e955c6dab181c43fe3fe09e1ee90a348ec7651c85fcad3e42fc0e6259",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 59,
+      "key": "still-possible",
+      "from_frame": 9481,
+      "to_frame_exclusive": 9669,
+      "bytes": 1031874,
+      "sha256": "b5c818d5b21900954bda2c89a0badf261a6cc913c83cb13fe9a84389faace2b7",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 60,
+      "key": "rift",
+      "from_frame": 9669,
+      "to_frame_exclusive": 9897,
+      "bytes": 2133638,
+      "sha256": "8eb76b3ec1e438c8eb9090fc81ef38bc444157b087a2919d0b9af950976fe3d9",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 61,
+      "key": "return",
+      "from_frame": 9897,
+      "to_frame_exclusive": 10055,
+      "bytes": 693139,
+      "sha256": "f2f9eef5448cbfec492099b3ea1f89a913d0423dba72cd7c7575782d39d251ad",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 62,
+      "key": "which-journey",
+      "from_frame": 10055,
+      "to_frame_exclusive": 10170,
+      "bytes": 615728,
+      "sha256": "eb7402c1273c6cf228205253d848826f5a4a2ffdada430839c24e6bab1ec53d4",
+      "pass": "refinement"
+    },
+    {
+      "shot": 63,
+      "key": "the-rocks",
+      "from_frame": 10170,
+      "to_frame_exclusive": 10316,
+      "bytes": 1357983,
+      "sha256": "5fcf927a69fd6b23a28d7d7d8735fd94fbf937e80b42a39fc5d1a3ccf3feb6cb",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 64,
+      "key": "last-print",
+      "from_frame": 10316,
+      "to_frame_exclusive": 10540,
+      "bytes": 1894726,
+      "sha256": "fecf75a74e4e32cd9b401f00e9ab27c0cf4c2ca801b4fbef659ea68f8bedc2fd",
+      "pass": "rebuild"
+    },
+    {
+      "shot": 65,
+      "key": "sources",
+      "from_frame": 10540,
+      "to_frame_exclusive": 10696,
+      "bytes": 558681,
+      "sha256": "6b1145bd341d7c99663a54432f6b5f839f0ff46a64586ac62c17f7b3d35458da",
+      "pass": "rebuild"
+    }
+  ],
+  "render_passes": {
+    "initial": "9adf7cc47a6bf8f82dfec1c4e63e2160b014fa489ccc6a526fbcbfe87cb9fd7f",
+    "current": "79b3b74621d4a1547291ddc2a2f974cfff750796747043c9dac7f610c880fc79",
+    "amended_shots": [
+      1,
+      21,
+      43,
+      45,
+      55,
+      57,
+      62
+    ]
+  },
+  "streams": {
+    "vide": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 10696,
+      "edit_list": [
+        [
+          21392000,
+          4000
+        ]
+      ],
+      "codec_tag": "avc1",
+      "frames": 10696,
+      "ticks_per_frame": 2000,
+      "exact_presentation_grid": true,
+      "seekable_shot_starts": 66,
+      "decoding_timestamps_increase": true
+    },
+    "soun": {
+      "timescale": 48000,
+      "track_ticks": 21393024,
+      "packet_samples": 20892,
+      "edit_list": [
+        [
+          21392000,
+          1024
+        ]
+      ],
+      "codec_tag": "mp4a"
+    },
+    "sbtl": {
+      "timescale": 1000000,
+      "track_ticks": 438799000,
+      "packet_samples": 192,
+      "edit_list": [
+        [
+          21062352,
+          0
+        ]
+      ],
+      "codec_tag": "tx3g"
+    },
+    "text": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 9,
+      "edit_list": [
+        [
+          21392000,
+          0
+        ]
+      ],
+      "codec_tag": "text"
+    }
+  },
+  "video_samples_sha256": "065eca5909d76af8cc5d6acc676c65805a1b64404f70966b48e2bfffc65fd60d",
+  "aac_packet_log": {
+    "sample_log_sha256": "63e62f15717c5ef61b3ae088f866cd559b5dc7dbc56a313cf0cbb7f41663627b",
+    "media_packet_count": 20892
+  },
+  "decoded_stereo_pcm_f32le_sha256": "35b07914674c394560f4c04957e7b705b33c3e9b7c6fb2018bdefecc8566846e",
+  "encoded_subtitle_and_chapter_track_matches": true,
+  "caption_audit": {
+    "english_cues": 127,
+    "last_caption_out_ms": 438799,
+    "all_script_words": 1217,
+    "narrated_sections": 8,
+    "max_nonspace_break_chars_per_second": 19.649,
+    "same_spelling_and_punctuation_as_v2": true,
+    "identical_srt_round_trip": true,
+    "subtitle_language": "eng",
+    "not_burned_in": true
+  },
+  "chapters": [
+    {
+      "title": "The ocean came later",
+      "start_frame": 0,
+      "end_frame": 869
+    },
+    {
+      "title": "Four pieces of ancient ground",
+      "start_frame": 869,
+      "end_frame": 2442
+    },
+    {
+      "title": "The big print has a problem",
+      "start_frame": 2442,
+      "end_frame": 3741
+    },
+    {
+      "title": "What the mud held onto",
+      "start_frame": 3741,
+      "end_frame": 5138
+    },
+    {
+      "title": "The other side of the comparison",
+      "start_frame": 5138,
+      "end_frame": 6496
+    },
+    {
+      "title": "Date the rocks, then move the continents",
+      "start_frame": 6496,
+      "end_frame": 7871
+    },
+    {
+      "title": "A route, not a trail",
+      "start_frame": 7871,
+      "end_frame": 9669
+    },
+    {
+      "title": "The journey we can follow",
+      "start_frame": 9669,
+      "end_frame": 10540
+    },
+    {
+      "title": "Sources and maps",
+      "start_frame": 10540,
+      "end_frame": 10696
+    }
+  ],
+  "voice_source_sha256": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+  "audio_measurements_from_identical_red_program": {
+    "lufs_i": -17.1,
+    "peak_dbtp": -1.8,
+    "sync_windows": 127,
+    "all_offsets_samples": [
+      0
+    ]
+  },
+  "source_audio_anchors": 77,
+  "human_pronunciation_signoff": false,
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut.mp4",
+      "bytes": 93022469,
+      "sha256": "32542211c4967daf925bdd392e7cb342076ab287870520169585f8f5b903b956",
+      "md5": "d8f9fcc14e4008aea98ded4982cad4ca"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut.en.srt",
+      "bytes": 11274,
+      "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+      "md5": "a3972319948a4ce6de3bd085dc116801"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Investigation-Cut-Handoff.md",
+      "bytes": 7731,
+      "sha256": "3634797473c148671329083cc74a8a237c3d5ec0afecaaee703ef5c88630874c",
+      "md5": "7593c179f7de86a87215bca02545c9be"
+    }
+  ]
+}

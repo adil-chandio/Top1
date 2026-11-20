@@ -1,0 +1,61 @@
+{
+  "basis_date_utc": "2026-11-18",
+  "scope": "Five matched video-ID-native YouTube cover images visually inspected. Indexed copies, not proved to be covers seen by all viewers or at launch.",
+  "images": [
+    {
+      "video_id": "Ya99xCWXQdc",
+      "channel": "PBS Eons",
+      "watch_url": "https://www.youtube.com/watch?v=Ya99xCWXQdc",
+      "native_thumbnail_url": "https://i.ytimg.com/vi/Ya99xCWXQdc/hqdefault.jpg",
+      "index_page": "https://mblip.com/category/mblip/science/pbs-eons",
+      "indexed_copy_url": "https://imgs.search.brave.com/XjFElVC6ziTOFbuj-egTYc0AtR5FUd0BfI-euz2D0V0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9Z/YTk5eENXWFFkYy9o/cWRlZmF1bHQuanBn",
+      "sha256_of_indexed_copy": "b0cd6d3d8cf151626a4bc6cd5e3393872fdee787de3a128e49ec77037b28eaf2",
+      "bytes": 14437,
+      "inspected_pixels": true
+    },
+    {
+      "video_id": "IXU43nvmDkE",
+      "channel": "PBS Eons",
+      "watch_url": "https://www.youtube.com/watch?v=IXU43nvmDkE",
+      "native_thumbnail_url": "https://i.ytimg.com/vi/IXU43nvmDkE/hqdefault.jpg",
+      "index_page": "https://mblip.com/category/mblip/science/pbs-eons",
+      "indexed_copy_url": "https://imgs.search.brave.com/wCs-MgjhFTDGaNNgIJEcba4dyi7sBqmgQ1nAfbzOdlI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9J/WFU0M252bURrRS9o/cWRlZmF1bHQuanBn",
+      "sha256_of_indexed_copy": "32aa7a458a9e45a4d27a74cc399b4672628ebd557849a3d88129fbfb4d99e86b",
+      "bytes": 20023,
+      "inspected_pixels": true
+    },
+    {
+      "video_id": "sIupXhjet0s",
+      "channel": "PBS Eons",
+      "watch_url": "https://www.youtube.com/watch?v=sIupXhjet0s",
+      "native_thumbnail_url": "https://i.ytimg.com/vi/sIupXhjet0s/hqdefault.jpg",
+      "index_page": "https://mblip.com/category/mblip/science/pbs-eons",
+      "indexed_copy_url": "https://imgs.search.brave.com/JHcSY5578hhJqFNdRdtAQGvQ233Y5Ww21Yy958uRHak/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS9z/SXVwWGhqZXQwcy9o/cWRlZmF1bHQuanBn",
+      "sha256_of_indexed_copy": "dd42eeb3c8908c24f15acc1f9fb9bc203eb5b1a9f913b85761c383c77c2df4b3",
+      "bytes": 14277,
+      "inspected_pixels": true
+    },
+    {
+      "video_id": "uwkeAS3UzB0",
+      "channel": "PBS Eons",
+      "watch_url": "https://www.youtube.com/watch?v=uwkeAS3UzB0",
+      "native_thumbnail_url": "https://i.ytimg.com/vi/uwkeAS3UzB0/hqdefault.jpg",
+      "index_page": "https://mblip.com/category/mblip/science/pbs-eons",
+      "indexed_copy_url": "https://imgs.search.brave.com/PDJdXfnKgbHEnUf8kUOBFFp1tQ_hHAnV_1Yus0Vp_Rg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS91/d2tlQVMzVXpCMC9o/cWRlZmF1bHQuanBn",
+      "sha256_of_indexed_copy": "0bffb8946de9b3193b947f35d519d289d80de0120551c467ec4f756c40dd9f39",
+      "bytes": 14351,
+      "inspected_pixels": true
+    },
+    {
+      "video_id": "yN4Ck8CSdWU",
+      "channel": "PBS Eons",
+      "watch_url": "https://www.youtube.com/watch?v=yN4Ck8CSdWU",
+      "native_thumbnail_url": "https://i.ytimg.com/vi/yN4Ck8CSdWU/hqdefault.jpg",
+      "index_page": "https://mblip.com/category/mblip/science/pbs-eons",
+      "indexed_copy_url": "https://imgs.search.brave.com/lr7za4kCPm99eadmhG_WoyYf1aBLw8G8ia4f3hKSZcw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnl0/aW1nLmNvbS92aS95/TjRDazhDU2RXVS9o/cWRlZmF1bHQuanBn",
+      "sha256_of_indexed_copy": "21dc60c7d12deaa633ffcd02a63b5133e43d81c060cdca1fb7408f8939d72707",
+      "bytes": 14931,
+      "inspected_pixels": true
+    }
+  ]
+}

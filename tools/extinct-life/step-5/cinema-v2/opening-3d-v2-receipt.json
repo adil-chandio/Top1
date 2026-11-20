@@ -1,0 +1,944 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "version": "3D opening v2; awaiting owner approval; no later scenes rendered",
+  "duration_seconds": 60.708333333333336,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "fps": 24,
+  "frame_count": 1457,
+  "color": "limited Rec.709",
+  "decoded_all_frames": true,
+  "stills_decoded_for_visual_qc": 23,
+  "voiceset": "Locked English v2 (audition 02)",
+  "voice_sha256": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+  "english_cues_round_trip": 18,
+  "last_caption_out": "00:01:00.673",
+  "mux_clocks": {
+    "vide": {
+      "timescale": 48000,
+      "media_samples": 2914000,
+      "edit_duration_ticks": 2914000,
+      "media_start": 0,
+      "frames": 1457,
+      "ticks_per_frame": 2000,
+      "seekable_shot_starts": 12
+    },
+    "soun": {
+      "timescale": 48000,
+      "media_samples": 2915024,
+      "edit_duration_ticks": 2914000,
+      "media_start": 1024
+    },
+    "sbtl": {
+      "timescale": 1000000,
+      "media_samples": 60673000,
+      "edit_duration_ticks": 2912304,
+      "media_start": 0
+    }
+  },
+  "audio": {
+    "exact_pcm_narration_at_unity_before_aac": true,
+    "narration_sync_samples": [
+      0
+    ],
+    "checkpoints": 29,
+    "worst_window_correlation": 0.999305,
+    "aac_vs_pcm_snr_db": 36.68,
+    "lufs_i": -17.4,
+    "peak_dbtp": -2.4
+  },
+  "motion_sound_sync": {
+    "graphic_cues_audited": 32,
+    "spot_fx_count": 43,
+    "full_signal_timing_verified": true,
+    "visual_onset_in_final_encode": [
+      {
+        "id": "brazil",
+        "visible_frame": 13,
+        "contrast_pixels_at_960x540": 144,
+        "error_without_overlay_over_error_with_overlay": 19.216
+      },
+      {
+        "id": "cameroon",
+        "visible_frame": 66,
+        "contrast_pixels_at_960x540": 133,
+        "error_without_overlay_over_error_with_overlay": 21.67
+      },
+      {
+        "id": "orbit",
+        "visible_frame": 102,
+        "contrast_pixels_at_960x540": 101,
+        "error_without_overlay_over_error_with_overlay": 16.971
+      },
+      {
+        "id": "sousa-pin",
+        "visible_frame": 115,
+        "contrast_pixels_at_960x540": 62,
+        "error_without_overlay_over_error_with_overlay": 3.082
+      },
+      {
+        "id": "koum-pin",
+        "visible_frame": 125,
+        "contrast_pixels_at_960x540": 47,
+        "error_without_overlay_over_error_with_overlay": 6.048
+      },
+      {
+        "id": "distance-now",
+        "visible_frame": 149,
+        "contrast_pixels_at_960x540": 151,
+        "error_without_overlay_over_error_with_overlay": 17.218
+      },
+      {
+        "id": "rewind",
+        "visible_frame": 245,
+        "contrast_pixels_at_960x540": 137,
+        "error_without_overlay_over_error_with_overlay": 22.137
+      },
+      {
+        "id": "model-lock",
+        "visible_frame": 275,
+        "contrast_pixels_at_960x540": 134,
+        "error_without_overlay_over_error_with_overlay": 19.479
+      },
+      {
+        "id": "sousa-past",
+        "visible_frame": 281,
+        "contrast_pixels_at_960x540": 81,
+        "error_without_overlay_over_error_with_overlay": 4.631
+      },
+      {
+        "id": "koum-past",
+        "visible_frame": 289,
+        "contrast_pixels_at_960x540": 110,
+        "error_without_overlay_over_error_with_overlay": 7.353
+      },
+      {
+        "id": "distance-then",
+        "visible_frame": 370,
+        "contrast_pixels_at_960x540": 168,
+        "error_without_overlay_over_error_with_overlay": 21.671
+      },
+      {
+        "id": "title-one",
+        "visible_frame": 473,
+        "contrast_pixels_at_960x540": 1328,
+        "error_without_overlay_over_error_with_overlay": 33.038
+      },
+      {
+        "id": "title-two",
+        "visible_frame": 479,
+        "contrast_pixels_at_960x540": 665,
+        "error_without_overlay_over_error_with_overlay": 28.161
+      },
+      {
+        "id": "title-three",
+        "visible_frame": 485,
+        "contrast_pixels_at_960x540": 546,
+        "error_without_overlay_over_error_with_overlay": 18.506
+      },
+      {
+        "id": "approach",
+        "visible_frame": 641,
+        "contrast_pixels_at_960x540": 194,
+        "error_without_overlay_over_error_with_overlay": 16.252
+      },
+      {
+        "id": "local-fix",
+        "visible_frame": 684,
+        "contrast_pixels_at_960x540": 197,
+        "error_without_overlay_over_error_with_overlay": 8.775
+      },
+      {
+        "id": "four-surfaces",
+        "visible_frame": 778,
+        "contrast_pixels_at_960x540": 194,
+        "error_without_overlay_over_error_with_overlay": 14.71
+      },
+      {
+        "id": "layer-1",
+        "visible_frame": 783,
+        "contrast_pixels_at_960x540": 61,
+        "error_without_overlay_over_error_with_overlay": 5.832
+      },
+      {
+        "id": "layer-2",
+        "visible_frame": 790,
+        "contrast_pixels_at_960x540": 59,
+        "error_without_overlay_over_error_with_overlay": 6.325
+      },
+      {
+        "id": "layer-3",
+        "visible_frame": 797,
+        "contrast_pixels_at_960x540": 65,
+        "error_without_overlay_over_error_with_overlay": 6.319
+      },
+      {
+        "id": "layer-4",
+        "visible_frame": 804,
+        "contrast_pixels_at_960x540": 56,
+        "error_without_overlay_over_error_with_overlay": 3.708
+      },
+      {
+        "id": "mayo-rey",
+        "visible_frame": 903,
+        "contrast_pixels_at_960x540": 81,
+        "error_without_overlay_over_error_with_overlay": 22.399
+      },
+      {
+        "id": "footprint-count",
+        "visible_frame": 1093,
+        "contrast_pixels_at_960x540": 104,
+        "error_without_overlay_over_error_with_overlay": 14.149
+      },
+      {
+        "id": "footfall-type",
+        "visible_frame": 1159,
+        "contrast_pixels_at_960x540": 89,
+        "error_without_overlay_over_error_with_overlay": 18.319
+      },
+      {
+        "id": "trackway-count",
+        "visible_frame": 1273,
+        "contrast_pixels_at_960x540": 98,
+        "error_without_overlay_over_error_with_overlay": 18.168
+      },
+      {
+        "id": "sequence",
+        "visible_frame": 1357,
+        "contrast_pixels_at_960x540": 92,
+        "error_without_overlay_over_error_with_overlay": 13.304
+      },
+      {
+        "id": "step-1",
+        "visible_frame": 1363,
+        "contrast_pixels_at_960x540": 208,
+        "error_without_overlay_over_error_with_overlay": 5.259
+      },
+      {
+        "id": "step-2",
+        "visible_frame": 1371,
+        "contrast_pixels_at_960x540": 227,
+        "error_without_overlay_over_error_with_overlay": 4.467
+      },
+      {
+        "id": "step-3",
+        "visible_frame": 1379,
+        "contrast_pixels_at_960x540": 192,
+        "error_without_overlay_over_error_with_overlay": 3.849
+      },
+      {
+        "id": "step-4",
+        "visible_frame": 1387,
+        "contrast_pixels_at_960x540": 203,
+        "error_without_overlay_over_error_with_overlay": 4.449
+      },
+      {
+        "id": "step-5",
+        "visible_frame": 1395,
+        "contrast_pixels_at_960x540": 188,
+        "error_without_overlay_over_error_with_overlay": 4.073
+      },
+      {
+        "id": "step-6",
+        "visible_frame": 1403,
+        "contrast_pixels_at_960x540": 203,
+        "error_without_overlay_over_error_with_overlay": 5.102
+      }
+    ],
+    "max_early_attack_ms_after_same_frame": 1.125,
+    "spot_fx_peak_dbfs": -17.376,
+    "spot_differences_db": [
+      -15.502,
+      -15.673
+    ],
+    "score_rms_dbfs": -39.14,
+    "ambience_rms_dbfs": -46.664,
+    "cue_rows": [
+      {
+        "id": "open",
+        "fx": "grain-bed",
+        "picture_frame": 0,
+        "trigger_sample": 0,
+        "signal_first_above_minus57_dbfs": 44,
+        "onset_samples_after_trigger": 44,
+        "first_frame_rms_dbfs": -36.17,
+        "isolated_peak_dbfs": -26.5,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "brazil",
+        "fx": "rock-type",
+        "picture_frame": 13,
+        "trigger_sample": 26000,
+        "signal_first_above_minus57_dbfs": 26038,
+        "onset_samples_after_trigger": 38,
+        "first_frame_rms_dbfs": -36.84,
+        "isolated_peak_dbfs": -23.62,
+        "spot_gain_db": 2.56,
+        "graphic_cue": true
+      },
+      {
+        "id": "match",
+        "fx": "cut-gravel",
+        "picture_frame": 63,
+        "trigger_sample": 126000,
+        "signal_first_above_minus57_dbfs": 126034,
+        "onset_samples_after_trigger": 34,
+        "first_frame_rms_dbfs": -34.77,
+        "isolated_peak_dbfs": -24.47,
+        "spot_gain_db": 1.3,
+        "graphic_cue": false
+      },
+      {
+        "id": "cameroon",
+        "fx": "rock-type",
+        "picture_frame": 66,
+        "trigger_sample": 132000,
+        "signal_first_above_minus57_dbfs": 132037,
+        "onset_samples_after_trigger": 37,
+        "first_frame_rms_dbfs": -34.69,
+        "isolated_peak_dbfs": -20.82,
+        "spot_gain_db": 5.6,
+        "graphic_cue": true
+      },
+      {
+        "id": "orbit-air",
+        "fx": "air-approach",
+        "picture_frame": 93,
+        "trigger_sample": 186000,
+        "signal_first_above_minus57_dbfs": 191391,
+        "onset_samples_after_trigger": 5391,
+        "first_frame_rms_dbfs": -89.29,
+        "isolated_peak_dbfs": -21.91,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "orbit",
+        "fx": "orbit-mark",
+        "picture_frame": 102,
+        "trigger_sample": 204000,
+        "signal_first_above_minus57_dbfs": 204025,
+        "onset_samples_after_trigger": 25,
+        "first_frame_rms_dbfs": -31.69,
+        "isolated_peak_dbfs": -21.75,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "sousa-pin",
+        "fx": "point",
+        "picture_frame": 115,
+        "trigger_sample": 230000,
+        "signal_first_above_minus57_dbfs": 230051,
+        "onset_samples_after_trigger": 51,
+        "first_frame_rms_dbfs": -35.04,
+        "isolated_peak_dbfs": -22.29,
+        "spot_gain_db": 2.13,
+        "graphic_cue": true
+      },
+      {
+        "id": "koum-pin",
+        "fx": "point",
+        "picture_frame": 125,
+        "trigger_sample": 250000,
+        "signal_first_above_minus57_dbfs": 250047,
+        "onset_samples_after_trigger": 47,
+        "first_frame_rms_dbfs": -35.02,
+        "isolated_peak_dbfs": -21.66,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "distance-now",
+        "fx": "measure",
+        "picture_frame": 149,
+        "trigger_sample": 298000,
+        "signal_first_above_minus57_dbfs": 298028,
+        "onset_samples_after_trigger": 28,
+        "first_frame_rms_dbfs": -32.89,
+        "isolated_peak_dbfs": -23.01,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "rewind-prelap",
+        "fx": "suction",
+        "picture_frame": 235,
+        "trigger_sample": 470000,
+        "signal_first_above_minus57_dbfs": 472708,
+        "onset_samples_after_trigger": 2708,
+        "first_frame_rms_dbfs": -75.7,
+        "isolated_peak_dbfs": -20.53,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "rewind",
+        "fx": "rewind",
+        "picture_frame": 245,
+        "trigger_sample": 490000,
+        "signal_first_above_minus57_dbfs": 490031,
+        "onset_samples_after_trigger": 31,
+        "first_frame_rms_dbfs": -31.84,
+        "isolated_peak_dbfs": -17.49,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "model-lock",
+        "fx": "arrival",
+        "picture_frame": 275,
+        "trigger_sample": 550000,
+        "signal_first_above_minus57_dbfs": 550025,
+        "onset_samples_after_trigger": 25,
+        "first_frame_rms_dbfs": -28.48,
+        "isolated_peak_dbfs": -20.02,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "sousa-past",
+        "fx": "old-point",
+        "picture_frame": 281,
+        "trigger_sample": 562000,
+        "signal_first_above_minus57_dbfs": 562045,
+        "onset_samples_after_trigger": 45,
+        "first_frame_rms_dbfs": -35.89,
+        "isolated_peak_dbfs": -23.6,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "koum-past",
+        "fx": "old-point",
+        "picture_frame": 289,
+        "trigger_sample": 578000,
+        "signal_first_above_minus57_dbfs": 578054,
+        "onset_samples_after_trigger": 54,
+        "first_frame_rms_dbfs": -34.56,
+        "isolated_peak_dbfs": -23.69,
+        "spot_gain_db": 1.52,
+        "graphic_cue": true
+      },
+      {
+        "id": "distance-then",
+        "fx": "old-measure",
+        "picture_frame": 370,
+        "trigger_sample": 740000,
+        "signal_first_above_minus57_dbfs": 740028,
+        "onset_samples_after_trigger": 28,
+        "first_frame_rms_dbfs": -33.29,
+        "isolated_peak_dbfs": -23.82,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "title-bed",
+        "fx": "title-bed",
+        "picture_frame": 470,
+        "trigger_sample": 940000,
+        "signal_first_above_minus57_dbfs": 940030,
+        "onset_samples_after_trigger": 30,
+        "first_frame_rms_dbfs": -29.87,
+        "isolated_peak_dbfs": -20.13,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "title-one",
+        "fx": "lift",
+        "picture_frame": 473,
+        "trigger_sample": 946000,
+        "signal_first_above_minus57_dbfs": 946032,
+        "onset_samples_after_trigger": 32,
+        "first_frame_rms_dbfs": -30.48,
+        "isolated_peak_dbfs": -21.52,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "title-two",
+        "fx": "lift",
+        "picture_frame": 479,
+        "trigger_sample": 958000,
+        "signal_first_above_minus57_dbfs": 958033,
+        "onset_samples_after_trigger": 33,
+        "first_frame_rms_dbfs": -33.25,
+        "isolated_peak_dbfs": -23.89,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "title-three",
+        "fx": "resolve",
+        "picture_frame": 485,
+        "trigger_sample": 970000,
+        "signal_first_above_minus57_dbfs": 970024,
+        "onset_samples_after_trigger": 24,
+        "first_frame_rms_dbfs": -29.94,
+        "isolated_peak_dbfs": -20.55,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "dive-air",
+        "fx": "air-approach",
+        "picture_frame": 624,
+        "trigger_sample": 1248000,
+        "signal_first_above_minus57_dbfs": 1253382,
+        "onset_samples_after_trigger": 5382,
+        "first_frame_rms_dbfs": -88.03,
+        "isolated_peak_dbfs": -19.91,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "approach",
+        "fx": "orbit-mark",
+        "picture_frame": 641,
+        "trigger_sample": 1282000,
+        "signal_first_above_minus57_dbfs": 1282038,
+        "onset_samples_after_trigger": 38,
+        "first_frame_rms_dbfs": -34.32,
+        "isolated_peak_dbfs": -24.15,
+        "spot_gain_db": 1.74,
+        "graphic_cue": true
+      },
+      {
+        "id": "local-fix",
+        "fx": "point",
+        "picture_frame": 684,
+        "trigger_sample": 1368000,
+        "signal_first_above_minus57_dbfs": 1368050,
+        "onset_samples_after_trigger": 50,
+        "first_frame_rms_dbfs": -35.02,
+        "isolated_peak_dbfs": -23.78,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "strata-entry",
+        "fx": "cut-gravel",
+        "picture_frame": 765,
+        "trigger_sample": 1530000,
+        "signal_first_above_minus57_dbfs": 1530037,
+        "onset_samples_after_trigger": 37,
+        "first_frame_rms_dbfs": -38.4,
+        "isolated_peak_dbfs": -28.09,
+        "spot_gain_db": 1.3,
+        "graphic_cue": false
+      },
+      {
+        "id": "four-surfaces",
+        "fx": "rock-type",
+        "picture_frame": 778,
+        "trigger_sample": 1556000,
+        "signal_first_above_minus57_dbfs": 1556052,
+        "onset_samples_after_trigger": 52,
+        "first_frame_rms_dbfs": -39.28,
+        "isolated_peak_dbfs": -25.56,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "layer-1",
+        "fx": "layer",
+        "picture_frame": 783,
+        "trigger_sample": 1566000,
+        "signal_first_above_minus57_dbfs": 1566038,
+        "onset_samples_after_trigger": 38,
+        "first_frame_rms_dbfs": -37.19,
+        "isolated_peak_dbfs": -25.82,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "layer-2",
+        "fx": "layer",
+        "picture_frame": 790,
+        "trigger_sample": 1580000,
+        "signal_first_above_minus57_dbfs": 1580034,
+        "onset_samples_after_trigger": 34,
+        "first_frame_rms_dbfs": -37.4,
+        "isolated_peak_dbfs": -23.29,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "layer-3",
+        "fx": "layer",
+        "picture_frame": 797,
+        "trigger_sample": 1594000,
+        "signal_first_above_minus57_dbfs": 1594032,
+        "onset_samples_after_trigger": 32,
+        "first_frame_rms_dbfs": -36.88,
+        "isolated_peak_dbfs": -23.48,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "layer-4",
+        "fx": "layer",
+        "picture_frame": 804,
+        "trigger_sample": 1608000,
+        "signal_first_above_minus57_dbfs": 1608035,
+        "onset_samples_after_trigger": 35,
+        "first_frame_rms_dbfs": -34.21,
+        "isolated_peak_dbfs": -18.43,
+        "spot_gain_db": 4.03,
+        "graphic_cue": true
+      },
+      {
+        "id": "river-open",
+        "fx": "water-open",
+        "picture_frame": 869,
+        "trigger_sample": 1738000,
+        "signal_first_above_minus57_dbfs": 1738051,
+        "onset_samples_after_trigger": 51,
+        "first_frame_rms_dbfs": -38.95,
+        "isolated_peak_dbfs": -27.87,
+        "spot_gain_db": 0.0,
+        "graphic_cue": false
+      },
+      {
+        "id": "mayo-rey",
+        "fx": "water-type",
+        "picture_frame": 903,
+        "trigger_sample": 1806000,
+        "signal_first_above_minus57_dbfs": 1806024,
+        "onset_samples_after_trigger": 24,
+        "first_frame_rms_dbfs": -32.42,
+        "isolated_peak_dbfs": -23.06,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "survey-cut",
+        "fx": "cut-gravel",
+        "picture_frame": 1040,
+        "trigger_sample": 2080000,
+        "signal_first_above_minus57_dbfs": 2080038,
+        "onset_samples_after_trigger": 38,
+        "first_frame_rms_dbfs": -37.03,
+        "isolated_peak_dbfs": -25.1,
+        "spot_gain_db": 1.3,
+        "graphic_cue": false
+      },
+      {
+        "id": "footprint-count",
+        "fx": "count",
+        "picture_frame": 1093,
+        "trigger_sample": 2186000,
+        "signal_first_above_minus57_dbfs": 2186028,
+        "onset_samples_after_trigger": 28,
+        "first_frame_rms_dbfs": -31.79,
+        "isolated_peak_dbfs": -20.9,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "footfall-type",
+        "fx": "rock-type",
+        "picture_frame": 1159,
+        "trigger_sample": 2318000,
+        "signal_first_above_minus57_dbfs": 2318041,
+        "onset_samples_after_trigger": 41,
+        "first_frame_rms_dbfs": -35.43,
+        "isolated_peak_dbfs": -21.97,
+        "spot_gain_db": 5.6,
+        "graphic_cue": true
+      },
+      {
+        "id": "contact",
+        "fx": "impact",
+        "picture_frame": 1183,
+        "trigger_sample": 2366000,
+        "signal_first_above_minus57_dbfs": 2366022,
+        "onset_samples_after_trigger": 22,
+        "first_frame_rms_dbfs": -25.72,
+        "isolated_peak_dbfs": -17.35,
+        "spot_gain_db": 1.12,
+        "graphic_cue": false
+      },
+      {
+        "id": "release",
+        "fx": "peel",
+        "picture_frame": 1208,
+        "trigger_sample": 2416000,
+        "signal_first_above_minus57_dbfs": 2416044,
+        "onset_samples_after_trigger": 44,
+        "first_frame_rms_dbfs": -34.85,
+        "isolated_peak_dbfs": -23.16,
+        "spot_gain_db": 1.3,
+        "graphic_cue": false
+      },
+      {
+        "id": "trackway-count",
+        "fx": "old-count",
+        "picture_frame": 1273,
+        "trigger_sample": 2546000,
+        "signal_first_above_minus57_dbfs": 2546025,
+        "onset_samples_after_trigger": 25,
+        "first_frame_rms_dbfs": -32.92,
+        "isolated_peak_dbfs": -21.99,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "sequence",
+        "fx": "lift",
+        "picture_frame": 1357,
+        "trigger_sample": 2714000,
+        "signal_first_above_minus57_dbfs": 2714027,
+        "onset_samples_after_trigger": 27,
+        "first_frame_rms_dbfs": -31.94,
+        "isolated_peak_dbfs": -21.06,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-1",
+        "fx": "step",
+        "picture_frame": 1363,
+        "trigger_sample": 2726000,
+        "signal_first_above_minus57_dbfs": 2726031,
+        "onset_samples_after_trigger": 31,
+        "first_frame_rms_dbfs": -35.89,
+        "isolated_peak_dbfs": -24.06,
+        "spot_gain_db": 2.58,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-2",
+        "fx": "step",
+        "picture_frame": 1371,
+        "trigger_sample": 2742000,
+        "signal_first_above_minus57_dbfs": 2742029,
+        "onset_samples_after_trigger": 29,
+        "first_frame_rms_dbfs": -33.25,
+        "isolated_peak_dbfs": -21.24,
+        "spot_gain_db": 5.6,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-3",
+        "fx": "step",
+        "picture_frame": 1379,
+        "trigger_sample": 2758000,
+        "signal_first_above_minus57_dbfs": 2758037,
+        "onset_samples_after_trigger": 37,
+        "first_frame_rms_dbfs": -36.94,
+        "isolated_peak_dbfs": -24.24,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-4",
+        "fx": "step",
+        "picture_frame": 1387,
+        "trigger_sample": 2774000,
+        "signal_first_above_minus57_dbfs": 2774036,
+        "onset_samples_after_trigger": 36,
+        "first_frame_rms_dbfs": -37.54,
+        "isolated_peak_dbfs": -26.45,
+        "spot_gain_db": 1.72,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-5",
+        "fx": "step",
+        "picture_frame": 1395,
+        "trigger_sample": 2790000,
+        "signal_first_above_minus57_dbfs": 2790035,
+        "onset_samples_after_trigger": 35,
+        "first_frame_rms_dbfs": -38.56,
+        "isolated_peak_dbfs": -28.22,
+        "spot_gain_db": 1.4,
+        "graphic_cue": true
+      },
+      {
+        "id": "step-6",
+        "fx": "step",
+        "picture_frame": 1403,
+        "trigger_sample": 2806000,
+        "signal_first_above_minus57_dbfs": 2806029,
+        "onset_samples_after_trigger": 29,
+        "first_frame_rms_dbfs": -34.17,
+        "isolated_peak_dbfs": -21.14,
+        "spot_gain_db": 5.6,
+        "graphic_cue": true
+      }
+    ],
+    "camera_moves": [
+      {
+        "index": 1,
+        "frames": 63,
+        "native_raster": [
+          1536,
+          864
+        ],
+        "camera_length": 1.19
+      },
+      {
+        "index": 2,
+        "frames": 36,
+        "native_raster": [
+          1536,
+          864
+        ],
+        "camera_length": 0.97
+      },
+      {
+        "index": 3,
+        "frames": 146,
+        "native_raster": [
+          1920,
+          1080
+        ],
+        "camera_length": 3.566
+      },
+      {
+        "index": 4,
+        "frames": 225,
+        "native_raster": [
+          1920,
+          1080
+        ],
+        "camera_length": 5.45
+      },
+      {
+        "index": 5,
+        "frames": 159,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 7.584
+      },
+      {
+        "index": 6,
+        "frames": 136,
+        "native_raster": [
+          1920,
+          1080
+        ],
+        "camera_length": 3.975
+      },
+      {
+        "index": 7,
+        "frames": 104,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 1.506
+      },
+      {
+        "index": 8,
+        "frames": 171,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 7.705
+      },
+      {
+        "index": 9,
+        "frames": 114,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 1.254
+      },
+      {
+        "index": 10,
+        "frames": 113,
+        "native_raster": [
+          1536,
+          864
+        ],
+        "camera_length": 0.498
+      },
+      {
+        "index": 11,
+        "frames": 86,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 1.621
+      },
+      {
+        "index": 12,
+        "frames": 104,
+        "native_raster": [
+          1408,
+          792
+        ],
+        "camera_length": 1.451
+      }
+    ]
+  },
+  "geography": {
+    "modern": [
+      [
+        -6.734270096,
+        -38.262065887
+      ],
+      [
+        8.291666666666666,
+        14.516666666666667
+      ]
+    ],
+    "past": [
+      [
+        -5.942546594063807,
+        -5.730008928940257
+      ],
+      [
+        -5.68802501626125,
+        5.056435421457978
+      ]
+    ],
+    "distance_km": {
+      "today": 6084.921164029081,
+      "past_model": 1193.543518272824
+    },
+    "visual_labels_are_published_approximations": {
+      "today": 6000,
+      "past": 1000
+    },
+    "geometry": {
+      "r_km": 6371,
+      "vertical_exaggeration": 31.0
+    },
+    "then_ma": 125,
+    "then_age_is_not_a_footprint_date": true
+  },
+  "preserved_v1_video_and_captions": true,
+  "picture_cache_key": "clean-9950a3fd9927a9",
+  "encoded_key": "encoded-56eb53c923fb13",
+  "credits": "Cartography adapted from Kocsis & Scotese (2021), PaleoCoastlines v7.1 and PALEOMAP rotations, https://doi.org/10.1016/j.earscirev.2020.103463, and Scotese & Wright (2018), PALEOMAP PaleoDEMs v2, https://doi.org/10.5281/zenodo.5460860. Both CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Resampled and annotated; relief exaggerated. Present-day Natural Earth + NOAA NGDC ETOPO5, public domain. 125 Ma is a model snapshot, not a footprint date. Local terrain and footprints are CGI illustrations. RPG Audio gravel foley by Kenney Vleugels, Kenney.nl, CC0 1.0. Four checksum-pinned one-shots, filtered and layered. All other audio is original synthesis.",
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D-v2.mp4",
+      "size": 60713443,
+      "sha256": "0b01e7f998a0e0eb672865f037d40a686eefb8535e8a2fa9007bea8a25839ae8"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D-v2.en.srt",
+      "size": 1525,
+      "sha256": "29ed2fc05c44c97727835621d577c4c3a38023a3069740366a2fcb33be553677"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D-v2-Review-Notes.md",
+      "size": 3781,
+      "sha256": "d78d48c7def535a0f1812da0c9a01bfa9db3a7d419a65d4d3b837df5bc47faa6"
+    }
+  ]
+}
