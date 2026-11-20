@@ -8,3 +8,8 @@ dist/
 
 # Private studio exports and customer-specific caption files.
 /deliverables/
+
+# Local connector downloads, reference search results, and Python caches.
+/google_drive/
+/image-search/
+__pycache__/

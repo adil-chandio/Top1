@@ -1,0 +1,124 @@
+{
+  "duration_seconds": 186.94416666666666,
+  "sample_frames": 8973320,
+  "sample_rate": 48000,
+  "bit_depth": 24,
+  "channels": 1,
+  "cue_count": 60,
+  "maximum_caption_chars_per_second": 19.65,
+  "audio": {
+    "integrated_lufs": -20.34,
+    "true_peak_dbtp": -2.65,
+    "range_lu": 2.9,
+    "sample_peak_dbfs": -2.67,
+    "static_gain_db": -1.21
+  },
+  "first_audible_seconds_at_minus_50_dbfs": 0.13083333333333333,
+  "last_caption_end_seconds": 186.569,
+  "source_words": 512,
+  "no_pitch_shift_or_time_stretch": true,
+  "timing_basis": "PocketSphinx alignment at 10 ms + sample-accurate placement",
+  "script_sha256": "1df8b8583f003e8187ecd6f61dfd4cf3bd812a3321462eb81ee995b6678bc40d",
+  "voice_selection": {
+    "language": "en",
+    "audition": "02",
+    "voice_id": "voice-02",
+    "scope": "Session ID, not a permanent clone or the Urdu Monarch narrator."
+  },
+  "scenes": [
+    {
+      "chapter": 1,
+      "title": "An ocean between them",
+      "start_sample": 3840,
+      "end_sample": 989589,
+      "speech_start": 0.1260090702947846,
+      "speech_end": 20.486009070294784,
+      "native_frames": 915968,
+      "trim_head_frames": 5027,
+      "trim_tail_frames": 5285
+    },
+    {
+      "chapter": 2,
+      "title": "Put the land back",
+      "start_sample": 1011669,
+      "end_sample": 2080801,
+      "speech_start": 21.122446570294787,
+      "speech_end": 43.17244657029479,
+      "native_frames": 985600,
+      "trim_head_frames": 3263,
+      "trim_tail_frames": 72
+    },
+    {
+      "chapter": 3,
+      "title": "The ground changes the print",
+      "start_sample": 2104801,
+      "end_sample": 3127982,
+      "speech_start": 43.89602990362811,
+      "speech_end": 65.02602990362811,
+      "native_frames": 947712,
+      "trim_head_frames": 5027,
+      "trim_tail_frames": 2638
+    },
+    {
+      "chapter": 4,
+      "title": "Four surfaces, hundreds of prints",
+      "start_sample": 3150542,
+      "end_sample": 4935134,
+      "speech_start": 65.68230073696144,
+      "speech_end": 102.68230073696145,
+      "native_frames": 1647616,
+      "trim_head_frames": 2381,
+      "trim_tail_frames": 5642
+    },
+    {
+      "chapter": 5,
+      "title": "Compare the rocks, not just the toes",
+      "start_sample": 4960094,
+      "end_sample": 6550423,
+      "speech_start": 103.38130073696145,
+      "speech_end": 136.35130073696143,
+      "native_frames": 1468928,
+      "trim_head_frames": 1940,
+      "trim_tail_frames": 5874
+    },
+    {
+      "chapter": 6,
+      "title": "A route animals could use",
+      "start_sample": 6573463,
+      "end_sample": 7806370,
+      "speech_start": 136.99315490362812,
+      "speech_end": 162.50315490362811,
+      "native_frames": 1138176,
+      "trim_head_frames": 1940,
+      "trim_tail_frames": 3503
+    },
+    {
+      "chapter": 7,
+      "title": "The rocks carried the record",
+      "start_sample": 7831330,
+      "end_sample": 8950280,
+      "speech_start": 163.1987174036281,
+      "speech_end": 186.3287174036281,
+      "native_frames": 1034240,
+      "trim_head_frames": 5027,
+      "trim_tail_frames": 1178
+    }
+  ],
+  "files": [
+    {
+      "file": "Extinct-Life-Atlantic-Tracks-VO-v1.wav",
+      "size": 26920004,
+      "sha256": "effab3d1b08f54bce666e412eca187bab00e068866d763f1abd1a403171f9162"
+    },
+    {
+      "file": "Extinct-Life-Atlantic-Tracks-VO-v1.en.srt",
+      "size": 4954,
+      "sha256": "097e75c08cf6e66191b2a48b52030b130faa9268f0d41c4f8a038d59b3b44f06"
+    },
+    {
+      "file": "Extinct-Life-Atlantic-Tracks-VO-v1-Timing.md",
+      "size": 3686,
+      "sha256": "658c04a380d0009cf8612b2bd35507e889f584ad901cfdef06eab52110ab864f"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "script_sha256": "1df8b8583f003e8187ecd6f61dfd4cf3bd812a3321462eb81ee995b6678bc40d",
+  "voice_selection": {
+    "language": "en",
+    "audition": "02",
+    "voice_id": "voice-02",
+    "scope": "Session ID, not a permanent clone or the Urdu Monarch narrator."
+  },
+  "takes": [
+    {
+      "file": "raw/01.wav",
+      "sha256": "69b3a6f82748eac2ebe8135ecea318a1df35c09acb7ab38e7557dbbb5b6c16d5",
+      "take_note": "Original read."
+    },
+    {
+      "file": "raw/02.wav",
+      "sha256": "e86b0f9bab799d1839c1d7e25a677f3fafe540c7b130437b74ad0c43b35a9edb",
+      "take_note": "Original read."
+    },
+    {
+      "file": "pickups/03.wav",
+      "sha256": "e38008f5ff73647c081f66b16654d2a46a22496ef47c6dffdc5b5c1cf95e2458",
+      "take_note": "Paragraph break after “crossing possible” to separate the thought from the next sentence."
+    },
+    {
+      "file": "pickups/04.wav",
+      "sha256": "7da7702c2d848ad0d81e7046d05ad1d67df6ed9c2f23452067195f73f76fd382",
+      "take_note": "Speech spelling Koom for Koum, and paragraph breaks. Caption spelling unchanged."
+    },
+    {
+      "file": "pickups/05.wav",
+      "sha256": "545001c369d4cd47ec1311bf13258f28dce67323b160882e2aa384ce2bc2cf5a",
+      "take_note": "Speech spelling Sohza approximates Brazilian Sousa; spelling in subtitles and script is unchanged."
+    },
+    {
+      "file": "raw/06.wav",
+      "sha256": "3b5aa481d494e6f4374573da0d09261079a105d9232d830c76d60a75337313db",
+      "take_note": "Original read."
+    },
+    {
+      "file": "raw/07.wav",
+      "sha256": "1f278c94065dfe5eedbceb9aa7f67d4878bae4d2537bba807773bb660a3714bd",
+      "take_note": "Original read."
+    }
+  ]
+}

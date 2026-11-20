@@ -1,0 +1,57 @@
+{
+  "asset": {
+    "episode": "Monarch Cam #1A",
+    "version": "Voice Match",
+    "video_filename": "Monarch-Cam-01A-Bite-To-Jump-Short-Voice-Match.mp4",
+    "duration_seconds": 34,
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "captions_filename": "Monarch-Cam-01A-Bite-To-Jump-Short-Voice-Match.en.srt"
+  },
+  "title": "This Ant Jumps by Biting Sand",
+  "description": "A trap-jaw ant snaps its jaws in midair. No lift. The same snap against the sand launches it.\n\nOne jump clears the antlion pit. Another hits the wall and falls back in. In the lab, researchers glued the tips of some ants' jaws shut. Could they still escape without the snap?\n\nMonarch Cam #1A · Cinematic CGI reconstruction based on published research, not wildlife or lab footage. Sound and motion are illustrative.\n\nResearch: Larabee & Suarez (2015), trap-jaw ant escapes and the jaw-restraint experiment: https://doi.org/10.1371/journal.pone.0124871\nSutton et al. (2022), the dual-spring jaw mechanism: https://doi.org/10.1242/jeb.244077\nMusic: Original arrangement using FluidR3_GM samples by Frank Wen and contributors, packaged by Benjamin Gleitzman. Samples excerpted and edited for the Short. CC BY 3.0 US: https://creativecommons.org/licenses/by/3.0/us/ · https://github.com/gleitz/midi-js-soundfonts/tree/044fab8e1456bfafc5776e86dfd6bb8697149aef\nFoley (CC0): Kenney RPG Audio https://kenney.nl/assets/rpg-audio · crashoverride6 https://freesound.org/s/146408/ · BranndyBottle https://freesound.org/s/464699/ and https://freesound.org/s/464695/ · OwlStorm https://freesound.org/s/151214/ · VCKHaze https://freesound.org/s/332604/\nType: Space Grotesk, Florian Karsten and contributors, SIL Open Font License 1.1.\n\n#TrapJawAnt #Antlion #Shorts",
+  "hashtags": [
+    "#TrapJawAnt",
+    "#Antlion",
+    "#Shorts"
+  ],
+  "tags": [
+    "trap jaw ant",
+    "trap-jaw ant",
+    "antlion",
+    "ant lion",
+    "antlion pit",
+    "antlion larva",
+    "Odontomachus brunneus",
+    "ant jumps with jaws",
+    "ant bites sand",
+    "insect biomechanics",
+    "insect behavior",
+    "Monarch Cam"
+  ],
+  "studio": {
+    "category": "Science & Technology",
+    "video_language": "English",
+    "caption_language": "English",
+    "caption_upload_mode": "With timing",
+    "made_for_kids": "No, if intended for a general audience",
+    "altered_content": "Yes — realistic CGI reconstruction",
+    "cover_frame_hint": {
+      "time_seconds": 0.13,
+      "description": "Ant in frame, jaw tips near the sand, hook text readable."
+    }
+  },
+  "related_video": {
+    "title": "This Ant Escapes by Biting the Ground",
+    "same_channel_required": true,
+    "eligible_visibility": [
+      "public",
+      "unlisted"
+    ],
+    "advanced_features_required": true,
+    "setup": "YouTube Studio → Content → open the Short → Related video → select the full film → Save",
+    "help": "https://support.google.com/youtube/answer/14075157?hl=en"
+  },
+  "optional_pinned_comment": "If the jaws can't snap, would you bet on the ant climbing out or sliding back down?"
+}

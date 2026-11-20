@@ -1,0 +1,69 @@
+{
+  "archived_mp4": {
+    "name": "Extinct_Life_EP01_Amber_Atlas_Full_1080p.mp4",
+    "sha256": "345ad8314ac142697e3949f9953e25a0d9823bc6c3eb09501afe9af09096afd0",
+    "bytes": 69864240,
+    "duration_seconds": 450.633,
+    "chapters": [
+      {
+        "start": 0.0,
+        "end": 45.0,
+        "title": "The lost world"
+      },
+      {
+        "start": 45.0,
+        "end": 97.433,
+        "title": "The place"
+      },
+      {
+        "start": 97.433,
+        "end": 146.767,
+        "title": "The invisible trail"
+      },
+      {
+        "start": 146.767,
+        "end": 201.8,
+        "title": "The mineral shelter"
+      },
+      {
+        "start": 201.8,
+        "end": 248.0,
+        "title": "Reading the pieces"
+      },
+      {
+        "start": 248.0,
+        "end": 301.233,
+        "title": "A community reappears"
+      },
+      {
+        "start": 301.233,
+        "end": 351.367,
+        "title": "The missing photograph"
+      },
+      {
+        "start": 351.367,
+        "end": 404.5,
+        "title": "Different windows"
+      },
+      {
+        "start": 404.5,
+        "end": 450.633,
+        "title": "What the ground kept"
+      }
+    ]
+  },
+  "launch_kit": {
+    "name": "Extinct-Life-V14-YouTube-Launch-Kit.zip",
+    "sha256": "67db480950d41cdb58724f82afc0cf3f581a4710c6f48d4b2694591dae787317",
+    "bytes": 6176869,
+    "checked_members": 26,
+    "intended_seconds": 438.76666666666665,
+    "subtitle_cues": 113,
+    "title": "A Lost World Hidden in Greenland’s Dirt",
+    "selected_cover": "thumbnails/thumbnail-B.jpg",
+    "selected_cover_text": "2 MILLION YEARS"
+  },
+  "duration_difference_seconds": 11.866,
+  "same_edit_verified": false,
+  "status": "hold V14 MP4 pairing; visual title/episode correspondence alone does not establish edit identity"
+}

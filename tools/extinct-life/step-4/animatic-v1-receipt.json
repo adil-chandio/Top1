@@ -1,0 +1,67 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "kind": "prep animatic; not final CGI/picture lock",
+  "vo_source": "English v2, no time stretch, trims or score",
+  "duration_seconds": 445.6666666666667,
+  "script_sha256": "07c3e15ad033c880022f1bbc81fe26d400250d2b35dd55b8911a13c9e268d4c7",
+  "vo_sha256": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+  "srt_sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+  "voice_duration_seconds": 439.13758333333334,
+  "section_count": 8,
+  "shot_count": 61,
+  "rewind_frame": 245,
+  "rewind_seconds": 10.208333333333334,
+  "credits_in_seconds": 439.1666666666667,
+  "video": {
+    "size": [
+      1920,
+      1080
+    ],
+    "fps": 24,
+    "color": "Rec.709 limited range",
+    "stream_validation": {
+      "vide": {
+        "clock": 48000,
+        "duration": 21392000,
+        "frames": 10696,
+        "duration_ticks_per_frame": 2000,
+        "seekable_shot_starts": 61
+      },
+      "soun": {
+        "clock": 48000,
+        "duration": 21393024
+      },
+      "sbtl": {
+        "clock": 1000000,
+        "duration": 438799000
+      }
+    }
+  },
+  "audio": {
+    "sites_tested": 17,
+    "lag_samples": [
+      0
+    ],
+    "lowest_correlation": 0.9971023,
+    "rms_level_difference_db": 0.04768,
+    "full_source_sample_count": 21078604,
+    "audio_codec": "AAC-LC encoded once"
+  },
+  "captions": {
+    "embedded_english_cues": 127,
+    "timing_and_text_match_v2_srt": true
+  },
+  "all_frames_decode": true,
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Animatic-v1.mp4",
+      "size": 59386785,
+      "sha256": "67fde97018337d728315772b2940df0f14cde911338c1df25739bde96db35eea"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Animatic-v1-Shot-Handoff.md",
+      "size": 11537,
+      "sha256": "8d199d05f062de991e9b7d2fd20cb4ac696b329eedf5cd672a69b723b140b29b"
+    }
+  ]
+}

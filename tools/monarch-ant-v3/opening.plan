@@ -1,0 +1,12 @@
+# first end(exclusive) motion_mode lens source_in source_out name [frame clock_pin]...
+0 51 1 0 0.09 0.615 traction_macro
+51 123 21 1 0.00 1.20 sand_starts_to_shear
+123 194 1 2 0.625 1.888 the_fixed_stone
+194 234 22 3 0.00 1.00 ride_one_grain
+234 333 3 4 1.195 2.233 predator_revealed 269 1.410
+333 383 1 5 2.153 2.677 wait_for_the_dip
+383 484 0 6 2.693 3.966 one_unbroken_contact 441 3.420
+484 524 0 7 3.967 5.590 first_view_of_air 506 5.232 519 5.480
+524 588 6 8 2.860 3.417 inward_rotation 564 3.138
+588 673 9 9 0.115 1.66 go_up_question
+673 708 10 10 3.73 4.86 from_groove_to_bowl

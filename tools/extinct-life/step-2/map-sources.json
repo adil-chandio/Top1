@@ -1,0 +1,44 @@
+{
+  "inputs": [
+    {
+      "name": "ne_110m_land.geojson",
+      "repository": "nvkelso/natural-earth-vector",
+      "ref": "f1890d9f152c896d250a77557a5751a93d494776",
+      "path": "geojson/ne_110m_land.geojson",
+      "sha256": "9e0729ee253ca7d7a5c4ae9395fb1902264c5377c52e224d13dd85010e2835d9",
+      "terms": "https://www.naturalearthdata.com/about/terms-of-use/",
+      "rights": "Public domain; Natural Earth v5.1.2 land only, cropped and styled."
+    },
+    {
+      "name": "125Ma_CS_v7.shp",
+      "repository": "adamkocsis/2019-07-04_paleoCoastlines",
+      "ref": "44eadd8a191bacc85a7f7a5b761af06cfceea4c2",
+      "path": "data/PaleoMAP/2020-08-10_v7/CS/125Ma_CS_v7.shp",
+      "sha256": "0828153ed974558b95af24a969bbc04c16097a684f6cfad614fe1fe12d81a4b0",
+      "terms": "https://github.com/adamkocsis/2019-07-04_paleoCoastlines/blob/44eadd8a191bacc85a7f7a5b761af06cfceea4c2/export/paper_2020-07-29/Summary/Data/Readme.md",
+      "rights": "Kocsis & Scotese PaleoCoastlines v7.1, CC BY 4.0; same polygons as v7, coastline, not continental margin; cropped and recolored."
+    },
+    {
+      "name": "m06c9h_3id_forPgeog_19o_r1c.rot",
+      "repository": "adamkocsis/2019-07-04_paleoCoastlines",
+      "ref": "44eadd8a191bacc85a7f7a5b761af06cfceea4c2",
+      "path": "export/paper_2020-07-29/Summary/Data/paleomap_model_v19o_r1c/m06c9h_3id_forPgeog_19o_r1c.rot",
+      "sha256": "0fca0f656730e6991b00f54a96faa62e24a5d266e215c23f29f4c7e72d0a58e9",
+      "terms": "https://creativecommons.org/licenses/by/4.0/",
+      "rights": "Rotation file in the same licensed package, used only to reconstruct the two approximate region markers."
+    }
+  ],
+  "plate_assignment_check": {
+    "repository": "adamkocsis/2019-07-04_paleoCoastlines",
+    "ref": "44eadd8a191bacc85a7f7a5b761af06cfceea4c2",
+    "path": "export/paper_2020-07-29/Summary/Data/paleomap_model_v19o_r1c/PALEOMAP_PlatePolygons__forPgeog_v19o.gpml",
+    "sha256": "c398b433dc519e8dd1675ad9e16f7a698676ab4c8d432d939c30abad007d3231",
+    "modern_plate_ids": [201, 701],
+    "notes": "Checked the present valid polygons for approximate Sousa and Koum region markers. The renderer reuses the vetted plate IDs, not an arbitrary shift of modern coastlines."
+  },
+  "point_basis": [
+    "Passagem das Pedras geosite at the published SGB point; the two-country study concerns broader regions, not distances between individual fossil outlines.",
+    "Koum region at the centre of the basin bounds in Menkem et al. (2026), fig. 1; this is not the exact KB-17 specimen locality."
+  ],
+  "citation": "Kocsis, A. T. and Scotese, C. R. (2021), Mapping paleocoastlines and continental flooding during the Phanerozoic, Earth-Science Reviews 213, 103463. https://doi.org/10.1016/j.earscirev.2020.103463. PaleoCoastlines CC BY 4.0, modified for this board."
+}

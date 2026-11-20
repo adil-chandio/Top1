@@ -1,0 +1,42 @@
+{
+  "art": [
+    {
+      "file": "mayo-rey.jpg",
+      "sha256": "85ae22630301f929d92d15014aec2264b763c2181a3fde4b13a97bdf3312c9c8",
+      "scope": "Generated representation of a generalized riverbed. Not a record of the Mayo Rey location or fossils."
+    },
+    {
+      "file": "sousa-bank.jpg",
+      "sha256": "7f3dcb0e36fae17d8551515fdaaa459386a7f59152a8b97601a69954262dd521",
+      "scope": "Generated representation of a generalized riverbank. Not a record of Sousa or fossils."
+    },
+    {
+      "file": "cretaceous-valley.jpg",
+      "sha256": "7078300e021d1902d2fb405f0b5eadeb485ed9e197eeca47eff15154de9d2103",
+      "scope": "Generated conceptual landscape. No specific locality, reconstruction or trackmakers shown."
+    }
+  ],
+  "font_source": "google/fonts",
+  "font_ref": "cc5661d43cd4f9aad5567033a8e15ca28dc35c86",
+  "fonts": [
+    {
+      "file": "Fraunces.ttf",
+      "path": "ofl/fraunces/Fraunces[SOFT,WONK,opsz,wght].ttf",
+      "license_path": "ofl/fraunces/OFL.txt",
+      "sha256": "177ff6c0f14e5550a3c624247cd1189611d4eb65d000b14944c63d967958abbb"
+    },
+    {
+      "file": "PlexSans.ttf",
+      "path": "ofl/ibmplexsans/IBMPlexSans[wdth,wght].ttf",
+      "license_path": "ofl/ibmplexsans/OFL.txt",
+      "sha256": "3b031aa4216174205bd8471f88a49b91f093169e9e87bd5262242bc5967fe2e3"
+    },
+    {
+      "file": "PlexMono.ttf",
+      "path": "ofl/ibmplexmono/IBMPlexMono-Medium.ttf",
+      "license_path": "ofl/ibmplexmono/OFL.txt",
+      "sha256": "a9b4c49bb299e05b5f6c481e7fb5e78943d2793249a0c8874ab574a2d1ea6755"
+    }
+  ],
+  "geography": "../step-2/map-sources.json"
+}

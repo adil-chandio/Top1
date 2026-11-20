@@ -1,0 +1,250 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "status": "first-minute 3D cut / awaiting owner approval",
+  "duration_seconds": 60.708333333333336,
+  "fps": 24,
+  "color": "Rec.709 limited range",
+  "size": [
+    1920,
+    1080
+  ],
+  "all_frames_decode": true,
+  "stills_extracted_and_checked": 18,
+  "shot_count": 12,
+  "shot_start_frames": [
+    0,
+    63,
+    99,
+    245,
+    470,
+    629,
+    765,
+    869,
+    1040,
+    1154,
+    1267,
+    1353
+  ],
+  "rewind_frame": 245,
+  "shot_audit": [
+    {
+      "shot": 1,
+      "move_length": 0.7985,
+      "render_resolution": [
+        1536,
+        864
+      ],
+      "frames": 63
+    },
+    {
+      "shot": 2,
+      "move_length": 0.5426,
+      "render_resolution": [
+        1536,
+        864
+      ],
+      "frames": 36
+    },
+    {
+      "shot": 3,
+      "move_length": 3.566,
+      "render_resolution": [
+        1920,
+        1080
+      ],
+      "frames": 146
+    },
+    {
+      "shot": 4,
+      "move_length": 5.4496,
+      "render_resolution": [
+        1920,
+        1080
+      ],
+      "frames": 225
+    },
+    {
+      "shot": 5,
+      "move_length": 7.3898,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 159
+    },
+    {
+      "shot": 6,
+      "move_length": 3.9754,
+      "render_resolution": [
+        1920,
+        1080
+      ],
+      "frames": 136
+    },
+    {
+      "shot": 7,
+      "move_length": 1.5063,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 104
+    },
+    {
+      "shot": 8,
+      "move_length": 12.2313,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 171
+    },
+    {
+      "shot": 9,
+      "move_length": 1.2535,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 114
+    },
+    {
+      "shot": 10,
+      "move_length": 0.3879,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 113
+    },
+    {
+      "shot": 11,
+      "move_length": 1.6214,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 86
+    },
+    {
+      "shot": 12,
+      "move_length": 1.3024,
+      "render_resolution": [
+        1280,
+        720
+      ],
+      "frames": 104
+    }
+  ],
+  "tracks": {
+    "vide": {
+      "timescale": 48000,
+      "media_samples": 2914000,
+      "edit_duration_ticks": 2914000,
+      "media_start": 0,
+      "frames": 1457,
+      "ticks_per_frame": 2000,
+      "seekable_shot_starts": 12
+    },
+    "soun": {
+      "timescale": 48000,
+      "media_samples": 2915024,
+      "edit_duration_ticks": 2914000,
+      "media_start": 1024
+    },
+    "sbtl": {
+      "timescale": 1000000,
+      "media_samples": 60673000,
+      "edit_duration_ticks": 2912304,
+      "media_start": 0
+    }
+  },
+  "captions": {
+    "language": "eng",
+    "canonical_first_cues": 18,
+    "last_cue_out": "00:01:00.673",
+    "english_caption_round_trip": true
+  },
+  "audio": {
+    "pre_aac_voice_bit_exact_after_subtracting_bed": true,
+    "source_sample_zero": 0,
+    "decoded_samples": 2914304,
+    "checked_sync_points": 20,
+    "all_sync_offsets_samples": [
+      0
+    ],
+    "worst_narration_correlation": 0.9997245,
+    "integrated_lufs": -17.4,
+    "true_peak_dbtp": -2.7,
+    "aac_stereo": true,
+    "duration": 60.708333333333336,
+    "voice_source_sha256": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+    "frames_48k": 2914000,
+    "source_gain_db": 0.0,
+    "voice_untouched_in_stereo_mix": true,
+    "music_and_fx": "Original synthesized score and spot effects; no sampled music, reuse of reference audio, or stem extraction.",
+    "bed_to_voice_rms_db": [
+      -24.328,
+      -24.176
+    ],
+    "linear_mix_peak_dbfs": -2.714,
+    "bed_peak_dbfs": -24.135,
+    "samples_near_edit_rms_dbfs": -82.218,
+    "mix_sha256": "b178b702ddea9ef456d40195ab7f41c480f663a0ad5666698c3dc65f7bf73dc8",
+    "bed_sha256": "9cfdb32a9ede819d533a9735bb6c005b17ebe7adb01ff614073cc2a9345d3bed"
+  },
+  "script_sha256": "07c3e15ad033c880022f1bbc81fe26d400250d2b35dd55b8911a13c9e268d4c7",
+  "geography": {
+    "modern": [
+      [
+        -6.734270096,
+        -38.262065887
+      ],
+      [
+        8.291666666666666,
+        14.516666666666667
+      ]
+    ],
+    "past": [
+      [
+        -5.942546594063807,
+        -5.730008928940257
+      ],
+      [
+        -5.68802501626125,
+        5.056435421457978
+      ]
+    ],
+    "distance_km": {
+      "today": 6084.921164029081,
+      "past_model": 1193.543518272824
+    },
+    "visual_labels_are_published_approximations": {
+      "today": 6000,
+      "past": 1000
+    },
+    "geometry": {
+      "r_km": 6371,
+      "vertical_exaggeration": 31.0
+    },
+    "then_ma": 125,
+    "then_age_is_not_a_footprint_date": true
+  },
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D.mp4",
+      "size": 49316613,
+      "sha256": "b73cc366459139f67c4143af10716ffdfae2d4b531f7edd9d5df523ad5c257cd"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D.en.srt",
+      "size": 1525,
+      "sha256": "29ed2fc05c44c97727835621d577c4c3a38023a3069740366a2fcb33be553677"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Opening-3D-Review-Notes.md",
+      "size": 3729,
+      "sha256": "99f9ed6fa168a3eb5bf3f0ca846d3901fb170d6b3fbf251b48337ddf7e55c482"
+    }
+  ]
+}

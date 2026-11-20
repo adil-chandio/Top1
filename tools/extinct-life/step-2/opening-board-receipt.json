@@ -1,0 +1,36 @@
+{
+  "output": "deliverables/extinct-life-step-2/Extinct-Life-Atlantic-Tracks-Opening-Board.png",
+  "sha256": "538d2a2eaface5b700ad2712f5bf53a116c11a3fd2453a5342d0ddc18f34ebc4",
+  "dimensions": [
+    1920,
+    1080
+  ],
+  "model_age_ma": 125.0,
+  "present_region_points_lat_lon": [
+    [
+      -6.734270096,
+      -38.262065887
+    ],
+    [
+      8.291666666666666,
+      14.516666666666667
+    ]
+  ],
+  "paleo_region_points_lat_lon": [
+    [
+      -5.942546594063807,
+      -5.730008928940257
+    ],
+    [
+      -5.68802501626125,
+      5.056435421457978
+    ]
+  ],
+  "present_model_separation_km": 6084.9,
+  "paleo_model_separation_km": 1193.5,
+  "different_modern_land_polygons": true,
+  "same_early_model_land_polygon": true,
+  "distances_on_board_are_study_summaries_not_model_measurements": true,
+  "source_hashes_verified": true,
+  "deterministic_rebuild_matched": true
+}

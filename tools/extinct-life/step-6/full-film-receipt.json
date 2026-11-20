@@ -1,0 +1,1750 @@
+{
+  "title": "Why These Dinosaur Footprints Are an Ocean Apart",
+  "status": "Full cinematic cut · private handoff; not published",
+  "movie_duration_seconds": 445.6666666666667,
+  "narration_duration_seconds": 439.13758333333334,
+  "width": 1920,
+  "height": 1080,
+  "fps": 24,
+  "color": "limited Rec.709",
+  "shots": 66,
+  "shot_starts_frames": [
+    0,
+    63,
+    99,
+    245,
+    470,
+    629,
+    765,
+    869,
+    1040,
+    1154,
+    1267,
+    1353,
+    1457,
+    1549,
+    1805,
+    2020,
+    2172,
+    2302,
+    2442,
+    2648,
+    2897,
+    3166,
+    3273,
+    3454,
+    3607,
+    3741,
+    3860,
+    3922,
+    4048,
+    4217,
+    4386,
+    4667,
+    4871,
+    4993,
+    5138,
+    5254,
+    5352,
+    5495,
+    5637,
+    5783,
+    6027,
+    6290,
+    6496,
+    6581,
+    6729,
+    6899,
+    7072,
+    7230,
+    7342,
+    7499,
+    7690,
+    7871,
+    7984,
+    8232,
+    8371,
+    8568,
+    8801,
+    9043,
+    9167,
+    9481,
+    9669,
+    9897,
+    10055,
+    10170,
+    10316,
+    10540
+  ],
+  "end_frame_exclusive": 10696,
+  "frames_all_decoded": true,
+  "streams": {
+    "vide": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 10696,
+      "edit_list": [
+        [
+          21392000,
+          4000
+        ]
+      ],
+      "codec_tag": "avc1",
+      "frames": 10696,
+      "ticks_per_frame": 2000,
+      "exact_presentation_grid": true,
+      "seekable_shot_starts": 66,
+      "decoding_timestamps_increase": true
+    },
+    "soun": {
+      "timescale": 48000,
+      "track_ticks": 21393024,
+      "packet_samples": 20892,
+      "edit_list": [
+        [
+          21392000,
+          1024
+        ]
+      ],
+      "codec_tag": "mp4a"
+    },
+    "sbtl": {
+      "timescale": 1000000,
+      "track_ticks": 438799000,
+      "packet_samples": 192,
+      "edit_list": [
+        [
+          21062352,
+          0
+        ]
+      ],
+      "codec_tag": "tx3g"
+    },
+    "text": {
+      "timescale": 48000,
+      "track_ticks": 21392000,
+      "packet_samples": 9,
+      "edit_list": [
+        [
+          21392000,
+          0
+        ]
+      ],
+      "codec_tag": "text"
+    }
+  },
+  "chapters": [
+    {
+      "title": "The ocean came later",
+      "start_frame": 0,
+      "end_frame": 869
+    },
+    {
+      "title": "Four pieces of ancient ground",
+      "start_frame": 869,
+      "end_frame": 2442
+    },
+    {
+      "title": "The big print has a problem",
+      "start_frame": 2442,
+      "end_frame": 3741
+    },
+    {
+      "title": "What the mud held onto",
+      "start_frame": 3741,
+      "end_frame": 5138
+    },
+    {
+      "title": "The other side of the comparison",
+      "start_frame": 5138,
+      "end_frame": 6496
+    },
+    {
+      "title": "Date the rocks, then move the continents",
+      "start_frame": 6496,
+      "end_frame": 7871
+    },
+    {
+      "title": "A route, not a trail",
+      "start_frame": 7871,
+      "end_frame": 9669
+    },
+    {
+      "title": "The journey we can follow",
+      "start_frame": 9669,
+      "end_frame": 10540
+    },
+    {
+      "title": "Sources and maps",
+      "start_frame": 10540,
+      "end_frame": 10696
+    }
+  ],
+  "source_hashes": {
+    "Extinct-Life-Atlantic-Tracks-VO-v2.wav": "7879a462943db071eb19e9869d1876763c0265941620569f8b0bd6b470c0482f",
+    "Extinct-Life-Atlantic-Tracks-VO-v2.en.srt": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+    "Extinct-Life-Atlantic-Tracks-VO-v2-Timing.md": "660a9817eb779a95357d79f73b93cf39bfd5a42dfe3a80ba8ee00e99e7dfcbc7"
+  },
+  "script_sha256": "07c3e15ad033c880022f1bbc81fe26d400250d2b35dd55b8911a13c9e268d4c7",
+  "caption_audit": {
+    "english_cues": 127,
+    "last_caption_out_ms": 438799,
+    "all_script_words": 1217,
+    "narrated_sections": 8,
+    "max_nonspace_break_chars_per_second": 19.649,
+    "same_spelling_and_punctuation_as_v2": true,
+    "identical_srt_round_trip": true,
+    "subtitle_language": "eng",
+    "not_burned_in": true
+  },
+  "audio": {
+    "voice_exact_before_aac": true,
+    "voice_original_samples": 21078604,
+    "voice_source_first_sample": 0,
+    "voice_added_tail_samples": 313396,
+    "decoded_samples_with_aac_frame_padding": 21392384,
+    "sync_windows": 127,
+    "window_onsets_ms_skipped_for_silence": [],
+    "all_offsets_samples": [
+      0
+    ],
+    "min_window_correlation": 0.99761361,
+    "aac_pcm_snr_db": 30.118,
+    "stereo_side_energy_ratio_vs_pcm": 1.06505,
+    "lufs_i": -17.3,
+    "peak_dbtp": -2.2,
+    "lra_lu": 3.1,
+    "bed_minus_narration_rms_db": -17.005,
+    "bed_gain": 1.0,
+    "aac_stereo": true,
+    "mix_sha256": "30f8688e1eefbf492311d7d25d9e0edc8ade22af5b7a3894b747bbdc400feaf6",
+    "bed_sha256": "06af63e094a89d5d1037863924e3d2f5310e8fd76c4945427ef5f4376e27f648"
+  },
+  "sync": {
+    "graphic_events": 33,
+    "spot_events": 77,
+    "analysed_graphic_entries": [
+      {
+        "frame": 13,
+        "native_onset_changed_pixels": 640,
+        "key": "sousa-open",
+        "type": "Sousa Basin",
+        "first_matched_audio_ms": 0.4375,
+        "overlay_error_ratio": 4.022
+      },
+      {
+        "frame": 66,
+        "native_onset_changed_pixels": 747,
+        "key": "koum-open",
+        "type": "Koum Basin",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 4.082
+      },
+      {
+        "frame": 149,
+        "native_onset_changed_pixels": 734,
+        "key": "now",
+        "type": "≈6,000 km",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 5.355
+      },
+      {
+        "frame": 275,
+        "native_onset_changed_pixels": 1265,
+        "key": "old-lock",
+        "type": "125 million years ago",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 12.714
+      },
+      {
+        "frame": 370,
+        "native_onset_changed_pixels": 569,
+        "key": "then",
+        "type": "≈1,000 km",
+        "first_matched_audio_ms": 0.3958,
+        "overlay_error_ratio": 9.865
+      },
+      {
+        "frame": 473,
+        "native_onset_changed_pixels": 1840,
+        "key": "title-a",
+        "type": "Why These Dinosaur",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 7.259
+      },
+      {
+        "frame": 479,
+        "native_onset_changed_pixels": 1172,
+        "key": "title-b",
+        "type": "Footprints Are",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 8.368
+      },
+      {
+        "frame": 485,
+        "native_onset_changed_pixels": 1106,
+        "key": "title-c",
+        "type": "an Ocean Apart",
+        "first_matched_audio_ms": 0.2917,
+        "overlay_error_ratio": 4.286
+      },
+      {
+        "frame": 778,
+        "native_onset_changed_pixels": 368,
+        "key": "surfaces",
+        "type": "4 surfaces",
+        "first_matched_audio_ms": 0.5625,
+        "overlay_error_ratio": 4.923
+      },
+      {
+        "frame": 903,
+        "native_onset_changed_pixels": 1079,
+        "key": "mayo-type",
+        "type": "Mayo Rey River",
+        "first_matched_audio_ms": 0.3333,
+        "overlay_error_ratio": 11.911
+      },
+      {
+        "frame": 1093,
+        "native_onset_changed_pixels": 540,
+        "key": "count",
+        "type": "283 footprints",
+        "first_matched_audio_ms": 0.5208,
+        "overlay_error_ratio": 7.779
+      },
+      {
+        "frame": 1273,
+        "native_onset_changed_pixels": 433,
+        "key": "countways",
+        "type": "34 trackways",
+        "first_matched_audio_ms": 0.4375,
+        "overlay_error_ratio": 3.15
+      },
+      {
+        "frame": 2108,
+        "native_onset_changed_pixels": 493,
+        "key": "photos",
+        "type": "2,000+ photos",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 14.445
+      },
+      {
+        "frame": 2451,
+        "native_onset_changed_pixels": 261,
+        "key": "length",
+        "type": "≈69 cm",
+        "first_matched_audio_ms": 0.4375,
+        "overlay_error_ratio": 3.401
+      },
+      {
+        "frame": 2934,
+        "native_onset_changed_pixels": 755,
+        "key": "two-muds",
+        "type": "Same stamp",
+        "first_matched_audio_ms": 0.4583,
+        "overlay_error_ratio": 12.583
+      },
+      {
+        "frame": 3176,
+        "native_onset_changed_pixels": 1361,
+        "key": "firm-soft",
+        "type": "Firm mud     /     Soft mud",
+        "first_matched_audio_ms": 0.6458,
+        "overlay_error_ratio": 9.516
+      },
+      {
+        "frame": 3785,
+        "native_onset_changed_pixels": 775,
+        "key": "ripples",
+        "type": "Ripple marks",
+        "first_matched_audio_ms": 0.3333,
+        "overlay_error_ratio": 6.571
+      },
+      {
+        "frame": 3865,
+        "native_onset_changed_pixels": 672,
+        "key": "cracks",
+        "type": "Mud cracks",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 2.559
+      },
+      {
+        "frame": 4529,
+        "native_onset_changed_pixels": 1057,
+        "key": "cement",
+        "type": "Mineral cement",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 11.508
+      },
+      {
+        "frame": 4718,
+        "native_onset_changed_pixels": 1123,
+        "key": "mat",
+        "type": "Possible microbial mat",
+        "first_matched_audio_ms": 0.6667,
+        "overlay_error_ratio": 13.441
+      },
+      {
+        "frame": 5207,
+        "native_onset_changed_pixels": 999,
+        "key": "brazil",
+        "type": "Sousa Basin, Brazil",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 8.767
+      },
+      {
+        "frame": 5537,
+        "native_onset_changed_pixels": 776,
+        "key": "rim",
+        "type": "Displaced rim",
+        "first_matched_audio_ms": 0.5,
+        "overlay_error_ratio": 5.069
+      },
+      {
+        "frame": 6609,
+        "native_onset_changed_pixels": 943,
+        "key": "pollen",
+        "type": "Fossil pollen",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 13.195
+      },
+      {
+        "frame": 6918,
+        "native_onset_changed_pixels": 1090,
+        "key": "age",
+        "type": "Early Cretaceous",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 13.07
+      },
+      {
+        "frame": 7079,
+        "native_onset_changed_pixels": 616,
+        "key": "restore-model",
+        "type": "125 Ma model",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 5.76
+      },
+      {
+        "frame": 8323,
+        "native_onset_changed_pixels": 1080,
+        "key": "range",
+        "type": "Possible dispersal area",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 8.838
+      },
+      {
+        "frame": 8699,
+        "native_onset_changed_pixels": 768,
+        "key": "mawsonia",
+        "type": "Mawsonia",
+        "first_matched_audio_ms": 0.3958,
+        "overlay_error_ratio": 13.047
+      },
+      {
+        "frame": 8817,
+        "native_onset_changed_pixels": 1111,
+        "key": "other-basins",
+        "type": "Fossils in other basins",
+        "first_matched_audio_ms": 0.5,
+        "overlay_error_ratio": 12.297
+      },
+      {
+        "frame": 9228,
+        "native_onset_changed_pixels": 714,
+        "key": "more-sites",
+        "type": "More sites",
+        "first_matched_audio_ms": 0.5,
+        "overlay_error_ratio": 9.588
+      },
+      {
+        "frame": 9289,
+        "native_onset_changed_pixels": 1006,
+        "key": "better-dates",
+        "type": "Narrower dates",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 5.693
+      },
+      {
+        "frame": 9375,
+        "native_onset_changed_pixels": 1186,
+        "key": "better-fossils",
+        "type": "Identifiable fossils",
+        "first_matched_audio_ms": 0.4792,
+        "overlay_error_ratio": 13.871
+      },
+      {
+        "frame": 9973,
+        "native_onset_changed_pixels": 512,
+        "key": "gap-returns",
+        "type": "≈6,000 km",
+        "first_matched_audio_ms": 0.3542,
+        "overlay_error_ratio": 5.282
+      },
+      {
+        "frame": 10174,
+        "native_onset_changed_pixels": 732,
+        "key": "rocks-answer",
+        "type": "The rocks.",
+        "first_matched_audio_ms": 0.375,
+        "overlay_error_ratio": 7.435
+      }
+    ],
+    "audio_attack_audit": [
+      {
+        "name": "sousa-open",
+        "frame": 13,
+        "trigger_sample": 26000,
+        "attack_sample": 26021,
+        "text": "Sousa Basin",
+        "family": "mineral",
+        "peak_dbfs": -21.3,
+        "one_frame_rms_dbfs": -34.29
+      },
+      {
+        "name": "koum-open",
+        "frame": 66,
+        "trigger_sample": 132000,
+        "attack_sample": 132018,
+        "text": "Koum Basin",
+        "family": "mineral",
+        "peak_dbfs": -21.32,
+        "one_frame_rms_dbfs": -33.08
+      },
+      {
+        "name": "now",
+        "frame": 149,
+        "trigger_sample": 298000,
+        "attack_sample": 298017,
+        "text": "≈6,000 km",
+        "family": "glass",
+        "peak_dbfs": -22.73,
+        "one_frame_rms_dbfs": -31.29
+      },
+      {
+        "name": "rewind-scan",
+        "frame": 245,
+        "trigger_sample": 490000,
+        "attack_sample": 490020,
+        "text": "",
+        "family": "churn",
+        "peak_dbfs": -18.23,
+        "one_frame_rms_dbfs": -34.37
+      },
+      {
+        "name": "old-lock",
+        "frame": 275,
+        "trigger_sample": 550000,
+        "attack_sample": 550018,
+        "text": "125 million years ago",
+        "family": "airchime",
+        "peak_dbfs": -25.08,
+        "one_frame_rms_dbfs": -32.25
+      },
+      {
+        "name": "then",
+        "frame": 370,
+        "trigger_sample": 740000,
+        "attack_sample": 740019,
+        "text": "≈1,000 km",
+        "family": "glass",
+        "peak_dbfs": -22.55,
+        "one_frame_rms_dbfs": -31.41
+      },
+      {
+        "name": "title-a",
+        "frame": 473,
+        "trigger_sample": 946000,
+        "attack_sample": 946017,
+        "text": "Why These Dinosaur",
+        "family": "title",
+        "peak_dbfs": -22.42,
+        "one_frame_rms_dbfs": -30.34
+      },
+      {
+        "name": "title-b",
+        "frame": 479,
+        "trigger_sample": 958000,
+        "attack_sample": 958017,
+        "text": "Footprints Are",
+        "family": "title",
+        "peak_dbfs": -23.78,
+        "one_frame_rms_dbfs": -30.75
+      },
+      {
+        "name": "title-c",
+        "frame": 485,
+        "trigger_sample": 970000,
+        "attack_sample": 970014,
+        "text": "an Ocean Apart",
+        "family": "title",
+        "peak_dbfs": -21.52,
+        "one_frame_rms_dbfs": -30.01
+      },
+      {
+        "name": "surfaces",
+        "frame": 778,
+        "trigger_sample": 1556000,
+        "attack_sample": 1556027,
+        "text": "4 surfaces",
+        "family": "dry",
+        "peak_dbfs": -24.05,
+        "one_frame_rms_dbfs": -36.76
+      },
+      {
+        "name": "mayo-type",
+        "frame": 903,
+        "trigger_sample": 1806000,
+        "attack_sample": 1806016,
+        "text": "Mayo Rey River",
+        "family": "droplet",
+        "peak_dbfs": -20.21,
+        "one_frame_rms_dbfs": -29.69
+      },
+      {
+        "name": "count",
+        "frame": 1093,
+        "trigger_sample": 2186000,
+        "attack_sample": 2186025,
+        "text": "283 footprints",
+        "family": "mineral",
+        "peak_dbfs": -26.56,
+        "one_frame_rms_dbfs": -38.02
+      },
+      {
+        "name": "stamp-down",
+        "frame": 1183,
+        "trigger_sample": 2366000,
+        "attack_sample": 2366016,
+        "text": "",
+        "family": "press",
+        "peak_dbfs": -16.25,
+        "one_frame_rms_dbfs": -24.34
+      },
+      {
+        "name": "stamp-up",
+        "frame": 1208,
+        "trigger_sample": 2416000,
+        "attack_sample": 2416019,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -21.34,
+        "one_frame_rms_dbfs": -33.4
+      },
+      {
+        "name": "countways",
+        "frame": 1273,
+        "trigger_sample": 2546000,
+        "attack_sample": 2546021,
+        "text": "34 trackways",
+        "family": "dry",
+        "peak_dbfs": -19.34,
+        "one_frame_rms_dbfs": -31.6
+      },
+      {
+        "name": "small-step-0",
+        "frame": 1363,
+        "trigger_sample": 2726000,
+        "attack_sample": 2726026,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -23.35,
+        "one_frame_rms_dbfs": -37.53
+      },
+      {
+        "name": "small-step-1",
+        "frame": 1371,
+        "trigger_sample": 2742000,
+        "attack_sample": 2742028,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -24.24,
+        "one_frame_rms_dbfs": -37.96
+      },
+      {
+        "name": "small-step-2",
+        "frame": 1379,
+        "trigger_sample": 2758000,
+        "attack_sample": 2758034,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -25.27,
+        "one_frame_rms_dbfs": -38.14
+      },
+      {
+        "name": "small-step-3",
+        "frame": 1387,
+        "trigger_sample": 2774000,
+        "attack_sample": 2774030,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -26.13,
+        "one_frame_rms_dbfs": -38.31
+      },
+      {
+        "name": "small-step-4",
+        "frame": 1395,
+        "trigger_sample": 2790000,
+        "attack_sample": 2790034,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -24.26,
+        "one_frame_rms_dbfs": -38.45
+      },
+      {
+        "name": "small-step-5",
+        "frame": 1403,
+        "trigger_sample": 2806000,
+        "attack_sample": 2806033,
+        "text": "",
+        "family": "step",
+        "peak_dbfs": -24.53,
+        "one_frame_rms_dbfs": -39.2
+      },
+      {
+        "name": "edge-chip",
+        "frame": 1489,
+        "trigger_sample": 2978000,
+        "attack_sample": 2978023,
+        "text": "",
+        "family": "break",
+        "peak_dbfs": -19.99,
+        "one_frame_rms_dbfs": -31.18
+      },
+      {
+        "name": "strata-0",
+        "frame": 1563,
+        "trigger_sample": 3126000,
+        "attack_sample": 3126017,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -21.66,
+        "one_frame_rms_dbfs": -33.59
+      },
+      {
+        "name": "strata-1",
+        "frame": 1579,
+        "trigger_sample": 3158000,
+        "attack_sample": 3158024,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -23.23,
+        "one_frame_rms_dbfs": -34.25
+      },
+      {
+        "name": "strata-2",
+        "frame": 1595,
+        "trigger_sample": 3190000,
+        "attack_sample": 3190019,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -22.19,
+        "one_frame_rms_dbfs": -34.24
+      },
+      {
+        "name": "strata-3",
+        "frame": 1611,
+        "trigger_sample": 3222000,
+        "attack_sample": 3222026,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -22.28,
+        "one_frame_rms_dbfs": -33.81
+      },
+      {
+        "name": "erosion-pop",
+        "frame": 1865,
+        "trigger_sample": 3730000,
+        "attack_sample": 3730019,
+        "text": "",
+        "family": "break",
+        "peak_dbfs": -20.44,
+        "one_frame_rms_dbfs": -29.65
+      },
+      {
+        "name": "erosion-tail",
+        "frame": 1887,
+        "trigger_sample": 3774000,
+        "attack_sample": 3774020,
+        "text": "",
+        "family": "granules",
+        "peak_dbfs": -19.52,
+        "one_frame_rms_dbfs": -34.19
+      },
+      {
+        "name": "scan-read",
+        "frame": 2046,
+        "trigger_sample": 4092000,
+        "attack_sample": 4092016,
+        "text": "",
+        "family": "glass",
+        "peak_dbfs": -21.46,
+        "one_frame_rms_dbfs": -30.96
+      },
+      {
+        "name": "scan-side",
+        "frame": 2078,
+        "trigger_sample": 4156000,
+        "attack_sample": 4156018,
+        "text": "",
+        "family": "glass",
+        "peak_dbfs": -22.72,
+        "one_frame_rms_dbfs": -32.88
+      },
+      {
+        "name": "photos",
+        "frame": 2108,
+        "trigger_sample": 4216000,
+        "attack_sample": 4216018,
+        "text": "2,000+ photos",
+        "family": "glass",
+        "peak_dbfs": -23.29,
+        "one_frame_rms_dbfs": -31.41
+      },
+      {
+        "name": "reconstruction",
+        "frame": 2174,
+        "trigger_sample": 4348000,
+        "attack_sample": 4348024,
+        "text": "",
+        "family": "churn",
+        "peak_dbfs": -21.86,
+        "one_frame_rms_dbfs": -37.7
+      },
+      {
+        "name": "length",
+        "frame": 2451,
+        "trigger_sample": 4902000,
+        "attack_sample": 4902021,
+        "text": "≈69 cm",
+        "family": "mineral",
+        "peak_dbfs": -21.69,
+        "one_frame_rms_dbfs": -33.11
+      },
+      {
+        "name": "soft-outline",
+        "frame": 2677,
+        "trigger_sample": 5354000,
+        "attack_sample": 5354040,
+        "text": "",
+        "family": "bristle",
+        "peak_dbfs": -26.29,
+        "one_frame_rms_dbfs": -38.63
+      },
+      {
+        "name": "two-muds",
+        "frame": 2934,
+        "trigger_sample": 5868000,
+        "attack_sample": 5868022,
+        "text": "Same stamp",
+        "family": "dry",
+        "peak_dbfs": -20.76,
+        "one_frame_rms_dbfs": -33.76
+      },
+      {
+        "name": "test-down",
+        "frame": 2981,
+        "trigger_sample": 5962000,
+        "attack_sample": 5962024,
+        "text": "",
+        "family": "press",
+        "peak_dbfs": -16.25,
+        "one_frame_rms_dbfs": -24.26
+      },
+      {
+        "name": "test-up",
+        "frame": 3093,
+        "trigger_sample": 6186000,
+        "attack_sample": 6186017,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -21.54,
+        "one_frame_rms_dbfs": -33.06
+      },
+      {
+        "name": "slump",
+        "frame": 3117,
+        "trigger_sample": 6234000,
+        "attack_sample": 6234021,
+        "text": "",
+        "family": "granules",
+        "peak_dbfs": -21.79,
+        "one_frame_rms_dbfs": -34.29
+      },
+      {
+        "name": "firm-soft",
+        "frame": 3176,
+        "trigger_sample": 6352000,
+        "attack_sample": 6352031,
+        "text": "Firm mud     /     Soft mud",
+        "family": "dry",
+        "peak_dbfs": -22.62,
+        "one_frame_rms_dbfs": -36.35
+      },
+      {
+        "name": "less-clear",
+        "frame": 3350,
+        "trigger_sample": 6700000,
+        "attack_sample": 6700029,
+        "text": "",
+        "family": "granules",
+        "peak_dbfs": -25.02,
+        "one_frame_rms_dbfs": -35.75
+      },
+      {
+        "name": "ripples",
+        "frame": 3785,
+        "trigger_sample": 7570000,
+        "attack_sample": 7570016,
+        "text": "Ripple marks",
+        "family": "droplet",
+        "peak_dbfs": -20.85,
+        "one_frame_rms_dbfs": -29.82
+      },
+      {
+        "name": "cracks",
+        "frame": 3865,
+        "trigger_sample": 7730000,
+        "attack_sample": 7730018,
+        "text": "Mud cracks",
+        "family": "break",
+        "peak_dbfs": -22.28,
+        "one_frame_rms_dbfs": -30.97
+      },
+      {
+        "name": "drain",
+        "frame": 4066,
+        "trigger_sample": 8132000,
+        "attack_sample": 8132029,
+        "text": "",
+        "family": "brook",
+        "peak_dbfs": -19.86,
+        "one_frame_rms_dbfs": -41.0
+      },
+      {
+        "name": "impact-bank",
+        "frame": 4174,
+        "trigger_sample": 8348000,
+        "attack_sample": 8348015,
+        "text": "",
+        "family": "press",
+        "peak_dbfs": -19.06,
+        "one_frame_rms_dbfs": -26.05
+      },
+      {
+        "name": "erosion-wash",
+        "frame": 4257,
+        "trigger_sample": 8514000,
+        "attack_sample": 8514028,
+        "text": "",
+        "family": "brook",
+        "peak_dbfs": -20.47,
+        "one_frame_rms_dbfs": -40.98
+      },
+      {
+        "name": "cement",
+        "frame": 4529,
+        "trigger_sample": 9058000,
+        "attack_sample": 9058018,
+        "text": "Mineral cement",
+        "family": "glass",
+        "peak_dbfs": -22.45,
+        "one_frame_rms_dbfs": -31.33
+      },
+      {
+        "name": "mat",
+        "frame": 4718,
+        "trigger_sample": 9436000,
+        "attack_sample": 9436032,
+        "text": "Possible microbial mat",
+        "family": "bristle",
+        "peak_dbfs": -25.26,
+        "one_frame_rms_dbfs": -36.63
+      },
+      {
+        "name": "bury",
+        "frame": 4886,
+        "trigger_sample": 9772000,
+        "attack_sample": 9772018,
+        "text": "",
+        "family": "granules",
+        "peak_dbfs": -22.41,
+        "one_frame_rms_dbfs": -32.09
+      },
+      {
+        "name": "seal",
+        "frame": 4967,
+        "trigger_sample": 9934000,
+        "attack_sample": 9934027,
+        "text": "",
+        "family": "dry",
+        "peak_dbfs": -25.65,
+        "one_frame_rms_dbfs": -38.12
+      },
+      {
+        "name": "brazil",
+        "frame": 5207,
+        "trigger_sample": 10414000,
+        "attack_sample": 10414017,
+        "text": "Sousa Basin, Brazil",
+        "family": "airchime",
+        "peak_dbfs": -23.73,
+        "one_frame_rms_dbfs": -30.7
+      },
+      {
+        "name": "sousa-current",
+        "frame": 5270,
+        "trigger_sample": 10540000,
+        "attack_sample": 10540027,
+        "text": "",
+        "family": "brook",
+        "peak_dbfs": -20.44,
+        "one_frame_rms_dbfs": -41.34
+      },
+      {
+        "name": "sousa-fibres",
+        "frame": 5422,
+        "trigger_sample": 10844000,
+        "attack_sample": 10844021,
+        "text": "",
+        "family": "bristle",
+        "peak_dbfs": -25.81,
+        "one_frame_rms_dbfs": -38.65
+      },
+      {
+        "name": "rim",
+        "frame": 5537,
+        "trigger_sample": 11074000,
+        "attack_sample": 11074024,
+        "text": "Displaced rim",
+        "family": "mineral",
+        "peak_dbfs": -26.55,
+        "one_frame_rms_dbfs": -37.88
+      },
+      {
+        "name": "both",
+        "frame": 5851,
+        "trigger_sample": 11702000,
+        "attack_sample": 11702030,
+        "text": "",
+        "family": "peel",
+        "peak_dbfs": -24.97,
+        "one_frame_rms_dbfs": -34.73
+      },
+      {
+        "name": "window-low",
+        "frame": 6526,
+        "trigger_sample": 13052000,
+        "attack_sample": 13052020,
+        "text": "",
+        "family": "airchime",
+        "peak_dbfs": -26.92,
+        "one_frame_rms_dbfs": -34.37
+      },
+      {
+        "name": "pollen",
+        "frame": 6609,
+        "trigger_sample": 13218000,
+        "attack_sample": 13218018,
+        "text": "Fossil pollen",
+        "family": "glass",
+        "peak_dbfs": -23.67,
+        "one_frame_rms_dbfs": -31.43
+      },
+      {
+        "name": "age",
+        "frame": 6918,
+        "trigger_sample": 13836000,
+        "attack_sample": 13836017,
+        "text": "Early Cretaceous",
+        "family": "airchime",
+        "peak_dbfs": -23.28,
+        "one_frame_rms_dbfs": -30.71
+      },
+      {
+        "name": "restore-model",
+        "frame": 7079,
+        "trigger_sample": 14158000,
+        "attack_sample": 14158017,
+        "text": "125 Ma model",
+        "family": "airchime",
+        "peak_dbfs": -23.83,
+        "one_frame_rms_dbfs": -30.68
+      },
+      {
+        "name": "fault-light",
+        "frame": 7292,
+        "trigger_sample": 14584000,
+        "attack_sample": 14584023,
+        "text": "",
+        "family": "mineral",
+        "peak_dbfs": -26.78,
+        "one_frame_rms_dbfs": -39.67
+      },
+      {
+        "name": "rift-down",
+        "frame": 7530,
+        "trigger_sample": 15060000,
+        "attack_sample": 15060021,
+        "text": "",
+        "family": "break",
+        "peak_dbfs": -22.95,
+        "one_frame_rms_dbfs": -30.8
+      },
+      {
+        "name": "rift-fill",
+        "frame": 7707,
+        "trigger_sample": 15414000,
+        "attack_sample": 15414029,
+        "text": "",
+        "family": "granules",
+        "peak_dbfs": -21.63,
+        "one_frame_rms_dbfs": -34.1
+      },
+      {
+        "name": "valley-water",
+        "frame": 8051,
+        "trigger_sample": 16102000,
+        "attack_sample": 16102029,
+        "text": "",
+        "family": "brook",
+        "peak_dbfs": -19.8,
+        "one_frame_rms_dbfs": -40.69
+      },
+      {
+        "name": "range",
+        "frame": 8323,
+        "trigger_sample": 16646000,
+        "attack_sample": 16646017,
+        "text": "Possible dispersal area",
+        "family": "airchime",
+        "peak_dbfs": -22.88,
+        "one_frame_rms_dbfs": -30.7
+      },
+      {
+        "name": "habitat-first",
+        "frame": 8417,
+        "trigger_sample": 16834000,
+        "attack_sample": 16834015,
+        "text": "",
+        "family": "droplet",
+        "peak_dbfs": -18.1,
+        "one_frame_rms_dbfs": -29.18
+      },
+      {
+        "name": "habitat-next",
+        "frame": 8476,
+        "trigger_sample": 16952000,
+        "attack_sample": 16952014,
+        "text": "",
+        "family": "droplet",
+        "peak_dbfs": -18.92,
+        "one_frame_rms_dbfs": -29.37
+      },
+      {
+        "name": "habitat-last",
+        "frame": 8523,
+        "trigger_sample": 17046000,
+        "attack_sample": 17046017,
+        "text": "",
+        "family": "droplet",
+        "peak_dbfs": -18.1,
+        "one_frame_rms_dbfs": -29.39
+      },
+      {
+        "name": "mawsonia",
+        "frame": 8699,
+        "trigger_sample": 17398000,
+        "attack_sample": 17398019,
+        "text": "Mawsonia",
+        "family": "waterglass",
+        "peak_dbfs": -20.7,
+        "one_frame_rms_dbfs": -29.88
+      },
+      {
+        "name": "other-basins",
+        "frame": 8817,
+        "trigger_sample": 17634000,
+        "attack_sample": 17634024,
+        "text": "Fossils in other basins",
+        "family": "mineral",
+        "peak_dbfs": -25.82,
+        "one_frame_rms_dbfs": -37.24
+      },
+      {
+        "name": "more-sites",
+        "frame": 9228,
+        "trigger_sample": 18456000,
+        "attack_sample": 18456024,
+        "text": "More sites",
+        "family": "dry",
+        "peak_dbfs": -25.03,
+        "one_frame_rms_dbfs": -35.82
+      },
+      {
+        "name": "better-dates",
+        "frame": 9289,
+        "trigger_sample": 18578000,
+        "attack_sample": 18578017,
+        "text": "Narrower dates",
+        "family": "glass",
+        "peak_dbfs": -22.41,
+        "one_frame_rms_dbfs": -31.4
+      },
+      {
+        "name": "better-fossils",
+        "frame": 9375,
+        "trigger_sample": 18750000,
+        "attack_sample": 18750023,
+        "text": "Identifiable fossils",
+        "family": "mineral",
+        "peak_dbfs": -21.86,
+        "one_frame_rms_dbfs": -33.33
+      },
+      {
+        "name": "rift-early",
+        "frame": 9711,
+        "trigger_sample": 19422000,
+        "attack_sample": 19422021,
+        "text": "",
+        "family": "churn",
+        "peak_dbfs": -18.91,
+        "one_frame_rms_dbfs": -36.39
+      },
+      {
+        "name": "rift-late",
+        "frame": 9811,
+        "trigger_sample": 19622000,
+        "attack_sample": 19622027,
+        "text": "",
+        "family": "brook",
+        "peak_dbfs": -19.33,
+        "one_frame_rms_dbfs": -40.09
+      },
+      {
+        "name": "gap-returns",
+        "frame": 9973,
+        "trigger_sample": 19946000,
+        "attack_sample": 19946017,
+        "text": "≈6,000 km",
+        "family": "glass",
+        "peak_dbfs": -23.33,
+        "one_frame_rms_dbfs": -30.95
+      },
+      {
+        "name": "rocks-answer",
+        "frame": 10174,
+        "trigger_sample": 20348000,
+        "attack_sample": 20348018,
+        "text": "The rocks.",
+        "family": "title",
+        "peak_dbfs": -22.74,
+        "one_frame_rms_dbfs": -30.32
+      },
+      {
+        "name": "gentle-close",
+        "frame": 10327,
+        "trigger_sample": 20654000,
+        "attack_sample": 20654032,
+        "text": "",
+        "family": "mineral",
+        "peak_dbfs": -32.34,
+        "one_frame_rms_dbfs": -44.43
+      },
+      {
+        "name": "credits-on",
+        "frame": 10541,
+        "trigger_sample": 21082000,
+        "attack_sample": 21082018,
+        "text": "",
+        "family": "airchime",
+        "peak_dbfs": -25.68,
+        "one_frame_rms_dbfs": -33.17
+      }
+    ],
+    "same_frame_all_graphic_and_spot_attacks": true,
+    "max_spot_attack_ms": 0.8333,
+    "max_graphic_attack_ms": 0.6667,
+    "min_decoded_overlay_error_ratio": 2.559
+  },
+  "shot_inspection": [
+    {
+      "shot": "sousa-intro",
+      "check_frame": 34,
+      "average_rgb_intensity": 94.3,
+      "rms_contrast": 32.1
+    },
+    {
+      "shot": "koum-intro",
+      "check_frame": 82,
+      "average_rgb_intensity": 111.83,
+      "rms_contrast": 32.22
+    },
+    {
+      "shot": "modern",
+      "check_frame": 178,
+      "average_rgb_intensity": 70.51,
+      "rms_contrast": 47.73
+    },
+    {
+      "shot": "rewind",
+      "check_frame": 366,
+      "average_rgb_intensity": 79.78,
+      "rms_contrast": 46.14
+    },
+    {
+      "shot": "title",
+      "check_frame": 556,
+      "average_rgb_intensity": 134.45,
+      "rms_contrast": 43.26
+    },
+    {
+      "shot": "koum-locate",
+      "check_frame": 702,
+      "average_rgb_intensity": 121.78,
+      "rms_contrast": 33.68
+    },
+    {
+      "shot": "first-horizons",
+      "check_frame": 821,
+      "average_rgb_intensity": 103.74,
+      "rms_contrast": 22.05
+    },
+    {
+      "shot": "mayo",
+      "check_frame": 961,
+      "average_rgb_intensity": 115.07,
+      "rms_contrast": 35.52
+    },
+    {
+      "shot": "survey",
+      "check_frame": 1102,
+      "average_rgb_intensity": 93.79,
+      "rms_contrast": 32.87
+    },
+    {
+      "shot": "step-weight",
+      "check_frame": 1215,
+      "average_rgb_intensity": 102.25,
+      "rms_contrast": 28.8
+    },
+    {
+      "shot": "trackways",
+      "check_frame": 1313,
+      "average_rgb_intensity": 102.89,
+      "rms_contrast": 27.27
+    },
+    {
+      "shot": "local-steps",
+      "check_frame": 1409,
+      "average_rgb_intensity": 103.84,
+      "rms_contrast": 23.81
+    },
+    {
+      "shot": "edge",
+      "check_frame": 1507,
+      "average_rgb_intensity": 49.05,
+      "rms_contrast": 36.75
+    },
+    {
+      "shot": "four",
+      "check_frame": 1687,
+      "average_rgb_intensity": 54.57,
+      "rms_contrast": 40.63
+    },
+    {
+      "shot": "erosion",
+      "check_frame": 1921,
+      "average_rgb_intensity": 48.13,
+      "rms_contrast": 35.59
+    },
+    {
+      "shot": "views",
+      "check_frame": 2102,
+      "average_rgb_intensity": 44.16,
+      "rms_contrast": 31.64
+    },
+    {
+      "shot": "mesh",
+      "check_frame": 2242,
+      "average_rgb_intensity": 49.25,
+      "rms_contrast": 34.92
+    },
+    {
+      "shot": "tease",
+      "check_frame": 2378,
+      "average_rgb_intensity": 139.25,
+      "rms_contrast": 21.83
+    },
+    {
+      "shot": "ruler",
+      "check_frame": 2553,
+      "average_rgb_intensity": 129.03,
+      "rms_contrast": 25.68
+    },
+    {
+      "shot": "diffuse",
+      "check_frame": 2782,
+      "average_rgb_intensity": 138.27,
+      "rms_contrast": 23.4
+    },
+    {
+      "shot": "press",
+      "check_frame": 3042,
+      "average_rgb_intensity": 47.73,
+      "rms_contrast": 34.98
+    },
+    {
+      "shot": "results",
+      "check_frame": 3224,
+      "average_rgb_intensity": 49.4,
+      "rms_contrast": 38.91
+    },
+    {
+      "shot": "changing",
+      "check_frame": 3371,
+      "average_rgb_intensity": 132.96,
+      "rms_contrast": 21.48
+    },
+    {
+      "shot": "makers",
+      "check_frame": 3537,
+      "average_rgb_intensity": 50.49,
+      "rms_contrast": 37.08
+    },
+    {
+      "shot": "underfoot",
+      "check_frame": 3679,
+      "average_rgb_intensity": 48.97,
+      "rms_contrast": 35.13
+    },
+    {
+      "shot": "ripples",
+      "check_frame": 3805,
+      "average_rgb_intensity": 122.29,
+      "rms_contrast": 26.92
+    },
+    {
+      "shot": "cracks",
+      "check_frame": 3893,
+      "average_rgb_intensity": 114.74,
+      "rms_contrast": 26.96
+    },
+    {
+      "shot": "clues",
+      "check_frame": 3990,
+      "average_rgb_intensity": 48.86,
+      "rms_contrast": 35.88
+    },
+    {
+      "shot": "drain",
+      "check_frame": 4139,
+      "average_rgb_intensity": 128.13,
+      "rms_contrast": 25.78
+    },
+    {
+      "shot": "wear",
+      "check_frame": 4308,
+      "average_rgb_intensity": 117.98,
+      "rms_contrast": 20.7
+    },
+    {
+      "shot": "cement",
+      "check_frame": 4538,
+      "average_rgb_intensity": 33.79,
+      "rms_contrast": 23.74
+    },
+    {
+      "shot": "mat",
+      "check_frame": 4777,
+      "average_rgb_intensity": 48.14,
+      "rms_contrast": 25.69
+    },
+    {
+      "shot": "burial",
+      "check_frame": 4937,
+      "average_rgb_intensity": 58.64,
+      "rms_contrast": 44.84
+    },
+    {
+      "shot": "preserved",
+      "check_frame": 5071,
+      "average_rgb_intensity": 137.08,
+      "rms_contrast": 24.26
+    },
+    {
+      "shot": "sousa",
+      "check_frame": 5201,
+      "average_rgb_intensity": 68.3,
+      "rms_contrast": 34.16
+    },
+    {
+      "shot": "sousa-water",
+      "check_frame": 5307,
+      "average_rgb_intensity": 127.76,
+      "rms_contrast": 30.93
+    },
+    {
+      "shot": "sousa-mat",
+      "check_frame": 5429,
+      "average_rgb_intensity": 44.57,
+      "rms_contrast": 17.82
+    },
+    {
+      "shot": "rim",
+      "check_frame": 5572,
+      "average_rgb_intensity": 112.85,
+      "rms_contrast": 25.48
+    },
+    {
+      "shot": "held",
+      "check_frame": 5716,
+      "average_rgb_intensity": 55.01,
+      "rms_contrast": 39.5
+    },
+    {
+      "shot": "conditions",
+      "check_frame": 5915,
+      "average_rgb_intensity": 50.39,
+      "rms_contrast": 36.27
+    },
+    {
+      "shot": "banks",
+      "check_frame": 6169,
+      "average_rgb_intensity": 101.19,
+      "rms_contrast": 19.29
+    },
+    {
+      "shot": "unmatched",
+      "check_frame": 6401,
+      "average_rgb_intensity": 46.15,
+      "rms_contrast": 28.0
+    },
+    {
+      "shot": "window",
+      "check_frame": 6542,
+      "average_rgb_intensity": 46.13,
+      "rms_contrast": 27.96
+    },
+    {
+      "shot": "pollen",
+      "check_frame": 6661,
+      "average_rgb_intensity": 29.74,
+      "rms_contrast": 18.59
+    },
+    {
+      "shot": "regional",
+      "check_frame": 6821,
+      "average_rgb_intensity": 46.04,
+      "rms_contrast": 27.96
+    },
+    {
+      "shot": "broad",
+      "check_frame": 6992,
+      "average_rgb_intensity": 44.88,
+      "rms_contrast": 28.51
+    },
+    {
+      "shot": "restore",
+      "check_frame": 7157,
+      "average_rgb_intensity": 73.01,
+      "rms_contrast": 45.75
+    },
+    {
+      "shot": "bedrock",
+      "check_frame": 7290,
+      "average_rgb_intensity": 44.67,
+      "rms_contrast": 29.39
+    },
+    {
+      "shot": "structures",
+      "check_frame": 7427,
+      "average_rgb_intensity": 75.16,
+      "rms_contrast": 47.25
+    },
+    {
+      "shot": "stretch",
+      "check_frame": 7602,
+      "average_rgb_intensity": 45.28,
+      "rms_contrast": 30.12
+    },
+    {
+      "shot": "fill",
+      "check_frame": 7788,
+      "average_rgb_intensity": 45.21,
+      "rms_contrast": 28.87
+    },
+    {
+      "shot": "land",
+      "check_frame": 7932,
+      "average_rgb_intensity": 77.71,
+      "rms_contrast": 48.03
+    },
+    {
+      "shot": "valleys",
+      "check_frame": 8118,
+      "average_rgb_intensity": 141.07,
+      "rms_contrast": 40.87
+    },
+    {
+      "shot": "possible",
+      "check_frame": 8307,
+      "average_rgb_intensity": 81.9,
+      "rms_contrast": 41.97
+    },
+    {
+      "shot": "generations",
+      "check_frame": 8477,
+      "average_rgb_intensity": 41.41,
+      "rms_contrast": 20.82
+    },
+    {
+      "shot": "fish",
+      "check_frame": 8694,
+      "average_rgb_intensity": 38.4,
+      "rms_contrast": 13.87
+    },
+    {
+      "shot": "fish-basins",
+      "check_frame": 8932,
+      "average_rgb_intensity": 42.42,
+      "rms_contrast": 27.89
+    },
+    {
+      "shot": "patterns",
+      "check_frame": 9110,
+      "average_rgb_intensity": 42.38,
+      "rms_contrast": 23.71
+    },
+    {
+      "shot": "tests",
+      "check_frame": 9337,
+      "average_rgb_intensity": 40.89,
+      "rms_contrast": 24.27
+    },
+    {
+      "shot": "still-possible",
+      "check_frame": 9583,
+      "average_rgb_intensity": 78.35,
+      "rms_contrast": 48.68
+    },
+    {
+      "shot": "rift",
+      "check_frame": 9792,
+      "average_rgb_intensity": 42.01,
+      "rms_contrast": 26.45
+    },
+    {
+      "shot": "return",
+      "check_frame": 9982,
+      "average_rgb_intensity": 66.91,
+      "rms_contrast": 46.52
+    },
+    {
+      "shot": "which-journey",
+      "check_frame": 10117,
+      "average_rgb_intensity": 74.73,
+      "rms_contrast": 48.92
+    },
+    {
+      "shot": "the-rocks",
+      "check_frame": 10249,
+      "average_rgb_intensity": 74.12,
+      "rms_contrast": 47.19
+    },
+    {
+      "shot": "last-print",
+      "check_frame": 10437,
+      "average_rgb_intensity": 121.82,
+      "rms_contrast": 27.06
+    },
+    {
+      "shot": "sources",
+      "check_frame": 10624,
+      "average_rgb_intensity": 34.01,
+      "rms_contrast": 23.68
+    }
+  ],
+  "source_assets": {
+    "ancient.field": {
+      "bytes": 67108880,
+      "sha256": "a36951aaa4407519d9ead9094c133a2e671e0c22a8e1dc370b4b99186e2e9ef2"
+    },
+    "brazil.field": {
+      "bytes": 52428816,
+      "sha256": "6f657634faa8aa57680ff09d23bd666783f697a261a0288bc36810c3b23e363e"
+    },
+    "diffuse.field": {
+      "bytes": 29491216,
+      "sha256": "108d710ac0d7e3c338ed7d90eaad2a149ba6fe4ee1aaf8e1744be3d5abfb65c1"
+    },
+    "dried.field": {
+      "bytes": 29491216,
+      "sha256": "945920c196a87859ca0a296f9ff051f8ebb65a2ed02db2abea8c46f328a89d7c"
+    },
+    "floodplain.field": {
+      "bytes": 25690128,
+      "sha256": "10b389d5574ae225b190c1e594596f57c93be843eb1412f5239bd6d0c686cfbf"
+    },
+    "koum.field": {
+      "bytes": 52428816,
+      "sha256": "727a05f89f610f4047bc978357185d4b26d9d4dd9cd8ac6ec9c5930f550fd3f4"
+    },
+    "modern.field": {
+      "bytes": 67108880,
+      "sha256": "7830deb8d4b68c8ae62708e2c6524886cc443328cea4247a289bda521ad2d165"
+    },
+    "pressure.field": {
+      "bytes": 29491216,
+      "sha256": "83cd59b25f74b07f10df3de65e04164061c5bf932883fd82e0c5c0fcf0b900f6"
+    },
+    "rim.field": {
+      "bytes": 29491216,
+      "sha256": "9661023f53134feebd0c2157ee0ff7c63cee2b3b75bb5b91fba8d8fd57083e72"
+    },
+    "ripples.field": {
+      "bytes": 29491216,
+      "sha256": "7decca52fb6560e93950aa373af8c8bbcb1f09d2bebb8ec5209638e2cbd8908b"
+    },
+    "river.field": {
+      "bytes": 25690128,
+      "sha256": "ee1fc24216b1f8e7bb049bc5822904a028ba8f262c4be37085da1987c62f5619"
+    },
+    "shelves.field": {
+      "bytes": 35684368,
+      "sha256": "ba4f0b4e8804830d7f5627cdf5a425df6dd9d892f265b8ad9795cb7d6947c5d6"
+    },
+    "stamp.field": {
+      "bytes": 52428816,
+      "sha256": "29fb8f3eedc09e7878063f0b5c67c8f04ff1a97f09f2c253909c1000fbd35479"
+    },
+    "steps.field": {
+      "bytes": 52428816,
+      "sha256": "201508a5b4e08f2d3dcda3ae0be8a9be123b3a6b5d816dff71cc7d612745034c"
+    },
+    "weather.field": {
+      "bytes": 29491216,
+      "sha256": "c62035b265ca9d563640a5a2dabefffaf2730721a75c00c8200f635b068e959f"
+    }
+  },
+  "credits": "Footprint and geology research: Jacobs et al. (2024), NMMNHS Bulletin 95 pp. 199–212; Menkem et al. (2026), https://doi.org/10.1016/j.jop.2026.100416; Carvalho, Borghi & Leonardi (2013), https://doi.org/10.1016/j.cretres.2013.04.004. Cartography adapted from Kocsis & Scotese (2021), PaleoCoastlines v7.1 and PALEOMAP rotations, https://doi.org/10.1016/j.earscirev.2020.103463, and Scotese & Wright (2018), PALEOMAP PaleoDEMs v2, https://doi.org/10.5281/zenodo.5460860, both CC BY 4.0, https://creativecommons.org/licenses/by/4.0/. Resampled, coloured, shaded and annotated; relief exaggerated. Present day: Natural Earth 1:50m and NOAA NGDC ETOPO5, public domain. Local sets and all fossil/terrain demonstrations are original CGI. 125 Ma is a model snapshot, not a footprint date. RPG Audio gravel foley by Kenney Vleugels, Kenney.nl, CC0 1.0. Four checksum-pinned one-shots, filtered and layered. All other audio is original synthesis.",
+  "files": [
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full.mp4",
+      "bytes": 87457624,
+      "sha256": "39f7372783ade3b3d835b22fb34ac4f7b3d9816cec944b7e7824074b37e57b71",
+      "md5": "6d5b29080a5183e88d22b01bcb081db8"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full.en.srt",
+      "bytes": 11274,
+      "sha256": "6a113e079a8b1e4f3ab109310fd08d350abaaa5422d153b3b3945707b3fe5361",
+      "md5": "a3972319948a4ce6de3bd085dc116801"
+    },
+    {
+      "name": "Extinct-Life-Atlantic-Tracks-Cinematic-Full-Handoff.md",
+      "bytes": 4056,
+      "sha256": "e095fb6213e180c2210fb548dbd49cd0a7ef0ad9b1fb24afbe20da44ac438344",
+      "md5": "a013534be52d77a356cf04e0ce6fd3ce"
+    }
+  ]
+}
