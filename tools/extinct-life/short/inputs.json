@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "private_vo_and_diffuse_detail": {
+    "materials/river-bed-grain.jpg": "9d07ac0263f658c58e332b6fbd415c54a5260b42a04117d935473d1cf637d7e0",
+    "materials/scale-grain.jpg": "8e56b406c19e735da076a7a35d82691788a6ed546d9f50c665c1a9567755bae1",
+    "vo/01-hook.wav": "7fae0660f2833a4462408037ba6f0dbca0570bf5eec1a0fedcf95c836072aff8",
+    "vo/02-firm.wav": "2917c547ec6be5a062cf660450cb5e04b85dd5e318c3497040983e1c3c61573f",
+    "vo/03-soft.wav": "7d2c49169ab43bdc239f014ecd86d289506711ce925c911152acdf15b45a9332",
+    "vo/04-sites.wav": "5e83e7166f36f81745ec9a342f127d96a51202515ebfe2be59337e369746ff20",
+    "vo/05-rewind.wav": "202dd0aae2d0d86edf35df102227bc319cbc952c2b9ab0dd190f727a177c15b1",
+    "vo/06-question.wav": "44a075530f2afdeb8e3547e060adae3b7fdee7b8158aab7ea212594e2aa3da65"
+  },
+  "geo8_and_world": {
+    "ancient.field": "a36951aaa4407519d9ead9094c133a2e671e0c22a8e1dc370b4b99186e2e9ef2",
+    "brazil.field": "6f657634faa8aa57680ff09d23bd666783f697a261a0288bc36810c3b23e363e",
+    "koum.field": "727a05f89f610f4047bc978357185d4b26d9d4dd9cd8ac6ec9c5930f550fd3f4",
+    "modern.field": "7830deb8d4b68c8ae62708e2c6524886cc443328cea4247a289bda521ad2d165",
+    "world.json": "38a3884362e3a123efe6eb7a01e1c9f2fda3f29a3c81ef8a35f12fe1224bdf83"
+  }
+}
