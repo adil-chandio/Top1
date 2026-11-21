@@ -1,58 +1,73 @@
-# Extinct long-form market pass — baseline from the existing YouTube research
+# ExtinctZoo YouTube-first market baseline
 
-**Status: baseline only; not a live refresh and not a topic selection**  
-**Observation basis: 2026-11-18 UTC research archive**
+**Retrieval/basis date:** 2026-11-18 UTC snapshot for the documented five-row
+ExtinctZoo sample; audit notes updated 2026-11-21 UTC.
+**Purpose:** market observation before selecting the first new Extinct long-form
+video. This is not a topic approval, production brief, or forecast.
 
-This document is intentionally separate from the retracted GitHub-first candidate
-pass. It uses the existing Extinct Life market research only as a documented market
-baseline and method reference. It does not revive the old Atlantic Tracks topic or
-any archived release.
+## Channel promise under audit
 
-## Direct same-format cohorts already recorded
+Narrated long-form extinct-life/palaeontology stories that explain a creature,
+place, event, or evidence-led reversal for a general audience.
 
-The historical pass sampled 15 direct long-form YouTube records across three
-channels, five per channel, with separate context-only rows and explicit
-exclusions:
+## Included direct sample
 
-| Cohort | Format window | Sample | Median displayed views | Thumbnail status |
-| --- | --- | ---: | ---: | --- |
-| PBS Eons | 9–14 minutes | 5 | 599,837 | all five inspected |
-| Moth Light Media | 14–19 minutes | 5 | 226,567 | title/runtime/views; thumbnails not verified in that pass |
-| ExtinctZoo | 18–28 minutes | 5 | 548,840 | title/runtime/views; thumbnails not verified in that pass |
+The existing same-format ExtinctZoo sample contains five direct rows:
 
-These are lifetime snapshots with different calendar ages. They are descriptive
-observations, not expected performance for a new channel.
+| Video ID | Title | Runtime | Age at snapshot | Displayed views | Sample note |
+| --- | --- | ---: | ---: | ---: | --- |
+| `tMOsrsKAuhg` | The Extinct Animals That Never Were | 21:31 | 51d | 1,550,443 | sponsored; fossil-misidentification anthology |
+| `aIXEjUl57jE` | When Amphibians Were Apex Predators | 26:37 | 73d | 1,368,390 | prehistoric-group role reversal |
+| `NqeVuAn18QU` | The Deadliest Place To Ever Exist | 27:13 | 31d | 548,840 | Kem Kem paleoenvironment; Patreon plug |
+| `Ig39JrUPi90` | Pangea Never Got Deadlier Than This | 20:16 | 45d | 454,589 | Late Triassic paleoenvironment |
+| `0QqOJtS2PR8` | When The Sahara Was A Jungle | 19:31 | 87d | 378,393 | ancient-environment reversal |
 
-## Market lessons that are safe to carry forward
+**Sample median:** 548,840 displayed views.
+**Context-only row:** `A4HkT6BHR84`, “The First Asteroid That Tried To Kill The
+Dinosaurs...And Failed” — 5:01, 13d, 274,526 views; excluded from the regular
+long-form comparison because of its short runtime and unusually young age.
 
-1. **Start with a recognisable physical clue.** The stronger examples make the
-   fossil, structure, landscape consequence, or strange body feature visible early.
-2. **Title and thumbnail do different jobs.** One can ask the question while the
-   image shows the clue or consequence. The promise must still match the film.
-3. **A reversal can be a hook, not a conclusion.** “A familiar group in an
-   unexpected role” appeared in higher rows, but the sample cannot prove that the
-   wording caused views.
-4. **A broad landscape reversal is not automatically strong.** A dramatic “ancient
-   landscape” treatment can sit below a more specific evidence question.
-5. **The story needs a visible change.** Map rewind, anatomy reconstruction,
-   preservation layers, or an evidence-versus-inference comparison can carry the
-   middle of a long film.
-6. **The first minute must earn the premise.** A title about a clue cannot spend
-   its opening on a generic prehistoric flyover.
+## Receipts and evidence quality
 
-## What cannot be concluded
+- Official upload playlist: `https://www.youtube.com/playlist?list=UU0ggS8bt4v7NiZpDfGqNpZQ`
+- Official watch pages are recorded in the corpus CSV.
+- The current thumbnail ledger explicitly marks all five direct ExtinctZoo rows
+  `watch_url_only_not_inspected`.
+- Image search was attempted as a discovery aid, but returned Reddit reposts,
+  discussions, and third-party podcast artwork. Those are **not authoritative
+  YouTube thumbnail receipts** and are not used to assert the exact thumbnails
+  shown on the five watch pages.
+- No CTR, impressions, retention, traffic source, recommendation, thumbnail-test,
+  or returning-viewer data is available.
 
-- No CTR, impressions, retention, traffic source, audience overlap, promotion, or
-  title-test history was available in the archived pass.
-- Thumbnail observations were incomplete for two direct cohorts.
-- The sample is small and selected, not a random channel catalogue.
-- No view median is a forecast.
-- No exact topic from the historical ranked treatment is active.
+## What is safe to say now
 
-## Correct next action
+The two million-plus rows have a conspicuous **mental-model reversal** in their
+promises: animals that “never were” and amphibians as “apex predators.” The lower
+rows use broad dangerous-place and ancient-landscape promises. That is a useful
+hypothesis for future packaging, not a causal result: the rows differ in age,
+topic, sponsorship, runtime, channel growth, and possibly packaging.
 
-A live/current YouTube refresh is still required before final topic selection. It
-must fill `youtube-long-form-market-pass-template.json` with current IDs, dates,
-runtimes, thumbnails, story observations, age windows, and exclusions. Only then
-will we derive a new 3–5-topic shortlist. GitHub, papers, datasets, and rights
-sources enter **after** the market gap is documented.
+A likely reusable editorial principle is:
+
+> Start from what a general viewer assumes, reveal the fossil/evidence that
+> breaks that assumption, then explain the mechanism and the uncertainty.
+
+That principle is not the same as copying ExtinctZoo’s titles or art. It still
+requires an original evidence trail and a defensible scope.
+
+## What remains open before a final topic shortlist
+
+1. Expand the official channel/upload inventory and refresh the displayed counts
+   on one UTC retrieval date.
+2. Obtain exact-ID official thumbnail endpoint receipts, inspect at full and
+   phone size, and record focal subject, text, contrast, and promise match.
+3. Record opening promise, evidence-arrival timing, story beats, sponsorship,
+   Patreon/house plugs, and topic type for the direct cohort.
+4. Add matched lower-performing long-form controls and at least two comparable
+   direct channels if their official surfaces are available.
+5. Mark topics that are saturated, claim-heavy, rights-unsafe, or visually
+   infeasible before deriving 3–5 new candidates.
+
+Until those steps are complete, no new Extinct topic is selected and no script,
+voice, render, upload, schedule, or publication is authorized.
