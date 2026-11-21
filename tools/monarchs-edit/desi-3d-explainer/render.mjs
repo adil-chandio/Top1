@@ -11,13 +11,20 @@
 
 import { spawn } from 'node:child_process';
 import { once } from 'node:events';
-import { mkdir, mkdtemp, stat, copyFile, rm, writeFile } from 'node:fs/promises';
+import { mkdir, mkdtemp, stat, copyFile, readdir, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { extname, isAbsolute, join, relative, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { chromium } from 'playwright-core';
 import { build } from 'vite';
-import { DURATION, FPS, FRAME } from './timeline.js';
+import { PILOTS } from './scenarios.js';
+
+const pilotName = process.env.TOP1_DESI3D_PILOT || 'p1';
+const pilot = PILOTS[pilotName];
+if (!pilot) throw new Error(`Unknown pilot '${pilotName}' — use one of: ${Object.keys(PILOTS).join(', ')}`);
+const DURATION = pilot.timeline.DURATION;
+const FPS = pilot.timeline.FPS;
+const FRAME = pilot.timeline.FRAME;
 
 const staging = process.env.TOP1_DESI3D_STILLS === '1';
 const output = resolve(process.env.TOP1_DESI3D_OUT ?? '.cache/monarch-desi-3d-explainer');
@@ -36,7 +43,7 @@ function processResult(child) {
 }
 
 async function encode(page, temp) {
-  const file = join(temp, 'desi-3d-explainer.mp4');
+  const file = join(temp, `desi-3d-explainer-${pilotName}.mp4`);
   const total = Math.ceil(DURATION * FPS);
   const audio = process.env.TOP1_DESI3D_AUDIO || null;
   const child = spawn(ffmpeg, [
@@ -81,11 +88,10 @@ async function encode(page, temp) {
   return file;
 }
 
-async function stills(page, temp) {
-  const times = [1.1, 2.6, 7.0, 14.5, 27.5, 36.0];
-  for (const at of times) {
+async function stills(page, temp, times) {
+  for (const [i, at] of times.entries()) {
     const still = await page.evaluate((at) => window.top1Frame(at), at);
-    const file = join(temp, `still-${String(times.indexOf(at)).padStart(2, '0')}.jpg`);
+    const file = join(temp, `still-${String(i).padStart(2, '0')}.jpg`);
     await writeFile(file, Buffer.from(still, 'base64'));
     console.log(`  still: ${at}s → ${file}`);
   }
@@ -116,24 +122,23 @@ async function main() {
     const errors = [];
     page.on('pageerror', (error) => errors.push(error.message));
     page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-    await page.goto(`${ORIGIN}/tools/monarchs-edit/desi-3d-explainer/index.html`);
+    await page.goto(`${ORIGIN}/tools/monarchs-edit/desi-3d-explainer/index.html?pilot=${pilotName}`);
     try {
       await page.waitForFunction(() => typeof window.top1Frame === 'function', { timeout: 20_000 });
     } catch (error) {
       throw new Error(`Desi 3D explainer did not initialize: ${errors.join('; ') || error.message}`);
     }
     if (staging) {
-      await stills(page, temp);
-      for (const name of ['still-00.jpg','still-01.jpg','still-02.jpg','still-03.jpg','still-04.jpg','still-05.jpg']) {
-        const source = join(temp, name);
-        try { await stat(source); } catch { continue; }
-        await copyFile(source, join(output, name));
+      await stills(page, temp, [2.5, 7.0, 9.5, 13.5, 23.0, 28.0, 36.0]);
+      for (const name of await readdir(temp).then((files) => files.filter((f) => f.startsWith('still-')))) {
+        await copyFile(join(temp, name), join(output, name));
+        console.log(`  still → ${join(output, name)}`);
       }
     } else {
       const file = await encode(page, temp);
-      await copyFile(file, join(output, 'desi-3d-explainer.mp4'));
-      const size = (await stat(join(output, 'desi-3d-explainer.mp4'))).size;
-      console.log(`desi-3d-explainer.mp4: ${size} bytes`);
+      await copyFile(file, join(output, `desi-3d-explainer-${pilotName}.mp4`));
+      const size = (await stat(join(output, `desi-3d-explainer-${pilotName}.mp4`))).size;
+      console.log(`desi-3d-explainer-${pilotName}.mp4: ${size} bytes`);
     }
     if (errors.length) throw new Error(`Desi 3D explainer compositor: ${errors.join('; ')}`);
     await page.close();

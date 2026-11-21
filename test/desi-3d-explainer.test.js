@@ -5,8 +5,8 @@ import {
   beatAt, beatIndexAt, beatCaptionAt, beatProgressAt,
   elapsedAt, clockRunningAt, clockLabelAt,
   metalMeltAt, woodMeltAt, revealProgress, questionProgress, outroProgress,
-} from '../tools/monarchs-edit/desi-3d-explainer/timeline.js';
-import { createScene, WORLD } from '../tools/monarchs-edit/desi-3d-explainer/scene.js';
+} from '../tools/monarchs-edit/desi-3d-explainer/p1/timeline.js';
+import { createScene, WORLD } from '../tools/monarchs-edit/desi-3d-explainer/p1/scene.js';
 
 test('the P1 beat sheet covers the full 38-second run, contiguous and capped at DURATION', () => {
   assert.equal(DURATION, 38);

@@ -39,9 +39,11 @@ This preview has **no live checkout, customer accounts, or order submissions**. 
 
 ## Monarch Edit channel — Desi 3D explainer
 
-The Monarch Edit channel (@MONARCHsEdit) is now a Desi 3D explainer: everyday science and design, test-first, spoken Hindi–Urdu, with a clearly labelled 3D visual treatment. The first pilot is *Metal ya Lakri — Baraf Pehle Kahan Pighlegi?* (ice on metal vs lakri/wood). The build source lives at [`tools/monarchs-edit/desi-3d-explainer/`](tools/monarchs-edit/desi-3d-explainer/) with the decision record in [`tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md`](tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md).
+The Monarch Edit channel (@MONARCHsEdit) is now a Desi 3D explainer: everyday science and design, test-first, spoken Hindi–Urdu, with a clearly labelled 3D visual treatment. Two pilots are built: P1 — *Metal ya Lakri — Baraf Pehle Kahan Pighlegi?* (ice on metal vs lakri/wood) and E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* (the warm paddle touches metal, then lakri/wood). The build source lives at [`tools/monarchs-edit/desi-3d-explainer/`](tools/monarchs-edit/desi-3d-explainer/) with the decision record in [`tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md`](tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md).
 
-The rendered scene is an **illustrative model, not a test result**: the metal/wood melt difference is a direction, not a measurement. No physical test has been run, and no video is published. Physical P1 (three paired runs, swapped sides, raw footage) is required before any result may be claimed; the blank scorecard is [`desi-3d-explainer-scorecard.csv`](tools/monarchs-edit/research/desi-3d-explainer-scorecard.csv).
+Both rendered scenes are **illustrative models, not test results**: the melt difference and the warmth-drain difference are directions, not measurements. No physical test has been run, and no video is published. Physical P1 and E1 (three paired runs, swapped sides, raw footage) are required before any result may be claimed; the blank scorecard is [`desi-3d-explainer-scorecard.csv`](tools/monarchs-edit/research/desi-3d-explainer-scorecard.csv).
+
+Each pilot renders through the same compositor and harness — select it with the `pilot` query param (compositor) or `TOP1_DESI3D_PILOT=p1|e1` (render harness). Stills write to `.cache/monarch-desi-3d-explainer/`; MP4s are named `desi-3d-explainer-p1.mp4` / `desi-3d-explainer-e1.mp4`.
 
 ## Original cinema cuts
 

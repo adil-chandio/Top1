@@ -21,15 +21,18 @@ The owner chose to merge the **Desi 3D explainer** into the **existing** Monarch
 
 ## Build source
 
-The channel's first pilot is wired into the repo as an isolated 3D explainer:
+The channel's two pilots are wired into the repo as an isolated 3D explainer:
 
 ```
 tools/monarchs-edit/desi-3d-explainer/
-  timeline.js   — pure beat sheet, shared clock and illustrative melt curves
-  scene.js      — Three.js scene graph: 2 blocks (metal/lakri) + 2 ice cubes + heat arrows
-  main.js       — compositor + 2D caption layer (METAL/LAKRI labels, T+clock, TIME-LAPSE, reveal)
-  index.html    — compositor entry
-  render.mjs    — headless render: stills (no ffmpeg) or full MP4 (ffmpeg required)
+  scenarios.js    — pilot registry (PILOTS, getPilot); P1 + E1
+  p1/timeline.js  — pure P1 beat sheet, shared clock and illustrative melt curves
+  p1/scene.js     — Three.js scene graph: 2 blocks (metal/lakri) + 2 ice cubes + heat arrows
+  e1/timeline.js  — pure E1 beat sheet, shared clock, illustrative warmth-drain curves, paddle pose
+  e1/scene.js     — Three.js scene graph: 2 blocks (metal/lakri) + one warm paddle with emissive warmth
+  main.js         — compositor + 2D caption layer (METAL/LAKRI labels, T+clock, TIME-LAPSE/touch markers, reveal)
+  index.html      — compositor entry
+  render.mjs      — headless render: stills (no ffmpeg) or full MP4 (ffmpeg required)
 ```
 
 See the [build guide](../desi-3d-explainer/README.md) for render instructions and caveats.
@@ -38,7 +41,7 @@ See the [build guide](../desi-3d-explainer/README.md) for render instructions an
 
 - The scene is an **illustrative 3D model** — it is not a measurement of conduction, a simulation of the heat transfer, or a verified result.
 - The metal/wood melt difference is a *direction*, not a rate. No temperature, force, or conductivity number is shown.
-- Everything about the physical test (P1) is pending: a real camera, real cubes, real timing, raw footage and raw results kept. Until then, nothing in this channel may claim an observed outcome.
+- Everything about the physical tests (P1, E1) is pending: a real camera, real cubes, real timing, raw footage and raw results kept. Until then, nothing in this channel may claim an observed outcome.
 - The scene deliberately shows the two blocks at the same room temperature and the same clock. It does not stage the result with synthetic footage.
 
 ## First pilot (P1) and direct explainer (E1)
@@ -51,7 +54,7 @@ See the [build guide](../desi-3d-explainer/README.md) for render instructions an
 | 22–32s | Reveal: heat direction via arrows; honest illustrative caption | 3D scene: present |
 | 32–38s | Identity outro | 3D scene: present |
 
-E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* — is the matching direct explainer (one warmer hand, two blocks). It is **not built yet**; the 3D source is reusable.
+E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* — the matching direct explainer (one warm paddle, two blocks). **It is built** as the channel's second pilot, sharing the compositor and harness with P1 (selected with `?pilot=e1` / `TOP1_DESI3D_PILOT=e1`). Beats: 0–4s question ("Metal ka chamach zyada thanda kyun lagta hai?"), 4–10s setup (same room temp, one warm paddle), 10–18s touch on metal (warmth drains fast), 18–26s then touch on lakri (warmth drains slower), 26–32s honest reveal, 32–38s identity outro. The paddle touches the metal block, then the lakri block, with emissive warmth draining faster on metal — **still illustrative, not a measurement**; no temperature or conduction number is shown.
 
 ## Metrics gate (not filled until measured)
 
