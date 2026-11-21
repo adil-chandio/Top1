@@ -1,0 +1,52 @@
+{
+  "score_basis": "tools/extinct-studio/cli.mjs score",
+  "observation_date_utc": "2026-11-21",
+  "owner_selection": {
+    "idea_id": "extinct-market-001-trilobite-last-meal",
+    "selected_on_utc": "2026-11-21",
+    "status": "research_direction_only"
+  },
+  "ideas": [
+    {
+      "id": "extinct-market-001-trilobite-last-meal",
+      "score": 91,
+      "eligible_for_owner_review": true,
+      "decision": "owner-review",
+      "blocking_reasons": [],
+      "note": "Editorial readiness only; not a viral probability or view forecast. Production remains blocked until claims, rights, proof, story, and owner acceptance gates pass."
+    },
+    {
+      "id": "extinct-market-002-dinocephalosaurus-live-birth",
+      "score": 91,
+      "eligible_for_owner_review": true,
+      "decision": "owner-review",
+      "blocking_reasons": [],
+      "note": "Editorial readiness only; not a viral probability or view forecast. Production remains blocked until claims, rights, proof, story, and owner acceptance gates pass."
+    },
+    {
+      "id": "extinct-market-005-permian-regurgitalite",
+      "score": 91,
+      "eligible_for_owner_review": true,
+      "decision": "owner-review",
+      "blocking_reasons": [],
+      "note": "Editorial readiness only; not a viral probability or view forecast. Production remains blocked until claims, rights, proof, story, and owner acceptance gates pass."
+    },
+    {
+      "id": "extinct-market-003-cretaceous-deep-sea-fish-traces",
+      "score": 85,
+      "eligible_for_owner_review": true,
+      "decision": "owner-review",
+      "blocking_reasons": [],
+      "note": "Editorial readiness only; not a viral probability or view forecast. Production remains blocked until claims, rights, proof, story, and owner acceptance gates pass."
+    },
+    {
+      "id": "extinct-market-004-kryoryctes-platypus-origin",
+      "score": 85,
+      "eligible_for_owner_review": true,
+      "decision": "owner-review",
+      "blocking_reasons": [],
+      "note": "Editorial readiness only; not a viral probability or view forecast. Production remains blocked until claims, rights, proof, story, and owner acceptance gates pass."
+    }
+  ],
+  "all_production_status": "blocked_until_owner_selection_and_subsequent_claim_rights_visual_proof_feasibility_gates"
+}

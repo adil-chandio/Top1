@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://top1.invalid/extinct-studio/project.schema.json",
+  "title": "Extinct Studio project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_id", "channel", "working_title", "format", "language", "status", "active_slate", "historical_reference_only"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "channel": {"const": "extinct"},
+    "working_title": {"type": "string", "minLength": 1},
+    "format": {"enum": ["short", "long", "both"]},
+    "language": {"enum": ["english", "urdu", "roman-urdu", "mixed"]},
+    "status": {"enum": ["idea", "researched", "shortlisted", "owner-selected", "claims-locked", "scripted", "proof-pending", "proof-passed", "voice-locked", "picture-locked", "mix-locked", "qa-passed", "owner-accepted", "private-uploaded", "published"]},
+    "active_slate": {"type": "boolean"},
+    "historical_reference_only": {"type": "boolean"}
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://top1.invalid/extinct-studio/analytics.schema.json",
+  "title": "Redacted YouTube Studio observation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "project_id", "platform", "format", "observed_on", "age_days", "redacted", "source", "metrics"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "project_id": {"type": "string", "minLength": 1},
+    "platform": {"const": "youtube"},
+    "format": {"enum": ["short", "long"]},
+    "observed_on": {"type": "string", "minLength": 10},
+    "age_days": {"type": "integer", "minimum": 0},
+    "redacted": {"const": true},
+    "source": {"const": "studio-export-redacted"},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "views": {"type": "integer", "minimum": 0},
+        "impressions": {"type": "integer", "minimum": 0},
+        "ctr": {"type": "number", "minimum": 0, "maximum": 1},
+        "average_view_duration_s": {"type": "number", "minimum": 0},
+        "average_percentage_viewed": {"type": "number", "minimum": 0, "maximum": 100},
+        "shares": {"type": "integer", "minimum": 0},
+        "comments": {"type": "integer", "minimum": 0},
+        "subscribers_gained": {"type": "integer", "minimum": 0},
+        "viewed_vs_swiped_away": {"type": "object"}
+      }
+    }
+  }
+}

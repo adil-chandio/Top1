@@ -8,6 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test",
+    "studio:check": "node tools/extinct-studio/cli.mjs self-check",
+    "studio:analytics-check": "node tools/extinct-studio/cli.mjs analytics-check",
     "render:demos": "node tools/render-demos.mjs"
   },
   "dependencies": {

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://top1.invalid/extinct-studio/rights.schema.json",
+  "title": "Extinct Studio rights ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "assets"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "source", "license", "status", "used_in_output"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {"type": "string", "minLength": 1},
+          "source": {"type": "string", "minLength": 1},
+          "license": {"type": "string", "minLength": 1},
+          "status": {"enum": ["verified", "pending", "rejected"]},
+          "used_in_output": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}
