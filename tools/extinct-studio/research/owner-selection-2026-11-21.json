@@ -28,7 +28,7 @@
   "hard_blocks": [
     "Journal figures, scan renders, specimen photos, and other source assets have not been rights-cleared.",
     "Claims must distinguish direct observation from the paper's dietary and gut-physiology inferences.",
-    "The official ExtinctZoo thumbnail pixels were not available for inspection; no competitor thumbnail rule may be copied.",
+    "The raw official ExtinctZoo thumbnail bytes remain unverified or malformed; only relay-scoped pixels were inspected, and no competitor thumbnail rule may be copied.",
     "Owner selection is not owner acceptance of a finished film."
   ],
   "production_status": "not_started",

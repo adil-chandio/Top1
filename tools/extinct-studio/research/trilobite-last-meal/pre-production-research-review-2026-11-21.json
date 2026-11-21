@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "review_id": "trilobite-last-meal-pre-production-research-review-2026-11-21",
+  "reviewed_on_utc": "2026-11-21",
+  "idea_id": "extinct-market-001-trilobite-last-meal",
+  "working_title": "The Trilobite That Still Had Its Last Meal",
+  "status": "research_documentation_complete_preproduction_blocked",
+  "editorial_readiness_score": 91,
+  "score_interpretation": "Editorial readiness only; not a views, viral, or audience-response forecast.",
+  "source_of_record": {
+    "id": "P1",
+    "citation": "Kraft, P. et al. Uniquely preserved gut contents illuminate trilobite palaeophysiology. Nature (2023).",
+    "doi": "10.1038/s41586-023-06567-7",
+    "url": "https://www.nature.com/articles/s41586-023-06567-7",
+    "role": "Specimen, gut-content, digestive-tract, feeding-interpretation, and shell-preservation physiology evidence."
+  },
+  "review_sections": {
+    "primary_evidence": {
+      "status": "documented",
+      "file": "sources.json",
+      "boundary": "One exceptionally preserved Bohemolichas incola specimen can illuminate feeding and digestive physiology; it does not define every trilobite."
+    },
+    "typed_claims": {
+      "status": "draft_unlocked",
+      "file": "claims-draft.json",
+      "claim_count": 7,
+      "types_present": ["published", "observed", "derived", "limitation"],
+      "boundary": "The scavenging and near-neutral-or-alkaline gut statements remain attributed or inferred, not direct observations or living-animal pH measurements."
+    },
+    "rights": {
+      "status": "documented_no_source_media_cleared",
+      "file": "rights-draft.json",
+      "decision": "Nature figures, scan renders, specimen photos, third-party images, and the channel thumbnail are research references only and are not production assets."
+    },
+    "native_visual_proof": {
+      "status": "planning_only",
+      "files": ["opening-proof-board.md", "opening-proof-board.svg"],
+      "decision": "Use original diagrams and motion graphics; no copied Nature figure, scan render, specimen photo, or thumbnail art. Native motion proof has not been built or approved."
+    },
+    "story": {
+      "status": "story_spine_only",
+      "file": "research.md",
+      "decision": "The viewer question, six-beat story spine, and limitation are documented; no English script or narration lock exists."
+    },
+    "feasibility": {
+      "status": "research_notes_only",
+      "file": "research.md",
+      "decision": "The evidence chain can be shown with an original trilobite outline, cutaway gut corridor, shell fragments, arrows, and observation/inference labels; phone-size legibility and the native-motion proof remain future gates."
+    },
+    "thumbnail": {
+      "status": "relay_scoped_only",
+      "file": "thumbnail-gate-receipt-2026-11-21.json",
+      "decision": "The exact video-ID source was inspected through a valid relay-derived 120x90 JPG. The relay re-encoded the source, so raw official byte identity is not claimed and no thumbnail style is locked."
+    }
+  },
+  "workflow_blocks": [
+    "Owner selection is research direction only, not claim lock or production authorization.",
+    "Claims remain draft and must be accepted before scripting.",
+    "Rights clearance, native moving proof, script, voice, animatic, 3D proof, mix, delivery QA, Drive handoff, and publication are not started.",
+    "No source video, journal media, thumbnail art, or competitor artwork may enter production."
+  ],
+  "next_gate": "Owner acceptance of the claim scope and rights-safe native-diagram route; only then may the English script version be drafted."
+}
