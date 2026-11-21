@@ -1,0 +1,31 @@
+name: Research thumbnail retrieval
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-official-jpg:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch the exact official JPG
+        shell: bash
+        run: |
+          set -euo pipefail
+          video_id='NF42pH3oXZw'
+          url="https://i.ytimg.com/vi/${video_id}/maxresdefault.jpg"
+          mkdir -p artifact
+          curl --fail --location --retry 5 --retry-all-errors --connect-timeout 20 \
+            --user-agent 'Mozilla/5.0 (research retrieval)' \
+            "$url" --output "artifact/${video_id}-maxresdefault.jpg"
+          test -s "artifact/${video_id}-maxresdefault.jpg"
+          file "artifact/${video_id}-maxresdefault.jpg"
+          sha256sum "artifact/${video_id}-maxresdefault.jpg"
+      - name: Upload the retrieved JPG as a short-lived artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extinctzoo-official-thumbnail-NF42pH3oXZw
+          path: artifact/NF42pH3oXZw-maxresdefault.jpg
+          retention-days: 1
