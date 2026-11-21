@@ -1,6 +1,9 @@
 name: Research thumbnail retrieval
 
 on:
+  push:
+    branches:
+      - arena/94dad4c7-top1
   workflow_dispatch:
 
 permissions:
