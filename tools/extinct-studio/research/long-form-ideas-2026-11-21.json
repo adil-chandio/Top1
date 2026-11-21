@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "slate_id": "extinct-long-form-slate-2026-11-21",
+  "format": "long",
+  "status": "research-only",
+  "owner_selection": "pending",
+  "active_production": false,
+  "historical_release_reuse": false,
+  "source_policy": "GitHub metadata and repository text were inspected for candidate discovery only; no source media was downloaded or promoted to production.",
+  "ideas": [
+    {
+      "id": "extinct-long-001-coral-growth",
+      "promise": "Can a thin slice of an extinct Silurian coral show how it grew?",
+      "audience_clarity": 3,
+      "visual_proof": 5,
+      "novelty": 5,
+      "evidence_strength": 4,
+      "stakes": 3,
+      "format_fit": 4,
+      "rights": 2,
+      "feasibility": 4,
+      "working_title": "A Coral's Life in Cross-Section",
+      "research_direction": "Schlotheimophyllum patellatum, a Silurian rugose coral from Gotland, using a growth-series explanation rather than a generic prehistoric reef scene.",
+      "source_refs": [
+        {
+          "repository": "TomaszW20/Schlotheimophyllum-Gotland",
+          "url": "https://github.com/TomaszW20/Schlotheimophyllum-Gotland",
+          "observed_commit": "5d13109f7dbe5191484a6b3e561554aca51626fa",
+          "repository_license_metadata": "unknown",
+          "readme_claim": "225 high-resolution thin-section and acetate-peel scans; CC BY 4.0 claim; supports Wrzołek and Zatoń 2023"
+        }
+      ],
+      "blocking_reasons": [
+        "Repository license metadata is unknown even though the README states CC BY 4.0; verify the original publication and dataset terms before using any scan.",
+        "Primary paper and exact biological claims still need a source read-through.",
+        "The film must use original diagrams or cleared scans, not assume GitHub visibility means commercial rights."
+      ],
+      "proof_concept": "A 8–12 second native cross-section growth reveal with one labelled growth sequence and a source/limitation card outside the picture; no raw scan reuse until rights clear.",
+      "old_candidate_reused": false
+    },
+    {
+      "id": "extinct-long-002-fossil-leaf-climate",
+      "promise": "Can fossil leaves retain a measurable clue about the climate of a lost forest?",
+      "audience_clarity": 4,
+      "visual_proof": 4,
+      "novelty": 4,
+      "evidence_strength": 3,
+      "stakes": 3,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "Can Fossil Leaves Remember a Climate?",
+      "research_direction": "Use the fossilmodernLMA analysis as a research lead: fossil and modern leaf mass-per-area, morphology, site climate, and the limits of modern-to-palaeo inference.",
+      "source_refs": [
+        {
+          "repository": "mjbutrim/fossilmodernLMA",
+          "url": "https://github.com/mjbutrim/fossilmodernLMA",
+          "observed_commit": "bb3b1a286a05f143fa0d5a60a739e877de08835f",
+          "repository_license": "CC0-1.0",
+          "readme_claim": "Code and datasets for Butrim, Lowe, and Currano 2024 on leaf mass per area in paleobotany"
+        }
+      ],
+      "blocking_reasons": [
+        "The original 2024 paper and its limitations must be verified before any climate wording is locked.",
+        "The analysis contains correlations and constrained modern comparisons; it must not become a direct climate thermometer claim.",
+        "Use original leaf schematics and transparent plots rather than treating repository CSVs as self-explanatory evidence."
+      ],
+      "proof_concept": "A native leaf cutaway and data-to-climate comparison that visibly separates measured leaf traits, inferred climate variables, and uncertainty.",
+      "old_candidate_reused": false
+    },
+    {
+      "id": "extinct-long-003-fossil-fish-map",
+      "promise": "What can a global fossil-fish map show—and what can it never prove?",
+      "audience_clarity": 3,
+      "visual_proof": 4,
+      "novelty": 3,
+      "evidence_strength": 2,
+      "stakes": 2,
+      "format_fit": 3,
+      "rights": 5,
+      "feasibility": 4,
+      "working_title": "The Fossil Fish Map Is Not a Family Tree",
+      "research_direction": "Treat the Eupercaria specimen-level dataset as an evidence-literacy episode only if its underlying publication, specimen counts, taxonomy, and paleogeographic model can be recovered.",
+      "source_refs": [
+        {
+          "repository": "wjd1991/Eupercaria-fossil-dataset",
+          "url": "https://github.com/wjd1991/Eupercaria-fossil-dataset",
+          "observed_commit": "b94db1a502d51413a6eccf7069df672b11160e67",
+          "repository_license": "CC0-1.0",
+          "readme_claim": "Specimen-level fossil dataset of Eupercaria"
+        }
+      ],
+      "blocking_reasons": [
+        "README does not identify the primary publication or full source dataset.",
+        "Repository scripts reference local Excel and paleogeographic inputs that are not present in the repository.",
+        "Without provenance, the map is a visualization lead, not an evidence-ready story."
+      ],
+      "proof_concept": "Deferred until specimen provenance and the 30 Ma reconstruction inputs are independently verified.",
+      "old_candidate_reused": false
+    }
+  ]
+}
