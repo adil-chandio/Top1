@@ -129,7 +129,8 @@ async function main() {
       throw new Error(`Desi 3D explainer did not initialize: ${errors.join('; ') || error.message}`);
     }
     if (staging) {
-      await stills(page, temp, [2.5, 7.0, 9.5, 13.5, 23.0, 28.0, 36.0]);
+      const stillTimes = pilot.view.stillTimes ?? [2.5, 7.0, 9.5, 13.5, 23.0, 28.0, 36.0];
+      await stills(page, temp, stillTimes);
       for (const name of await readdir(temp).then((files) => files.filter((f) => f.startsWith('still-')))) {
         await copyFile(join(temp, name), join(output, name));
         console.log(`  still → ${join(output, name)}`);

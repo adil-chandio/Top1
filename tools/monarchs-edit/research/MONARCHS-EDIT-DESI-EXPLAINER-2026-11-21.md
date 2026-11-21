@@ -25,11 +25,13 @@ The channel's two pilots are wired into the repo as an isolated 3D explainer:
 
 ```
 tools/monarchs-edit/desi-3d-explainer/
-  scenarios.js    — pilot registry (PILOTS, getPilot); P1 + E1
+  scenarios.js    — pilot registry (PILOTS, getPilot); P1 + E1 + the long-form companion
   p1/timeline.js  — pure P1 beat sheet, shared clock and illustrative melt curves
   p1/scene.js     — Three.js scene graph: 2 blocks (metal/lakri) + 2 ice cubes + heat arrows
   e1/timeline.js  — pure E1 beat sheet, shared clock, illustrative warmth-drain curves, paddle pose
   e1/scene.js     — Three.js scene graph: 2 blocks (metal/lakri) + one warm paddle with emissive warmth
+  long/timeline.js — pure long-form beat sheet, shared clock, illustrative melt curves (16:9 · 92 s)
+  long/scene.js    — Three.js scene graph: two wide blocks (metal/lakri) + 2 ice cubes + heat arrows
   main.js         — compositor + 2D caption layer (METAL/LAKRI labels, T+clock, TIME-LAPSE/touch markers, reveal)
   index.html      — compositor entry
   render.mjs      — headless render: stills (no ffmpeg) or full MP4 (ffmpeg required)
@@ -43,6 +45,16 @@ See the [build guide](../desi-3d-explainer/README.md) for render instructions an
 - The metal/wood melt difference is a *direction*, not a rate. No temperature, force, or conductivity number is shown.
 - Everything about the physical tests (P1, E1) is pending: a real camera, real cubes, real timing, raw footage and raw results kept. Until then, nothing in this channel may claim an observed outcome.
 - The scene deliberately shows the two blocks at the same room temperature and the same clock. It does not stage the result with synthetic footage.
+
+## The first long-form companion (16:9 · 92 s)
+
+The first video in the long-form format is built as a `long` pilot — a genuinely fresh 16:9 build, not a rescaled short:
+
+- **Frame:** 1280×720 (16:9), 92 s at 24 fps. Overlay layout (`view.layout`) and camera (`view.camera`) are pilot-specific in `scenarios.js`; P1/E1 are untouched and keep the original hardcoded 9:16 layout.
+- **Beats:** 0–9s opening promise, 9–24s early proof (same room, same clock), 24–56s time-lapse mechanism, 56–68s honest evidence context (three paired runs, swapped sides, raw footage), 68–76s what this is not, 76–86s payoff + illustrative arrows, 86–92s identity outro.
+- **Honest evidence beat:** the 56–68s window states what a real test needs (three paired runs, swapped sides, raw footage kept) — illustrative text, no numbers claimed.
+- **Same honesty boundary as P1:** the melt difference is a direction, not a measurement. The badge and the reveal caption stay; nothing may claim an observed outcome.
+- **What it is not:** picture-only, no narration, no voice, no music, no channel upload, nothing published. The long-form pilot inherits the P1 physical-run requirement.
 
 ## First pilot (P1) and direct explainer (E1)
 
@@ -58,4 +70,4 @@ E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* — the matching direct e
 
 ## Metrics gate (not filled until measured)
 
-See `desi-3d-explainer-scorecard.csv` — rows are blank until the first physical run exists. Primary metric: engaged views at a matching 7-day age; guardrails: stayed-to-watch and APV. The 16:9 long-form companion is explicitly out of scope until after the short-format confirm tests.
+See `desi-3d-explainer-scorecard.csv` — rows are blank until the first physical run exists. Primary metric: engaged views at a matching 7-day age; guardrails: stayed-to-watch and APV. The 16:9 long-form companion is built as the first long-form pilot; it inherits the same physical-run requirement as P1/E1 and must not publish before one exists.
