@@ -1,0 +1,54 @@
+{
+  "schema_version": "1.0",
+  "gate": "step-01-official-thumbnail-pixel-inspection",
+  "status": "blocked",
+  "observed_on_utc": "2026-11-21",
+  "subject": {
+    "channel": "ExtinctZoo",
+    "video_id": "NF42pH3oXZw",
+    "title": "The Most Tragic Fossils Ever Discovered",
+    "watch_page": "https://www.youtube.com/watch?v=NF42pH3oXZw"
+  },
+  "required_sequence": [
+    {
+      "step": 1,
+      "action": "fetch official watch page",
+      "url": "https://www.youtube.com/watch?v=NF42pH3oXZw",
+      "result": "success",
+      "receipt": "The official page identified the video and exposed its main image as https://i.ytimg.com/vi_webp/NF42pH3oXZw/maxresdefault.webp; the page image field exposed the required JPG URL below."
+    },
+    {
+      "step": 2,
+      "action": "fetch the same video ID's actual official JPG",
+      "url": "https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg",
+      "result": "blocked",
+      "error": "functions.fetch_page returned HTTP 500; no JPG bytes were returned."
+    },
+    {
+      "step": 2,
+      "action": "retry same-ID official JPG variants",
+      "urls": [
+        "https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg",
+        "https://i.ytimg.com/vi/NF42pH3oXZw/0.jpg",
+        "https://img.youtube.com/vi/NF42pH3oXZw/hqdefault.jpg",
+        "https://img.youtube.com/vi/NF42pH3oXZw/0.jpg"
+      ],
+      "result": "blocked",
+      "error": "All four official same-ID JPG endpoints returned HTTP 500."
+    },
+    {
+      "step": 3,
+      "action": "read_file on the saved JPG",
+      "result": "not_run",
+      "reason": "No authoritative JPG file exists locally because the required image-byte retrieval failed."
+    }
+  ],
+  "visual_notes": [],
+  "accepted_conclusions": [
+    "The official watch page and exact video ID were verified.",
+    "No official thumbnail pixels were inspected.",
+    "No thumbnail composition, color, facial-expression, object, text, or layout pattern is adopted.",
+    "Third-party reposts and search-result images remain excluded from the gate."
+  ],
+  "next_safe_action": "Retry only through an authoritative retrieval path that yields the same video's actual JPG as a local file; otherwise keep the visual gate blocked."
+}
