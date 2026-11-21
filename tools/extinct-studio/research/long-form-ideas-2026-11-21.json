@@ -4,6 +4,8 @@
   "format": "long",
   "status": "research-only",
   "owner_selection": "pending",
+  "recommendation": "extinct-long-001-coral-growth",
+  "recommendation_status": "recommended-for-primary-source-verification-not-selected",
   "active_production": false,
   "historical_release_reuse": false,
   "source_policy": "GitHub metadata and repository text were inspected for candidate discovery only; no source media was downloaded or promoted to production.",
