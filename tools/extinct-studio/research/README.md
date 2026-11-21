@@ -32,10 +32,11 @@ scored provisionally:
 - `long-form-candidate-score-2026-11-21.json` — weighted CLI receipt.
 
 The owner selected `extinct-market-001-trilobite-last-meal` — The Trilobite That
-Still Had Its Last Meal — on 2026-11-21 UTC as a research direction only. No
-script, voice, render, package, upload, schedule, or publication is authorized.
-The next gate is separate claims, rights, proof, story, and feasibility work for
-that selected direction; pending rights or proof remain blockers.
+Still Had Its Last Meal — on 2026-11-21 UTC as a research direction only. The
+first evidence/claims/rights pass and an original proof-board plan now live under
+`trilobite-last-meal/`. No script, voice, render, package, upload, schedule, or
+publication is authorized. Claims remain draft, journal media remains uncleared,
+and the next gate is owner acceptance of the claim scope and native-diagram route.
 
 Use `MARKET-PASS-CHECKLIST.md` and the quality gates as the governing process.
 Displayed views remain descriptive observations, not forecasts.

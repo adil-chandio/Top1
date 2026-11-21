@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "assets": [
+    {
+      "id": "P1-source-paper",
+      "kind": "scientific source and factual reference",
+      "source": "https://www.nature.com/articles/s41586-023-06567-7",
+      "license": "Citation/research reference only; no figure or media reuse assumed",
+      "status": "verified",
+      "used_in_output": false
+    },
+    {
+      "id": "P1-journal-figures",
+      "kind": "Nature figures, scan renders, specimen images",
+      "source": "https://www.nature.com/articles/s41586-023-06567-7/figures/1",
+      "license": "Unknown for this production; permission/license not obtained",
+      "status": "rejected",
+      "used_in_output": false
+    },
+    {
+      "id": "native-proof-board",
+      "kind": "original research diagram and proof-board SVG/PNG",
+      "source": "Created in this repository from the cited paper's described facts",
+      "license": "Original project work; not a copied paper figure",
+      "status": "verified",
+      "used_in_output": false
+    },
+    {
+      "id": "modern-arthropod-reference",
+      "kind": "modern crab or horseshoe-crab image/footage",
+      "source": "Not selected; no external media imported",
+      "license": "Not located",
+      "status": "rejected",
+      "used_in_output": false
+    },
+    {
+      "id": "music-and-sfx",
+      "kind": "music, Foley, and sound effects",
+      "source": "Not selected at research stage",
+      "license": "Not applicable yet",
+      "status": "pending",
+      "used_in_output": false
+    }
+  ]
+}

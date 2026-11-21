@@ -1,0 +1,15 @@
+{
+  "schema_version": "1.0",
+  "sources": [
+    {
+      "id": "P1",
+      "kind": "primary journal article",
+      "citation": "Kraft, P. et al. Uniquely preserved gut contents illuminate trilobite palaeophysiology. Nature (2023).",
+      "url": "https://www.nature.com/articles/s41586-023-06567-7",
+      "doi": "10.1038/s41586-023-06567-7",
+      "retrieved_on_utc": "2026-11-21",
+      "role": "primary evidence for specimen, gut contents, reconstructed digestive tract, feeding interpretation, and shell-preservation physiology inference",
+      "media_policy": "Read for factual research; figures, scans, specimen photos, and downloads are not production-cleared assets."
+    }
+  ]
+}

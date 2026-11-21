@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0",
+  "claims": [
+    {
+      "id": "P1-C01",
+      "text": "The primary study reports an articulated Ordovician Bohemolichas incola fossil from the Šárka Formation with gut contents preserved in three dimensions.",
+      "type": "published",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "Use the paper's specimen and formation wording; do not imply that the soft tissue remains living or intact."
+    },
+    {
+      "id": "P1-C02",
+      "text": "The specimen is approximately 465 million years old.",
+      "type": "published",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "Use approximately and preserve the paper's stratigraphic context."
+    },
+    {
+      "id": "P1-C03",
+      "text": "The preserved gut fill includes partly fragmented calcareous shells distributed through an almost continuous digestive tract.",
+      "type": "observed",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "This describes the fossil evidence, not a direct observation of the animal feeding."
+    },
+    {
+      "id": "P1-C04",
+      "text": "The paper identifies ostracod valves, a hyolith conch and operculum, probable echinoderm plates, probable bivalve fragments, and other shell fragments among the gut contents.",
+      "type": "published",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "Retain probable/most-likely language for elements the paper does not identify with certainty."
+    },
+    {
+      "id": "P1-C05",
+      "text": "The authors interpret the feeding as predominantly opportunistic scavenging or chance feeding, based on size and shell-resistance patterns.",
+      "type": "derived",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "This is an ecological interpretation of one specimen, not observed behavior and not a claim about every trilobite."
+    },
+    {
+      "id": "P1-C06",
+      "text": "Undissolved sharp-edged shells throughout the gut support an alkaline or almost pH-neutral internal environment in the paper's interpretation.",
+      "type": "derived",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "This is inferred from shell preservation and comparisons with living arthropods; it is not a direct pH measurement from a living animal."
+    },
+    {
+      "id": "P1-C07",
+      "text": "One exceptional fossil can reveal a behavior and physiological inference without defining the diet or gut chemistry of all trilobites.",
+      "type": "limitation",
+      "supporting_source_ids": ["P1"],
+      "status": "draft",
+      "on_screen": true,
+      "limitation": "Keep this boundary visible in the final story and do not remove it for a stronger title promise."
+    }
+  ]
+}

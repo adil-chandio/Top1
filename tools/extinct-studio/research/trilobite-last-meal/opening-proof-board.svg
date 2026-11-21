@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#10151b"/>
+  <style>
+    .title{font:700 34px Arial,sans-serif;fill:#f5f0e8}
+    .kicker{font:700 18px Arial,sans-serif;fill:#8ce0c3;letter-spacing:2px}
+    .head{font:700 24px Arial,sans-serif;fill:#f5f0e8}
+    .body{font:400 20px Arial,sans-serif;fill:#cbd2d8}
+    .small{font:400 16px Arial,sans-serif;fill:#9da8b1}
+    .evidence{font:700 16px Arial,sans-serif;fill:#8ce0c3;letter-spacing:1px}
+    .inference{font:700 16px Arial,sans-serif;fill:#f4c77b;letter-spacing:1px}
+    .limit{font:700 16px Arial,sans-serif;fill:#f28e8e;letter-spacing:1px}
+  </style>
+  <text x="70" y="62" class="kicker">OPENING PROOF BOARD · RESEARCH ONLY</text>
+  <text x="70" y="108" class="title">One fossil. A meal inside it. What can the evidence really prove?</text>
+  <line x1="70" y1="135" x2="1530" y2="135" stroke="#2e3a44" stroke-width="2"/>
+
+  <!-- Panel 1 -->
+  <rect x="55" y="170" width="355" height="625" rx="18" fill="#18232b" stroke="#2e3a44" stroke-width="2"/>
+  <text x="82" y="215" class="kicker">01 · FOSSIL</text>
+  <text x="82" y="258" class="head">An Ordovician</text>
+  <text x="82" y="291" class="head">trilobite</text>
+  <text x="82" y="333" class="body">Bohemolichas incola</text>
+  <text x="82" y="365" class="small">approximately 465 million years old</text>
+  <!-- original stylized trilobite -->
+  <ellipse cx="235" cy="520" rx="105" ry="155" fill="#788895" stroke="#d9e0e3" stroke-width="4"/>
+  <ellipse cx="235" cy="458" rx="73" ry="56" fill="#93a4ad" stroke="#d9e0e3" stroke-width="3"/>
+  <path d="M235 386 C212 430 212 603 235 676 C258 603 258 430 235 386Z" fill="#5e707c" stroke="#e7ecec" stroke-width="3"/>
+  <g stroke="#d9e0e3" stroke-width="3" opacity=".8">
+    <path d="M140 490 Q235 520 330 490"/><path d="M137 530 Q235 558 333 530"/>
+    <path d="M143 570 Q235 596 327 570"/><path d="M154 610 Q235 635 316 610"/>
+  </g>
+  <text x="82" y="742" class="evidence">OBSERVED / PUBLISHED</text>
+  <text x="82" y="769" class="small">specimen + age from P1</text>
+
+  <!-- Panel 2 -->
+  <rect x="430" y="170" width="355" height="625" rx="18" fill="#18232b" stroke="#2e3a44" stroke-width="2"/>
+  <text x="457" y="215" class="kicker">02 · CUTAWAY</text>
+  <text x="457" y="258" class="head">The evidence is</text>
+  <text x="457" y="291" class="head">inside the body</text>
+  <text x="457" y="333" class="body">A continuous corridor</text>
+  <text x="457" y="360" class="body">of shell-rich material</text>
+  <!-- cutaway body -->
+  <ellipse cx="610" cy="525" rx="105" ry="155" fill="#566b74" stroke="#d9e0e3" stroke-width="4" opacity=".8"/>
+  <path d="M610 426 C545 455 552 510 610 525 C668 540 672 590 610 635" fill="none" stroke="#8ce0c3" stroke-width="22" stroke-linecap="round"/>
+  <path d="M610 426 C545 455 552 510 610 525 C668 540 672 590 610 635" fill="none" stroke="#d4fff0" stroke-width="3" stroke-linecap="round"/>
+  <g fill="#f4c77b" stroke="#fff0bf" stroke-width="2">
+    <circle cx="583" cy="461" r="9"/><circle cx="615" cy="478" r="7"/><circle cx="570" cy="500" r="6"/>
+    <circle cx="615" cy="523" r="8"/><circle cx="649" cy="548" r="7"/><circle cx="628" cy="574" r="6"/>
+    <circle cx="588" cy="603" r="8"/><circle cx="614" cy="622" r="5"/>
+  </g>
+  <text x="457" y="742" class="evidence">FOSSIL OBSERVATION</text>
+  <text x="457" y="769" class="small">gut fill and shell fragments · P1</text>
+
+  <!-- Panel 3 -->
+  <rect x="805" y="170" width="355" height="625" rx="18" fill="#18232b" stroke="#2e3a44" stroke-width="2"/>
+  <text x="832" y="215" class="kicker">03 · MECHANISM</text>
+  <text x="832" y="258" class="head">From fragments</text>
+  <text x="832" y="291" class="head">to behavior</text>
+  <text x="832" y="337" class="body">Size + shell resistance</text>
+  <text x="832" y="365" class="body">shape the interpretation</text>
+  <path d="M855 470 C910 400 1040 400 1102 470" fill="none" stroke="#8ce0c3" stroke-width="6"/>
+  <path d="M855 470 C910 540 1040 540 1102 470" fill="none" stroke="#f4c77b" stroke-width="6"/>
+  <circle cx="855" cy="470" r="18" fill="#8ce0c3"/><circle cx="1102" cy="470" r="18" fill="#f4c77b"/>
+  <text x="834" y="590" class="evidence">OBSERVED</text>
+  <text x="834" y="618" class="small">shells survive through the gut</text>
+  <text x="834" y="672" class="inference">INFERENCE</text>
+  <text x="834" y="700" class="small">light crusher / chance feeder</text>
+  <text x="834" y="728" class="small">authors: predominantly scavenger</text>
+
+  <!-- Panel 4 -->
+  <rect x="1180" y="170" width="365" height="625" rx="18" fill="#18232b" stroke="#2e3a44" stroke-width="2"/>
+  <text x="1207" y="215" class="kicker">04 · LIMIT</text>
+  <text x="1207" y="258" class="head">One fossil is</text>
+  <text x="1207" y="291" class="head">not every trilobite</text>
+  <text x="1207" y="337" class="body">Near-neutral gut chemistry</text>
+  <text x="1207" y="365" class="body">is an evidence-based inference.</text>
+  <rect x="1210" y="420" width="300" height="145" rx="12" fill="#2b2522" stroke="#f4c77b" stroke-width="2"/>
+  <text x="1232" y="460" class="inference">PAPER'S INFERENCE</text>
+  <text x="1232" y="497" class="small">undissolved sharp shells</text>
+  <text x="1232" y="524" class="small">→ alkaline / almost neutral</text>
+  <text x="1232" y="551" class="small">internal environment</text>
+  <text x="1207" y="630" class="limit">DO NOT OVERCLAIM</text>
+  <text x="1207" y="662" class="small">not a direct pH measurement</text>
+  <text x="1207" y="689" class="small">not proof of universal diet</text>
+  <text x="1207" y="716" class="small">not an observed living behavior</text>
+  <text x="1207" y="769" class="small">source boundary stays on screen</text>
+
+  <text x="70" y="850" class="small">P1: Kraft et al., Nature 2023 · Planning board only · Native diagrams, no journal figures reused</text>
+</svg>
