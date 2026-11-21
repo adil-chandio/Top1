@@ -37,6 +37,12 @@ This preview has **no live checkout, customer accounts, or order submissions**. 
 
 **Project 002 — [The Light With No Battery](monarch-studio/reflector/)** is a finished 50-second Urdu film about bicycle reflectors, at `/monarch-studio/reflector/`. Open the **NEW 002** link on the homepage or the new project card inside Monarch Studio. It has 18 chapter cues and an [editable worked example](public/samples/reflector-blueprint.md). The separate [Dailymotion visual audit](public/samples/reflector-reference-audit.md) covers the 1,200 decoded source frames, with [numerical measurements](public/samples/reflector-reference-frames.csv) and no third-party imagery. The original reflector and corner-cube model are animated in Three.js; the road brightness is illustrative, not a visibility test.
 
+## Monarch Edit channel — Desi 3D explainer
+
+The Monarch Edit channel (@MONARCHsEdit) is now a Desi 3D explainer: everyday science and design, test-first, spoken Hindi–Urdu, with a clearly labelled 3D visual treatment. The first pilot is *Metal ya Lakri — Baraf Pehle Kahan Pighlegi?* (ice on metal vs lakri/wood). The build source lives at [`tools/monarchs-edit/desi-3d-explainer/`](tools/monarchs-edit/desi-3d-explainer/) with the decision record in [`tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md`](tools/monarchs-edit/research/MONARCHS-EDIT-DESI-EXPLAINER-2026-11-21.md).
+
+The rendered scene is an **illustrative model, not a test result**: the metal/wood melt difference is a direction, not a measurement. No physical test has been run, and no video is published. Physical P1 (three paired runs, swapped sides, raw footage) is required before any result may be claimed; the blank scorecard is [`desi-3d-explainer-scorecard.csv`](tools/monarchs-edit/research/desi-3d-explainer-scorecard.csv).
+
 ## Original cinema cuts
 
 **Cinema Cuts** on the homepage plays four original 9:16 films. The gallery requests just the posters; the 24 fps H.264/AAC video loads on play (1080 × 1920 for the Lab Cinema Edition, 720 × 1280 for the other films). The narrated Lab film plays with sound when tapped; the other examples start muted. The homepage opens the featured cut directly, and the player’s shot guide seeks to the standout shots. Each companion prompt contains the visual direction without implying that the builder renders a movie.
