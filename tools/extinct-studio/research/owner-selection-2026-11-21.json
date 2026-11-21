@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.0",
+  "decision_id": "extinct-owner-selection-2026-11-21",
+  "decided_on_utc": "2026-11-21",
+  "channel": "extinct",
+  "format": "long",
+  "selected_idea_id": "extinct-market-001-trilobite-last-meal",
+  "selected_working_title": "The Trilobite That Still Had Its Last Meal",
+  "selection_basis": "Owner selected the candidate from the five provisional market-gap candidates after the official ExtinctZoo market pass and weighted score receipt.",
+  "primary_source": {
+    "citation": "Kraft et al., Uniquely preserved gut contents illuminate trilobite palaeophysiology, Nature 2023",
+    "url": "https://www.nature.com/articles/s41586-023-06567-7",
+    "doi": "10.1038/s41586-023-06567-7"
+  },
+  "accepted_scope": "Research direction only: an Ordovician trilobite specimen with preserved gut contents, the food evidence, and the bounded physiology inference.",
+  "not_yet_accepted": [
+    "final title or thumbnail",
+    "claims lock",
+    "script or narration",
+    "voice selection or generation",
+    "source media or artwork",
+    "rights clearance",
+    "visual proof receipt",
+    "story lock",
+    "render or package",
+    "upload, schedule, or publication"
+  ],
+  "hard_blocks": [
+    "Journal figures, scan renders, specimen photos, and other source assets have not been rights-cleared.",
+    "Claims must distinguish direct observation from the paper's dietary and gut-physiology inferences.",
+    "The official ExtinctZoo thumbnail pixels were not available for inspection; no competitor thumbnail rule may be copied.",
+    "Owner selection is not owner acceptance of a finished film."
+  ],
+  "production_status": "not_started",
+  "release_status": {
+    "upload": "not_started",
+    "schedule": "not_started",
+    "publication": "not_started"
+  }
+}

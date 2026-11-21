@@ -127,7 +127,11 @@ Unknown or pending rights remain a hard production blocker.
 
 ## Selection state
 
-No owner selection is recorded. No candidate is accepted, scripted, voiced,
-rendered, packaged, uploaded, scheduled, or published. The next action is owner
-selection or a request for a different research lane; after selection, the chosen
-candidate must receive its own claims, rights, proof, story, and feasibility files.
+The owner selected `extinct-market-001-trilobite-last-meal` — **The Trilobite That
+Still Had Its Last Meal** — on 2026-11-21 UTC as a research direction only. This
+is not claims lock, script approval, asset approval, or production authorization.
+
+No candidate has been scripted, voiced, rendered, packaged, uploaded, scheduled,
+or published. The selected direction must next receive separate claims, rights,
+proof, story, and feasibility files; unknown or pending rights remain a hard
+blocker.

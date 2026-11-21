@@ -1,9 +1,14 @@
 {
   "schema_version": "1.0",
   "slate_id": "extinct-long-form-market-gap-2026-11-21",
-  "status": "provisional_owner_review_pending",
+  "status": "owner_selected_research_only",
   "discovery_basis": "Candidates were derived after the official ExtinctZoo YouTube market-pass report documented a gap: specific evidence-led reversals with original visual proof, rather than another generic deadliest/largest/strangest compilation.",
-  "owner_selection": null,
+  "owner_selection": {
+    "idea_id": "extinct-market-001-trilobite-last-meal",
+    "working_title": "The Trilobite That Still Had Its Last Meal",
+    "selected_on_utc": "2026-11-21",
+    "selection_scope": "research direction only; not claims-locked or production-authorized"
+  },
   "active_production": false,
   "historical_release_reuse": false,
   "source_policy": "Primary papers and official journal pages are research evidence only. Journal figures, source photos, competitor thumbnails, footage, music, and narration are not production assets. Unknown or pending asset rights block production.",
@@ -51,7 +56,7 @@
       },
       "feasibility_notes": ["Single central specimen gives a clean long-form arc", "micro-CT concept can be illustrated natively", "specialist terms need careful on-screen glosses"],
       "saturation_and_safety": ["Do not title it as the deadliest, strangest, or first-ever trilobite story without scope", "Do not imply the visual cutaway is an actual camera view of the living animal"],
-      "owner_review_status": "provisional; not selected"
+      "owner_review_status": "owner-selected research direction; no production authorization"
     },
     {
       "id": "extinct-market-002-dinocephalosaurus-live-birth",

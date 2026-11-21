@@ -1,7 +1,11 @@
 {
   "score_basis": "tools/extinct-studio/cli.mjs score",
   "observation_date_utc": "2026-11-21",
-  "owner_selection": null,
+  "owner_selection": {
+    "idea_id": "extinct-market-001-trilobite-last-meal",
+    "selected_on_utc": "2026-11-21",
+    "status": "research_direction_only"
+  },
   "ideas": [
     {
       "id": "extinct-market-001-trilobite-last-meal",
