@@ -9,5 +9,7 @@ official YouTube watch page.
 
 ![Official ExtinctZoo thumbnail, medium resolution](https://i.ytimg.com/vi/NF42pH3oXZw/mqdefault.jpg)
 
+![Official ExtinctZoo thumbnail, default resolution](https://i.ytimg.com/vi/NF42pH3oXZw/default.jpg)
+
 Source watch page: https://www.youtube.com/watch?v=NF42pH3oXZw
-Source JPGs: https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg, https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg, and https://i.ytimg.com/vi/NF42pH3oXZw/mqdefault.jpg
+Source JPGs: https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg, https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg, https://i.ytimg.com/vi/NF42pH3oXZw/mqdefault.jpg, and https://i.ytimg.com/vi/NF42pH3oXZw/default.jpg
