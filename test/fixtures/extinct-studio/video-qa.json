@@ -1,0 +1,19 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "frameCount": 912,
+  "fps": 24,
+  "blackFrames": 0,
+  "duplicateFrames": 0,
+  "freezeFrames": 0,
+  "droppedFrames": 0,
+  "colorRange": "bt709",
+  "audioVideoDurationValid": true,
+  "captionOverflow": "pending",
+  "safeArea": "pending",
+  "ocrReadability": "pending",
+  "sceneChangeContinuity": "pending",
+  "visualDiff": "pending",
+  "phoneSizePlayback": "pending",
+  "checkedAt": "2026-11-21T12:00:00.000Z"
+}

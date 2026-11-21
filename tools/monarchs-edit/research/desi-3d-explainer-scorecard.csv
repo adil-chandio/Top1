@@ -1,0 +1,5 @@
+pilot_id,lane,treatment,planned_day,checkpoint_hours,working_title,video_id,posted_at_utc,captured_at_utc,actual_metric_window,duration_s,production_hours,shown_in_feed,stayed_to_watch_pct,engaged_views,public_views,avg_view_duration_s,avg_pct_viewed,attributed_subs,specific_followup_questions,primary_traffic_source,geo_or_language_if_available,notes
+P1,heat,3d_explainer,3,24,Metal ya Lakri — Baraf Pehle Kahan Pighlegi?,,,,,,,,,,,,,,,,,3D scene present; physical run pending — no result claimed
+P1,heat,3d_explainer,3,168,Metal ya Lakri — Baraf Pehle Kahan Pighlegi?,,,,,,,,,,,,,,,,,3D scene present; physical run pending — no result claimed
+E1,heat,direct_explainer,10,24,Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?,,,,,,,,,,,,,,,,,E1 3D scene present; physical run pending — no result claimed
+E1,heat,direct_explainer,10,168,Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?,,,,,,,,,,,,,,,,,E1 3D scene present; physical run pending — no result claimed

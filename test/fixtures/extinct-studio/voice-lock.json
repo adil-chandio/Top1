@@ -1,0 +1,11 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "voiceId": "voice-01",
+  "takeIds": [
+    "take-1"
+  ],
+  "audioHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "durationSeconds": 38,
+  "lockedAt": "2026-11-21T12:00:00.000Z"
+}

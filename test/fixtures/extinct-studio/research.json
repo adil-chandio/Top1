@@ -1,0 +1,23 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "sources": [
+    {
+      "id": "source-1",
+      "url": "https://example.org/paper",
+      "type": "paper",
+      "license": "CC BY 4.0",
+      "accessedAt": "2026-11-21T10:00:00.000Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "finding-1",
+      "statement": "Ice melts faster on metal",
+      "classification": "published-finding"
+    }
+  ],
+  "gaps": [
+    "Visual proof not yet rendered"
+  ]
+}

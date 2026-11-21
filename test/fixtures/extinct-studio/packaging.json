@@ -1,0 +1,28 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "title": "Demo: Ice on metal vs lakri",
+  "thumbnailConcepts": [
+    {
+      "id": "t1",
+      "note": "Two blocks side by side"
+    }
+  ],
+  "thumbnailReadinessChecks": [
+    {
+      "size": "480x360",
+      "readability": "pass"
+    }
+  ],
+  "tags": [
+    "science",
+    "demo"
+  ],
+  "srtId": "srt-demo-1",
+  "coverChecks": [
+    {
+      "size": "480x360",
+      "readability": "pass"
+    }
+  ]
+}

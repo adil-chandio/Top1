@@ -1,0 +1,14 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "entries": [
+    {
+      "id": "asset-1",
+      "sourceType": "paper",
+      "url": "https://example.org/paper",
+      "license": "CC BY 4.0",
+      "commercialAllowed": true,
+      "accessDate": "2026-11-21T10:00:00.000Z"
+    }
+  ]
+}
