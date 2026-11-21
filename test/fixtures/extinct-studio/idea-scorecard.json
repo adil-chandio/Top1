@@ -1,0 +1,23 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "scores": {
+    "viewerPromiseClarity": 18,
+    "visibleProofPotential": 18,
+    "novelty": 13,
+    "evidenceStrength": 12,
+    "emotionalStakesValue": 9,
+    "shortLongFormatFit": 9,
+    "rightsCertainty": 4,
+    "productionFeasibility": 4
+  },
+  "total": 87,
+  "gates": {
+    "claimLedgerComplete": true,
+    "titlePromiseClear": true,
+    "proofPossible": true,
+    "ownerSelection": false
+  },
+  "decision": "not-yet",
+  "notes": "Pending owner selection."
+}

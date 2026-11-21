@@ -1,0 +1,11 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "lufs": -16.0,
+  "truePeakDb": -1.0,
+  "clipping": "clean",
+  "aacReencodeCheck": "pending",
+  "monoCompatible": true,
+  "phoneSpeakerReview": "pending",
+  "checkedAt": "2026-11-21T12:00:00.000Z"
+}

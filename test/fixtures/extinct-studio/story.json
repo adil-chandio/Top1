@@ -1,0 +1,23 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "premise": "Ice melts faster on metal than on lakri",
+  "claimCheck": {
+    "claimsSupported": [
+      "claim-1"
+    ],
+    "claimsNotSupported": [
+      "claim-2"
+    ]
+  },
+  "narration": "Baraf pehle kahan pighlegi \u2014 metal ya lakri?",
+  "screenDescription": "Two labelled blocks, matching ice cubes",
+  "plannedSeconds": 38,
+  "beats": [
+    {
+      "id": "beat-1",
+      "seconds": 0,
+      "caption": "Question"
+    }
+  ]
+}

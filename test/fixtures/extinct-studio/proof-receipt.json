@@ -1,0 +1,16 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "proofType": "physical",
+  "windowSeconds": [
+    0,
+    8
+  ],
+  "covers": [
+    "shot-1"
+  ],
+  "checkedBy": "owner",
+  "checkedAt": "2026-11-21T12:00:00.000Z",
+  "status": "pending",
+  "note": "not yet run"
+}

@@ -45,6 +45,29 @@ Both rendered scenes are **illustrative models, not test results**: the melt dif
 
 Each pilot renders through the same compositor and harness — select it with the `pilot` query param (compositor) or `TOP1_DESI3D_PILOT=p1|e1` (render harness). Stills write to `.cache/monarch-desi-3d-explainer/`; MP4s are named `desi-3d-explainer-p1.mp4` / `desi-3d-explainer-e1.mp4`.
 
+## Extinct Studio OS — production foundation
+
+The architecture behind every Monarch video (per the 2026-11-21 strategic review — A–Z / closed-loop): a shared, zero-dependency production substrate. It is **build source — not a published pipeline**: no publish, upload, or silent publication.
+
+```
+tools/extinct-studio/
+  schemas/          — 14 JSON schemas for project records (project, research, claims,
+                      rights, story, shot-plan, proof-receipt, voice-lock, render-manifest,
+                      audio-qa, video-qa, packaging, release-status, idea-scorecard)
+  validate.js       — zero-dependency JSON Schema validator (subset, explicit)
+  state-machine.js  — 15-state formal lifecycle (idea → published) + dependency DAG
+  scorecard.js      — 100-point idea scorecard + production-candidate gates
+  claims-rights.js  — claims classification (8 categories) + rights manifest rules
+  qa-skeleton.js    — automated QA skeleton (honest status reporting)
+```
+
+- **State machine**: forward-only, receipt-gated, never sets `published` from tool code.
+- **Idea scorecard**: 100 points; `production-candidate` requires a strong score + every gate green; an idea with zero visual proof potential is rejected.
+- **Claims/rights manifest**: every narration line classified (no "animation = real footage"); every third-party source separately checked ("free download" is not a license).
+- **QA skeleton**: honest `unavailable` statuses — real probe results inject via `probeOverrides`; never a fake pass.
+
+The Desi 3D explainer (P1 + E1) stays scoped to its own channel files; this foundation is the shared substrate, not a replacement.
+
 ## Original cinema cuts
 
 **Cinema Cuts** on the homepage plays four original 9:16 films. The gallery requests just the posters; the 24 fps H.264/AAC video loads on play (1080 × 1920 for the Lab Cinema Edition, 720 × 1280 for the other films). The narrated Lab film plays with sound when tapped; the other examples start muted. The homepage opens the featured cut directly, and the player’s shot guide seeks to the standout shots. Each companion prompt contains the visual direction without implying that the builder renders a movie.

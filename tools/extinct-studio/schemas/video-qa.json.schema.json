@@ -1,0 +1,122 @@
+{
+  "title": "Extinct Studio \u2014 video QA report",
+  "type": "object",
+  "required": [
+    "projectId",
+    "createdAt",
+    "frameCount",
+    "fps",
+    "blackFrames",
+    "duplicateFrames",
+    "freezeFrames",
+    "droppedFrames",
+    "colorRange",
+    "audioVideoDurationValid",
+    "captionOverflow",
+    "safeArea",
+    "ocrReadability",
+    "sceneChangeContinuity",
+    "visualDiff",
+    "phoneSizePlayback",
+    "checkedAt"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+    },
+    "frameCount": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "fps": {
+      "type": "number",
+      "minimum": 1
+    },
+    "blackFrames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "duplicateFrames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "freezeFrames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "droppedFrames": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "colorRange": {
+      "type": "string",
+      "enum": [
+        "bt709",
+        "bt2020",
+        "bt601",
+        "unknown"
+      ]
+    },
+    "audioVideoDurationValid": {
+      "type": "boolean"
+    },
+    "captionOverflow": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "safeArea": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "ocrReadability": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "sceneChangeContinuity": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "visualDiff": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "phoneSizePlayback": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "pending"
+      ]
+    },
+    "checkedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "projectId": "demo-project",
+  "createdAt": "2026-11-21T10:00:00.000Z",
+  "entries": [
+    {
+      "id": "claim-1",
+      "category": "measured",
+      "text": "Ice melting speed difference between blocks",
+      "basis": "three paired runs with swapped sides",
+      "evidenceIds": [
+        "source-1"
+      ]
+    }
+  ]
+}

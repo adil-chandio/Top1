@@ -1,0 +1,54 @@
+{
+  "title": "Extinct Studio \u2014 voice lock receipt",
+  "type": "object",
+  "required": [
+    "projectId",
+    "createdAt",
+    "voiceId",
+    "takeIds",
+    "audioHash",
+    "durationSeconds",
+    "lockedAt"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "projectId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+    },
+    "voiceId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "takeIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    },
+    "audioHash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "durationSeconds": {
+      "type": "number",
+      "minimum": 0.1
+    },
+    "lufs": {
+      "type": "number"
+    },
+    "truePeakDb": {
+      "type": "number"
+    },
+    "lockedAt": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}T"
+    }
+  }
+}
