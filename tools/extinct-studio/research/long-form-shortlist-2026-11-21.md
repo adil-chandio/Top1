@@ -1,63 +1,78 @@
-# Extinct long-form slate — fresh discovery pass
+# RETRACTED — wrong discovery lane
 
-**Status: research-only · owner selection pending · no active production**  
-**Format: long-form**  
-**Date: 2026-11-21 UTC**
+The earlier GitHub-based candidate shortlist is **not a market selection** and must
+not be used to start the first Extinct long video.
 
-This is the first fresh long-form discovery pass after the old Extinct Life and
-Monarch Cam release candidates were put out of the active slate. None of the old
-Atlantic Tracks, Greenland, Ant, Gecko, or Monarch Cam records are being reopened
-or used as a first-video asset.
+The mistake was treating a public research/data repository as if it answered the
+YouTube topic-selection question. It does not. GitHub can help later with code,
+data provenance, rights, or a visual reference after a topic has been selected;
+it cannot replace a real market pass.
 
-## What was actually screened
+## Current channel state
 
-The pass used public GitHub repository metadata and README/code text to find
-research leads with potentially strong native visual treatment:
+- No first long-form topic is selected.
+- No script, voice, board, proof, render, packaging, upload, or publication may
+  start from the coral, leaf, or fish candidates in the retracted file.
+- Old Extinct Life, Atlantic, Greenland, Ant, Gecko, and Monarch Cam releases
+  remain historical reference only.
+- The public site and old production trees are unchanged.
 
-1. **Schlotheimophyllum-Gotland** — a repository describing 225 thin-section and
-   acetate-peel scans of the Silurian rugose coral *Schlotheimophyllum patellatum*
-   and a growth-series concordance table. The README claims CC BY 4.0, but the
-   GitHub repository's license metadata is unknown. This is a visual lead, not
-   cleared production media.
-2. **fossilmodernLMA** — CC0 repository containing code/data for a 2024 study of
-   fossil and modern leaf mass per area, morphology, site climate, and constrained
-   comparisons. The original paper and limits still need to be read before a
-   climate claim is written.
-3. **Eupercaria-fossil-dataset** — CC0 repository with specimen-count, genus,
-   site-map, and paleogeography plotting scripts. Its README does not identify
-   the underlying publication; the scripts reference local Excel inputs absent
-   from the repository. It is therefore an evidence-literacy lead, not a ready
-   science story.
+## Correct order from here
 
-Repository commits and notes are recorded in
-`long-form-ideas-2026-11-21.json`.
+### 1. Enter the actual YouTube market first
 
-## Score result
+Build a fresh same-format long-form cohort from real YouTube surfaces:
 
-The internal idea score is not a viral forecast. It is a readiness gate:
+- direct comparable channels in evidence-led extinct-life/palaeontology;
+- official channel videos/playlists and watch pages;
+- exact video IDs, titles, upload dates, runtimes, displayed views, thumbnails,
+  chapters/transcript progression where available;
+- 5 or more directly comparable videos per channel where the surface allows it;
+- separate context-only channels and out-of-format examples;
+- explicit exclusions and retrieval dates;
+- actual thumbnail inspection, not title-only inference.
 
-| Candidate | Score | Current decision | Main blocker |
-| --- | ---: | --- | --- |
-| Coral growth cross-section | 79 | revise / rights research | dataset terms and primary paper |
-| Fossil leaf climate clue | 75 | revise / primary-source research | paper limits and correlation wording |
-| Fossil fish map | 62 | defer | missing underlying provenance |
+Views are observations at a stated age, not a causal forecast. A candidate is not
+selected from a single popular upload.
 
-No candidate has been declared owner-selected or production-ready. That is an
-intentional stop: the first long video must not begin with a visually exciting
-but unverified dataset.
+### 2. Extract the market promise
 
-## Next gate
+For each cohort, record:
 
-The next action is to complete primary-source research for the two strongest
-leads, then make a second score pass with:
+- what the first frame promises;
+- whether the hook is a fossil clue, a mechanism, a vanished habitat, or an
+  extinction reversal;
+- how quickly the evidence appears;
+- chapter/beat progression;
+- recurring title/thumbnail grammar;
+- what is generic, saturated, mismatched, or still open.
 
-- primary paper and supplementary data;
-- claim-by-claim evidence/limitation ledger;
-- commercial-use decision for every visual input;
-- one-sentence title promise;
-- 8–12 second native proof concept;
-- owner selection.
+### 3. Generate new topic candidates from the market gap
 
-Only after one candidate clears those gates will the long-form script, voice,
-board, and render begin. No source images, private links, or media were imported
-into the repository during this pass.
+Only after the YouTube pass should we create 3–5 topic candidates. Each candidate
+must then receive its own primary-source, claim, rights, visual-proof, and
+feasibility ledger.
+
+### 4. Choose the first long
+
+The first long-form project moves forward only when one candidate has:
+
+- a clear market gap and viewer promise;
+- primary evidence;
+- rights-safe visual treatment;
+- a believable 8–12 second moving proof;
+- an owner decision.
+
+## GitHub's correct role
+
+GitHub is a later-stage tool/source check:
+
+- renderer or QA dependency;
+- reproducible data/code source;
+- license and provenance audit;
+- optional scientific supplement after the YouTube gap is known.
+
+It is **not** the market-discovery engine.
+
+The JSON file beside this memo is retained only as a retracted audit trail. Its
+candidates are not active and its coral recommendation is withdrawn.

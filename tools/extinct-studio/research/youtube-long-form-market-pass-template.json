@@ -1,0 +1,19 @@
+{
+  "schema_version": "1.0",
+  "pass_id": "extinct-youtube-long-market-YYYY-MM-DD",
+  "status": "not_started",
+  "platform": "youtube",
+  "format": "long",
+  "observation_date_utc": "YYYY-MM-DD",
+  "retrieval_notes": [],
+  "query_panels": [],
+  "channels": [],
+  "videos": [],
+  "thumbnail_receipts": [],
+  "story_observations": [],
+  "exclusions": [],
+  "gap_hypotheses": [],
+  "candidate_topics": [],
+  "owner_selection": null,
+  "source_policy": "Record public YouTube IDs and observations with retrieval dates. Do not use displayed views as causal forecasts. Do not import reference footage or thumbnails into production."
+}

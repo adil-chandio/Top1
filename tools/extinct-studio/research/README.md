@@ -1,11 +1,22 @@
 # Research workspace
 
-This directory contains fresh, redacted candidate research for the new Extinct
-slate. It is not an active production project and contains no source media.
+This directory contains redacted research checkpoints for the new Extinct slate.
+It is not an active production project and contains no source media.
 
-`long-form-ideas-2026-11-21.json` is the machine-readable candidate ledger.
-`long-form-shortlist-2026-11-21.md` explains what was checked, what remains
-unverified, and why no old release candidate was silently revived.
+## Current status
 
-A candidate becomes a project only after primary-source verification, rights
-review, the moving-proof gate, and owner selection.
+The GitHub-based long-form candidate pass was **retracted** because it happened
+before the required real YouTube market pass. See
+`long-form-shortlist-2026-11-21.md` for the correction. No coral, leaf, or fish
+candidate is active.
+
+The correct first deliverable is a fresh same-format YouTube market ledger. It
+must come before topic selection and before GitHub/data/tool discovery. GitHub can
+be used later for rights/provenance/tooling after the market gap is known.
+
+The channel market pass must record real video IDs, upload dates, runtimes,
+thumbnail observations, story progression, format cohorts, exclusions, and age
+windows. It must not treat one popular video or displayed views as a forecast.
+
+Use `MARKET-PASS-CHECKLIST.md` and fill
+`youtube-long-form-market-pass-template.json`; these are the required next gates.
