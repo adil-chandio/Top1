@@ -8,7 +8,7 @@
 | --- | --- |
 | `scenarios.js` | Pilot registry (`PILOTS`, `getPilot`) — the one lookup used by the compositor and the harness. |
 | `p1/timeline.js` | Pure P1 beat sheet, shared clock, illustrative melt curves, caption text. |
-| `p1/scene.js` | Three.js scene graph — two blocks (metal / lakri) + two ice cubes + heat-transfer arrows. No DOM, no renderer; safe to import in Node. |
+| `p1/scene.js` | Three.js scene graph — two blocks (metal / lakri) + two ice cubes (physical transmission) + growing puddle rings + rising steam wisps + heat-transfer arrows. No DOM, no renderer; safe to import in Node. |
 | `e1/timeline.js` | Pure E1 beat sheet, shared clock, illustrative warmth-drain curves, paddle pose, caption text. |
 | `e1/scene.js` | Three.js scene graph — two blocks (metal / lakri) + one warm paddle with emissive warmth that drains via the timeline's curves. No DOM, no renderer; safe to import in Node. |
 | `long/timeline.js` | Pure long-form (16:9) beat sheet, shared clock, illustrative melt curves, caption text. |

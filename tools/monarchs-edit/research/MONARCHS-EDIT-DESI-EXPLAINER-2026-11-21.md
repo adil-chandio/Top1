@@ -66,7 +66,18 @@ The first video in the long-form format is built as a `long` pilot — a genuine
 | 22–32s | Reveal: heat direction via arrows; honest illustrative caption | 3D scene: present |
 | 32–38s | Identity outro | 3D scene: present |
 
-E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* — the matching direct explainer (one warm paddle, two blocks). **It is built** as the channel's second pilot, sharing the compositor and harness with P1 (selected with `?pilot=e1` / `TOP1_DESI3D_PILOT=e1`). Beats: 0–4s question ("Metal ka chamach zyada thanda kyun lagta hai?"), 4–10s setup (same room temp, one warm paddle), 10–18s touch on metal (warmth drains fast), 18–26s then touch on lakri (warmth drains slower), 26–32s honest reveal, 32–38s identity outro. The paddle touches the metal block, then the lakri block, with emissive warmth draining faster on metal — **still illustrative, not a measurement**; no temperature or conduction number is shown.
+## P1 — next-level 3D pass (2026-11-21)
+
+P1's scene was upgraded for production quality while keeping every honesty rule — illustrative only, not a measurement, no numbers, no physical-run claim:
+
+- Ice: `MeshPhysicalMaterial` with transmission (0.35), clearcoat-ish frost, thickness 0.5 — reads as real ice, still illustrative.
+- Melted-puddle rings: soft translucent discs that grow and darken with the melt (metal side stronger).
+- Steam wisps: soft dot sprites (procedural `DataTexture` — no canvas, no DOM) rising and fading with the melt.
+- Floor: clearcoat gloss, 1024px shadow maps.
+- Ice-cube wobble rotation: tiny (±0.02 rad), never a measurement.
+- Arrows unchanged in contract: shaft + tip, visible only in the reveal, metal never outgrows wood. Same frame, same honesty badge.
+
+## E1 — *Metal Ka Chamach Zyada Thanda Kyun Lagta Hai?* — the matching direct explainer (one warm paddle, two blocks). **It is built** as the channel's second pilot, sharing the compositor and harness with P1 (selected with `?pilot=e1` / `TOP1_DESI3D_PILOT=e1`). Beats: 0–4s question ("Metal ka chamach zyada thanda kyun lagta hai?"), 4–10s setup (same room temp, one warm paddle), 10–18s touch on metal (warmth drains fast), 18–26s then touch on lakri (warmth drains slower), 26–32s honest reveal, 32–38s identity outro. The paddle touches the metal block, then the lakri block, with emissive warmth draining faster on metal — **still illustrative, not a measurement**; no temperature or conduction number is shown.
 
 ## Metrics gate (not filled until measured)
 
