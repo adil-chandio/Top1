@@ -5,18 +5,36 @@ It is not an active production project and contains no source media.
 
 ## Current status
 
-The GitHub-based long-form candidate pass was **retracted** because it happened
-before the required real YouTube market pass. See
-`long-form-shortlist-2026-11-21.md` for the correction. No coral, leaf, or fish
-candidate is active.
+The earlier GitHub-based long-form candidate pass remains **retracted** because it
+happened before the required real YouTube market pass. Its coral, leaf, and fish
+ideas are not active; see `long-form-shortlist-2026-11-21.md` for that audit trail.
 
-The correct first deliverable is a fresh same-format YouTube market ledger. It
-must come before topic selection and before GitHub/data/tool discovery. GitHub can
-be used later for rights/provenance/tooling after the market gap is known.
+The official ExtinctZoo market pass is now documented in:
 
-The channel market pass must record real video IDs, upload dates, runtimes,
-thumbnail observations, story progression, format cohorts, exclusions, and age
-windows. It must not treat one popular video or displayed views as a forecast.
+- `EXTINCTZOO-MARKET-PASS-REPORT-2026-11-21.md` — cautious pattern, confound,
+  rights, and gap report;
+- `youtube-long-form-market-pass-2026-11-21.json` — official playlist inventory,
+  exact watch-page subset, matched controls, story observations, and thumbnail
+  endpoint status;
+- `EXTINCTZOO-AUDIT-2026-11-21.md` — preliminary five-row baseline retained for
+  historical comparison.
 
-Use `MARKET-PASS-CHECKLIST.md` and fill
-`youtube-long-form-market-pass-template.json`; these are the required next gates.
+The official watch pages exposed exact thumbnail endpoint URLs, but the sandbox
+could not pixel-inspect the i.ytimg.com bytes. Third-party Reddit/podcast/search
+images were rejected, so no thumbnail-composition rule is accepted.
+
+After the gap was documented, five new evidence-led candidates were derived and
+scored provisionally:
+
+- `EXTINCTZOO-MARKET-GAP-CANDIDATES-2026-11-21.md` — owner-review slate;
+- `long-form-candidates-2026-11-21.json` — primary-source, claim, rights,
+  visual-proof, and feasibility notes;
+- `long-form-candidate-score-2026-11-21.json` — weighted CLI receipt.
+
+No candidate is owner-selected. No script, voice, render, package, upload,
+schedule, or publication is authorized. The next gate is owner selection, after
+which the selected candidate receives its own claims, rights, proof, story, and
+feasibility files.
+
+Use `MARKET-PASS-CHECKLIST.md` and the quality gates as the governing process.
+Displayed views remain descriptive observations, not forecasts.

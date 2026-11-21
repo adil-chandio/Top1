@@ -1,0 +1,237 @@
+{
+  "schema_version": "1.0",
+  "slate_id": "extinct-long-form-market-gap-2026-11-21",
+  "status": "provisional_owner_review_pending",
+  "discovery_basis": "Candidates were derived after the official ExtinctZoo YouTube market-pass report documented a gap: specific evidence-led reversals with original visual proof, rather than another generic deadliest/largest/strangest compilation.",
+  "owner_selection": null,
+  "active_production": false,
+  "historical_release_reuse": false,
+  "source_policy": "Primary papers and official journal pages are research evidence only. Journal figures, source photos, competitor thumbnails, footage, music, and narration are not production assets. Unknown or pending asset rights block production.",
+  "ideas": [
+    {
+      "id": "extinct-market-001-trilobite-last-meal",
+      "promise": "What can one 465-million-year-old trilobite's preserved last meal reveal about how it digested food?",
+      "audience_clarity": 5,
+      "visual_proof": 5,
+      "novelty": 4,
+      "evidence_strength": 5,
+      "stakes": 4,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "The Trilobite That Still Had Its Last Meal",
+      "topic_type": "Ordovician fossil gut contents and physiology",
+      "market_gap_fit": "A concrete internal fossil clue and a physiology reversal; not a generic strange-creature list or period superlative.",
+      "primary_evidence": [
+        {
+          "source_id": "P1",
+          "citation": "Kraft et al., Uniquely preserved gut contents illuminate trilobite palaeophysiology, Nature 2023",
+          "url": "https://www.nature.com/articles/s41586-023-06567-7",
+          "doi": "10.1038/s41586-023-06567-7",
+          "verified_claims": ["Ordovician Bohemolichas incola from approximately 465 Ma", "complete itemized gut contents", "3D synchrotron microtomography", "partly fragmented calcareous shells", "neutral or alkaline gut inference", "scavengers avoided the gut"],
+          "limitations": ["One unusually preserved specimen", "diet and physiology are inferences from preserved contents and taphonomy", "do not generalize to every trilobite"]
+        }
+      ],
+      "claim_plan": {
+        "observed": ["articulated exoskeleton and preserved axial gut fill as described by the paper"],
+        "measured_or_published": ["approximately 465 Ma age", "shell fragments and microtomography findings"],
+        "derived": ["a meal-to-physiology narrative built from the authors' interpretation"],
+        "must_not_claim": ["that all trilobites were scavengers", "that a pH value was directly measured in the living animal", "that the specimen proves a universal trilobite diet"]
+      },
+      "visual_proof_plan": [
+        "Original side-view trilobite outline with the gut corridor highlighted.",
+        "Native cutaway animation showing shell fragments entering the gut and the evidence/inference boundary.",
+        "Original locality and time map; no reproduction of the Nature figure.",
+        "A final uncertainty card distinguishes scan observation from physiological interpretation."
+      ],
+      "rights_plan": {
+        "status": "native_diagrams_only; paper_figures_not_cleared",
+        "allowed_path": "Create original diagrams from cited facts; use no journal image, scan, specimen photograph, or third-party paleoart unless separately licensed.",
+        "blockers": ["Any direct reuse of Nature figures or scan render requires permission or a separately verified license."]
+      },
+      "feasibility_notes": ["Single central specimen gives a clean long-form arc", "micro-CT concept can be illustrated natively", "specialist terms need careful on-screen glosses"],
+      "saturation_and_safety": ["Do not title it as the deadliest, strangest, or first-ever trilobite story without scope", "Do not imply the visual cutaway is an actual camera view of the living animal"],
+      "owner_review_status": "provisional; not selected"
+    },
+    {
+      "id": "extinct-market-002-dinocephalosaurus-live-birth",
+      "promise": "How can a 245-million-year-old marine reptile fossil show that its group could give birth to live young?",
+      "audience_clarity": 5,
+      "visual_proof": 5,
+      "novelty": 4,
+      "evidence_strength": 5,
+      "stakes": 4,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "The Reptile That Was Pregnant When It Died",
+      "topic_type": "Middle Triassic reproduction and live birth",
+      "market_gap_fit": "One embedded embryo supplies the physical reversal; it avoids ExtinctZoo's period-by-period predator and familiar-landscape packages.",
+      "primary_evidence": [
+        {
+          "source_id": "P2",
+          "citation": "Liu et al., Live birth in an archosauromorph reptile, Nature Communications 2017",
+          "url": "https://www.nature.com/articles/ncomms14445",
+          "doi": "10.1038/ncomms14445",
+          "verified_claims": ["pregnant Dinocephalosaurus from approximately 245 Ma", "embryo enclosed within the maternal body", "evidence for live birth in Archosauromorpha", "authors model genotypic sex determination"],
+          "limitations": ["The embryo is incomplete", "the conclusion rests on specimen position, morphology, and clade context", "sex-determination model is not the same as directly observed chromosomes"]
+        }
+      ],
+      "claim_plan": {
+        "observed": ["maternal specimen and associated embryo elements as described in the primary paper"],
+        "measured_or_published": ["approximately 245 Ma age", "embryo-to-mother size comparison in the paper"],
+        "derived": ["a reconstruction of why internal position argues against simple superposition"],
+        "must_not_claim": ["that every archosauromorph gave live birth", "that the fossil shows a complete birth event", "that sex chromosomes were directly recovered from the fossil"]
+      },
+      "visual_proof_plan": [
+        "Original silhouette and rib-cage cutaway with the embryo position marked.",
+        "A staged alternative-explanations board: swallowed prey, superposition, or embryo, with evidence for and against each.",
+        "A restrained marine-reptile habitat map and timeline; no copied reconstruction art.",
+        "Use an explicit uncertainty label around the phylogenetic/sex-determination inference."
+      ],
+      "rights_plan": {
+        "status": "native_diagrams_only; paper_figures_not_cleared",
+        "allowed_path": "Draw original anatomical schematics and use only independently licensed or public-domain contextual maps.",
+        "blockers": ["Primary-paper figures and specimen photography remain unlicensed for production."]
+      },
+      "feasibility_notes": ["Strong single-fossil visual proof", "clear general-audience conflict with the crocodile/bird mental model", "requires careful distinction between archosauromorphs and dinosaurs"],
+      "saturation_and_safety": ["Avoid the generic 'dinosaurs gave birth' claim", "do not reuse competitor amphibian-apex or marine-reptile artwork", "do not imply the animal is a direct ancestor of modern birds or crocodiles"] ,
+      "owner_review_status": "provisional; not selected"
+    },
+    {
+      "id": "extinct-market-003-cretaceous-deep-sea-fish-traces",
+      "promise": "How did scientists prove that fish were feeding on the deep-sea floor 130 million years ago without finding the fish?",
+      "audience_clarity": 4,
+      "visual_proof": 5,
+      "novelty": 4,
+      "evidence_strength": 5,
+      "stakes": 3,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "The Deep-Sea Fish We Know Only From Its Feeding Marks",
+      "topic_type": "Early Cretaceous abyssal fish trace fossils",
+      "market_gap_fit": "Behavioral evidence and a missing-body-fossil puzzle; a mechanism story instead of a creature superlative.",
+      "primary_evidence": [
+        {
+          "source_id": "P3",
+          "citation": "M. et al., The earliest evidence of deep-sea vertebrates, PNAS 2023",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2306164120",
+          "doi": "10.1073/pnas.2306164120",
+          "verified_claims": ["fish-feeding traces in Lower Cretaceous abyssal plain deposits of northwest Italy", "approximately 130 Ma", "trails and pits consistent with modern demersal feeding", "at least three fish species inferred", "earliest robust evidence for vertebrate deep-seafloor colonization in the paper's comparison"],
+          "limitations": ["No fish body fossil is identified in the trace assemblage", "feeding modes use comparison with modern fish traces", "earliest claim depends on the defined fossil record and dating" ]
+        }
+      ],
+      "claim_plan": {
+        "observed": ["trails, pits, sediment relationships, and biostratigraphic context described by the paper"],
+        "measured_or_published": ["late Hauterivian to early Barremian age", "abyssal plain setting", "trace morphology"],
+        "derived": ["an animated inference from a trace to a feeding behavior"],
+        "must_not_claim": ["the exact fish species", "that the deep sea was empty before this fossil", "that all pits were made by one animal"]
+      },
+      "visual_proof_plan": [
+        "Original slab-to-trace animation showing a feeding trail and pit in cross-section.",
+        "Native bathymetric/tectonic map placing the Tethys abyssal plain in the Cretaceous.",
+        "Three alternative feeding mechanisms animated with the paper's scope labels.",
+        "A final body-fossil-versus-trace-fossil distinction card."
+      ],
+      "rights_plan": {
+        "status": "native_diagrams_only; PNAS figures_not_cleared",
+        "allowed_path": "Redraw trace geometry and maps from cited measurements; do not reuse PNAS figure files or source video.",
+        "blockers": ["Exact trace dimensions and any source image reuse need a permissions/license check before production."]
+      },
+      "feasibility_notes": ["Excellent central mystery with no need for a precise animal reconstruction", "trace morphology is visually legible if simplified", "requires clear explanation of how ichnology supports behavior"],
+      "saturation_and_safety": ["Do not market it as the first fish in the deep sea in an absolute sense", "avoid generic deep-sea-monster imagery", "do not turn trace analogy into direct observation"] ,
+      "owner_review_status": "provisional; not selected"
+    },
+    {
+      "id": "extinct-market-004-kryoryctes-platypus-origin",
+      "promise": "Can the inside of one 100-million-year-old humerus show that a platypus-like lifestyle is older than the animal's outward shape?",
+      "audience_clarity": 4,
+      "visual_proof": 5,
+      "novelty": 4,
+      "evidence_strength": 5,
+      "stakes": 3,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "The Platypus Clue Hidden Inside One Fossil Bone",
+      "topic_type": "Early Cretaceous monotreme bone microstructure and ecology",
+      "market_gap_fit": "A familiar living animal anchors a hidden-microstructure reversal; it is not a largest/deadliest/strangest list.",
+      "primary_evidence": [
+        {
+          "source_id": "P4",
+          "citation": "Hand et al., Bone microstructure supports a Mesozoic origin for a semiaquatic burrowing lifestyle in monotremes, PNAS 2025",
+          "url": "https://www.pnas.org/doi/10.1073/pnas.2413569122",
+          "doi": "10.1073/pnas.2413569122",
+          "verified_claims": ["Kryoryctes cadburyi is known from an Early Cretaceous humerus", "age approximately 108–103 Ma", "whole-bone shape resembles echidnas more than platypus", "cortical microstructure includes specializations found in semiaquatic mammals", "authors infer a semiaquatic burrowing lifestyle"],
+          "limitations": ["Only a single humerus is currently known for Kryoryctes", "the lifestyle is a probabilistic comparative inference", "the paper does not make the animal a direct modern platypus ancestor"]
+        }
+      ],
+      "claim_plan": {
+        "observed": ["one humerus and its internal structure as described by the paper"],
+        "measured_or_published": ["108–103 Ma age", "comparative microstructural traits", "phylogenetic placement as stem-monotreme"],
+        "derived": ["a bone-interior-to-lifestyle story using an original cross-section"],
+        "must_not_claim": ["that the animal had a platypus bill", "that a single bone proves all early monotremes were aquatic", "that echidnas are simply failed platypuses"]
+      },
+      "visual_proof_plan": [
+        "Original humerus cross-section comparing cortex and medullary cavity, with labels for observation versus inference.",
+        "Native platypus/echidna lifestyle comparison using original silhouettes, not stock or paper art.",
+        "Time-tree animation showing stem-monotreme placement without claiming direct ancestry.",
+        "A probability/uncertainty card that preserves the paper's comparative nature."
+      ],
+      "rights_plan": {
+        "status": "native_diagrams_only; PNAS figures_not_cleared",
+        "allowed_path": "Create original bone sections and silhouettes; independently verify any modern-animal reference asset license.",
+        "blockers": ["No source image or scan is cleared for output; the native diagram path must be used."]
+      },
+      "feasibility_notes": ["Single-bone visual is controllable and diagrammable", "familiar platypus/echidna hook lowers specialist decoding", "microstructure terminology needs a visual glossary"],
+      "saturation_and_safety": ["Do not call it 'the first platypus'", "avoid a generic cute-platypus package", "retain the 56.7% style of probabilistic reasoning if that is the reported comparison"],
+      "owner_review_status": "provisional; not selected"
+    },
+    {
+      "id": "extinct-market-005-permian-regurgitalite",
+      "promise": "What can a 293-million-year-old fossilized vomit ball reveal about the predator that made it?",
+      "audience_clarity": 5,
+      "visual_proof": 5,
+      "novelty": 4,
+      "evidence_strength": 5,
+      "stakes": 4,
+      "format_fit": 4,
+      "rights": 4,
+      "feasibility": 4,
+      "working_title": "The Fossilized Vomit That Revealed a Permian Food Web",
+      "topic_type": "Early Permian terrestrial regurgitalite and trophic ecology",
+      "market_gap_fit": "A single physical object supports a behavior/food-web reversal, while the unknown producer creates honest uncertainty.",
+      "primary_evidence": [
+        {
+          "source_id": "P5",
+          "citation": "Early Permian terrestrial apex predator regurgitalite indicates opportunistic feeding behaviour, Scientific Reports 2026",
+          "url": "https://www.nature.com/articles/s41598-025-33381-0",
+          "doi": "10.1038/s41598-025-33381-0",
+          "verified_claims": ["open-access paper published 2026-01-30", "Bromacker locality in Thuringia", "41-bone compact cluster", "micro-CT, osteological, chemical, and taphonomic analyses", "oldest terrestrial regurgitalite claim in the paper", "possible producers include Dimetrodon teutonis or Tambacarnifex unguifalcatus"],
+          "limitations": ["Producer is not identified to a single taxon", "regurgitalite interpretation is based on combined taphonomic and chemical evidence", "do not present the candidate predator as observed fact"]
+        }
+      ],
+      "claim_plan": {
+        "observed": ["compact bone cluster and its reported anatomical/taphonomic features"],
+        "measured_or_published": ["approximately 293–290 Ma age", "41 bones", "multitaxic elements", "candidate producer set"],
+        "derived": ["a food-web reconstruction bounded by the candidate producer list"],
+        "must_not_claim": ["that Dimetrodon definitely vomited the specimen", "that the animal ate every named taxon in one meal without qualification", "that fossil vomit is common or fully understood"]
+      },
+      "visual_proof_plan": [
+        "Original 3D bone-cluster diagram with elements color-coded by taxon and confidence.",
+        "Native digestive-path animation contrasting faeces, stomach contents, and regurgitalite.",
+        "Bromacker food-web map with branching candidate predators rather than one asserted culprit.",
+        "Micro-CT/taphonomy explanation using original motion graphics, not the paper's images."
+      ],
+      "rights_plan": {
+        "status": "native_diagrams_only; open-access does_not_equal_unrestricted_asset_reuse",
+        "allowed_path": "Use the open-access paper as a factual source and redraw all output visuals; verify any license before reusing a figure.",
+        "blockers": ["The article's specific figures and specimen images still require license review despite open-access status."]
+      },
+      "feasibility_notes": ["High-stakes but evidence-led hook", "single specimen can support a 15–22 minute investigation", "producer uncertainty gives a built-in final limitation"],
+      "saturation_and_safety": ["Avoid graphic gore or a copied dinosaur-vomit gag", "do not flatten regurgitation, coprolite, and gut contents into one category", "do not use 'apex predator' as a universal fact when the producer is unresolved"],
+      "owner_review_status": "provisional; not selected"
+    }
+  ]
+}
