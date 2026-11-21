@@ -3,7 +3,9 @@
 This temporary research probe references the exact official JPG exposed by the
 official YouTube watch page.
 
-![Official ExtinctZoo thumbnail](https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg)
+![Official ExtinctZoo thumbnail, max resolution](https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg)
+
+![Official ExtinctZoo thumbnail, hq resolution](https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg)
 
 Source watch page: https://www.youtube.com/watch?v=NF42pH3oXZw
-Source JPG: https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg
+Source JPGs: https://i.ytimg.com/vi/NF42pH3oXZw/maxresdefault.jpg and https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg
