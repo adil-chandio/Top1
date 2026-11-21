@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "project_id": "NEW-EXTINCT-PROJECT",
+  "platform": "youtube",
+  "format": "short",
+  "observed_on": "YYYY-MM-DD",
+  "age_days": 0,
+  "redacted": true,
+  "source": "studio-export-redacted",
+  "metrics": {
+    "views": 0,
+    "impressions": 0,
+    "ctr": 0,
+    "average_view_duration_s": 0,
+    "average_percentage_viewed": 0,
+    "shares": 0,
+    "comments": 0,
+    "subscribers_gained": 0
+  }
+}

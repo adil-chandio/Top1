@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://top1.invalid/extinct-studio/release-status.schema.json",
+  "title": "Extinct Studio release status",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "status", "writes_files", "upload", "schedule", "publication"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "status": {"type": "string"},
+    "writes_files": {"const": false},
+    "upload": {"enum": ["not_started", "private_only", "owner_manual"]},
+    "schedule": {"enum": ["not_started", "owner_manual"]},
+    "publication": {"enum": ["not_started", "owner_manual"]}
+  }
+}
