@@ -19,13 +19,15 @@ The official ExtinctZoo market pass is now documented in:
 - `EXTINCTZOO-AUDIT-2026-11-21.md` — preliminary five-row baseline retained for
   historical comparison.
 
-The official watch pages exposed exact thumbnail endpoint URLs, but the sandbox
-could not pixel-inspect the i.ytimg.com bytes. On 2026-11-21 UTC, the required
-watch-page → same-ID JPG retry again returned HTTP 500 for the official JPG
-variants; no local JPG existed for `read_file`. The receipt is
+The official watch pages exposed exact thumbnail endpoint URLs. On 2026-11-21
+UTC, direct same-ID JPG retries returned HTTP 500 and a UAPI copy of the raw
+`default.jpg` response decoded to a malformed 0x0 JPEG. A source-named relay
+then recovered a valid 120x90 local JPG for the exact same-ID `default.jpg`
+query; `read_file` opened it and the receipt records relay-scoped, pixel-grounded
+observations plus the explicit re-encoding limitation. The receipt is
 `trilobite-last-meal/thumbnail-gate-receipt-2026-11-21.json`. Third-party
-Reddit/podcast/search images were rejected, so no thumbnail-composition rule is
-accepted and no visual notes may be created.
+Reddit/podcast/search images were rejected, and no thumbnail claim is locked or
+used as a production asset.
 
 After the gap was documented, five new evidence-led candidates were derived and
 scored provisionally:

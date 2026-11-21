@@ -26,6 +26,15 @@
       "used_in_output": false
     },
     {
+      "id": "official-thumbnail-research-relay",
+      "kind": "same-video-ID official thumbnail, relay-derived research inspection only",
+      "source": "https://www.youtube.com/watch?v=NF42pH3oXZw and https://i.ytimg.com/vi/NF42pH3oXZw/default.jpg; local relay receipt: thumbnail-gate-receipt-2026-11-21.json",
+      "license": "Channel-owned thumbnail; no reuse or derivative artwork authorized",
+      "status": "observed_not_reused",
+      "used_in_output": false,
+      "limitation": "The relay re-encoded the exact source query, so the local JPG is not claimed byte-identical to the official endpoint."
+    },
+    {
       "id": "modern-arthropod-reference",
       "kind": "modern crab or horseshoe-crab image/footage",
       "source": "Not selected; no external media imported",

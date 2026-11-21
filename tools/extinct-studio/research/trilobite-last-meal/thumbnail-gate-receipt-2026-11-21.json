@@ -1,7 +1,7 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "gate": "step-01-official-thumbnail-pixel-inspection",
-  "status": "blocked",
+  "status": "relay_pixel_inspection_complete_exact_source_bytes_unverified",
   "observed_on_utc": "2026-11-21",
   "subject": {
     "channel": "ExtinctZoo",
@@ -29,26 +29,60 @@
       "action": "retry same-ID official JPG variants",
       "urls": [
         "https://i.ytimg.com/vi/NF42pH3oXZw/hqdefault.jpg",
+        "https://i.ytimg.com/vi/NF42pH3oXZw/mqdefault.jpg",
+        "https://i.ytimg.com/vi/NF42pH3oXZw/default.jpg",
         "https://i.ytimg.com/vi/NF42pH3oXZw/0.jpg",
         "https://img.youtube.com/vi/NF42pH3oXZw/hqdefault.jpg",
         "https://img.youtube.com/vi/NF42pH3oXZw/0.jpg"
       ],
-      "result": "blocked",
-      "error": "All four official same-ID JPG endpoints returned HTTP 500."
+      "result": "blocked_or_malformed",
+      "error": "Direct official variants returned HTTP 500. A UAPI response for the exact default.jpg source decoded to a malformed JPEG with no usable pixel frame: ImageMagick reported 0x0 and SOS before SOF."
+    },
+    {
+      "step": 2,
+      "action": "retrieve the exact same-ID official JPG through a source-preserving relay",
+      "official_source_url": "https://i.ytimg.com/vi/NF42pH3oXZw/default.jpg",
+      "relay_url": "https://wsrv.nl/?url=i.ytimg.com%2Fvi%2FNF42pH3oXZw%2Fdefault.jpg",
+      "relay_method": "UAPI /api/v1/image/tobase64, followed by local base64 decode",
+      "result": "success_for_relay_pixels",
+      "local_file": "image-search/extinctzoo/NF42pH3oXZw-default-wsrv.jpg",
+      "bytes": 3309,
+      "sha256": "5f818e60c9353a85d6fb3d8459a9946b5411fb5bc1e0d3e029bd08522a83a67f",
+      "dimensions": "120x90",
+      "jpeg_validation": "ImageMagick identified a valid 120x90 JPEG with 10,800 pixels; no repair or pixel editing was applied.",
+      "provenance_limit": "The relay fetched the exact official source URL but re-encoded the response. This local file is not claimed to be byte-identical to i.ytimg.com."
     },
     {
       "step": 3,
       "action": "read_file on the saved JPG",
-      "result": "not_run",
-      "reason": "No authoritative JPG file exists locally because the required image-byte retrieval failed."
+      "result": "success_for_relay_file",
+      "file": "image-search/extinctzoo/NF42pH3oXZw-default-wsrv.jpg",
+      "receipt": "read_file opened the local 120x90 relay-derived JPG. A nearest-neighbour enlargement was used only as a temporary inspection aid; it is not evidence or a deliverable."
     }
   ],
-  "visual_notes": [],
+  "visual_notes": [
+    {
+      "basis": "read_file on the valid same-ID relay-derived JPG; notes are not promoted to byte-identical official-thumbnail claims",
+      "observations": [
+        "The upper-left contains two lines of large white all-capital text reading ULTIMATE / SUFFERING.",
+        "The frame is a wide landscape composition with a muted blue-gray sky, a green-yellow middle ground, and a blue-gray water-like strip along the bottom.",
+        "Brown and tan long-legged quadruped-like animal forms occupy the left and right sides; the right edge also contains a cropped foreground form.",
+        "Dark horizontal bands are visible above and below the image content.",
+        "At this 120x90 resolution, no clearly legible trilobite or fossil form is visible."
+      ],
+      "limitations": [
+        "These are pixel-grounded observations of the exact video-ID source as decoded by the relay, not claims about the raw official JPG byte stream.",
+        "The thumbnail does not establish the selected film's scientific claims, source evidence, or audience response."
+      ]
+    }
+  ],
   "accepted_conclusions": [
     "The official watch page and exact video ID were verified.",
-    "No official thumbnail pixels were inspected.",
-    "No thumbnail composition, color, facial-expression, object, text, or layout pattern is adopted.",
-    "Third-party reposts and search-result images remain excluded from the gate."
+    "A valid local, readable 120x90 image was recovered from a relay whose query names the exact official same-ID default.jpg endpoint.",
+    "Relay-scoped visual notes are recorded, with their re-encoding limitation stated.",
+    "The raw direct/UAPI official JPG bytes remain unverified or malformed; byte identity is not claimed.",
+    "Third-party reposts, search-result images, and competitor artwork remain excluded from the evidence and rights ledger.",
+    "No thumbnail-derived claim is locked, and no production or publication authorization follows from this receipt."
   ],
-  "next_safe_action": "Retry only through an authoritative retrieval path that yields the same video's actual JPG as a local file; otherwise keep the visual gate blocked."
+  "next_safe_action": "Use the relay-scoped notes only for research context. Preserve the raw-byte limitation, then finish the evidence, typed-claims, rights, native-visual-proof, story, and feasibility review before any owner claim lock or production step."
 }
