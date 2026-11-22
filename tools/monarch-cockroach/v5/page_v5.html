@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Monarch Cam #03 — V5 Cinema Master Engine</title>
+<style>
+  @font-face {
+    font-family: 'Space Grotesk';
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: block;
+    src: url('/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 500;
+    font-display: block;
+    src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+  }
+  @font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 600;
+    font-display: block;
+    src: url('/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2') format('woff2');
+  }
+  html, body { margin: 0; padding: 0; background: #071013; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { createV5MaterialLibrary } from './materials_v5.js';
+import { createMonarchWorldV5, createOpticalLensPassV5 } from './world_v5.js';
+import { directFrameV5 } from './director_v5.js';
+import { createEditorialCompositorV5, projectWorldPoint } from './titles_v5.js';
+
+const params = new URLSearchParams(window.location.search);
+const RENDER_W = parseInt(params.get('w') || '1920', 10);
+const RENDER_H = parseInt(params.get('h') || '1080', 10);
+const TITLES_ONLY = params.get('titlesOnly') === '1';
+const TARGET_KEYS = ['head', 'pronotum', 'abdomen', 'plate', 'hinge', 'r3Spine', 'r3Claw', 'pennies', 'platen', 'cram'];
+
+await document.fonts.ready;
+const fontProbe = document.createElement('canvas').getContext('2d');
+fontProbe.font = '700 72px "Space Grotesk"';
+fontProbe.fillText('Monarch V5', 0, 0);
+fontProbe.font = '500 24px "IBM Plex Mono"';
+fontProbe.fillText('0123456789', 0, 0);
+
+const compositor = createEditorialCompositorV5();
+
+if (TITLES_ONLY) {
+  window.__MONARCH_V5_READY__ = true;
+} else {
+  const webglCanvas = document.createElement('canvas');
+  webglCanvas.width = RENDER_W;
+  webglCanvas.height = RENDER_H;
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: webglCanvas,
+    antialias: false,
+    alpha: false,
+    powerPreference: 'high-performance',
+    preserveDrawingBuffer: true,
+  });
+  renderer.setSize(RENDER_W, RENDER_H, false);
+  renderer.setPixelRatio(1);
+  renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+  renderer.sortObjects = true;
+
+  const camera = new THREE.PerspectiveCamera(32, 16 / 9, 1.5, 4800.0);
+  const mats = await createV5MaterialLibrary();
+  const world = await createMonarchWorldV5(mats, renderer);
+  const lensPass = createOpticalLensPassV5(renderer, RENDER_W, RENDER_H);
+
+  function renderMasterCanvas(frame) {
+    const shot = directFrameV5(world, camera, frame);
+    lensPass.render(world.scene, camera, shot.lensParams);
+    return compositor.compositeFrame(webglCanvas, frame, camera, shot.landmarks);
+  }
+
+  window.renderSingleFrameDataURL = (frame, quality = 0.94) => {
+    const c = renderMasterCanvas(frame);
+    return c.toDataURL('image/jpeg', quality);
+  };
+
+  window.renderSingleFramePNG = (frame) => {
+    const c = renderMasterCanvas(frame);
+    return c.toDataURL('image/png');
+  };
+
+  window.renderThumbnailPNG = () => {
+    world.apartmentSet.visible = true;
+    world.labSet.visible = false;
+    world.pushupSet.visible = false;
+    world.roachHero.root.visible = true;
+    world.roachB.root.visible = false;
+    world.roachC.root.visible = false;
+    world.xrayRig.group.visible = false;
+    world.cramActor.root.visible = false;
+    world.penniesGroup.visible = true;
+    world.setLightingMood('apartment_lit', 1.0);
+    world.switchToggle.rotation.z = -0.42;
+
+    const savedPennyPos = world.penniesGroup.position.clone();
+    world.penniesGroup.position.set(-22.0, 0.0, 22.5);
+
+    world.roachHero.update({
+      ceilingMm: 3.85,
+      worldX: -7.5,
+      worldZ: -3.5,
+      phase: 0.28,
+      strideAmp: 0.95,
+      headPitch: -0.14,
+      pronotumRoll: 0.08,
+      antennaProbe: 0.55,
+      time: 2.0,
+    });
+
+    camera.fov = 29;
+    camera.near = 2.5;
+    camera.far = 2600.0;
+    camera.position.set(-52.0, 9.8, 38.0);
+    camera.lookAt(-5.5, 3.2, 4.5);
+    camera.updateProjectionMatrix();
+    camera.updateMatrixWorld(true);
+    world.updateShadowMap(new THREE.Vector3(-10, 3, 6), 52.0);
+    lensPass.render(world.scene, camera, { focusDist: 56.0, dofRange: 48.0, maxBlur: 2.0, time: 2.0 });
+
+    world.penniesGroup.position.copy(savedPennyPos);
+
+    const c = compositor.canvas;
+    const ctx = compositor.ctx;
+    ctx.clearRect(0, 0, 1920, 1080);
+    ctx.drawImage(webglCanvas, 0, 0, 1920, 1080);
+
+    ctx.save();
+    const g = ctx.createRadialGradient(390, 210, 20, 390, 210, 560);
+    g.addColorStop(0.0, 'rgba(6, 12, 15, 0.76)');
+    g.addColorStop(0.6, 'rgba(6, 12, 15, 0.36)');
+    g.addColorStop(1.0, 'rgba(6, 12, 15, 0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 1100, 620);
+
+    ctx.font = '600 28px "IBM Plex Mono", monospace';
+    ctx.letterSpacing = '3.2px';
+    ctx.fillStyle = '#8fe6de';
+    ctx.fillText('3.2 MM GAP  ·  2 PENNIES TALL', 96, 128);
+
+    ctx.font = '700 148px "Space Grotesk", sans-serif';
+    ctx.letterSpacing = '-4.2px';
+    ctx.fillStyle = '#fbeed5';
+    ctx.fillText('NO FEET', 90, 268);
+
+    ctx.fillStyle = '#ffd187';
+    ctx.fillText('NEEDED.', 90, 404);
+    ctx.restore();
+
+    return c.toDataURL('image/png');
+  };
+
+  const gl = renderer.getContext();
+  const pixelBuf = new Uint8Array(RENDER_W * RENDER_H * 4);
+  const projScratch = new THREE.Vector3();
+  let activeWS = null;
+  let pendingAck = null;
+
+  window.connectRawWS = async (wsUrl) => {
+    activeWS = new WebSocket(wsUrl);
+    activeWS.binaryType = 'arraybuffer';
+    activeWS.onmessage = () => {
+      if (pendingAck) { const r = pendingAck; pendingAck = null; r(); }
+    };
+    await new Promise((res, rej) => { activeWS.onopen = res; activeWS.onerror = rej; });
+  };
+
+  window.streamRawRangeWS = async (startFrame, endFrame) => {
+    const landmarkRows = [];
+    for (let f = startFrame; f < endFrame; f++) {
+      const shot = directFrameV5(world, camera, f);
+      lensPass.render(world.scene, camera, shot.lensParams);
+      gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+
+      const ackPromise = new Promise((r) => { pendingAck = r; });
+      activeWS.send(pixelBuf);
+
+      const row = [f];
+      for (const key of TARGET_KEYS) {
+        const p = projectWorldPoint(shot.landmarks[key], camera, projScratch);
+        row.push(p ? +p.ndcX.toFixed(4) : -1, p ? +p.ndcY.toFixed(4) : -1);
+      }
+      landmarkRows.push(row);
+      await ackPromise;
+    }
+    return landmarkRows;
+  };
+
+  window.__MONARCH_V5_READY__ = true;
+}
+</script>
+</body>
+</html>

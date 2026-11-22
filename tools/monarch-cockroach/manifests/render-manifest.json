@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "monarch-cam-03-cockroach-long",
+  "master_mp4": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-16x9-Master-V2.mp4",
+  "master_bytes": 79979125,
+  "master_md5": "67affe581e036f3739c06be1bca4ba7a",
+  "master_sha256": "af72b580bac4417ae434e311fc0378a7010098cc13a0347aeb3ef8a57c271928",
+  "archival_mezzanine_mp4": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-16x9-Archival-CRF17-V2.mp4",
+  "archival_mezzanine_bytes": 210089551,
+  "opening_pilot_mp4": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-Opening-Pilot-60s-V2.mp4",
+  "opening_pilot_bytes": 35533309,
+  "opening_pilot_md5": "9a71552e688cd6c02720856d585bce04",
+  "qa_sheet_png": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-7Chapter-QA-Sheet-V2.png",
+  "qa_sheet_bytes": 1274539,
+  "qa_sheet_md5": "ba723e17f027ef86350325899400660e",
+  "captions_srt": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-Captions-V2.srt",
+  "captions_srt_bytes": 7400,
+  "captions_srt_md5": "be4553c0eff98947592673ec231c1146",
+  "captions_vtt": ".cache/monarch-cockroach/feature-film/Monarch-Cam-03-Long-Video-Captions-V2.vtt",
+  "captions_vtt_bytes": 7174,
+  "captions_vtt_md5": "54c5738a839a2c486f7052115338b1f2",
+  "master_mix_stats": {
+    "mix_wav": "Monarch-Cam-03-Long-Video-Master-Mix-V2.wav",
+    "bytes": 100425644,
+    "md5": "4e57f4ce18eb18a716dfe3e5206d1838",
+    "integrated_lufs": -15.5,
+    "true_peak_dbtp": -1.84,
+    "mono_correlation": 1.0001
+  },
+  "qa_report": {
+    "project_id": "monarch-cam-03-cockroach-long",
+    "artifact_role": "full-feature",
+    "sha256": "af72b580bac4417ae434e311fc0378a7010098cc13a0347aeb3ef8a57c271928",
+    "bytes": 79979125,
+    "video_qa": {
+      "decoded_frames": 10461,
+      "expected_frames": 10461,
+      "fps": 30.0,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "black_frames": 0,
+      "unintended_freeze_runs": 0,
+      "av_sync_delta_s": 0.01467
+    },
+    "audio_qa": {
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "integrated_lufs": -16.45,
+      "true_peak_dbtp": -1.69,
+      "clipped_samples": 0,
+      "mono_correlation": 0.9996
+    },
+    "mobile_qa": {
+      "downscale_widths_checked": [
+        480,
+        320,
+        176,
+        120
+      ],
+      "min_edge_contrast_ratio": 3.087,
+      "safe_margin_passed": true
+    },
+    "passed": true
+  },
+  "pilot_qa_report": {
+    "project_id": "monarch-cam-03-cockroach-long",
+    "artifact_role": "opening-pilot",
+    "sha256": "4f911cc3cfb31062ac75e753d3cd4f38d9b884bb2586154f7534cea7716d162e",
+    "bytes": 35533309,
+    "video_qa": {
+      "decoded_frames": 1800,
+      "expected_frames": 1800,
+      "fps": 30.0,
+      "resolution": [
+        1920,
+        1080
+      ],
+      "black_frames": 0,
+      "unintended_freeze_runs": 0,
+      "av_sync_delta_s": 0.01067
+    },
+    "audio_qa": {
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "integrated_lufs": -15.58,
+      "true_peak_dbtp": -1.68,
+      "clipped_samples": 0,
+      "mono_correlation": 0.9998
+    },
+    "mobile_qa": {
+      "downscale_widths_checked": [
+        480,
+        320,
+        176,
+        120
+      ],
+      "min_edge_contrast_ratio": 4.767,
+      "safe_margin_passed": true
+    },
+    "passed": true
+  }
+}

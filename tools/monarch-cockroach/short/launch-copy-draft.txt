@@ -1,0 +1,28 @@
+MONARCH CAM · EPISODE #03 · YOUTUBE SHORTS PACKAGING DRAFT (PRE-VO / PRE-RENDER)
+=================================================================================
+Status: DRAFT V1 (Step 02 complete; pending Step 03 narrator selection & Step 04 final MP4 QA)
+
+RECOMMENDED TITLE (<= 60 chars)
+-------------------------------
+How This Cockroach Runs Without Its Feet
+
+ALTERNATE TITLE
+---------------
+This Cockroach Runs Through a Two-Penny Gap
+
+IN-VIDEO SHORTS COVER FRAME PLAN (Frame 0, 1080x1920)
+-----------------------------------------------------
+- Subject: 12.5 mm freestanding Periplaneta americana sprinting toward a 3.2 mm clear acrylic slit beside two stacked US pennies (~3.0 mm).
+- Short visual label (2 words, mobile-safe upper-left): NO FEET?
+- Honest framing: No fake hydraulic press, no crushing gore, no "indestructible" claim; clear "Illustrative reconstruction" note.
+
+DESCRIPTION & PRIMARY SOURCE CREDITS
+------------------------------------
+Standing up, an American cockroach (Periplaneta americana) is about half an inch (12.5 mm) tall—yet it can squeeze through a 3.2 mm horizontal gap (about two stacked pennies) in under a second and keep moving.
+
+Instead of bending stiff armor plates like rubber, the soft arthrodial joints between plates fold nearly in half. Splayed flat under a 4 mm ceiling, its claws lose their normal angle and sharp sensory spines along its shins (tibiae) push against the floor while both middle legs shove together. Even then, rough ceilings slow it into a slipping zigzag, and at 3.2 mm most cockroaches turn back—while nearly one in ten gets wedged at the thorax.
+
+Visuals in this short are an illustrative biomechanical reconstruction at millimeter scale, not high-speed lab footage.
+
+Primary scientific source:
+- Jayaram K, Full RJ (2016). "Cockroaches traverse crevices, crawl rapidly in confined spaces, and inspire a soft, legged robot." Proceedings of the National Academy of Sciences (PNAS) 113(8): E950–E957. https://doi.org/10.1073/pnas.1514591113

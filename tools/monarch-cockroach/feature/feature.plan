@@ -1,0 +1,80 @@
+# Monarch Cam Episode #03 · 16:9 Feature Editorial Schedule (30 fps)
+# Columns: first_frame end_frame mode camera_id src_start_s src_end_s subject [pin_frame pin_src_s ...]
+0 91 10 101 0.000000 2.400000 open_tabletop_standing_scale 46 1.200000
+91 196 10 102 2.400000 5.200000 six_legs_elevated_tripod_approach
+196 294 11 103 0.000000 2.600000 two_stacked_pennies_beside_3_2mm_slit 240 1.150000
+294 377 11 104 2.600000 4.800000 antennae_reach_slit_threshold 344 3.920000
+377 468 12 105 0.000000 1.200000 cold_open_head_dip_and_shell_flatten 409 0.420000 445 0.900000
+468 551 12 106 1.200000 2.350000 subsecond_slit_exit_and_sprint 501 1.660000
+551 649 13 107 0.000000 2.100000 freeze_on_empty_3_2mm_gap
+649 747 14 108 0.000000 2.200000 standing_height_vs_slit_height_callout
+747 852 14 109 2.200000 4.600000 underbody_clearance_disappears_question
+852 958 15 110 0.000000 2.800000 splayed_foot_loses_stance_tease
+958 1056 10 111 5.200000 7.800000 cold_open_hold_into_chapter_two
+1056 1175 20 201 0.000000 3.100000 gate_rig_side_and_overhead_establish
+1175 1299 21 202 0.000000 1.850000 stage_one_antennal_sweep_probe 1231 0.820000
+1299 1428 21 203 1.850000 3.700000 stage_two_head_pitch_down_and_wedge 1363 2.780000
+1428 1563 21 204 3.700000 5.800000 stage_three_pronotum_slight_roll_entry 1502 4.850000
+1563 1709 21 205 5.800000 8.200000 stage_four_planted_hind_legs_shove_thorax 1633 6.950000
+1709 1833 21 206 8.200000 10.100000 stage_five_flattened_abdomen_clears_gate 1786 9.350000
+1833 1963 22 207 0.000000 2.600000 not_soft_rubber_false_bend_contrast
+1963 2108 23 208 0.000000 3.400000 sagittal_cutaway_rigid_tergite_plates 2038 1.760000
+2108 2260 23 209 3.400000 6.900000 arthrodial_hinge_membranes_fold_in_half 2184 5.150000
+2260 2384 24 210 0.000000 2.800000 overlapping_plates_spread_contact_patch
+2384 2481 24 211 2.800000 5.100000 viscoelastic_hinge_rebound_on_exit
+2481 2578 20 212 3.100000 5.600000 doorway_outside_leg_room_limitation
+2578 2705 30 301 0.000000 3.200000 fifteen_cm_low_ceiling_corridor_reveal
+2705 2838 31 302 0.000000 3.400000 twelve_mm_unconstrained_run_58_cm_s 2771 1.700000
+2838 2970 31 303 3.400000 6.800000 nine_mm_crouched_run_no_roof_rub
+2970 3108 31 304 6.800000 10.300000 six_mm_ceiling_skims_uncompressed_back 3046 8.700000
+3108 3246 32 305 0.000000 3.500000 three_height_speed_comparison_holds_58
+3246 3379 33 306 0.000000 3.200000 overhead_sprawl_widens_55_to_75_deg
+3379 3511 33 307 3.200000 6.400000 constant_11_9mm_foot_midline_track
+3511 3633 33 308 6.400000 9.200000 constant_61ms_stride_beat_markers
+3633 3771 34 309 0.000000 3.100000 ceiling_steps_down_to_four_mm_squeeze 3695 1.400000
+3771 3909 34 310 3.100000 6.400000 fourfold_speed_drop_to_14_5_cm_s
+3909 4030 35 311 0.000000 2.900000 alternating_tripod_rhythm_breaks_apart
+4030 4135 35 312 2.900000 5.400000 hold_on_four_mm_crawling_question
+4135 4267 40 401 0.000000 2.800000 rear_transverse_axis_align_on_hind_leg
+4267 4416 41 402 0.000000 3.200000 upright_12mm_high_tarsal_tip_stance 4341 1.600000
+4416 4566 41 403 3.200000 6.400000 macro_hooked_claws_and_pads_catch_floor 4488 4.740000
+4566 4727 42 404 0.000000 3.400000 ceiling_presses_to_4mm_sprawl_past_80_deg 4650 1.770000
+4727 4889 42 405 3.400000 6.800000 tarsus_tips_sideways_claws_lose_angle 4800 4.930000
+4889 5069 43 406 0.000000 3.800000 uninterrupted_macro_shin_spines_plant_z0 4957 1.440000 5019 2.740000
+5069 5236 43 407 3.800000 7.200000 backward_angled_tibial_spines_drive_stroke 5153 5.500000
+5236 5386 44 408 0.000000 3.200000 overhead_paired_middle_legs_shove_together 5318 1.760000
+5386 5535 44 409 3.200000 6.400000 oar_like_mesothoracic_synchronous_thrust
+5535 5685 45 410 0.000000 3.100000 dorsal_ceiling_and_ventral_belly_rub_vectors
+5685 5823 45 411 3.100000 6.000000 five_body_weights_per_leg_thrust_balance
+5823 5948 43 412 7.200000 9.800000 macro_spine_push_clean_picture_hold
+5948 6074 40 413 2.800000 5.500000 pull_back_from_shin_to_full_tunnel_run
+6074 6212 50 501 0.000000 2.900000 question_are_splayed_feet_helping_hidden
+6212 6361 51 502 0.000000 3.300000 schematic_spine_only_traction_test_setup
+6361 6505 51 503 3.300000 6.400000 spiny_tibia_alone_holds_directional_grip 6433 4.850000
+6505 6642 52 504 0.000000 3.000000 six_hundred_confined_runs_surface_matrix
+6642 6786 53 505 0.000000 3.100000 smooth_graphite_vs_rough_ceiling_comparison
+6786 6929 53 506 3.100000 6.200000 rough_ceiling_monotonically_cuts_speed 6860 4.710000
+6929 7073 54 507 0.000000 3.100000 floor_roughness_curve_peaks_at_medium_grit
+7073 7210 55 508 0.000000 2.900000 slick_100grit_floor_early_spine_slip 7136 1.330000
+7210 7360 55 509 2.900000 6.100000 coarse_20grit_floor_belly_snags_on_grit 7291 4.630000
+7360 7491 54 510 3.100000 5.900000 slipping_zigzag_path_at_4mm_limit
+7491 7617 50 511 2.900000 5.500000 hold_on_friction_tradeoff_transition
+7617 7776 64 601 0.000000 3.300000 schematic_300x_to_900x_load_spread_plates
+7776 7928 64 602 3.300000 6.400000 three_square_cm_patch_prevents_shell_crack
+7928 8081 65 603 0.000000 3.100000 post_test_unimpaired_76_7_cm_s_sprint 8004 1.550000
+8081 8227 60 604 0.000000 3.000000 unstoppable_expectation_return_to_crevice_gate
+8227 8380 61 605 0.000000 3.200000 six_mm_and_four_four_mm_72pct_pass 8303 1.600000
+8380 8538 61 606 3.200000 6.500000 three_two_mm_gate_drops_to_17pct_pass 8462 4.920000
+8538 8691 62 607 0.000000 3.100000 antennal_check_and_turn_back_majority 8611 1.490000
+8691 8856 62 608 3.100000 6.600000 nine_percent_wedged_at_thickest_thorax 8782 5.020000
+8856 9009 63 609 0.000000 3.100000 three_outcome_ledger_315_lab_attempts
+9009 9155 60 610 3.000000 6.000000 tough_shell_vs_tight_gap_distinction
+9155 9282 60 611 6.000000 8.600000 quiet_beat_before_real_speed_reprise
+9282 9410 70 701 0.000000 2.800000 reprise_approach_two_penny_slot_real_speed
+9410 9542 70 702 2.800000 4.900000 real_speed_shingle_fold_and_shin_drive 9469 3.740000
+9542 9675 71 703 0.000000 2.900000 far_side_hinge_rebound_to_half_inch_height 9598 1.220000
+9675 9803 71 704 2.900000 5.800000 tarsal_claws_retake_open_floor_sprint
+9803 9940 72 705 0.000000 3.400000 paired_callout_hinges_fold_spines_push
+9940 10083 73 706 0.000000 3.600000 cockroach_clears_frame_leaving_pennies_and_slot
+10083 10274 73 707 3.600000 8.200000 closing_quiet_hold_on_two_penny_gap_no_cta
+10274 10461 74 708 0.000000 4.800000 readable_primary_source_and_science_credits

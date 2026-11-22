@@ -1,0 +1,14 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "status": "qa-passed",
+  "human_gates_completed": [
+    "owner-selected",
+    "voice-locked"
+  ],
+  "human_gates_pending": [
+    "owner-accepted",
+    "published"
+  ],
+  "youtube_auto_upload_permitted": false,
+  "short_9x16_held_until_long_video_signoff": true
+}

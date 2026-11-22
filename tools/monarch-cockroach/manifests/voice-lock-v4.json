@@ -1,0 +1,764 @@
+{
+  "episode": "Monarch-Cam-03",
+  "version": "V4",
+  "voice_id": "voice-02",
+  "time_stretch_applied": false,
+  "fps": 30,
+  "total_frames": 10302,
+  "total_duration_s": 343.4,
+  "chapters": [
+    {
+      "chapter": 1,
+      "wav": "/tmp/v4_audio/vo_ch01.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 32.589,
+      "wpm": 156.5,
+      "start_frame": 24,
+      "speech_end_frame": 1002,
+      "end_frame": 1080,
+      "hold_s": 2.6,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Flip on a light, and a cockroach bolts for the crack under a closed door.",
+          "rel_start_s": 0.0,
+          "rel_end_s": 4.94,
+          "abs_start_f": 24,
+          "abs_end_f": 172
+        },
+        {
+          "idx": 2,
+          "text": "Standing up, it's half an inch tall.",
+          "rel_start_s": 4.94,
+          "rel_end_s": 7.57,
+          "abs_start_f": 172,
+          "abs_end_f": 251
+        },
+        {
+          "idx": 3,
+          "text": "That gap ahead is barely as thick as two stacked pennies.",
+          "rel_start_s": 7.57,
+          "rel_end_s": 11.75,
+          "abs_start_f": 251,
+          "abs_end_f": 376
+        },
+        {
+          "idx": 4,
+          "text": "It doesn't slow down.",
+          "rel_start_s": 11.75,
+          "rel_end_s": 13.28,
+          "abs_start_f": 376,
+          "abs_end_f": 422
+        },
+        {
+          "idx": 5,
+          "text": "Its head dips in.",
+          "rel_start_s": 13.28,
+          "rel_end_s": 14.89,
+          "abs_start_f": 422,
+          "abs_end_f": 471
+        },
+        {
+          "idx": 6,
+          "text": "Its back flattens.",
+          "rel_start_s": 14.89,
+          "rel_end_s": 16.56,
+          "abs_start_f": 471,
+          "abs_end_f": 521
+        },
+        {
+          "idx": 7,
+          "text": "And in under a second, it's gone.",
+          "rel_start_s": 16.56,
+          "rel_end_s": 19.06,
+          "abs_start_f": 521,
+          "abs_end_f": 596
+        },
+        {
+          "idx": 8,
+          "text": "Wait a second.",
+          "rel_start_s": 19.06,
+          "rel_end_s": 20.3,
+          "abs_start_f": 596,
+          "abs_end_f": 633
+        },
+        {
+          "idx": 9,
+          "text": "An insect's shell is supposed to be stiff armor.",
+          "rel_start_s": 20.3,
+          "rel_end_s": 23.79,
+          "abs_start_f": 633,
+          "abs_end_f": 738
+        },
+        {
+          "idx": 10,
+          "text": "Squashed that flat, its feet can't even stand underneath it.",
+          "rel_start_s": 23.79,
+          "rel_end_s": 27.66,
+          "abs_start_f": 738,
+          "abs_end_f": 854
+        },
+        {
+          "idx": 11,
+          "text": "So how does stiff armor fold in half, and what pushes it through?",
+          "rel_start_s": 27.66,
+          "rel_end_s": 32.589,
+          "abs_start_f": 854,
+          "abs_end_f": 1002
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "wav": "/tmp/v4_audio/vo_ch02.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 47.009,
+      "wpm": 148.1,
+      "start_frame": 1080,
+      "speech_end_frame": 2490,
+      "end_frame": 2586,
+      "hold_s": 3.2,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "At real speed, your eyes miss almost everything.",
+          "rel_start_s": 0.0,
+          "rel_end_s": 3.09,
+          "abs_start_f": 1080,
+          "abs_end_f": 1173
+        },
+        {
+          "idx": 2,
+          "text": "So researchers filmed American cockroaches at five hundred frames per second.",
+          "rel_start_s": 3.09,
+          "rel_end_s": 7.82,
+          "abs_start_f": 1173,
+          "abs_end_f": 1315
+        },
+        {
+          "idx": 3,
+          "text": "Getting through wasn't one smooth slide.",
+          "rel_start_s": 7.82,
+          "rel_end_s": 10.36,
+          "abs_start_f": 1315,
+          "abs_end_f": 1391
+        },
+        {
+          "idx": 4,
+          "text": "It took five separate moves.",
+          "rel_start_s": 10.36,
+          "rel_end_s": 13.07,
+          "abs_start_f": 1391,
+          "abs_end_f": 1472
+        },
+        {
+          "idx": 5,
+          "text": "First, the antennae sweep the slot.",
+          "rel_start_s": 13.07,
+          "rel_end_s": 15.27,
+          "abs_start_f": 1472,
+          "abs_end_f": 1538
+        },
+        {
+          "idx": 6,
+          "text": "Next, the head tips down and wedges in.",
+          "rel_start_s": 15.27,
+          "rel_end_s": 18.61,
+          "abs_start_f": 1538,
+          "abs_end_f": 1638
+        },
+        {
+          "idx": 7,
+          "text": "Then the shield behind the head rolls slightly to slip inside.",
+          "rel_start_s": 18.61,
+          "rel_end_s": 22.89,
+          "abs_start_f": 1638,
+          "abs_end_f": 1767
+        },
+        {
+          "idx": 8,
+          "text": "Meanwhile, the back legs stay planted outside and shove the chest through.",
+          "rel_start_s": 22.89,
+          "rel_end_s": 27.76,
+          "abs_start_f": 1767,
+          "abs_end_f": 1913
+        },
+        {
+          "idx": 9,
+          "text": "Only at the end does the flattened belly pull clear.",
+          "rel_start_s": 27.76,
+          "rel_end_s": 30.9,
+          "abs_start_f": 1913,
+          "abs_end_f": 2007
+        },
+        {
+          "idx": 10,
+          "text": "Watch the back plates during that squeeze.",
+          "rel_start_s": 30.9,
+          "rel_end_s": 33.26,
+          "abs_start_f": 2007,
+          "abs_end_f": 2078
+        },
+        {
+          "idx": 11,
+          "text": "The shell isn't bending like soft rubber.",
+          "rel_start_s": 33.26,
+          "rel_end_s": 35.95,
+          "abs_start_f": 2078,
+          "abs_end_f": 2158
+        },
+        {
+          "idx": 12,
+          "text": "Instead, stiff plates overlap like roof tiles.",
+          "rel_start_s": 35.95,
+          "rel_end_s": 39.8,
+          "abs_start_f": 2158,
+          "abs_end_f": 2274
+        },
+        {
+          "idx": 13,
+          "text": "Soft hinge tissue between those plates folds nearly in half.",
+          "rel_start_s": 39.8,
+          "rel_end_s": 44.13,
+          "abs_start_f": 2274,
+          "abs_end_f": 2404
+        },
+        {
+          "idx": 14,
+          "text": "The body flattens without cracking a single plate.",
+          "rel_start_s": 44.13,
+          "rel_end_s": 47.009,
+          "abs_start_f": 2404,
+          "abs_end_f": 2490
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "wav": "/tmp/v4_audio/vo_ch03.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 47.218,
+      "wpm": 151.2,
+      "start_frame": 2586,
+      "speech_end_frame": 4003,
+      "end_frame": 4099,
+      "hold_s": 3.2,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Still, a doorway is only half the puzzle.",
+          "rel_start_s": 0.0,
+          "rel_end_s": 2.86,
+          "abs_start_f": 2586,
+          "abs_end_f": 2672
+        },
+        {
+          "idx": 2,
+          "text": "Outside that slot, the back legs had room to push.",
+          "rel_start_s": 2.86,
+          "rel_end_s": 6.68,
+          "abs_start_f": 2672,
+          "abs_end_f": 2786
+        },
+        {
+          "idx": 3,
+          "text": "What happens when the whole ceiling stays low, with nowhere to stand?",
+          "rel_start_s": 6.68,
+          "rel_end_s": 11.2,
+          "abs_start_f": 2786,
+          "abs_end_f": 2922
+        },
+        {
+          "idx": 4,
+          "text": "In the lab, cockroaches raced down a low corridor.",
+          "rel_start_s": 11.2,
+          "rel_end_s": 14.62,
+          "abs_start_f": 2922,
+          "abs_end_f": 3025
+        },
+        {
+          "idx": 5,
+          "text": "Step by step, researchers dropped the roof closer to the floor.",
+          "rel_start_s": 14.62,
+          "rel_end_s": 18.89,
+          "abs_start_f": 3025,
+          "abs_end_f": 3153
+        },
+        {
+          "idx": 6,
+          "text": "Cut the height in half, right onto its back, and you'd expect it to slow down.",
+          "rel_start_s": 18.89,
+          "rel_end_s": 24.27,
+          "abs_start_f": 3153,
+          "abs_end_f": 3314
+        },
+        {
+          "idx": 7,
+          "text": "It didn't.",
+          "rel_start_s": 24.27,
+          "rel_end_s": 25.28,
+          "abs_start_f": 3314,
+          "abs_end_f": 3344
+        },
+        {
+          "idx": 8,
+          "text": "Down to half its standing height, the cockroach ran at nearly full speed.",
+          "rel_start_s": 25.28,
+          "rel_end_s": 30.15,
+          "abs_start_f": 3344,
+          "abs_end_f": 3490
+        },
+        {
+          "idx": 9,
+          "text": "Its legs simply splayed wider, keeping the same fast beat on every stride.",
+          "rel_start_s": 30.15,
+          "rel_end_s": 35.85,
+          "abs_start_f": 3490,
+          "abs_end_f": 3662
+        },
+        {
+          "idx": 10,
+          "text": "Then the roof dropped just two millimeters lower, squeezing the body itself.",
+          "rel_start_s": 35.85,
+          "rel_end_s": 41.56,
+          "abs_start_f": 3662,
+          "abs_end_f": 3833
+        },
+        {
+          "idx": 11,
+          "text": "Speed crashed to a quarter of its sprint.",
+          "rel_start_s": 41.56,
+          "rel_end_s": 44.12,
+          "abs_start_f": 3833,
+          "abs_end_f": 3910
+        },
+        {
+          "idx": 12,
+          "text": "Its normal three-legged running rhythm fell apart.",
+          "rel_start_s": 44.12,
+          "rel_end_s": 47.218,
+          "abs_start_f": 3910,
+          "abs_end_f": 4003
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "wav": "/tmp/v4_audio/vo_ch04.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 59.253,
+      "wpm": 157.0,
+      "start_frame": 4099,
+      "speech_end_frame": 5877,
+      "end_frame": 6012,
+      "hold_s": 4.5,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Why did two millimeters break its stride?",
+          "rel_start_s": 0.0,
+          "rel_end_s": 3.16,
+          "abs_start_f": 4099,
+          "abs_end_f": 4194
+        },
+        {
+          "idx": 2,
+          "text": "And how was it still moving at all?",
+          "rel_start_s": 3.16,
+          "rel_end_s": 5.23,
+          "abs_start_f": 4194,
+          "abs_end_f": 4256
+        },
+        {
+          "idx": 3,
+          "text": "Follow one back leg from behind as the roof comes down.",
+          "rel_start_s": 5.23,
+          "rel_end_s": 9.37,
+          "abs_start_f": 4256,
+          "abs_end_f": 4380
+        },
+        {
+          "idx": 4,
+          "text": "With room overhead, the cockroach runs high on the tips of its feet.",
+          "rel_start_s": 9.37,
+          "rel_end_s": 13.85,
+          "abs_start_f": 4380,
+          "abs_end_f": 4515
+        },
+        {
+          "idx": 5,
+          "text": "Tiny hooked claws and soft pads catch the ground on every step.",
+          "rel_start_s": 13.85,
+          "rel_end_s": 18.33,
+          "abs_start_f": 4515,
+          "abs_end_f": 4649
+        },
+        {
+          "idx": 6,
+          "text": "Now press the ceiling down until the body flattens.",
+          "rel_start_s": 18.33,
+          "rel_end_s": 21.71,
+          "abs_start_f": 4649,
+          "abs_end_f": 4750
+        },
+        {
+          "idx": 7,
+          "text": "Forced out past eighty degrees, the leg tips sideways.",
+          "rel_start_s": 21.71,
+          "rel_end_s": 25.65,
+          "abs_start_f": 4750,
+          "abs_end_f": 4869
+        },
+        {
+          "idx": 8,
+          "text": "Picture trying a push-up with your arms stretched straight out to the sides.",
+          "rel_start_s": 25.65,
+          "rel_end_s": 30.31,
+          "abs_start_f": 4869,
+          "abs_end_f": 5008
+        },
+        {
+          "idx": 9,
+          "text": "Those foot claws lift off their normal angle.",
+          "rel_start_s": 30.31,
+          "rel_end_s": 33.32,
+          "abs_start_f": 5008,
+          "abs_end_f": 5099
+        },
+        {
+          "idx": 10,
+          "text": "Look higher up the leg instead, along the shin.",
+          "rel_start_s": 33.32,
+          "rel_end_s": 36.59,
+          "abs_start_f": 5099,
+          "abs_end_f": 5197
+        },
+        {
+          "idx": 11,
+          "text": "Rows of stiff, backward-pointing spines press straight into the floor.",
+          "rel_start_s": 36.59,
+          "rel_end_s": 41.08,
+          "abs_start_f": 5197,
+          "abs_end_f": 5331
+        },
+        {
+          "idx": 12,
+          "text": "As the leg drives back, those shin spines dig in like crampons.",
+          "rel_start_s": 41.08,
+          "rel_end_s": 45.65,
+          "abs_start_f": 5331,
+          "abs_end_f": 5469
+        },
+        {
+          "idx": 13,
+          "text": "Overhead, the rhythm shifts too.",
+          "rel_start_s": 45.65,
+          "rel_end_s": 48.29,
+          "abs_start_f": 5469,
+          "abs_end_f": 5548
+        },
+        {
+          "idx": 14,
+          "text": "Both middle legs often shove together like a pair of oars.",
+          "rel_start_s": 48.29,
+          "rel_end_s": 51.88,
+          "abs_start_f": 5548,
+          "abs_end_f": 5655
+        },
+        {
+          "idx": 15,
+          "text": "Back rubbing the roof, belly rubbing the floor, each spiny shin pushes with five times the insect's weight.",
+          "rel_start_s": 51.88,
+          "rel_end_s": 59.253,
+          "abs_start_f": 5655,
+          "abs_end_f": 5877
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "wav": "/tmp/v4_audio/vo_ch05.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 45.128,
+      "wpm": 152.9,
+      "start_frame": 6012,
+      "speech_end_frame": 7366,
+      "end_frame": 7456,
+      "hold_s": 3.0,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Could the splayed feet still be helping out of sight?",
+          "rel_start_s": 0.0,
+          "rel_end_s": 2.86,
+          "abs_start_f": 6012,
+          "abs_end_f": 6098
+        },
+        {
+          "idx": 2,
+          "text": "Researchers measured leg grip without the feet engaging at all.",
+          "rel_start_s": 2.86,
+          "rel_end_s": 7.74,
+          "abs_start_f": 6098,
+          "abs_end_f": 6244
+        },
+        {
+          "idx": 3,
+          "text": "On rough ground, the spiny shins alone still locked in tight.",
+          "rel_start_s": 7.74,
+          "rel_end_s": 10.71,
+          "abs_start_f": 6244,
+          "abs_end_f": 6333
+        },
+        {
+          "idx": 4,
+          "text": "That sets up an obvious bet.",
+          "rel_start_s": 10.71,
+          "rel_end_s": 13.0,
+          "abs_start_f": 6333,
+          "abs_end_f": 6402
+        },
+        {
+          "idx": 5,
+          "text": "If shin spines need grit to catch, then a rougher floor should always make it faster.",
+          "rel_start_s": 13.0,
+          "rel_end_s": 19.11,
+          "abs_start_f": 6402,
+          "abs_end_f": 6585
+        },
+        {
+          "idx": 6,
+          "text": "Right?",
+          "rel_start_s": 19.11,
+          "rel_end_s": 19.586,
+          "abs_start_f": 6585,
+          "abs_end_f": 6600
+        },
+        {
+          "idx": 7,
+          "text": "Across more than six hundred confined runs, researchers tested slick, medium, and coarse surfaces.",
+          "rel_start_s": 19.586,
+          "rel_end_s": 26.29,
+          "abs_start_f": 6600,
+          "abs_end_f": 6801
+        },
+        {
+          "idx": 8,
+          "text": "Rougher ceilings always slowed the insect down.",
+          "rel_start_s": 26.29,
+          "rel_end_s": 29.64,
+          "abs_start_f": 6801,
+          "abs_end_f": 6901
+        },
+        {
+          "idx": 9,
+          "text": "Overhead rub only fights forward motion.",
+          "rel_start_s": 29.64,
+          "rel_end_s": 32.26,
+          "abs_start_f": 6901,
+          "abs_end_f": 6980
+        },
+        {
+          "idx": 10,
+          "text": "On the floor, though, the coarsest grit slowed it down too.",
+          "rel_start_s": 32.26,
+          "rel_end_s": 35.75,
+          "abs_start_f": 6980,
+          "abs_end_f": 7084
+        },
+        {
+          "idx": 11,
+          "text": "On slick ground, the shin spines slipped early.",
+          "rel_start_s": 35.75,
+          "rel_end_s": 39.02,
+          "abs_start_f": 7084,
+          "abs_end_f": 7183
+        },
+        {
+          "idx": 12,
+          "text": "On very coarse ground, the spines gripped hard, but the flattened belly snagged on every grain.",
+          "rel_start_s": 39.02,
+          "rel_end_s": 45.128,
+          "abs_start_f": 7183,
+          "abs_end_f": 7366
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "wav": "/tmp/v4_audio/vo_ch06.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 51.014,
+      "wpm": 142.3,
+      "start_frame": 7456,
+      "speech_end_frame": 8986,
+      "end_frame": 9070,
+      "hold_s": 2.8,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "In separate compression tests, those overlapping plates took hundreds of times the cockroach's weight.",
+          "rel_start_s": 0.0,
+          "rel_end_s": 7.36,
+          "abs_start_f": 7456,
+          "abs_end_f": 7677
+        },
+        {
+          "idx": 2,
+          "text": "Brief peaks reached roughly nine hundred times its weight.",
+          "rel_start_s": 7.36,
+          "rel_end_s": 9.97,
+          "abs_start_f": 7677,
+          "abs_end_f": 7755
+        },
+        {
+          "idx": 3,
+          "text": "Spreading load across hinged plates let the insects sprint away at normal speed afterward.",
+          "rel_start_s": 9.97,
+          "rel_end_s": 16.41,
+          "abs_start_f": 7755,
+          "abs_end_f": 7948
+        },
+        {
+          "idx": 4,
+          "text": "Armor that tough, plus shins like crampons, makes it sound unstoppable.",
+          "rel_start_s": 16.41,
+          "rel_end_s": 20.48,
+          "abs_start_f": 7948,
+          "abs_end_f": 8070
+        },
+        {
+          "idx": 5,
+          "text": "So return to that narrowing doorway, across three hundred and fifteen lab attempts.",
+          "rel_start_s": 20.48,
+          "rel_end_s": 27.24,
+          "abs_start_f": 8070,
+          "abs_end_f": 8273
+        },
+        {
+          "idx": 6,
+          "text": "At wider gaps, nearly three out of four attempts shot straight through.",
+          "rel_start_s": 27.24,
+          "rel_end_s": 32.35,
+          "abs_start_f": 8273,
+          "abs_end_f": 8426
+        },
+        {
+          "idx": 7,
+          "text": "Narrow that slot to two stacked pennies, about three millimeters, and more than four out of five failed.",
+          "rel_start_s": 32.35,
+          "rel_end_s": 38.4,
+          "abs_start_f": 8426,
+          "abs_end_f": 8608
+        },
+        {
+          "idx": 8,
+          "text": "Only seventeen percent made it through.",
+          "rel_start_s": 38.4,
+          "rel_end_s": 40.86,
+          "abs_start_f": 8608,
+          "abs_end_f": 8682
+        },
+        {
+          "idx": 9,
+          "text": "Most swept the slot with their antennae, felt the squeeze, and turned back.",
+          "rel_start_s": 40.86,
+          "rel_end_s": 46.19,
+          "abs_start_f": 8682,
+          "abs_end_f": 8842
+        },
+        {
+          "idx": 10,
+          "text": "Nearly one in ten wedged fast at the thickest part of its chest.",
+          "rel_start_s": 46.19,
+          "rel_end_s": 51.014,
+          "abs_start_f": 8842,
+          "abs_end_f": 8986
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "wav": "/tmp/v4_audio/vo_ch07.wav",
+      "sr": 44100,
+      "channels": 1,
+      "sampwidth": 2,
+      "dry_s": 31.568,
+      "wpm": 157.8,
+      "start_frame": 9070,
+      "speech_end_frame": 10017,
+      "end_frame": 10212,
+      "hold_s": 6.5,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Now watch that two-penny escape once more at real speed.",
+          "rel_start_s": 0.0,
+          "rel_end_s": 3.72,
+          "abs_start_f": 9070,
+          "abs_end_f": 9182
+        },
+        {
+          "idx": 2,
+          "text": "Antennae read the slot, stiff plates tile down on soft hinges, and spiny shins drive it clear.",
+          "rel_start_s": 3.72,
+          "rel_end_s": 10.03,
+          "abs_start_f": 9182,
+          "abs_end_f": 9371
+        },
+        {
+          "idx": 3,
+          "text": "Past the far edge, those folded hinges spring the shell back to half an inch.",
+          "rel_start_s": 10.03,
+          "rel_end_s": 16.73,
+          "abs_start_f": 9371,
+          "abs_end_f": 9572
+        },
+        {
+          "idx": 4,
+          "text": "Its feet take over the sprint again.",
+          "rel_start_s": 16.73,
+          "rel_end_s": 18.89,
+          "abs_start_f": 9572,
+          "abs_end_f": 9637
+        },
+        {
+          "idx": 5,
+          "text": "Solid armor would jam at the edge, and feet alone would fail inside.",
+          "rel_start_s": 18.89,
+          "rel_end_s": 23.37,
+          "abs_start_f": 9637,
+          "abs_end_f": 9771
+        },
+        {
+          "idx": 6,
+          "text": "It doesn't vanish under a door by being indestructible.",
+          "rel_start_s": 23.37,
+          "rel_end_s": 27.02,
+          "abs_start_f": 9771,
+          "abs_end_f": 9881
+        },
+        {
+          "idx": 7,
+          "text": "It gets through because its shell can fold, and its shins can walk.",
+          "rel_start_s": 27.02,
+          "rel_end_s": 31.568,
+          "abs_start_f": 9881,
+          "abs_end_f": 10017
+        }
+      ]
+    }
+  ]
+}

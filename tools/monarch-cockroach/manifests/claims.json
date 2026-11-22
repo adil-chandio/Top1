@@ -1,0 +1,316 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "script_version": "V2",
+  "sources": [
+    {
+      "source_id": "jayaram_full_2016_pnas",
+      "citation": "Jayaram K, Full RJ (2016). Cockroaches traverse crevices, crawl rapidly in confined spaces, and inspire a soft, legged robot. PNAS 113(8): E950-E957.",
+      "doi_or_url": "https://doi.org/10.1073/pnas.1514591113",
+      "access_date": "2026-11-21",
+      "source_type": "peer-reviewed-paper",
+      "license": "PNAS Open Access (PMC4776529) \u2014 scientific facts/measurements cited; zero paper figures or lab videos reused.",
+      "exact_claims_supported": [
+        "Adult male Periplaneta americana (n=21, 0.76g, 12.52mm freestanding height) traverse 3.2mm gates in 288-821ms IQR across 5 stages.",
+        "Pass rate drops from 72+-5% (6.1 & 4.4mm) to 17+-3% (3.2mm) across 315 trials (~74% turn back, 9+-2% thorax-wedged).",
+        "104 confined-ceiling trials hold 58.05+-2.33 cm/s across 12, 9, 6mm before dropping 4x to 14.52+-0.98 cm/s at 4mm.",
+        "At 4mm (>80 deg sprawl), tibial spines engage substrate (~5.1x BW thrust/leg); across 638 runs, medium 40-grit floor maximizes speed.",
+        "Distributed cyclic compression peaks at 6.08+-1.61 N (~900x BW) with 76.67+-7.34 cm/s unimpaired post-test speed (P=0.49)."
+      ],
+      "claims_not_supported": [
+        "Indestructibility under sharp point loads or barefoot stomps without a 2mm stop.",
+        "Identical millimeter limits across all 4,500+ cockroach species or juvenile instars.",
+        "Claiming our procedural 3D render is actual high-speed camera footage or micro-CT."
+      ]
+    }
+  ],
+  "forbidden_phrases": [
+    {
+      "pattern": "\\bevery cockroach species\\b|\\ball cockroaches\\b",
+      "reason": "Exact millimeter thresholds belong to adult male Periplaneta americana."
+    },
+    {
+      "pattern": "\\bactual lab footage\\b|\\breal microscope video\\b|\\bmicro-ct scan footage\\b",
+      "reason": "Visuals are an illustrative procedural 3D reconstruction."
+    },
+    {
+      "pattern": "\\bcompletely indestructible\\b|\\bliterally uncrushable\\b",
+      "reason": "900x BW test used distributed plates with a 2 mm stop; 9% still wedge at 3.2 mm."
+    },
+    {
+      "pattern": "\\blike and subscribe\\b|\\bsmash that subscribe\\b",
+      "reason": "Monarch Cam forbids spoken/end-clutter CTAs."
+    }
+  ],
+  "paragraph_claims": [
+    {
+      "paragraph_index": 0,
+      "chapter": 1,
+      "category": "illustrative_animation",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Everyday closed-door framing staged cleanly on 3.2 mm slot."
+    },
+    {
+      "paragraph_index": 1,
+      "chapter": 1,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "12.52 mm (~0.5 in) standing height vs 3.2 mm (~2 stacked US pennies = 3.04 mm) gate."
+    },
+    {
+      "paragraph_index": 2,
+      "chapter": 1,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "High-speed approach without pause before antennal sweep."
+    },
+    {
+      "paragraph_index": 3,
+      "chapter": 1,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Downward head pitch and dorsal shell compression on entry."
+    },
+    {
+      "paragraph_index": 4,
+      "chapter": 1,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "288\u2013821 ms IQR traversal (< 1 s) at 3.2 mm."
+    },
+    {
+      "paragraph_index": 5,
+      "chapter": 1,
+      "category": "published_finding",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Frames the two core biomechanical questions answered in PMC4776529."
+    },
+    {
+      "paragraph_index": 6,
+      "chapter": 2,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "500 fps high-speed videography identifying 5 distinct traversal stages."
+    },
+    {
+      "paragraph_index": 7,
+      "chapter": 2,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Stages 1\u20134: antennal probe, head wedge, slight pronotum roll, outside hind-leg shove."
+    },
+    {
+      "paragraph_index": 8,
+      "chapter": 2,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Stage 5 abdomen exit; stiff chitin sclerites do not bend like rubber."
+    },
+    {
+      "paragraph_index": 9,
+      "chapter": 2,
+      "category": "published_finding",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Rigid tergites shingle while soft arthrodial membranes fold ~41\u201357% (47% in 3.2 mm slit)."
+    },
+    {
+      "paragraph_index": 10,
+      "chapter": 3,
+      "category": "published_finding",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Contrasts narrow gate (legs outside) with continuous low-ceiling confinement."
+    },
+    {
+      "paragraph_index": 11,
+      "chapter": 3,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "15 cm confined tunnel stepped across 12, 9, 6, and 4 mm (104 trials)."
+    },
+    {
+      "paragraph_index": 12,
+      "chapter": 3,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Speed holds ~58.05 \u00b1 2.33 cm/s across 12, 9, and 6 mm with constant ~61.05 ms stride."
+    },
+    {
+      "paragraph_index": 13,
+      "chapter": 3,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "2 mm drop from 6 mm to 4 mm cuts speed 4x to 14.52 \u00b1 0.98 cm/s (P < 0.001) and breaks tripod gait."
+    },
+    {
+      "paragraph_index": 14,
+      "chapter": 4,
+      "category": "illustrative_animation",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Camera motivation introducing the rear transverse leg comparison."
+    },
+    {
+      "paragraph_index": 15,
+      "chapter": 4,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Unconstrained 12 mm running engages distal tarsal claws and arolium/euplantulae pads."
+    },
+    {
+      "paragraph_index": 16,
+      "chapter": 4,
+      "category": "modelled_reconstruction",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "At 4 mm, >80 deg sprawl tips distal tarsus sideways (+0.47 mm clearance); wide-arm push-up analogy."
+    },
+    {
+      "paragraph_index": 17,
+      "chapter": 4,
+      "category": "directly_observed",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Backward-pointing tibial spines contact floor at z = 0 mm and drive rearward without slip."
+    },
+    {
+      "paragraph_index": 18,
+      "chapter": 4,
+      "category": "derived_calculation",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Synchronous mesothoracic oar shoves; ~38 mN/leg thrust = ~5.1x BW against dorsal+ventral friction."
+    },
+    {
+      "paragraph_index": 19,
+      "chapter": 5,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Tarsus-ablated semicircular-track control confirmed tibial-spine kinetic friction (mu_f = 0.84\u20132.04)."
+    },
+    {
+      "paragraph_index": 20,
+      "chapter": 5,
+      "category": "hypothesis",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Sets up intuitive viewer prediction ('rougher floor should always make it faster') tested next."
+    },
+    {
+      "paragraph_index": 21,
+      "chapter": 5,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "638 confined runs at 4 mm: rougher ceilings monotonically reduce speed (6.64 -> 5.63 -> 0.36 cm/s)."
+    },
+    {
+      "paragraph_index": 22,
+      "chapter": 5,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Floor speed peaks on medium 40-grit (5.26 cm/s) and drops on coarse 20-grit (3.69 cm/s) via belly snag (mu_g = 0.76)."
+    },
+    {
+      "paragraph_index": 23,
+      "chapter": 6,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Slit normal load ~300x BW (2.25 N); cyclic distributed peak ~900x BW (6.08 N over ~3 cm\u00b2), post-test speed 76.67 cm/s (P = 0.49)."
+    },
+    {
+      "paragraph_index": 24,
+      "chapter": 6,
+      "category": "published_finding",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Transitions from distributed shell resilience to 315 crevice-gate limit trials."
+    },
+    {
+      "paragraph_index": 25,
+      "chapter": 6,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "72 \u00b1 5% pass at 6.1 & 4.4 mm vs 17 \u00b1 3% pass (>4/5 fail) at 3.2 mm."
+    },
+    {
+      "paragraph_index": 26,
+      "chapter": 6,
+      "category": "unknown_limitation",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "17% pass, ~74% antennal turn-back, 9 \u00b1 2% thorax-wedged bottleneck for adult male Periplaneta americana."
+    },
+    {
+      "paragraph_index": 27,
+      "chapter": 7,
+      "category": "modelled_reconstruction",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Real-speed 1x synthesis of antennal read, shingle fold, and tibial-spine drive."
+    },
+    {
+      "paragraph_index": 28,
+      "chapter": 7,
+      "category": "measured",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Viscoelastic arthrodial rebound (60 \u00b1 12% slow-rate resilience) restores 12.52 mm standing posture."
+    },
+    {
+      "paragraph_index": 29,
+      "chapter": 7,
+      "category": "published_finding",
+      "source_ids": [
+        "jayaram_full_2016_pnas"
+      ],
+      "bound_note": "Concluding synthesis contrasting myth of indestructibility with folding hinges + walking shins."
+    }
+  ]
+}

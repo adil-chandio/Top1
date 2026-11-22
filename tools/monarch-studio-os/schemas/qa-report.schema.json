@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MonarchStudioMediaQAReport",
+  "type": "object",
+  "required": [
+    "project_id",
+    "artifact_role",
+    "sha256",
+    "bytes",
+    "video_qa",
+    "audio_qa",
+    "mobile_qa",
+    "passed"
+  ],
+  "properties": {
+    "project_id": { "type": "string" },
+    "artifact_role": { "enum": ["moving-contact-proof", "opening-pilot", "full-feature", "short"] },
+    "sha256": { "type": "string", "minLength": 64, "maxLength": 64 },
+    "bytes": { "type": "integer", "minimum": 1024 },
+    "video_qa": {
+      "type": "object",
+      "required": [
+        "decoded_frames",
+        "expected_frames",
+        "fps",
+        "resolution",
+        "black_frames",
+        "unintended_freeze_runs",
+        "av_sync_delta_s"
+      ],
+      "properties": {
+        "decoded_frames": { "type": "integer", "minimum": 1 },
+        "expected_frames": { "type": "integer", "minimum": 1 },
+        "fps": { "type": "number" },
+        "resolution": { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 },
+        "black_frames": { "type": "integer", "minimum": 0 },
+        "unintended_freeze_runs": { "type": "integer", "minimum": 0 },
+        "av_sync_delta_s": { "type": "number", "minimum": 0 }
+      }
+    },
+    "audio_qa": {
+      "type": "object",
+      "required": [
+        "sample_rate_hz",
+        "channels",
+        "integrated_lufs",
+        "true_peak_dbtp",
+        "clipped_samples",
+        "mono_correlation"
+      ],
+      "properties": {
+        "sample_rate_hz": { "type": "integer" },
+        "channels": { "type": "integer" },
+        "integrated_lufs": { "type": "number" },
+        "true_peak_dbtp": { "type": "number" },
+        "clipped_samples": { "type": "integer", "minimum": 0 },
+        "mono_correlation": { "type": "number" }
+      }
+    },
+    "mobile_qa": {
+      "type": "object",
+      "required": ["downscale_widths_checked", "min_edge_contrast_ratio", "safe_margin_passed"],
+      "properties": {
+        "downscale_widths_checked": { "type": "array", "items": { "type": "integer" } },
+        "min_edge_contrast_ratio": { "type": "number" },
+        "safe_margin_passed": { "type": "boolean" }
+      }
+    },
+    "passed": { "type": "boolean" }
+  }
+}

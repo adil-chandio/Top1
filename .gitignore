@@ -6,10 +6,13 @@ dist/
 !.env.example
 .DS_Store
 
-# Private studio exports and customer-specific caption files.
+# Private studio exports, rendered MP4/WAV masters, and customer-specific caption files.
 /deliverables/
+/exports/
 
 # Local connector downloads, reference search results, and Python caches.
 /google_drive/
 /image-search/
 __pycache__/
+*.pyc
+.pytest_cache/

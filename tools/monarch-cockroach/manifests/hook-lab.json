@@ -1,0 +1,65 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "candidates": [
+    {
+      "id": "H1_light_flip_door_action",
+      "type": "visual_action",
+      "opening_line": "Flip on a light, and a cockroach bolts for the crack under a closed door.",
+      "one_sentence_clear": true,
+      "matches_title_thumbnail": true,
+      "first_seconds_visual_evidence": true,
+      "non_misleading": true,
+      "reproducible_in_proof_clip": true,
+      "passed": true,
+      "selected": true
+    },
+    {
+      "id": "H2_no_feet_surprising_claim",
+      "type": "surprising_claim",
+      "opening_line": "Squeezed into a tight crack, this cockroach stops using its feet\u2014and keeps moving anyway.",
+      "one_sentence_clear": true,
+      "matches_title_thumbnail": true,
+      "first_seconds_visual_evidence": true,
+      "non_misleading": true,
+      "reproducible_in_proof_clip": true,
+      "passed": true,
+      "selected": false
+    },
+    {
+      "id": "H3_two_pennies_scale",
+      "type": "scale_comparison",
+      "opening_line": "Stack two pennies on the floor: that three-millimeter sliver is tall enough for a half-inch cockroach to vanish through.",
+      "one_sentence_clear": true,
+      "matches_title_thumbnail": true,
+      "first_seconds_visual_evidence": true,
+      "non_misleading": true,
+      "reproducible_in_proof_clip": true,
+      "passed": true,
+      "selected": false
+    },
+    {
+      "id": "H4_armor_fold_question",
+      "type": "question",
+      "opening_line": "If an insect's shell is stiff armor, why doesn't a three-millimeter gap snap it in half?",
+      "one_sentence_clear": true,
+      "matches_title_thumbnail": false,
+      "first_seconds_visual_evidence": true,
+      "non_misleading": true,
+      "reproducible_in_proof_clip": true,
+      "passed": false,
+      "selected": false
+    },
+    {
+      "id": "H5_900x_press_consequence",
+      "type": "consequence",
+      "opening_line": "Crush this insect under nine hundred times its body weight, and it sprints away unharmed.",
+      "one_sentence_clear": true,
+      "matches_title_thumbnail": false,
+      "first_seconds_visual_evidence": false,
+      "non_misleading": true,
+      "reproducible_in_proof_clip": false,
+      "passed": false,
+      "selected": false
+    }
+  ]
+}

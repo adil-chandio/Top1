@@ -1,0 +1,99 @@
+{
+  "episode": "03",
+  "edition": "16x9-long-form-feature-v2",
+  "script_version": "V2",
+  "title_recommended": "How This Cockroach Runs Without Its Feet",
+  "title_alternate": "This Cockroach Vanishes Under Two Pennies—Without Using Its Feet",
+  "species": "Periplaneta americana",
+  "primary_doi": "10.1073/pnas.1514591113",
+  "primary_pmcid": "PMC4776529",
+  "aspect_ratio": "16:9",
+  "delivery_resolution": [1920, 1080],
+  "native_continuation_resolution": [1280, 720],
+  "fps": 30,
+  "spoken_words": 794,
+  "sentence_count": 81,
+  "avg_words_per_sentence": 9.8,
+  "max_words_per_sentence": 18,
+  "paragraph_count": 30,
+  "chapter_paragraph_bounds": [0, 6, 10, 14, 19, 23, 27, 30],
+  "picture_hold_budget_s": 32,
+  "planned_estimate_145wpm_s": 360.6,
+  "nominal_pre_vo_frames": 9180,
+  "nominal_pre_vo_duration_s": 306.0,
+  "voice_id": null,
+  "audition_language": "en",
+  "audition_excerpt": "Flip on a light, and a cockroach bolts for the crack under a closed door. Standing up, it's half an inch tall. That gap ahead is barely as thick as two stacked pennies. Squashed down flat, rows of stiff spines along its shins dig in like crampons.",
+  "chapters": [
+    {
+      "chapter": 1,
+      "id": "under_the_door",
+      "title": "Under the door",
+      "paragraphs": [0, 6],
+      "words": 85,
+      "picture_hold_s": 3,
+      "nominal_frame_range": [0, 840],
+      "key_visual": "Universal closed-door light-flip recognition -> eye-level 12.52 mm sprint into 3.2 mm slot beside two stacked US pennies -> sub-second vanish -> double mechanical paradox ('Wait a second.')."
+    },
+    {
+      "chapter": 2,
+      "id": "five_moves_through_the_slot",
+      "title": "Five moves through the slot",
+      "paragraphs": [6, 10],
+      "words": 116,
+      "picture_hold_s": 4,
+      "nominal_frame_range": [840, 2250],
+      "key_visual": "500 fps slowed 5-stage horizontal gate traversal + sagittal cutaway showing rigid chitin plates shingling like roof tiles as soft arthrodial hinges fold ~47%."
+    },
+    {
+      "chapter": 3,
+      "id": "the_low_ceiling_surprise",
+      "title": "The low-ceiling surprise",
+      "paragraphs": [10, 14],
+      "words": 119,
+      "picture_hold_s": 4,
+      "nominal_frame_range": [2250, 3660],
+      "key_visual": "Confined tunnel surprise: cutting height in half leaves speed untouched (~58 cm/s on SUPER gauge; metric clutter removed from VO) until a 2 mm drop to 4 mm triggers a 4x speed crash."
+    },
+    {
+      "chapter": 4,
+      "id": "when_shins_become_feet",
+      "title": "When shins become feet",
+      "paragraphs": [14, 19],
+      "words": 155,
+      "picture_hold_s": 6,
+      "nominal_frame_range": [3660, 5280],
+      "key_visual": "Uninterrupted rear/macro leg proof: upright tarsal claws vs >80 deg sprawl (wide-arm push-up analogy) lifting claws (+0.47 mm) while 3 tibial spines dig in like crampons at z=0 mm + paired middle-leg oar shove (~5x BW/leg)."
+    },
+    {
+      "chapter": 5,
+      "id": "the_rough_floor_trap",
+      "title": "The rough-floor trap",
+      "paragraphs": [19, 23],
+      "words": 115,
+      "picture_hold_s": 4,
+      "nominal_frame_range": [5280, 6570],
+      "key_visual": "Counter-intuitive viewer bet ('rougher floor should always make it faster—right?') -> 638-trial twist: rougher ceilings always slow crawling, AND the coarsest floor slows it too via flattened belly snag."
+    },
+    {
+      "chapter": 6,
+      "id": "tough_shell_tight_limit",
+      "title": "Tough shell, tight limit",
+      "paragraphs": [23, 27],
+      "words": 121,
+      "picture_hold_s": 3,
+      "nominal_frame_range": [6570, 7980],
+      "key_visual": "Flipped dramatic climax: first establish ~900x body-weight peak shell resilience + normal sprint ('sounds unstoppable'), THEN shatter it with 315 doorway attempts (>4/5 fail at 3 mm; 17% pass; ~1/10 chest-wedged)."
+    },
+    {
+      "chapter": 7,
+      "id": "hinges_and_spines",
+      "title": "Hinges and spines",
+      "paragraphs": [27, 30],
+      "words": 83,
+      "picture_hold_s": 8,
+      "nominal_frame_range": [7980, 9180],
+      "key_visual": "Real-speed two-penny passage replay, viscoelastic hinge rebound back to half an inch, foot-claw sprint, and quiet 8-second hold ('because its shell can fold—and its shins can walk')."
+    }
+  ]
+}

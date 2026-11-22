@@ -1,0 +1,23 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "disclaimer": "Pre-production quality gate only (out of 100)\u2014not a guaranteed viral probability prediction.",
+  "scores": {
+    "viewer_promise_clarity": 19,
+    "visible_proof_potential": 19,
+    "novelty": 14,
+    "evidence_strength": 15,
+    "emotional_stakes_value": 9,
+    "short_long_format_fit": 9,
+    "rights_certainty": 5,
+    "production_feasibility": 4.5
+  },
+  "total_score": 94.5,
+  "gate_checks": {
+    "score_strong": true,
+    "claim_ledger_complete": true,
+    "title_thumbnail_promise_clear": true,
+    "eight_to_twelve_sec_proof_possible": true,
+    "owner_selection_confirmed": true
+  },
+  "passed": true
+}

@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Monarch Cam #03 — V6 Hollywood IMAX Short Engine (1080x1920)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #050a0e; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { createV5MaterialLibrary } from '../v5/materials_v5.js';
+import { createMonarchWorldV5 } from '../v5/world_v5.js';
+import { createImaxOpticalPassV6 } from './postfx_imax_v6.js';
+import { createImaxVfxSuiteV6 } from './vfx_imax_v6.js';
+import { createShortDirectorV6 } from './short_director_v6.js';
+import { drawShortHudV6 } from './short_titles_v6.js';
+
+const params = new URLSearchParams(window.location.search);
+const RENDER_W = parseInt(params.get('w') || '1080', 10);
+const RENDER_H = parseInt(params.get('h') || '1920', 10);
+
+// Explicitly load WOFF2 fonts via ArrayBuffer into FontFace API & assert non-zero glyph metrics!
+async function loadCinemaFonts() {
+  const fontSpecs = [
+    {
+      family: 'Space Grotesk',
+      url: '/@fs/tmp/v6_runtime/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2',
+      desc: { style: 'normal', weight: '300 700' },
+    },
+    {
+      family: 'IBM Plex Mono',
+      url: '/@fs/tmp/v6_runtime/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2',
+      desc: { style: 'normal', weight: '500' },
+    },
+    {
+      family: 'IBM Plex Mono',
+      url: '/@fs/tmp/v6_runtime/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2',
+      desc: { style: 'normal', weight: '600' },
+    },
+  ];
+
+  for (const sp of fontSpecs) {
+    const resp = await fetch(sp.url);
+    if (!resp.ok) throw new Error(`Failed to fetch font ${sp.url}: ${resp.status}`);
+    const buf = await resp.arrayBuffer();
+    const ff = new FontFace(sp.family, buf, sp.desc);
+    await ff.load();
+    document.fonts.add(ff);
+  }
+  await document.fonts.ready;
+
+  const probeCtx = document.createElement('canvas').getContext('2d');
+  probeCtx.font = '700 44px "Space Grotesk"';
+  const sgWidth = probeCtx.measureText('under 2 pennies').width;
+  probeCtx.font = '600 18px "IBM Plex Mono"';
+  const monoWidth = probeCtx.measureText('GAP 3.20 MM').width;
+  if (sgWidth < 80 || monoWidth < 40) {
+    throw new Error(`Font glyph probe failed! sgWidth=${sgWidth}, monoWidth=${monoWidth}`);
+  }
+  console.log(`[Fonts Verified] SpaceGrotesk=${sgWidth.toFixed(1)}px, IBMPlexMono=${monoWidth.toFixed(1)}px`);
+}
+
+await loadCinemaFonts();
+
+const webglCanvas = document.createElement('canvas');
+webglCanvas.width = RENDER_W;
+webglCanvas.height = RENDER_H;
+document.body.appendChild(webglCanvas);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: webglCanvas,
+  antialias: false,
+  alpha: false,
+  powerPreference: 'high-performance',
+  preserveDrawingBuffer: true,
+});
+renderer.setSize(RENDER_W, RENDER_H, false);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.sortObjects = true;
+renderer.autoClear = false;
+
+const camera = new THREE.PerspectiveCamera(46, RENDER_W / RENDER_H, 1.4, 5200.0);
+const mats = await createV5MaterialLibrary();
+const world = await createMonarchWorldV5(mats, renderer);
+
+// Soften oversized background gooseneck lamp spheres & offset phantomCam from center axis in LabSet!
+world.phantomCam.position.set(-175, 36, -245);
+world.phantomCam.rotation.y = 0.48;
+world.labSet.traverse((o) => {
+  if (o.isMesh && o.geometry?.type === 'SphereGeometry' && o.position.y > 60) {
+    o.scale.setScalar(0.35);
+  }
+});
+
+const vfx = createImaxVfxSuiteV6(world);
+const imaxPass = createImaxOpticalPassV6(renderer, RENDER_W, RENDER_H);
+const director = createShortDirectorV6(world, vfx, camera);
+
+// Crisp 2D Action-Graphics & Minimalist Safe-Zone Caption Overlay composited directly in GPU!
+const hudCanvas = document.createElement('canvas');
+hudCanvas.width = RENDER_W;
+hudCanvas.height = RENDER_H;
+const hudCtx = hudCanvas.getContext('2d');
+const hudTex = new THREE.CanvasTexture(hudCanvas);
+hudTex.minFilter = THREE.LinearFilter;
+hudTex.magFilter = THREE.LinearFilter;
+
+const hudScene = new THREE.Scene();
+const hudCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const hudQuad = new THREE.Mesh(
+  new THREE.PlaneGeometry(2, 2),
+  new THREE.MeshBasicMaterial({
+    map: hudTex,
+    transparent: true,
+    depthTest: false,
+    depthWrite: false,
+  })
+);
+hudScene.add(hudQuad);
+
+function renderCompleteFrame(frame, hudOpts = { showCaptions: true }) {
+  const state = director.evaluateFrame(frame);
+  imaxPass.render(world.scene, camera, state.postParams);
+  drawShortHudV6(hudCtx, state, hudOpts);
+  hudTex.needsUpdate = true;
+  renderer.setRenderTarget(null);
+  renderer.render(hudScene, hudCam);
+  return state;
+}
+
+window.renderFramePNG = (frame, hudOpts = { showCaptions: true }) => {
+  renderCompleteFrame(frame, hudOpts);
+  return webglCanvas.toDataURL('image/png');
+};
+
+window.renderCoverPNG = () => {
+  renderCompleteFrame(30, { showCaptions: false, coverMode: true });
+  return webglCanvas.toDataURL('image/png');
+};
+
+const gl = renderer.getContext();
+const pixelBuf = new Uint8Array(RENDER_W * RENDER_H * 4);
+let activeWS = null;
+let wsWaitResolve = null;
+
+window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+  const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+  ws.binaryType = 'arraybuffer';
+  ws.onmessage = () => {
+    if (wsWaitResolve) {
+      const r = wsWaitResolve;
+      wsWaitResolve = null;
+      r();
+    }
+  };
+  ws.onopen = () => { activeWS = ws; resolve(true); };
+  ws.onerror = (e) => reject(e);
+});
+
+window.streamFramesWS = async (fStart, fEnd) => {
+  if (fStart > 0) {
+    director.evaluateFrame(fStart - 1);
+  }
+  for (let f = fStart; f < fEnd; f++) {
+    renderCompleteFrame(f, { showCaptions: true });
+    gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+    await new Promise((res) => {
+      wsWaitResolve = res;
+      activeWS.send(pixelBuf);
+    });
+  }
+  return fEnd - fStart;
+};
+
+window.measureLoopSeamMAE = () => {
+  director.evaluateFrame(1048);
+  renderCompleteFrame(1049, { showCaptions: false });
+  const buf1049 = new Uint8Array(RENDER_W * RENDER_H * 4);
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, buf1049);
+
+  renderCompleteFrame(0, { showCaptions: false });
+  const buf0 = new Uint8Array(RENDER_W * RENDER_H * 4);
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, buf0);
+
+  let diffSum = 0;
+  const pxCount = RENDER_W * RENDER_H * 3;
+  for (let i = 0; i < buf0.length; i += 4) {
+    diffSum += Math.abs(buf1049[i] - buf0[i]);
+    diffSum += Math.abs(buf1049[i + 1] - buf0[i + 1]);
+    diffSum += Math.abs(buf1049[i + 2] - buf0[i + 2]);
+  }
+  return diffSum / pxCount;
+};
+
+window.__SHORT_V6_READY__ = true;
+</script>
+</body>
+</html>

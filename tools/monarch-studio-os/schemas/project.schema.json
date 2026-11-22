@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MonarchStudioProjectManifest",
+  "type": "object",
+  "required": [
+    "project_id",
+    "channel",
+    "episode",
+    "edition",
+    "format",
+    "status",
+    "owner_selected",
+    "strategic_chain",
+    "status_history"
+  ],
+  "properties": {
+    "project_id": { "type": "string", "minLength": 3 },
+    "channel": { "enum": ["monarch-cam", "extinct-life", "monarchs-edit"] },
+    "episode": { "type": "string" },
+    "edition": { "type": "string" },
+    "format": { "enum": ["long-16x9", "short-9x16"] },
+    "status": {
+      "enum": [
+        "idea",
+        "researched",
+        "shortlisted",
+        "owner-selected",
+        "claim-checked",
+        "scripted",
+        "proof-pending",
+        "proof-passed",
+        "voice-locked",
+        "picture-locked",
+        "mix-locked",
+        "qa-passed",
+        "owner-accepted",
+        "private-uploaded",
+        "published"
+      ]
+    },
+    "owner_selected": { "type": "boolean" },
+    "strategic_chain": {
+      "type": "object",
+      "required": [
+        "what_viewer_saw",
+        "physical_mechanism",
+        "supporting_evidence",
+        "what_evidence_does_not_prove",
+        "viewer_understanding_shift"
+      ],
+      "properties": {
+        "what_viewer_saw": { "type": "string", "minLength": 15 },
+        "physical_mechanism": { "type": "string", "minLength": 15 },
+        "supporting_evidence": { "type": "string", "minLength": 15 },
+        "what_evidence_does_not_prove": { "type": "string", "minLength": 15 },
+        "viewer_understanding_shift": { "type": "string", "minLength": 15 }
+      },
+      "additionalProperties": false
+    },
+    "status_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["state", "date", "actor", "reason"],
+        "properties": {
+          "state": { "type": "string" },
+          "date": { "type": "string" },
+          "actor": { "enum": ["owner", "agent-verified", "qa-gate"] },
+          "reason": { "type": "string", "minLength": 5 }
+        }
+      }
+    }
+  }
+}

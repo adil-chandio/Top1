@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0.0",
+  "dependencies": [
+    {
+      "name": "g++ (GCC OpenMP C++17)",
+      "purpose": "Native multi-threaded C++17 CPU ray-casting / SDF / PBR 3D renderer",
+      "version": "g++ (Debian 12.2.0-14+deb12u1) 12.2.0",
+      "commit_or_release": "debian-bookworm-system-toolchain",
+      "license": "GPL-3.0-or-later WITH GCC-exception-3.1",
+      "sha256": "dd91977c184e327710578363ad93ebb175c3a457b6236b874fd3911b7c055c65",
+      "security_risk": "low (offline local compiler)",
+      "replacement_option": "clang++ -std=c++17 -O3 -fopenmp"
+    },
+    {
+      "name": "attrs",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "26.1.0",
+      "commit_or_release": "attrs-26.1.0-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "c647aa4a12dfbad9333ca4e71fe62ddc36f4e63b2d260a37a8b83d2f043ac309",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "av",
+      "purpose": "PyAV packet/frame-accurate video & audio stream decoder for QA",
+      "version": "18.1.1",
+      "commit_or_release": "av-18.1.1-cp311-abi3-manylinux_2_28_x86_64.whl",
+      "license": "BSD-3-Clause",
+      "sha256": "99c8f12ad952f86376b80e3d3dbb792d76036018d3e25233c34d5f225faf55e1",
+      "security_risk": "low",
+      "replacement_option": "ffprobe + raw pipe decode"
+    },
+    {
+      "name": "cffi",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "2.1.1",
+      "commit_or_release": "cffi-2.1.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl",
+      "license": "MIT/BSD",
+      "sha256": "34e261f78cb6ceaaa36f42f2613f4380d94d9c759a9c73c769ee6e0247364632",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "imageio_ffmpeg",
+      "purpose": "Pinned static FFmpeg 9.0.2 binary for H.264/AAC CFR muxing",
+      "version": "0.8.1",
+      "commit_or_release": "imageio_ffmpeg-0.8.1-py3-none-manylinux_2_28_x86_64.whl",
+      "license": "BSD-2-Clause + LGPL/GPL FFmpeg binary",
+      "sha256": "050d6850601c3b3890bd2b28306f3b842b3daea390a561101174375a1c460bda",
+      "security_risk": "low",
+      "replacement_option": "System packaged ffmpeg"
+    },
+    {
+      "name": "iniconfig",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "2.3.1",
+      "commit_or_release": "iniconfig-2.3.1-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "9121e2c1fdb355232495be3194c8dfe87ccc2d5dee45947b78e68f499790d7a7",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "jsonschema",
+      "purpose": "Draft 2020-12 JSON Schema validation for all Studio OS manifests",
+      "version": "4.26.0",
+      "commit_or_release": "jsonschema-4.26.0-py3-none-any.whl",
+      "license": "MIT",
+      "sha256": "d489f15263b8d200f8387e64b4c3a75f06629559fb73deb8fdfb525f2dab50ce",
+      "security_risk": "low",
+      "replacement_option": "Custom recursive dict validator"
+    },
+    {
+      "name": "jsonschema_specifications",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "2025.9.1",
+      "commit_or_release": "jsonschema_specifications-2025.9.1-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "98802fee3a11ee76ecaca44429fda8a41bff98b00a0f2838151b113f210cc6fe",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "numpy",
+      "purpose": "Numerical arrays, vector kinematics, and audio PCM DSP",
+      "version": "2.4.6",
+      "commit_or_release": "numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "license": "BSD-3-Clause",
+      "sha256": "89cd468399cfd2504718f0ba50e410dca55a170b61a02ad92bb18c8a65186e93",
+      "security_risk": "low",
+      "replacement_option": "Pure-Python math + array module"
+    },
+    {
+      "name": "packaging",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "26.3",
+      "commit_or_release": "packaging-26.3-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "d7193f7c8e4e93f444fde0262bf90af30e16fa0ad0ad44cb553c87339b23cd1c",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "pluggy",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "1.7.0",
+      "commit_or_release": "pluggy-1.7.0-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "7dd7b0d8832ba3cb632c306926ded123429211b83641b35dc5c41ad2d34f9bec",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "pycparser",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "3.12",
+      "commit_or_release": "pycparser-3.12-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "a076f3f489b39b43ed13563a1dafe42447445bec2e294154ec5c57fcdda4c85e",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "pygments",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "2.21.0",
+      "commit_or_release": "pygments-2.21.0-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "2363c69b61c4a97c838da3b130dcd6468f4848992b21a82f2a63ec34377137d9",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "pyloudnorm",
+      "purpose": "ITU-R BS.1770-4 / EBU R128 integrated loudness metering",
+      "version": "0.2.0",
+      "commit_or_release": "pyloudnorm-0.2.0-py3-none-any.whl",
+      "license": "MIT",
+      "sha256": "9bb69afb904f59d007a7f9ba3d75d16fb8aeef35c44d6df822a9f192d69cf13f",
+      "security_risk": "low",
+      "replacement_option": "Custom K-weighted mean-square meter"
+    },
+    {
+      "name": "pytest",
+      "purpose": "Automated 13-domain QA test matrix runner",
+      "version": "9.2.0",
+      "commit_or_release": "pytest-9.2.0-py3-none-any.whl",
+      "license": "MIT",
+      "sha256": "07acdcf88ec174f907dc01af70bf52d49b014bbab03faeeade31c96b18c2e588",
+      "security_risk": "low",
+      "replacement_option": "Python stdlib unittest"
+    },
+    {
+      "name": "referencing",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "0.37.0",
+      "commit_or_release": "referencing-0.37.0-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "381329a9f99628c9069361716891d34ad94af76e461dcb0335825aecc7692231",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "rpds_py",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "2026.9.1",
+      "commit_or_release": "rpds_py-2026.9.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      "license": "MIT/BSD",
+      "sha256": "136a1c3fe4402b7008bc81cb62ee538481795b61a7e83df88dff3b3f02b726ff",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    },
+    {
+      "name": "scipy",
+      "purpose": "Zero-phase audio filtering, 4x oversampled True Peak, and signal correlation",
+      "version": "1.17.1",
+      "commit_or_release": "scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl",
+      "license": "BSD-3-Clause",
+      "sha256": "43af8d1f3bea642559019edfe64e9b11192a8978efbd1539d7bc2aaa23d92de4",
+      "security_risk": "low",
+      "replacement_option": "Custom FIR/IIR difference equations"
+    },
+    {
+      "name": "soundfile",
+      "purpose": "24-bit / float64 WAV stem I/O via libsndfile",
+      "version": "0.14.0",
+      "commit_or_release": "soundfile-0.14.0-py2.py3-none-manylinux_2_28_x86_64.whl",
+      "license": "BSD-3-Clause",
+      "sha256": "1e38bac1853412871318e82a1ba69a8be677619b56025bbfcccdb41b6cafe82d",
+      "security_risk": "low",
+      "replacement_option": "Python stdlib wave module"
+    },
+    {
+      "name": "typing_extensions",
+      "purpose": "Transitive wheel dependency for JSON Schema / pytest / CFFI",
+      "version": "4.16.0",
+      "commit_or_release": "typing_extensions-4.16.0-py3-none-any.whl",
+      "license": "MIT/BSD",
+      "sha256": "481caa481374e813c1b176ada14e97f1f67a4539ce9cfeb3f350d78d6370c2e8",
+      "security_risk": "low",
+      "replacement_option": "Pinned stdlib fallback"
+    }
+  ]
+}
