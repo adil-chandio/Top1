@@ -1,0 +1,63 @@
+name: Extinct Life research desk
+
+# Branch-only, bounded runs. No schedule, publication or write access.
+on:
+  push:
+    branches: [arena/6e66724e-top1]
+    paths:
+      - .github/workflows/extinct-life-research-system.yml
+      - tools/extinct-life/research-system/**
+
+permissions:
+  contents: read
+
+jobs:
+  research:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      RESEARCH_OUT: ${{ runner.temp }}/extinct-life-research
+    steps:
+      - name: Checkout
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Run deterministic unit tests
+        run: python3 -m unittest discover -s tools/extinct-life/research-system/tests -v
+      - name: Collect scientific metadata and discovery leads
+        id: science
+        continue-on-error: true
+        run: python3 tools/extinct-life/research-system/research.py science --out "$RESEARCH_OUT"
+      - name: Collect bounded public YouTube API metadata
+        id: youtube
+        continue-on-error: true
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YTAP1: ${{ secrets.YTAP1 }}
+          YTAPI1: ${{ secrets.YTAPI1 }}
+          YT_KEY: ${{ secrets.YT_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python3 tools/extinct-life/research-system/research.py youtube --out "$RESEARCH_OUT"
+      - name: Install semantic inference dependencies
+        id: install
+        continue-on-error: true
+        run: python3 -m pip install --quiet 'numpy==1.26.4' 'onnxruntime==1.20.1' 'tokenizers==0.21.0'
+      - name: Match scientific titles only
+        id: semantic
+        if: steps.install.outcome == 'success' && steps.science.outcome == 'success'
+        continue-on-error: true
+        run: timeout 240s python3 tools/extinct-life/research-system/semantic_science.py --out "$RESEARCH_OUT"
+      - name: Assemble report including incomplete source statuses
+        if: always()
+        run: python3 tools/extinct-life/research-system/research.py report --out "$RESEARCH_OUT"
+      - name: Save public-data report for one day
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: extinct-life-research-report
+          path: ${{ runner.temp }}/extinct-life-research/
+          retention-days: 1
+          if-no-files-found: error
+      - name: Verify collection completeness
+        if: always()
+        run: python3 tools/extinct-life/research-system/research.py gate --out "$RESEARCH_OUT"

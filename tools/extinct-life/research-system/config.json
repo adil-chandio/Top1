@@ -1,0 +1,17 @@
+{
+  "channels": [
+    {"name": "PBS Eons", "id": "UCzR-rom72PHN9Zg7RML9EbA"},
+    {"name": "Moth Light Media", "id": "UCOh5Ht3eB4914hMUfJkKa9g"},
+    {"name": "ExtinctZoo", "id": "UC0ggS8bt4v7NiZpDfGqNpZQ"},
+    {"name": "Ben G Thomas", "id": "UCDSzwZqgtJEnUzacq3dd0OQ"}
+  ],
+  "videos_per_channel": 30,
+  "search_results_per_query": 8,
+  "candidates": [
+    {"id": "clay-mummy", "name": "Edmontosaurus clay-mask mummy", "search": "Edmontosaurus mummy clay fossil skin", "doi": "10.1126/science.adw3536", "question": "How did clay record a dinosaur's outer anatomy?"},
+    {"id": "gorgosaurus-meal", "name": "Young Gorgosaurus last meals", "search": "Gorgosaurus stomach contents Citipes", "doi": "10.1126/sciadv.adi0505", "question": "What can a young tyrannosaur's stomach contents tell us?"},
+    {"id": "trilobite-ash", "name": "Moroccan trilobite ash molds", "search": "Morocco trilobite volcanic ash 3D fossils", "doi": "10.1126/science.adl4540", "question": "How did volcanic ash preserve trilobite anatomy?"}
+  ],
+  "science_queries": ["dinosaur fossil", "pterosaur fossil", "extinct marine fossil"],
+  "science_results_per_query": 8
+}
