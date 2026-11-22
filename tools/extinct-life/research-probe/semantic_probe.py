@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Tiny synthetic semantic-similarity proof; not a viral predictor or benchmark.
+"""Tiny semantic-similarity proof; not a viral predictor or benchmark.
 
+Uses synthetic examples plus four previously identified public video titles.
 Downloads only two pinned public model files to the runner's temporary directory.
 No private video information or credentials are sent to the model provider.
 """
@@ -20,6 +21,16 @@ TEXTS = [
     "Fossilized duck-billed dinosaur skin turned out to be a clay mask",
     "A young tyrannosaur fossil reveals the dinosaur's last meal",
     "A recipe for baking chocolate cake at home",
+    "Dinosaur Mummy Discovery: Hooved Edmontosaurus Revealed in Wyoming Badlands",
+    "This Fossil Preserves The Last Meal of a Tyrannosaur | 7 Days of Science",
+    "What Drove Life Into The Trees?",
+    "Why did the Giant Ground Sloths Vanish?",
+]
+REAL_LINKS = [
+    "https://www.youtube.com/watch?v=i2OYcptFl9c",
+    "https://www.youtube.com/watch?v=eGGb9GFVEpM",
+    "https://www.youtube.com/watch?v=yN4Ck8CSdWU",
+    "https://www.youtube.com/watch?v=ii92Yx0orEw",
 ]
 
 
@@ -55,11 +66,16 @@ def main():
         vectors = (states * mask).sum(axis=1) / np.maximum(mask.sum(axis=1), 1)
         vectors /= np.maximum(np.linalg.norm(vectors, axis=1, keepdims=True), 1e-12)
         scores = vectors[1:] @ vectors[0]
-        results = [{"text": text, "cosine": round(float(score), 4)}
-                   for text, score in zip(TEXTS[1:], scores)]
-        print(json.dumps({"source": "Hugging Face ONNX inference", "status": "OK",
-                          "revision": REV, "query": TEXTS[0], "results": results}))
-        print("Similarity is a relevance hint, not a topic-demand or viral score; synthetic examples only.")
+        synthetic = [{"text": text, "cosine": round(float(score), 4)}
+                     for text, score in zip(TEXTS[1:4], scores[:3])]
+        real = [{"title": text, "url": url, "cosine": round(float(score), 4)}
+                for text, url, score in zip(TEXTS[4:], REAL_LINKS, scores[3:])]
+        real.sort(key=lambda row: row["cosine"], reverse=True)
+        print(json.dumps({"source": "Hugging Face ONNX synthetic test", "status": "OK",
+                          "revision": REV, "query": TEXTS[0], "results": synthetic}))
+        print(json.dumps({"source": "Hugging Face ONNX real-title test", "status": "OK",
+                          "query": TEXTS[0], "results": real}))
+        print("Four hand-selected videos: semantic similarity is a relevance hint, not a demand or viral score.")
 
 
 if __name__ == "__main__":

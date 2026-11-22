@@ -37,7 +37,7 @@ jobs:
           done < "$RUNNER_TEMP/research-probe.txt"
       - name: Install bounded semantic test dependencies
         run: python3 -m pip install --quiet 'numpy==1.26.4' 'onnxruntime==1.20.1' 'tokenizers==0.21.0'
-      - name: Test public Hugging Face model on synthetic text
+      - name: Test public Hugging Face model on synthetic and public titles
         run: |
           set -uo pipefail
           timeout 240s python3 tools/extinct-life/research-probe/semantic_probe.py | tee "$RUNNER_TEMP/semantic-probe.txt"
