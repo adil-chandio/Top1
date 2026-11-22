@@ -2,7 +2,11 @@
 
 **Status:** Proof of concept, not a production research system, audience-demand measurement, recommendation or approval to produce videos. All work is on the session branch. The workflow is push-triggered only by changes to the probe or its workflow on this branch; there is no schedule, upload or publication step. This repository is public: check annotations and logs are public. Do not add private channel data or secrets to the probe, output or repository.
 
-## Evidence: 22 November 2026
+## Latest YouTube API recheck
+
+[Successful run 44990681888](https://github.com/adil-chandio/Top1/actions/runs/44990681888) on commit `b4eb96b` reached the YouTube Data API with a configured key and returned three public video records, including titles, upload dates, duration and view snapshots. The job reports only public metadata; no credential value is displayed. This validates the bounded `videos.list` request, not bulk collection, channel enumeration, search quota, analytics, or historical growth tracking. The earlier no-key observation below describes the previous run, not the latest state.
+
+## Earlier evidence: 22 November 2026
 
 [Successful GitHub Actions run 44989118473](https://github.com/adil-chandio/Top1/actions/runs/44989118473) on commit `f903d01`: public check annotations report the results below. A successful job alone does not mean every source succeeded: the script deliberately reports unavailable routes separately.
 
