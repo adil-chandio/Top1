@@ -50,7 +50,7 @@ def youtube():
         print(f"YouTube Data API: FAILED — HTTP {status or 'network error'}; reason not logged")
         return
     items = result.get("items", [])
-    print(f"YouTube Data API: OK — {len(items)} public video records returned")
+    print(f"YouTube Data API: OK — {len(items)} public video records returned (authenticated official API test)")
     for item in items:
         snippet = item.get("snippet", {})
         stats = item.get("statistics", {})
