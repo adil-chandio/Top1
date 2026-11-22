@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:
-      RESEARCH_OUT: ${{ runner.temp }}/extinct-life-research
+      RESEARCH_OUT: /tmp/extinct-life-research
     steps:
       - name: Checkout
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -55,7 +55,7 @@ jobs:
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: extinct-life-research-report
-          path: ${{ runner.temp }}/extinct-life-research/
+          path: /tmp/extinct-life-research/
           retention-days: 1
           if-no-files-found: error
       - name: Verify collection completeness
