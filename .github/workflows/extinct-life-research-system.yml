@@ -52,7 +52,7 @@ jobs:
         run: python3 tools/extinct-life/research-system/research.py report --out "$RESEARCH_OUT"
       - name: Save public-data report for one day
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
         with:
           name: extinct-life-research-report
           path: /tmp/extinct-life-research/
