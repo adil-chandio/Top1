@@ -120,12 +120,19 @@ class ResearchTests(unittest.TestCase):
     def test_gate_requires_all_success(self):
         with tempfile.TemporaryDirectory() as temp:
             out = Path(temp)
-            r.save(out / 'youtube.json', {'errors': []}); r.save(out / 'science.json', {'errors': []})
-            r.save(out / 'semantic.json', {'candidates': []}); (out / 'REPORT.md').write_text('ok')
+            cfg = config(); cfg_path = out / 'config.json'; cfg_path.write_text(json.dumps(cfg))
+            r.save(out / 'youtube.json', r.collect_youtube(cfg, 'fake', fake_fetch))
+            r.save(out / 'science.json', r.collect_science(cfg, fake_fetch))
+            r.save(out / 'semantic.json', {'candidates': [{'matches': [{'title': 'example'}]}]})
+            (out / 'REPORT.md').write_text('ok')
+            args = ['gate', '--out', temp, '--config', str(cfg_path)]
             with contextlib.redirect_stdout(io.StringIO()):
-                self.assertEqual(r.main(['gate', '--out', temp]), 0)
+                self.assertEqual(r.main(args), 0)
                 r.save(out / 'science.json', {'errors': ['fail']})
-                self.assertEqual(r.main(['gate', '--out', temp]), 1)
+                self.assertEqual(r.main(args), 1)
+                r.save(out / 'science.json', r.collect_science(cfg, fake_fetch))
+                r.save(out / 'semantic.json', {'candidates': []})
+                self.assertEqual(r.main(args), 1)
 
     def test_request_does_not_leak_key_on_http_error(self):
         from urllib.error import HTTPError

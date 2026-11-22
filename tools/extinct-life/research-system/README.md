@@ -30,7 +30,7 @@ Each run yields an `extinct-life-research-report` artifact containing:
 - `REPORT.md`: grouped public YouTube observations; source-separated scientific lead list; model-assisted scientific-title matches; decision worksheet; limitations and failures.
 - `youtube.json`, `science.json`, `semantic.json`: machine-readable extracts from their respective sources. Their public contents should be treated as time-limited. Data inside may be incomplete even if the quality gate passed.
 
-Open the run on GitHub → **Artifacts** → `extinct-life-research-report`, download and open `REPORT.md`. The artifact expires after one day; rerun the workflow for a fresh report. Downloaded copies are your responsibility under source policies. No report content is injected into public job logs.
+Open the run on GitHub → **Artifacts** → `extinct-life-research-report`, download and open `REPORT.md`. The artifact expires after one day; rerun the workflow for a fresh report. Downloaded copies are your responsibility under source policies. No report content is injected into public job logs. In this Arena sandbox, GitHub's artifact storage redirect was not directly reachable during testing; the user can download it from GitHub in their browser, but the agent cannot claim to have read that artifact here. To review its contents together, the user can attach the public-data report in chat before it expires.
 
 ## Running and configuring
 

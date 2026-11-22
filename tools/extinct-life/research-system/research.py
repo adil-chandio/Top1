@@ -274,13 +274,27 @@ def main(argv=None):
         return 0
     missing = [name for name in ('youtube.json', 'science.json', 'semantic.json', 'REPORT.md') if not (out / name).exists()]
     errors = []
-    for name in ('youtube.json', 'science.json'):
-        path = out / name
-        if path.exists() and json.loads(path.read_text(encoding='utf-8')).get('errors'):
-            errors.append(name)
+    yt_path = out / 'youtube.json'
+    if yt_path.exists():
+        yt = json.loads(yt_path.read_text(encoding='utf-8'))
+        if (yt.get('errors') or len(yt.get('channels', [])) != len(config['channels'])
+                or len(yt.get('candidate_searches', [])) != len(config['candidates'])
+                or any(x.get('status') != 'ok' or not x.get('videos') for x in yt.get('channels', []))
+                or any(x.get('status') != 'ok' for x in yt.get('candidate_searches', []))):
+            errors.append('youtube.json')
+    science_path = out / 'science.json'
+    if science_path.exists():
+        science = json.loads(science_path.read_text(encoding='utf-8'))
+        if (science.get('errors') or len(science.get('candidates', [])) != len(config['candidates'])
+                or len(science.get('discoveries', [])) != len(config['science_queries'])
+                or any(x.get('status') != 'ok' for x in science.get('candidates', []) + science.get('discoveries', []))):
+            errors.append('science.json')
     sem = out / 'semantic.json'
-    if sem.exists() and json.loads(sem.read_text(encoding='utf-8')).get('error'):
-        errors.append('semantic.json')
+    if sem.exists():
+        model_result = json.loads(sem.read_text(encoding='utf-8'))
+        if (model_result.get('error') or len(model_result.get('candidates', [])) != len(config['candidates'])
+                or any(not c.get('matches') for c in model_result.get('candidates', []))):
+            errors.append('semantic.json')
     if missing or errors:
         print('Research quality gate: INCOMPLETE — missing or failed source(s), see artifact.')
         return 1
