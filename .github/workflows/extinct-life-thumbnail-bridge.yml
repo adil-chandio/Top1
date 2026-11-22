@@ -77,7 +77,7 @@ jobs:
           from pathlib import Path
           data = Path('/tmp/thumbs.b64').read_text()
           chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
-          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
           for i in range(0, min(10, len(chunks))):
               print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
           PYBRIDGE
@@ -88,7 +88,7 @@ jobs:
           from pathlib import Path
           data = Path('/tmp/thumbs.b64').read_text()
           chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
-          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
           for i in range(10, min(20, len(chunks))):
               print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
           PYBRIDGE
@@ -99,7 +99,7 @@ jobs:
           from pathlib import Path
           data = Path('/tmp/thumbs.b64').read_text()
           chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
-          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
           for i in range(20, min(30, len(chunks))):
               print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
           PYBRIDGE
@@ -110,7 +110,51 @@ jobs:
           from pathlib import Path
           data = Path('/tmp/thumbs.b64').read_text()
           chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
-          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
           for i in range(30, min(40, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 5
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(40, min(50, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 6
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(50, min(60, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 7
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(60, min(70, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 8
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 80: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(70, min(80, len(chunks))):
               print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
           PYBRIDGE
