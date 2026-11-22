@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Monarch Cam #03 — Long Video V6 Hollywood IMAX Cinema Engine</title>
+  <style>
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background: #060b0f; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script type="module">
+  import * as THREE from 'three';
+  import {
+    loadVerifiedCinemaFonts,
+    createImaxOpticalPass,
+    createGpuHudCompositor,
+  } from '/tools/monarch-v6-imax-sdk/index.js';
+  import { createV5MaterialLibrary } from '/tools/monarch-cockroach/v5/materials_v5.js';
+  import { createMonarchWorldLongV6 } from '/tools/monarch-cockroach/long_v6/world_long_v6.js';
+  import { directFrameLongV6, TOTAL_FRAMES } from '/tools/monarch-cockroach/long_v6/director_long_v6.js';
+  import {
+    CALLOUTS_LONG_V6,
+    GAUGES_LONG_V6,
+    getActiveLeaderProjectionV6,
+    renderEditorialOverlayLongV6,
+  } from '/tools/monarch-cockroach/long_v6/titles_long_v6.js';
+
+  const params = new URLSearchParams(window.location.search);
+  const W = Number(params.get('w') || 1280);
+  const H = Number(params.get('h') || 720);
+
+  // 1. Load & verify Space Grotesk + IBM Plex Mono WOFF2 binaries
+  const fontMetrics = await loadVerifiedCinemaFonts('/@fs/tmp/v6_runtime/node_modules');
+  console.log(`[LongV6 Fonts Verified] SG=${fontMetrics.sgWidth.toFixed(1)}px Mono=${fontMetrics.monoWidth.toFixed(1)}px`);
+
+  // 2. WebGL2 Renderer + Linear-Light ACES HDR Optical Pass
+  const webglCanvas = document.createElement('canvas');
+  webglCanvas.width = W;
+  webglCanvas.height = H;
+  document.body.appendChild(webglCanvas);
+
+  const renderer = new THREE.WebGLRenderer({
+    canvas: webglCanvas,
+    antialias: false,
+    alpha: false,
+    powerPreference: 'high-performance',
+    preserveDrawingBuffer: true,
+  });
+  renderer.setSize(W, H, false);
+  renderer.setPixelRatio(1);
+  renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+  renderer.sortObjects = true;
+  renderer.autoClear = false;
+
+  const camera = new THREE.PerspectiveCamera(40, W / H, 1.4, 5200.0);
+  const mats = await createV5MaterialLibrary();
+  const world = await createMonarchWorldLongV6(mats, renderer);
+  const imaxPass = createImaxOpticalPass(renderer, W, H);
+  const gpuHud = createGpuHudCompositor(renderer, W, H);
+
+  function renderBeautyFrame(frame) {
+    const state = directFrameLongV6(world, camera, frame);
+    imaxPass.render(world.scene, camera, {
+      focusDist: state.focusDist,
+      dofRange: state.dofRange,
+      maxBlur: state.maxBlur,
+      bloomAmt: state.bloomAmt,
+      exposure: state.exposure,
+      time: state.time,
+      motionVec: state.motionVec,
+    });
+    return state;
+  }
+
+  // Full native GPU composite (used for 1920x1080 Pre-Flight QA Stills & Hero Thumbnail!)
+  window.renderFramePNG = (frame, opts = { showHud: true }) => {
+    if (opts.thumbnailMode) {
+      // Bespoke Hollywood IMAX Hero Thumbnail Composition:
+      // Stage 2 copper pennies cleanly in front-left (`z = -12.5` clear of legs!) and gleaming 3D cockroach
+      // squeezing into the glowing 3.2 mm oak doorway blade on the RIGHT!
+      const state = directFrameLongV6(world, camera, 352);
+      world.penniesGroup.visible = true;
+      world.penniesGroup.position.set(-10.5, 0.0, 15.8);
+      camera.fov = 35.0;
+      camera.position.set(-44.0, 8.6, 36.0);
+      camera.up.set(0, 1, 0);
+      camera.lookAt(-18.5, 4.0, 2.0);
+      camera.near = 1.6;
+      camera.far = 2600.0;
+      camera.updateProjectionMatrix();
+      camera.updateMatrixWorld(true);
+      imaxPass.render(world.scene, camera, {
+        focusDist: 42.0,
+        dofRange: 26.0,
+        maxBlur: 3.0,
+        bloomAmt: 0.52,
+        exposure: 1.26,
+        time: state.time,
+        motionVec: new THREE.Vector2(0, 0),
+      });
+
+      const ctx = gpuHud.ctx;
+      ctx.clearRect(0, 0, W, H);
+      const g = ctx.createLinearGradient(0, 0, W * 0.56, 0);
+      g.addColorStop(0.0, 'rgba(4, 8, 13, 0.88)');
+      g.addColorStop(0.62, 'rgba(4, 8, 13, 0.42)');
+      g.addColorStop(1.0, 'rgba(4, 8, 13, 0.0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.save();
+      ctx.font = '600 23px "IBM Plex Mono", monospace';
+      ctx.fillStyle = '#88f4ee';
+      ctx.fillText('UC BERKELEY · 500 FPS BIOMECHANICS', 84, 138);
+
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.88)';
+      ctx.shadowBlur = 28;
+      ctx.font = '700 104px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText('900x WEIGHT.', 80, 264);
+
+      ctx.font = '700 102px "Space Grotesk", sans-serif';
+      ctx.fillStyle = '#ffd187';
+      ctx.fillText('ZERO FEET.', 80, 382);
+
+      ctx.shadowBlur = 0;
+      ctx.beginPath();
+      ctx.roundRect(84, 434, 468, 60, 30);
+      ctx.fillStyle = 'rgba(8, 16, 24, 0.88)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 209, 135, 0.58)';
+      ctx.lineWidth = 2.0;
+      ctx.stroke();
+
+      ctx.font = '600 23px "IBM Plex Mono", monospace';
+      ctx.fillStyle = '#f5f9fc';
+      ctx.fillText('3.2 MM GAP  ·  IT FOLDS IN HALF', 112, 472);
+      ctx.restore();
+      gpuHud.composite();
+      return webglCanvas.toDataURL('image/png');
+    }
+
+    if (frame > 0) directFrameLongV6(world, camera, frame - 1);
+    const state = renderBeautyFrame(frame);
+    if (opts.showHud) {
+      renderEditorialOverlayLongV6(gpuHud.ctx, W, H, state, camera);
+      gpuHud.composite();
+    }
+    return webglCanvas.toDataURL('image/png');
+  };
+
+  // Export crisp 1920x1080 static PNG overlays for Python compositor (`assemble_master_long_v6.py`)
+  window.exportOverlayAssetsV6 = () => {
+    const c = document.createElement('canvas');
+    c.width = 1920;
+    c.height = 1080;
+    const ctx = c.getContext('2d');
+    const out = [];
+
+    for (const item of CALLOUTS_LONG_V6) {
+      const midF = Math.floor((item.start + item.end) * 0.5);
+      renderEditorialOverlayLongV6(
+        ctx, 1920, 1080,
+        { frame: midF, time: midF / 30, anchors: {} },
+        camera,
+        { skipDynamicLeaders: true, forceFullAlpha: true }
+      );
+      const calloutCanvas = document.createElement('canvas');
+      calloutCanvas.width = 1920;
+      calloutCanvas.height = 1080;
+      calloutCanvas.getContext('2d').drawImage(c, 0, 0, 980, 360, 0, 0, 980, 360);
+      out.push({
+        id: item.id,
+        kind: 'callout',
+        start: item.start,
+        end: item.end,
+        fadeFrames: 12,
+        dataUrl: calloutCanvas.toDataURL('image/png'),
+      });
+    }
+
+    for (const g of GAUGES_LONG_V6) {
+      // Export gauge metadata so Python animates the progressive bar fill cleanly at 30 Hz!
+      const midF = Math.floor((g.start + g.end) * 0.5);
+      ctx.clearRect(0, 0, 1920, 1080);
+      renderEditorialOverlayLongV6(
+        ctx, 1920, 1080,
+        { frame: midF, time: midF / 30, anchors: {} },
+        camera,
+        { skipDynamicLeaders: true, forceFullAlpha: true }
+      );
+      // Crop just bottom-right gauge region so it never collides with simultaneous top-left callouts!
+      const gCanvas = document.createElement('canvas');
+      gCanvas.width = 1920;
+      gCanvas.height = 1080;
+      const gCtx = gCanvas.getContext('2d');
+      gCtx.drawImage(c, 1200, 760, 720, 320, 1200, 760, 720, 320);
+      out.push({
+        id: g.id,
+        kind: 'gauge',
+        start: g.start,
+        end: g.end,
+        fadeFrames: 14,
+        dataUrl: gCanvas.toDataURL('image/png'),
+      });
+    }
+
+    renderEditorialOverlayLongV6(
+      ctx, 1920, 1080,
+      { frame: 8980, time: 8980 / 30, anchors: {} },
+      camera,
+      { skipDynamicLeaders: true, forceFullAlpha: true }
+    );
+    out.push({
+      id: 'pnas_endcard',
+      kind: 'endcard',
+      start: 8956,
+      end: TOTAL_FRAMES - 1,
+      fadeFrames: 14,
+      dataUrl: c.toDataURL('image/png'),
+    });
+
+    return out;
+  };
+
+  // High-throughput raw-RGBA WebSocket streaming (FFmpeg handles `-vf vflip` in C SIMD!)
+  const gl = renderer.getContext();
+  const pixelBuf = new Uint8Array(W * H * 4);
+  let activeWS = null;
+  let wsWaitResolve = null;
+
+  window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+    const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+    ws.binaryType = 'arraybuffer';
+    ws.onmessage = () => {
+      if (wsWaitResolve) {
+        const r = wsWaitResolve;
+        wsWaitResolve = null;
+        r();
+      }
+    };
+    ws.onopen = () => { activeWS = ws; resolve(true); };
+    ws.onerror = (e) => reject(e);
+  });
+
+  window.streamBeautyFramesWS = async (fStart, fEnd) => {
+    if (fStart > 0) {
+      directFrameLongV6(world, camera, fStart - 1);
+    }
+    const meta = [];
+    for (let f = fStart; f < fEnd; f++) {
+      const state = renderBeautyFrame(f);
+      const leader = getActiveLeaderProjectionV6(state, camera, 1920, 1080);
+      meta.push({
+        f,
+        l: leader,
+        ht: state.hudTag || '',
+        hm: state.hudMetric || '',
+        ha: state.hudAlert ? 1 : 0,
+      });
+      gl.readPixels(0, 0, W, H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+      await new Promise((res) => {
+        wsWaitResolve = res;
+        activeWS.send(pixelBuf);
+      });
+    }
+    return meta;
+  };
+
+  window.__LONG_V6_READY__ = true;
+</script>
+</body>
+</html>

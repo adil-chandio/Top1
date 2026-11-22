@@ -285,16 +285,19 @@ export function createCinemaCameraRig(camera, { totalFrames = 1050, shotCuts = n
     camera.updateMatrixWorld(true);
 
     // 5. Screen-space 180°-shutter velocity blur vector (strictly zeroed across hard cuts!)
+    // Uses angular lens pan `(dLook - dPos) / focusDist` so a pure tracking dolly (`dPos == dLook`)
+    // keeps the locked hero subject razor-sharp while genuine whip-pans produce natural cinema blur!
     if (prevFrame === frame - 1 && !shotCuts.has(frame)) {
       const dPos = finalPos.clone().sub(prevCamPos);
       const dLook = finalLook.clone().sub(prevLookAt);
-      const combined = dPos.multiplyScalar(0.55).addScaledVector(dLook, 0.45);
+      const angularPan = dLook.sub(dPos);
       camera.matrixWorld.extractBasis(camRight, camUp, new THREE.Vector3());
-      const vx = -combined.dot(camRight) / focusDist;
-      const vy = -combined.dot(camUp) / focusDist;
+      const denom = Math.max(14.0, focusDist);
+      const vx = -angularPan.dot(camRight) / denom;
+      const vy = -angularPan.dot(camUp) / denom;
       motionVec.set(
-        GLM.clamp(vx * shutterBlurScale + extraMotionX, -0.024, 0.024),
-        GLM.clamp(vy * shutterBlurScale + extraMotionY, -0.020, 0.020)
+        GLM.clamp(vx * shutterBlurScale + extraMotionX, -0.018, 0.018),
+        GLM.clamp(vy * shutterBlurScale + extraMotionY, -0.016, 0.016)
       );
     } else {
       motionVec.set(extraMotionX, extraMotionY);
