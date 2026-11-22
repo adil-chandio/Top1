@@ -24,29 +24,29 @@ jobs:
           set -euo pipefail
           cat > /tmp/recipient.pem <<'CERTIFICATE'
           -----BEGIN CERTIFICATE-----
-          MIIEQzCCAqugAwIBAgIURs5L/B/ehcsUOU7x2UKJGAZybQ0wDQYJKoZIhvcNAQEL
-          BQAwMTEvMC0GA1UEAwwmRXh0aW5jdCBMaWZlIGVwaGVtZXJhbCByZXBvcnQgdHJh
-          bnNmZXIwHhcNMjYxMTIyMDY0NTQ4WhcNMjYxMTI0MDY0NTQ4WjAxMS8wLQYDVQQD
-          DCZFeHRpbmN0IExpZmUgZXBoZW1lcmFsIHJlcG9ydCB0cmFuc2ZlcjCCAaIwDQYJ
-          KoZIhvcNAQEBBQADggGPADCCAYoCggGBAKRfCHtcQZEtQNQ8iDqvbZ4o9Qhss5Ex
-          5zAGUaLx/0FgemW8s3aSEMv7kN/JXx+yZPrFxwhP/DV+QHlPI+6WGnEMAOQ/5n/V
-          z5zsRfdEWHgjK5Q/AtadD+gIdC7zU1rPtq6Zxd3pf0ixjy5NqwjtKt2O3/r+be2G
-          a1wuKcq76NPHBFOcy/6hMSIFDd0sxsLeZpo8DU7wnVMdVYqQBrEtX/GBYrmQx0E6
-          LMNZAYjtvyWjinGGcI7OxAyjtRvYeNFQYeacTQhFJFyKPFrD0xgCj5p4zwomwn5F
-          eGgWLP8eCwhyqXR7ydf1wHZEyrocq4IR4lEec2Rqo0uUfQ8Rpj2iL9QjYLSdURgl
-          Lvc5sxuxP+sbUZwRZfiZUsp377pTEy2glV54B1uekfbXGkfZMaVq8gWUh/jhl4Cs
-          WP3Kjd3DGl1hutc+U9IsM8MGJ1uGSFntnRBT8/iOuCb4y8LQtld9uxpXMgZlAXSH
-          rjGU5D1OTVpmuUlGisUofY74ZU3nZ6tGVQIDAQABo1MwUTAdBgNVHQ4EFgQUjioC
-          Y3kqmCoWPY/6xAPenjRFWdQwHwYDVR0jBBgwFoAUjioCY3kqmCoWPY/6xAPenjRF
-          WdQwDwYDVR0TAQH/BAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAYEABHI/tLBhqak4
-          klxU/OWfuLxLVy4jR1tEBpYd8bh42fNlL1QkWa8JRiHImqzKupDBCihZw1+RfnL2
-          nHKMA7nULuLBBOWXYRsHVUBTq+GiVqmGH8HxdTSrGH2P5QNjsO54Aerr5p+TXdL3
-          vLTjGscC/YPAISbZbxoLfjh2me+YI9fxz420Tf2syq9j0k8t1A158zPWb5pX7sfO
-          6yUy8oMaKV6XLmkfcqyppWVKOn727raj4xcRd6h59I7/ygSacUpjhWsGQUGpamw3
-          BU8tXqbvDYMO9RJaHxaCFPCB/W+KGaSqT1qzwBl5Xk2Xi9XMWr1zfQkZUpyt71sc
-          GOoNhw4WT9RwfKP5zalV89ek238/4sh6A0G+cYrvLYTC9WOPs4vyyLwkkmEpu5lK
-          OXZvsbXay5Fwpo7FpgauOr0CbZUijjtcK//FBP6tBO3PTh8fvCUJ2Wy3navbEK+V
-          n2uh1sTkE0cCN6n4zEwOK4tdXP4q2MT7DE0XZaGEVOOxhGbvSTEf
+          MIIELzCCApegAwIBAgIUBAUKvV/prRpSu8JuuE8iCCS+U2QwDQYJKoZIhvcNAQEL
+          BQAwJzElMCMGA1UEAwwcRXh0aW5jdCBMaWZlIHJlcG9ydCB0cmFuc2ZlcjAeFw0y
+          NjExMjIwNjQ2NTNaFw0yNjExMjQwNjQ2NTNaMCcxJTAjBgNVBAMMHEV4dGluY3Qg
+          TGlmZSByZXBvcnQgdHJhbnNmZXIwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGK
+          AoIBgQDGHmJM1NJyBlDXjOeojc5Sh/wxFimdD0s/QBqsv+E/pze4YRtT7uUyjptR
+          aDftptomm07njrknabfZTx0FqXaJ0LWkorEwCeCK+mkFxrZoLrZTXcyhe534ewKN
+          0st11VL3eUlnGYAZOA+qiS0yH3B4cenBlM8OJGLwrl39IcjAZUGLLOgU1EvXwxYH
+          TwmGrzCGptow7fcB36MhPfWliTRp7JsDsYrx+ghcPkzjwbeZ42GBlpQdA+rQGEJF
+          11xKk2+R4uA9GsWbQUIDd08y58y2yFIOJuQDdv7EjJyUO/DkjxMlUvhivttdd5oj
+          48ypdqXB6WcI4pISkwwmNzS2qufzEXprg4RjnS77njZjeMJKzVH+z0oJFkgV6edn
+          Y8u5/3PmevGJNzKluyUgM4HGFM2CxenVJdGKZHBth7pswtjL0aDCHcAXUkoA9JIP
+          MdIT1/DJpbwulUnIc5m2+xCxdZWleFFNJ++rv3PmP9lzM33i2A9Mr7M/Ex9DZ2te
+          o8G6aFUCAwEAAaNTMFEwHQYDVR0OBBYEFKiZLE6VnJEHpVXOjVeXDApk9QdUMB8G
+          A1UdIwQYMBaAFKiZLE6VnJEHpVXOjVeXDApk9QdUMA8GA1UdEwEB/wQFMAMBAf8w
+          DQYJKoZIhvcNAQELBQADggGBAIozJDLq70FeQvFH4GJfbFMY13kq/VJ/Lyn0J2xr
+          i2fjJp2MK/FKJMuJwh3FK6dN/cwurf523BWWmoWsmpyOEErTGA3nkegfHOVSHbIE
+          OgyMGvm8C9b060n2gPVjpRe2P3ue/OEXYt0FaHdsF5VDpu4DdTiM6QZmiw3ipZJ/
+          lf2mtuIiK18EQJ+yrTvvjjrFjh2pDGYxYyuuqn4RX2r6mlaaXeNpl1ZNB4u7/Jqs
+          r9BXA9OfQmssuQV/656cOpN8qx8x3c9Ccec2HG3prF+lv5twlH6uSlYNWOQv3nxA
+          9QRjikSTmD903kZLwPDfMrKwv7eC5yJhn+//TnrGm1r8r6ARAgt6ykE7b6ARm3cH
+          0CZQZIwLp4dTzeY93ufju4CBrRLspoUCy7LMSg/iAZHi2QgoF0U60n5xSI957vQu
+          5EuQlLaVTrEsSTEooHBLHtIY0/KarK6tRleI+ZG9LlJwvfycTB172gCMJclXqDJh
+          776VstKAgMqfHzSNJHc/da8yBg==
           -----END CERTIFICATE-----
           CERTIFICATE
           test -f /tmp/extinct-report/REPORT.md
