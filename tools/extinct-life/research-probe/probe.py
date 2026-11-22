@@ -71,7 +71,7 @@ def huggingface():
     print(json.dumps({"source": "Hugging Face model registry", "status": "OK",
                       "model": result.get("id"), "pipeline_tag": result.get("pipeline_tag"),
                       "model_sha": result.get("sha")}))
-    print("Hugging Face inference: NOT TESTED (registry access is not model execution)")
+    print("Registry connectivity alone does not establish model inference; see the separate model test.")
 
 
 def crossref():
@@ -92,6 +92,19 @@ def europe_pmc():
         print(f"Europe PMC: FAILED — HTTP {status or 'network error'}")
         return
     print(json.dumps({"source": "Europe PMC", "status": "OK", "hits": result.get("hitCount")}))
+    terms = 'TITLE_ABS:dinosaur AND TITLE_ABS:fossil AND FIRST_PDATE:[2025-01-01 TO 2026-11-22] sort_date:y'
+    query = urllib.parse.urlencode({"query": terms, "format": "json", "pageSize": 3})
+    status, result = request_json("https://www.ebi.ac.uk/europepmc/webservices/rest/search?" + query)
+    if status != 200 or not isinstance(result, dict):
+        print(f"Europe PMC discovery search: FAILED — HTTP {status or 'network error'}")
+        return
+    matches = result.get("resultList", {}).get("result", [])
+    print(json.dumps({"source": "Europe PMC discovery search", "status": "OK",
+                      "hits": result.get("hitCount"),
+                      "results": [{"title": item.get("title"), "doi": item.get("doi"),
+                                   "date": item.get("firstPublicationDate"), "source": item.get("source")}
+                                  for item in matches]}))
+    print("Discovery results are unreviewed leads, not verified science or viral ideas.")
 
 
 if __name__ == "__main__":
