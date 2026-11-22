@@ -1,0 +1,30 @@
+name: Extinct Life research connectivity probe
+
+# A single bounded probe, only on this working branch and only when its files change.
+on:
+  push:
+    branches: [arena/6e66724e-top1]
+    paths:
+      - .github/workflows/extinct-life-research-probe.yml
+      - tools/extinct-life/research-probe/probe.py
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Check out probe
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Probe public research sources without exposing credentials
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YTAP1: ${{ secrets.YTAP1 }}
+          YTAPI1: ${{ secrets.YTAPI1 }}
+          YT_KEY: ${{ secrets.YT_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: python3 tools/extinct-life/research-probe/probe.py
