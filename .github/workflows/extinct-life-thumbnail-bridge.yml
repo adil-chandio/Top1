@@ -63,8 +63,8 @@ jobs:
           import base64
           from pathlib import Path
           data = base64.b64encode(Path('/tmp/thumbs.enc').read_bytes()).decode('ascii')
-          chunks = [data[i:i+30000] for i in range(0, len(data), 30000)]
-          if len(chunks) > 10: raise SystemExit('Transfer too large; no chunks emitted')
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 45: raise SystemExit('Transfer too large; no chunks emitted')
           for i, chunk in enumerate(chunks, 1):
               print(f'::notice title=ELTHUMBS-{i:02d}-OF-{len(chunks):02d}::{chunk}')
           PYBRIDGE
