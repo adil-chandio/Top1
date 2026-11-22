@@ -33,7 +33,10 @@ def youtube():
     candidates = ("YOUTUBE_API_KEY", "YTAP1", "YTAPI1", "YT_KEY", "YT_API_KEY")
     key = next((os.environ.get(name) for name in candidates if os.environ.get(name)), None)
     if not key:
-        print("YouTube Data API: SKIPPED — no configured key was available to this run")
+        status, _ = request_json(
+            "https://www.googleapis.com/youtube/v3/videos?part=snippet&id=Ya99xCWXQdc"
+        )
+        print(f"YouTube Data API: SKIPPED — no configured key; unauthenticated endpoint HTTP {status or 'network error'}")
         return
     query = urllib.parse.urlencode({
         "part": "snippet,statistics,contentDetails",
