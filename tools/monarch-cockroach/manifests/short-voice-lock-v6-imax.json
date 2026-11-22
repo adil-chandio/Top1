@@ -1,0 +1,228 @@
+{
+  "version": "short-v6-imax",
+  "format": "9:16",
+  "resolution": [
+    1080,
+    1920
+  ],
+  "fps": 30,
+  "total_frames": 1050,
+  "duration_s": 35.0,
+  "voice_id": "voice-02",
+  "time_stretch_applied": false,
+  "shots": {
+    "S1_HOOK": [
+      0,
+      76
+    ],
+    "S2_REWIND": [
+      76,
+      161
+    ],
+    "S3_XRAY": [
+      161,
+      316
+    ],
+    "S4A_PUSHUP": [
+      316,
+      425
+    ],
+    "S4B_FEET_OFF": [
+      425,
+      490
+    ],
+    "S5_SPINES": [
+      490,
+      611
+    ],
+    "S6_PRESS_900X": [
+      611,
+      726
+    ],
+    "S7A_GRIT_TRAP": [
+      726,
+      912
+    ],
+    "S7B_GATE_FAIL": [
+      912,
+      995
+    ],
+    "S8_CTA_LOOP": [
+      995,
+      1050
+    ]
+  },
+  "cues": [
+    {
+      "idx": 1,
+      "start_s": 0.045,
+      "end_s": 2.295,
+      "start_f": 1,
+      "end_f": 69,
+      "caption": "under 2 pennies",
+      "accent": "2 pennies"
+    },
+    {
+      "idx": 2,
+      "start_s": 2.522,
+      "end_s": 4.232,
+      "start_f": 76,
+      "end_f": 127,
+      "caption": "half-inch tall",
+      "accent": "half-inch"
+    },
+    {
+      "idx": 3,
+      "start_s": 4.346,
+      "end_s": 5.086,
+      "start_f": 130,
+      "end_f": 153,
+      "caption": "how doesn't it crush?",
+      "accent": "crush?"
+    },
+    {
+      "idx": 4,
+      "start_s": 5.37,
+      "end_s": 7.21,
+      "start_f": 161,
+      "end_f": 216,
+      "caption": "not soft rubber",
+      "accent": "soft rubber"
+    },
+    {
+      "idx": 5,
+      "start_s": 7.437,
+      "end_s": 8.637,
+      "start_f": 223,
+      "end_f": 259,
+      "caption": "stiff plates slide",
+      "accent": "slide"
+    },
+    {
+      "idx": 6,
+      "start_s": 8.808,
+      "end_s": 10.238,
+      "start_f": 264,
+      "end_f": 307,
+      "caption": "hidden hinges fold",
+      "accent": "hinges fold"
+    },
+    {
+      "idx": 7,
+      "start_s": 10.55,
+      "end_s": 10.99,
+      "start_f": 316,
+      "end_f": 330,
+      "caption": "Wait.",
+      "accent": "Wait."
+    },
+    {
+      "idx": 8,
+      "start_s": 11.203,
+      "end_s": 12.373,
+      "start_f": 336,
+      "end_f": 371,
+      "caption": "at 4 mm",
+      "accent": "4 mm"
+    },
+    {
+      "idx": 9,
+      "start_s": 12.572,
+      "end_s": 13.962,
+      "start_f": 377,
+      "end_f": 419,
+      "caption": "legs splay >80\u00b0",
+      "accent": ">80\u00b0"
+    },
+    {
+      "idx": 10,
+      "start_s": 14.161,
+      "end_s": 16.091,
+      "start_f": 425,
+      "end_f": 483,
+      "caption": "every foot lifts off",
+      "accent": "lifts off"
+    },
+    {
+      "idx": 11,
+      "start_s": 16.346,
+      "end_s": 17.396,
+      "start_f": 490,
+      "end_f": 522,
+      "caption": "Zero feet down.",
+      "accent": "Zero feet"
+    },
+    {
+      "idx": 12,
+      "start_s": 17.609,
+      "end_s": 20.099,
+      "start_f": 528,
+      "end_f": 603,
+      "caption": "shin spines rake instead",
+      "accent": "shin spines"
+    },
+    {
+      "idx": 13,
+      "start_s": 20.383,
+      "end_s": 22.643,
+      "start_f": 611,
+      "end_f": 679,
+      "caption": "900\u00d7 body weight",
+      "accent": "900\u00d7"
+    },
+    {
+      "idx": 14,
+      "start_s": 22.757,
+      "end_s": 23.887,
+      "start_f": 683,
+      "end_f": 717,
+      "caption": "won't crush that shell",
+      "accent": "won't crush"
+    },
+    {
+      "idx": 15,
+      "start_s": 24.199,
+      "end_s": 27.149,
+      "start_f": 726,
+      "end_f": 814,
+      "caption": "rougher = faster, right?",
+      "accent": "faster, right?"
+    },
+    {
+      "idx": 16,
+      "start_s": 27.405,
+      "end_s": 30.135,
+      "start_f": 822,
+      "end_f": 904,
+      "caption": "coarse floors trap it",
+      "accent": "trap it"
+    },
+    {
+      "idx": 17,
+      "start_s": 30.391,
+      "end_s": 32.881,
+      "start_f": 912,
+      "end_f": 986,
+      "caption": "4 in 5 fail at 3.2 mm",
+      "accent": "4 in 5 fail"
+    },
+    {
+      "idx": 18,
+      "start_s": 33.165,
+      "end_s": 34.075,
+      "start_f": 995,
+      "end_f": 1022,
+      "caption": "full breakdown below",
+      "accent": "below"
+    },
+    {
+      "idx": 19,
+      "start_s": 34.245,
+      "end_s": 34.965,
+      "start_f": 1027,
+      "end_f": 1049,
+      "caption": "to see how it\u2026",
+      "accent": "how it\u2026"
+    }
+  ]
+}

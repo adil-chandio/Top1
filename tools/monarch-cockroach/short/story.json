@@ -1,0 +1,82 @@
+{
+  "episode": "monarch-cam-03",
+  "title_recommended": "How This Cockroach Runs Without Its Feet",
+  "title_alternate": "This Cockroach Runs Through a Two-Penny Gap",
+  "format": {
+    "aspect": "9:16",
+    "resolution": [1080, 1920],
+    "fps": 30,
+    "frames": 1140,
+    "duration_sec": 38.0
+  },
+  "voice_id": null,
+  "audition_excerpt": "Standing up, this cockroach is half an inch tall. Watch it vanish under two stacked pennies. Pressed that flat, its legs splay wide and its claws lose their angle. Sharp spines along its shins push the floor instead.",
+  "takes": [
+    {
+      "take": "01-gap",
+      "planned_window_sec": [0.15, 5.95],
+      "frame_span": [0, 186],
+      "phrases": [
+        "Standing up, this cockroach",
+        "is half an inch tall.",
+        "Watch it vanish",
+        "under two stacked pennies."
+      ]
+    },
+    {
+      "take": "02-fold",
+      "planned_window_sec": [6.35, 13.15],
+      "frame_span": [186, 402],
+      "phrases": [
+        "Its shell isn't bending",
+        "like soft rubber.",
+        "Stiff armor plates slide together",
+        "as the soft joints between them",
+        "fold in half."
+      ]
+    },
+    {
+      "take": "03-spines",
+      "planned_window_sec": [13.55, 21.10],
+      "frame_span": [402, 642],
+      "phrases": [
+        "Pressed that flat,",
+        "its legs splay wide",
+        "and its claws lose their angle.",
+        "Sharp spines along its shins",
+        "push the floor instead."
+      ]
+    },
+    {
+      "take": "04-row",
+      "planned_window_sec": [21.50, 27.15],
+      "frame_span": [642, 822],
+      "phrases": [
+        "Its normal running rhythm",
+        "breaks down,",
+        "and both middle legs shove together",
+        "to drive the body forward."
+      ]
+    },
+    {
+      "take": "05-limit",
+      "planned_window_sec": [27.55, 34.05],
+      "frame_span": [822, 1026],
+      "phrases": [
+        "Even then, rough ceilings",
+        "slow it to a slipping zigzag.",
+        "At three millimeters, most turn back—",
+        "and nearly one in ten gets wedged."
+      ]
+    },
+    {
+      "take": "06-payoff",
+      "planned_window_sec": [34.45, 37.55],
+      "frame_span": [1026, 1140],
+      "phrases": [
+        "Armor doesn't make it unstoppable.",
+        "Hinges give it a way out."
+      ]
+    }
+  ]
+}

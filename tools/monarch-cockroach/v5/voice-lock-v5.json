@@ -1,0 +1,2015 @@
+{
+  "version": "v5",
+  "fps": 30,
+  "total_frames": 9008,
+  "duration_s": 300.267,
+  "voice_id": "voice-02",
+  "selection_provenance": "Synthesized via Arena generate_speech (voice-02, masculine en-US narration; zero voiced time-stretch; dead-air silences surgically tightened in V5)",
+  "time_stretch_applied": false,
+  "max_narrative_silence_s": 0.48,
+  "sample_rate_hz": 48000,
+  "bit_depth": 24,
+  "anchors": {
+    "ch1_end": 921,
+    "ch1_switch": 29,
+    "ch1_bolt_end": 145,
+    "ch1_half_inch_end": 214,
+    "ch1_pennies_end": 330,
+    "ch1_climax_start": 330,
+    "ch1_climax_dip": 373,
+    "ch1_climax_flat": 418,
+    "ch1_climax_gone": 464,
+    "ch1_climax_end": 538,
+    "ch1_wait_end": 572,
+    "ch1_armor_end": 671,
+    "ch1_squashed_end": 777,
+    "ch2_start": 921,
+    "ch2_500fps": 1015,
+    "ch2_moves_intro": 1224,
+    "ch2_move1_start": 1300,
+    "ch2_move2_start": 1362,
+    "ch2_move3_start": 1459,
+    "ch2_move4_start": 1583,
+    "ch2_move5_start": 1726,
+    "ch2_xray_start": 1819,
+    "ch2_xray_tiles": 1964,
+    "ch2_xray_hinges": 2072,
+    "ch2_xray_rebound": 2198,
+    "ch2_end": 2288,
+    "ch3_start": 2288,
+    "ch3_corridor_intro": 2592,
+    "ch3_step_down": 2693,
+    "ch3_half_height": 2818,
+    "ch3_it_didnt": 2961,
+    "ch3_full_speed": 2986,
+    "ch3_splay_wide": 3124,
+    "ch3_drop_2mm": 3287,
+    "ch3_speed_crash": 3441,
+    "ch3_end": 3607,
+    "ch4_start": 3607,
+    "ch4_follow_leg": 3764,
+    "ch4_high_tips": 3883,
+    "ch4_claws_pads": 4006,
+    "ch4_press_ceil": 4138,
+    "ch4_80deg": 4237,
+    "ch4_pushup_start": 4350,
+    "ch4_pushup_end": 4481,
+    "ch4_look_shin": 4571,
+    "ch4_climax_start": 4662,
+    "ch4_climax_crampons": 4793,
+    "ch4_climax_end": 4923,
+    "ch4_oars_start": 4993,
+    "ch4_5x_weight": 5097,
+    "ch4_end": 5312,
+    "ch5_start": 5312,
+    "ch5_grip_test": 5397,
+    "ch5_locked_tight": 5533,
+    "ch5_bet_start": 5620,
+    "ch5_right_q": 5852,
+    "ch5_600_runs": 5864,
+    "ch5_rough_ceil": 6049,
+    "ch5_floor_grit": 6223,
+    "ch5_slick_slip": 6321,
+    "ch5_coarse_snag": 6413,
+    "ch5_end": 6591,
+    "ch6_start": 6591,
+    "ch6_900x_peak": 6799,
+    "ch6_sprint_76": 6877,
+    "ch6_unstoppable": 7069,
+    "ch6_315_gate": 7183,
+    "ch6_wider_pass": 7372,
+    "ch6_narrow_3mm": 7519,
+    "ch6_17_pct": 7680,
+    "ch6_turn_back": 7749,
+    "ch6_chest_wedged": 7891,
+    "ch6_end": 8032,
+    "ch7_start": 8032,
+    "ch7_climax_start": 8143,
+    "ch7_spring_back": 8315,
+    "ch7_climax_end": 8502,
+    "ch7_thesis_start": 8564,
+    "ch7_not_indestruct": 8692,
+    "ch7_fold_and_walk": 8797,
+    "ch7_speech_end": 8920,
+    "ch7_hold_start": 8922,
+    "ch7_pnas_start": 8956,
+    "total_frames": 9008
+  },
+  "protected_windows": [
+    [
+      330,
+      538
+    ],
+    [
+      4662,
+      4923
+    ],
+    [
+      8143,
+      8502
+    ],
+    [
+      8922,
+      8956
+    ]
+  ],
+  "chapters": [
+    {
+      "chapter": 1,
+      "start_frame": 0,
+      "speech_start_frame": 12,
+      "speech_end_frame": 912,
+      "end_frame": 921,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Flip on a light, and a cockroach bolts for the crack under a closed door.",
+          "v4_start_f": 24,
+          "v4_end_f": 172,
+          "abs_start_f": 12,
+          "abs_end_f": 145
+        },
+        {
+          "idx": 2,
+          "text": "Standing up, it's half an inch tall.",
+          "v4_start_f": 172,
+          "v4_end_f": 251,
+          "abs_start_f": 145,
+          "abs_end_f": 214
+        },
+        {
+          "idx": 3,
+          "text": "That gap ahead is barely as thick as two stacked pennies.",
+          "v4_start_f": 251,
+          "v4_end_f": 376,
+          "abs_start_f": 214,
+          "abs_end_f": 330
+        },
+        {
+          "idx": 4,
+          "text": "It doesn't slow down.",
+          "v4_start_f": 376,
+          "v4_end_f": 422,
+          "abs_start_f": 330,
+          "abs_end_f": 373
+        },
+        {
+          "idx": 5,
+          "text": "Its head dips in.",
+          "v4_start_f": 422,
+          "v4_end_f": 471,
+          "abs_start_f": 373,
+          "abs_end_f": 418
+        },
+        {
+          "idx": 6,
+          "text": "Its back flattens.",
+          "v4_start_f": 471,
+          "v4_end_f": 521,
+          "abs_start_f": 418,
+          "abs_end_f": 464
+        },
+        {
+          "idx": 7,
+          "text": "And in under a second, it's gone.",
+          "v4_start_f": 521,
+          "v4_end_f": 596,
+          "abs_start_f": 464,
+          "abs_end_f": 538
+        },
+        {
+          "idx": 8,
+          "text": "Wait a second.",
+          "v4_start_f": 596,
+          "v4_end_f": 633,
+          "abs_start_f": 538,
+          "abs_end_f": 572
+        },
+        {
+          "idx": 9,
+          "text": "An insect's shell is supposed to be stiff armor.",
+          "v4_start_f": 633,
+          "v4_end_f": 738,
+          "abs_start_f": 572,
+          "abs_end_f": 671
+        },
+        {
+          "idx": 10,
+          "text": "Squashed that flat, its feet can't even stand underneath it.",
+          "v4_start_f": 738,
+          "v4_end_f": 854,
+          "abs_start_f": 671,
+          "abs_end_f": 777
+        },
+        {
+          "idx": 11,
+          "text": "So how does stiff armor fold in half, and what pushes it through?",
+          "v4_start_f": 854,
+          "v4_end_f": 1002,
+          "abs_start_f": 777,
+          "abs_end_f": 912
+        }
+      ]
+    },
+    {
+      "chapter": 2,
+      "start_frame": 921,
+      "speech_start_frame": 925,
+      "speech_end_frame": 2278,
+      "end_frame": 2288,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "At real speed, your eyes miss almost everything.",
+          "v4_start_f": 1080,
+          "v4_end_f": 1173,
+          "abs_start_f": 925,
+          "abs_end_f": 1015
+        },
+        {
+          "idx": 2,
+          "text": "So researchers filmed American cockroaches at five hundred frames per second.",
+          "v4_start_f": 1173,
+          "v4_end_f": 1315,
+          "abs_start_f": 1015,
+          "abs_end_f": 1153
+        },
+        {
+          "idx": 3,
+          "text": "Getting through wasn't one smooth slide.",
+          "v4_start_f": 1315,
+          "v4_end_f": 1391,
+          "abs_start_f": 1153,
+          "abs_end_f": 1224
+        },
+        {
+          "idx": 4,
+          "text": "It took five separate moves.",
+          "v4_start_f": 1391,
+          "v4_end_f": 1472,
+          "abs_start_f": 1224,
+          "abs_end_f": 1300
+        },
+        {
+          "idx": 5,
+          "text": "First, the antennae sweep the slot.",
+          "v4_start_f": 1472,
+          "v4_end_f": 1538,
+          "abs_start_f": 1300,
+          "abs_end_f": 1362
+        },
+        {
+          "idx": 6,
+          "text": "Next, the head tips down and wedges in.",
+          "v4_start_f": 1538,
+          "v4_end_f": 1638,
+          "abs_start_f": 1362,
+          "abs_end_f": 1459
+        },
+        {
+          "idx": 7,
+          "text": "Then the shield behind the head rolls slightly to slip inside.",
+          "v4_start_f": 1638,
+          "v4_end_f": 1767,
+          "abs_start_f": 1459,
+          "abs_end_f": 1583
+        },
+        {
+          "idx": 8,
+          "text": "Meanwhile, the back legs stay planted outside and shove the chest through.",
+          "v4_start_f": 1767,
+          "v4_end_f": 1913,
+          "abs_start_f": 1583,
+          "abs_end_f": 1726
+        },
+        {
+          "idx": 9,
+          "text": "Only at the end does the flattened belly pull clear.",
+          "v4_start_f": 1913,
+          "v4_end_f": 2007,
+          "abs_start_f": 1726,
+          "abs_end_f": 1819
+        },
+        {
+          "idx": 10,
+          "text": "Watch the back plates during that squeeze.",
+          "v4_start_f": 2007,
+          "v4_end_f": 2078,
+          "abs_start_f": 1819,
+          "abs_end_f": 1888
+        },
+        {
+          "idx": 11,
+          "text": "The shell isn't bending like soft rubber.",
+          "v4_start_f": 2078,
+          "v4_end_f": 2158,
+          "abs_start_f": 1888,
+          "abs_end_f": 1964
+        },
+        {
+          "idx": 12,
+          "text": "Instead, stiff plates overlap like roof tiles.",
+          "v4_start_f": 2158,
+          "v4_end_f": 2274,
+          "abs_start_f": 1964,
+          "abs_end_f": 2072
+        },
+        {
+          "idx": 13,
+          "text": "Soft hinge tissue between those plates folds nearly in half.",
+          "v4_start_f": 2274,
+          "v4_end_f": 2404,
+          "abs_start_f": 2072,
+          "abs_end_f": 2198
+        },
+        {
+          "idx": 14,
+          "text": "The body flattens without cracking a single plate.",
+          "v4_start_f": 2404,
+          "v4_end_f": 2490,
+          "abs_start_f": 2198,
+          "abs_end_f": 2278
+        }
+      ]
+    },
+    {
+      "chapter": 3,
+      "start_frame": 2288,
+      "speech_start_frame": 2292,
+      "speech_end_frame": 3598,
+      "end_frame": 3607,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Still, a doorway is only half the puzzle.",
+          "v4_start_f": 2586,
+          "v4_end_f": 2672,
+          "abs_start_f": 2292,
+          "abs_end_f": 2367
+        },
+        {
+          "idx": 2,
+          "text": "Outside that slot, the back legs had room to push.",
+          "v4_start_f": 2672,
+          "v4_end_f": 2786,
+          "abs_start_f": 2367,
+          "abs_end_f": 2467
+        },
+        {
+          "idx": 3,
+          "text": "What happens when the whole ceiling stays low, with nowhere to stand?",
+          "v4_start_f": 2786,
+          "v4_end_f": 2922,
+          "abs_start_f": 2467,
+          "abs_end_f": 2592
+        },
+        {
+          "idx": 4,
+          "text": "In the lab, cockroaches raced down a low corridor.",
+          "v4_start_f": 2922,
+          "v4_end_f": 3025,
+          "abs_start_f": 2592,
+          "abs_end_f": 2693
+        },
+        {
+          "idx": 5,
+          "text": "Step by step, researchers dropped the roof closer to the floor.",
+          "v4_start_f": 3025,
+          "v4_end_f": 3153,
+          "abs_start_f": 2693,
+          "abs_end_f": 2818
+        },
+        {
+          "idx": 6,
+          "text": "Cut the height in half, right onto its back, and you'd expect it to slow down.",
+          "v4_start_f": 3153,
+          "v4_end_f": 3314,
+          "abs_start_f": 2818,
+          "abs_end_f": 2961
+        },
+        {
+          "idx": 7,
+          "text": "It didn't.",
+          "v4_start_f": 3314,
+          "v4_end_f": 3344,
+          "abs_start_f": 2961,
+          "abs_end_f": 2986
+        },
+        {
+          "idx": 8,
+          "text": "Down to half its standing height, the cockroach ran at nearly full speed.",
+          "v4_start_f": 3344,
+          "v4_end_f": 3490,
+          "abs_start_f": 2986,
+          "abs_end_f": 3124
+        },
+        {
+          "idx": 9,
+          "text": "Its legs simply splayed wider, keeping the same fast beat on every stride.",
+          "v4_start_f": 3490,
+          "v4_end_f": 3662,
+          "abs_start_f": 3124,
+          "abs_end_f": 3287
+        },
+        {
+          "idx": 10,
+          "text": "Then the roof dropped just two millimeters lower, squeezing the body itself.",
+          "v4_start_f": 3662,
+          "v4_end_f": 3833,
+          "abs_start_f": 3287,
+          "abs_end_f": 3441
+        },
+        {
+          "idx": 11,
+          "text": "Speed crashed to a quarter of its sprint.",
+          "v4_start_f": 3833,
+          "v4_end_f": 3910,
+          "abs_start_f": 3441,
+          "abs_end_f": 3514
+        },
+        {
+          "idx": 12,
+          "text": "Its normal three-legged running rhythm fell apart.",
+          "v4_start_f": 3910,
+          "v4_end_f": 4003,
+          "abs_start_f": 3514,
+          "abs_end_f": 3598
+        }
+      ]
+    },
+    {
+      "chapter": 4,
+      "start_frame": 3607,
+      "speech_start_frame": 3611,
+      "speech_end_frame": 5302,
+      "end_frame": 5312,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Why did two millimeters break its stride?",
+          "v4_start_f": 4099,
+          "v4_end_f": 4194,
+          "abs_start_f": 3611,
+          "abs_end_f": 3703
+        },
+        {
+          "idx": 2,
+          "text": "And how was it still moving at all?",
+          "v4_start_f": 4194,
+          "v4_end_f": 4256,
+          "abs_start_f": 3703,
+          "abs_end_f": 3764
+        },
+        {
+          "idx": 3,
+          "text": "Follow one back leg from behind as the roof comes down.",
+          "v4_start_f": 4256,
+          "v4_end_f": 4380,
+          "abs_start_f": 3764,
+          "abs_end_f": 3883
+        },
+        {
+          "idx": 4,
+          "text": "With room overhead, the cockroach runs high on the tips of its feet.",
+          "v4_start_f": 4380,
+          "v4_end_f": 4515,
+          "abs_start_f": 3883,
+          "abs_end_f": 4006
+        },
+        {
+          "idx": 5,
+          "text": "Tiny hooked claws and soft pads catch the ground on every step.",
+          "v4_start_f": 4515,
+          "v4_end_f": 4649,
+          "abs_start_f": 4006,
+          "abs_end_f": 4138
+        },
+        {
+          "idx": 6,
+          "text": "Now press the ceiling down until the body flattens.",
+          "v4_start_f": 4649,
+          "v4_end_f": 4750,
+          "abs_start_f": 4138,
+          "abs_end_f": 4237
+        },
+        {
+          "idx": 7,
+          "text": "Forced out past eighty degrees, the leg tips sideways.",
+          "v4_start_f": 4750,
+          "v4_end_f": 4869,
+          "abs_start_f": 4237,
+          "abs_end_f": 4350
+        },
+        {
+          "idx": 8,
+          "text": "Picture trying a push-up with your arms stretched straight out to the sides.",
+          "v4_start_f": 4869,
+          "v4_end_f": 5008,
+          "abs_start_f": 4350,
+          "abs_end_f": 4481
+        },
+        {
+          "idx": 9,
+          "text": "Those foot claws lift off their normal angle.",
+          "v4_start_f": 5008,
+          "v4_end_f": 5099,
+          "abs_start_f": 4481,
+          "abs_end_f": 4571
+        },
+        {
+          "idx": 10,
+          "text": "Look higher up the leg instead, along the shin.",
+          "v4_start_f": 5099,
+          "v4_end_f": 5197,
+          "abs_start_f": 4571,
+          "abs_end_f": 4662
+        },
+        {
+          "idx": 11,
+          "text": "Rows of stiff, backward-pointing spines press straight into the floor.",
+          "v4_start_f": 5197,
+          "v4_end_f": 5331,
+          "abs_start_f": 4662,
+          "abs_end_f": 4793
+        },
+        {
+          "idx": 12,
+          "text": "As the leg drives back, those shin spines dig in like crampons.",
+          "v4_start_f": 5331,
+          "v4_end_f": 5469,
+          "abs_start_f": 4793,
+          "abs_end_f": 4923
+        },
+        {
+          "idx": 13,
+          "text": "Overhead, the rhythm shifts too.",
+          "v4_start_f": 5469,
+          "v4_end_f": 5548,
+          "abs_start_f": 4923,
+          "abs_end_f": 4993
+        },
+        {
+          "idx": 14,
+          "text": "Both middle legs often shove together like a pair of oars.",
+          "v4_start_f": 5548,
+          "v4_end_f": 5655,
+          "abs_start_f": 4993,
+          "abs_end_f": 5097
+        },
+        {
+          "idx": 15,
+          "text": "Back rubbing the roof, belly rubbing the floor, each spiny shin pushes with five times the insect's weight.",
+          "v4_start_f": 5655,
+          "v4_end_f": 5877,
+          "abs_start_f": 5097,
+          "abs_end_f": 5302
+        }
+      ]
+    },
+    {
+      "chapter": 5,
+      "start_frame": 5312,
+      "speech_start_frame": 5316,
+      "speech_end_frame": 6582,
+      "end_frame": 6591,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Could the splayed feet still be helping out of sight?",
+          "v4_start_f": 6012,
+          "v4_end_f": 6098,
+          "abs_start_f": 5316,
+          "abs_end_f": 5397
+        },
+        {
+          "idx": 2,
+          "text": "Researchers measured leg grip without the feet engaging at all.",
+          "v4_start_f": 6098,
+          "v4_end_f": 6244,
+          "abs_start_f": 5397,
+          "abs_end_f": 5533
+        },
+        {
+          "idx": 3,
+          "text": "On rough ground, the spiny shins alone still locked in tight.",
+          "v4_start_f": 6244,
+          "v4_end_f": 6333,
+          "abs_start_f": 5533,
+          "abs_end_f": 5620
+        },
+        {
+          "idx": 4,
+          "text": "That sets up an obvious bet.",
+          "v4_start_f": 6333,
+          "v4_end_f": 6402,
+          "abs_start_f": 5620,
+          "abs_end_f": 5686
+        },
+        {
+          "idx": 5,
+          "text": "If shin spines need grit to catch, then a rougher floor should always make it faster.",
+          "v4_start_f": 6402,
+          "v4_end_f": 6585,
+          "abs_start_f": 5686,
+          "abs_end_f": 5852
+        },
+        {
+          "idx": 6,
+          "text": "Right?",
+          "v4_start_f": 6585,
+          "v4_end_f": 6600,
+          "abs_start_f": 5852,
+          "abs_end_f": 5864
+        },
+        {
+          "idx": 7,
+          "text": "Across more than six hundred confined runs, researchers tested slick, medium, and coarse surfaces.",
+          "v4_start_f": 6600,
+          "v4_end_f": 6801,
+          "abs_start_f": 5864,
+          "abs_end_f": 6049
+        },
+        {
+          "idx": 8,
+          "text": "Rougher ceilings always slowed the insect down.",
+          "v4_start_f": 6801,
+          "v4_end_f": 6901,
+          "abs_start_f": 6049,
+          "abs_end_f": 6146
+        },
+        {
+          "idx": 9,
+          "text": "Overhead rub only fights forward motion.",
+          "v4_start_f": 6901,
+          "v4_end_f": 6980,
+          "abs_start_f": 6146,
+          "abs_end_f": 6223
+        },
+        {
+          "idx": 10,
+          "text": "On the floor, though, the coarsest grit slowed it down too.",
+          "v4_start_f": 6980,
+          "v4_end_f": 7084,
+          "abs_start_f": 6223,
+          "abs_end_f": 6321
+        },
+        {
+          "idx": 11,
+          "text": "On slick ground, the shin spines slipped early.",
+          "v4_start_f": 7084,
+          "v4_end_f": 7183,
+          "abs_start_f": 6321,
+          "abs_end_f": 6413
+        },
+        {
+          "idx": 12,
+          "text": "On very coarse ground, the spines gripped hard, but the flattened belly snagged on every grain.",
+          "v4_start_f": 7183,
+          "v4_end_f": 7366,
+          "abs_start_f": 6413,
+          "abs_end_f": 6582
+        }
+      ]
+    },
+    {
+      "chapter": 6,
+      "start_frame": 6591,
+      "speech_start_frame": 6595,
+      "speech_end_frame": 8023,
+      "end_frame": 8032,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "In separate compression tests, those overlapping plates took hundreds of times the cockroach's weight.",
+          "v4_start_f": 7456,
+          "v4_end_f": 7677,
+          "abs_start_f": 6595,
+          "abs_end_f": 6799
+        },
+        {
+          "idx": 2,
+          "text": "Brief peaks reached roughly nine hundred times its weight.",
+          "v4_start_f": 7677,
+          "v4_end_f": 7755,
+          "abs_start_f": 6799,
+          "abs_end_f": 6877
+        },
+        {
+          "idx": 3,
+          "text": "Spreading load across hinged plates let the insects sprint away at normal speed afterward.",
+          "v4_start_f": 7755,
+          "v4_end_f": 7948,
+          "abs_start_f": 6877,
+          "abs_end_f": 7069
+        },
+        {
+          "idx": 4,
+          "text": "Armor that tough, plus shins like crampons, makes it sound unstoppable.",
+          "v4_start_f": 7948,
+          "v4_end_f": 8070,
+          "abs_start_f": 7069,
+          "abs_end_f": 7183
+        },
+        {
+          "idx": 5,
+          "text": "So return to that narrowing doorway, across three hundred and fifteen lab attempts.",
+          "v4_start_f": 8070,
+          "v4_end_f": 8273,
+          "abs_start_f": 7183,
+          "abs_end_f": 7372
+        },
+        {
+          "idx": 6,
+          "text": "At wider gaps, nearly three out of four attempts shot straight through.",
+          "v4_start_f": 8273,
+          "v4_end_f": 8426,
+          "abs_start_f": 7372,
+          "abs_end_f": 7519
+        },
+        {
+          "idx": 7,
+          "text": "Narrow that slot to two stacked pennies, about three millimeters, and more than four out of five failed.",
+          "v4_start_f": 8426,
+          "v4_end_f": 8608,
+          "abs_start_f": 7519,
+          "abs_end_f": 7680
+        },
+        {
+          "idx": 8,
+          "text": "Only seventeen percent made it through.",
+          "v4_start_f": 8608,
+          "v4_end_f": 8682,
+          "abs_start_f": 7680,
+          "abs_end_f": 7749
+        },
+        {
+          "idx": 9,
+          "text": "Most swept the slot with their antennae, felt the squeeze, and turned back.",
+          "v4_start_f": 8682,
+          "v4_end_f": 8842,
+          "abs_start_f": 7749,
+          "abs_end_f": 7891
+        },
+        {
+          "idx": 10,
+          "text": "Nearly one in ten wedged fast at the thickest part of its chest.",
+          "v4_start_f": 8842,
+          "v4_end_f": 8986,
+          "abs_start_f": 7891,
+          "abs_end_f": 8023
+        }
+      ]
+    },
+    {
+      "chapter": 7,
+      "start_frame": 8032,
+      "speech_start_frame": 8036,
+      "speech_end_frame": 8920,
+      "end_frame": 9008,
+      "sentences": [
+        {
+          "idx": 1,
+          "text": "Now watch that two-penny escape once more at real speed.",
+          "v4_start_f": 9070,
+          "v4_end_f": 9182,
+          "abs_start_f": 8036,
+          "abs_end_f": 8143
+        },
+        {
+          "idx": 2,
+          "text": "Antennae read the slot, stiff plates tile down on soft hinges, and spiny shins drive it clear.",
+          "v4_start_f": 9182,
+          "v4_end_f": 9371,
+          "abs_start_f": 8143,
+          "abs_end_f": 8315
+        },
+        {
+          "idx": 3,
+          "text": "Past the far edge, those folded hinges spring the shell back to half an inch.",
+          "v4_start_f": 9371,
+          "v4_end_f": 9572,
+          "abs_start_f": 8315,
+          "abs_end_f": 8502
+        },
+        {
+          "idx": 4,
+          "text": "Its feet take over the sprint again.",
+          "v4_start_f": 9572,
+          "v4_end_f": 9637,
+          "abs_start_f": 8502,
+          "abs_end_f": 8564
+        },
+        {
+          "idx": 5,
+          "text": "Solid armor would jam at the edge, and feet alone would fail inside.",
+          "v4_start_f": 9637,
+          "v4_end_f": 9771,
+          "abs_start_f": 8564,
+          "abs_end_f": 8692
+        },
+        {
+          "idx": 6,
+          "text": "It doesn't vanish under a door by being indestructible.",
+          "v4_start_f": 9771,
+          "v4_end_f": 9881,
+          "abs_start_f": 8692,
+          "abs_end_f": 8797
+        },
+        {
+          "idx": 7,
+          "text": "It gets through because its shell can fold, and its shins can walk.",
+          "v4_start_f": 9881,
+          "v4_end_f": 10017,
+          "abs_start_f": 8797,
+          "abs_end_f": 8920
+        }
+      ]
+    }
+  ],
+  "v4_to_v5_frame_breakpoints": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      25.688,
+      12.6
+    ],
+    [
+      53.668,
+      40.581
+    ],
+    [
+      64.275,
+      45.081
+    ],
+    [
+      120.162,
+      100.968
+    ],
+    [
+      130.819,
+      105.468
+    ],
+    [
+      167.396,
+      142.044
+    ],
+    [
+      178.039,
+      148.644
+    ],
+    [
+      201.108,
+      171.713
+    ],
+    [
+      212.056,
+      176.213
+    ],
+    [
+      247.246,
+      211.403
+    ],
+    [
+      257.709,
+      218.002
+    ],
+    [
+      288.471,
+      248.764
+    ],
+    [
+      297.37,
+      253.264
+    ],
+    [
+      371.153,
+      327.047
+    ],
+    [
+      382.247,
+      333.647
+    ],
+    [
+      420.163,
+      371.563
+    ],
+    [
+      427.459,
+      378.163
+    ],
+    [
+      464.414,
+      415.118
+    ],
+    [
+      477.309,
+      421.718
+    ],
+    [
+      516.344,
+      460.754
+    ],
+    [
+      525.361,
+      467.354
+    ],
+    [
+      592.351,
+      534.344
+    ],
+    [
+      603.475,
+      544.544
+    ],
+    [
+      628.411,
+      569.479
+    ],
+    [
+      638.855,
+      576.079
+    ],
+    [
+      676.28,
+      613.504
+    ],
+    [
+      684.046,
+      618.004
+    ],
+    [
+      734.077,
+      668.036
+    ],
+    [
+      743.542,
+      674.636
+    ],
+    [
+      779.971,
+      711.065
+    ],
+    [
+      790.732,
+      715.565
+    ],
+    [
+      848.898,
+      773.731
+    ],
+    [
+      858.602,
+      780.331
+    ],
+    [
+      942.169,
+      863.898
+    ],
+    [
+      954.273,
+      868.398
+    ],
+    [
+      997.283,
+      911.408
+    ],
+    [
+      1082.923,
+      925.808
+    ],
+    [
+      1168.776,
+      1011.662
+    ],
+    [
+      1178.497,
+      1018.262
+    ],
+    [
+      1309.654,
+      1149.419
+    ],
+    [
+      1320.941,
+      1156.019
+    ],
+    [
+      1386.054,
+      1221.132
+    ],
+    [
+      1395.899,
+      1227.733
+    ],
+    [
+      1445.982,
+      1277.815
+    ],
+    [
+      1451.507,
+      1282.315
+    ],
+    [
+      1465.631,
+      1296.438
+    ],
+    [
+      1478.642,
+      1303.038
+    ],
+    [
+      1536.298,
+      1360.694
+    ],
+    [
+      1541.209,
+      1365.604
+    ],
+    [
+      1555.971,
+      1380.367
+    ],
+    [
+      1562.744,
+      1384.867
+    ],
+    [
+      1634.263,
+      1456.386
+    ],
+    [
+      1644.743,
+      1462.986
+    ],
+    [
+      1691.396,
+      1509.639
+    ],
+    [
+      1696.657,
+      1514.139
+    ],
+    [
+      1762.563,
+      1580.045
+    ],
+    [
+      1772.408,
+      1586.645
+    ],
+    [
+      1791.128,
+      1605.365
+    ],
+    [
+      1796.016,
+      1609.865
+    ],
+    [
+      1861.235,
+      1675.084
+    ],
+    [
+      1866.972,
+      1679.584
+    ],
+    [
+      1911.437,
+      1724.049
+    ],
+    [
+      1916.582,
+      1729.194
+    ],
+    [
+      2003.707,
+      1816.319
+    ],
+    [
+      2010.849,
+      1822.919
+    ],
+    [
+      2072.764,
+      1884.834
+    ],
+    [
+      2083.894,
+      1891.434
+    ],
+    [
+      2153.771,
+      1961.311
+    ],
+    [
+      2163.626,
+      1967.911
+    ],
+    [
+      2187.11,
+      1991.394
+    ],
+    [
+      2195.809,
+      1995.894
+    ],
+    [
+      2268.764,
+      2068.849
+    ],
+    [
+      2279.498,
+      2075.449
+    ],
+    [
+      2399.214,
+      2195.165
+    ],
+    [
+      2410.008,
+      2201.765
+    ],
+    [
+      2485.62,
+      2277.377
+    ],
+    [
+      2587.676,
+      2291.777
+    ],
+    [
+      2600.441,
+      2304.541
+    ],
+    [
+      2612.263,
+      2309.041
+    ],
+    [
+      2667.047,
+      2363.825
+    ],
+    [
+      2678.758,
+      2370.425
+    ],
+    [
+      2715.191,
+      2406.858
+    ],
+    [
+      2727.289,
+      2411.358
+    ],
+    [
+      2780.291,
+      2464.36
+    ],
+    [
+      2792.849,
+      2470.96
+    ],
+    [
+      2817.834,
+      2495.945
+    ],
+    [
+      2822.979,
+      2500.445
+    ],
+    [
+      2873.241,
+      2550.707
+    ],
+    [
+      2884.986,
+      2555.207
+    ],
+    [
+      2919.371,
+      2589.592
+    ],
+    [
+      2925.089,
+      2595.311
+    ],
+    [
+      2949.318,
+      2619.539
+    ],
+    [
+      2956.294,
+      2624.039
+    ],
+    [
+      3021.824,
+      2689.569
+    ],
+    [
+      3027.582,
+      2695.327
+    ],
+    [
+      3146.249,
+      2813.994
+    ],
+    [
+      3158.489,
+      2820.594
+    ],
+    [
+      3198.104,
+      2860.21
+    ],
+    [
+      3207.264,
+      2864.71
+    ],
+    [
+      3244.717,
+      2902.163
+    ],
+    [
+      3257.769,
+      2906.663
+    ],
+    [
+      3309.503,
+      2958.397
+    ],
+    [
+      3322.829,
+      2964.997
+    ],
+    [
+      3340.797,
+      2982.964
+    ],
+    [
+      3348.549,
+      2989.564
+    ],
+    [
+      3405.269,
+      3046.284
+    ],
+    [
+      3415.672,
+      3050.784
+    ],
+    [
+      3486.553,
+      3121.664
+    ],
+    [
+      3494.829,
+      3128.264
+    ],
+    [
+      3517.135,
+      3150.571
+    ],
+    [
+      3522.184,
+      3155.071
+    ],
+    [
+      3563.414,
+      3196.301
+    ],
+    [
+      3573.306,
+      3200.801
+    ],
+    [
+      3620.559,
+      3248.055
+    ],
+    [
+      3625.576,
+      3252.555
+    ],
+    [
+      3656.597,
+      3283.577
+    ],
+    [
+      3667.901,
+      3290.177
+    ],
+    [
+      3681.295,
+      3303.571
+    ],
+    [
+      3688.387,
+      3308.071
+    ],
+    [
+      3715.031,
+      3334.714
+    ],
+    [
+      3723.436,
+      3339.214
+    ],
+    [
+      3770.406,
+      3386.184
+    ],
+    [
+      3780.914,
+      3390.684
+    ],
+    [
+      3828.436,
+      3438.206
+    ],
+    [
+      3838.796,
+      3444.806
+    ],
+    [
+      3905.179,
+      3511.189
+    ],
+    [
+      3915.781,
+      3517.789
+    ],
+    [
+      3995.137,
+      3597.146
+    ],
+    [
+      4101.752,
+      3611.546
+    ],
+    [
+      4190.385,
+      3700.179
+    ],
+    [
+      4197.64,
+      3706.779
+    ],
+    [
+      4252.222,
+      3761.361
+    ],
+    [
+      4262.324,
+      3767.961
+    ],
+    [
+      4330.207,
+      3835.844
+    ],
+    [
+      4336.012,
+      3840.344
+    ],
+    [
+      4376.068,
+      3880.401
+    ],
+    [
+      4388.198,
+      3887.001
+    ],
+    [
+      4420.356,
+      3919.159
+    ],
+    [
+      4430.05,
+      3923.659
+    ],
+    [
+      4508.707,
+      4002.316
+    ],
+    [
+      4520.406,
+      4008.916
+    ],
+    [
+      4647.752,
+      4136.262
+    ],
+    [
+      4653.075,
+      4141.585
+    ],
+    [
+      4745.024,
+      4233.534
+    ],
+    [
+      4755.416,
+      4240.134
+    ],
+    [
+      4809.635,
+      4294.352
+    ],
+    [
+      4815.724,
+      4298.852
+    ],
+    [
+      4863.118,
+      4346.246
+    ],
+    [
+      4874.879,
+      4352.846
+    ],
+    [
+      4917.091,
+      4395.058
+    ],
+    [
+      4926.566,
+      4399.558
+    ],
+    [
+      5004.909,
+      4477.901
+    ],
+    [
+      5012.47,
+      4484.501
+    ],
+    [
+      5096.101,
+      4568.132
+    ],
+    [
+      5102.923,
+      4574.733
+    ],
+    [
+      5154.426,
+      4626.236
+    ],
+    [
+      5163.525,
+      4630.736
+    ],
+    [
+      5192.097,
+      4659.307
+    ],
+    [
+      5202.375,
+      4665.908
+    ],
+    [
+      5326.312,
+      4789.845
+    ],
+    [
+      5337.033,
+      4796.445
+    ],
+    [
+      5376.835,
+      4836.247
+    ],
+    [
+      5386.509,
+      4840.747
+    ],
+    [
+      5464.866,
+      4919.104
+    ],
+    [
+      5472.251,
+      4925.704
+    ],
+    [
+      5493.758,
+      4947.211
+    ],
+    [
+      5506.557,
+      4951.711
+    ],
+    [
+      5545.719,
+      4990.872
+    ],
+    [
+      5551.892,
+      4997.046
+    ],
+    [
+      5649.305,
+      5094.459
+    ],
+    [
+      5661.887,
+      5101.059
+    ],
+    [
+      5694.869,
+      5134.041
+    ],
+    [
+      5703.483,
+      5138.541
+    ],
+    [
+      5739.847,
+      5174.906
+    ],
+    [
+      5750.302,
+      5179.406
+    ],
+    [
+      5806.809,
+      5235.913
+    ],
+    [
+      5811.577,
+      5240.413
+    ],
+    [
+      5872.556,
+      5301.392
+    ],
+    [
+      6014.502,
+      5315.792
+    ],
+    [
+      6092.868,
+      5394.158
+    ],
+    [
+      6104.248,
+      5400.757
+    ],
+    [
+      6203.115,
+      5499.624
+    ],
+    [
+      6215.097,
+      5504.124
+    ],
+    [
+      6328.463,
+      5617.49
+    ],
+    [
+      6339.624,
+      5624.09
+    ],
+    [
+      6398.948,
+      5683.414
+    ],
+    [
+      6406.21,
+      5690.014
+    ],
+    [
+      6472.284,
+      5756.088
+    ],
+    [
+      6482.294,
+      5760.588
+    ],
+    [
+      6512.4,
+      5790.694
+    ],
+    [
+      6519.674,
+      5795.194
+    ],
+    [
+      6558.347,
+      5833.867
+    ],
+    [
+      6569.389,
+      5838.367
+    ],
+    [
+      6580.905,
+      5849.882
+    ],
+    [
+      6592.03,
+      5856.483
+    ],
+    [
+      6665.966,
+      5930.419
+    ],
+    [
+      6677.941,
+      5934.919
+    ],
+    [
+      6726.005,
+      5982.983
+    ],
+    [
+      6736.597,
+      5987.483
+    ],
+    [
+      6753.167,
+      6004.053
+    ],
+    [
+      6758.493,
+      6008.553
+    ],
+    [
+      6795.293,
+      6045.353
+    ],
+    [
+      6806.728,
+      6051.953
+    ],
+    [
+      6899.593,
+      6144.818
+    ],
+    [
+      6905.894,
+      6151.119
+    ],
+    [
+      6974.417,
+      6219.642
+    ],
+    [
+      6986.819,
+      6226.242
+    ],
+    [
+      7012.011,
+      6251.433
+    ],
+    [
+      7017.177,
+      6255.933
+    ],
+    [
+      7079.243,
+      6317.999
+    ],
+    [
+      7090.75,
+      6324.599
+    ],
+    [
+      7119.979,
+      6353.828
+    ],
+    [
+      7127.332,
+      6358.328
+    ],
+    [
+      7178.334,
+      6409.331
+    ],
+    [
+      7187.534,
+      6415.931
+    ],
+    [
+      7276.237,
+      6504.634
+    ],
+    [
+      7289.343,
+      6509.134
+    ],
+    [
+      7361.131,
+      6580.921
+    ],
+    [
+      7459.756,
+      6595.321
+    ],
+    [
+      7507.719,
+      6643.284
+    ],
+    [
+      7517.045,
+      6647.784
+    ],
+    [
+      7559.85,
+      6690.589
+    ],
+    [
+      7566.291,
+      6695.089
+    ],
+    [
+      7636.148,
+      6764.946
+    ],
+    [
+      7647.264,
+      6769.446
+    ],
+    [
+      7673.493,
+      6795.674
+    ],
+    [
+      7680.026,
+      6802.207
+    ],
+    [
+      7752.525,
+      6874.706
+    ],
+    [
+      7759.029,
+      6881.211
+    ],
+    [
+      7907.839,
+      7030.02
+    ],
+    [
+      7912.692,
+      7034.52
+    ],
+    [
+      7944.442,
+      7066.27
+    ],
+    [
+      7953.474,
+      7072.87
+    ],
+    [
+      8004.626,
+      7124.021
+    ],
+    [
+      8014.571,
+      7128.521
+    ],
+    [
+      8067.036,
+      7180.986
+    ],
+    [
+      8077.802,
+      7187.586
+    ],
+    [
+      8140.292,
+      7250.076
+    ],
+    [
+      8150.83,
+      7254.576
+    ],
+    [
+      8227.636,
+      7331.381
+    ],
+    [
+      8235.199,
+      7335.881
+    ],
+    [
+      8268.507,
+      7369.189
+    ],
+    [
+      8278.237,
+      7375.789
+    ],
+    [
+      8376.859,
+      7474.412
+    ],
+    [
+      8383.583,
+      7478.912
+    ],
+    [
+      8421.094,
+      7516.422
+    ],
+    [
+      8432.656,
+      7523.023
+    ],
+    [
+      8478.081,
+      7568.448
+    ],
+    [
+      8490.074,
+      7572.947
+    ],
+    [
+      8527.713,
+      7610.586
+    ],
+    [
+      8539.876,
+      7615.086
+    ],
+    [
+      8601.968,
+      7677.177
+    ],
+    [
+      8614.893,
+      7683.778
+    ],
+    [
+      8677.686,
+      7746.571
+    ],
+    [
+      8687.442,
+      7753.171
+    ],
+    [
+      8754.505,
+      7820.234
+    ],
+    [
+      8767.178,
+      7824.734
+    ],
+    [
+      8798.714,
+      7856.271
+    ],
+    [
+      8809.731,
+      7860.771
+    ],
+    [
+      8837.093,
+      7888.132
+    ],
+    [
+      8847.597,
+      7894.733
+    ],
+    [
+      8887.839,
+      7934.974
+    ],
+    [
+      8894.871,
+      7939.474
+    ],
+    [
+      8923.128,
+      7967.731
+    ],
+    [
+      8931.317,
+      7972.231
+    ],
+    [
+      8980.85,
+      8021.764
+    ],
+    [
+      9072.702,
+      8036.164
+    ],
+    [
+      9175.786,
+      8139.248
+    ],
+    [
+      9187.838,
+      8145.848
+    ],
+    [
+      9227.653,
+      8185.663
+    ],
+    [
+      9239.244,
+      8190.163
+    ],
+    [
+      9317.281,
+      8268.201
+    ],
+    [
+      9328.779,
+      8272.701
+    ],
+    [
+      9398.772,
+      8342.694
+    ],
+    [
+      9407.18,
+      8347.194
+    ],
+    [
+      9445.83,
+      8385.844
+    ],
+    [
+      9458.599,
+      8390.344
+    ],
+    [
+      9498.607,
+      8430.352
+    ],
+    [
+      9504.735,
+      8434.852
+    ],
+    [
+      9568.341,
+      8498.458
+    ],
+    [
+      9575.781,
+      8505.057
+    ],
+    [
+      9631.527,
+      8560.804
+    ],
+    [
+      9642.836,
+      8567.404
+    ],
+    [
+      9701.001,
+      8625.569
+    ],
+    [
+      9707.03,
+      8630.069
+    ],
+    [
+      9765.529,
+      8688.568
+    ],
+    [
+      9777.316,
+      8695.168
+    ],
+    [
+      9826.279,
+      8744.131
+    ],
+    [
+      9832.692,
+      8748.631
+    ],
+    [
+      9878.101,
+      8794.041
+    ],
+    [
+      9885.479,
+      8800.641
+    ],
+    [
+      9957.582,
+      8872.744
+    ],
+    [
+      9971.17,
+      8877.244
+    ],
+    [
+      10012.361,
+      8918.435
+    ],
+    [
+      10302.0,
+      9008.0
+    ]
+  ]
+}

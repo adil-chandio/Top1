@@ -1,0 +1,31 @@
+MONARCH CAM — EPISODE #03 (16:9 LONG-FORM DOCUMENTARY PACKAGING COPY V2 · VOICE-LOCKED)
+Status: QA-Passed Release Candidate (Conformed to Voice-01 Master Clock: 10,461 frames = 05:48.7 @ 30.000 fps)
+
+RECOMMENDED YOUTUBE TITLE
+How This Cockroach Runs Without Its Feet
+
+ALTERNATE TITLE OPTIONS
+1. This Cockroach Vanishes Under Two Pennies—Without Using Its Feet
+2. Why a 3mm Crack Doesn't Crush This Cockroach's Armor
+
+THUMBNAIL CONCEPT (16:9, 1280x720, <2 MB sRGB JPG — Thumbnail Lab C1 Selected)
+Macro rear-quarter view at the 3.2 mm clear slot beside two stacked copper pennies: flattened amber chitin plates under the glass, splayed hind leg in crisp foreground focus with lifted foot claws and glowing contact on three sharp shin spines. Minimal 2-word badge safe of bottom-right timestamp: "NO FEET" (Alternates tested at 480/320/176/120 px: C2 "3MM GAP", C3 "IT FOLDS").
+
+YOUTUBE DESCRIPTION
+Flip on a light, and an American cockroach (Periplaneta americana) half an inch tall can bolt straight under a slot barely as thick as two stacked pennies (3.2 mm) in under a second—and keep moving inside a 4 mm space where its feet can no longer stand underneath its body.
+
+Following 500 fps biomechanical tests step by step, this film breaks down the five-move doorway squeeze, how stiff exoskeleton plates overlap like roof tiles on folding arthrodial hinges, why speed holds steady down to half standing height before crashing two millimeters lower, how stiff shin spines dig in like crampons, why the coarsest floor actually slows the crawl, and why more than four out of five attempts still fail at 3.2 mm.
+
+CHAPTERS (Voice-Locked to 30.000 fps Master MP4)
+00:00 Under the door
+00:35 Five moves through the slot
+01:26 The low-ceiling surprise
+02:18 When shins become feet
+03:22 The rough-floor trap
+04:14 Tough shell, tight limit
+05:09 Hinges and spines
+
+SCIENCE & REPRESENTATION
+Illustrative 3D biomechanical reconstruction created for visual explanation—not high-speed lab footage, micro-CT data, or direct force-plate video. Quantitative measurements, trial denominators (n = 21 adult male Periplaneta americana; 315 crevice-gate trials; 104 ceiling-height trials; 638 confined-friction trials), and analytical stick-slip relationships are drawn from:
+
+• Jayaram K, Full RJ (2016). "Cockroaches traverse crevices, crawl rapidly in confined spaces, and inspire a soft, legged robot." Proceedings of the National Academy of Sciences (PNAS) 113(8): E950–E957. https://doi.org/10.1073/pnas.1514591113 (PMCID: PMC4776529)

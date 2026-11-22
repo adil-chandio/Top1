@@ -1,0 +1,42 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "spdx_default_code_license": "LicenseRef-Proprietary-Top1",
+  "assets": [
+    {
+      "asset_id": "pnas_pmc4776529_facts",
+      "asset_type": "paper",
+      "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4776529/",
+      "spdx_or_terms": "Scientific measurements & facts cited with full attribution; 0 third-party images/videos copied.",
+      "sha256": null,
+      "commercial_use_cleared": true,
+      "usage_scope": "Quantitative solver parameters, script bounds, and credits citation."
+    },
+    {
+      "asset_id": "cockroach_cpp17_sdf_renderer",
+      "asset_type": "code",
+      "source": "tools/monarch-cockroach/feature/proof_render.cpp",
+      "spdx_or_terms": "100% original repository C++17/OpenMP ray-casting code",
+      "sha256": null,
+      "commercial_use_cleared": true,
+      "usage_scope": "All 16:9 moving proof and episode 3D visuals."
+    },
+    {
+      "asset_id": "procedural_dsp_contact_foley",
+      "asset_type": "sound",
+      "source": "tools/monarch-cockroach/feature/build_moving_proof.py",
+      "spdx_or_terms": "100% original synthesized NumPy/SciPy DSP micro-contact Foley (zero external samples)",
+      "sha256": null,
+      "commercial_use_cleared": true,
+      "usage_scope": "Synchronized chitin shingle, acrylic touch, and tibial-spine grit transients."
+    },
+    {
+      "asset_id": "arena_auditioned_narrator_voice",
+      "asset_type": "voice",
+      "source": "Arena add_voice / generate_speech licensed TTS session voice",
+      "spdx_or_terms": "Platform-licensed synthetic speech selected by owner audition (zero unauthorized voice cloning)",
+      "sha256": "9f86b7e4c1ca0866306315829d03e7b2ef4a62a0b367f276688c00e2b9ef9238",
+      "commercial_use_cleared": true,
+      "usage_scope": "Episode #03 English documentary narration."
+    }
+  ]
+}

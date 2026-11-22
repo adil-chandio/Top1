@@ -1,0 +1,75 @@
+{
+  "channel": "monarch-cam",
+  "series_spine": "Visible animal ability -> hidden biomechanical control -> real physical limit",
+  "strategic_upgrade_chain": [
+    "what_viewer_saw",
+    "physical_mechanism",
+    "supporting_evidence",
+    "what_evidence_does_not_prove",
+    "viewer_understanding_shift"
+  ],
+  "visual_palette": {
+    "obsidian_stage": "#0D121A",
+    "slate_card": "#141D2B",
+    "chitin_amber": "#D98A32",
+    "arthrodial_cyan": "#3AD4BE",
+    "spine_gold": "#F7C35F",
+    "limit_coral": "#E86452",
+    "ink_primary": "#EEF3FA"
+  },
+  "typography_rules": {
+    "min_mobile_6in_height_pct": 3.2,
+    "max_caption_chars_per_line": 39,
+    "reject_thin_hairlines_below_px": 2.0,
+    "never_occlude_contact_point": true
+  },
+  "narration_personality": {
+    "target_avg_words_per_sentence": [8.5, 11.5],
+    "max_words_per_sentence": 20,
+    "metric_tables_go_to_super_not_vo": true,
+    "forbidden_tropes": [
+      "pest-filth-disgust-bait",
+      "spoken-like-and-subscribe-cta",
+      "claiming-illustrative-3d-is-lab-footage",
+      "guaranteed-virality-promises"
+    ]
+  },
+  "uncertainty_and_limits_grammar": {
+    "show_surgical_ablation_schematically_only": true,
+    "always_include_trial_denominators_on_super_or_credits": true,
+    "explicitly_state_species_and_setup_bounds": true
+  },
+  "format_grammar": {
+    "long_16x9": {
+      "resolution": [1920, 1080],
+      "continuation_native_resolution": [1280, 720],
+      "fps": 30,
+      "target_lufs_i": -19.0,
+      "max_true_peak_dbtp": -1.5,
+      "required_beats": [
+        "opening_promise",
+        "early_visual_proof",
+        "evidence_context",
+        "uninterrupted_contact_mechanism",
+        "counterexample_or_bet_twist",
+        "real_failure_limit",
+        "real_speed_understanding_reprise"
+      ],
+      "crop_to_short_forbidden": true
+    },
+    "short_9x16": {
+      "resolution": [1080, 1920],
+      "fps": 30,
+      "target_lufs_i": -16.0,
+      "max_true_peak_dbtp": -1.5,
+      "required_beats": [
+        "first_frame_action",
+        "zero_logo_delay",
+        "one_central_question",
+        "one_visible_proof",
+        "one_satisfying_payoff_or_loop"
+      ],
+      "separate_camera_pacing_and_vo_required": true
+    }
+  }
+}

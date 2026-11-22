@@ -1,0 +1,90 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "channel": "monarch-cam",
+  "episode": "03",
+  "edition": "16x9-long-form-feature-v2",
+  "format": "long-16x9",
+  "status": "qa-passed",
+  "owner_selected": true,
+  "strategic_chain": {
+    "what_viewer_saw": "A half-inch tall American cockroach sprints straight into a 3.2 mm crack (two stacked pennies) and vanishes in under a second.",
+    "physical_mechanism": "Rigid chitin plates shingle on soft folding arthrodial hinges (~47% compression) while >80-degree leg sprawl lifts the foot claws and engages backward-pointing tibial shin spines like crampons.",
+    "supporting_evidence": "Jayaram & Full (2016) PNAS 500 fps experiments across n = 21 male Periplaneta americana: 315 crevice-gate trials, 104 ceiling-height corridor trials, 638 confined-friction runs, and cyclic compression tests.",
+    "what_evidence_does_not_prove": "Does NOT prove cockroaches are indestructible under sharp point loads, does NOT generalize exact 3.2 mm / 4.0 mm thresholds to every cockroach species, and our 3D visuals are illustrative reconstructions rather than lab video.",
+    "viewer_understanding_shift": "Replaces the myth of 'rubbery or indestructible pests' with two exact mechanical design principles: hinged armor that folds and spiny shins that take over when feet lose geometry."
+  },
+  "status_history": [
+    {
+      "state": "idea",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "Ranked in original Monarch Cam 46-video market pass Top 3."
+    },
+    {
+      "state": "researched",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "Primary PNAS paper PMC4776529 + 8 verbatim multi-million-view benchmark transcripts analyzed."
+    },
+    {
+      "state": "shortlisted",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "Unfilmed tibial-spine traction whitespace confirmed vs Deep Look hydraulic-press benchmark."
+    },
+    {
+      "state": "owner-selected",
+      "date": "2026-11-21",
+      "actor": "owner",
+      "reason": "Owner directed: start Monarch Cam Episode #03 with 16:9 Long Video built first."
+    },
+    {
+      "state": "claim-checked",
+      "date": "2026-11-21",
+      "actor": "qa-gate",
+      "reason": "All 30 paragraphs mapped 1-to-1 to Jayaram & Full (2016) PNAS bounds."
+    },
+    {
+      "state": "scripted",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "Upgraded Script V2 (794 words, 81 sentences, 9.8 avg w/sent) exported to PDF & Google Doc."
+    },
+    {
+      "state": "proof-pending",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "Native C++17/OpenMP 9.00 s 1920x1080 3D moving contact proof queued before voice lock."
+    },
+    {
+      "state": "proof-passed",
+      "date": "2026-11-21",
+      "actor": "qa-gate",
+      "reason": "9.00 s (270f @ 30 fps) native C++17 3D moving contact proof passed full PyAV/LUFS/mobile decode QA and visual inspection."
+    },
+    {
+      "state": "voice-locked",
+      "date": "2026-11-21",
+      "actor": "owner",
+      "reason": "Owner auditioned masculine narrator candidates (Battle 01) and locked voice-01; 7 dry 48kHz/24-bit WAV takes locked at 10,461 frames (348.700 s, zero time-stretch)."
+    },
+    {
+      "state": "picture-locked",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "All 7 native C++17/OpenMP 1920x1080 @ 30.000 fps chapter plates (10,461 frames) rendered and visually inspected across 7-chapter QA contact sheet."
+    },
+    {
+      "state": "mix-locked",
+      "date": "2026-11-21",
+      "actor": "agent-verified",
+      "reason": "48 kHz 24-bit stereo documentary mix locked (-15.50 LUFS-I WAV / -16.45 LUFS-I AAC Master, -1.69 dBTP True Peak, 0.9996 mono correlation)."
+    },
+    {
+      "state": "qa-passed",
+      "date": "2026-11-21",
+      "actor": "qa-gate",
+      "reason": "Full 10,461-frame PyAV decode, EBU R128 loudness, 4x True-Peak, 14.67 ms A/V sync, and 120px..480px mobile contrast QA passed; awaiting human owner-accepted sign-off."
+    }
+  ]
+}

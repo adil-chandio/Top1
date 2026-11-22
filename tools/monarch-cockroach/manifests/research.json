@@ -1,0 +1,76 @@
+{
+  "warehouse_sqlite": ".cache/monarch-studio-os/research_warehouse.sqlite",
+  "cohort_count": 5,
+  "cohorts": [
+    {
+      "source_id": "deeplook_mosquito_6needles",
+      "channel_cohort": "wildlife-micro-biomechanics",
+      "creator": "KQED Deep Look",
+      "title": "How Mosquitoes Use Six Needles to Suck Your Blood",
+      "format": "long-16x9",
+      "runtime_s": 211,
+      "title_promise": "Looks like one tube -> actually six specialized micro-needles",
+      "thumbnail_features": "Extreme macro proboscis on skin, high contrast",
+      "observed_age": "9+ years",
+      "displayed_views": 23000000,
+      "script_avg_words_per_sent": 13.2,
+      "confidence_and_limitations": "Verbatim KQED transcript verified; views reflect 9-year catalog flagship status, not single-line causality."
+    },
+    {
+      "source_id": "realscience_octopus",
+      "channel_cohort": "science-biology-long",
+      "creator": "Real Science",
+      "title": "The Insane Biology of: The Octopus",
+      "format": "long-16x9",
+      "runtime_s": 1180,
+      "title_promise": "Escalating biological paradoxes (colorblind camouflage)",
+      "thumbnail_features": "Close-up eye/skin chromatophores on dark ground",
+      "observed_age": "3+ years",
+      "displayed_views": 13180000,
+      "script_avg_words_per_sent": 14.1,
+      "confidence_and_limitations": "Transcript verified; longer 19-min essay format vs our 5-6 min mechanism cut."
+    },
+    {
+      "source_id": "stevemould_grasshopper_leg",
+      "channel_cohort": "biomechanics-explainer",
+      "creator": "Steve Mould",
+      "title": "We should use this amazing mechanism that's inside a grasshopper leg",
+      "format": "long-16x9",
+      "runtime_s": 612,
+      "title_promise": "Hidden mechanical lever/latch inside an insect leg",
+      "thumbnail_features": "Physical model + clear insect leg diagram",
+      "observed_age": "2+ years",
+      "displayed_views": 3220000,
+      "script_avg_words_per_sent": 13.8,
+      "confidence_and_limitations": "Transcript verified; strong human-scale physical analogy before micro-anatomy."
+    },
+    {
+      "source_id": "deeplook_cockroach_press",
+      "channel_cohort": "same-species-benchmark",
+      "creator": "KQED Deep Look",
+      "title": "Cockroach vs. Hydraulic Press: Who Wins?",
+      "format": "long-16x9",
+      "runtime_s": 237,
+      "title_promise": "How a cockroach survives 900x body-weight compression",
+      "thumbnail_features": "Macro cockroach under metal press",
+      "observed_age": "3 years (Sep 2023)",
+      "displayed_views": 815663,
+      "script_avg_words_per_sent": 13.9,
+      "confidence_and_limitations": "Same PNAS lab source; skipped shin-spine mechanics, 4mm cliff, and 638-trial belly-drag trap."
+    },
+    {
+      "source_id": "monarchcam_01a_ant_v3",
+      "channel_cohort": "same-channel-baseline",
+      "creator": "Monarch Cam",
+      "title": "This Ant Escapes by Biting the Ground",
+      "format": "long-16x9",
+      "runtime_s": 300,
+      "title_promise": "Trap-jaw ant strikes sand to launch out of antlion pit",
+      "thumbnail_features": "Macro jaw strike on sand, 'NO GRIP' badge",
+      "observed_age": "Channel Ep #01A",
+      "displayed_views": null,
+      "script_avg_words_per_sent": 9.1,
+      "confidence_and_limitations": "Locked 8,994-frame internal production benchmark."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "project_id": "monarch-cam-03-cockroach-long",
+  "format": "long-16x9",
+  "title_concepts": [
+    {
+      "id": "T1_mechanism_paradox",
+      "title": "How This Cockroach Runs Without Its Feet",
+      "angle": "Direct mechanism paradox matching the lifted-claw / shin-spine visual proof.",
+      "char_count": 40,
+      "selected": true
+    },
+    {
+      "id": "T2_scale_and_mechanism",
+      "title": "This Cockroach Vanishes Under Two Pennies\u2014Without Using Its Feet",
+      "angle": "Combines household two-penny scale hook with the footless propulsion reveal.",
+      "char_count": 64,
+      "selected": false
+    },
+    {
+      "id": "T3_hinged_armor",
+      "title": "Why a 3mm Crack Doesn't Crush This Cockroach's Armor",
+      "angle": "Leads with shell-folding puzzle; kept as backup A/B test candidate.",
+      "char_count": 52,
+      "selected": false
+    }
+  ],
+  "thumbnail_concepts": [
+    {
+      "id": "C1_macro_shin_spines_vs_pennies",
+      "headline_badge": "NO FEET",
+      "composition": "Tight rear-quarter macro at the 3.2 mm clear slot beside two copper pennies: flattened amber shell, lifted foot claws in silhouette, and 3 glowing gold shin spines planted on 40-grit floor.",
+      "silhouette_contrast": "Warm copper/amber + gold contact spikes against deep #0D121A obsidian background (contrast > 6.5x at 120px).",
+      "timestamp_safe": true,
+      "selected": true
+    },
+    {
+      "id": "C2_split_standing_vs_3mm_flat",
+      "headline_badge": "3MM GAP",
+      "composition": "Left-to-right height compression comparison: 12.5 mm standing posture vs 3.2 mm shingled squeeze under clear glass.",
+      "silhouette_contrast": "High vertical step-down silhouette readable at 176px mobile feed width.",
+      "timestamp_safe": true,
+      "selected": false
+    },
+    {
+      "id": "C3_shingle_cutaway_zoom",
+      "headline_badge": "IT FOLDS",
+      "composition": "Extreme macro cutaway on overlapping amber tergite plates and cyan folding arthrodial hinges under downward load arrows.",
+      "silhouette_contrast": "Amber vs cyan complementary contrast on dark stage.",
+      "timestamp_safe": true,
+      "selected": false
+    }
+  ],
+  "first_frame_promise": "Frame 0 opens directly on the half-inch cockroach sprinting into the two-penny (3.2 mm) door slot\u2014zero logo or intro delay.",
+  "resolution_checks_px": [
+    480,
+    320,
+    176,
+    120
+  ],
+  "promise_match_verified": true,
+  "experiment": {
+    "hypothesis": "Macro close-up showing lifted claws + planted shin spines ('NO FEET') beside two pennies will deliver stronger CTR + first-30s retention than a broad hydraulic-press survival angle.",
+    "variable": "Mechanism-specific footless propulsion hook + thumbnail ('NO FEET') vs generic toughness framing.",
+    "control": "Same 7-chapter Monarch Cam 16:9 documentary pacing (~9.8 w/sent) established in Ant #01A V3.",
+    "expected_signal": "Strong first-30s hold across the sub-second door-crack vanish and steady retention across Scene 04/05's rough-floor bet.",
+    "minimum_observation_window": "First 7 days and >= 10,000 impressions in YouTube Studio before judging CTR.",
+    "result": "pending_owner_publish",
+    "next_action": "Compare Studio CTR + 0:30 retention against Ant #01A V3; test Title T2 / Cover C2 only if CTR trails baseline after window."
+  }
+}

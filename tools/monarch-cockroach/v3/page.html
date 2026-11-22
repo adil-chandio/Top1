@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Monarch Cam Episode #03 · Three.js + GLM Offline Studio Renderer</title>
+  <style>
+    @font-face {
+      font-family: 'Space Grotesk';
+      font-style: normal;
+      font-weight: 300 700;
+      src: url('/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 400;
+      src: url('/.cache/runtime/npm/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 500;
+      src: url('/.cache/runtime/npm/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'IBM Plex Mono';
+      font-style: normal;
+      font-weight: 600;
+      src: url('/.cache/runtime/npm/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2') format('woff2');
+    }
+    html, body { margin: 0; padding: 0; background: #061012; overflow: hidden; }
+  </style>
+</head>
+<body>
+  <script type="module">
+    import * as THREE from '/node_modules/three/build/three.module.js';
+    import { loadMaterialLibrary } from '/tools/monarch-cockroach/v3/materials.js';
+    import { createMonarchWorld, createOpticalLensPass } from '/tools/monarch-cockroach/v3/world.js';
+    import { createEditorialCompositor, projectWorldPoint } from '/tools/monarch-cockroach/v3/titles.js';
+    import { parseFeaturePlan, directFrame } from '/tools/monarch-cockroach/v3/director.js';
+
+    window.MONARCH_V3 = {
+      async init({ renderW = 1024, renderH = 576, planText, titlesOnly = false }) {
+        await document.fonts.ready;
+        await Promise.all([
+          document.fonts.load('700 72px "Space Grotesk"'),
+          document.fonts.load('500 24px "IBM Plex Mono"'),
+        ]);
+
+        const compositor = createEditorialCompositor();
+        const shots = parseFeaturePlan(planText);
+
+        if (titlesOnly) {
+          this.state = { compositor, shots };
+          return { ok: true, titlesOnly: true };
+        }
+
+        const webglCanvas = document.createElement('canvas');
+        const renderer = new THREE.WebGLRenderer({
+          canvas: webglCanvas,
+          antialias: false,
+          alpha: false,
+          preserveDrawingBuffer: true,
+          powerPreference: 'high-performance',
+        });
+        renderer.setSize(renderW, renderH, false);
+        renderer.shadowMap.enabled = false;
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+        const mats = await loadMaterialLibrary('/.cache/monarch-cockroach/v3/assets');
+        const world = createMonarchWorld(mats);
+        const lens = createOpticalLensPass(renderer, renderW, renderH);
+        const camera = new THREE.PerspectiveCamera(34, renderW / renderH, 1.2, 420.0);
+        const gl = renderer.getContext();
+        const frameBuf = new Uint8Array(renderW * renderH * 4);
+
+        for (const warmFrame of [60, 1200, 2050, 3150, 4980]) {
+          const info = directFrame(world, camera, shots, warmFrame);
+          lens.render(world.scene, camera, info.lensParams);
+        }
+
+        this.state = { renderer, gl, frameBuf, renderW, renderH, webglCanvas, world, lens, camera, compositor, shots, ws: null };
+        return { ok: true, shotCount: shots.length };
+      },
+
+      async connectWS(wsUrl) {
+        if (this.state.ws && this.state.ws.readyState === 1) return;
+        await new Promise((resolve, reject) => {
+          const ws = new WebSocket(wsUrl);
+          ws.binaryType = 'arraybuffer';
+          ws.onopen = () => { this.state.ws = ws; resolve(); };
+          ws.onerror = (e) => reject(e);
+        });
+      },
+
+      renderJPEGDataURL(frame, quality = 0.94) {
+        const { webglCanvas, world, lens, camera, compositor, shots } = this.state;
+        const info = directFrame(world, camera, shots, frame);
+        lens.render(world.scene, camera, info.lensParams);
+        const { canvas, trace } = compositor.compositeFrame(webglCanvas, frame, info.mode, camera, info.landmarks);
+        return { dataUrl: canvas.toDataURL('image/jpeg', quality), trace };
+      },
+
+      // Zero-leak synchronous-ack WebSocket raw RGBA frame streamer (only 1 reused 2MB buffer ever in flight!)
+      async streamRangeWS(startFrame, endFrame) {
+        const { gl, frameBuf, renderW, renderH, world, lens, camera, shots, ws } = this.state;
+        const traces = [];
+
+        for (let frame = startFrame; frame < endFrame; frame++) {
+          const info = directFrame(world, camera, shots, frame);
+          lens.render(world.scene, camera, info.lensParams);
+          gl.readPixels(0, 0, renderW, renderH, gl.RGBA, gl.UNSIGNED_BYTE, frameBuf);
+
+          await new Promise((resolve, reject) => {
+            ws.onmessage = () => resolve();
+            ws.onerror = (e) => reject(e);
+            ws.send(frameBuf);
+          });
+
+          const tr = { frame, mode: info.mode };
+          for (const key of ['head', 'pronotum', 'hinge', 'r3Spine', 'r3Claw', 'pennies', 'platen']) {
+            const lm = info.landmarks?.[key];
+            const p = lm ? projectWorldPoint(lm, camera) : null;
+            tr[`${key}_x`] = p ? +p.ndcX.toFixed(4) : -1;
+            tr[`${key}_y`] = p ? +p.ndcY.toFixed(4) : -1;
+          }
+          traces.push(tr);
+        }
+        return traces;
+      },
+
+      renderOverlayPNG(frame, mode, normRow) {
+        return this.state.compositor.renderOverlayPNG(frame, mode, normRow);
+      },
+    };
+  </script>
+</body>
+</html>

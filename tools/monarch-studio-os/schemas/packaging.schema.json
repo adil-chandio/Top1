@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MonarchStudioPackagingAndExperiment",
+  "type": "object",
+  "required": [
+    "project_id",
+    "format",
+    "title_concepts",
+    "thumbnail_concepts",
+    "first_frame_promise",
+    "resolution_checks_px",
+    "promise_match_verified",
+    "experiment"
+  ],
+  "properties": {
+    "project_id": { "type": "string" },
+    "format": { "enum": ["long-16x9", "short-9x16"] },
+    "title_concepts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "angle", "char_count", "selected"],
+        "properties": {
+          "id": { "type": "string" },
+          "title": { "type": "string", "minLength": 10, "maxLength": 70 },
+          "angle": { "type": "string" },
+          "char_count": { "type": "integer", "maximum": 70 },
+          "selected": { "type": "boolean" }
+        }
+      }
+    },
+    "thumbnail_concepts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "headline_badge", "composition", "silhouette_contrast", "timestamp_safe", "selected"],
+        "properties": {
+          "id": { "type": "string" },
+          "headline_badge": { "type": "string", "maxLength": 16 },
+          "composition": { "type": "string", "minLength": 20 },
+          "silhouette_contrast": { "type": "string" },
+          "timestamp_safe": { "type": "boolean" },
+          "selected": { "type": "boolean" }
+        }
+      }
+    },
+    "first_frame_promise": { "type": "string", "minLength": 15 },
+    "resolution_checks_px": {
+      "type": "array",
+      "items": { "type": "integer" },
+      "minItems": 4
+    },
+    "promise_match_verified": { "type": "boolean" },
+    "experiment": {
+      "type": "object",
+      "required": [
+        "hypothesis",
+        "variable",
+        "control",
+        "expected_signal",
+        "minimum_observation_window",
+        "result",
+        "next_action"
+      ],
+      "properties": {
+        "hypothesis": { "type": "string", "minLength": 15 },
+        "variable": { "type": "string" },
+        "control": { "type": "string" },
+        "expected_signal": { "type": "string" },
+        "minimum_observation_window": { "type": "string" },
+        "result": { "type": "string" },
+        "next_action": { "type": "string" }
+      }
+    }
+  }
+}
