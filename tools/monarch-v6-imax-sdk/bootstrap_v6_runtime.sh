@@ -30,11 +30,13 @@ EOF
 fi
 
 # 2. Extract @sparticuz/chromium + SwiftShader Vulkan + AL2023 shared libs + absolute ICD symlinks
-if [ ! -x "/tmp/chromium" ] || [ ! -f "/tmp/sparticuz_libs/swiftshader/libvk_swiftshader.so" ]; then
+if [ ! -x "/tmp/chromium" ] || [ ! -f "/tmp/sparticuz_libs/al2023/lib/libnss3.so" ] || [ ! -f "/tmp/sparticuz_libs/swiftshader/libvk_swiftshader.so" ]; then
   echo "[V6-IMAX-SDK] Extracting @sparticuz/chromium & SwiftShader Vulkan libraries..."
   node -e '
     const fs = require("node:fs");
     const path = require("node:path");
+    const zlib = require("node:zlib");
+    const { execFileSync } = require("node:child_process");
     const { createRequire } = require("node:module");
     const req = createRequire("/tmp/v6_runtime/package.json");
     const chromium = req("@sparticuz/chromium");
@@ -45,7 +47,18 @@ if [ ! -x "/tmp/chromium" ] || [ ! -f "/tmp/sparticuz_libs/swiftshader/libvk_swi
         fs.copyFileSync(execPath, "/tmp/chromium");
       }
       fs.chmodSync("/tmp/chromium", 0o755);
-      console.log("[V6-IMAX-SDK] Chromium binary ready at:", execPath);
+      for (const name of ["al2023", "swiftshader", "fonts"]) {
+        const br = path.join(binDir, `${name}.tar.br`);
+        if (fs.existsSync(br)) {
+          const tarTmp = `/tmp/${name}.tar`;
+          fs.writeFileSync(tarTmp, zlib.brotliDecompressSync(fs.readFileSync(br)));
+          const dstDir = `/tmp/sparticuz_libs/${name}`;
+          fs.mkdirSync(dstDir, { recursive: true });
+          execFileSync("tar", ["-xf", tarTmp, "-C", dstDir]);
+          fs.unlinkSync(tarTmp);
+        }
+      }
+      console.log("[V6-IMAX-SDK] Chromium & Brotli runtime archives ready at:", execPath);
     })().catch((e) => { console.error(e); process.exit(1); });
   '
 

@@ -150,30 +150,37 @@ export function createImaxOpticalPass(renderer, width, height) {
         return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
       }
 
+      // Precomputed Golden-Angle (2.39996323 rad) Vogel-Spiral offsets - zero runtime sin/cos/sqrt!
+      vec3 sampleVogelBokeh(vec2 uv, vec2 scale) {
+        vec3 col = sampleLinear(uv) * 0.24;
+        float wSum = 0.24;
+        vec2 o0 = vec2(-0.2456,  0.2248) * scale;
+        vec2 o1 = vec2( 0.0402, -0.4696) * scale;
+        vec2 o2 = vec2( 0.4398,  0.3910) * scale;
+        vec2 o3 = vec2(-0.6657,  0.0725) * scale;
+        vec2 o4 = vec2( 0.3712, -0.6548) * scale;
+        vec2 o5 = vec2( 0.2683,  0.7817) * scale;
+        vec2 o6 = vec2(-0.8325, -0.3408) * scale;
+        vec2 o7 = vec2( 0.8755, -0.3792) * scale;
+
+        vec3 t0 = sampleLinear(uv + o0); float w0 = (1.0 + smoothstep(0.45, 1.0, dot(t0, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t0 * w0; wSum += w0;
+        vec3 t1 = sampleLinear(uv + o1); float w1 = (1.0 + smoothstep(0.45, 1.0, dot(t1, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t1 * w1; wSum += w1;
+        vec3 t2 = sampleLinear(uv + o2); float w2 = (1.0 + smoothstep(0.45, 1.0, dot(t2, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t2 * w2; wSum += w2;
+        vec3 t3 = sampleLinear(uv + o3); float w3 = (1.0 + smoothstep(0.45, 1.0, dot(t3, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t3 * w3; wSum += w3;
+        vec3 t4 = sampleLinear(uv + o4); float w4 = (1.0 + smoothstep(0.45, 1.0, dot(t4, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t4 * w4; wSum += w4;
+        vec3 t5 = sampleLinear(uv + o5); float w5 = (1.0 + smoothstep(0.45, 1.0, dot(t5, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t5 * w5; wSum += w5;
+        vec3 t6 = sampleLinear(uv + o6); float w6 = (1.0 + smoothstep(0.45, 1.0, dot(t6, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t6 * w6; wSum += w6;
+        vec3 t7 = sampleLinear(uv + o7); float w7 = (1.0 + smoothstep(0.45, 1.0, dot(t7, vec3(0.2126, 0.7152, 0.0722))) * 0.55) * 0.095; col += t7 * w7; wSum += w7;
+        return col / wSum;
+      }
+
       void main() {
         float rawD = texture2D(tDepth, vUv).r;
         float linD = linearizeDepth(rawD);
         float coc = clamp(abs(linD - uFocusDist) / max(1.0, uDofRange), 0.0, 1.0) * uMaxBlur;
         vec2 texel = 1.0 / uRes;
 
-        vec3 col = sampleLinear(vUv) * 0.22;
-        float wSum = 0.22;
-        if (coc > 0.12) {
-          for (int i = 0; i < 11; i++) {
-            float fi = float(i) + 1.0;
-            float r = sqrt(fi / 11.5) * coc;
-            float th = fi * 2.39996323;
-            vec2 off = vec2(cos(th), sin(th)) * r * texel;
-            vec3 tap = sampleLinear(vUv + off);
-            float lum = dot(tap, vec3(0.2126, 0.7152, 0.0722));
-            float bw = 1.0 + smoothstep(0.45, 1.0, lum) * 0.55;
-            col += tap * bw * 0.075;
-            wSum += bw * 0.075;
-          }
-          col /= wSum;
-        } else {
-          col = sampleLinear(vUv);
-        }
+        vec3 col = (coc > 0.16) ? sampleVogelBokeh(vUv, coc * texel) : sampleLinear(vUv);
 
         vec2 fromCenter = vUv - 0.5;
         float edgeR2 = dot(fromCenter, fromCenter);

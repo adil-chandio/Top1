@@ -1,9 +1,13 @@
-# MASTER 3D CINEMA & HOLLYWOOD IMAX VIDEO PRODUCTION ENGINE — SDK-POWERED PROMPT (V6.1 REPO EDITION)
+# MASTER 3D CINEMA & HOLLYWOOD IMAX VIDEO PRODUCTION ENGINE — SDK-POWERED PROMPT (V6.2 REPO EDITION)
 
-> **HOW TO USE IN ANY NEW CHAT CONNECTED TO `Top1`:**
-> Because `AGENTS.md`, `CLAUDE.md`, `tools/monarch-v6-imax-sdk/`, and the Gold-Standard `tools/monarch-cockroach/short_v6/` reference film are now **pre-installed inside `Top1` (`main`)**, you can paste the **Short Trigger Prompt** below (or the full file) into any new chat connected to `Top1`!
+> **COMPLETE PRODUCTION BIBLE IN REPO (`docs/v6-imax-production-bible/`):**
+> - **Case Study (Long Video V6 A-to-Z Forensic Trace):** `docs/v6-imax-production-bible/01-Monarch-Cam-03-Long-V6-Complete-Forensic-Case-Study.md`
+> - **Universal Any-Topic Playbook (7 Mandatory Gates):** `docs/v6-imax-production-bible/02-Universal-Any-Topic-V6.2-Hollywood-IMAX-Master-Playbook.md`
+> - **Gold-Standard Reference Code:** `tools/monarch-cockroach/short_v6/` (`9:16` Short) & `tools/monarch-cockroach/long_v6/` (`16:9` 5-Min Feature)
 >
-> *(If pasting into an **OLDER ALREADY-OPEN CHAT** that was created before this merge, include the first `git fetch` line so that branch pulls the V6 IMAX SDK from `main` immediately!)*
+> **HOW TO USE IN ANY NEW CHAT CONNECTED TO `Top1`:**
+> Because `AGENTS.md`, `CLAUDE.md`, `docs/v6-imax-production-bible/`, `tools/monarch-v6-imax-sdk/`, `short_v6/`, and `long_v6/` are all stored directly inside `Top1`, paste the **Short Trigger Prompt** below into any new chat!
+> *(If pasting into an **OLDER ALREADY-OPEN CHAT** created before this merge, include the `git fetch origin main && git merge origin/main --no-edit` line so that branch pulls V6.2 immediately!)*
 
 ---
 
