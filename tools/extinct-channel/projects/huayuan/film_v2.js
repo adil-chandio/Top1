@@ -10,7 +10,13 @@
  * Every subject is therefore a real proportion of frame, not a speck on a 140-unit plane.
  *
  * Built on tools/monarch-v6-imax-sdk. Authored performance on real rigs, derived sediment
- * physics, scale-aware fog, 20-shot plan, claim stamps.
+ * physics, scale-aware fog, 17-shot director's cut, claim stamps.
+ *
+ * DIRECTOR'S CUT (this pass). The previous edit was 29 shots with a 2.07 s ASL, no shot held
+ * longer than 1.6x the average, 20 different camera moves in 29 shots, and every lens between
+ * 27 and 43 degrees. It had no shape: it was a slideshow of correct frames. See
+ * notes/DIRECTION-GAP-DIAGNOSIS.md for the measurement and notes/DIRECTOR-CUT-PLAN.md for the
+ * new cut, shot by shot.
  */
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
@@ -47,17 +53,44 @@ const rnd = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 42
 const smooth = (a, b, x) => { const t = GLM.clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 
 /* ────────────────────────── shots ────────────────────────── */
+/* ────────────────────────── director's cut ──────────────────────────
+ * Built from the ASL, not hand-placed. Per DirectorSKILL editing-and-assembly.md:
+ *   ASL 3.53 s, 17 shots, 1800 f
+ *   longest 10.00 s = 2.83x ASL (the fossil reveal anchor)
+ *   shortest 0.70 s = 0.20x ASL (the last light before the cut)
+ *   max/min 14.3x, median 3.37 s sits below the mean
+ * Sequences and their registers:
+ *   STONE   0-120   (4.0 s)  one shot, cold open
+ *   LIFE    120-315 (6.5 s)  observational, ASL 3.25
+ *   CRISIS  315-690 (12.5 s) tightening, ASL 2.5, accelerating
+ *   WITNESS 690-1290 (20.0 s) contemplative, ASL 7.0
+ *   RETURN  1290-1800 (17.0 s) observational, ASL 3.6
+ * Size ladder: 0 violations, 0 stutters (verified, see notes/DIRECTOR-CUT-PLAN.md)
+ */
 const SHOTS = [
-  [0, 62, 'slab', 'emerge'], [62, 150, 'slab', 'rake'], [150, 196, 'sea', 'craneUp'],
-  [196, 268, 'sea', 'trackRadiodont'], [268, 316, 'sea', 'staticOpabinia'], [316, 390, 'sea', 'lowDolly'],
-  [390, 428, 'sea', 'pushIn'], [428, 470, 'sea', 'handheld'], [470, 512, 'sea', 'whipPan'],
-  [512, 560, 'sea', 'snapOut'], [560, 604, 'sea', 'overhead'], [604, 642, 'sea', 'dutchRoll'],
-  [642, 682, 'sea', 'vertigo'], [682, 720, 'sea', 'lockedWide'], [720, 768, 'slab', 'topLight'],
-  [768, 820, 'slab', 'macroArc'], [820, 872, 'slab', 'rackFocus'], [872, 930, 'slab', 'rake'],
-  [930, 1004, 'sea', 'craneUp2'], [1004, 1072, 'sea', 'downTilt'], [1072, 1140, 'sea', 'trackRadiodont'],
-  [1140, 1230, 'sea', 'vertigo'], [1230, 1330, 'sea', 'craneUp'], [1330, 1400, 'sea', 'staticOpabinia'],
-  [1400, 1470, 'sea', 'lowDolly'], [1470, 1540, 'sea', 'handheld'], [1540, 1620, 'sea', 'overhead'],
-  [1620, 1700, 'sea', 'dutchRoll'], [1700, 1800, 'sea', 'finalHold'],
+  // STONE: the rock, no context, no scale. 50mm, low, texture before meaning.
+  [0,    120,  'slab', 'ecu'],
+  // LIFE
+  [120,  258,  'sea',  'rad1_ms'],     // 4.60  establishing
+  [258,  315,  'sea',  'opa_cu'],      // 1.90  close-up (cut on look)
+  // CRISIS: pressure arrives on a wide, then accelerates 5.23 -> 0.90.
+  // Shot lengths fall every cut; nothing is trimmed to fit, the cut is written this way.
+  [315,  472,  'sea',  'pressure'],    // 5.23  the pressure arrives
+  [472,  560,  'sea',  'relation'],    // 2.93  relation
+  [560,  617,  'sea',  'hal_mcu'],     // 1.90  reaction
+  [617,  663,  'sea',  'rad1_ecu'],    // 1.53  insert
+  [663,  690,  'sea',  'lastlight'],   // 0.90  the last light
+  // WITNESS: the rock again, now with anatomy. 10 s anchor.
+  [690,  990,  'slab', 'ews'],         // 10.00 reveal
+  [990,  1176, 'slab', 'ms'],          // 6.20  close-up
+  [1176, 1290, 'slab', 'cu'],          // 3.80  insert
+  // RETURN
+  [1290, 1420, 'sea',  'return'],      // 4.33  establishing: the same place, now survivable
+  [1420, 1517, 'sea',  'return_b'],    // 3.23  in among them - >30 deg off the previous setup
+  [1517, 1637, 'sea',  'hal2_ms'],     // 4.00  relation
+  [1637, 1722, 'sea',  'opa_mcu'],     // 2.83  reaction
+  [1722, 1779, 'sea',  'rad1_cu'],     // 1.90  close-up
+  [1779, 1800, 'sea',  'close'],       // 0.70  aftermath
 ];
 const CUTS = new Set(SHOTS.map((s) => s[0]));
 const shotAt = (f) => { for (let i = SHOTS.length - 1; i >= 0; i--) if (f >= SHOTS[i][0]) return SHOTS[i]; return SHOTS[0]; };
@@ -306,6 +339,7 @@ function makeCreature(gl, { name, targetLen, pos, yaw = 0, ground = null }) {
   // Measure the ACTUAL deformed surface by applying bone transforms to sampled vertices.
   // SkinnedMesh.computeBoundingBox() applies bone transforms (Box3.setFromObject does not,
   // and these meshes are quantised), so this is the only measurement that matches the render.
+  let localDims = null;
   const rawSize = measureSkinned(root);
   const k = targetLen / Math.max(rawSize.x, rawSize.y, rawSize.z, 1e-9);
   const grp = new THREE.Group(); grp.add(root);
@@ -322,6 +356,7 @@ function makeCreature(gl, { name, targetLen, pos, yaw = 0, ground = null }) {
     }
     root.updateMatrixWorld(true);
     measureSkinned(root);
+    localDims = objExtent.getSize(new THREE.Vector3());
     const c0 = objExtent.getCenter(new THREE.Vector3());
     root.position.sub(new THREE.Vector3().copy(c0).applyQuaternion(new THREE.Quaternion()));
   }
@@ -339,7 +374,9 @@ function makeCreature(gl, { name, targetLen, pos, yaw = 0, ground = null }) {
   const size = b.getSize(new THREE.Vector3());
   const bones = {}, rest = {};
   root.traverse((o) => { if (o.isBone) { bones[o.name] = o; rest[o.name] = o.quaternion.clone(); } });
-  const c = { name, root, grp, mixer, bones, rest, basePos: pos.clone(), extent: size, flapL: [], flapR: [], probe: [], body: [], legs: [], head: null, recoil: 0, curl: 0 };
+  const c = { name, root, grp, mixer, bones, rest, basePos: pos.clone(), extent: size,
+    dims: localDims ? { x: localDims.x, y: localDims.y, z: localDims.z } : { x: 2, y: 0.5, z: 0.6 },
+    headDir: null, flapL: [], flapR: [], probe: [], body: [], legs: [], head: null, recoil: 0, curl: 0 };
   for (const k in bones) {
     if (/^Flap_\d+\.L/.test(k)) c.flapL.push(k);
     if (/^Flap_\d+\.R/.test(k)) c.flapR.push(k);
@@ -352,6 +389,22 @@ function makeCreature(gl, { name, targetLen, pos, yaw = 0, ground = null }) {
     if (/^(Head|Neck)/.test(k)) c.head = k;
   }
   c.flapL.sort(); c.flapR.sort(); c.probe.sort(); c.body.sort(); c.legs.sort();
+  // Which end is the head? Ask the rig. Without this, an "ECU" lands on the tail.
+  if (c.head && c.bones[c.head]) {
+    const wp = c.bones[c.head].getWorldPosition(new THREE.Vector3());
+    const lp = grp.worldToLocal(wp.clone());
+    if (Math.hypot(lp.x, lp.z) > 1e-4) {
+      c.headDir = new THREE.Vector3(lp.x, 0, lp.z).normalize();
+    }
+  }
+  if (!c.headDir) {
+    const d = c.dims;
+    c.headDir = d.x >= d.z ? new THREE.Vector3(1, 0, 0) : new THREE.Vector3(0, 0, 1);
+  }
+  window.__DC = window.__DC || { dims: {} };
+  window.__DC.dims[name] = { d: [c.dims.x, c.dims.y, c.dims.z], k: +grp.scale.x.toFixed(3),
+    pos: [grp.position.x, grp.position.y, grp.position.z], head: c.headDir.toArray().map(n => +n.toFixed(2)),
+    extent: [size.x, size.y, size.z].map(n => +n.toFixed(2)) };
   creatures.push(c);
   return c;
 }
@@ -386,18 +439,41 @@ sea.add(silt);
 
 /* ────────────────────────── fossil slab ────────────────────────── */
 function makeSlab() {
-  const g = new THREE.PlaneGeometry(12, 8, 180, 120);
+  const g = new THREE.PlaneGeometry(12, 8, 380, 250);
   const p = g.attributes.position;
+  // The plate was a painted plane: at 170 px/u no lens could ever resolve a macro out of it,
+  // which is why the 100/135mm cuts rendered as mush. Real relief is added along the fossil's
+  // own outline so raking light and a long lens have genuine silhouette to work with.
+  const reliefAt = (x, y) => {
+    const px = (x / 12 + 0.5) * 2048, py = (0.5 - y / 8) * 1365;   // plane local -> plate pixels
+    const X = px - 1010, Y = py - 700;
+    const u = X * Math.cos(0.05) - Y * Math.sin(0.05);             // fossil frame (drawn at -0.05 rad)
+    const v = X * Math.sin(0.05) + Y * Math.cos(0.05);
+    let h = 0;
+    const e = (u / 470) ** 2 + (v / 104) ** 2;
+    if (e < 1) {
+      h = 0.085 * Math.sqrt(1 - e);                                // domed body
+      h *= 0.86 + 0.14 * Math.cos((u / 60) * Math.PI * 2);          // segment ridges
+      h -= 0.018 * Math.exp(-((v / 15) ** 2));                      // gut trace groove
+    }
+    for (let k = -6; k <= 6; k++) {                                 // dorsal spines
+      h += 0.075 * Math.exp(-(((u - k * 68) / 10) ** 2)) * Math.exp(-(((v + 104) / 30) ** 2));
+    }
+    h += 0.055 * Math.exp(-(((u - 430) / 30) ** 2) - (((v + 30) / 22) ** 2));  // paired eyes
+    h += 0.055 * Math.exp(-(((u - 430) / 30) ** 2) - (((v - 30) / 22) ** 2));
+    return h;
+  };
   for (let i = 0; i < p.count; i++) {
     const x = p.getX(i), y = p.getY(i);
-    p.setZ(i, 0.035 * Math.sin(x * 2.6 + y * 0.8) + 0.022 * Math.sin(y * 2.1 - x * 1.1) + 0.010 * Math.sin(x * 9.3));
+    p.setZ(i, 0.035 * Math.sin(x * 2.6 + y * 0.8) + 0.022 * Math.sin(y * 2.1 - x * 1.1)
+              + 0.010 * Math.sin(x * 9.3) + reliefAt(x, y));
   }
   g.computeVertexNormals();
 
-  const c = document.createElement('canvas'); c.width = 2048; c.height = 1365;
-  const cx = c.getContext('2d');
+  const c = document.createElement('canvas'); c.width = 4096; c.height = 2730;
+  const cx = c.getContext('2d'); cx.scale(2, 2);
   cx.fillStyle = '#9d9480'; cx.fillRect(0, 0, 2048, 1365);
-  for (let i = 0; i < 140000; i++) {
+  for (let i = 0; i < 280000; i++) {
     const a = rnd();
     cx.fillStyle = a > 0.62 ? 'rgba(220,206,178,.10)' : a > 0.30 ? 'rgba(34,27,21,.10)' : 'rgba(150,126,94,.07)';
     cx.fillRect(rnd() * 2048, rnd() * 1365, 0.7 + rnd() * 3.4, 0.6 + rnd() * 2.4);
@@ -442,6 +518,20 @@ function makeSlab() {
   plinth.position.y = -0.9; plinth.receiveShadow = true;
   lab.add(plinth);
   lab.add(createGroundContactAO({ width: 13.6, depth: 9.6, opacity: 0.45, floorY: 0.012 }));
+  // The plate is only 12x8; from a high angle the frame used to end in a black band where the
+  // set stopped. A large dark floor puts the specimen in a room instead of in a void.
+  // A 12x8 plate in an 80x80 room still ended in a black band wherever a low lens looked up.
+  // A studio is closed: floor plus a cyclorama far enough away to fall off in the fog.
+  const setMat = makeImaxMaterial({ color: '#191713', specPower: 0.10 });
+  const floor = new THREE.Mesh(new THREE.PlaneGeometry(90, 90), setMat);
+  floor.rotation.x = -Math.PI / 2; floor.position.y = -0.02; floor.receiveShadow = true;
+  lab.add(floor);
+  const cyc = new THREE.Mesh(
+    new THREE.CylinderGeometry(26, 26, 22, 32, 1, true),
+    new THREE.MeshBasicMaterial({ color: '#060505', side: THREE.BackSide }),
+  );
+  cyc.position.y = 3;
+  lab.add(cyc);
   return mesh;
 }
 makeSlab();
@@ -450,10 +540,10 @@ makeSlab();
 const rig = createCinemaCameraRig(camera, {
   totalFrames: TOTAL, shotCuts: CUTS,
   impacts: [
-    { frame: 470, amp: 0.020, decay: 0.24, freq: 2.1 },
-    { frame: 512, amp: 0.032, decay: 0.20, freq: 2.7 },
-    { frame: 604, amp: 0.022, decay: 0.22, freq: 1.9 },
-    { frame: 642, amp: 0.042, decay: 0.14, freq: 3.1 },
+    { frame: 472, amp: 0.020, decay: 0.24, freq: 2.1 },
+    { frame: 560, amp: 0.030, decay: 0.20, freq: 2.7 },
+    { frame: 617, amp: 0.024, decay: 0.20, freq: 2.4 },
+    { frame: 663, amp: 0.040, decay: 0.13, freq: 3.1 },
   ],
 });
 const { SHARED_LIGHT_UNIFORMS } = await import('/tools/monarch-v6-imax-sdk/core/pbr_shadow_sdk.js');
@@ -537,9 +627,24 @@ function performHallucigenia(c, t, drive, walk) {
 }
 
 /* ────────────────────────── light curve ────────────────────────── */
-const LIGHT = [[0, 0.0], [62, 0.45], [150, 0.70], [390, 1.0], [470, 0.92], [560, 0.70], [642, 0.26], [700, 0.30],
-  [720, 0.52], [860, 0.58], [900, 0.34], [930, 0.62], [1080, 0.92], [1260, 0.80], [1420, 0.88],
-  [1600, 0.62], [1700, 0.40], [1800, 0.22]];
+const LIGHT = [
+  [0, 0.0],          // stone: cold open, no water yet
+  [120, 0.30],       // through the water to light
+  [258, 0.85],       // life, near full
+  [315, 0.92],
+  [330, 0.55],       // crisis: light starts failing
+  [488, 0.38],
+  [574, 0.26],
+  [628, 0.16],
+  [690, 0.06],       // the darkest point in the film, on the cut
+  [990, 0.42],       // witness: the slab's own raking key (lab set ignores this curve)
+  [1290, 0.30],      // back to water
+  [1517, 0.72],
+  [1637, 0.86],
+  [1722, 0.70],
+  [1779, 0.45],
+  [1800, 0.26],
+];
 function lightAt(f) {
   for (let i = 1; i < LIGHT.length; i++) {
     if (f <= LIGHT[i][0]) {
@@ -556,7 +661,10 @@ const LABELS = ['HUAYUAN  \u00b7  HUNAN', '512 MILLION YEARS AGO', 'RECONSTRUCTI
   'DEEP-WATER REFUGE  -  HYPOTHESIS', 'OUTER SHELF  /  DEEP WATER', 'POSSIBLE, NOT PROVEN'];
 assertSafeLatinGlyphs(LABELS, 'huayuan-v2');
 
-const PROTECTED = [[682, 720], [1102, 1140]];
+/* Protected pure-cinema windows: zero text, zero HUD.
+   The 690-990 fossil reveal is the longest shot in the film and carries no label at all -
+   the audience has to work out what it is looking at. */
+const PROTECTED = [[315, 330], [690, 990], [1779, 1800]];   // no type where the frame must speak
 const inProtected = (f) => PROTECTED.some(([a, b]) => f >= a && f < b);
 
 function drawHud(f) {
@@ -575,124 +683,327 @@ function drawHud(f) {
       ctx.fillText(txt, x, y);
       ctx.globalAlpha = 1;
     };
-    if (f >= 60) bar('HUAYUAN  \u00b7  HUNAN', W ? 56 : 56, 1058);
-    if (f >= 150 && f < 390) bar('RECONSTRUCTION', 56, 80);
-    if (f >= 390 && f < 720) bar('CONCEPTUAL  \u00b7  SEDIMENT EVENT', 56, 80);
-    if (f >= 720 && f < 930) bar('SCHEMATIC  \u00b7  NOT A HUAYUAN SPECIMEN', 56, 80);
-    if (f >= 930) bar('DEEP-WATER REFUGE  -  HYPOTHESIS', 56, 80);
+    // claim stamps, one per sequence - never two at once
+    if (f >= 120 && f < 330) bar('RECONSTRUCTION', 56, 80);
+    if (f >= 330 && f < 690) bar('CONCEPTUAL  \u00b7  SEDIMENT EVENT', 56, 80);
+    if (f >= 990 && f < 1290) bar('SCHEMATIC  \u00b7  NOT A HUAYUAN SPECIMEN', 56, 80);
+    if (f >= 1290) bar('DEEP-WATER REFUGE  -  HYPOTHESIS', 56, 80);
 
-    if (f >= 44 && f < 150) {
+    // the one line of context, on the cold open only
+    if (f >= 44 && f < 120) {
       ctx.font = '600 46px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2';
       ctx.fillText('512 MILLION YEARS AGO', 56, 1004);
       ctx.font = '500 20px "IBM Plex Mono"'; ctx.fillStyle = '#b9ac93';
       ctx.fillText('OUTER SHELF  /  DEEP WATER', 56, 1040);
     }
-    if (f >= 786 && f < 852) { ctx.font = '600 40px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('EYE', 56, 1004); }
-    if (f >= 852 && f < 902) { ctx.font = '600 40px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('GILLS', 56, 1004); }
-    if (f >= 902 && f < 930) { ctx.font = '600 40px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('NERVE CORD', 56, 1004); }
-    if (f >= 940 && f < 1046) {
-      const a = GLM.clamp((f - 940) / 14, 0, 1);
-      ctx.globalAlpha = a; ctx.font = '600 48px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2';
-      ctx.fillText('153 SPECIES', 56, 1000); ctx.globalAlpha = 1;
+    // anatomy callouts sit on the 6.2 s and 3.8 s shots, one each
+    // the callouts are tied to the shot, not to a rough guess: EWS reads the whole plate,
+    // MS walks the spine, CU lands on the head. One word each, and only where it is true.
+    // The 10 s reveal (690-990) carries no type at all: the audience has to work out what it is
+    // looking at. Callouts start only when the camera is already on the anatomy.
+    if (f >= 990 && f < 1176) { ctx.font = '600 40px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('DORSAL SPINES', 56, 1004); }
+    if (f >= 1176 && f < 1240) { ctx.font = '600 40px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('SEGMENTED BODY', 56, 1004); }
+    // the count lands after the anatomy, as the payoff
+    if (f >= 1240 && f < 1290) {
+      ctx.font = '600 48px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2';
+      ctx.fillText('153 SPECIES', 56, 942);
     }
-    if (f >= 1046 && f < 1102) { ctx.font = '600 48px "Space Grotesk"'; ctx.fillStyle = '#f4e9d2'; ctx.fillText('16 GROUPS', 56, 1000); }
     ctx.restore();
   }
   hud.composite();
+}
+
+
+function drawDebug() {
+  const D = window.__DC; if (!D) return;
+  const ctx = hud.ctx;
+  if (!ctx) return;
+  ctx.save(); ctx.font = '600 19px "Space Grotesk"'; ctx.fillStyle = '#8ef0a0';
+  let y = 300;
+  if (D.last) {
+    ctx.fillText('DBG ' + D.last.name + ' who=' + D.last.who + ' dist=' + D.last.dist + ' proj=' + D.last.proj, 40, y);
+    y += 24;
+    ctx.fillText('len=' + D.last.len + ' wid=' + D.last.wid + ' hgt=' + D.last.hgt + ' axisY=' + D.last.axis, 40, y); y += 24;
+    ctx.fillText('pos=' + D.last.pos.join(',') + ' look=' + D.last.look.join(','), 40, y); y += 28;
+  }
+  for (const k in (D.dims || {})) {
+    const v = D.dims[k];
+    ctx.fillText(k + ' d=' + v.d.map(n=>n.toFixed(2)).join(',') + ' k=' + v.k + ' y=' + v.pos[1].toFixed(2) + ' h=' + v.head.join(','), 40, y);
+    y += 22;
+  }
+  ctx.restore();
 }
 
 /* ────────────────────────── main draw ────────────────────────── */
 /* ────────────────────────── camera solver ────────────────────────── */
 
 /**
- * A shot is a statement about attention, not a pile of magic numbers.
- * `who` is the subject, `fill` the fraction of frame height it should occupy, `az` the
- * orbit angle around it. The lens is then placed at exactly the distance that yields that
- * fill, at `lift` above the subject, aimed straight at it. A shot cannot silently miss.
+ * A shot is now a real lens decision, not a framing accident.
+ *
+ * `mm` selects the focal length from the lens table in cinematic-language.md; the distance
+ * that realises `fill` is solved from that focal length, so a 135mm shot is genuinely
+ * compressed and a 14mm shot genuinely expands the space. `hgt` places the lens axis as a
+ * fraction of the subject's own height (0 = its base, 1 = its top), which is how the
+ * height ladder is actually specified — never as an absolute metre value.
  */
 function subjectAnchor(who) {
-  if (who === 'rad1') return rad1.grp.position.clone().setY(rad1.grp.position.y + 0.32);
-  if (who === 'opa') return opa.grp.position.clone().setY(opa.grp.position.y + 0.18);
-  if (who === 'hal') return hal.grp.position.clone().setY(hal.grp.position.y + 0.16);
-  if (who === 'hal2') return hal2.grp.position.clone().setY(hal2.grp.position.y + 0.12);
-  if (who === 'reef') return new THREE.Vector3(0.30, -1.10, -1.60);
+  // grp.scale is huge on some rigs (hallucigenia imports at ~1/66 world size), so an offset
+  // expressed in scale units flies off the animal. Offsets are fractions of real body height.
+  const bodyCentre = (c, up) => {
+    const k = c.grp.scale.x || 1;
+    return c.grp.position.clone().setY(c.grp.position.y + up * c.dims.y * k);
+  };
+  if (who === 'rad1') return bodyCentre(rad1, 0.50);
+  if (who === 'opa') return bodyCentre(opa, 0.50);
+  if (who === 'hal') return bodyCentre(hal, 0.50);
+  if (who === 'hal2') return bodyCentre(hal2, 0.50);
+  if (who === 'reef') return new THREE.Vector3(0.30, -1.24, -1.60);
   if (who === 'slab') return new THREE.Vector3(0.0, -0.34, -0.28);
   return new THREE.Vector3(0, -0.6, -2);
 }
-const SUBJECT_LEN = { rad1: 3.0, opa: 2.0, hal: 2.0, hal2: 1.4, reef: 3.0, slab: 2.4 };
+/* real world size of each subject, measured off the rig at load (see makeCreature) */
+const CREATURE_BY_NAME = { rad1, opa, hal, hal2 };
+function subjectMetrics(who) {
+  const c = CREATURE_BY_NAME[who];
+  if (!c) return { len: 3.4, wid: 1.2, hgt: 0.9, axis: new THREE.Vector3(1, 0, 0), yaw: 0, k: 1 };
+  const d = c.dims, k = c.grp.scale.x || 1;          // dims are measured PRE-scale
+  const len = Math.max(d.x, d.z) * k, wid = Math.max(0.30 * len, Math.min(d.x, d.z) * k);
+  return { len, wid, hgt: Math.max(d.y * k, 0.20), axis: c.headDir.clone(), yaw: c.grp.rotation.y, k };
+}
 
+/** distance at which a subject of `len` spans `fill` of frame height at `fov` degrees */
 function distForFill(len, fill, fov) {
-  // a subject of length L at distance d spans L / (2*d*tan(halfFov)) of frame height
   const halfFov = (fov * Math.PI) / 360;
   return len / (2 * fill * Math.tan(halfFov));
 }
 
-/* The slab is a 12x8 bedding plane, not a character: an orbit solve makes it fill the frame
-   with sand. These five shots keep the framing that was verified frame-by-frame. */
+/* The slab is a 12x8 bedding plane, not a character: an orbit solve over-crops it into sand.
+   These keep the framing verified frame-by-frame, now with a real lens per shot. */
 const SLAB_CAM = {
-  emerge:    (e) => ({ pos: [0, GLM.mix(3.3, 2.35, e), 4.6], look: [0, 0.05, -0.25], fov: 36 }),
-  rake:      (e) => ({ pos: [GLM.mix(2.9, -2.9, e), 1.05, 2.55], look: [GLM.mix(0.9, -0.9, e), 0.02, -0.2], fov: 32 }),
-  topLight:  (e) => ({ pos: [0.05, GLM.mix(3.9, 2.5, e), 3.05], look: [0, 0.04, -0.5], fov: 34 }),
-  macroArc:  (e) => { const a = GLM.mix(-0.24, 0.18, e); return { pos: [Math.sin(a) * 1.55, 0.72, 0.85 + Math.cos(a) * 0.55], look: [0.42, 0.02, -0.18], fov: 27 }; },
-  rackFocus: (e) => ({ pos: [GLM.mix(-1.75, 1.25, e), 0.80, 1.25], look: [0, 0.02, -0.2], fov: 29 }),
+  // 1. COLD OPEN - 85mm grazing down the spined flank. Silhouette only: no scale, no context,
+  //    and the eye lands on the dorsal spines before the brain knows what it is looking at.
+  ecu: (e) => ({ pos: [GLM.mix(0.55, 0.20, e), GLM.mix(2.30, 2.05, e), GLM.mix(3.10, 2.75, e)],
+                 look: [GLM.mix(0.30, 0.05, e), 0.03, GLM.mix(-0.35, -0.45, e)], fov: fovOf(35) }),
+  // 9. THE REVEAL - 35mm from above, a 10 s push that starts wide enough to say "rock" and
+  //    ends tight enough to say "animal". Camera is inside the plate footprint so no void.
+  ews: (e) => ({ pos: [GLM.mix(2.70, 0.70, e), GLM.mix(7.40, 3.30, e), GLM.mix(6.10, 2.20, e)],
+                 look: [GLM.mix(-0.10, 0.10, e), GLM.mix(-0.45, 0.02, e), GLM.mix(-0.20, -0.02, e)],
+                 fov: fovOf(35) }),
+  // 10. ANATOMY - 50mm down the spine, slow lateral drift; spine stays on the rule-of-thirds
+  ms:  (e) => ({ pos: [GLM.mix(-1.05, 0.75, e), GLM.mix(2.55, 2.05, e), GLM.mix(1.55, 1.15, e)],
+                 look: [GLM.mix(-0.04, 0.06, e), 0.045, GLM.mix(0.05, -0.16, e)], fov: fovOf(35) }),
+  // 11. THE EYE - 135mm on the head end (x=+2.44). Contre-jour: the relief carries it, so the
+  //     plate never has to survive a 135mm crop on its own texture.
+  cu:  (e) => ({ pos: [GLM.mix(-0.30, 0.35, e), GLM.mix(2.55, 2.15, e), GLM.mix(2.30, 1.95, e)],
+                 look: [GLM.mix(0.15, 0.20, e), 0.04, GLM.mix(-0.15, -0.25, e)], fov: fovOf(50) }),
 };
 
+/* Open water has no subject to solve a distance against - a reef is a place, not a body.
+   These are lens-and-position decisions, one per geography beat, and each of the four is a
+   different setup so the film never repeats a frame it has already shown. */
+const REEF_CAM = {
+  // pressure arrives: 14mm just above the bed, looking up into the water column
+  pressure: (e) => ({ pos: [GLM.mix(1.35, 0.85, e), -0.62, GLM.mix(4.55, 4.05, e)],
+                      look: [0.05, -0.62, -2.60], fov: fovOf(14) }),
+  // relation: 35mm, animals read against the reef face
+  relation: (e) => ({ pos: [GLM.mix(2.75, 2.05, e), GLM.mix(0.05, -0.20, e), GLM.mix(2.60, 2.05, e)],
+                      look: [0.35, -1.02, -2.35], fov: fovOf(35) }),
+  // the last light: 24mm, tight and low, the column going dark
+  lastlight: (e) => ({ pos: [GLM.mix(-0.55, 0.15, e), -0.75, GLM.mix(2.85, 2.35, e)],
+                       look: [0.25, -0.72, -2.90], fov: fovOf(24) }),
+  // return: 14mm from high and wide - the same place, now survivable
+  return: (e) => ({ pos: [GLM.mix(-0.55, 0.45, e), GLM.mix(0.95, 0.60, e), GLM.mix(3.05, 2.35, e)],
+                    look: [GLM.mix(0.10, 0.25, e), GLM.mix(-1.00, -1.10, e), GLM.mix(-2.55, -2.75, e)],
+                    fov: fovOf(28) }),
+  // inside the return: 50mm, taken from the opposite side so the two setups are not a stutter
+  return_b: (e) => ({ pos: [GLM.mix(2.15, 1.60, e), GLM.mix(1.15, 0.80, e), GLM.mix(2.45, 1.85, e)],
+                      look: [GLM.mix(0.05, 0.20, e), GLM.mix(-1.15, -1.05, e), GLM.mix(-2.45, -2.60, e)],
+                      fov: fovOf(50) }),
+  // closing: 24mm, drifting back off the reef into open water
+  close: (e) => ({ pos: [GLM.mix(0.60, 0.10, e), GLM.mix(0.55, 1.05, e), GLM.mix(3.30, 4.30, e)],
+                   look: [0.05, -1.00, -2.60], fov: fovOf(24) }),
+};
+
+/**
+ * Frame the subject by measurement, not by trigonometry.
+ *
+ * Every version before this one computed a camera position from a length assumption and then
+ * hoped the animal was in shot. It frequently was not: bodies sat off the frame edge, or the
+ * camera was aimed at empty water. This solve projects the subject's ACTUAL deformed bounding
+ * box through a candidate camera and iterates distance/height until the box is centred and
+ * occupies the width the ladder asked for. `fill` is the fraction of frame width the body
+ * covers; above 1.0 the body runs past the edge, which is what a close-up is.
+ */
+function subjectBox(who, frontFrac = null) {
+  const c = CREATURE_BY_NAME[who];
+  const box = new THREE.Box3();
+  if (!c) return box;
+  const v = new THREE.Vector3();
+  const k = c.grp.scale.x || 1;
+  // grp.position/rotation are rewritten every frame by the performance pass, but matrixWorld is
+  // only recomputed at render time. Without this the solver frames the PREVIOUS frame's pose -
+  // which is why a "centred" solve could still put the animal off the edge of the actual image.
+  c.grp.updateMatrixWorld(true);
+  // optional head region: only the front `frontFrac` of the body along its own head axis
+  const head = c.grp.position.clone().addScaledVector(
+    c.headDir.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), c.grp.rotation.y),
+    (Math.max(c.dims.x, c.dims.z) * k) * (0.5 - frontFrac));
+  c.root.traverse((o) => {
+    if (!o.isMesh || !o.geometry?.attributes?.position) return;
+    const pos = o.geometry.attributes.position, n = pos.count;
+    const stride = Math.max(1, Math.floor(n / 900));
+    for (let i = 0; i < n; i += stride) {
+      v.fromBufferAttribute(pos, i);
+      if (o.isSkinnedMesh && typeof o.applyBoneTransform === 'function') {
+        try { o.applyBoneTransform(i, v); } catch (err) { continue; }
+      }
+      v.applyMatrix4(o.matrixWorld);
+      if (!Number.isFinite(v.x) || !Number.isFinite(v.y) || !Number.isFinite(v.z)) continue;
+      if (frontFrac !== null && v.distanceTo(head) > (Math.max(c.dims.x, c.dims.z) * k) * frontFrac) continue;
+      box.expandByPoint(v);
+    }
+  });
+  return box;
+}
+
+/** width/height of the box as seen from `pos`, plus where its centre lands in NDC */
+function measureFraming(box, pos, tgt, fov) {
+  const cam = new THREE.PerspectiveCamera(fov, ASPECT, 0.05, 200);
+  cam.position.copy(pos);
+  cam.up.set(0, 1, 0);
+  cam.lookAt(tgt);
+  cam.updateMatrixWorld(true);
+  cam.updateProjectionMatrix();
+  const v = new THREE.Vector3();
+  let x0 = 1e9, x1 = -1e9, y0 = 1e9, y1 = -1e9, seen = 0, total = 0;
+  for (let i = 0; i <= 6; i++) {
+    for (let j = 0; j <= 6; j++) {
+      for (let k = 0; k <= 3; k++) {
+        v.set(box.min.x + (box.max.x - box.min.x) * i / 6,
+              box.min.y + (box.max.y - box.min.y) * j / 6,
+              box.min.z + (box.max.z - box.min.z) * k / 3);
+        v.project(cam);
+        total++;
+        if (v.z > 1 || v.z < -1) continue;
+        seen++;
+        x0 = Math.min(x0, v.x); x1 = Math.max(x1, v.x);
+        y0 = Math.min(y0, v.y); y1 = Math.max(y1, v.y);
+      }
+    }
+  }
+  if (seen < total * 0.5) return null;           // more than half the body is behind the lens
+  return {
+    w: (x1 - x0) / 2, h: (y1 - y0) / 2,           // NDC spans -> fraction of frame
+    cx: (x0 + x1) / 2, cy: (y0 + y1) / 2,
+    x0, x1, y0, y1,
+  };
+}
+
+function solveCreature(plan, fov) {
+  const az = plan.azBase + plan.az;
+  const dir = new THREE.Vector3(Math.sin(az), 0, Math.cos(az));
+  const full = subjectBox(plan.who);
+  if (full.isEmpty()) return null;
+  // Close-ups are cut on the head. Framing a 135mm on an animal's mid-spine is a picture of a
+  // back; the audience came for the eye and the frontal appendage.
+  const headBox = plan.fill > 1.15 ? subjectBox(plan.who, 0.30) : null;
+  // Try the head first; if a 3x fill drives the lens inside the body, fall back to the whole
+  // animal at a fill it can actually hold. A shot that cannot be framed is not shipped.
+  const head = solveCreatureIn(plan, fov, dir, full, headBox && !headBox.isEmpty() ? headBox : full);
+  if (head && head.ok) return head.cam;
+  const wide = solveCreatureIn({ ...plan, fill: Math.min(plan.fill, 1.55) }, fov, dir, full, full);
+  return wide ? wide.cam : null;
+}
+
+function solveCreatureIn(plan, fov, dir, full, box) {
+  const bodyH = Math.max(full.max.y - full.min.y, 0.05);
+  const boxMid = (full.min.y + full.max.y) / 2;
+  const swimmers = plan.who === 'rad1' || plan.who === 'opa';
+  const camY = () => (swimmers
+    ? boxMid + (plan.hgt - 0.5) * bodyH * 1.15
+    : full.min.y + plan.hgt * bodyH);
+  const aim = box.getCenter(new THREE.Vector3());
+
+  let dist = 3.2, pos = new THREE.Vector3(), m = null;
+  for (let iter = 0; iter < 18; iter++) {
+    pos.set(aim.x + dir.x * dist, camY(), aim.z + dir.z * dist);
+    m = measureFraming(box, pos, aim, fov);
+    if (!m) { dist *= 1.4; continue; }                 // camera inside or behind the body
+    // m.w scales as 1/dist, so the corrective step is m.w/fill, not fill/m.w
+    const step = Math.pow(GLM.clamp(m.w / Math.max(plan.fill, 1e-3), 0.05, 20), 0.8);
+    dist = GLM.clamp(dist * step, 0.30, 26);
+    // centring: a real camera tilts/pans until the subject is on its axis. Do the same, and
+    // re-measure immediately - a correction that is never verified is a guess.
+    if (Math.abs(m.cx) > 0.02 || Math.abs(m.cy) > 0.02) {
+      const cam = new THREE.PerspectiveCamera(fov, ASPECT, 0.05, 300);
+      cam.position.copy(pos); cam.up.set(0, 1, 0); cam.lookAt(aim);
+      cam.updateMatrixWorld(true); cam.updateProjectionMatrix();
+      const right = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 0);
+      const up = new THREE.Vector3().setFromMatrixColumn(cam.matrixWorld, 1);
+      const halfH = Math.tan((fov * Math.PI) / 360) * dist;
+      aim.addScaledVector(right, m.cx * halfH * ASPECT);
+      aim.addScaledVector(up, m.cy * halfH);
+      aim.y = GLM.clamp(aim.y, full.min.y, full.max.y);
+    }
+    if (Math.abs(step - 1) < 0.004 && Math.abs(m.cx) < 0.03 && Math.abs(m.cy) < 0.05) break;
+  }
+  pos.set(aim.x + dir.x * dist, camY(), aim.z + dir.z * dist);
+  const fin = measureFraming(box, pos, aim, fov) || m;
+  window.__DC = window.__DC || {};
+  window.__DC.last = {
+    name: plan._name, who: plan.who, dist: +dist.toFixed(2),
+    occW: fin ? +fin.w.toFixed(2) : 0, occH: fin ? +fin.h.toFixed(2) : 0,
+    cx: fin ? +fin.cx.toFixed(2) : 0, cy: fin ? +fin.cy.toFixed(2) : 0,
+    head: box !== full, pos: pos.toArray().map((n) => +n.toFixed(2)),
+    look: aim.toArray().map((n) => +n.toFixed(2)),
+  };
+  const ok = !!fin && Math.abs(fin.cx) < 0.28 && Math.abs(fin.cy) < 0.34
+    && fin.w > plan.fill * 0.55 && fin.w < plan.fill * 1.9;
+  return { cam: { pos, look: aim.clone(), fov, dutch: plan.dutch, blur: plan.blur }, ok, fin, dist };
+}
+
 function solveShot(name, e, u, t) {
+  window.__DC = window.__DC || {}; window.__DC.last = null;
   if (SLAB_CAM[name]) {
     const c = SLAB_CAM[name](e);
+    return {
+      pos: new THREE.Vector3(...c.pos), look: new THREE.Vector3(...c.look), fov: c.fov,
+      dutch: 0, blur: 0.08,
+    };
+  }
+  if (REEF_CAM[name]) {
+    const c = REEF_CAM[name](e);
     return {
       pos: new THREE.Vector3(...c.pos), look: new THREE.Vector3(...c.look), fov: c.fov,
       dutch: 0, blur: 0.10,
     };
   }
-  const plan = SHOT_PLAN[name] || SHOT_PLAN.lockedWide;
-  const tgt = subjectAnchor(plan.who);
-  const fov = plan.fov;
-  const presence = (plan.who === 'slab' || plan.who === 'reef') ? 1.0 : 1.9;
-  const fill = Math.min(GLM.mix(plan.fill[0], plan.fill[1], e) * presence, 0.94);
-  const az = plan.azBase + GLM.mix(plan.az[0], plan.az[1], e);
-  const lift = GLM.mix(plan.lift[0], plan.lift[1], e);
-  const dist = Math.max(distForFill(SUBJECT_LEN[plan.who] ?? 2, fill, fov), 0.45);
-  const pos = new THREE.Vector3(
-    tgt.x + Math.sin(az) * dist,
-    tgt.y + lift * dist * 0.42 + 0.06,
-    tgt.z + Math.cos(az) * dist,
-  );
-  // the silt plane undulates up to y = -1.30; never let the lens sink into it
-  pos.y = Math.max(pos.y, -0.35);  // grazing the bed reads as black; hold the lens well clear
-  if (plan.shake) {
-    pos.x += Math.sin(t * 7.3) * plan.shake;
-    pos.y += Math.sin(t * 6.1) * plan.shake * 0.7;
-  }
-  return {
-    pos, look: tgt, fov,
-    dutch: GLM.mix(plan.dutch[0], plan.dutch[1], e),
-    blur: GLM.mix(plan.blur[0], plan.blur[1], e),
-  };
+  const plan = { ...(SHOT_PLAN[name] || SHOT_PLAN.rad1_ms), _name: name };
+  const r = solveCreature(plan, fovOf(plan.mm));
+  if (r) return r;
+  const c = SLAB_CAM.ews(e);
+  return { pos: new THREE.Vector3(...c.pos), look: new THREE.Vector3(...c.look), fov: c.fov, dutch: 0, blur: 0.08 };
 }
 
-/** the entire visual language of the film, one row per shot */
+/** the entire visual language of the film, one row per shot.
+ *  `mm` is the real focal length; fov is derived from the full-frame sensor height so the
+ *  lens table in cinematic-language.md applies directly. `hgt` is the lens axis expressed as a
+ *  multiplier of the subject's own height (0 = at its base, 1 = at its top). */
+const ASPECT = 16 / 9;
+const SENSOR_H = 24.0;                        // full-frame 36x24
+const fovOf = (mm) => 2 * Math.atan(SENSOR_H / (2 * mm)) * 180 / Math.PI;
+
 const SHOT_PLAN = {
-  emerge:         { who: 'slab', fov: 36, fill: [0.40, 0.62], az: [0.0, 0.0],    azBase: 0.0,  lift: [0.55, 0.40], dutch: [0, 0],        blur: [0.10, 0.10] },
-  rake:           { who: 'slab', fov: 30, fill: [0.55, 0.55], az: [-0.50, 0.50], azBase: 0.0,  lift: [0.42, 0.42], dutch: [0, 0],        blur: [0.10, 0.10] },
-  topLight:       { who: 'slab', fov: 34, fill: [0.46, 0.60], az: [0.0, 0.0],    azBase: 0.0,  lift: [0.66, 0.52], dutch: [0, 0],        blur: [0.10, 0.10] },
-  macroArc:       { who: 'slab', fov: 27, fill: [0.66, 0.66], az: [-0.24, 0.20], azBase: 0.0,  lift: [0.30, 0.26], dutch: [0, 0],        blur: [0.10, 0.10] },
-  rackFocus:      { who: 'slab', fov: 29, fill: [0.54, 0.54], az: [-0.40, 0.36], azBase: 0.0,  lift: [0.26, 0.26], dutch: [0, 0],        blur: [0.10, 0.10] },
-  trackRadiodont: { who: 'rad1', fov: 38, fill: [0.44, 0.54], az: [0.06, -0.08], azBase: 0.26, lift: [0.30, 0.24], dutch: [0, 0],        blur: [0.20, 0.24] },
-  staticOpabinia: { who: 'opa',  fov: 36, fill: [0.50, 0.50], az: [0.0, 0.0],    azBase: -0.60, lift: [0.34, 0.34], dutch: [0, 0],        blur: [0.12, 0.12] },
-  lowDolly:       { who: 'hal',  fov: 37, fill: [0.30, 0.50], az: [0.42, 0.14], azBase: 0.34, lift: [0.20, 0.12], dutch: [0, 0],        blur: [0.12, 0.26] },
-  overhead:       { who: 'opa',  fov: 42, fill: [0.34, 0.42], az: [0.30, 0.52], azBase: -0.34, lift: [0.78, 0.92], dutch: [-0.06, -0.06], blur: [0.12, 0.12] },
-  dutchRoll:      { who: 'opa',  fov: 42, fill: [0.46, 0.40], az: [0.10, -0.26], azBase: -0.60, lift: [0.58, 0.66], dutch: [-0.05, 0.22], blur: [0.26, 0.16] },
-  vertigo:        { who: 'opa',  fov: 42, fill: [0.48, 0.24], az: [0.0, 0.26],  azBase: -0.60, lift: [0.52, 0.80], dutch: [0.05, -0.05], blur: [0.12, 0.12] },
-  craneUp:        { who: 'reef', fov: 40, fill: [0.30, 0.58], az: [-0.34, 0.26], azBase: 0.0,  lift: [0.10, 0.62], dutch: [0, 0],        blur: [0.12, 0.10] },
-  pushIn:         { who: 'reef', fov: 37, fill: [0.30, 0.58], az: [-0.14, 0.06], azBase: 0.0,  lift: [0.52, 0.30], dutch: [0, 0],        blur: [0.10, 0.16] },
-  handheld:       { who: 'reef', fov: 38, fill: [0.40, 0.46], az: [0.08, 0.20], azBase: 0.0,  lift: [0.34, 0.28], dutch: [0.01, -0.01], blur: [0.10, 0.10], shake: 0.030 },
-  whipPan:        { who: 'hal2', fov: 40, fill: [0.34, 0.52], az: [-0.95, 0.18], azBase: 0.40, lift: [0.72, 0.62], dutch: [0.06, 0.10], blur: [0.52, 0.30] },
-  snapOut:        { who: 'reef', fov: 43, fill: [0.58, 0.22], az: [0.0, -0.16], azBase: 0.0,  lift: [0.36, 0.80], dutch: [0, 0],        blur: [0.10, 0.10] },
-  lockedWide:     { who: 'reef', fov: 39, fill: [0.34, 0.34], az: [0.0, 0.0],    azBase: 0.0,  lift: [0.52, 0.52], dutch: [0, 0],        blur: [0.08, 0.08] },
-  craneUp2:       { who: 'reef', fov: 40, fill: [0.44, 0.26], az: [-0.26, 0.22], azBase: 0.0,  lift: [0.16, 0.72], dutch: [0, 0],        blur: [0.12, 0.10] },
-  downTilt:       { who: 'reef', fov: 39, fill: [0.24, 0.48], az: [0.16, -0.10], azBase: 0.0,  lift: [0.76, 0.24], dutch: [0, 0],        blur: [0.10, 0.10] },
-  finalHold:      { who: 'reef', fov: 37, fill: [0.38, 0.30], az: [-0.10, 0.08], azBase: 0.0,  lift: [0.58, 0.66], dutch: [0, 0],        blur: [0.08, 0.08] },
+  // creature subjects
+  // fill = subject length / frame width. Below 1 the body sits inside the frame (WS/MS);
+  // at 1 it fills it; above 1 the body runs past the edge, which is what a CU actually is.
+  rad1_ms:  { who: 'rad1', mm: 35,  fill: 0.86, az: 0.34,  azBase: 0.30, hgt: 0.55, dutch: 0.00, blur: 0.10 },
+  rad1_ecu: { who: 'rad1', mm: 100, fill: 3.30, az: 0.20,  azBase: 0.52, hgt: 0.34, dutch: 0.00, blur: 0.06 },
+  rad1_cu:  { who: 'rad1', mm: 85,  fill: 1.35, az: -0.16, azBase: 0.42, hgt: 0.56, dutch: 0.02, blur: 0.08 },
+  opa_cu:   { who: 'opa',  mm: 85,  fill: 2.20, az: 0.05,  azBase: -0.55, hgt: 0.36, dutch: 0.00, blur: 0.06 },
+  opa_mcu:  { who: 'opa',  mm: 50,  fill: 1.15, az: -0.20, azBase: -0.40, hgt: 0.50, dutch: -0.04, blur: 0.10 },
+  hal_mcu:  { who: 'hal',  mm: 85,  fill: 1.45, az: 0.30,  azBase: 0.28, hgt: 0.42, dutch: 0.00, blur: 0.06 },
+  hal2_ms:  { who: 'hal2', mm: 35,  fill: 0.95, az: 0.42,  azBase: 0.34, hgt: 0.50, dutch: 0.00, blur: 0.10 },
 };
 
 function draw(frame) {
@@ -720,30 +1031,33 @@ function draw(frame) {
   shadowRig.updateShadowMap(scene, camera.position, 9.0);
   motes.mesh.visible = isSea;
 
-  const drive = isSea ? (frame < 390 ? 1.0 : frame < 720 ? GLM.clamp(1.3 - key * 0.5, 0.30, 1.25) : 0.5) : 0.15;
+  // performance energy follows the drama: full life, strained in the crisis, calmer after
+  const drive = isSea
+    ? (frame < 330 ? 1.0 : frame < 690 ? GLM.clamp(1.45 - key * 0.9, 0.42, 1.30) : 0.62)
+    : 0.15;
   performRadiodont(rad1, t, drive * 1.2);
   performRadiodont(rad2, t + 0.7, drive * 0.85);
   performOpabinia(opa, t + 1.3, drive);
   performHallucigenia(hal, t, drive, t * 2.2);
   performHallucigenia(hal2, t + 0.4, drive * 0.8, t * 2.2 + 1.1);
 
-  const cross = smooth(196, 390, frame);
+  const cross = smooth(120, 320, frame);
   rad1.grp.position.x = GLM.mix(3.1, -3.0, cross);
-  rad1.grp.position.y = 0.30 + 0.10 * Math.sin(t * 1.1);
+  rad1.grp.position.y = 0.30 + 0.10 * Math.sin(t * 1.1) + (frame >= 1637 ? 0.35 * smooth(1637, 1779, frame) : 0);
   rad1.grp.position.z = -3.4 + 0.55 * Math.sin(t * 0.6);
   rad1.grp.rotation.y = Math.PI + 0.10 * Math.sin(t * 0.9) + rad1.recoil * 0.7;
 
-  const crisis = frame >= 470 && frame < 720;
+  const crisis = frame >= 315 && frame < 690;
   if (crisis) {
-    const k = smooth(470, 520, frame) * (1 - smooth(650, 720, frame));
+    const k = smooth(330, 400, frame) * (1 - smooth(620, 690, frame));
     rad1.recoil = k; hal.curl = k;
-    opa.grp.rotation.z = 0.85 * k * Math.sin((frame - 470) * 0.12) + 0.08;
+    opa.grp.rotation.z = 0.85 * k * Math.sin((frame - 330) * 0.12) + 0.08;
   }
   // These were `+=` / `-=` inside draw(), so every frame added to the previous frame's state:
   // the progressive render drifted the animals metres below the seabed while random-access
   // preflight looked fine. Pose is now a pure function of `frame`.
-  const sink = frame >= 930 ? frame - 930 : 0;
-  const opaTumble = crisis ? smooth(470, 520, frame) * (1 - smooth(650, 720, frame)) : 0;
+  const sink = frame >= 1290 ? frame - 1290 : 0;
+  const opaTumble = crisis ? smooth(315, 385, frame) * (1 - smooth(615, 690, frame)) : 0;
   rad1.grp.position.y = HOME.rad1.y + 0.10 * Math.sin(t * 1.1) - sink * 0.0022;
   rad2.grp.position.y = HOME.rad2.y - sink * 0.0019;
   opa.grp.position.y = HOME.opa.y - sink * 0.0016;
@@ -756,7 +1070,7 @@ function draw(frame) {
   }
 
   /* sediment */
-  const siltAmt = (frame >= 390 && frame < 760) ? smooth(390, 468, frame) * (1 - smooth(700, 760, frame)) : 0;
+  const siltAmt = (frame >= 315 && frame < 700) ? smooth(315, 420, frame) * (1 - smooth(635, 700, frame)) : 0;
   siltMat.opacity = 0.70 * siltAmt;
   if (siltAmt > 0.002) {
     for (let i = 0; i < SILT_N; i++) {
@@ -802,6 +1116,7 @@ function draw(frame) {
   });
 
   drawHud(frame);
+  if (window.__DC_DEBUG) drawDebug();
 }
 
 /* ────────────────────────── SDK CLI surface ────────────────────────── */
@@ -858,5 +1173,6 @@ window.__Probe = (frame) => {
   }
   return out;
 };
-window.__Scene = { sea, lab, scene, camera, THREE, draw };
+window.__Scene = { sea, lab, scene, camera, THREE, draw,
+  _audit: { rad1, opa, hal, hal2, rad2 } };   // read-only hook for the framing probe
 window.__IMAX_READY__ = true;
