@@ -151,13 +151,100 @@ function makeSeabed() {
   const map = new THREE.CanvasTexture(c); map.colorSpace = THREE.SRGBColorSpace;
   map.wrapS = map.wrapT = THREE.RepeatWrapping; map.repeat.set(7, 7);
   const nm = buildNormalFromCanvas(c, 1.1, 512); nm.repeat.set(7, 7);
-  const m = makeImaxMaterial({ color: '#6f7a74', map, normalMap: nm, normalScale: 0.70, specPower: 0.13, rimStrength: 0.02 });
+  // A cold bed under a cyan key still read warm, because the rim light and the world fog were
+  // both warm and the albedo was neutral-sand. Water absorbs red first; the bed has to look
+  // like it is 40 m down, so the albedo is pulled blue-green and the rim is switched off.
+  const m = makeImaxMaterial({ color: '#5c6f74', map, normalMap: nm, normalScale: 0.80, specPower: 0.11, rimStrength: 0.0 });
   const mesh = new THREE.Mesh(g, m);
   mesh.rotation.x = -Math.PI / 2; mesh.position.y = -1.55;
   mesh.receiveShadow = true;
   return mesh;
 }
 sea.add(makeSeabed());
+
+/* ────────────────────────── water optics ──────────────────────────
+ * The sea read as a lit diorama because nothing in the frame was made of water. Three layers
+ * do that job: shafts from the surface (the light has a direction and a volume), caustics on
+ * the bed (the surface is moving), and marine snow (the water itself is not empty). All three
+ * are driven by the same `key` curve as the lighting, so the crisis darkens them together.
+ */
+
+/* 1. shafts: crossed planes under an additive falloff, so they hold up as the camera moves */
+const shaftMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending, side: THREE.DoubleSide,
+  uniforms: { uCol: { value: new THREE.Color('#c8eef2') }, uAmt: { value: 0 }, uT: { value: 0 } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: `varying vec2 vUv; uniform vec3 uCol; uniform float uAmt, uT;
+    void main(){
+      float edge = sin(vUv.x * 3.14159265);
+      float core = pow(edge, 2.4);
+      float fall = pow(clamp(1.0 - vUv.y, 0.0, 1.0), 1.30);
+      float flick = 0.80 + 0.20 * sin(uT * 0.55 + vUv.x * 9.0);
+      float a = core * fall * uAmt * flick;
+      gl_FragColor = vec4(uCol * a, a);
+    }`,
+});
+const shafts = new THREE.Group();
+shafts.renderOrder = 18;
+for (let i = 0; i < 9; i++) {
+  const w = 0.9 + rnd() * 2.1;
+  const h = 9.2 + rnd() * 3.0;
+  const geo = new THREE.PlaneGeometry(w, h);
+  geo.translate(0, -h * 0.5, 0);                 // hinge at the surface, hang downward
+  const m = shaftMat;
+  const a = new THREE.Mesh(geo, m);
+  a.rotation.y = rnd() * Math.PI;
+  a.rotation.z = (rnd() - 0.5) * 0.13;           // a shaft is never perfectly vertical
+  a.position.set(-7 + rnd() * 14, 9.6, -13 + rnd() * 12);
+  shafts.add(a);
+  const b = a.clone(); b.rotation.y += Math.PI / 2;   // crossed, so it survives a pan
+  shafts.add(b);
+}
+sea.add(shafts);
+
+/* 2. caustics: the moving light pattern a surface throws onto a bed 40 m down */
+const causticMat = new THREE.ShaderMaterial({
+  transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+  uniforms: { uAmt: { value: 0 }, uT: { value: 0 }, uCol: { value: new THREE.Color('#9fd8d2') } },
+  vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+  fragmentShader: `varying vec2 vUv; uniform float uAmt, uT; uniform vec3 uCol;
+    void main(){
+      vec2 p = vUv * 9.0;
+      float a = sin(p.x * 2.1 + uT * 0.55) * sin(p.y * 1.7 - uT * 0.42);
+      float b = sin((p.x + p.y) * 1.31 - uT * 0.63) * sin((p.x - p.y) * 1.11 + uT * 0.37);
+      float c = abs(a + b);
+      float lines = smoothstep(0.55, 0.98, c);
+      float vign = smoothstep(0.0, 0.18, vUv.x) * smoothstep(0.0, 0.18, 1.0 - vUv.x)
+                 * smoothstep(0.0, 0.18, vUv.y) * smoothstep(0.0, 0.18, 1.0 - vUv.y);
+      float alpha = lines * vign * uAmt;
+      gl_FragColor = vec4(uCol * alpha, alpha);
+    }`,
+});
+const caustic = new THREE.Mesh(new THREE.PlaneGeometry(34, 34), causticMat);
+caustic.rotation.x = -Math.PI / 2;
+caustic.position.y = -1.50;
+caustic.renderOrder = 17;
+sea.add(caustic);
+
+/* 3. marine snow: the water is not empty, and it is not still */
+const SNOW_N = 1500;
+const snowPos = new Float32Array(SNOW_N * 3);
+const snowSeed = new Float32Array(SNOW_N);
+for (let i = 0; i < SNOW_N; i++) {
+  snowPos[i * 3] = (rnd() - 0.5) * 18;
+  snowPos[i * 3 + 1] = -1.4 + rnd() * 9.0;
+  snowPos[i * 3 + 2] = 2.5 - rnd() * 20;
+  snowSeed[i] = rnd() * Math.PI * 2;
+}
+const snowGeo = new THREE.BufferGeometry();
+snowGeo.setAttribute('position', new THREE.BufferAttribute(snowPos, 3));
+const snowMat = new THREE.PointsMaterial({
+  color: '#dcefef', size: 0.026, transparent: true, opacity: 0.5,
+  depthWrite: false, sizeAttenuation: true, blending: THREE.AdditiveBlending,
+});
+const snow = new THREE.Points(snowGeo, snowMat);
+snow.frustumCulled = false; snow.renderOrder = 19;
+sea.add(snow);
 
 /* rock outcrops: real scans, sized 0.5-3 u, seated on the bed */
 const loader = new GLTFLoader(); loader.setMeshoptDecoder(MeshoptDecoder);
@@ -327,9 +414,9 @@ function makeCreature(gl, { name, targetLen, pos, yaw = 0, ground = null }) {
       o.frustumCulled = false;
       o.castShadow = true; o.receiveShadow = true;
       o.material = makeImaxMaterial({
-        color: name === 'radiodont' ? '#8a6b42' : name === 'opabinia' ? '#9a7748' : '#7a6238',
-        map: o.material?.map || null, normalScale: 0.62, specPower: 0.34,
-        rimStrength: 0.16, rimTint: [0.40, 0.52, 0.54], translucent: 0.04,
+        color: name === 'radiodont' ? '#6d6350' : name === 'opabinia' ? '#7a6a4e' : '#625949',
+        map: o.material?.map || null, normalScale: 0.66, specPower: 0.40,
+        rimStrength: 0.20, rimTint: [0.34, 0.60, 0.68], translucent: 0.07,
       });
     }
   });
@@ -1022,10 +1109,17 @@ function draw(frame) {
     SHARED_KICK();
   } else {
     setImaxLightingPreset('abyssal_biolum');
+    // The preset's amber rim is beautiful on a hero prop and wrong for a 40 m seabed: it was
+    // the single largest warm contribution to the bed. Cool it, and let the bioluminescent
+    // life carry the only warm accent in the frame.
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#7fd8e8').multiplyScalar(0.44);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.010, 0.030, 0.042);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 2.4;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 30.0;
   }
   domeMat.uniforms.uAmt.value = isSea ? (0.55 + 0.45 * key) : 0;
-  scene.fog = isSea ? new THREE.FogExp2('#1d5a66', 0.042 - 0.020 * key) : new THREE.FogExp2('#0a0d10', 0.030);
-  scene.background = new THREE.Color(isSea ? '#0a2830' : '#05080a');
+  scene.fog = isSea ? new THREE.FogExp2('#17505f', 0.046 - 0.022 * key) : new THREE.FogExp2('#0a0d10', 0.030);
+  scene.background = new THREE.Color(isSea ? '#082229' : '#05080a');
 
   motes.mesh.visible = false;
   shadowRig.updateShadowMap(scene, camera.position, 9.0);
@@ -1092,6 +1186,24 @@ function draw(frame) {
     siltGeo.attributes.position.needsUpdate = true;
   }
   motes.update(t);
+
+  // the three water layers breathe with the same curve as the light
+  shaftMat.uniforms.uAmt.value = isSea ? 0.10 + 0.30 * key : 0;
+  shaftMat.uniforms.uT.value = t;
+  causticMat.uniforms.uAmt.value = isSea ? 0.06 + 0.26 * key : 0;
+  causticMat.uniforms.uT.value = t;
+  snowMat.opacity = isSea ? 0.22 + 0.34 * key : 0;
+  if (isSea) {
+    const sp = snowGeo.attributes.position.array;
+    for (let i = 0; i < SNOW_N; i++) {
+      const ph = snowSeed[i];
+      sp[i * 3]     += Math.sin(t * 0.30 + ph) * 0.0016;
+      sp[i * 3 + 1] -= 0.0032 - 0.0016 * Math.sin(t * 0.22 + ph * 1.7);
+      sp[i * 3 + 2] += Math.cos(t * 0.26 + ph * 0.9) * 0.0014;
+      if (sp[i * 3 + 1] < -1.45) { sp[i * 3 + 1] = 7.6; sp[i * 3] = (rnd() - 0.5) * 18; }
+    }
+    snowGeo.attributes.position.needsUpdate = true;
+  }
 
   /* camera: one idea per shot, solved against its subject (never hand-typed vectors) */
   const cam = solveShot(shot[3], e, u, t);
