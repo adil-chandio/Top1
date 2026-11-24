@@ -1,0 +1,13 @@
+HUAYUAN 60 SECOND 3D REVIEW — EXPERIMENTAL, NOT A FINAL QUALITY PASS
+
+File: Huayuan-60s-review.mp4
+SHA-256: 4caf0167c859ce8ed2d5da04d70e1c6558018dd8f65da252db78486724f4baea
+MD5: 41a7850e5a33c02eaef4a8f26e128684
+Full decoded video: 1,800 frames, 30 fps, 1280 x 720, 60.000 s; FFmpeg completed a full decode with no reported errors.
+Audio: 48 kHz stereo AAC stream-copied, no time-stretch or re-encoding. Decoded s16le SHA-256: 6bb74d9c8645b6e4ea1438ade1a7738d7d69865b013b1b5c2c581f2e30ab9348, matching the recovered approved story mix. Integrated loudness -15.2 LUFS; measured true peak -1.5 dBTP. This is the existing mixed track, not dry narration; original music and effects remain and a new independent mix was not possible from available material.
+
+Creative review: two preflight critiques and decoded stills show multiple animals and changing shots, but the fossil and evidence remain explicitly schematic; the seabed is sparse and synthetic; the crisis is not sufficiently dramatic or legible; repetitive compositions remain. Not a professional/cinematic finish, not an IMAX-certified master, and not validated by a subject-matter expert. Continuous subjective listening, detailed lip/word alignment and frame-by-frame defect review were not completed. Still contact sheet alone does not prove motion quality.
+
+The species models are generalized Cambrian reconstructions, not identified Huayuan fossils. Crisis and burial are conceptual; deeper refuge remains a hypothesis, not a demonstrated fact. Science: https://www.nature.com/articles/s41586-025-10030-0 and https://par.nsf.gov/servlets/purl/10520526
+
+Credits: Anomalocaris by Skache, Opabinia by billionlioe, Hallucigenia by huykhoi2407; CC BY 4.0 derivative models from chengong201/prehistoric-animal-museum, modified for this scene. Full original links and rock asset credits are in SOURCE-AND-RECOVERY.md in the production workspace.
