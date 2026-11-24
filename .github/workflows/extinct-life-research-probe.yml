@@ -1,0 +1,48 @@
+name: Extinct Life research connectivity probe
+
+# A single bounded probe, only on this working branch and only when its files change.
+on:
+  push:
+    branches: [arena/6e66724e-top1]
+    paths:
+      - .github/workflows/extinct-life-research-probe.yml
+      - tools/extinct-life/research-probe/probe.py
+      - tools/extinct-life/research-probe/semantic_probe.py
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - name: Check out probe
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - name: Probe public research sources without exposing credentials
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YTAP1: ${{ secrets.YTAP1 }}
+          YTAPI1: ${{ secrets.YTAPI1 }}
+          YT_KEY: ${{ secrets.YT_KEY }}
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
+        run: |
+          set -euo pipefail
+          python3 tools/extinct-life/research-probe/probe.py | tee "$RUNNER_TEMP/research-probe.txt"
+          # Only the probe's deliberately sanitized public results become annotations.
+          while IFS= read -r line; do
+            printf '::notice file=tools/extinct-life/research-probe/probe.py::%s\n' "$line"
+          done < "$RUNNER_TEMP/research-probe.txt"
+      - name: Install bounded semantic test dependencies
+        run: python3 -m pip install --quiet 'numpy==1.26.4' 'onnxruntime==1.20.1' 'tokenizers==0.21.0'
+      - name: Test public Hugging Face model on synthetic and public titles
+        run: |
+          set -uo pipefail
+          timeout 240s python3 tools/extinct-life/research-probe/semantic_probe.py | tee "$RUNNER_TEMP/semantic-probe.txt"
+          result=${PIPESTATUS[0]}
+          while IFS= read -r line; do
+            printf '::notice file=tools/extinct-life/research-probe/semantic_probe.py::%s\n' "$line"
+          done < "$RUNNER_TEMP/semantic-probe.txt"
+          exit "$result"

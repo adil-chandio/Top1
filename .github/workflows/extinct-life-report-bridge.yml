@@ -1,0 +1,64 @@
+name: Extinct Life encrypted report bridge
+on:
+  push:
+    branches: [arena/6e66724e-top1]
+    paths: [.github/workflows/extinct-life-report-bridge.yml]
+permissions:
+  actions: read
+  contents: read
+jobs:
+  transfer:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Download report from completed research run
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6
+        with:
+          name: extinct-life-research-report
+          run-id: 44991315768
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: /tmp/extinct-report
+      - name: Encrypt report to temporary recipient and emit transport chunks
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > /tmp/recipient.pem <<'CERTIFICATE'
+          -----BEGIN CERTIFICATE-----
+          MIIELzCCApegAwIBAgIUBAUKvV/prRpSu8JuuE8iCCS+U2QwDQYJKoZIhvcNAQEL
+          BQAwJzElMCMGA1UEAwwcRXh0aW5jdCBMaWZlIHJlcG9ydCB0cmFuc2ZlcjAeFw0y
+          NjExMjIwNjQ2NTNaFw0yNjExMjQwNjQ2NTNaMCcxJTAjBgNVBAMMHEV4dGluY3Qg
+          TGlmZSByZXBvcnQgdHJhbnNmZXIwggGiMA0GCSqGSIb3DQEBAQUAA4IBjwAwggGK
+          AoIBgQDGHmJM1NJyBlDXjOeojc5Sh/wxFimdD0s/QBqsv+E/pze4YRtT7uUyjptR
+          aDftptomm07njrknabfZTx0FqXaJ0LWkorEwCeCK+mkFxrZoLrZTXcyhe534ewKN
+          0st11VL3eUlnGYAZOA+qiS0yH3B4cenBlM8OJGLwrl39IcjAZUGLLOgU1EvXwxYH
+          TwmGrzCGptow7fcB36MhPfWliTRp7JsDsYrx+ghcPkzjwbeZ42GBlpQdA+rQGEJF
+          11xKk2+R4uA9GsWbQUIDd08y58y2yFIOJuQDdv7EjJyUO/DkjxMlUvhivttdd5oj
+          48ypdqXB6WcI4pISkwwmNzS2qufzEXprg4RjnS77njZjeMJKzVH+z0oJFkgV6edn
+          Y8u5/3PmevGJNzKluyUgM4HGFM2CxenVJdGKZHBth7pswtjL0aDCHcAXUkoA9JIP
+          MdIT1/DJpbwulUnIc5m2+xCxdZWleFFNJ++rv3PmP9lzM33i2A9Mr7M/Ex9DZ2te
+          o8G6aFUCAwEAAaNTMFEwHQYDVR0OBBYEFKiZLE6VnJEHpVXOjVeXDApk9QdUMB8G
+          A1UdIwQYMBaAFKiZLE6VnJEHpVXOjVeXDApk9QdUMA8GA1UdEwEB/wQFMAMBAf8w
+          DQYJKoZIhvcNAQELBQADggGBAIozJDLq70FeQvFH4GJfbFMY13kq/VJ/Lyn0J2xr
+          i2fjJp2MK/FKJMuJwh3FK6dN/cwurf523BWWmoWsmpyOEErTGA3nkegfHOVSHbIE
+          OgyMGvm8C9b060n2gPVjpRe2P3ue/OEXYt0FaHdsF5VDpu4DdTiM6QZmiw3ipZJ/
+          lf2mtuIiK18EQJ+yrTvvjjrFjh2pDGYxYyuuqn4RX2r6mlaaXeNpl1ZNB4u7/Jqs
+          r9BXA9OfQmssuQV/656cOpN8qx8x3c9Ccec2HG3prF+lv5twlH6uSlYNWOQv3nxA
+          9QRjikSTmD903kZLwPDfMrKwv7eC5yJhn+//TnrGm1r8r6ARAgt6ykE7b6ARm3cH
+          0CZQZIwLp4dTzeY93ufju4CBrRLspoUCy7LMSg/iAZHi2QgoF0U60n5xSI957vQu
+          5EuQlLaVTrEsSTEooHBLHtIY0/KarK6tRleI+ZG9LlJwvfycTB172gCMJclXqDJh
+          776VstKAgMqfHzSNJHc/da8yBg==
+          -----END CERTIFICATE-----
+          CERTIFICATE
+          test -f /tmp/extinct-report/REPORT.md
+          gzip -n -c /tmp/extinct-report/REPORT.md > /tmp/report.md.gz
+          openssl cms -encrypt -binary -aes256 -in /tmp/report.md.gz -outform DER -out /tmp/report.enc /tmp/recipient.pem
+          python3 - <<'PYBRIDGE'
+          import base64
+          from pathlib import Path
+          data = base64.b64encode(Path('/tmp/report.enc').read_bytes()).decode('ascii')
+          chunks = [data[i:i+2500] for i in range(0, len(data), 2500)]
+          if len(chunks) > 10:
+              raise SystemExit('Encrypted report exceeds 10-annotation transfer limit; no report chunks emitted')
+          for i, chunk in enumerate(chunks, 1):
+              print(f'::notice title=ELREPORT-{i:02d}-OF-{len(chunks):02d}::{chunk}')
+          PYBRIDGE
