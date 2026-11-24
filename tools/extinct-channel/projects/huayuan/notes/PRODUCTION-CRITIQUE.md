@@ -1,0 +1,7 @@
+# Full preflight pass 1 — fail
+
+Fossil: apparent circular patches caused by the slab intersecting the base; reconstruction resembles a printed diagram, not a real specimen. Reef crisis contains no animals and does not read as a disaster. Main scene repeats the earlier red stock animal on a sparse flat seabed; rocks look black and reflective. Small animal shot is empty/dark, burial uses obvious square particles; layer section looks like stripes; evidence is schematic. These defects undermine the requested finish. Motion and audio are not judged from stills. Fix technical issues, add independent species to the crisis and small animal shots, and reassess before final.
+
+# Full preflight pass 2 and follow-up — still below requested standard
+
+Moved the 3D models' centering to their animated pose (the previous placement sent two species hundreds of units away). Opabinia and Hallucigenia are now visible and deform with their clips. Replaced hard square burial points with soft sprites. This fixes a functional defect but the scenes still look synthetic: the fossil is a diagram, the reef is sparse, the geological section is schematic, and the radiodont look is overly saturated. Crisis and burial are illustrative, not validated observations. A full render is an imperfect work-in-progress, not a passed professional/cinematic quality gate. The original accepted dry VO was not recovered; only its existing mix can be preserved.
