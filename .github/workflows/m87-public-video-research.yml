@@ -227,7 +227,7 @@ jobs:
               if existing_sha != "__blocked__":
                   body = {
                       "message": "Update bounded public YouTube candidate metadata",
-                      "content": base64.b64encode((json.dumps(result, ensure_ascii=False, indent=2) + "\\n").encode("utf-8")).decode("ascii"),
+                      "content": base64.b64encode((json.dumps(result, ensure_ascii=False, indent=2) + "\n").encode("utf-8")).decode("ascii"),
                       "branch": branch,
                   }
                   if existing_sha:
