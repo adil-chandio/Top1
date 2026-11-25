@@ -1,0 +1,78 @@
+name: Blender 4.2 Cycles 40-Core Render Farm (Thermal Shock 3D)
+
+on:
+  push:
+    branches: [arena/183fd395-top1]
+    paths:
+      - .github/workflows/blender-cycles-render.yml
+      - tools/thermal-shock-blender/**
+      - tools/thermal-shock/voice-lock.json
+  workflow_dispatch:
+
+jobs:
+  render:
+    name: Cycles Chunk ${{ matrix.chunk }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        chunk: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Blender 4.2.3 LTS
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libx11-6 libxi6 libxrender1 libxxf86vm1 libxfixes3 libgl1 libglu1-mesa libsm6 libxkbcommon0
+          curl -sSL https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          tar -xf /tmp/blender.tar.xz -C /tmp
+          mv /tmp/blender-4.2.3-linux-x64 /tmp/blender
+
+      - name: Render 69 Path-Traced Cycles Frames
+        run: |
+          START=$(( ${{ matrix.chunk }} * 69 ))
+          END=$(( START + 69 ))
+          echo "Rendering Cycles frames [$START..$END)"
+          /tmp/blender/blender --background --python tools/thermal-shock-blender/render_cycles.py -- \
+            --start $START --end $END --out /tmp/chunk_frames --samples 32 --res-x 720 --res-y 1280
+
+      - name: Upload Chunk Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cycles-chunk-${{ matrix.chunk }}
+          path: /tmp/chunk_frames/*.png
+          retention-days: 1
+
+  assemble:
+    name: Assemble 1080x1920 Master MP4
+    needs: render
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install FFmpeg & Pillow
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-dejavu-core python3-pil
+
+      - name: Download All 10 Chunks
+        uses: actions/download-artifact@v4
+        with:
+          pattern: cycles-chunk-*
+          path: /tmp/all_frames
+          merge-multiple: true
+
+      - name: Composite Captions & Mux Master MP4
+        run: |
+          mkdir -p /tmp/final
+          python3 tools/thermal-shock-blender/assemble.py /tmp/all_frames /tmp/final/Thermal-Shock-Blender-Cycles-3D.mp4
+          ls -lh /tmp/final/Thermal-Shock-Blender-Cycles-3D.mp4
+
+      - name: Upload Final Blender Cycles 3D Master
+        uses: actions/upload-artifact@v4
+        with:
+          name: Thermal-Shock-Blender-Cycles-3D
+          path: /tmp/final/Thermal-Shock-Blender-Cycles-3D.mp4
+          retention-days: 7

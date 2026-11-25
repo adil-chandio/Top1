@@ -1,0 +1,292 @@
+{
+  "project_slug": "thermal-shock",
+  "voice_id": "voice-00",
+  "fps": 30,
+  "total_frames": 690,
+  "duration_s": 23.0,
+  "time_stretch_applied": false,
+  "vacuum_window": {
+    "t0": 9.4707,
+    "t1": 9.6807,
+    "f0": 284,
+    "f1": 290
+  },
+  "shatter_frame": 474,
+  "shot_cuts": [
+    48,
+    117,
+    202,
+    284,
+    291,
+    405,
+    474,
+    559
+  ],
+  "beats": [
+    {
+      "id": "beat_01_hook",
+      "t0": 0.48,
+      "t1": 3.7574,
+      "f0": 14,
+      "f1": 113,
+      "dur": 3.2774,
+      "roman_urdu": "Ubalte hue paani mein thanda sheesha kyun toot jata hai?",
+      "kinetic_chunks": [
+        [
+          "UBALTE PAANI MEIN",
+          0.0,
+          0.34
+        ],
+        [
+          "THANDA SHEESHA",
+          0.34,
+          0.66
+        ],
+        [
+          "KYUN TOOT JATA HAI?",
+          0.66,
+          1.0
+        ]
+      ]
+    },
+    {
+      "id": "beat_02_outer_shrink",
+      "t0": 3.8974,
+      "t1": 9.4107,
+      "f0": 117,
+      "f1": 282,
+      "dur": 5.5133,
+      "roman_urdu": "Jab aap garam sheeshe par thanda paani daalte hain, to uski baahari satah foran sukar jati hai.",
+      "kinetic_chunks": [
+        [
+          "GARAM SHEESHE PAR",
+          0.0,
+          0.25
+        ],
+        [
+          "THANDA PAANI",
+          0.25,
+          0.48
+        ],
+        [
+          "BAAHARI SATAH",
+          0.48,
+          0.74
+        ],
+        [
+          "FORAN SUKAR JATI HAI",
+          0.74,
+          1.0
+        ]
+      ]
+    },
+    {
+      "id": "beat_03_inner_hot",
+      "t0": 9.7007,
+      "t1": 13.3483,
+      "f0": 291,
+      "f1": 400,
+      "dur": 3.6476,
+      "roman_urdu": "Lekin andar ka hissa abhi bhi garam aur phaila hua hota hai.",
+      "kinetic_chunks": [
+        [
+          "LEKIN ANDAR KA HISSA",
+          0.0,
+          0.38
+        ],
+        [
+          "ABHI BHI GARAM",
+          0.38,
+          0.68
+        ],
+        [
+          "AUR PHAILA HUA!",
+          0.68,
+          1.0
+        ]
+      ]
+    },
+    {
+      "id": "beat_04_thermal_shock",
+      "t0": 13.4883,
+      "t1": 18.4803,
+      "f0": 405,
+      "f1": 554,
+      "dur": 4.992,
+      "roman_urdu": "Is achanak khichao ko Thermal Shock kehte hain, jo sheeshe ko andar se phaad deta hai.",
+      "kinetic_chunks": [
+        [
+          "IS ACHANAK KHICHAO KO",
+          0.0,
+          0.3
+        ],
+        [
+          "THERMAL SHOCK",
+          0.3,
+          0.56
+        ],
+        [
+          "ANDAR SE PHAAD DETA HAI!",
+          0.56,
+          1.0
+        ]
+      ]
+    },
+    {
+      "id": "beat_05_outro",
+      "t0": 18.6203,
+      "t1": 22.1209,
+      "f0": 559,
+      "f1": 664,
+      "dur": 3.5006,
+      "roman_urdu": "Agli baar aisa karne se pehle do baar zaroor sochna!",
+      "kinetic_chunks": [
+        [
+          "AGLI BAAR AISA KARNE SE",
+          0.0,
+          0.45
+        ],
+        [
+          "DO BAAR ZAROOR SOCHNA!",
+          0.45,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "captions": [
+    {
+      "t0": 0.48,
+      "t1": 1.594,
+      "f0": 14,
+      "f1": 48,
+      "text": "UBALTE PAANI MEIN",
+      "beat_id": "beat_01_hook"
+    },
+    {
+      "t0": 1.594,
+      "t1": 2.643,
+      "f0": 48,
+      "f1": 79,
+      "text": "THANDA SHEESHA",
+      "beat_id": "beat_01_hook"
+    },
+    {
+      "t0": 2.643,
+      "t1": 3.757,
+      "f0": 79,
+      "f1": 113,
+      "text": "KYUN TOOT JATA HAI?",
+      "beat_id": "beat_01_hook"
+    },
+    {
+      "t0": 3.897,
+      "t1": 5.276,
+      "f0": 117,
+      "f1": 158,
+      "text": "GARAM SHEESHE PAR",
+      "beat_id": "beat_02_outer_shrink"
+    },
+    {
+      "t0": 5.276,
+      "t1": 6.544,
+      "f0": 158,
+      "f1": 196,
+      "text": "THANDA PAANI",
+      "beat_id": "beat_02_outer_shrink"
+    },
+    {
+      "t0": 6.544,
+      "t1": 7.977,
+      "f0": 196,
+      "f1": 239,
+      "text": "BAAHARI SATAH",
+      "beat_id": "beat_02_outer_shrink"
+    },
+    {
+      "t0": 7.977,
+      "t1": 9.411,
+      "f0": 239,
+      "f1": 282,
+      "text": "FORAN SUKAR JATI HAI",
+      "beat_id": "beat_02_outer_shrink"
+    },
+    {
+      "t0": 9.701,
+      "t1": 11.087,
+      "f0": 291,
+      "f1": 333,
+      "text": "LEKIN ANDAR KA HISSA",
+      "beat_id": "beat_03_inner_hot"
+    },
+    {
+      "t0": 11.087,
+      "t1": 12.181,
+      "f0": 333,
+      "f1": 365,
+      "text": "ABHI BHI GARAM",
+      "beat_id": "beat_03_inner_hot"
+    },
+    {
+      "t0": 12.181,
+      "t1": 13.348,
+      "f0": 365,
+      "f1": 400,
+      "text": "AUR PHAILA HUA!",
+      "beat_id": "beat_03_inner_hot"
+    },
+    {
+      "t0": 13.488,
+      "t1": 14.986,
+      "f0": 405,
+      "f1": 450,
+      "text": "IS ACHANAK KHICHAO KO",
+      "beat_id": "beat_04_thermal_shock"
+    },
+    {
+      "t0": 14.986,
+      "t1": 16.284,
+      "f0": 450,
+      "f1": 489,
+      "text": "THERMAL SHOCK",
+      "beat_id": "beat_04_thermal_shock"
+    },
+    {
+      "t0": 16.284,
+      "t1": 18.48,
+      "f0": 489,
+      "f1": 554,
+      "text": "ANDAR SE PHAAD DETA HAI!",
+      "beat_id": "beat_04_thermal_shock"
+    },
+    {
+      "t0": 18.62,
+      "t1": 20.196,
+      "f0": 559,
+      "f1": 606,
+      "text": "AGLI BAAR AISA KARNE SE",
+      "beat_id": "beat_05_outro"
+    },
+    {
+      "t0": 20.196,
+      "t1": 22.121,
+      "f0": 606,
+      "f1": 664,
+      "text": "DO BAAR ZAROOR SOCHNA!",
+      "beat_id": "beat_05_outro"
+    }
+  ],
+  "master_wav": "/tmp/thermal_shock/master_mix.wav",
+  "loudness_pass1": {
+    "input_i": "-17.96",
+    "input_tp": "-0.80",
+    "input_lra": "4.00",
+    "input_thresh": "-28.17",
+    "output_i": "-14.99",
+    "output_tp": "-1.50",
+    "output_lra": "2.30",
+    "output_thresh": "-25.11",
+    "normalization_type": "dynamic",
+    "target_offset": "0.79"
+  }
+}
