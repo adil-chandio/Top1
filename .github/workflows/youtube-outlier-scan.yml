@@ -1,0 +1,98 @@
+name: YouTube outlier scan
+
+# Stage 1 / Stage A. Official YouTube Data API v3 only: no yt-dlp, no scraping,
+# no retry loops on blocked routes. Manual dispatch keeps the API quota bounded.
+on:
+  workflow_dispatch:
+    inputs:
+      keywords:
+        description: '1-5 comma-separated niche keywords'
+        required: true
+        type: string
+        default: 'everyday physics,hidden engineering,biology microscope,mechanical failure'
+      min_views:
+        description: 'Minimum views on the candidate video'
+        required: true
+        type: string
+        default: '3000'
+      max_subs:
+        description: 'Maximum channel subscribers'
+        required: true
+        type: string
+        default: '100000'
+      min_ratio:
+        description: 'Minimum views / median(10 surrounding uploads)'
+        required: true
+        type: string
+        default: '2.0'
+      format:
+        description: 'Requested output format (annotation only at scan stage)'
+        required: true
+        type: choice
+        options: [short, long, both]
+        default: short
+      lookback_days:
+        description: 'Only consider uploads published in the last N days'
+        required: true
+        type: string
+        default: '180'
+
+permissions:
+  contents: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      KEYWORDS: ${{ inputs.keywords }}
+      MIN_VIEWS: ${{ inputs.min_views }}
+      MAX_SUBS: ${{ inputs.max_subs }}
+      MIN_RATIO: ${{ inputs.min_ratio }}
+      FORMAT: ${{ inputs.format }}
+      LOOKBACK_DAYS: ${{ inputs.lookback_days }}
+      OUT_DIR: /tmp/research_vision
+      # The key is passed to Python as an env var and sent only as an HTTP header.
+      YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY || secrets.YT_API_KEY || secrets.YT_KEY || secrets.YTAP1 || secrets.YTAPI1 }}
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+
+      - name: Run bounded official-API outlier scan
+        run: |
+          set -euo pipefail
+          mkdir -p "$OUT_DIR"
+          python3 tools/research-agent/outlier_scan.py \
+            --keywords "$KEYWORDS" \
+            --min-views "$MIN_VIEWS" \
+            --max-subs "$MAX_SUBS" \
+            --min-ratio "$MIN_RATIO" \
+            --format "$FORMAT" \
+            --lookback-days "$LOOKBACK_DAYS" \
+            --out "$OUT_DIR/outlier_scan.json"
+
+      - name: Validate artifact against schema
+        run: |
+          set -euo pipefail
+          python3 -m pip install --quiet 'jsonschema==4.23.0'
+          python3 - <<'PY'
+          import json
+          import jsonschema
+          from pathlib import Path
+
+          schema = json.loads(Path('tools/research-agent/outlier_scan.schema.json').read_text(encoding='utf-8'))
+          artifact = json.loads(Path('/tmp/research_vision/outlier_scan.json').read_text(encoding='utf-8'))
+          jsonschema.validate(artifact, schema)
+          print(f"Validated outlier_scan.json: {artifact['stats']['qualified']} qualified, "
+                f"{artifact['stats']['quota_units_estimate']} estimated quota units")
+          PY
+
+      - name: Publish lightweight scan artifact
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: youtube-outlier-scan
+          path: /tmp/research_vision/outlier_scan.json
+          retention-days: 7
+          if-no-files-found: error
