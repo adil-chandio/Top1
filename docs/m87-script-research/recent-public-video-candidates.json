@@ -1,0 +1,545 @@
+{
+  "window_start_utc": "2026-05-29T09:50:11Z",
+  "queried_at_utc": "2026-11-25T09:50:14+00:00",
+  "method": "YouTube Data API public metadata; six search.list calls (estimated 600 units), then batched video/channel lookups.",
+  "sample_limitations": [
+    "order=viewCount returns search candidates, not a representative sample or proof of virality.",
+    "Views/day is lifetime views divided by age, not measured time-series velocity or audience retention.",
+    "videoDuration=short is broader than Shorts; output is filtered to <=180 seconds but vertical/Shorts status is not guaranteed.",
+    "PK and US search cohorts are reported separately; counts are not a causal comparison.",
+    "No video playback, transcript, thumbnail, or private analytics was accessed in this workflow."
+  ],
+  "api_calls": {
+    "search": 6,
+    "videos": 3,
+    "channels": 2
+  },
+  "cohorts": {
+    "PK cohort (Urdu/Hindi search relevance)": [
+      {
+        "video_id": "J9DdxP1gYXM",
+        "url": "https://www.youtube.com/watch?v=J9DdxP1gYXM",
+        "title": "Funny Chihuahua Tries To Hide A Black Hole From His Owner 😂",
+        "channel": "Tim and Jeffy",
+        "published_at": "2026-07-11T00:56:34Z",
+        "duration_seconds": 15,
+        "views": 704935713,
+        "likes": 2694029,
+        "comments": 2554,
+        "channel_subscribers_now": 1010000,
+        "views_per_day_since_publish": 5131634.4,
+        "lifetime_views_per_current_subscriber": 697.956,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "QPW2i4uQqYA",
+        "url": "https://www.youtube.com/watch?v=QPW2i4uQqYA",
+        "title": "This Funny Chihuahua Try To Hide A Black Hole From Owner 😂",
+        "channel": "MILO",
+        "published_at": "2026-09-20T04:00:18Z",
+        "duration_seconds": 15,
+        "views": 23318496,
+        "likes": 89980,
+        "comments": 37,
+        "channel_subscribers_now": 95300,
+        "views_per_day_since_publish": 352014.4,
+        "lifetime_views_per_current_subscriber": 244.685,
+        "cohorts": [
+          "PK · Hindi relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "INmLPyGjsMI",
+        "url": "https://www.youtube.com/watch?v=INmLPyGjsMI",
+        "title": "The Black Hole That Makes Stars",
+        "channel": "Past the Blue",
+        "published_at": "2026-10-28T13:45:21Z",
+        "duration_seconds": 63,
+        "views": 9757970,
+        "likes": 451543,
+        "comments": 8019,
+        "channel_subscribers_now": 54900,
+        "views_per_day_since_publish": 350543.0,
+        "lifetime_views_per_current_subscriber": 177.741,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "t7k7WPGMN_g",
+        "url": "https://www.youtube.com/watch?v=t7k7WPGMN_g",
+        "title": "What if You Fart in Space 😱",
+        "channel": "FactoHolic",
+        "published_at": "2026-06-05T12:30:29Z",
+        "duration_seconds": 43,
+        "views": 58701643,
+        "likes": 1180921,
+        "comments": 4191,
+        "channel_subscribers_now": 23600000,
+        "views_per_day_since_publish": 339534.3,
+        "lifetime_views_per_current_subscriber": 2.487,
+        "cohorts": [
+          "PK · Urdu relevance / space facts",
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "NCNXpE7GNNY",
+        "url": "https://www.youtube.com/watch?v=NCNXpE7GNNY",
+        "title": "He Thought There Was a Black Hole Under the Bed 😂 #shorts",
+        "channel": "SitaAiHub",
+        "published_at": "2026-09-15T15:00:29Z",
+        "duration_seconds": 18,
+        "views": 20616367,
+        "likes": null,
+        "comments": 31,
+        "channel_subscribers_now": 565000,
+        "views_per_day_since_publish": 291255.2,
+        "lifetime_views_per_current_subscriber": 36.489,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "fSnUL-odX-I",
+        "url": "https://www.youtube.com/watch?v=fSnUL-odX-I",
+        "title": "AN ATOM VS TON 618💀☝️",
+        "channel": "Tx dark matter",
+        "published_at": "2026-10-01T12:30:26Z",
+        "duration_seconds": 46,
+        "views": 12641003,
+        "likes": null,
+        "comments": 2904,
+        "channel_subscribers_now": 164000,
+        "views_per_day_since_publish": 230302.3,
+        "lifetime_views_per_current_subscriber": 77.079,
+        "cohorts": [
+          "PK · Hindi relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "FhCOa790t5Y",
+        "url": "https://www.youtube.com/watch?v=FhCOa790t5Y",
+        "title": "How Fast Is Light Compared to the Universe? #light #earth #jupiter #blackhole",
+        "channel": "Beyond the Observable Universe",
+        "published_at": "2026-09-19T11:30:26Z",
+        "duration_seconds": 18,
+        "views": 14394840,
+        "likes": 79933,
+        "comments": 381,
+        "channel_subscribers_now": 2090000,
+        "views_per_day_since_publish": 215071.7,
+        "lifetime_views_per_current_subscriber": 6.887,
+        "cohorts": [
+          "PK · Urdu relevance / black hole",
+          "US · English relevance / black hole explained"
+        ]
+      },
+      {
+        "video_id": "Blk7XdE1fW0",
+        "url": "https://www.youtube.com/watch?v=Blk7XdE1fW0",
+        "title": "Wait… There’s NO Black Hole?! 😳",
+        "channel": "DJ THE MS42",
+        "published_at": "2026-09-25T16:33:30Z",
+        "duration_seconds": 18,
+        "views": 10183362,
+        "likes": null,
+        "comments": 212,
+        "channel_subscribers_now": 297000,
+        "views_per_day_since_publish": 167710.3,
+        "lifetime_views_per_current_subscriber": 34.287,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "6JLCyiToRdo",
+        "url": "https://www.youtube.com/watch?v=6JLCyiToRdo",
+        "title": "How The Solar System Moves In Space 🤯",
+        "channel": "Zack D. Films",
+        "published_at": "2026-08-25T12:30:04Z",
+        "duration_seconds": 34,
+        "views": 15275899,
+        "likes": 387514,
+        "comments": 5587,
+        "channel_subscribers_now": 29800000,
+        "views_per_day_since_publish": 166242.9,
+        "lifetime_views_per_current_subscriber": 0.513,
+        "cohorts": [
+          "PK · Urdu relevance / space facts",
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "8HuvQ-v4NxQ",
+        "url": "https://www.youtube.com/watch?v=8HuvQ-v4NxQ",
+        "title": "im a blackhole(star) x jjk animation #jujutsukaisen #animation #anime",
+        "channel": "shondoii",
+        "published_at": "2026-10-19T08:10:39Z",
+        "duration_seconds": 13,
+        "views": 5826124,
+        "likes": 228605,
+        "comments": 1795,
+        "channel_subscribers_now": 514000,
+        "views_per_day_since_publish": 157169.0,
+        "lifetime_views_per_current_subscriber": 11.335,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "eL2KkdSnoSY",
+        "url": "https://www.youtube.com/watch?v=eL2KkdSnoSY",
+        "title": "¿Se puede escapar de un agujero negro? 🌌 #albertochao",
+        "channel": "Alberto Chao",
+        "published_at": "2026-08-24T15:00:20Z",
+        "duration_seconds": 72,
+        "views": 12724135,
+        "likes": 437745,
+        "comments": 3155,
+        "channel_subscribers_now": 84600,
+        "views_per_day_since_publish": 137136.2,
+        "lifetime_views_per_current_subscriber": 150.403,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
+        ]
+      },
+      {
+        "video_id": "KvOOhdCWRyc",
+        "url": "https://www.youtube.com/watch?v=KvOOhdCWRyc",
+        "title": "This Animal Might Be Living On The Moon",
+        "channel": "Facts' Mine",
+        "published_at": "2026-09-28T05:30:19Z",
+        "duration_seconds": 45,
+        "views": 7391937,
+        "likes": 263048,
+        "comments": 976,
+        "channel_subscribers_now": 19400000,
+        "views_per_day_since_publish": 127051.8,
+        "lifetime_views_per_current_subscriber": 0.381,
+        "cohorts": [
+          "PK · Urdu relevance / space facts"
+        ]
+      },
+      {
+        "video_id": "tKikZXrcZCQ",
+        "url": "https://www.youtube.com/watch?v=tKikZXrcZCQ",
+        "title": "Why Nothing Can Survive Venus",
+        "channel": "Facts' Mine",
+        "published_at": "2026-10-24T05:30:14Z",
+        "duration_seconds": 57,
+        "views": 3362330,
+        "likes": 179486,
+        "comments": 683,
+        "channel_subscribers_now": 19400000,
+        "views_per_day_since_publish": 104483.3,
+        "lifetime_views_per_current_subscriber": 0.173,
+        "cohorts": [
+          "PK · Urdu relevance / space facts"
+        ]
+      },
+      {
+        "video_id": "MOAATlseb7k",
+        "url": "https://www.youtube.com/watch?v=MOAATlseb7k",
+        "title": "Traveling Through Space 🤯",
+        "channel": "Zack D. Films",
+        "published_at": "2026-06-16T14:30:09Z",
+        "duration_seconds": 40,
+        "views": 16532167,
+        "likes": 506478,
+        "comments": 4937,
+        "channel_subscribers_now": 29800000,
+        "views_per_day_since_publish": 102173.0,
+        "lifetime_views_per_current_subscriber": 0.555,
+        "cohorts": [
+          "PK · Urdu relevance / space facts",
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "jDzumDxe3CE",
+        "url": "https://www.youtube.com/watch?v=jDzumDxe3CE",
+        "title": "Unknown Man On The Moon",
+        "channel": "Facts' Mine",
+        "published_at": "2026-09-12T12:32:39Z",
+        "duration_seconds": 44,
+        "views": 7439142,
+        "likes": 280939,
+        "comments": 847,
+        "channel_subscribers_now": 19400000,
+        "views_per_day_since_publish": 100682.4,
+        "lifetime_views_per_current_subscriber": 0.383,
+        "cohorts": [
+          "PK · Urdu relevance / space facts"
+        ]
+      }
+    ],
+    "US cohort (English search relevance)": [
+      {
+        "video_id": "yPhu-2Jp1JU",
+        "url": "https://www.youtube.com/watch?v=yPhu-2Jp1JU",
+        "title": "India Tried to Stamp Its Emblem on the Moon. The Moon Said No.",
+        "channel": "Space Unmasked",
+        "published_at": "2026-11-18T05:49:14Z",
+        "duration_seconds": 72,
+        "views": 7113976,
+        "likes": 153378,
+        "comments": 1870,
+        "channel_subscribers_now": 4090,
+        "views_per_day_since_publish": 992551.5,
+        "lifetime_views_per_current_subscriber": 1739.358,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "hicHF1iSqyQ",
+        "url": "https://www.youtube.com/watch?v=hicHF1iSqyQ",
+        "title": "Are Humans Closer to the Biggest or Smallest Thing?#PlanckLength #ObservableUniverse #KurioScope",
+        "channel": "KurioScope",
+        "published_at": "2026-10-28T08:53:15Z",
+        "duration_seconds": 45,
+        "views": 24946419,
+        "likes": null,
+        "comments": 1939,
+        "channel_subscribers_now": 123000,
+        "views_per_day_since_publish": 889686.1,
+        "lifetime_views_per_current_subscriber": 202.816,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "neyrGc9zfMM",
+        "url": "https://www.youtube.com/watch?v=neyrGc9zfMM",
+        "title": "He Jumped From Space… Then Started Spinning! 😳",
+        "channel": "Astro Chronicles",
+        "published_at": "2026-10-21T10:38:41Z",
+        "duration_seconds": 50,
+        "views": 19326118,
+        "likes": 209931,
+        "comments": 2714,
+        "channel_subscribers_now": 85900,
+        "views_per_day_since_publish": 552706.1,
+        "lifetime_views_per_current_subscriber": 224.984,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "lXMJc0TkJ4U",
+        "url": "https://www.youtube.com/watch?v=lXMJc0TkJ4U",
+        "title": "University of Waterloo Students Just Broke a Rocket World Record 🚀",
+        "channel": "Wow Theory",
+        "published_at": "2026-09-01T13:00:25Z",
+        "duration_seconds": 76,
+        "views": 35792092,
+        "likes": 1176486,
+        "comments": 59379,
+        "channel_subscribers_now": 71500,
+        "views_per_day_since_publish": 421738.7,
+        "lifetime_views_per_current_subscriber": 500.589,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "2hpJhkvdKiQ",
+        "url": "https://www.youtube.com/watch?v=2hpJhkvdKiQ",
+        "title": "Gravity is the universe's greatest illusion",
+        "channel": "Space beyond limit's ",
+        "published_at": "2026-07-22T13:53:01Z",
+        "duration_seconds": 8,
+        "views": 47020348,
+        "likes": 443236,
+        "comments": 16847,
+        "channel_subscribers_now": 140000,
+        "views_per_day_since_publish": 373677.4,
+        "lifetime_views_per_current_subscriber": 335.86,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "UG6aH5DX8Dk",
+        "url": "https://www.youtube.com/watch?v=UG6aH5DX8Dk",
+        "title": "Moon landing conspiracy debunk (again) #space #nasa #astronomy #science",
+        "channel": "ASTRO ALEXANDRA",
+        "published_at": "2026-09-19T18:03:09Z",
+        "duration_seconds": 173,
+        "views": 23474969,
+        "likes": 889835,
+        "comments": 67077,
+        "channel_subscribers_now": 769000,
+        "views_per_day_since_publish": 352171.9,
+        "lifetime_views_per_current_subscriber": 30.527,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "t7k7WPGMN_g",
+        "url": "https://www.youtube.com/watch?v=t7k7WPGMN_g",
+        "title": "What if You Fart in Space 😱",
+        "channel": "FactoHolic",
+        "published_at": "2026-06-05T12:30:29Z",
+        "duration_seconds": 43,
+        "views": 58701643,
+        "likes": 1180921,
+        "comments": 4191,
+        "channel_subscribers_now": 23600000,
+        "views_per_day_since_publish": 339534.3,
+        "lifetime_views_per_current_subscriber": 2.487,
+        "cohorts": [
+          "PK · Urdu relevance / space facts",
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "3z4xk0ck2wA",
+        "url": "https://www.youtube.com/watch?v=3z4xk0ck2wA",
+        "title": "Dropping 100-Tonne Tungsten Rod From Space  #hypothetical #outwardanimates #physics #animation",
+        "channel": "OutwardAnimates",
+        "published_at": "2026-10-25T23:47:18Z",
+        "duration_seconds": 179,
+        "views": 9264770,
+        "likes": 124104,
+        "comments": 6426,
+        "channel_subscribers_now": 70900,
+        "views_per_day_since_publish": 304574.8,
+        "lifetime_views_per_current_subscriber": 130.674,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "uj4plcsfc6k",
+        "url": "https://www.youtube.com/watch?v=uj4plcsfc6k",
+        "title": "What if you dropped 10kg of tungsten from space?",
+        "channel": "OutwardAnimates",
+        "published_at": "2026-10-22T01:18:30Z",
+        "duration_seconds": 68,
+        "views": 10288755,
+        "likes": 65111,
+        "comments": 4511,
+        "channel_subscribers_now": 70900,
+        "views_per_day_since_publish": 299480.2,
+        "lifetime_views_per_current_subscriber": 145.116,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "uiiSWRsRI8Q",
+        "url": "https://www.youtube.com/watch?v=uiiSWRsRI8Q",
+        "title": "The Man Who Jumped From Space😱",
+        "channel": "Seren Explains",
+        "published_at": "2026-11-12T04:13:50Z",
+        "duration_seconds": 92,
+        "views": 3916111,
+        "likes": 69639,
+        "comments": 65,
+        "channel_subscribers_now": 32400,
+        "views_per_day_since_publish": 295921.5,
+        "lifetime_views_per_current_subscriber": 120.868,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "XHwfjmEEvzU",
+        "url": "https://www.youtube.com/watch?v=XHwfjmEEvzU",
+        "title": "Next Stop: Mars! 👨‍🚀#space #science",
+        "channel": "sci sky",
+        "published_at": "2026-08-31T20:06:38Z",
+        "duration_seconds": 31,
+        "views": 24920330,
+        "likes": 534579,
+        "comments": 9011,
+        "channel_subscribers_now": 30300,
+        "views_per_day_since_publish": 291220.8,
+        "lifetime_views_per_current_subscriber": 822.453,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "iziL-7A7uOI",
+        "url": "https://www.youtube.com/watch?v=iziL-7A7uOI",
+        "title": "Did you know a day isn't actually 24 hours? 🧐 #space #science #earth",
+        "channel": "MindKnowledgePower",
+        "published_at": "2026-09-20T23:29:25Z",
+        "duration_seconds": 61,
+        "views": 15231819,
+        "likes": 279077,
+        "comments": 4558,
+        "channel_subscribers_now": 136000,
+        "views_per_day_since_publish": 232791.6,
+        "lifetime_views_per_current_subscriber": 111.999,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "FhCOa790t5Y",
+        "url": "https://www.youtube.com/watch?v=FhCOa790t5Y",
+        "title": "How Fast Is Light Compared to the Universe? #light #earth #jupiter #blackhole",
+        "channel": "Beyond the Observable Universe",
+        "published_at": "2026-09-19T11:30:26Z",
+        "duration_seconds": 18,
+        "views": 14394840,
+        "likes": 79933,
+        "comments": 381,
+        "channel_subscribers_now": 2090000,
+        "views_per_day_since_publish": 215071.7,
+        "lifetime_views_per_current_subscriber": 6.887,
+        "cohorts": [
+          "PK · Urdu relevance / black hole",
+          "US · English relevance / black hole explained"
+        ]
+      },
+      {
+        "video_id": "jdjL-NXL3UY",
+        "url": "https://www.youtube.com/watch?v=jdjL-NXL3UY",
+        "title": "You have no idea how small we really are... #Universe #Space #Earth#SolarSystem #MilkyWay#KurioScope",
+        "channel": "KurioScope",
+        "published_at": "2026-07-31T05:30:02Z",
+        "duration_seconds": 60,
+        "views": 24421810,
+        "likes": null,
+        "comments": 10295,
+        "channel_subscribers_now": 123000,
+        "views_per_day_since_publish": 208411.5,
+        "lifetime_views_per_current_subscriber": 198.551,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      },
+      {
+        "video_id": "Buh0gX_-5lY",
+        "url": "https://www.youtube.com/watch?v=Buh0gX_-5lY",
+        "title": "How Small Is the Planck Length? 💀🔬 #Shorts #Space #Astronomy #Science #QuantumPhysics #Physics",
+        "channel": "Science Of Infinity",
+        "published_at": "2026-10-15T12:30:15Z",
+        "duration_seconds": 36,
+        "views": 7067015,
+        "likes": 133092,
+        "comments": 1420,
+        "channel_subscribers_now": 1550000,
+        "views_per_day_since_publish": 172834.7,
+        "lifetime_views_per_current_subscriber": 4.559,
+        "cohorts": [
+          "US · English relevance / space science"
+        ]
+      }
+    ]
+  }
+}\n
