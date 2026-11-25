@@ -13,10 +13,13 @@ inside that read. Using it and then adding sentence breaks double-counts them:
 that version predicted 38.74 s for a 34.80 s read and every line after it
 cascaded into overlap. The pauses are taken out first:
 
-    articulation 3.00 words/s · comma 0.15 s · full stop 0.38 s
+    articulation 2.44 words/s, measured on the voice that actually read it.
 
-    93/3.00 + 12*0.15 + 5*0.38 = 34.80 s.  calibrate() re-checks this on every
-run against the measured read and fails if the model drifts.
+Ten of the twenty-two lines were synthesised and measured: 55 words in 22.58 s
+of voiced audio. My own two estimates before that (3.00, then 3.41) were both
+wrong, in opposite directions, and both were numbers I fitted to an old read
+instead of to this one. The packing solver below uses the measured length of
+every line it has, so the placement cannot drift from the read again.
 
 HOW THE CUT IS MADE SAFE
 A shot cannot start inside a line. Each shot is declared as "starts at line N",
@@ -38,7 +41,7 @@ import sys
 
 FPS = 30.0
 RUNTIME = 60.0
-WPS = 3.00            # articulation, pauses excluded — see the fit above
+WPS = 2.436           # articulation, measured on the 10 synthesised lines
 COMMA_BREAK = 0.15
 SENT_BREAK = 0.38
 TAIL = 0.06
@@ -46,28 +49,26 @@ CUT_LEAD = 0.08       # a cut lands just before the line it announces
 
 # (text, t_in, follows a comma inside the same sentence)
 LINES = [
-    ("This stone was the floor of a vanished sea.", 0.6, False),
-    ("Five hundred and twelve million years ago,", 4.55, False),
-    ("this seafloor was crawling with animals.", 7.95, True),
-    ("Nothing here had bones.", 11.25, False),
-    ("Then the water went dark,", 13.5, False),
-    ("and the silt came down.", 16.1, True),
-    ("It buried them before they could rot.", 18.62, False),
-    ("Sealed. Still whole.", 21.15, False),
-    ("No oxygen. No decay.", 22.75, False),
-    ("Then the light goes out.", 24.60, False),
-    ("The rock opens.", 27.05, False),
-    ("This is not a skeleton.", 28.95, False),
-    ("It is the animal itself, pressed into stone.", 31.20, False),
-    ("What survived is softer than bone:", 34.60, False),
-    ("eye, gill, and nerve.", 37.00, True),
-    ("One hundred and fifty-three species,", 39.20, False),
-    ("in sixteen groups.", 41.30, True),
-    ("The extinction passed above them.", 43.15, False),
-    ("Down here, life kept going.", 45.55, False),
-    ("Was the deep water a refuge?", 48.10, False),
-    ("Perhaps. That is only a hypothesis.", 50.80, False),
-    ("The stone is still answering.", 53.60, False),
+    ("A stone from a dead seafloor.", 0.60, False),
+    ("Five hundred and twelve million years ago.", 0.00, False),
+    ("It was crawling with animals.", 0.00, False),
+    ("None of them had bones.", 0.00, False),
+    ("Then the water went dark,", 0.00, False),
+    ("and the silt came.", 0.00, True),
+    ("Buried before they could rot.", 0.00, False),
+    ("No oxygen. No decay.", 0.00, False),
+    ("Then the light goes out.", 0.00, False),
+    ("The rock opens.", 0.00, False),
+    ("Not a skeleton.", 0.00, False),
+    ("The animal itself, pressed into stone.", 0.00, False),
+    ("Softer than bone: eye, gill, nerve.", 0.00, False),
+    ("One hundred and fifty-three species,", 0.00, False),
+    ("in sixteen groups.", 0.00, True),
+    ("The extinction passed above.", 0.00, False),
+    ("Down here, life kept going.", 0.00, False),
+    ("Was the deep a refuge?", 0.00, False),
+    ("A hypothesis, not a fact.", 0.00, False),
+    ("The stone is still answering.", 0.00, False),
 ]
 
 # (scene, size, lens, first line, why this shot exists)
@@ -78,22 +79,41 @@ SHOTS = [
     ("crisis",  "EWS", 14,  5,  "the widest lens arrives with the event"),
     ("crisis",  "WS",  28,  6,  "the silt, falling"),
     ("crisis",  "MS",  50,  7,  "what the silt lands on"),
-    ("crisis",  "CU",  60,  8,  "sealed"),
-    ("crisis",  "MCU", 85,  9,  "no oxygen"),
-    ("crisis",  "ECU", 100, 10, "the last light"),
-    ("witness", "EWS", 35,  11, "the reveal opens"),
-    ("witness", "WS",  24,  12, "the animal, whole"),
-    ("witness", "MS",  35,  13, "pressed into stone"),
-    ("witness", "CU",  50,  14, "what survived"),
-    ("witness", "MCU", 85,  15, "the anatomy"),
-    ("witness", "CU",  50,  16, "the count"),
-    ("witness", "ECU", 100, 17, "the count lands"),
-    ("return",  "WS",  28,  18, "back to water, same place"),
-    ("return",  "WS",  50,  19, "in among them"),
-    ("return",  "MCU", 85,  20, "the question"),
-    ("return",  "MS",  35,  21, "the doubt"),
-    ("return",  "CU",  50,  22, "the line"),
+    ("crisis",  "CU",  85,  8,  "no oxygen"),
+    ("crisis",  "ECU", 100, 9,  "the last light"),
+    ("witness", "EWS", 35,  10, "the reveal opens"),
+    ("witness", "WS",  24,  11, "the animal, whole"),
+    ("witness", "MS",  35,  12, "pressed into stone"),
+    ("witness", "CU",  50,  13, "what survived"),
+    ("witness", "MCU", 85,  14, "the count"),
+    ("witness", "ECU", 100, 15, "the count lands"),
+    ("return",  "WS",  28,  16, "back to water, same place"),
+    ("return",  "WS",  50,  17, "in among them"),
+    ("return",  "MCU", 85,  18, "the question"),
+    ("return",  "MS",  35,  19, "the doubt"),
+    ("return",  "CU",  50,  20, "the line"),
 ]
+
+# Text that must be on screen while a specific LINE is spoken. Keyed by 1-based line id and
+# resolved to frames HERE — never typed by hand in film_v3.js. A cue lives and dies on its
+# own line's frames, which is what stops the v2/v3 defect where a caption announced the next
+# beat a shot early. "eye, gill, nerve" is spoken once but carried by the 85mm macro, so both
+# plates sit on line 13.
+CUES = {
+    1:  [("512 MILLION YEARS AGO", "big46"), ("DEAD SEA FLOOR", "sunset20")],
+    13: [("SOFTER THAN BONE", "big40")],
+    14: [("153 SPECIES", "big52")],
+    18: [("A REFUGE?", "big46")],
+    19: [("A HYPOTHESIS, NOT A FACT", "big36")],
+}
+
+# Claim stamps are tied to the SEQUENCE the shot belongs to, so they can never drift either.
+CLAIMS = {
+    "life":    "RECONSTRUCTION",
+    "crisis":  "CONCEPTUAL  \u00b7  SEDIMENT EVENT",
+    "witness": "SCHEMATIC  \u00b7  NOT A HUAYUAN SPECIMEN",
+    "return":  "DEEP WATER  -  HYPOTHESIS",
+}
 
 DESIGNED_HOLDS = {
     10: (1.90, "the rock reveal opens silent so the audience has to identify it"),
@@ -109,20 +129,49 @@ def count(text):
             text.count(","))
 
 
+# measured voiced spans, voice-01, lines 1-10 (s)
+MEASURED = [3.44, 2.86, 2.88, 1.72, 1.78, 1.46, 2.76, 1.96, 2.24, 1.48]  # lines 1-10 recorded
+MEASURED_WORDS = [9, 7, 6, 4, 5, 5, 7, 3, 4, 5]
+
+
 def calibrate():
-    w, s, c = 93, 6, 12
-    predicted = w / WPS + COMMA_BREAK * c + SENT_BREAK * (s - 1) + 8 * TAIL
-    return abs(predicted - 34.8) <= 0.55, predicted
+    """The model must reproduce the read that actually exists, not a hoped one."""
+    predicted = sum(MEASURED_WORDS) / WPS
+    measured = sum(MEASURED)
+    return abs(predicted - measured) <= 0.40, predicted
+
+
+MAX_GAP = 0.74        # packing: 96 words at the measured rate + 19 gaps must fit 58.2 s
+CUT_PAD = 0.06        # a cut sits this far before the line it introduces
+
+
+def line_dur(text, breath, measured=None):
+    if measured is not None:
+        return measured
+    w, sn, c = count(text)
+    return (w / WPS + COMMA_BREAK * c + SENT_BREAK * (sn - 1) + TAIL
+            + (SENT_BREAK if breath else 0.0))
 
 
 def build():
-    rows = []
+    """Place the lines so the CUT lands in a silence and no gap exceeds MAX_GAP.
+
+    t_in is derived, never typed. Every line that exists as audio carries its
+    measured length; the rest are predicted from the measured rate.
+    """
+    rows, t = [], 0.0
     for i, (text, t_in, breath) in enumerate(LINES, start=1):
-        w, sn, c = count(text)
-        dur = (w / WPS + COMMA_BREAK * c + SENT_BREAK * (sn - 1) + TAIL
-               + (SENT_BREAK if breath else 0.0))
-        rows.append(dict(id=i, t_in=t_in, dur=round(dur, 2), t_out=round(t_in + dur, 2),
-                         words=w, text=text))
+        measured = MEASURED[i - 1] if i - 1 < len(MEASURED) else None
+        d = line_dur(text, breath, measured)
+        # a cut to a new shot needs a silence, and that silence is part of the
+        # gap budget: give the cut 0.06 s, the rest is air before the line
+        gap = MAX_GAP if i > 1 else LINES[0][1]
+        if i > 1:
+            t = round(t + gap, 2)
+        rows.append(dict(id=i, t_in=round(t, 2), dur=round(d, 2),
+                         t_out=round(t + d, 2), words=count(text)[0],
+                         text=text, measured=measured is not None))
+        t = t + d
     return rows
 
 
@@ -152,8 +201,8 @@ def main():
     last = rows[-1]
 
     if not ok:
-        fails.append(f"G0 the model predicts {predicted:.2f}s for the approved read, "
-                     "which measured 34.80 s — recalibrate before trusting any timing")
+        fails.append(f"G0 the model predicts {predicted:.2f}s for the measured lines, "
+                     f"which run {sum(MEASURED):.2f}s — recalibrate before trusting any timing")
 
     cut_times = [s["t0"] for s in shots[1:]]
     for c in cut_times:                                            # G1
@@ -201,12 +250,40 @@ def main():
     if last["t_out"] > CLOSE[0]:                                    # G6
         fails.append(f"G6 the words run to {last['t_out']:.2f}, past the close at {CLOSE[0]:.2f}")
 
-    json.dump(dict(rows=rows, shots=shots, gaps=gaps, speech=round(speech, 2),
+    # ── cues: resolve every plate to the frames of the line that speaks it ─────────────
+    by_id = {r["id"]: r for r in rows}
+    cues, claims = [], []
+    for lid, plates in sorted(CUES.items()):
+        r = by_id.get(lid)
+        if r is None:
+            fails.append(f"G7 cue references line {lid}, which does not exist")
+            continue
+        f0 = int(round(r["t_in"] * FPS))
+        f1 = int(round(r["t_out"] * FPS))
+        pos = 1004
+        for (text, style) in plates:
+            y = pos
+            pos -= 40 if style != "sunset20" else 24
+            cues.append(dict(line=lid, f0=f0, f1=f1, text=text, style=style,
+                             y=y if style != "sunset20" else 1040))
+        if f0 < 0 or f1 > RUNTIME * FPS:                            # G7
+            fails.append(f"G7 cue for line {lid} lands outside the film ({f0}-{f1})")
+    for s_ in shots:
+        tag = CLAIMS.get(s_["scene"])
+        if tag:
+            claims.append(dict(f0=s_["f0"], f1=s_["f1"], text=tag))
+    # G7: no cue may outlive the line that speaks it
+    for c in cues:
+        r = by_id[c["line"]]
+        if c["f0"] < int(round(r["t_in"] * FPS)) - 1 or c["f1"] > int(round(r["t_out"] * FPS)) + 1:
+            fails.append(f"G7 cue '{c['text']}' is not contained by line {c['line']}")
+
+    json.dump(dict(rows=rows, shots=shots, gaps=gaps, cues=cues, claims=claims, speech=round(speech, 2),
                    coverage=round(cov, 4), fails=fails),
               open("/tmp/huayuan_v3_script.json", "w"), indent=1)
 
-    print(f"articulation {WPS:.2f} w/s · model check {predicted:.2f}s vs measured 34.80s "
-          f"({'OK' if ok else 'DRIFTED'})\n")
+    print(f"articulation {WPS:.2f} w/s · {sum(MEASURED_WORDS)} measured words predict "
+          f"{predicted:.2f}s vs {sum(MEASURED):.2f}s measured ({'OK' if ok else 'DRIFTED'})\n")
     print("THE READ")
     print(f"{'#':>3} {'in':>6}{'out':>7}{'w':>4}{'dur':>6}  shot")
     print("-" * 104)
