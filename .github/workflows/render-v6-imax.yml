@@ -88,12 +88,11 @@ jobs:
               fs.createReadStream(filePath).pipe(res);
             });
             await new Promise(r => server.listen(0, "127.0.0.1", r));
-            const execPath = await sparticuz.executablePath();
+            const execPath = fs.existsSync("/usr/bin/google-chrome") ? "/usr/bin/google-chrome" : await sparticuz.executablePath();
             const browser = await chromium.launch({
               executablePath: execPath,
               headless: true,
-              env: { ...process.env, LD_LIBRARY_PATH: "/tmp/sparticuz_libs/al2023/lib:/tmp/sparticuz_libs:" + (process.env.LD_LIBRARY_PATH || "") },
-              args: [...sparticuz.args, "--no-sandbox", "--use-gl=angle", "--use-angle=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist"]
+              args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage", "--use-gl=angle", "--use-angle=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist"]
             });
             const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
             await page.goto(`http://127.0.0.1:${server.address().port}/projects/${SLUG}/page.html`, { waitUntil: "networkidle" });
