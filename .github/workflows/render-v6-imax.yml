@@ -1,0 +1,130 @@
+name: Render V6.2 IMAX 3D Video
+
+on:
+  workflow_dispatch:
+    inputs:
+      project_slug:
+        description: 'Project folder under projects/ (e.g. monarch-edits-thermal-shock)'
+        required: true
+        default: 'monarch-edits-thermal-shock'
+      total_frames:
+        description: 'Total frames to render at 30fps'
+        required: true
+        default: '648'
+      width:
+        description: 'Output width (1080 for 9:16 Shorts, 1920 for 16:9 Long)'
+        required: true
+        default: '1080'
+      height:
+        description: 'Output height (1920 for 9:16 Shorts, 1080 for 16:9 Long)'
+        required: true
+        default: '1920'
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Setup Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install FFmpeg & Chromium libs
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 libgbm1 libasound2t64
+
+      - name: Bootstrap V6.2 IMAX SDK Runtime
+        run: bash tools/monarch-v6-imax-sdk/bootstrap_v6_runtime.sh
+
+      - name: Render 3D Frames & Mux Master MP4
+        env:
+          PROJECT_SLUG: ${{ inputs.project_slug }}
+          TOTAL_FRAMES: ${{ inputs.total_frames }}
+          OUT_W: ${{ inputs.width }}
+          OUT_H: ${{ inputs.height }}
+        run: |
+          mkdir -p "exports/${PROJECT_SLUG}"
+          NODE_PATH=/tmp/v6_runtime/node_modules node -e '
+          const { chromium } = require("playwright-core");
+          const { spawn } = require("child_process");
+          const http = require("http");
+          const fs = require("fs");
+          const path = require("path");
+          const sparticuz = require("@sparticuz/chromium");
+
+          const W = parseInt(process.env.OUT_W, 10);
+          const H = parseInt(process.env.OUT_H, 10);
+          const TOTAL = parseInt(process.env.TOTAL_FRAMES, 10);
+          const SLUG = process.env.PROJECT_SLUG;
+          const mime = { ".html": "text/html", ".js": "application/javascript", ".mjs": "application/javascript", ".css": "text/css", ".json": "application/json", ".png": "image/png", ".jpg": "image/jpeg", ".woff2": "font/woff2", ".glb": "model/gltf-binary" };
+
+          (async () => {
+            const server = http.createServer((req, res) => {
+              const cleanUrl = req.url.split("?")[0].replace(/^\/@fs/, "");
+              let filePath = cleanUrl.startsWith("/tmp/") ? cleanUrl : path.join(process.cwd(), cleanUrl);
+              if (!fs.existsSync(filePath) && cleanUrl.startsWith("/node_modules/")) filePath = path.join("/tmp/v6_runtime", cleanUrl);
+              if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) { res.writeHead(404); res.end(); return; }
+              if (cleanUrl.endsWith("page.html")) {
+                let html = fs.readFileSync(filePath, "utf8");
+                html = html.replace("\"three\":", "\"three/examples/jsm/\": \"/tmp/v6_runtime/node_modules/three/examples/jsm/\", \"three\":");
+                res.writeHead(200, { "Content-Type": "text/html" }); res.end(html); return;
+              }
+              res.writeHead(200, { "Content-Type": mime[path.extname(filePath)] || "application/octet-stream" });
+              fs.createReadStream(filePath).pipe(res);
+            });
+            await new Promise(r => server.listen(0, "127.0.0.1", r));
+            const execPath = await sparticuz.executablePath();
+            const browser = await chromium.launch({
+              executablePath: execPath,
+              headless: true,
+              env: { ...process.env, LD_LIBRARY_PATH: "/tmp/sparticuz_libs/al2023/lib:/tmp/sparticuz_libs:" + (process.env.LD_LIBRARY_PATH || "") },
+              args: [...sparticuz.args, "--no-sandbox", "--use-gl=angle", "--use-angle=swiftshader", "--enable-webgl", "--ignore-gpu-blocklist"]
+            });
+            const page = await browser.newPage({ viewport: { width: W, height: H }, deviceScaleFactor: 1 });
+            await page.goto(`http://127.0.0.1:${server.address().port}/projects/${SLUG}/page.html`, { waitUntil: "networkidle" });
+            await page.waitForFunction(() => typeof window.renderFrame === "function");
+
+            const ff = spawn("ffmpeg", [
+              "-y", "-f", "rawvideo", "-vcodec", "rawvideo", "-s", `${W}x${H}`, "-pix_fmt", "rgba", "-r", "30", "-i", "-",
+              "-vf", "vflip",
+              "-c:v", "libx264", "-preset", "medium", "-crf", "16", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
+              `exports/${SLUG}/${SLUG}.mp4`
+            ], { stdio: ["pipe", "inherit", "inherit"] });
+
+            for (let i = 0; i < TOTAL; i++) {
+              const b64 = await page.evaluate((frameIdx) => {
+                window.renderFrame(frameIdx);
+                const gl = document.querySelector("canvas").getContext("webgl2") || document.querySelector("canvas").getContext("webgl");
+                const buf = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+                gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, buf);
+                let bin = "";
+                for (let j = 0; j < buf.length; j += 8192) bin += String.fromCharCode.apply(null, buf.subarray(j, j + 8192));
+                return btoa(bin);
+              }, i);
+              const chunk = Buffer.from(b64, "base64");
+              if (!ff.stdin.write(chunk)) await new Promise(r => ff.stdin.once("drain", r));
+            }
+            ff.stdin.end();
+            await new Promise((res, rej) => ff.on("close", code => code === 0 ? res() : rej(new Error("ffmpeg exit " + code))));
+            await browser.close();
+            server.close();
+            console.log("GH_RENDER_DONE");
+          })();
+          '
+
+      - name: Upload Rendered Video Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: v6-imax-render-${{ inputs.project_slug }}
+          path: exports/${{ inputs.project_slug }}/${{ inputs.project_slug }}.mp4
+          retention-days: 7
