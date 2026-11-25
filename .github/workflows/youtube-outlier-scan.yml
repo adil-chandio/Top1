@@ -1,0 +1,65 @@
+name: YouTube Outlier Scan (Hybrid Research)
+
+on:
+  workflow_dispatch:
+    inputs:
+      keywords:
+        description: "Comma-separated search keywords (e.g. 'everyday physics 3d,how it works 3d')"
+        required: true
+        type: string
+      min_views:
+        description: "Minimum video views"
+        required: false
+        default: "3000"
+        type: string
+      max_subs:
+        description: "Maximum channel subscribers"
+        required: false
+        default: "100000"
+        type: string
+      min_ratio:
+        description: "Minimum views-to-subs ratio"
+        required: false
+        default: "2.0"
+        type: string
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run YouTube Outlier Scan
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          INPUT_KEYWORDS: ${{ inputs.keywords }}
+          INPUT_MIN_VIEWS: ${{ inputs.min_views }}
+          INPUT_MAX_SUBS: ${{ inputs.max_subs }}
+          INPUT_MIN_RATIO: ${{ inputs.min_ratio }}
+        run: |
+          python3 -c '
+          import os, subprocess, sys
+          kws = [k.strip() for k in os.environ["INPUT_KEYWORDS"].split(",") if k.strip()]
+          cmd = [
+            "python3", "tools/research-agent/outlier_scan.py",
+            *kws,
+            "--min-views", os.environ["INPUT_MIN_VIEWS"],
+            "--max-subs", os.environ["INPUT_MAX_SUBS"],
+            "--min-ratio", os.environ["INPUT_MIN_RATIO"],
+            "--out-dir", "out_scan"
+          ]
+          sys.exit(subprocess.call(cmd))
+          '
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          INPUT_KEYWORDS: ${{ inputs.keywords }}
+          INPUT_MIN_VIEWS: ${{ inputs.min_views }}
+          INPUT_MAX_SUBS: ${{ inputs.max_subs }}
+          INPUT_MIN_RATIO: ${{ inputs.min_ratio }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: youtube-outlier-scan
+          path: out_scan/
+          retention-days: 7
