@@ -1,0 +1,36 @@
+{
+  "projectId": "extinct-life-burrow-roommates",
+  "createdAt": "2026-11-25T14:40:00Z",
+  "channel": "extinct-channel",
+  "format": "9:16 Short",
+  "winningTopic": "The burrow roommates: an injured Broomistega sheltered with an aestivating Thrinaxodon in a Karoo burrow cast",
+  "outlierProof": {
+    "runId": "45631813130",
+    "outlierMultiple": 662.51,
+    "views": 18336931,
+    "medianSurroundingViews": 27678,
+    "videoId": "aAuJx9wr72k",
+    "subscriberCountKnown": false
+  },
+  "visualHookAngle": "Plain rock cast, one X-ray sweep, sagittal cutaway revealing two skeletons side by side",
+  "threeDSetlist": [
+    "lithified burrow cast",
+    "synchrotron sweep",
+    "sagittal X-ray cutaway",
+    "healed rib macro",
+    "inference split panel",
+    "Newtonian flood infill"
+  ],
+  "gates": {
+    "outlierMultiplePass": true,
+    "visualizabilityPass": true,
+    "curiosityGapPass": true,
+    "originalityPass": true,
+    "ownerSelection": false
+  },
+  "thumbnailAudit": {
+    "attempted": true,
+    "contactSheet": false,
+    "reason": "i.ytimg.com returned SSL_ERROR_SYSCALL; no visual claim made"
+  }
+}

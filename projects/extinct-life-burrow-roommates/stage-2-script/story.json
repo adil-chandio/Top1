@@ -1,0 +1,80 @@
+{
+  "projectId": "extinct-life-burrow-roommates",
+  "createdAt": "2026-11-25T14:40:00Z",
+  "premise": "A synchrotron scan of a fossil burrow reveals an injured amphibian beside a sleeping therapsid; evidence and inference are shown separately.",
+  "claimCheck": {
+    "claimsSupported": [
+      "two skeletons in one burrow cast",
+      "Early Triassic age about 250 million years",
+      "healed rib fractures",
+      "no tooth marks",
+      "curled posture"
+    ],
+    "claimsNotSupported": [
+      "they were friends",
+      "they chose to live together",
+      "they protected each other",
+      "a complete genome or exact portrait"
+    ]
+  },
+  "narration": "This rock holds two animals. Two hundred fifty million years ago, one curled up asleep. It was a mammal relative, beside an amphibian. Wait. They were not enemies. The amphibian's ribs were healing, with no bite marks. So this was not a hunt. The likely story: it crawled in for shelter. The other was probably in aestivation, a deep dormancy. Then a flood filled the burrow and sealed them. That is the clue the rock kept. This rock holds two animals.",
+  "screenDescription": "9:16 original 3D: intact burrow cast, X-ray sweep, sagittal cutaway, healed-rib macro, inference panel, flood infill, loop reset.",
+  "plannedSeconds": 33,
+  "beats": [
+    {
+      "id": "b1",
+      "seconds": 3,
+      "caption": "This rock holds two animals."
+    },
+    {
+      "id": "b2",
+      "seconds": 3,
+      "caption": "Two hundred fifty million years ago, one curled up asleep."
+    },
+    {
+      "id": "b3",
+      "seconds": 3,
+      "caption": "It was a mammal relative, beside an amphibian."
+    },
+    {
+      "id": "b4",
+      "seconds": 2,
+      "caption": "Wait. They were not enemies."
+    },
+    {
+      "id": "b5",
+      "seconds": 4,
+      "caption": "The amphibian's ribs were healing, with no bite marks."
+    },
+    {
+      "id": "b6",
+      "seconds": 2,
+      "caption": "So this was not a hunt."
+    },
+    {
+      "id": "b7",
+      "seconds": 3,
+      "caption": "The likely story: it crawled in for shelter."
+    },
+    {
+      "id": "b8",
+      "seconds": 4,
+      "caption": "The other was probably in aestivation, a deep dormancy."
+    },
+    {
+      "id": "b9",
+      "seconds": 4,
+      "caption": "Then a flood filled the burrow and sealed them."
+    },
+    {
+      "id": "b10",
+      "seconds": 3,
+      "caption": "That is the clue the rock kept."
+    },
+    {
+      "id": "b11",
+      "seconds": 0,
+      "caption": "This rock holds two animals."
+    }
+  ]
+}

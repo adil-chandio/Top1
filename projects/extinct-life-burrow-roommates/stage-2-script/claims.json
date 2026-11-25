@@ -1,0 +1,124 @@
+{
+  "projectId": "extinct-life-burrow-roommates",
+  "createdAt": "2026-11-25T14:40:00Z",
+  "entries": [
+    {
+      "id": "c1",
+      "category": "published-finding",
+      "text": "Two skeletons of different species lie together in one lithified burrow cast.",
+      "basis": "Fernandez et al. 2013, PLOS ONE 8(6):e64978 abstract.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c2",
+      "category": "published-finding",
+      "text": "The burrow cast is Early Triassic, roughly two hundred fifty million years old.",
+      "basis": "Fernandez et al. 2013; Karoo Basin Early Triassic deposits.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c3",
+      "category": "published-finding",
+      "text": "One skeleton is a curled Thrinaxodon, a therapsid close to the mammal lineage.",
+      "basis": "Fernandez et al. 2013 abstract and description of curled posture.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c4",
+      "category": "published-finding",
+      "text": "The second skeleton is Broomistega, a temnospondyl amphibian.",
+      "basis": "Fernandez et al. 2013 abstract.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c5",
+      "category": "published-finding",
+      "text": "The amphibian skeleton shows partially healed rib fractures.",
+      "basis": "Fernandez et al. 2013 abstract.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c6",
+      "category": "published-finding",
+      "text": "No tooth marks were found on the bones.",
+      "basis": "Fernandez et al. 2013; ESRF public summary of the same study.",
+      "evidenceIds": [
+        "fernandez-2013",
+        "esrf-2013"
+      ]
+    },
+    {
+      "id": "c7",
+      "category": "hypothesis",
+      "text": "Shelter-seeking is the likely reading of the healed, injured amphibian inside the burrow.",
+      "basis": "Interpretation stated as most plausible in the paper; not direct observation.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c8",
+      "category": "hypothesis",
+      "text": "Aestivation of the Thrinaxodon is the most plausible interpretation, not a confirmed observation.",
+      "basis": "Paper calls aestivation most plausible, supported by curled fossils.",
+      "evidenceIds": [
+        "fernandez-2013"
+      ]
+    },
+    {
+      "id": "c9",
+      "category": "published-finding",
+      "text": "A flood entombed both animals and preserved them together.",
+      "basis": "ESRF summary of Fernandez et al. 2013 reports flooding and entombment.",
+      "evidenceIds": [
+        "esrf-2013"
+      ]
+    },
+    {
+      "id": "c10",
+      "category": "illustrative-animation",
+      "text": "The X-ray sweep, cutaway and bone models are original 3D illustrations, not scan footage.",
+      "basis": "All visuals rebuilt with the V6 SDK; no third-party imagery reused.",
+      "evidenceIds": [
+        "v6-sdk"
+      ]
+    },
+    {
+      "id": "c11",
+      "category": "modelled-reconstruction",
+      "text": "Sediment inflow is a Newtonian particle simulation, a modelled reconstruction.",
+      "basis": "Stage 3 cue only; not a claim about measured flow speed.",
+      "evidenceIds": [
+        "v6-sdk"
+      ]
+    },
+    {
+      "id": "c12",
+      "category": "illustrative-animation",
+      "text": "The intact cast at the loop point is an original model.",
+      "basis": "Original parametric geometry; no competitor frames reused.",
+      "evidenceIds": [
+        "v6-sdk"
+      ]
+    },
+    {
+      "id": "c13",
+      "category": "unknown-limitation",
+      "text": "Scan ratios came from hidden-subscriber candidates; channel size is unverified.",
+      "basis": "Official API run 45631813130 retained candidates with subscriber_count_known false.",
+      "evidenceIds": [
+        "scan-45631813130"
+      ]
+    }
+  ]
+}
