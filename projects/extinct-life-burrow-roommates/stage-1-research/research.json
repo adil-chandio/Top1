@@ -1,0 +1,114 @@
+{
+  "projectId": "extinct-life-burrow-roommates",
+  "createdAt": "2026-11-25T14:16:43Z",
+  "sources": [
+    {
+      "id": "paper-fernandez-2013",
+      "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0064978",
+      "type": "paper",
+      "license": "CC BY 4.0; cite Fernandez et al. 2013, DOI 10.1371/journal.pone.0064978",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "esrf-note",
+      "url": "https://www.esrf.fr/news/general/Triassicbedfellows",
+      "type": "document",
+      "license": "ESRF public news item; text reference only",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "scan-run",
+      "url": "https://github.com/adil-chandio/Top1/actions/runs/45631813130",
+      "type": "data",
+      "license": "Public GitHub Actions run; API metadata only, no media reuse",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "channel-extinct-life",
+      "url": "https://www.youtube.com/@extinct_life/about",
+      "type": "channel",
+      "license": "Public YouTube About page; metadata snapshot 2026-11-25",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "viral-short",
+      "url": "https://www.youtube.com/shorts/aAuJx9wr72k",
+      "type": "video",
+      "license": "Public watch page; metadata and description only, no media reuse",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "competitor-dna-bone",
+      "url": "https://www.youtube.com/watch?v=t750oAZGzmM",
+      "type": "video",
+      "license": "Public watch page; reference for demand, no footage/caption reuse",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    },
+    {
+      "id": "competitor-trex",
+      "url": "https://www.youtube.com/watch?v=tI_UFQ6eOfU",
+      "type": "video",
+      "license": "Public watch page with cited sources; reference only",
+      "accessedAt": "2026-11-25T14:16:43Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "e1",
+      "statement": "Official scan run 45631813130: 50 candidates, 45 qualified, 25 outlier rows (23 unique videos), 0 errors, 95 API calls / 590 quota units.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "e2",
+      "statement": "All returned candidates have hidden subscriber counts; max_subs gate unverified. Ratios are relative signals only.",
+      "classification": "unknown-limitation"
+    },
+    {
+      "id": "e3",
+      "statement": "Story Goat short aAuJx9wr72k: 18,336,931 views, 20 s, median 27,678 => 662.51x. Hook is a fossilized mixed-species burrow pair from the Early Triassic.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "e4",
+      "statement": "Primary paper (Fernandez et al. 2013, PLOS ONE 8(6):e64978) confirms synchrotron scanning of a lithified Karoo burrow cast: injured Broomistega sheltered with an aestivating Thrinaxodon; healed rib fractures and no tooth marks support shelter, not predation. Both were later trapped by flood.",
+      "classification": "published-finding"
+    },
+    {
+      "id": "e5",
+      "statement": "Extinct Life channel snapshot: 87 subscribers, 14 videos, 27,493 lifetime views, joined 2024-11-26. Greenland 7:19 film euAk1gHHql4 had 1 view; related short re0nOdM4yZk had 251 views and 0 likes.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "e6",
+      "statement": "The 528-view Greenland short found in search belongs to Ghost Genomes, not Extinct Life; keep competing-channel samples separate.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "e7",
+      "statement": "Other scan hits such as Jewish DNA, hazel-eye ancestry and South Indian ancestry outrank the fossil story on raw ratio but are off-brand and carry unverified human-genetics claims; reject.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "e8",
+      "statement": "Ancient-DNA-from-bone (t750oAZGzmM, 8.32M views / 375.65x) and T-Rex standing-still physics (tI_UFQ6eOfU, 5.88M / 75.78x) are valid secondary angles but overlap existing channel territory or need separate claim ledgers.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "e9",
+      "statement": "V6.2 feasibility: a 9:16 cutaway can show the burrow cast, synchrotron sweep, two skeleton silhouettes, healed ribs and flood infill using parametric lofting and X-ray pass; no gore and no living-animal footage needed.",
+      "classification": "hypothesis"
+    },
+    {
+      "id": "e10",
+      "statement": "No thumbnail contact sheet or visual audit was performed; i.ytimg.com remains unreachable from this sandbox.",
+      "classification": "unknown-limitation"
+    }
+  ],
+  "gaps": [
+    "Subscriber counts hidden for all scan candidates; do not claim verified small-channel outliers.",
+    "No thumbnails were visually inspected; palette/contrast/focal/text/safe-zone comparison is missing.",
+    "Competitor short description anthropomorphizes the fossil; our script must keep inference labelled as inference.",
+    "No new audio or video was generated in this pass; owner authorization still required before production.",
+    "AGENTS.md bans copying tools/extinct-life legacy pipeline; next build must use tools/monarch-v6-imax-sdk."
+  ]
+}

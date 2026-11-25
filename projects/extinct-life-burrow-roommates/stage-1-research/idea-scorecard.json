@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-11-25T14:16:43Z",
+  "projectId": "extinct-life-burrow-roommates",
+  "pilotId": "extinct-life-short-9x16",
+  "scores": {
+    "viewerPromiseClarity": 19,
+    "visibleProofPotential": 19,
+    "novelty": 13,
+    "evidenceStrength": 14,
+    "emotionalStakesValue": 9,
+    "shortLongFormatFit": 10,
+    "rightsCertainty": 4,
+    "productionFeasibility": 4
+  },
+  "total": 92,
+  "gates": {
+    "claimLedgerComplete": false,
+    "titlePromiseClear": true,
+    "proofPossible": true,
+    "ownerSelection": false
+  },
+  "decision": "not-yet",
+  "notes": "Official API outlier (662.51x) plus primary PLOS ONE paper. Hidden subscribers, no visual audit, no claim ledger, no owner selection. Not a production candidate."
+}
