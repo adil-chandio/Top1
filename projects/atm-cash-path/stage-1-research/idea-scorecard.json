@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-11-25T13:26:00.000Z",
+  "projectId": "atm-cash-path",
+  "pilotId": "desi-3d-short-9x16",
+  "scores": {
+    "viewerPromiseClarity": 19,
+    "visibleProofPotential": 20,
+    "novelty": 11,
+    "evidenceStrength": 14,
+    "emotionalStakesValue": 7,
+    "shortLongFormatFit": 10,
+    "rightsCertainty": 4,
+    "productionFeasibility": 4
+  },
+  "total": 89,
+  "gates": {
+    "claimLedgerComplete": false,
+    "titlePromiseClear": true,
+    "proofPossible": true,
+    "ownerSelection": false
+  },
+  "decision": "not-yet",
+  "notes": "API-verified outlier (13,978.76x) plus fetched public page. Subscriber counts hidden; Claws Vision blocked; claim ledger and owner gate intentionally open."
+}

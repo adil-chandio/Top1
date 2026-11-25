@@ -1,0 +1,120 @@
+{
+  "projectId": "atm-cash-path",
+  "createdAt": "2026-11-25T13:26:00.000Z",
+  "sources": [
+    {
+      "id": "api-atm",
+      "url": "https://www.youtube.com/watch?v=NArAKj4zbB8",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-castle",
+      "url": "https://www.youtube.com/watch?v=06rlNjokJNA",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-rbc",
+      "url": "https://www.youtube.com/watch?v=sxN7z9UTqpM",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-touch",
+      "url": "https://www.youtube.com/watch?v=BK2LymqGNPw",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-kinesin",
+      "url": "https://www.youtube.com/watch?v=vwN2OTHZl3I",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-meme",
+      "url": "https://www.youtube.com/watch?v=h1GBHgbGkAg",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "api-scan",
+      "url": "https://github.com/adil-chandio/Top1/actions/runs/45623586499",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    },
+    {
+      "id": "fallback-lux",
+      "url": "https://www.youtube.com/watch?v=E6AUYtJwiLs",
+      "type": "video",
+      "license": "YouTube Data API v3 / public page terms — metadata only; no media reused",
+      "accessedAt": "2026-11-25T13:26:00.000Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "a1",
+      "statement": "Official API scan (run 45623586499): 40 candidates seen, 38 qualified, 0 errors, 12 API calls, ~476 quota units, 25 outliers retained.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "a2",
+      "statement": "All 40 candidates had hidden subscriberCount; max_subs gate could not be verified and candidates were retained with subscriber_count_known=false.",
+      "classification": "unknown-limitation"
+    },
+    {
+      "id": "a3",
+      "statement": "Discover Inside “How Does an ATM Count & Dispense Money?” (NArAKj4zbB8): 39,560,300 views, 40 s, median of 10 surrounding uploads 2,830 => 13,978.76x outlier.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "a4",
+      "statement": "SagaLens “The Secret Behind Medieval Castle Windows” (06rlNjokJNA): 20,096,985 views, 26 s, median 10,918 => 1,840.72x; transcript uses an outside-vs-inside reversal hook.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "a5",
+      "statement": "MR.COLOGIST RBC counting video (sxN7z9UTqpM): 3,339,567 views, 62 s, median 2,503 => 1,334.22x; Hindi transcript explains Neubauer chamber method.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "a6",
+      "statement": "“Your fingers never really touch your phone” (BK2LymqGNPw): 7,808,085 views, 31 s, median 10,066 => 775.69x; fetched transcript is music-only, so hook evidence comes from the description only.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "a7",
+      "statement": "Kinesin animation (vwN2OTHZl3I): 344.46x but description declares significant editing and fair-use reuse; rejected by rights/reused-content gate.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "a8",
+      "statement": "Top raw ratio 20,254.10x belongs to a “Mechanical failure” fail-compilation (h1GBHgbGkAg); rejected as meme/reused-reaction content, not brand-safe original engineering.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "a9",
+      "statement": "ATM competitor is an AI/CGI “transparent ATM” animation; an original 3D cutaway with our own parametric rig is feasible and must not reuse its assets or shot-for-shot sequence.",
+      "classification": "hypothesis"
+    },
+    {
+      "id": "a10",
+      "statement": "Claws Vision still blocked: i.ytimg.com unreachable; no thumbnail palette/focal/text audit was performed.",
+      "classification": "unknown-limitation"
+    }
+  ],
+  "gaps": [
+    "subscriber_count hidden for every API candidate — channel-size gate unverified; use median_surrounding_views as scale proxy.",
+    "No comment mining and no visual thumbnail inspection.",
+    "API ratio is a relative signal, not proof of quality; winner still requires claim ledger + owner sign-off.",
+    "Do not copy the competitor CGI sequence; build original geometry, captions and sound."
+  ]
+}

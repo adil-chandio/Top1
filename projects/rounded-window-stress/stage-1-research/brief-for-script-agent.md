@@ -1,3 +1,5 @@
+> **Superseded as winner selection (2026-11-25):** official API run `45623586499` succeeded; see `projects/atm-cash-path/stage-1-research/`. This package remains fallback evidence/history only.
+
 # Stage 1 → Stage 2 brief — `rounded-window-stress`
 
 **Format:** `9:16` Short, target 35–45 s, loopable · **Date:** 2026-11-25 · **Decision:** `not-yet` (owner gate + claim ledger deliberately open)
