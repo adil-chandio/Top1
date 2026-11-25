@@ -378,8 +378,12 @@ def scan(*, keywords: list[str], min_views: int, max_subs: int, min_ratio: float
             if views is None or views < min_views:
                 excluded["below-min-views"] += 1
                 continue
-            if subs is None or subs > max_subs:
-                excluded["above-max-subscribers-or-unknown"] += 1
+            # YouTube often hides subscriberCount. Do not silently discard such
+            # candidates: keep them with an explicit known=false flag so the
+            # human gate can verify channel scale from median_surrounding_views.
+            subs_known = subs is not None
+            if subs_known and subs > max_subs:
+                excluded["above-max-subscribers"] += 1
                 continue
             channel_id = snippet.get("channelId") or candidate.get("channel_id")
             playlist = caches["playlists"].get(channel_id)
@@ -420,7 +424,8 @@ def scan(*, keywords: list[str], min_views: int, max_subs: int, min_ratio: float
                 "duration_seconds": seconds,
                 "format_hint": ("short" if seconds is not None and seconds <= 180 else "long"),
                 "view_count": views,
-                "subscriber_count": subs,
+                "subscriber_count": subs if subs_known else 0,
+                "subscriber_count_known": subs_known,
                 "median_surrounding_views": round(median, 3),
                 "surrounding_sample_size": sample,
                 "outlier_multiple": round(ratio, 4),

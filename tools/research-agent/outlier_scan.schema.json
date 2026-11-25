@@ -55,7 +55,7 @@
         "additionalProperties": false,
         "required": [
           "video_id", "keyword", "title", "channel_id", "channel_title", "published_at",
-          "duration_seconds", "format_hint", "view_count", "subscriber_count",
+          "duration_seconds", "format_hint", "view_count", "subscriber_count", "subscriber_count_known",
           "median_surrounding_views", "surrounding_sample_size", "outlier_multiple",
           "url", "thumbnail_url", "thumbnail_maxres"
         ],
@@ -70,6 +70,7 @@
           "format_hint": { "enum": ["short", "long"] },
           "view_count": { "type": "integer", "minimum": 0 },
           "subscriber_count": { "type": "integer", "minimum": 0 },
+          "subscriber_count_known": { "type": "boolean" },
           "median_surrounding_views": { "type": "number", "exclusiveMinimum": 0 },
           "surrounding_sample_size": { "type": "integer", "minimum": 5, "maximum": 10 },
           "outlier_multiple": { "type": "number", "exclusiveMinimum": 0 },

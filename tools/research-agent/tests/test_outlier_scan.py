@@ -92,7 +92,7 @@ class OutlierScanTests(unittest.TestCase):
         self.assertAlmostEqual(report["outliers"][0]["outlier_multiple"], 10.0, places=3)
         self.assertEqual(report["outliers"][0]["format_hint"], "short")
         self.assertGreater(report["stats"]["quota_units_estimate"], 100)
-        self.assertEqual(report["stats"]["excluded"]["above-max-subscribers-or-unknown"], 1)
+        self.assertEqual(report["stats"]["excluded"]["above-max-subscribers"], 1)
         self.assertEqual(report["outliers"][0]["url"], f"https://www.youtube.com/watch?v={VIDEO_A}")
 
     def test_median_excludes_candidate_and_requires_five_neighbours(self):

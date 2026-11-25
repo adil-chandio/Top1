@@ -19,7 +19,7 @@ outlier_multiple = candidate views / median(views of the 10 nearest surrounding 
 
 * Surrounding uploads come from the **same channel's uploads playlist** (first 30 items, newest first), excluding the candidate itself.
 * Fewer than 5 usable neighbours → candidate is dropped, never scored on thin evidence.
-* Filters: `views >= min_views`, `subscriber_count <= max_subs` (unknown subs are excluded), `outlier_multiple >= min_ratio`.
+* Filters: `views >= min_views`, `subscriber_count <= max_subs` (unknown subscriber counts are retained with `subscriber_count_known: false` and must be verified by a human), `outlier_multiple >= min_ratio`.
 * Results are sorted by `outlier_multiple` desc, then views desc; at most 25 are kept.
 
 ## Run it
