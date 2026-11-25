@@ -198,7 +198,7 @@ def published_after(lookback_days: int, now: dt.datetime | None = None) -> str:
 
 def search_candidates(keyword: str, after: str, key: str | None, fetch) -> list[dict]:
     body = api_get("search", {
-        "part": "snippet", "type": "video", "order": "date",
+        "part": "snippet", "type": "video", "order": "viewCount",
         "publishedAfter": after, "maxResults": str(MAX_RESULTS_PER_KEYWORD), "q": keyword,
     }, key, fetch)
     found: list[dict] = []
@@ -464,7 +464,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-subs", default="100000")
     parser.add_argument("--min-ratio", default="2.0")
     parser.add_argument("--format", default="short", choices=("short", "long", "both"))
-    parser.add_argument("--lookback-days", default="180")
+    parser.add_argument("--lookback-days", default="365")
     parser.add_argument("--out", default="/tmp/research_vision/outlier_scan.json")
     parser.add_argument("--fixture", default="", help="offline raw-response fixture (no API key used)")
     return parser

@@ -35,7 +35,7 @@ on:
         description: 'Only consider uploads published in the last N days'
         required: true
         type: string
-        default: '180'
+        default: '365'
 
 permissions:
   contents: read

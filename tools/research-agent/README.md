@@ -28,7 +28,7 @@ outlier_multiple = candidate views / median(views of the 10 nearest surrounding 
 gh workflow run youtube-outlier-scan.yml \
   -f keywords="everyday physics,hidden engineering" \
   -f min_views=3000 -f max_subs=100000 -f min_ratio=2.0 \
-  -f format=short -f lookback_days=180
+  -f format=short -f lookback_days=365
 
 gh run list --workflow=youtube-outlier-scan.yml -L 1
 gh run download <RUN_ID> -n youtube-outlier-scan -D /tmp/research_vision/
