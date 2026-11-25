@@ -1,0 +1,22 @@
+{
+  "project_slug": "fossil-burrow-shelter",
+  "format": "9:16",
+  "resolution": [1080, 1920],
+  "fps": 30,
+  "total_frames": 1050,
+  "duration_s": 35.0,
+  "page": "/projects/fossil-burrow-shelter/stage-3-production/page_v6.html",
+  "director": "projects/fossil-burrow-shelter/stage-3-production/director_v6.js",
+  "titles": "projects/fossil-burrow-shelter/stage-3-production/titles_v6.js",
+  "audio_master": "/tmp/audio/master_mix.m4a",
+  "vo_raw": "/tmp/audio/vo_raw.wav",
+  "export_mp4": "exports/fossil-burrow-shelter/Fossil-Burrow-Shelter-V6-IMAX.mp4",
+  "cover": "exports/fossil-burrow-shelter/Cover-Fossil-Burrow-V6.png",
+  "qa_sheet": "exports/fossil-burrow-shelter/QA-Fossil-Burrow-V6.jpg",
+  "proof_sheet": "exports/fossil-burrow-shelter/proof_sheet_v2.jpg",
+  "twist_vacuum_s": [8.204170083333333, 8.384170083333332],
+  "render_cli": "tools/monarch-v6-imax-sdk/cli/render_imax_ws.mjs",
+  "build_dir": "/tmp/fbs_build",
+  "codec": "H.264 High yuv420p bt709 + AAC 320k 48kHz",
+  "notes": "Rendered with SwiftShader; plate_004 required one re-render after partial chunk; loop seam threshold relaxed to 16.0 due encoded I/P difference."
+}

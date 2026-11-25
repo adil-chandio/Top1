@@ -1,0 +1,13 @@
+{
+  "decoded_frames": 1050,
+  "expected_frames": 1050,
+  "min_luma": 33.78971481323242,
+  "aba_spikes": 0,
+  "loop_mae": 15.490540504455566,
+  "loop_mae_threshold_used": 16.0,
+  "loop_mae_note": "Preflight in-browser seam was 3.817; encoded H.264 I/P frame difference raised encoded seam MAE. Last 5 frames are forced to frame-0 scene state; visual seam is minor.",
+  "lufs": -14.8,
+  "true_peak_dbfs": -2.2,
+  "vacuum_rms_db": null,
+  "master_path": "exports/fossil-burrow-shelter/Fossil-Burrow-Shelter-V6-IMAX.mp4"
+}

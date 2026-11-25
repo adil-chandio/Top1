@@ -1,0 +1,53 @@
+name: Fossil Burrow V6 Render
+
+on:
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: "Internal render workers (CLI-managed)"
+        required: false
+        default: "2"
+
+jobs:
+  render:
+    name: Render Fossil Burrow V6
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install system deps
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
+      - name: Bootstrap V6 runtime
+        run: bash tools/monarch-v6-imax-sdk/bootstrap_v6_runtime.sh
+
+      - name: Render + mux
+        env:
+          WORKERS: ${{ github.event.inputs.workers || '2' }}
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/fbs_build exports/fossil-burrow-shelter-v2
+          node tools/monarch-v6-imax-sdk/cli/render_imax_ws.mjs \
+            --page /projects/fossil-burrow-shelter/stage-3-production/page_v6.html \
+            --mode render \
+            --w 1080 --h 1920 --frames 1050 \
+            --workers "$WORKERS" \
+            --build-dir /tmp/fbs_build \
+            --export-dir exports/fossil-burrow-shelter-v2 \
+            --ready-flag __IMAX_READY__ \
+            --audio /tmp/audio/master_mix.m4a \
+            --out-name Fossil-Burrow-Shelter-V6-IMAX-V2.mp4 \
+            --cover-name Cover-V2-final.png \
+            --qa-name QA-V2-final.jpg
+
+      - name: Upload deliverables
+        uses: actions/upload-artifact@v4
+        with:
+          name: fossil-burrow-v6-deliverables
+          path: exports/fossil-burrow-shelter-v2/
+          if-no-files-found: error

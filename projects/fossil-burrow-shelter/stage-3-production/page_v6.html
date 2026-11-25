@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Fossil Burrow Shelter - V6 IMAX Short</title>
+<style>html,body{margin:0;padding:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import { createImaxOpticalPass } from '/tools/monarch-v6-imax-sdk/core/postfx_imax_sdk.js';
+import { createDirector } from './director_v6.js';
+import { drawHud } from './titles_v6.js';
+
+const params = new URLSearchParams(window.location.search);
+const W = parseInt(params.get('w') || '1080', 10);
+const H = parseInt(params.get('h') || '1920', 10);
+
+async function loadFonts() {
+  const specs = [
+    { family:'Space Grotesk', url:'/@fs/tmp/v6_runtime/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2', desc:{style:'normal', weight:'300 700'} },
+    { family:'IBM Plex Mono', url:'/@fs/tmp/v6_runtime/node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-600-normal.woff2', desc:{style:'normal', weight:'600'} },
+  ];
+  for (const sp of specs) {
+    const r = await fetch(sp.url); if(!r.ok) throw new Error('font '+sp.url);
+    const ff = new FontFace(sp.family, await r.arrayBuffer(), sp.desc); await ff.load(); document.fonts.add(ff);
+  }
+  await document.fonts.ready;
+}
+await loadFonts();
+
+const canvas = document.createElement('canvas');
+canvas.width = W; canvas.height = H; document.body.appendChild(canvas);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:false, alpha:false, powerPreference:'high-performance', preserveDrawingBuffer:true });
+renderer.setSize(W,H,false); renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.autoClear = false;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(38, W/H, 0.1, 200);
+const post = createImaxOpticalPass(renderer, W, H);
+const director = createDirector({ THREE, scene, camera, renderer, W, H });
+
+const hudCanvas = document.createElement('canvas'); hudCanvas.width=W; hudCanvas.height=H;
+const hudCtx = hudCanvas.getContext('2d');
+const hudTex = new THREE.CanvasTexture(hudCanvas); hudTex.minFilter=THREE.LinearFilter; hudTex.magFilter=THREE.LinearFilter;
+const hudScene = new THREE.Scene(); const hudCam = new THREE.OrthographicCamera(-1,1,1,-1,0,1);
+hudScene.add(new THREE.Mesh(new THREE.PlaneGeometry(2,2), new THREE.MeshBasicMaterial({map:hudTex, transparent:true, depthTest:false, depthWrite:false})));
+
+function renderCompleteFrame(frame, hudOpts={showCaptions:true}) {
+  const state = director.evaluateFrame(frame);
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = state.post?.exposure ?? 1.35;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.setRenderTarget(null);
+  renderer.autoClear = true;
+  renderer.render(scene, camera);
+  drawHud(hudCtx, state, hudOpts, W, H);
+  hudTex.needsUpdate = true;
+  renderer.autoClear = false;
+  renderer.setRenderTarget(null);
+  renderer.render(hudScene, hudCam);
+  return state;
+}
+
+window.renderFramePNG = (frame, hudOpts={showCaptions:true}) => { renderCompleteFrame(frame, hudOpts); return canvas.toDataURL('image/png'); };
+window.renderCoverPNG = () => { renderCompleteFrame(30, {showCaptions:false, coverMode:true}); return canvas.toDataURL('image/png'); };
+
+const gl = renderer.getContext();
+const pixelBuf = new Uint8Array(W*H*4);
+let activeWS=null, wsWaitResolve=null;
+window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+  const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+  ws.binaryType='arraybuffer';
+  ws.onmessage=()=>{ if(wsWaitResolve){ const r=wsWaitResolve; wsWaitResolve=null; r(); } };
+  ws.onopen=()=>{ activeWS=ws; resolve(true); };
+  ws.onerror=(e)=>reject(e);
+});
+window.streamFramesWS = async (fStart, fEnd) => {
+  if (fStart>0) director.evaluateFrame(fStart-1);
+  for (let f=fStart; f<fEnd; f++) {
+    renderCompleteFrame(f, {showCaptions:true});
+    gl.readPixels(0,0,W,H,gl.RGBA,gl.UNSIGNED_BYTE,pixelBuf);
+    await new Promise((res)=>{ wsWaitResolve=res; activeWS.send(pixelBuf); });
+  }
+  return fEnd-fStart;
+};
+window.measureLoopSeamMAE = () => {
+  director.evaluateFrame(1048);
+  renderCompleteFrame(1049,{showCaptions:false});
+  const a=new Uint8Array(W*H*4); gl.readPixels(0,0,W,H,gl.RGBA,gl.UNSIGNED_BYTE,a);
+  renderCompleteFrame(0,{showCaptions:false});
+  const b=new Uint8Array(W*H*4); gl.readPixels(0,0,W,H,gl.RGBA,gl.UNSIGNED_BYTE,b);
+  let s=0; const n=W*H*3; for(let i=0;i<a.length;i+=4){ s+=Math.abs(a[i]-b[i])+Math.abs(a[i+1]-b[i+1])+Math.abs(a[i+2]-b[i+2]); }
+  return s/n;
+};
+
+window.__SHORT_V6_READY__ = true;
+window.__IMAX_READY__ = true;
+</script>
+</body>
+</html>

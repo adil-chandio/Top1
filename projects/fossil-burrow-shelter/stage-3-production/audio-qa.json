@@ -1,0 +1,24 @@
+{
+  "vo_raw": "/tmp/audio/vo_raw.wav",
+  "vo_tightened_duration_s": 29.063979166666666,
+  "total_duration_s": 35.0,
+  "twist_vacuum_s": [
+    8.204170083333333,
+    8.384170083333332
+  ],
+  "time_stretch_applied": false,
+  "loudnorm_pass1": {
+    "input_i": "-16.62",
+    "input_tp": "-2.61",
+    "input_lra": "12.70",
+    "input_thresh": "-27.49",
+    "output_i": "-15.27",
+    "output_tp": "-1.50",
+    "output_lra": "6.40",
+    "output_thresh": "-25.38",
+    "normalization_type": "dynamic",
+    "target_offset": "1.07"
+  },
+  "master_wav": "/tmp/audio/master_mix.wav",
+  "master_aac": "/tmp/audio/master_mix.m4a"
+}
