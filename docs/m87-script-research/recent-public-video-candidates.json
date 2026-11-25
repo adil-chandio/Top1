@@ -1,6 +1,6 @@
 {
-  "window_start_utc": "2026-05-29T09:50:11Z",
-  "queried_at_utc": "2026-11-25T09:50:14+00:00",
+  "window_start_utc": "2026-05-29T09:52:15Z",
+  "queried_at_utc": "2026-11-25T09:52:17+00:00",
   "method": "YouTube Data API public metadata; six search.list calls (estimated 600 units), then batched video/channel lookups.",
   "sample_limitations": [
     "order=viewCount returns search candidates, not a representative sample or proof of virality.",
@@ -24,10 +24,10 @@
         "published_at": "2026-07-11T00:56:34Z",
         "duration_seconds": 15,
         "views": 704935713,
-        "likes": 2694029,
+        "likes": 2694032,
         "comments": 2554,
         "channel_subscribers_now": 1010000,
-        "views_per_day_since_publish": 5131634.4,
+        "views_per_day_since_publish": 5131581.0,
         "lifetime_views_per_current_subscriber": 697.956,
         "cohorts": [
           "PK · Hindi relevance / black hole",
@@ -41,12 +41,12 @@
         "channel": "MILO",
         "published_at": "2026-09-20T04:00:18Z",
         "duration_seconds": 15,
-        "views": 23318496,
-        "likes": 89980,
+        "views": 23323968,
+        "likes": 89984,
         "comments": 37,
         "channel_subscribers_now": 95300,
-        "views_per_day_since_publish": 352014.4,
-        "lifetime_views_per_current_subscriber": 244.685,
+        "views_per_day_since_publish": 352089.4,
+        "lifetime_views_per_current_subscriber": 244.743,
         "cohorts": [
           "PK · Hindi relevance / black hole"
         ]
@@ -59,10 +59,10 @@
         "published_at": "2026-10-28T13:45:21Z",
         "duration_seconds": 63,
         "views": 9757970,
-        "likes": 451543,
+        "likes": 451545,
         "comments": 8019,
         "channel_subscribers_now": 54900,
-        "views_per_day_since_publish": 350543.0,
+        "views_per_day_since_publish": 350525.0,
         "lifetime_views_per_current_subscriber": 177.741,
         "cohorts": [
           "PK · Hindi relevance / black hole",
@@ -80,7 +80,7 @@
         "likes": 1180921,
         "comments": 4191,
         "channel_subscribers_now": 23600000,
-        "views_per_day_since_publish": 339534.3,
+        "views_per_day_since_publish": 339531.5,
         "lifetime_views_per_current_subscriber": 2.487,
         "cohorts": [
           "PK · Urdu relevance / space facts",
@@ -98,28 +98,11 @@
         "likes": null,
         "comments": 31,
         "channel_subscribers_now": 565000,
-        "views_per_day_since_publish": 291255.2,
+        "views_per_day_since_publish": 291249.3,
         "lifetime_views_per_current_subscriber": 36.489,
         "cohorts": [
           "PK · Hindi relevance / black hole",
           "PK · Urdu relevance / black hole"
-        ]
-      },
-      {
-        "video_id": "fSnUL-odX-I",
-        "url": "https://www.youtube.com/watch?v=fSnUL-odX-I",
-        "title": "AN ATOM VS TON 618💀☝️",
-        "channel": "Tx dark matter",
-        "published_at": "2026-10-01T12:30:26Z",
-        "duration_seconds": 46,
-        "views": 12641003,
-        "likes": null,
-        "comments": 2904,
-        "channel_subscribers_now": 164000,
-        "views_per_day_since_publish": 230302.3,
-        "lifetime_views_per_current_subscriber": 77.079,
-        "cohorts": [
-          "PK · Hindi relevance / black hole"
         ]
       },
       {
@@ -130,10 +113,10 @@
         "published_at": "2026-09-19T11:30:26Z",
         "duration_seconds": 18,
         "views": 14394840,
-        "likes": 79933,
+        "likes": 79932,
         "comments": 381,
         "channel_subscribers_now": 2090000,
-        "views_per_day_since_publish": 215071.7,
+        "views_per_day_since_publish": 215067.1,
         "lifetime_views_per_current_subscriber": 6.887,
         "cohorts": [
           "PK · Urdu relevance / black hole",
@@ -147,11 +130,11 @@
         "channel": "DJ THE MS42",
         "published_at": "2026-09-25T16:33:30Z",
         "duration_seconds": 18,
-        "views": 10183362,
+        "views": 10183363,
         "likes": null,
         "comments": 212,
         "channel_subscribers_now": 297000,
-        "views_per_day_since_publish": 167710.3,
+        "views_per_day_since_publish": 167706.4,
         "lifetime_views_per_current_subscriber": 34.287,
         "cohorts": [
           "PK · Hindi relevance / black hole",
@@ -169,7 +152,7 @@
         "likes": 387514,
         "comments": 5587,
         "channel_subscribers_now": 29800000,
-        "views_per_day_since_publish": 166242.9,
+        "views_per_day_since_publish": 166240.4,
         "lifetime_views_per_current_subscriber": 0.513,
         "cohorts": [
           "PK · Urdu relevance / space facts",
@@ -184,10 +167,10 @@
         "published_at": "2026-10-19T08:10:39Z",
         "duration_seconds": 13,
         "views": 5826124,
-        "likes": 228605,
+        "likes": 228604,
         "comments": 1795,
         "channel_subscribers_now": 514000,
-        "views_per_day_since_publish": 157169.0,
+        "views_per_day_since_publish": 157163.0,
         "lifetime_views_per_current_subscriber": 11.335,
         "cohorts": [
           "PK · Hindi relevance / black hole",
@@ -201,12 +184,12 @@
         "channel": "Alberto Chao",
         "published_at": "2026-08-24T15:00:20Z",
         "duration_seconds": 72,
-        "views": 12724135,
+        "views": 12724206,
         "likes": 437745,
         "comments": 3155,
         "channel_subscribers_now": 84600,
-        "views_per_day_since_publish": 137136.2,
-        "lifetime_views_per_current_subscriber": 150.403,
+        "views_per_day_since_publish": 137134.9,
+        "lifetime_views_per_current_subscriber": 150.404,
         "cohorts": [
           "PK · Hindi relevance / black hole",
           "PK · Urdu relevance / black hole"
@@ -220,10 +203,10 @@
         "published_at": "2026-09-28T05:30:19Z",
         "duration_seconds": 45,
         "views": 7391937,
-        "likes": 263048,
+        "likes": 263047,
         "comments": 976,
         "channel_subscribers_now": 19400000,
-        "views_per_day_since_publish": 127051.8,
+        "views_per_day_since_publish": 127048.7,
         "lifetime_views_per_current_subscriber": 0.381,
         "cohorts": [
           "PK · Urdu relevance / space facts"
@@ -236,11 +219,11 @@
         "channel": "Facts' Mine",
         "published_at": "2026-10-24T05:30:14Z",
         "duration_seconds": 57,
-        "views": 3362330,
-        "likes": 179486,
+        "views": 3362406,
+        "likes": 179487,
         "comments": 683,
         "channel_subscribers_now": 19400000,
-        "views_per_day_since_publish": 104483.3,
+        "views_per_day_since_publish": 104481.0,
         "lifetime_views_per_current_subscriber": 0.173,
         "cohorts": [
           "PK · Urdu relevance / space facts"
@@ -254,10 +237,10 @@
         "published_at": "2026-06-16T14:30:09Z",
         "duration_seconds": 40,
         "views": 16532167,
-        "likes": 506478,
+        "likes": 506481,
         "comments": 4937,
         "channel_subscribers_now": 29800000,
-        "views_per_day_since_publish": 102173.0,
+        "views_per_day_since_publish": 102172.1,
         "lifetime_views_per_current_subscriber": 0.555,
         "cohorts": [
           "PK · Urdu relevance / space facts",
@@ -272,13 +255,31 @@
         "published_at": "2026-09-12T12:32:39Z",
         "duration_seconds": 44,
         "views": 7439142,
-        "likes": 280939,
+        "likes": 280938,
         "comments": 847,
         "channel_subscribers_now": 19400000,
-        "views_per_day_since_publish": 100682.4,
+        "views_per_day_since_publish": 100680.5,
         "lifetime_views_per_current_subscriber": 0.383,
         "cohorts": [
           "PK · Urdu relevance / space facts"
+        ]
+      },
+      {
+        "video_id": "9KLW4rp-ou8",
+        "url": "https://www.youtube.com/watch?v=9KLW4rp-ou8",
+        "title": "What if a black hole passed by Earth? You'd never see it coming. #whatif #space #simulation",
+        "channel": "Lunarzone Animates",
+        "published_at": "2026-10-07T14:00:07Z",
+        "duration_seconds": 65,
+        "views": 4902529,
+        "likes": 85553,
+        "comments": 2192,
+        "channel_subscribers_now": 31700,
+        "views_per_day_since_publish": 100404.3,
+        "lifetime_views_per_current_subscriber": 154.654,
+        "cohorts": [
+          "PK · Hindi relevance / black hole",
+          "PK · Urdu relevance / black hole"
         ]
       }
     ],
@@ -290,12 +291,12 @@
         "channel": "Space Unmasked",
         "published_at": "2026-11-18T05:49:14Z",
         "duration_seconds": 72,
-        "views": 7113976,
-        "likes": 153378,
-        "comments": 1870,
+        "views": 7115369,
+        "likes": 153382,
+        "comments": 1871,
         "channel_subscribers_now": 4090,
-        "views_per_day_since_publish": 992551.5,
-        "lifetime_views_per_current_subscriber": 1739.358,
+        "views_per_day_since_publish": 992547.9,
+        "lifetime_views_per_current_subscriber": 1739.699,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -307,12 +308,12 @@
         "channel": "KurioScope",
         "published_at": "2026-10-28T08:53:15Z",
         "duration_seconds": 45,
-        "views": 24946419,
+        "views": 24948126,
         "likes": null,
         "comments": 1939,
         "channel_subscribers_now": 123000,
-        "views_per_day_since_publish": 889686.1,
-        "lifetime_views_per_current_subscriber": 202.816,
+        "views_per_day_since_publish": 889701.7,
+        "lifetime_views_per_current_subscriber": 202.83,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -325,10 +326,10 @@
         "published_at": "2026-10-21T10:38:41Z",
         "duration_seconds": 50,
         "views": 19326118,
-        "likes": 209931,
+        "likes": 209934,
         "comments": 2714,
         "channel_subscribers_now": 85900,
-        "views_per_day_since_publish": 552706.1,
+        "views_per_day_since_publish": 552683.5,
         "lifetime_views_per_current_subscriber": 224.984,
         "cohorts": [
           "US · English relevance / space science"
@@ -341,11 +342,11 @@
         "channel": "Wow Theory",
         "published_at": "2026-09-01T13:00:25Z",
         "duration_seconds": 76,
-        "views": 35792092,
-        "likes": 1176486,
-        "comments": 59379,
+        "views": 35792146,
+        "likes": 1176502,
+        "comments": 59380,
         "channel_subscribers_now": 71500,
-        "views_per_day_since_publish": 421738.7,
+        "views_per_day_since_publish": 421732.3,
         "lifetime_views_per_current_subscriber": 500.589,
         "cohorts": [
           "US · English relevance / space science"
@@ -358,12 +359,12 @@
         "channel": "Space beyond limit's ",
         "published_at": "2026-07-22T13:53:01Z",
         "duration_seconds": 8,
-        "views": 47020348,
-        "likes": 443236,
+        "views": 47020604,
+        "likes": 443237,
         "comments": 16847,
         "channel_subscribers_now": 140000,
-        "views_per_day_since_publish": 373677.4,
-        "lifetime_views_per_current_subscriber": 335.86,
+        "views_per_day_since_publish": 373675.2,
+        "lifetime_views_per_current_subscriber": 335.861,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -376,10 +377,10 @@
         "published_at": "2026-09-19T18:03:09Z",
         "duration_seconds": 173,
         "views": 23474969,
-        "likes": 889835,
+        "likes": 889848,
         "comments": 67077,
         "channel_subscribers_now": 769000,
-        "views_per_day_since_publish": 352171.9,
+        "views_per_day_since_publish": 352164.4,
         "lifetime_views_per_current_subscriber": 30.527,
         "cohorts": [
           "US · English relevance / space science"
@@ -396,7 +397,7 @@
         "likes": 1180921,
         "comments": 4191,
         "channel_subscribers_now": 23600000,
-        "views_per_day_since_publish": 339534.3,
+        "views_per_day_since_publish": 339531.5,
         "lifetime_views_per_current_subscriber": 2.487,
         "cohorts": [
           "PK · Urdu relevance / space facts",
@@ -410,12 +411,12 @@
         "channel": "OutwardAnimates",
         "published_at": "2026-10-25T23:47:18Z",
         "duration_seconds": 179,
-        "views": 9264770,
-        "likes": 124104,
+        "views": 9264976,
+        "likes": 124105,
         "comments": 6426,
         "channel_subscribers_now": 70900,
-        "views_per_day_since_publish": 304574.8,
-        "lifetime_views_per_current_subscriber": 130.674,
+        "views_per_day_since_publish": 304567.2,
+        "lifetime_views_per_current_subscriber": 130.677,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -427,12 +428,12 @@
         "channel": "OutwardAnimates",
         "published_at": "2026-10-22T01:18:30Z",
         "duration_seconds": 68,
-        "views": 10288755,
+        "views": 10289238,
         "likes": 65111,
         "comments": 4511,
         "channel_subscribers_now": 70900,
-        "views_per_day_since_publish": 299480.2,
-        "lifetime_views_per_current_subscriber": 145.116,
+        "views_per_day_since_publish": 299481.8,
+        "lifetime_views_per_current_subscriber": 145.123,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -444,12 +445,12 @@
         "channel": "Seren Explains",
         "published_at": "2026-11-12T04:13:50Z",
         "duration_seconds": 92,
-        "views": 3916111,
-        "likes": 69639,
+        "views": 3917022,
+        "likes": 69644,
         "comments": 65,
         "channel_subscribers_now": 32400,
-        "views_per_day_since_publish": 295921.5,
-        "lifetime_views_per_current_subscriber": 120.868,
+        "views_per_day_since_publish": 295958.4,
+        "lifetime_views_per_current_subscriber": 120.896,
         "cohorts": [
           "US · English relevance / space science"
         ]
@@ -465,7 +466,7 @@
         "likes": 534579,
         "comments": 9011,
         "channel_subscribers_now": 30300,
-        "views_per_day_since_publish": 291220.8,
+        "views_per_day_since_publish": 291215.9,
         "lifetime_views_per_current_subscriber": 822.453,
         "cohorts": [
           "US · English relevance / space science"
@@ -478,11 +479,11 @@
         "channel": "MindKnowledgePower",
         "published_at": "2026-09-20T23:29:25Z",
         "duration_seconds": 61,
-        "views": 15231819,
+        "views": 15231889,
         "likes": 279077,
         "comments": 4558,
         "channel_subscribers_now": 136000,
-        "views_per_day_since_publish": 232791.6,
+        "views_per_day_since_publish": 232787.6,
         "lifetime_views_per_current_subscriber": 111.999,
         "cohorts": [
           "US · English relevance / space science"
@@ -496,10 +497,10 @@
         "published_at": "2026-09-19T11:30:26Z",
         "duration_seconds": 18,
         "views": 14394840,
-        "likes": 79933,
+        "likes": 79932,
         "comments": 381,
         "channel_subscribers_now": 2090000,
-        "views_per_day_since_publish": 215071.7,
+        "views_per_day_since_publish": 215067.1,
         "lifetime_views_per_current_subscriber": 6.887,
         "cohorts": [
           "PK · Urdu relevance / black hole",
@@ -517,7 +518,7 @@
         "likes": null,
         "comments": 10295,
         "channel_subscribers_now": 123000,
-        "views_per_day_since_publish": 208411.5,
+        "views_per_day_since_publish": 208409.0,
         "lifetime_views_per_current_subscriber": 198.551,
         "cohorts": [
           "US · English relevance / space science"
@@ -530,11 +531,11 @@
         "channel": "Science Of Infinity",
         "published_at": "2026-10-15T12:30:15Z",
         "duration_seconds": 36,
-        "views": 7067015,
+        "views": 7067039,
         "likes": 133092,
         "comments": 1420,
         "channel_subscribers_now": 1550000,
-        "views_per_day_since_publish": 172834.7,
+        "views_per_day_since_publish": 172829.2,
         "lifetime_views_per_current_subscriber": 4.559,
         "cohorts": [
           "US · English relevance / space science"
@@ -542,4 +543,4 @@
       }
     ]
   }
-}\n
+}
