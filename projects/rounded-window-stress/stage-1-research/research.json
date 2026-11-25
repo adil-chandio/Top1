@@ -1,0 +1,136 @@
+{
+  "projectId": "rounded-window-stress",
+  "createdAt": "2026-11-25T12:00:00.000Z",
+  "sources": [
+    {
+      "id": "s1",
+      "url": "https://www.youtube.com/watch?v=E6AUYtJwiLs",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s2",
+      "url": "https://www.youtube.com/watch?v=hrHw4oxeBzE",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s3",
+      "url": "https://www.youtube.com/watch?v=CvHX7l5nPj4",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s4",
+      "url": "https://www.youtube.com/watch?v=sUPH0uCMr0c",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s5",
+      "url": "https://www.youtube.com/watch?v=-koT6H6Ew_Q",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s6",
+      "url": "https://www.youtube.com/watch?v=J2jG0-dwXTU",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s7",
+      "url": "https://www.youtube.com/watch?v=iPVlw2kBDCU",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s8",
+      "url": "https://www.youtube.com/watch?v=ujunNZDnL58",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s9",
+      "url": "https://www.youtube.com/watch?v=Hf0HNtBJek8",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    },
+    {
+      "id": "s10",
+      "url": "https://www.youtube.com/watch?v=mJZPd2MmCjg",
+      "type": "video",
+      "license": "YouTube platform terms — observation only; no media reused",
+      "accessedAt": "2026-11-25T12:00:00.000Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f1",
+      "statement": "LuxPlanes 00:26 short “Why Are Airplane Windows Round?” showed 376,625 views and 11,834 likes on its public page at audit time (E6AUYtJwiLs).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f2",
+      "statement": "Crayon Monkey Workshop 07:57 demonstration “Why aircraft have round windows…” showed 5,522 views and a physical paper/metal stress demonstration (hrHw4oxeBzE).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f3",
+      "statement": "Anand Vyas 03:20 paperclip fatigue demo showed 5,189 views; transcript states a wire tolerates ~50 N statically but fails under repeated lower force (CvHX7l5nPj4).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f4",
+      "statement": "CarAraC 04:40 “Why Car Parts Break Without Warning — Metal Fatigue” showed 223 views and describes microcracks starting at corners, welds and corrosion (J2jG0-dwXTU).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f5",
+      "statement": "Hook formula extracted from multiple transcripts: “You never noticed X / it was not always X / then something terrifying happened”, then a shape-mechanism payoff.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "f6",
+      "statement": "A 00:52 ice+salt can experiment from SCIENCE KITCHEN LAB showed 3,098 views; a gecko setae video showed 2,732 views; a retroreflector compliance video showed 381 views (s4,s5,s8).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f7",
+      "statement": "Adjacent-format signal: RHCB 03:01 “1000°C Red Hot Metal Ball vs Ice, Coca-Cola & Popcorn!” showed 3,144,190 views — extreme-heat satisfying destruction travels far beyond science niches (s9).",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f8",
+      "statement": "Proposed 3D stress-concentration cutaway is an illustrative model, not a finite-element result; no test or render has been run.",
+      "classification": "hypothesis"
+    },
+    {
+      "id": "f9",
+      "statement": "outlier_multiple is unavailable: the official-API workflow could not be dispatched (HTTP 403), and channel upload medians could not be fetched from public pages.",
+      "classification": "unknown-limitation"
+    },
+    {
+      "id": "f10",
+      "statement": "Thumbnail visual audit (Claws Vision) could not be performed: i.ytimg.com is unreachable from the sandbox and image search returned unrelated images.",
+      "classification": "unknown-limitation"
+    }
+  ],
+  "gaps": [
+    "No API-derived outlier_multiple; all candidate videos are unverified on the 10-surrounding-upload metric.",
+    "No contact sheet / visual inspection of competitor thumbnails; only titles, dimensions and descriptions were observed.",
+    "No comment mining; transcripts came from fetched public video pages only.",
+    "Channel subscriber counts were not available from public video pages, so max_subs gate was not applied.",
+    "Historical aviation failure references must stay educational and gore-free; no crash footage is to be reused.",
+    "Owner selection not recorded — scorecard must remain not-yet, never production-candidate."
+  ]
+}

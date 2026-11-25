@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-11-25T12:00:00.000Z",
+  "projectId": "rounded-window-stress",
+  "pilotId": "desi-3d-short-9x16",
+  "scores": {
+    "viewerPromiseClarity": 18,
+    "visibleProofPotential": 20,
+    "novelty": 10,
+    "evidenceStrength": 8,
+    "emotionalStakesValue": 8,
+    "shortLongFormatFit": 10,
+    "rightsCertainty": 3,
+    "productionFeasibility": 4
+  },
+  "total": 81,
+  "gates": {
+    "claimLedgerComplete": false,
+    "titlePromiseClear": true,
+    "proofPossible": true,
+    "ownerSelection": false
+  },
+  "decision": "not-yet",
+  "notes": "Fallback research only: public video pages + transcripts, no API outlier median and no thumbnail inspection. Score reflects concept strength, not verified virality. Owner selection and claim ledger deliberately not green."
+}
