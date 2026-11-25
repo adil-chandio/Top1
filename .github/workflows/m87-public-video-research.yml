@@ -1,0 +1,205 @@
+name: M87 script research — public YouTube shortlist
+
+on:
+  push:
+    branches:
+      - "arena/3a61565f-top1"
+    paths:
+      - ".github/workflows/m87-public-video-research.yml"
+
+permissions: {}
+
+jobs:
+  shortlist:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Query public video metadata without exposing the API key
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import datetime as dt
+          import html
+          import json
+          import os
+          import re
+          import sys
+          import time
+          from urllib.error import HTTPError, URLError
+          from urllib.parse import urlencode
+          from urllib.request import Request, urlopen
+
+          KEY = os.environ.get("YOUTUBE_API_KEY", "")
+          if not KEY:
+              print("Missing repository secret YOUTUBE_API_KEY; no API request was sent.")
+              sys.exit(2)
+
+          BASE = "https://www.googleapis.com/youtube/v3/"
+          SEARCHES = [
+              ("PK · Urdu relevance", "PK", "ur", "black hole"),
+              ("PK · Hindi relevance", "PK", "hi", "black hole"),
+              ("PK · Urdu relevance", "PK", "ur", "space facts"),
+              ("US · English relevance", "US", "en", "black hole explained"),
+              ("US · English relevance", "US", "en", "M87 black hole"),
+              ("US · English relevance", "US", "en", "space science"),
+          ]
+          cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=180)
+          published_after = cutoff.isoformat(timespec="seconds").replace("+00:00", "Z")
+          counters = {"search": 0, "videos": 0, "channels": 0}
+
+          def api_get(endpoint, params):
+              query = urlencode({**params, "key": KEY})
+              request = Request(BASE + endpoint + "?" + query,
+                                headers={"Accept": "application/json", "User-Agent": "Top1-Research/1.0"})
+              try:
+                  with urlopen(request, timeout=20) as response:
+                      return json.loads(response.read().decode("utf-8"))
+              except HTTPError as error:
+                  try:
+                      payload = json.loads(error.read().decode("utf-8", "replace"))
+                      detail = payload.get("error", {})
+                      reason = ",".join(x.get("reason", "") for x in detail.get("errors", []))
+                      message = str(detail.get("message", "API request rejected")).replace(KEY, "[redacted]")
+                  except Exception:
+                      reason, message = "", "API request rejected (error body unavailable)"
+                  # Never print the exception/request URL: the API key is a query parameter.
+                  print(f"YouTube API HTTP {error.code}; {reason or 'no reason code'}; {message[:300]}", file=sys.stderr)
+                  raise SystemExit(3)
+              except URLError:
+                  print("YouTube API network request failed; request URL and credential were withheld.", file=sys.stderr)
+                  raise SystemExit(4)
+
+          candidates = {}
+          cohorts = {}
+          for label, region, language, term in SEARCHES:
+              data = api_get("search", {
+                  "part": "snippet", "type": "video", "videoDuration": "short",
+                  "order": "viewCount", "maxResults": 25,
+                  "publishedAfter": published_after, "regionCode": region,
+                  "relevanceLanguage": language, "q": term,
+              })
+              counters["search"] += 1
+              cohorts.setdefault(label, set())
+              for item in data.get("items", []):
+                  vid = item.get("id", {}).get("videoId")
+                  if vid:
+                      candidates.setdefault(vid, {"video_id": vid, "cohorts": set()})
+                      candidates[vid]["cohorts"].add(f"{label} / {term}")
+
+          ids = list(candidates)
+          video_rows = {}
+          channel_ids = set()
+          for start in range(0, len(ids), 50):
+              batch = ids[start:start + 50]
+              if not batch:
+                  continue
+              data = api_get("videos", {
+                  "part": "snippet,statistics,contentDetails", "id": ",".join(batch),
+              })
+              counters["videos"] += 1
+              for item in data.get("items", []):
+                  channel_id = item.get("snippet", {}).get("channelId", "")
+                  if channel_id:
+                      channel_ids.add(channel_id)
+                  video_rows[item["id"]] = item
+
+          channel_subs = {}
+          channel_ids = list(channel_ids)
+          for start in range(0, len(channel_ids), 50):
+              batch = channel_ids[start:start + 50]
+              if not batch:
+                  continue
+              data = api_get("channels", {"part": "statistics", "id": ",".join(batch)})
+              counters["channels"] += 1
+              for item in data.get("items", []):
+                  stats = item.get("statistics", {})
+                  channel_subs[item["id"]] = None if stats.get("hiddenSubscriberCount") else int(stats.get("subscriberCount", 0) or 0)
+
+          def seconds(iso):
+              match = re.fullmatch(r"PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+              if not match:
+                  return 0
+              h, m, s = (int(x or 0) for x in match.groups())
+              return h * 3600 + m * 60 + s
+
+          now = dt.datetime.now(dt.timezone.utc)
+          records = []
+          for vid, item in video_rows.items():
+              snippet = item.get("snippet", {})
+              stats = item.get("statistics", {})
+              duration_s = seconds(item.get("contentDetails", {}).get("duration"))
+              # Search's "short" bucket is broader than YouTube Shorts; keep <=3-minute candidates only.
+              if not 0 < duration_s <= 180:
+                  continue
+              try:
+                  published = dt.datetime.fromisoformat(snippet["publishedAt"].replace("Z", "+00:00"))
+              except (KeyError, ValueError):
+                  continue
+              age_days = max((now - published).total_seconds() / 86400, 0.5)
+              views = int(stats.get("viewCount", 0) or 0)
+              subs = channel_subs.get(snippet.get("channelId", ""))
+              records.append({
+                  "video_id": vid,
+                  "url": "https://www.youtube.com/watch?v=" + vid,
+                  "title": snippet.get("title", ""),
+                  "channel": snippet.get("channelTitle", ""),
+                  "published_at": snippet.get("publishedAt", ""),
+                  "duration_seconds": duration_s,
+                  "views": views,
+                  "likes": int(stats.get("likeCount", 0) or 0) if "likeCount" in stats else None,
+                  "comments": int(stats.get("commentCount", 0) or 0) if "commentCount" in stats else None,
+                  "channel_subscribers_now": subs,
+                  "views_per_day_since_publish": round(views / age_days, 1),
+                  "lifetime_views_per_current_subscriber": round(views / subs, 3) if subs else None,
+                  "cohorts": sorted(candidates[vid]["cohorts"]),
+              })
+
+          groups = {
+              "PK cohort (Urdu/Hindi search relevance)": [r for r in records if any(c.startswith("PK") for c in r["cohorts"])],
+              "US cohort (English search relevance)": [r for r in records if any(c.startswith("US") for c in r["cohorts"])],
+          }
+          for rows in groups.values():
+              rows.sort(key=lambda r: (r["views_per_day_since_publish"], r["views"]), reverse=True)
+
+          result = {
+              "window_start_utc": published_after,
+              "queried_at_utc": now.isoformat(timespec="seconds"),
+              "method": "YouTube Data API public metadata; six search.list calls (estimated 600 units), then batched video/channel lookups.",
+              "sample_limitations": [
+                  "order=viewCount returns search candidates, not a representative sample or proof of virality.",
+                  "Views/day is lifetime views divided by age, not measured time-series velocity or audience retention.",
+                  "videoDuration=short is broader than Shorts; output is filtered to <=180 seconds but vertical/Shorts status is not guaranteed.",
+                  "PK and US search cohorts are reported separately; counts are not a causal comparison.",
+                  "No video playback, transcript, thumbnail, or private analytics was accessed in this workflow.",
+              ],
+              "api_calls": counters,
+              "cohorts": {name: rows[:15] for name, rows in groups.items()},
+          }
+          summary = os.environ.get("GITHUB_STEP_SUMMARY")
+          if summary:
+              with open(summary, "a", encoding="utf-8") as out:
+                  out.write("# Public YouTube short-form candidates — M87 script research\n\n")
+                  out.write("Metadata-only sample. **Not** a verified viral ranking, view-velocity time series, transcript review, or retention analysis. PK and US search cohorts are separate.\n\n")
+                  for name, rows in result["cohorts"].items():
+                      out.write(f"## {name}\n\n")
+                      out.write("| # | Candidate | Channel | Age | Duration | Views | Views/day* | Likes | URL |\n|---:|---|---|---:|---:|---:|---:|---:|---|\n")
+                      for rank, r in enumerate(rows, 1):
+                          title = html.escape(r["title"].replace("|", " ").replace("\n", " ")[:110])
+                          channel = html.escape(r["channel"].replace("|", " ").replace("\n", " ")[:60])
+                          age = max((now - dt.datetime.fromisoformat(r["published_at"].replace("Z", "+00:00"))).days, 0)
+                          likes = "—" if r["likes"] is None else f"{r['likes']:,}"
+                          out.write(f"| {rank} | {title} | {channel} | {age}d | {r['duration_seconds']}s | {r['views']:,} | {r['views_per_day_since_publish']:,.1f} | {likes} | [open]({r['url']}) |\n")
+                      out.write("\n")
+                  out.write("\\* views/day is lifetime views divided by age; not measured recent velocity. Hidden subscriber counts remain blank.\n\n")
+                  out.write("## Limits\n\n")
+                  for note in result["sample_limitations"]:
+                      out.write(f"- {html.escape(note)}\n")
+                  out.write("\nNo API key or request URL is included in this summary.\n")
+
+          print("RESEARCH_JSON_BEGIN")
+          print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))
+          print("RESEARCH_JSON_END")
+          estimate = counters["search"] * 100 + counters["videos"] + counters["channels"]
+          print(f"Completed metadata-only sample. Estimated quota units: {estimate}. Credential was not printed.")
+          PY
