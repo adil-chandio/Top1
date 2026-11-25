@@ -37,7 +37,7 @@ def main():
         out_path = sys.argv[sys.argv.index("--out") + 1]
 
     d = json.load(open("/tmp/huayuan_v3_script.json"))
-    meas = json.load(open("/tmp/dbg/final_vo.json"))
+    meas = json.load(open("tools/measurements/vo-lines.json"))
     total = TOTAL * SR
     bed = [0.0] * total
 
