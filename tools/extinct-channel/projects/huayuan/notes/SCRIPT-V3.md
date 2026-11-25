@@ -12,7 +12,8 @@ non-zero if any gate fails. Everything below is copied from its output, not reme
 |---|---|---|
 | Speech coverage | **41.0 %** (24.5 s voiced in 60 s) | **72.8 %** (43.7 s) |
 | Silences ≥ 1.0 s | **5** | **2** |
-| Longest silence | **2.98 s** | **1.80 s** (a declared hold) |
+| Longest silence | **2.98 s**, mid-story | **2.87 s**, after the last line |
+| Longest silence before the last line ends | **2.98 s** (at 20.10–23.08 s) | **0.89 s** |
 | Silent openings with no words on them | 3 shots | 0 |
 | Cuts landing inside a spoken line | 7 measured (never checked before) | **0** |
 | Captions claiming more speech than exists | 2 blocks (4.7 s claimed / 1.4 s real) | derived from measured times |
