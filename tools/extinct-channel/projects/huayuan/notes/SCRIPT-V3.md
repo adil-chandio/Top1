@@ -131,3 +131,42 @@ focal lengths, no two adjacent shots on the same lens.
   Sinsk event (Myrow et al.); the deep-water refuge stays a hypothesis in words and on screen.
 - **No picture has been rendered from this cut.** Shot sizes and lenses are the plan; the
   preflight eye-gate has not run on them.
+
+---
+
+## 7. The voice, and what is actually recorded (measured 2026-11-25)
+
+The narration voice changed. The approved read is **voice-01**, registered through the
+speech tool on the second audition. It is a new asset: it is not the read the earlier
+provenance entries describe, and it must not be labelled with their hash.
+
+**What exists in the workspace now:** `audio/vo-voice01/l01..l10.mp3` — ten clips, measured
+with `tools/measure_vo.py` (48 kHz mono, first/last 10 ms frame over -45 dBFS):
+
+| clip | speech | clip | speech |
+|---|---|---|---|
+| l01 | 3.44 | l06 | 1.46 |
+| l02 | 2.86 | l07 | 2.76 |
+| l03 | 2.88 | l08 | 1.96 |
+| l04 | 1.72 | l09 | 2.24 |
+| l05 | 1.78 | l10 | 1.48 |
+
+**Those ten clips do not speak the current script.** They speak the *first* 22-line draft
+("This stone was the floor of a vanished sea.", "Sealed. Still whole."). Measured against the
+20-line script in this document, only three are word-identical:
+
+| current line | text | clip |
+|---|---|---|
+| 5 | Then the water went dark, | l05 |
+| 8 | No oxygen. No decay. | l09 |
+| 9 | Then the light goes out. | l10 |
+
+The other **17 lines have never been voiced**. Until they are, every timing in section 3 is a
+model prediction, not a measurement — `MEASURED` in the tool is calibrated on the draft's ten
+lines at 2.436 w/s, which is the voice's real articulation rate but not this script's line
+lengths. The film is not releasable in this state.
+
+Note for whoever picks this up: an earlier handover note claimed six reusable clips. It was
+wrong, because it compared the current text against a remembered draft instead of the draft
+itself. The draft is recoverable from this document; compare against *it*.
+
