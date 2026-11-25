@@ -1,6 +1,7 @@
 name: M87 script research — public YouTube shortlist
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - "arena/3a61565f-top1"
