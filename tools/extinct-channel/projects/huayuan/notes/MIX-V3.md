@@ -4,6 +4,7 @@
 **Size:** 70,001,225 B · **SHA-256 (first 24):** `52390df6fd53f144d7eeb7e1`
 **Video:** H.264 High, 1920×1080, 30 fps, 1800 frames, yuv420p, bt709, CRF 16, faststart
 **Audio:** AAC-LC, 48 kHz mono, 320 kb/s
+**Drive:** `1qB6SkxvCHd9A1quKkNzOCoSZjoCfb2Ax` (folder `16miPGSr27SfHyV84KThUUh2AhcfZzvP7`)
 
 ## Measured on the delivered file, not on the intent
 
