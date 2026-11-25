@@ -7,7 +7,8 @@ on:
     paths:
       - ".github/workflows/m87-public-video-research.yml"
 
-permissions: {}
+permissions:
+  contents: write
 
 jobs:
   shortlist:
@@ -17,8 +18,10 @@ jobs:
       - name: Query public video metadata without exposing the API key
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           python3 - <<'PY'
+          import base64
           import datetime as dt
           import html
           import json
@@ -196,6 +199,49 @@ jobs:
                   for note in result["sample_limitations"]:
                       out.write(f"- {html.escape(note)}\n")
                   out.write("\nNo API key or request URL is included in this summary.\n")
+
+          # Persist only this small public-metadata result on the same branch so it can be
+          # reviewed without downloading Actions logs. Neither credential is stored in the file.
+          github_token = os.environ.get("GITHUB_TOKEN", "")
+          repo = os.environ.get("GITHUB_REPOSITORY", "")
+          branch = os.environ.get("GITHUB_REF_NAME", "")
+          report_path = "docs/m87-script-research/recent-public-video-candidates.json"
+          if github_token and repo and branch:
+              api_url = f"https://api.github.com/repos/{repo}/contents/{report_path}"
+              headers = {
+                  "Accept": "application/vnd.github+json",
+                  "Authorization": f"Bearer {github_token}",
+                  "X-GitHub-Api-Version": "2022-11-28",
+                  "User-Agent": "Top1-bounded-research",
+              }
+              existing_sha = None
+              try:
+                  get_req = Request(api_url + "?" + urlencode({"ref": branch}), headers=headers)
+                  with urlopen(get_req, timeout=20) as response:
+                      existing_sha = json.loads(response.read().decode("utf-8")).get("sha")
+              except HTTPError as error:
+                  if error.code != 404:
+                      print(f"Could not check prior report (GitHub HTTP {error.code}); report remains in job output.", file=sys.stderr)
+                      existing_sha = "__blocked__"
+              if existing_sha != "__blocked__":
+                  body = {
+                      "message": "Update bounded public YouTube candidate metadata",
+                      "content": base64.b64encode((json.dumps(result, ensure_ascii=False, indent=2) + "\\n").encode("utf-8")).decode("ascii"),
+                      "branch": branch,
+                  }
+                  if existing_sha:
+                      body["sha"] = existing_sha
+                  try:
+                      put_req = Request(api_url, data=json.dumps(body).encode("utf-8"), headers={**headers, "Content-Type": "application/json"}, method="PUT")
+                      with urlopen(put_req, timeout=20) as response:
+                          commit_sha = json.loads(response.read().decode("utf-8")).get("commit", {}).get("sha", "")
+                      print(f"Saved public metadata report to {report_path} ({commit_sha[:12]}).")
+                  except HTTPError as error:
+                      print(f"Could not save report (GitHub HTTP {error.code}); no credential or response body logged.", file=sys.stderr)
+                  except URLError:
+                      print("Could not save report to GitHub; no credential or request URL logged.", file=sys.stderr)
+          else:
+              print("GitHub report persistence unavailable; no credentials were logged.", file=sys.stderr)
 
           print("RESEARCH_JSON_BEGIN")
           print(json.dumps(result, ensure_ascii=False, separators=(",", ":")))
