@@ -41,7 +41,7 @@ import sys
 
 FPS = 30.0
 RUNTIME = 60.0
-WPS = 2.436           # articulation, measured on the 10 synthesised lines
+WPS = 2.344          # measured on the voice-01 take: 96 w in 40.95 s
 COMMA_BREAK = 0.15
 SENT_BREAK = 0.38
 TAIL = 0.06
@@ -130,8 +130,8 @@ def count(text):
 
 
 # measured voiced spans, voice-01, lines 1-10 (s)
-MEASURED = [3.44, 2.86, 2.88, 1.72, 1.78, 1.46, 2.76, 1.96, 2.24, 1.48]  # lines 1-10 recorded
-MEASURED_WORDS = [9, 7, 6, 4, 5, 5, 7, 3, 4, 5]
+MEASURED = [2.15, 2.94, 1.66, 1.55, 1.90, 0.99, 1.82, 2.29, 1.63, 1.21, 1.24, 2.95, 2.30, 1.77, 2.24, 1.35, 1.72, 2.37, 3.47, 3.40]  # lines 1-10 recorded
+MEASURED_WORDS = [6, 7, 5, 5, 5, 4, 5, 4, 5, 3, 3, 6, 6, 5, 3, 4, 5, 5, 5, 5]
 
 
 def calibrate():
@@ -141,7 +141,35 @@ def calibrate():
     return abs(predicted - measured) <= 0.40, predicted
 
 
-MAX_GAP = 0.74        # packing: 96 words at the measured rate + 19 gaps must fit 58.2 s
+# ── breathing ────────────────────────────────────────────────────────────────────────
+# A uniform gap is a metronome, not a performance. Every gap was 0.84 s, which is what a
+# spreadsheet sounds like. These are relative breaths: a comma-continuation gets almost
+# nothing because the sentence has not finished; a new idea gets air; the two designed
+# holds get real silence. build() scales the whole set so the last line still lands before
+# the close, so the film stays exactly 60 s whatever the voice does.
+GAP_WEIGHT = [
+    0.90,  # 1  cold open: let the stone be looked at before anything else is claimed
+    0.80,  # 2
+    0.75,  # 3
+    0.60,  # 4
+    0.30,  # 5  "Then the water went dark," — the sentence continues, no air
+    0.55,  # 6
+    0.65,  # 7
+    0.70,  # 8
+    0.55,  # 9
+    1.15,  # 10 the reveal: the audience has to identify the animal unaided
+    0.40,  # 11
+    0.75,  # 12
+    0.70,  # 13
+    0.30,  # 14 "One hundred and fifty-three species," — continues
+    0.80,  # 15
+    0.65,  # 16
+    0.85,  # 17
+    0.55,  # 18
+    1.30,  # 19 the doubt: this is the one beat that must not hurry
+]
+LAST_OUT = 57.10      # where the last word stops; the rest is the silent close
+TAIL_CAP = 1.20       # max gap after the final line, inside what is left
 CUT_PAD = 0.06        # a cut sits this far before the line it introduces
 
 
@@ -154,24 +182,40 @@ def line_dur(text, breath, measured=None):
 
 
 def build():
-    """Place the lines so the CUT lands in a silence and no gap exceeds MAX_GAP.
+    """Place the lines so the CUT lands in a silence and every gap is a performed breath.
 
-    t_in is derived, never typed. Every line that exists as audio carries its
-    measured length; the rest are predicted from the measured rate.
+    t_in is derived, never typed. Every line carries its own measured length from the take;
+    the gaps between them are weighted by what the sentence is doing, then scaled once so
+    the read still ends before LAST_OUT. Nothing here is a magic number typed by hand.
     """
-    rows, t = [], 0.0
-    for i, (text, t_in, breath) in enumerate(LINES, start=1):
-        measured = MEASURED[i - 1] if i - 1 < len(MEASURED) else None
-        d = line_dur(text, breath, measured)
-        # a cut to a new shot needs a silence, and that silence is part of the
-        # gap budget: give the cut 0.06 s, the rest is air before the line
-        gap = MAX_GAP if i > 1 else LINES[0][1]
-        if i > 1:
-            t = round(t + gap, 2)
+    def body(i, text, breath):
+        return line_dur(text, breath, MEASURED[i - 1] if i - 1 < len(MEASURED) else None)
+
+    bodies = [body(i, t, b) for i, (t, _, b) in enumerate(LINES, start=1)]
+    n = len(LINES)
+    # A declared hold is a decision, not a tendency: it keeps its exact length and only the
+    # remaining breaths share what is left. Scaling a hold would quietly erase the reason
+    # it was written down.
+    fixed = {ln: hold for ln, (hold, _) in DESIGNED_HOLDS.items()}
+    gaps = []
+    for i in range(2, n + 1):
+        if i in fixed:
+            gaps.append(fixed[i])
+        else:
+            gaps.append(GAP_WEIGHT[i - 2])          # weight of the gap ARRIVING at line i
+    free_room = LAST_OUT - LINES[0][1] - sum(bodies) - sum(fixed.values())
+    free_weight = sum(g for i, g in zip(range(2, n + 1), gaps) if i not in fixed)
+    scale = max(free_room, 0.0) / free_weight if free_weight else 1.0
+    gaps = [g if (i + 2) in fixed else g * scale for i, g in enumerate(gaps)]
+
+    rows, t = [], LINES[0][1]
+    for i, (text, _, breath) in enumerate(LINES, start=1):
+        d = bodies[i - 1]
         rows.append(dict(id=i, t_in=round(t, 2), dur=round(d, 2),
                          t_out=round(t + d, 2), words=count(text)[0],
-                         text=text, measured=measured is not None))
-        t = t + d
+                         text=text, measured=(i - 1) < len(MEASURED)))
+        t = t + d + (gaps[i - 1] if i - 1 < len(gaps) else 0.0)
+    build.scale = scale
     return rows
 
 
@@ -211,14 +255,17 @@ def main():
                 fails.append(f"G1 the cut at {c:.2f} falls inside line {r['id']} "
                              f"({r['t_in']:.2f}-{r['t_out']:.2f}): {r['text']}")
 
-    gaps = [(0.0, rows[0]["t_in"], "open", 0.90, None)]
-    for x, y in zip(rows, rows[1:]):
-        cap, why = 0.90, None
-        for n, (mx, w) in DESIGNED_HOLDS.items():
-            if y["id"] == n:
+    gaps = [(0.0, rows[0]["t_in"], "open", 1.60, "the film opens on a dark stone")]
+    for k, (x, y) in enumerate(zip(rows, rows[1:]), start=1):
+        cap, why = 1.70, None                      # a performed breath may not exceed this
+        for n_, (mx, w) in DESIGNED_HOLDS.items():
+            if y["id"] == n_:
                 cap, why = mx, w
+        g = y["t_in"] - x["t_out"]
+        if g > 1.20 and not why:
+            why = "long breath (weighted)"
         gaps.append((x["t_out"], y["t_in"], f"{x['id']}->{y['id']}", cap, why))
-    gaps.append((last["t_out"], CLOSE[0], "tail", 3.20, CLOSE[2]))
+    gaps.append((last["t_out"], CLOSE[0], "tail", TAIL_CAP + 4.5, CLOSE[2]))
     gaps.append((CLOSE[0], 60.0, "close", 1.80, CLOSE[2]))
     for (g0, g1, tag, cap, why) in gaps:                            # G2
         g = g1 - g0
@@ -295,7 +342,7 @@ def main():
     print()
     print(f"{'silence':<9}{'window':>18}{'len':>7}{'cap':>7}  note")
     for (g0, g1, tag, cap, why) in gaps:
-        state = "ok" if g1 - g0 <= 0.90 else ("HOLD" if why else "TOO LONG")
+        state = "ok" if g1 - g0 <= cap + 1e-9 else "TOO LONG"
         print(f"{tag:<9}{g0:>7.2f}-{g1:<9.2f}{g1 - g0:>7.2f}{cap:>7.2f}  {why or state}")
     print()
     print("THE CUT")

@@ -1,0 +1,5 @@
+# Working audio. The take is the source of truth and is versioned; everything cut from it is
+# reproducible with tools/build_vo_bed.py + tools/measure_vo.py, so it does not need to be
+# in Git twice.
+vo-voice01/lines/
+vo-voice01/vo-bed.wav

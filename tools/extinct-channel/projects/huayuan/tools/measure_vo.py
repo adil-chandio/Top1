@@ -49,7 +49,7 @@ def speech_span(s):
 def main():
     d = sys.argv[1]
     out = {}
-    for f in sorted(glob.glob(os.path.join(d, "l*.mp3"))):
+    for f in sorted(glob.glob(os.path.join(d, "*.wav")) + glob.glob(os.path.join(d, "l*.mp3"))):
         name = os.path.splitext(os.path.basename(f))[0]
         s = frames(f)
         a, b = speech_span(s)
