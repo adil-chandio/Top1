@@ -1,0 +1,23 @@
+{
+  "project_slug": "fossil-burrow-shelter",
+  "title": "This Rock Holds Two Animals",
+  "format": "9:16",
+  "target_duration_seconds": 45,
+  "language": "en",
+  "twist_beat_marker": "Wait. They were not enemies.",
+  "beats": [
+    {"id": "hook", "label": "Hook", "vo": "This rock holds two animals.", "visual_intent": "Macro fossil rock split/reveal, dramatic light"},
+    {"id": "setup_1", "label": "Setup", "vo": "Two hundred fifty million years ago, one curled up asleep.", "visual_intent": "Time plunge, ancient burrow environment"},
+    {"id": "setup_2", "label": "Setup", "vo": "It was a mammal relative, beside an amphibian.", "visual_intent": "Two creatures revealed in burrow, scale and identity"},
+    {"id": "twist", "label": "Twist Beat", "vo": "Wait. They were not enemies.", "visual_intent": "Hard interrupt, camera punch, visual reversal"},
+    {"id": "evidence_1", "label": "Evidence", "vo": "The amphibian's ribs were healing, with no bite marks.", "visual_intent": "X-ray/cutaway rib healing, forensic markers"},
+    {"id": "evidence_2", "label": "Evidence", "vo": "So this was not a hunt.", "visual_intent": "Rule out predation visual"},
+    {"id": "reveal_1", "label": "Reveal", "vo": "The likely story: it crawled in for shelter.", "visual_intent": "Amphibian entering burrow for shelter"},
+    {"id": "reveal_2", "label": "Reveal", "vo": "The other was probably in aestivation, a deep dormancy.", "visual_intent": "Mammal relative curled in aestivation"},
+    {"id": "payoff", "label": "Payoff", "vo": "Then a flood filled the burrow and sealed them.", "visual_intent": "Flood water rushing in, sediment sealing"},
+    {"id": "end_1", "label": "End", "vo": "That is the clue the rock kept.", "visual_intent": "Return to fossil rock, clue preserved"},
+    {"id": "end_loop", "label": "Loop", "vo": "This rock holds two animals.", "visual_intent": "Loop back to opening frame"}
+  ],
+  "script_source": "user-provided",
+  "notes": "User requested next-level viral 9:16 short; defaults applied."
+}

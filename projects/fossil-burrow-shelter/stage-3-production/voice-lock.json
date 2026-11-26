@@ -1,0 +1,11 @@
+{
+  "voice_id": "voice-01",
+  "gender": "masculine",
+  "language": "en",
+  "use_case": "narration",
+  "selection": "user-selected (battle 01)",
+  "script_source": "projects/fossil-burrow-shelter/stage-2-script/script-for-3d-agent.md",
+  "vo_raw_path": "/tmp/audio/vo_raw.wav",
+  "vo_tightened_duration_s": 29.064,
+  "time_stretch_applied": false
+}
