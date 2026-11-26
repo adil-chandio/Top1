@@ -273,8 +273,8 @@ export async function director({ mode='play', startFrame=0, endFrame=TOTAL_FRAME
   renderer.domElement.style.width='100vw'; renderer.domElement.style.height='100vh'; renderer.domElement.style.objectFit='contain';
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color('#050709');
-  scene.fog = new THREE.FogExp2('#0a0d10', 0.018);
+  scene.background = new THREE.Color('#030506');
+  scene.fog = new THREE.FogExp2('#070b0f', 0.024);
 
   const pmrem = new THREE.PMREMGenerator(renderer);
   scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -282,12 +282,12 @@ export async function director({ mode='play', startFrame=0, endFrame=TOTAL_FRAME
   const camera = new THREE.PerspectiveCamera(34, ASPECT, 0.08, 120);
   camera.position.set(0,1.8,18);
 
-  const amb = new THREE.AmbientLight(0x8fb6c8, 0.35); scene.add(amb);
-  const key = new THREE.DirectionalLight(0xffc58a, 4.8);
+  const amb = new THREE.AmbientLight(0x7fb0c8, 0.22); scene.add(amb);
+  const key = new THREE.DirectionalLight(0xffb36a, 5.8);
   key.position.set(7,8,6); scene.add(key);
-  const fill = new THREE.DirectionalLight(0x6bb7d6, 1.4);
+  const fill = new THREE.DirectionalLight(0x5aaed4, 0.9);
   fill.position.set(-6,3,5); scene.add(fill);
-  const rim = new THREE.DirectionalLight(0x7fd4ff, 2.8);
+  const rim = new THREE.DirectionalLight(0x7fdcff, 3.8);
   rim.position.set(-4,5,-6); scene.add(rim);
   const top = new THREE.PointLight(0xffe0b0, 35, 30, 2);
   top.position.set(0,4.5,2); scene.add(top);
@@ -367,11 +367,19 @@ export async function director({ mode='play', startFrame=0, endFrame=TOTAL_FRAME
       const y=(1525*S) - (active.length-1-i)*(78*S);
       const a=Math.min(1, (t-c[0])*5, (c[1]-t)*5);
       hudCtx.globalAlpha=Math.max(0,a);
-      hudCtx.font=`800 ${Math.round(54*S)}px Arial Black, Arial, sans-serif`;
-      hudCtx.lineJoin='round'; hudCtx.strokeStyle='rgba(0,0,0,0.78)'; hudCtx.lineWidth=12*S;
-      hudCtx.strokeText(c[2],W/2,y);
-      hudCtx.fillStyle = (c[2].includes('WAIT') || c[2].includes('NOT')) ? '#b8fff6' : '#fff4df';
-      hudCtx.fillText(c[2],W/2,y);
+      const pop = 1 + 0.08*Math.max(0, 1-(t-c[0])*4);
+      hudCtx.save();
+      hudCtx.translate(W/2, y);
+      hudCtx.scale(pop, pop);
+      hudCtx.font=`900 ${Math.round(58*S)}px Arial Black, Arial, sans-serif`;
+      hudCtx.lineJoin='round'; hudCtx.strokeStyle='rgba(0,0,0,0.85)'; hudCtx.lineWidth=14*S;
+      hudCtx.strokeText(c[2],0,0);
+      const grad = hudCtx.createLinearGradient(-220*S,0,220*S,0);
+      if(c[2].includes('WAIT') || c[2].includes('NOT')){ grad.addColorStop(0,'#ff6b6b'); grad.addColorStop(1,'#ffd1d1'); }
+      else { grad.addColorStop(0,'#fff3d4'); grad.addColorStop(0.5,'#ffffff'); grad.addColorStop(1,'#9fe7ff'); }
+      hudCtx.fillStyle = grad;
+      hudCtx.fillText(c[2],0,0);
+      hudCtx.restore();
     });
     hudCtx.globalAlpha=1;
   }
@@ -498,12 +506,18 @@ export async function director({ mode='play', startFrame=0, endFrame=TOTAL_FRAME
     setCamera(t);
     _mVec.set((prevP.x-camera.position.x)*0.002, (prevP.y-camera.position.y)*0.002);
 
+    const impact = Math.exp(-Math.pow((t-9.6)*5.5,2)) + Math.exp(-Math.pow((t-24.2)*4.0,2))*0.6;
+    const shakeAmt = impact * 0.012;
+    camera.position.x += (Math.sin(t*60)*shakeAmt);
+    camera.position.y += (Math.cos(t*55)*shakeAmt);
+    camera.updateProjectionMatrix();
+
     const params = {
       focusDist: camera.position.distanceTo(new THREE.Vector3(0,-0.8,0)),
-      dofRange: 22.0,
-      maxBlur: 2.2,
-      bloomAmt: 0.48,
-      exposure: 1.12,
+      dofRange: 18.0,
+      maxBlur: 2.8,
+      bloomAmt: 0.62 + impact*0.25,
+      exposure: 1.08 + impact*0.08,
       time: t,
       motionVec: _mVec,
     };
