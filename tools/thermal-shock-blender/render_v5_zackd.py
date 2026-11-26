@@ -70,17 +70,17 @@ try:
     scene.view_settings.look = "AgX - Medium High Contrast"
 except Exception:
     pass
-scene.view_settings.exposure = 0.35
+scene.view_settings.exposure = -1.10
 
 world = bpy.data.worlds.new("ZackDWorld")
 scene.world = world
 world.use_nodes = True
 bg_node = world.node_tree.nodes.get("Background")
-bg_node.inputs[0].default_value = (0.86, 0.88, 0.90, 1.0)
-bg_node.inputs[1].default_value = 0.85
+bg_node.inputs[0].default_value = (0.28, 0.30, 0.34, 1.0)
+bg_node.inputs[1].default_value = 0.25
 
 # ==============================================================================
-# 2. DUAL LIGHTING RIG (Sunlit Modern Kitchen vs Dark Scientific Cutaway)
+# 2. DUAL LIGHTING RIG (Balanced Cinema Exposure — ZERO White Blowout!)
 # ==============================================================================
 def add_area_light(name, loc, rot_deg, energy, sx, sy, color):
     ld = bpy.data.lights.new(name=name, type="AREA")
@@ -95,9 +95,9 @@ def add_area_light(name, loc, rot_deg, energy, sx, sy, color):
     scene.collection.objects.link(lo)
     return lo
 
-l_sun   = add_area_light("KitchenSunWindow", (-0.55, -0.25, 0.45), (52, 0, -58), 42.0, 0.65, 0.55, (1.0, 0.95, 0.88))
-l_fill  = add_area_light("KitchenFill",      ( 0.50, -0.35, 0.38), (58, 0,  52), 20.0, 0.60, 0.45, (0.88, 0.94, 1.0))
-l_rim   = add_area_light("StudioRimBack",    ( 0.00,  0.42, 0.34), (-52, 0,  0), 26.0, 0.55, 0.30, (1.0, 0.98, 0.96))
+l_sun   = add_area_light("KitchenSunWindow", (-0.55, -0.25, 0.45), (52, 0, -58), 9.0, 0.55, 0.45, (1.0, 0.92, 0.82))
+l_fill  = add_area_light("KitchenFill",      ( 0.50, -0.35, 0.38), (58, 0,  52), 4.0, 0.50, 0.40, (0.78, 0.88, 1.0))
+l_rim   = add_area_light("StudioRimBack",    ( 0.00,  0.42, 0.34), (-52, 0,  0), 6.5, 0.45, 0.26, (1.0, 0.96, 0.90))
 
 # ==============================================================================
 # 3. MATERIALS (Light-Path Glass, White Calacatta Marble, Warm Oak, FLIR Glow)
@@ -212,14 +212,14 @@ mat_wall       = make_pbr("KitchenWall", (0.92, 0.91, 0.88, 1.0), roughness=0.55
 mat_steel      = make_pbr("BrushedSteel", (0.85, 0.88, 0.92, 1.0), roughness=0.14, metallic=0.96)
 mat_black      = make_pbr("MatteBlack", (0.05, 0.05, 0.06, 1.0), roughness=0.40)
 mat_steam      = make_steam_mat()
-mat_flir_cold  = make_pbr("FLIR_Cold", (0.04, 0.78, 1.0, 1.0), roughness=0.10, emission=3.8)
-mat_flir_hot   = make_pbr("FLIR_Hot",  (1.0, 0.26, 0.02, 1.0), roughness=0.10, emission=5.0)
-mat_arrow_cold = make_pbr("ArrowCold", (0.12, 0.88, 1.0, 1.0), roughness=0.08, emission=5.5)
-mat_arrow_hot  = make_pbr("ArrowHot",  (1.0, 0.44, 0.04, 1.0), roughness=0.08, emission=6.5)
-mat_bond_cold  = make_pbr("BondCold",  (0.30, 0.84, 1.0, 1.0), roughness=0.15, metallic=0.3, emission=1.5)
-mat_bond_hot   = make_pbr("BondHot",   (1.0, 0.46, 0.10, 1.0), roughness=0.15, metallic=0.3, emission=1.8)
-mat_bond_snap  = make_pbr("BondSnap",  (1.0, 0.94, 0.35, 1.0), roughness=0.08, emission=11.0)
-mat_crack      = make_pbr("CrackGlow", (0.85, 0.97, 1.0, 1.0), roughness=0.04, emission=14.0)
+mat_flir_cold  = make_real_glass_mat("FLIR_Cold", ior=1.45, roughness=0.04, tint=(0.05, 0.72, 1.0, 1.0))
+mat_flir_hot   = make_real_glass_mat("FLIR_Hot",  ior=1.45, roughness=0.04, tint=(1.0, 0.28, 0.03, 1.0))
+mat_arrow_cold = make_pbr("ArrowCold", (0.04, 0.68, 1.0, 1.0), roughness=0.12, emission=1.6)
+mat_arrow_hot  = make_pbr("ArrowHot",  (1.0, 0.32, 0.02, 1.0), roughness=0.12, emission=1.8)
+mat_bond_cold  = make_pbr("BondCold",  (0.08, 0.62, 0.95, 1.0), roughness=0.18, metallic=0.4, emission=0.4)
+mat_bond_hot   = make_pbr("BondHot",   (0.95, 0.30, 0.05, 1.0), roughness=0.18, metallic=0.4, emission=0.5)
+mat_bond_snap  = make_pbr("BondSnap",  (1.0, 0.78, 0.12, 1.0), roughness=0.12, emission=2.2)
+mat_crack      = make_pbr("CrackGlow", (0.15, 0.75, 1.0, 1.0), roughness=0.08, emission=2.5)
 
 # ==============================================================================
 # 4. GEOMETRY HELPERS
@@ -447,6 +447,8 @@ def place_rod(obj, p1, p2):
     obj.scale = (1.0, 1.0, dist)
     obj.rotation_euler = v.to_track_quat("Z", "Y").to_euler()
 
+mat_atom_cold  = make_pbr("AtomCold",  (0.03, 0.65, 1.0, 1.0), roughness=0.14, metallic=0.2, emission=0.8)
+mat_atom_hot   = make_pbr("AtomHot",   (1.0, 0.22, 0.02, 1.0), roughness=0.14, metallic=0.2, emission=1.1)
 cold_atoms, hot_atoms = [], []
 for iz in range(4):
     for iy in range(3):
@@ -455,12 +457,12 @@ for iz in range(4):
             y = (iy - 1) * 0.025
             z = (iz - 1.5) * 0.025
             ca = bpy.data.objects.new(f"Cold_{ix}_{iy}_{iz}", atom_mesh.copy())
-            ca.data.materials.append(mat_flir_cold)
+            ca.data.materials.append(mat_atom_cold)
             mol_col.objects.link(ca)
             cold_atoms.append((ca, x, y, z, (ix + iy * 3 + iz * 9) * 0.71, ix, iy, iz))
 
             ha = bpy.data.objects.new(f"Hot_{ix}_{iy}_{iz}", atom_mesh.copy())
-            ha.data.materials.append(mat_flir_hot)
+            ha.data.materials.append(mat_atom_hot)
             mol_col.objects.link(ha)
             hot_atoms.append((ha, -x, y, z, (ix + iy * 3 + iz * 9) * 0.93, ix, iy, iz))
 
@@ -613,17 +615,17 @@ for f in frame_list:
     shards_col.hide_render = not is_shatter
 
     if dark_cutaway:
-        bg_node.inputs[0].default_value = (0.010, 0.016, 0.032, 1.0)
-        bg_node.inputs[1].default_value = 0.28
-        l_sun.data.energy = 12.0
-        l_fill.data.energy = 8.0
-        l_rim.data.energy = 22.0
+        bg_node.inputs[0].default_value = (0.008, 0.014, 0.028, 1.0)
+        bg_node.inputs[1].default_value = 0.20
+        l_sun.data.energy = 8.0
+        l_fill.data.energy = 5.0
+        l_rim.data.energy = 12.0
     else:
-        bg_node.inputs[0].default_value = (0.86, 0.88, 0.90, 1.0)
-        bg_node.inputs[1].default_value = 0.85
-        l_sun.data.energy = 42.0
-        l_fill.data.energy = 20.0
-        l_rim.data.energy = 26.0
+        bg_node.inputs[0].default_value = (0.28, 0.30, 0.34, 1.0)
+        bg_node.inputs[1].default_value = 0.25
+        l_sun.data.energy = 9.0
+        l_fill.data.energy = 4.0
+        l_rim.data.energy = 6.5
 
     if is_mol:
         m_u = max(0.0, min(1.0, (f - 270) / 55.0))
@@ -668,13 +670,13 @@ for f in frame_list:
             human_root.hide_render = is_pour or is_crack
             if is_aftermath:
                 pose_human("outro")
-                human_root.location = (0.04, 0.40, -0.40)
+                human_root.location = (0.04, 0.42, -0.28)
             elif is_shatter:
                 pose_human("shock")
-                human_root.location = (0.06, 0.46, -0.40)
+                human_root.location = (0.06, 0.46, -0.28)
             else:
                 pose_human("curious")
-                human_root.location = (0.04, 0.38, -0.40)
+                human_root.location = (0.04, 0.40, -0.28)
 
         if is_pour:
             pitcher_root.location = (-0.095, 0.0, 0.175)
@@ -698,7 +700,7 @@ for f in frame_list:
             bo.location = (math.cos(ang) * rad, math.sin(ang) * rad, 0.016 + yf * 0.068)
 
         for so, ang, ph in steam_wisps:
-            so.hide_render = is_shatter or is_crack
+            so.hide_render = True  # Remove ugly low-poly steam spheres!
             u_s = (ph + t * 0.28) % 1.0
             rad = 0.006 + u_s * 0.026
             so.location = (math.cos(ang + u_s * 2.0) * rad, math.sin(ang + u_s * 2.0) * rad, 0.092 + u_s * 0.115)
