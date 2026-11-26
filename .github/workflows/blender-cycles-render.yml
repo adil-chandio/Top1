@@ -25,7 +25,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq libx11-6 libxi6 libxrender1 libxxf86vm1 libxfixes3 libgl1 libglu1-mesa libsm6 libxkbcommon0
-          curl -fSL --retry 5 --retry-delay 5 https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz -o /tmp/blender.tar.xz
+          curl -fSL --retry 8 --retry-delay 5 --retry-all-errors https://download.blender.org/release/Blender4.2/blender-4.2.3-linux-x64.tar.xz -o /tmp/blender.tar.xz
           tar -xf /tmp/blender.tar.xz -C /tmp
           mv /tmp/blender-4.2.3-linux-x64 /tmp/blender
 
@@ -36,7 +36,7 @@ jobs:
           if [ $END -gt 690 ]; then END=690; fi
           echo "Rendering Cycles frames [$START..$END)"
           /tmp/blender/blender --background --python tools/thermal-shock-blender/render_cycles.py -- \
-            --start $START --end $END --out /tmp/chunk_frames --samples 24 --res-x 720 --res-y 1280
+            --start $START --end $END --out /tmp/chunk_frames --samples 20 --res-x 720 --res-y 1280
 
       - name: Upload Chunk Artifact
         uses: actions/upload-artifact@v4
