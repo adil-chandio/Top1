@@ -1,0 +1,7 @@
+# Huayuan next — unfinished 60-second review
+
+- Review export: `Huayuan-next-60s-WIP-review.mp4`, SHA-256 `429cf25300640ab0c38aa1004e105887221b352445635c97d9a66823660349bd`, 960×540 H.264 30 fps, 1,800 frames, 60 s. Stored outside Git in the export/Drive area.
+- The AAC from the accepted story video was copied without time stretching. Its decoded PCM SHA-256 is `6bb74d9c8645b6e4ea1438ade1a7738d7d69865b013b1b5c2c581f2e30ab9348`, matching the recovered mixed audio. This verifies preservation of the mixed track, not identity of a separate dry stem. The track contains prior music and effects.
+- Forensic SDK: 1,800 frames decoded, minimum frame luma 19.54, zero detected A-B-A spikes, -15.2 LUFS, -1.5 dBTP. Loop and vacuum tests were not requested. These automated checks do not approve the art or science.
+- The fossil is a comparative Burgess Shale grasping appendage, not a Huayuan specimen; use and provenance are detailed in CREDITS.md. The picture does not demonstrate the narrated eyes, gills, or nerves. After the initial render, an overlay was added at 32–39.67 seconds to avoid implying otherwise; the picture was re-encoded, while audio was stream-copied. Source scene text was also corrected, though its typography differs from the overlay in this export.
+- Creative review has not passed. Animals and terrain remain synthetic, crisis/burial lack clarity, and shots repeat. No continuous watch/listen, scientific expert review, or final approval has been performed. See CRITIQUE.md.
