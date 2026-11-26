@@ -1,0 +1,81 @@
+name: V4 8-Shot Full Contact Sheet (Monarch-Cockroach IMAX Standard)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "arena/**"
+    paths:
+      - "tools/thermal-shock-blender/render_v4_imax.py"
+      - ".github/workflows/v4-contact-sheet.yml"
+
+jobs:
+  contact-sheet:
+    name: Render 8 Storyboard Shots + Labeled Contact Sheet
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore Blender 4.2.3 LTS from Cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/blender-cache
+          key: blender-4.2.3-linux-x64-v1
+
+      - name: Extract Blender 4.2.3 LTS
+        run: |
+          mkdir -p /tmp/blender
+          tar -xf /tmp/blender-cache/blender-4.2.3-linux-x64.tar.xz -C /tmp/blender --strip-components=1
+
+      - name: Render All 8 Hero Shots (24 samples + OIDN)
+        run: |
+          mkdir -p /tmp/v4_cs
+          /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_v4_imax.py -- \
+            --frames 25,145,215,286,345,425,475,615 --out /tmp/v4_cs --samples 24 --res-x 720 --res-y 1280
+          ls -lh /tmp/v4_cs
+
+      - name: Build Labeled 2x4 Cinema Contact Sheet
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-dejavu-core
+          python3 -m pip install -q pillow
+          python3 - << 'EOF'
+          from PIL import Image, ImageDraw, ImageFont
+
+          shots = [
+              (25,  "S1_HOOK (0.8s)",         "KITCHEN · GOD-RAYS · BOILING GLASS"),
+              (145, "S2_POUR_ACT (4.8s)",     "GOOSENECK KETTLE · COLD POUR"),
+              (215, "S3_THERMAL_IR (7.2s)",   "FLIR CUTAWAY · 12C vs 98C ARROWS"),
+              (286, "S4_VACUUM_SHEAR (9.5s)", "SiO2 LATTICE · SNAPPING 3D BONDS"),
+              (345, "S5_INNER_HOT (11.5s)",   "MACRO THERMAL STRESS CORE"),
+              (425, "S6_CRACK_WEB (14.2s)",   "500 FPS · BRANCHING FRACTURE WEB"),
+              (475, "S7_SHATTER_BT (15.8s)",  "BULLET-TIME · 80 SHARDS + DROPS"),
+              (615, "S8_OUTRO_WARN (20.5s)",  "AFTERMATH · SHARDS + PUDDLE"),
+          ]
+          pw, ph, hdr = 450, 800, 74
+          sheet = Image.new("RGB", (pw * 4, (ph + hdr) * 2), (10, 14, 22))
+          draw = ImageDraw.Draw(sheet)
+          f_big = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 24)
+          f_sub = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 17)
+
+          for idx, (fr, title, sub) in enumerate(shots):
+              col = idx % 4
+              row = idx // 4
+              x0 = col * pw
+              y0 = row * (ph + hdr)
+              im = Image.open(f"/tmp/v4_cs/frame_{fr:04d}.png").resize((pw, ph), Image.Resampling.LANCZOS)
+              sheet.paste(im, (x0, y0 + hdr))
+              draw.rectangle([x0, y0, x0 + pw - 2, y0 + hdr - 2], fill=(16, 22, 34))
+              draw.text((x0 + 14, y0 + 10), title, font=f_big, fill=(255, 220, 80))
+              draw.text((x0 + 14, y0 + 42), sub,   font=f_sub, fill=(180, 225, 255))
+
+          sheet.save("/tmp/v4_cs/V4-8Shot-Contact-Sheet.png")
+          print("Saved /tmp/v4_cs/V4-8Shot-Contact-Sheet.png")
+          EOF
+
+      - name: Upload V4 8-Shot Contact Sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: V4-8Shot-Contact-Sheet
+          path: /tmp/v4_cs/*.png
+          retention-days: 7
