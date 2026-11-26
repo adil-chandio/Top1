@@ -1,0 +1,55 @@
+name: V3 5-Keyframe Visual Pre-Flight (2-Minute Proof Sheet)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "arena/**"
+    paths:
+      - ".github/workflows/v3-preflight.yml"
+
+jobs:
+  preflight:
+    name: Render 5 Hero Keyframes + Proof Sheet
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore Blender 4.2.3 LTS from Cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/blender-cache
+          key: blender-4.2.3-linux-x64-v1
+
+      - name: Extract Blender 4.2.3 LTS
+        run: |
+          mkdir -p /tmp/blender
+          tar -xf /tmp/blender-cache/blender-4.2.3-linux-x64.tar.xz -C /tmp/blender --strip-components=1
+
+      - name: Render 5 Hero V3 Keyframes (24 samples + OIDN)
+        run: |
+          mkdir -p /tmp/v3_pf
+          /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_cycles.py -- \
+            --frames 25,155,310,425,465 --out /tmp/v3_pf --samples 24 --res-x 720 --res-y 1280
+          ls -lh /tmp/v3_pf
+
+      - name: Build 5-Panel V3 Proof Sheet
+        run: |
+          python3 -m pip install -q pillow
+          python3 - << 'EOF'
+          from PIL import Image
+          frames = [25, 155, 310, 425, 465]
+          imgs = [Image.open(f"/tmp/v3_pf/frame_{f:04d}.png").resize((360, 640)) for f in frames]
+          sheet = Image.new("RGB", (360 * len(imgs), 640))
+          for i, im in enumerate(imgs):
+              sheet.paste(im, (i * 360, 0))
+          sheet.save("/tmp/v3_pf/V3-Proof-Sheet.png")
+          EOF
+
+      - name: Upload V3 Proof Sheet & Keyframes
+        uses: actions/upload-artifact@v4
+        with:
+          name: V3-Preflight-Proof-Sheet
+          path: /tmp/v3_pf/*.png
+          retention-days: 7

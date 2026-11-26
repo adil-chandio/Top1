@@ -71,8 +71,8 @@ jobs:
         run: |
           CHUNK=${{ matrix.chunk }}
           START=$(( CHUNK * 35 ))
-          END=$(( START + 34 ))
-          if [ "$END" -gt 689 ]; then END=689; fi
+          END=$(( START + 35 ))
+          if [ "$END" -gt 690 ]; then END=690; fi
           echo "=== Rendering frames ${START}..${END} (Cycles 20 samples + OIDN) ==="
           mkdir -p /tmp/frames
           /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_cycles.py -- \
