@@ -75,7 +75,7 @@ jobs:
           if [ "$END" -gt 690 ]; then END=690; fi
           echo "=== Rendering frames ${START}..${END} (Cycles 20 samples + OIDN) ==="
           mkdir -p /tmp/frames
-          /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_cycles.py -- \
+          /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_v5_zackd.py -- \
             --start "${START}" --end "${END}" --out /tmp/frames --samples 20 --res-x 720 --res-y 1280
           ls -la /tmp/frames | head -n 20
           echo "Total frames rendered: $(ls /tmp/frames/*.png | wc -l)"
