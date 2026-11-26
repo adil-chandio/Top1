@@ -1,0 +1,106 @@
+name: V5 Zack D. 3D Contact Sheet (8 Parallel Runners · ~90s!)
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "arena/**"
+    paths:
+      - "tools/thermal-shock-blender/render_v5_zackd.py"
+      - ".github/workflows/v5-zackd-contact-sheet.yml"
+
+jobs:
+  render-shot:
+    name: V5 Shot ${{ matrix.frame }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        frame: [25, 145, 215, 286, 345, 425, 475, 615]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Restore Blender 4.2.3 LTS from Cache
+        uses: actions/cache@v4
+        with:
+          path: /tmp/blender-cache
+          key: blender-4.2.3-linux-x64-v1
+
+      - name: Extract Blender 4.2.3 LTS
+        run: |
+          mkdir -p /tmp/blender
+          tar -xf /tmp/blender-cache/blender-4.2.3-linux-x64.tar.xz -C /tmp/blender --strip-components=1
+
+      - name: Render Razor-Sharp V5 Keyframe ${{ matrix.frame }}
+        run: |
+          mkdir -p /tmp/v5_shot
+          /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_v5_zackd.py -- \
+            --frames ${{ matrix.frame }} --out /tmp/v5_shot --samples 28 --res-x 720 --res-y 1280
+
+      - name: Upload Shot
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-shot-${{ matrix.frame }}
+          path: /tmp/v5_shot/*.png
+          retention-days: 3
+
+  stitch-sheet:
+    name: Stitch V5 Zack D. 3D Contact Sheet
+    needs: render-shot
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Download All 8 Shots
+        uses: actions/download-artifact@v4
+        with:
+          pattern: v5-shot-*
+          path: /tmp/v5_all
+          merge-multiple: true
+
+      - name: Build Labeled 2x4 Contact Sheet
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-dejavu-core
+          python3 -m pip install -q pillow
+          python3 - << 'EOF'
+          from PIL import Image, ImageDraw, ImageFont
+
+          shots = [
+              (25,  "S1 · HOOK (0.8s)",          "SUNLIT KITCHEN · POSED HUMAN · STEAM"),
+              (145, "S2 · COLD POUR (4.8s)",     "STEEL PITCHER · ICY STREAM"),
+              (215, "S3 · THERMAL X-RAY (7.2s)", "FLIR CUTAWAY · 12C vs 98C ARROWS"),
+              (286, "S4 · ATOMIC SHEAR (9.5s)",  "SiO2 LATTICE · SNAPPING 3D BONDS"),
+              (345, "S5 · INNER CORE (11.5s)",   "MACRO THERMAL STRESS WALL"),
+              (425, "S6 · CRACK WEB (14.2s)",    "RAZOR-SHARP SPIDERWEB FRACTURE"),
+              (475, "S7 · SHATTER BT (15.8s)",   "80 SHARDS + 50 DROPS + RECOIL"),
+              (615, "S8 · OUTRO (20.5s)",        "MARBLE SHARDS + PUDDLE + REACTION"),
+          ]
+          pw, ph, hdr, pad = 450, 800, 76, 12
+          W = 4 * pw + 5 * pad
+          H = 2 * (ph + hdr) + 3 * pad + 72
+          sheet = Image.new("RGB", (W, H), (10, 14, 22))
+          draw = ImageDraw.Draw(sheet)
+          f_title = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 32)
+          f_big   = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", 22)
+          f_sub   = ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", 16)
+
+          draw.text((pad + 6, 18), "THERMAL SHOCK V5 — BLENDER 4.2 CYCLES 3D CONTACT SHEET (ZERO BLUR)", font=f_title, fill=(255, 224, 66))
+          for idx, (fr, title, sub) in enumerate(shots):
+              col, row = idx % 4, idx // 4
+              x0 = pad + col * (pw + pad)
+              y0 = 72 + pad + row * (ph + hdr + pad)
+              im = Image.open(f"/tmp/v5_all/frame_{fr:04d}.png").resize((pw, ph), Image.Resampling.LANCZOS)
+              draw.rectangle([x0, y0, x0 + pw, y0 + hdr], fill=(18, 26, 40))
+              draw.text((x0 + 12, y0 + 10), title, font=f_big, fill=(255, 224, 66))
+              draw.text((x0 + 12, y0 + 42), sub,   font=f_sub, fill=(188, 226, 255))
+              sheet.paste(im, (x0, y0 + hdr))
+
+          sheet.save("/tmp/v5_all/V5-ZackD-3D-Contact-Sheet.png")
+          EOF
+
+      - name: Upload V5 3D Contact Sheet
+        uses: actions/upload-artifact@v4
+        with:
+          name: V5-ZackD-3D-Contact-Sheet
+          path: /tmp/v5_all/*.png
+          retention-days: 7
