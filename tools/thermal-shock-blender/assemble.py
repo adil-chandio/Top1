@@ -43,8 +43,20 @@ def active_caption(f):
             return c["text"]
     return ""
 
+last_src = None
 for f in range(TOTAL_FRAMES):
     src = os.path.join(FRAMES_DIR, f"frame_{f:04d}.png")
+    if not os.path.exists(src):
+        if last_src is not None:
+            src = last_src
+        else:
+            # Find first available frame
+            for k in range(f + 1, TOTAL_FRAMES):
+                cand = os.path.join(FRAMES_DIR, f"frame_{k:04d}.png")
+                if os.path.exists(cand):
+                    src = cand
+                    break
+    last_src = src
     img = Image.open(src).convert("RGB").resize((1080, 1920), Image.Resampling.LANCZOS)
     cap = active_caption(f)
     if cap:
