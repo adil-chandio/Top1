@@ -1,0 +1,32 @@
+{
+  "projectId": "odd-couple-burrow-short",
+  "createdAt": "2026-11-25T00:00:00Z",
+  "premise": "A lithified burrow cast appears to hold two ancient animals; the reveal reframes them from enemies to unlikely shelter-mates, while clearly marking behavioral interpretation as inference.",
+  "claimCheck": {
+    "claimsSupported": [
+      "The script explicitly frames behavioral interpretation as likely/inference/most plausible interpretation.",
+      "The visual treatment is planned as 3D illustrative reconstruction/X-ray animation, not real footage.",
+      "The twist beat is framed around absence of bite marks as a clue, not a definitive hunt claim."
+    ],
+    "claimsNotSupported": [
+      "No primary-source citations are attached in this package yet; taxa identity, injury diagnosis, and burial mechanism must be verified against Stage 1/primary literature before publish.",
+      "The exact species pairing, aestivation state, and flood-cause sequence are not presented as confirmed observed fact."
+    ]
+  },
+  "narration": "This rock holds two animals. Two hundred fifty million years ago, one curled up asleep. It was a mammal relative, beside an amphibian. Wait. They were not enemies. The amphibian's ribs were healing, with no bite marks. So this was not a hunt. The likely story: it crawled in for shelter. The other was probably in aestivation, a deep dormancy. Then a flood filled the burrow and sealed them. That is the clue the rock kept. This rock holds two animals.",
+  "screenDescription": "9:16 vertical cinematic 3D short. Macro lithified burrow cast, synchrotron-style X-ray sweep, sagittal cutaways of curled mammal-relative and injured amphibian skeletons, Vertigo dolly-zoom twist, checklist overlay, inference-labeled ghosted shelter entry, split-panel aestivation diagram, 0.25x slow-motion sediment flood, and seamless loop back to the opening X-ray sweep. All visuals are illustrative reconstructions.",
+  "plannedSeconds": 33,
+  "beats": [
+    { "id": "hook", "seconds": 0, "caption": "This rock holds two animals." },
+    { "id": "time-curl", "seconds": 3, "caption": "Two hundred fifty million years ago, one curled up asleep." },
+    { "id": "two-animals", "seconds": 6, "caption": "A mammal relative, beside an amphibian." },
+    { "id": "twist", "seconds": 9, "caption": "Wait. They were not enemies." },
+    { "id": "evidence", "seconds": 11, "caption": "Healing ribs. No bite marks." },
+    { "id": "reframe", "seconds": 15, "caption": "So this was not a hunt." },
+    { "id": "inference-shelter", "seconds": 17, "caption": "Likely story: it crawled in for shelter." },
+    { "id": "inference-aestivation", "seconds": 20, "caption": "Probably in aestivation, a deep dormancy." },
+    { "id": "flood-seal", "seconds": 24, "caption": "A flood filled the burrow and sealed them." },
+    { "id": "clue", "seconds": 28, "caption": "That is the clue the rock kept." },
+    { "id": "loop", "seconds": 31, "caption": "This rock holds two animals." }
+  ]
+}

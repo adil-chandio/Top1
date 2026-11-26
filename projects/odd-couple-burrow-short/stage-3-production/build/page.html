@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Odd Couple Burrow — V7 Cinema</title>
+<style>
+  html,body{margin:0;height:100%;background:#000;overflow:hidden}
+  canvas{display:block;width:100vw;height:100vh}
+</style>
+</head>
+<body>
+<script type="module">
+import { director } from './director.js';
+const params = new URLSearchParams(location.search);
+const mode = params.get('mode') || 'render';
+const startFrame = parseInt(params.get('startFrame') || '0', 10);
+const endFrame = parseInt(params.get('endFrame') || '899', 10);
+director({ mode, startFrame, endFrame }).catch(err => {
+  console.error(err);
+  document.body.innerHTML = `<pre style="color:#f66;padding:20px">${err.stack||err}</pre>`;
+});
+</script>
+</body>
+</html>
