@@ -679,18 +679,20 @@ for f in frame_list:
                 human_root.location = (0.04, 0.40, -0.28)
 
         if is_pour:
-            pitcher_root.location = (-0.095, 0.0, 0.175)
-            pitcher_root.rotation_euler = (0.0, math.radians(42), 0.0)
+            u_p = (f - 117) / 78.0
+            pe = math.sin(min(1.0, u_p * 2.2) * math.pi * 0.5)
+            pitcher_root.location = (-0.115 + pe * 0.022, 0.0, 0.185 - pe * 0.012)
+            pitcher_root.rotation_euler = (0.0, math.radians(12 + pe * 36), 0.0)
             bpy.context.view_layer.update()
             lip_world = pitcher_root.matrix_world @ Vector((0.032, 0.0, 0.062))
             pts = pour_curve.data.splines[0].bezier_points
             pts[0].co = lip_world
             pts[0].handle_right = lip_world + Vector((0.025, 0.0, -0.015))
-            pts[1].co = Vector((0.005, 0.0, 0.072))
+            pts[1].co = Vector((0.005 + math.sin(t * 24) * 0.002, 0.0, 0.072))
             pts[1].handle_left = Vector((-0.005, 0.0, 0.125))
 
         if is_crack:
-            cg = max(0.25, min(1.0, (f - 405) / max(1, SHATTER_F - 405)))
+            cg = max(0.05, min(1.0, (f - 405) / max(1, SHATTER_F - 405)))
             for cd in crack_curves:
                 cd.bevel_factor_end = cg
 
@@ -700,12 +702,7 @@ for f in frame_list:
             bo.location = (math.cos(ang) * rad, math.sin(ang) * rad, 0.016 + yf * 0.068)
 
         for so, ang, ph in steam_wisps:
-            so.hide_render = True  # Remove ugly low-poly steam spheres!
-            u_s = (ph + t * 0.28) % 1.0
-            rad = 0.006 + u_s * 0.026
-            so.location = (math.cos(ang + u_s * 2.0) * rad, math.sin(ang + u_s * 2.0) * rad, 0.092 + u_s * 0.115)
-            sc = 0.55 + u_s * 1.45
-            so.scale = (sc, sc, sc * 1.35)
+            so.hide_render = True
 
         if is_shatter:
             raw_dt = (f - SHATTER_F) / FPS
@@ -725,16 +722,40 @@ for f in frame_list:
                 pz = max(0.002, dr["origin"].z + dr["vel"].z * sim_t - 0.5 * 0.42 * sim_t * sim_t)
                 dr["obj"].location = (dr["origin"].x + dr["vel"].x * sim_t, dr["origin"].y + dr["vel"].y * sim_t, pz)
 
+        # DYNAMIC CONTINUOUS 30 FPS CAMERA CHOREOGRAPHY + IMPACT SHAKE + FLASH LIGHTING
+        shatter_flash = math.exp(-max(0, f - SHATTER_F) * 0.25) * 18.0 if is_shatter else 0.0
+        l_sun.data.energy = 9.0 + shatter_flash
+        l_rim.data.energy = 6.5 + shatter_flash * 1.2
+
         if f < 117:
-            aim_camera((-0.02, -0.34, 0.115), (0.01, 0.05, 0.085), 48.0, 0.0)
+            u = f / 117.0
+            ang = -0.26 + u * 0.54
+            dist = 0.36 - u * 0.08
+            aim_camera((math.sin(ang) * dist, -math.cos(ang) * dist, 0.125 - u * 0.030), (0.0, 0.02, 0.072), 46.0 + u * 8.0, -1.8 + u * 3.6)
         elif is_pour:
-            aim_camera((-0.03, -0.30, 0.135), (-0.01, 0, 0.095), 48.0, 0.0)
+            u = (f - 117) / 78.0
+            ang = -0.32 + u * 0.60
+            dist = 0.31 - u * 0.04
+            aim_camera((math.sin(ang) * dist, -math.cos(ang) * dist, 0.145 - u * 0.028), (-0.01, 0, 0.092), 48.0 + u * 6.0, -2.5 * (1 - u))
         elif is_crack:
-            aim_camera((0.0, -0.19, 0.062), (0, 0, 0.058), 60.0, 0.0)
+            u = (f - 405) / max(1, SHATTER_F - 405)
+            vib = math.sin(f * 2.4) * 0.0025 * u
+            aim_camera((-0.025 + u * 0.05 + vib, -0.22 + u * 0.045, 0.064 + vib), (0, 0, 0.058), 54.0 + u * 16.0, 3.5 * u)
         elif not is_aftermath:
-            aim_camera((0.02, -0.32, 0.105), (0.02, 0.05, 0.075), 46.0, 0.0)
+            u = (f - SHATTER_F) / max(1, 559 - SHATTER_F)
+            df = f - SHATTER_F
+            env = math.exp(-df * 0.12) if 0 <= df <= 32 else 0.0
+            sx, sy, sroll = 0.012 * env * math.sin(df * 1.9), 0.012 * env * math.cos(df * 2.3), 4.0 * env * math.sin(df * 2.1)
+            ang = -0.35 + u * 1.65
+            dist = 0.30 + u * 0.05
+            aim_camera((math.sin(ang) * dist + sx, -math.cos(ang) * dist + sy, 0.105 + math.sin(u * math.pi) * 0.03),
+                       (0.0, 0.02, 0.065), 44.0 + u * 6.0, -4.0 * math.sin(u * math.pi) + sroll)
         else:
-            aim_camera((-0.02, -0.32, 0.105), (0.01, 0.05, 0.055), 48.0, 0.0)
+            u = (f - 559) / max(1, TOTAL_FRAMES - 559)
+            e = u * u * (3 - 2 * u)
+            ang = 0.25 - e * 0.50
+            dist = 0.28 + e * 0.09
+            aim_camera((math.sin(ang) * dist, -math.cos(ang) * dist, 0.080 + e * 0.055), (0.0, 0.04, 0.045), 48.0 - e * 4.0, 0.0)
 
     scene.render.filepath = os.path.join(args.out, f"frame_{f:04d}.png")
     bpy.ops.render.render(write_still=True)

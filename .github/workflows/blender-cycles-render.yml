@@ -91,7 +91,7 @@ jobs:
     name: Assemble 1080x1920 Master MP4
     needs: render-chunk
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
