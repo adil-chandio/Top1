@@ -1,0 +1,53 @@
+{
+  "projectId": "odd-couple-burrow-short",
+  "createdAt": "2026-11-25T00:00:00Z",
+  "entries": [
+    {
+      "id": "claim-visual-illustrative",
+      "category": "illustrative-animation",
+      "text": "All 3D burrow, skeleton, X-ray, flood, and labeling visuals are illustrative reconstructions for storytelling, not real footage or direct observation of the ancient event."
+    },
+    {
+      "id": "claim-burrow-cast",
+      "category": "unknown-limitation",
+      "text": "The script refers to a rock/burrow cast containing two animals; the specific specimen identity, repository, and publication evidence must be verified before final publish."
+    },
+    {
+      "id": "claim-age",
+      "category": "unknown-limitation",
+      "text": "The line states 'Two hundred fifty million years ago'; the precise geological age and dating basis must be verified against the primary source."
+    },
+    {
+      "id": "claim-taxa",
+      "category": "unknown-limitation",
+      "text": "The animals are described as a mammal relative and an amphibian; exact taxonomic identification must be verified against the specimen/source record."
+    },
+    {
+      "id": "claim-healing-no-bites",
+      "category": "unknown-limitation",
+      "text": "The amphibian ribs are described as healing with no bite marks; this anatomical/pathological observation requires primary-source verification before being stated as fact."
+    },
+    {
+      "id": "claim-not-hunt",
+      "category": "derived-calculation",
+      "text": "The interpretation 'not a hunt' is presented as an inference drawn from the stated absence of bite marks and healing evidence; it should not be framed as absolute certainty.",
+      "basis": "Inference stated in-script from reported injury pattern; depends on verified evidence for claim-healing-no-bites.",
+      "evidenceIds": ["claim-healing-no-bites"]
+    },
+    {
+      "id": "claim-shelter-inference",
+      "category": "hypothesis",
+      "text": "The amphibian likely crawled into the burrow for shelter; this is a behavioral hypothesis/inference, not a directly observed event."
+    },
+    {
+      "id": "claim-aestivation-inference",
+      "category": "hypothesis",
+      "text": "The mammal relative was probably in aestivation, a deep dormancy; this is presented as the most plausible interpretation and requires primary-source support."
+    },
+    {
+      "id": "claim-flood-seal",
+      "category": "hypothesis",
+      "text": "A flood filled the burrow and sealed both animals; the burial mechanism is presented as a plausible story element pending source verification."
+    }
+  ]
+}
