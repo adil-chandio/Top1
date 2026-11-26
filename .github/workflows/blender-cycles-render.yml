@@ -76,7 +76,7 @@ jobs:
           echo "=== Rendering frames ${START}..${END} (Cycles 20 samples + OIDN) ==="
           mkdir -p /tmp/frames
           /tmp/blender/blender -b --factory-startup --python tools/thermal-shock-blender/render_cycles.py -- \
-            --start "${START}" --end "${END}" --out /tmp/frames --samples 20 --res 720x1280
+            --start "${START}" --end "${END}" --out /tmp/frames --samples 20 --res-x 720 --res-y 1280
           ls -la /tmp/frames | head -n 20
           echo "Total frames rendered: $(ls /tmp/frames/*.png | wc -l)"
 
@@ -113,10 +113,8 @@ jobs:
           echo "Total frames collected: $(ls /tmp/all_frames/*.png | wc -l)"
           mkdir -p /tmp/output
           python3 tools/thermal-shock-blender/assemble.py \
-            --frames /tmp/all_frames \
-            --audio tools/thermal-shock-blender/master_audio.m4a \
-            --voice-lock tools/thermal-shock/voice-lock.json \
-            --out /tmp/output/Thermal-Shock-Blender-Cycles-3D.mp4
+            /tmp/all_frames \
+            /tmp/output/Thermal-Shock-Blender-Cycles-3D.mp4
           ls -lh /tmp/output/Thermal-Shock-Blender-Cycles-3D.mp4
           ffprobe -v error -show_entries format=duration,size,bit_rate -show_entries stream=codec_name,width,height,r_frame_rate /tmp/output/Thermal-Shock-Blender-Cycles-3D.mp4
 
