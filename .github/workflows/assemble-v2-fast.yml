@@ -1,4 +1,4 @@
-name: Fast Assemble V2 Master MP4 (From Run 45763328312)
+name: Fast Assemble V5 Master MP4 (From Run 45794369242)
 
 on:
   workflow_dispatch:
@@ -14,18 +14,18 @@ permissions:
 
 jobs:
   assemble-v2:
-    name: Assemble 1080x1920 V2 Master MP4
+    name: Assemble 1080x1920 V5 Master MP4
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
-      - name: Download All 20 Rendered Chunks from Run 45763328312
+      - name: Download All 20 Rendered V5 Chunks from Run 45794369242
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           mkdir -p /tmp/dl /tmp/all_frames
-          gh run download 45763328312 --dir /tmp/dl
+          gh run download 45794369242 --dir /tmp/dl
           find /tmp/dl -name "*.png" -exec mv {} /tmp/all_frames/ \;
           echo "Total frames collected: $(ls /tmp/all_frames/*.png | wc -l)"
 
@@ -40,13 +40,13 @@ jobs:
           mkdir -p /tmp/output
           python3 tools/thermal-shock-blender/assemble.py \
             /tmp/all_frames \
-            /tmp/output/Thermal-Shock-Blender-Cycles-3D-V2.mp4
-          ls -lh /tmp/output/Thermal-Shock-Blender-Cycles-3D-V2.mp4
-          ffprobe -v error -show_entries format=duration,size,bit_rate -show_entries stream=codec_name,width,height,r_frame_rate /tmp/output/Thermal-Shock-Blender-Cycles-3D-V2.mp4
+            /tmp/output/Thermal-Shock-V5-ZackD-3D.mp4
+          ls -lh /tmp/output/Thermal-Shock-V5-ZackD-3D.mp4
+          ffprobe -v error -show_entries format=duration,size,bit_rate -show_entries stream=codec_name,width,height,r_frame_rate /tmp/output/Thermal-Shock-V5-ZackD-3D.mp4
 
-      - name: Upload Final V2 3D Master Video
+      - name: Upload Final V5 3D Master Video
         uses: actions/upload-artifact@v4
         with:
-          name: Thermal-Shock-Blender-Cycles-3D-V2
-          path: /tmp/output/Thermal-Shock-Blender-Cycles-3D-V2.mp4
+          name: Thermal-Shock-V5-ZackD-3D
+          path: /tmp/output/Thermal-Shock-V5-ZackD-3D.mp4
           retention-days: 14

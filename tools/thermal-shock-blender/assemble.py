@@ -72,7 +72,7 @@ for f in range(TOTAL_FRAMES):
             fill=(255, 224, 51) if is_hot else (255, 255, 255),
             stroke_width=8, stroke_fill=(0, 0, 0),
         )
-    img.save(os.path.join(COMP_DIR, f"frame_{f:04d}.png"))
+    img.save(os.path.join(COMP_DIR, f"frame_{f:04d}.png"), compress_level=1)
 
 subprocess.run([
     "ffmpeg", "-y",
