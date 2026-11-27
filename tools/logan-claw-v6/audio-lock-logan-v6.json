@@ -1,0 +1,97 @@
+{
+  "project_id": "logan-claw-rig-v6-imax",
+  "title": "LOGAN — Rig-to-Render VFX Breakdown (V6.2 Hollywood IMAX)",
+  "resolution": [1080, 1920],
+  "aspect": "9:16",
+  "fps": 30,
+  "total_frames": 420,
+  "duration_s": 14.0,
+  "audio_mode": "pure_sfx_cinematic",
+  "time_stretch_applied": false,
+  "shot_cuts": [0, 87, 132, 168, 210, 252, 294, 336, 393],
+  "vacuum_window_s": [2.70, 2.87],
+  "vacuum_frames": [81, 86],
+  "protected_climax_windows": [
+    [87, 131],
+    [168, 209],
+    [252, 293],
+    [336, 392]
+  ],
+  "shots": [
+    {
+      "id": "01A_VIEWPORT_ARM_RAISE_CLENCH",
+      "f0": 0,
+      "f1": 86,
+      "mode": "viewport_clay",
+      "description": "Medium-close 85mm portrait in Maya/MetaHuman clay viewport with 3D NURBS torso/arm/finger controller splines and live golden facial rig picker GUI; right hand rises across chest, fans open, and clenches into a fist as acoustic vacuum drops."
+    },
+    {
+      "id": "01B_RENDER_SNIKT_REVEAL",
+      "f0": 87,
+      "f1": 131,
+      "mode": "final_render",
+      "description": "Hard match-cut on SNIKT! eruption: 3 curved hollow-ground Adamantium claws shoot from inter-knuckle valleys in dark obsidian Rembrandt chiaroscuro lighting, weathered blood-stained workshirt, skin pores, and metallic sparks."
+    },
+    {
+      "id": "02A_MACRO_CLAY_KNUCKLES_CLAWS",
+      "f0": 132,
+      "f1": 167,
+      "mode": "viewport_clay",
+      "description": "Extreme 100mm macro clay viewport on clenched right fist with orange FK phalanx splines, 3 satin-white curved claws sweeping diagonally up-right, and golden rig-logic picker schematic behind."
+    },
+    {
+      "id": "02B_MACRO_RENDER_ADAMANTIUM_GLINT",
+      "f0": 168,
+      "f1": 209,
+      "mode": "final_render",
+      "description": "Hard match-cut to hyper-real macro render: bruised weathered knuckles, dermal subsurface blood warmth, wet skin pores, and anisotropic brushed-steel Adamantium bevels catching a cold cyan rim glint."
+    },
+    {
+      "id": "03A_PROFILE34_CLAY_MICRO_RIG",
+      "f0": 210,
+      "f1": 251,
+      "mode": "viewport_clay",
+      "description": "Intimate 3/4 portrait clay sculpt with groomed beard/brows, red sagittal centerline spline, yellow neck ring, and live ARKit brow-furrow, squint, sneer, and eye-saccade micro-acting."
+    },
+    {
+      "id": "03B_PROFILE34_RENDER_CHIAROSCURO",
+      "f0": 252,
+      "f1": 293,
+      "mode": "final_render",
+      "description": "Hard match-cut to 3/4 final render: raking 3800K warm Rembrandt key light across forehead wrinkles, temple sweat sheen, bruised brow ridge, thick beard strands, and wet corneal catchlight."
+    },
+    {
+      "id": "04A_FRONT_CLAY_KUBRICK_STARE",
+      "f0": 294,
+      "f1": 335,
+      "mode": "viewport_clay",
+      "description": "Dead-center portrait clay rig with chin pitched down, eyes locked upward beneath furrowed brows, yellow collar controller ring, and red vertical symmetry spline."
+    },
+    {
+      "id": "04B_FRONT_RENDER_CLIMAX_STARE",
+      "f0": 336,
+      "f1": 392,
+      "mode": "final_render",
+      "description": "Protected pure-cinema climax match-cut on Dolby sub-drop: fierce dead-center Logan Kubrick stare with dual wet eye catchlights, subtle jaw clench, heavy breath, and cold steel-cyan rim halo."
+    },
+    {
+      "id": "05_LOOP_RESET_VIEWPORT",
+      "f0": 393,
+      "f1": 419,
+      "mode": "viewport_clay",
+      "description": "Match-cut back to medium-close clay viewport as claws sheath and right arm settles smoothly into exact Frame 0 rest state for seamless infinite Reel/Short looping."
+    }
+  ],
+  "cues": [
+    { "t0": 0.00, "t1": 2.70, "text": "[Viewport Rig: Arm rises & fist clenches]" },
+    { "t0": 2.90, "t1": 4.37, "text": "[SNIKT! Adamantium claws erupt — Final Render]" },
+    { "t0": 4.40, "t1": 5.57, "text": "[Macro Rig: Knuckle FK splines & blade arc]" },
+    { "t0": 5.60, "t1": 6.97, "text": "[Macro Render: Brushed steel & dermal pores]" },
+    { "t0": 7.00, "t1": 8.37, "text": "[3/4 Facial Rig: ARKit brow & eye micro-acting]" },
+    { "t0": 8.40, "t1": 9.77, "text": "[3/4 Final Render: Chiaroscuro skin & sweat]" },
+    { "t0": 9.80, "t1": 11.17, "text": "[Front Rig: Symmetry splines & Kubrick stare]" },
+    { "t0": 11.20, "t1": 13.07, "text": "[Final Climax: Intense chiaroscuro gaze]" },
+    { "t0": 13.10, "t1": 14.00, "text": "[Claws sheath — Seamless loop reset]" }
+  ],
+  "attribution": "MetaHuman 5.7 Bruce rig via creategamecharacters/metahuman-to-glb (MIT License). Custom 3D Adamantium claw lofting, NURBS spline rig, shaders, lighting & Dolby DSP built on Monarch V6 IMAX SDK."
+}

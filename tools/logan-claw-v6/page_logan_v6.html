@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>LOGAN — Rig-to-Render VFX Breakdown (V6.2 Hollywood IMAX 1080x1920)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #05070a; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import {
+  assertSafeLatinGlyphs,
+  createGpuHudCompositor,
+  createImaxOpticalPass,
+  drawImaxShortHud,
+  loadVerifiedCinemaFonts,
+} from '/tools/monarch-v6-imax-sdk/index.js';
+import { loadLoganActor } from './character_logan_v6.js';
+import {
+  TOTAL_FRAMES,
+  createLoganDirectorV6,
+  createLoganLightingAndVfx,
+} from './director_logan_v6.js';
+
+const params = new URLSearchParams(window.location.search);
+const RENDER_W = parseInt(params.get('w') || '1080', 10);
+const RENDER_H = parseInt(params.get('h') || '1920', 10);
+
+assertSafeLatinGlyphs(['LOGAN', 'RIG TO RENDER'], 'CoverTitle');
+await loadVerifiedCinemaFonts('/@fs/tmp/v6_runtime/node_modules');
+
+const webglCanvas = document.createElement('canvas');
+webglCanvas.width = RENDER_W;
+webglCanvas.height = RENDER_H;
+document.body.appendChild(webglCanvas);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: webglCanvas,
+  antialias: false,
+  alpha: false,
+  powerPreference: 'high-performance',
+  preserveDrawingBuffer: true,
+});
+renderer.setSize(RENDER_W, RENDER_H, false);
+renderer.setPixelRatio(1);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+// Disable built-in tone mapping so MeshPhysicalMaterial encodes clean sRGB into `rtScene`,
+// which `createImaxOpticalPass` decodes (`s*s`) for true linear HDR Bloom + Vogel Bokeh + ACES Filmic!
+renderer.toneMapping = THREE.NoToneMapping;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.sortObjects = true;
+renderer.autoClear = false;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(31, RENDER_W / RENDER_H, 0.12, 22.0);
+
+const lights = createLoganLightingAndVfx(scene, renderer);
+const logan = await loadLoganActor(scene);
+const imaxPass = createImaxOpticalPass(renderer, RENDER_W, RENDER_H);
+// Ensure `rtScene` receives sRGB-encoded output from Three.js PBR shaders so `s * s` recovers exact linear HDR!
+imaxPass.rtScene.texture.colorSpace = THREE.SRGBColorSpace;
+
+const hud = createGpuHudCompositor(renderer, RENDER_W, RENDER_H);
+const director = createLoganDirectorV6(logan, lights, camera);
+
+function renderCompleteFrame(frame, opts = { coverMode: false }) {
+  const state = director.evaluateFrame(frame);
+
+  // Never let additive volumetric cones cast opaque shadow depth!
+  const prevVolVis = lights.studioVolCone.visible;
+  const prevDustVis = lights.dustMotes.mesh.visible;
+  lights.studioVolCone.visible = false;
+  lights.dustMotes.mesh.visible = false;
+  renderer.shadowMap.needsUpdate = true;
+  lights.studioVolCone.visible = prevVolVis;
+  lights.dustMotes.mesh.visible = prevDustVis;
+
+  imaxPass.render(scene, camera, state.postParams);
+
+  if (opts.coverMode) {
+    const ctx = hud.ctx;
+    ctx.clearRect(0, 0, RENDER_W, RENDER_H);
+    // Subtle dark poster vignette at bottom third so Logan's face & gleaming claws are 100% unobstructed!
+    const grad = ctx.createLinearGradient(0, RENDER_H * 0.68, 0, RENDER_H);
+    grad.addColorStop(0.0, 'rgba(5, 7, 10, 0.0)');
+    grad.addColorStop(0.65, 'rgba(5, 7, 10, 0.72)');
+    grad.addColorStop(1.0, 'rgba(5, 7, 10, 0.94)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, RENDER_H * 0.68, RENDER_W, RENDER_H * 0.32);
+
+    ctx.save();
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.95)';
+    ctx.shadowBlur = 28;
+    ctx.fillStyle = '#F6F8FC';
+    ctx.font = `900 ${Math.round(RENDER_W * 0.128)}px "Space Grotesk", sans-serif`;
+    ctx.fillText('LOGAN', RENDER_W * 0.5, RENDER_H * 0.825);
+
+    ctx.fillStyle = '#7ED8FF';
+    ctx.font = `700 ${Math.round(RENDER_W * 0.040)}px "Space Grotesk", sans-serif`;
+    ctx.letterSpacing = '10px';
+    ctx.fillText('RIG TO RENDER', RENDER_W * 0.5, RENDER_H * 0.882);
+    ctx.restore();
+    hud.composite();
+  }
+  return state;
+}
+
+window.renderFramePNG = (frame) => {
+  renderCompleteFrame(frame, { coverMode: false });
+  return webglCanvas.toDataURL('image/png');
+};
+
+window.renderCoverPNG = () => {
+  // Hero thumbnail at f=102 (claws fully extended, fierce chiaroscuro gaze!)
+  renderCompleteFrame(102, { coverMode: true });
+  return webglCanvas.toDataURL('image/png');
+};
+
+const gl = renderer.getContext();
+const pixelBuf = new Uint8Array(RENDER_W * RENDER_H * 4);
+let activeWS = null;
+let wsWaitResolve = null;
+
+window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+  const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+  ws.binaryType = 'arraybuffer';
+  ws.onmessage = () => {
+    if (wsWaitResolve) {
+      const r = wsWaitResolve;
+      wsWaitResolve = null;
+      r();
+    }
+  };
+  ws.onopen = () => { activeWS = ws; resolve(true); };
+  ws.onerror = (e) => reject(e);
+});
+
+window.streamFramesWS = async (fStart, fEnd) => {
+  if (fStart > 0) {
+    director.evaluateFrame(fStart - 1);
+  }
+  for (let f = fStart; f < fEnd; f++) {
+    renderCompleteFrame(f, { coverMode: false });
+    gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+    await new Promise((res) => {
+      wsWaitResolve = res;
+      activeWS.send(pixelBuf);
+    });
+  }
+  return fEnd - fStart;
+};
+
+window.measureLoopSeamMAE = () => {
+  director.evaluateFrame(TOTAL_FRAMES - 2);
+  renderCompleteFrame(TOTAL_FRAMES - 1, { coverMode: false });
+  const bufLast = new Uint8Array(RENDER_W * RENDER_H * 4);
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, bufLast);
+
+  renderCompleteFrame(0, { coverMode: false });
+  const buf0 = new Uint8Array(RENDER_W * RENDER_H * 4);
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, buf0);
+
+  let diffSum = 0;
+  const pxCount = RENDER_W * RENDER_H * 3;
+  for (let i = 0; i < buf0.length; i += 4) {
+    diffSum += Math.abs(bufLast[i] - buf0[i]);
+    diffSum += Math.abs(bufLast[i + 1] - buf0[i + 1]);
+    diffSum += Math.abs(bufLast[i + 2] - buf0[i + 2]);
+  }
+  return diffSum / pxCount;
+};
+
+window.__LOGAN = logan;
+window.__THREE = THREE;
+window.__IMAX_READY__ = true;
+</script>
+</body>
+</html>
