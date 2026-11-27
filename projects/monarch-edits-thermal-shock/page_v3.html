@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Monarch Edits — Thermal Shock V3 TABAHI (1080x1920)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #04060B; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import {
+  loadVerifiedCinemaFonts,
+  createImaxOpticalPass,
+  assertSafeLatinGlyphs,
+} from '/tools/monarch-v6-imax-sdk/index.js';
+import { FPS, TOTAL_FRAMES, createThermalWorldV3 } from '/projects/monarch-edits-thermal-shock/film_v3_world.js';
+import { CAPTIONS, createThermalDirectorV3, drawTabahiHud } from '/projects/monarch-edits-thermal-shock/film_v3.js';
+
+const params = new URLSearchParams(window.location.search);
+const RENDER_W = parseInt(params.get('w') || '1080', 10);
+const RENDER_H = parseInt(params.get('h') || '1920', 10);
+
+// Tofu guard on every Roman-Urdu caption string (Latin-1 only)
+assertSafeLatinGlyphs(CAPTIONS.flatMap((c) => [c.l1, c.l2, c.hi]), 'Thermal-V3-Captions');
+
+await loadVerifiedCinemaFonts();
+console.log('[Fonts Verified] Thermal Shock V3 TABAHI');
+
+const webglCanvas = document.createElement('canvas');
+webglCanvas.width = RENDER_W;
+webglCanvas.height = RENDER_H;
+document.body.appendChild(webglCanvas);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: webglCanvas,
+  antialias: false,
+  alpha: false,
+  powerPreference: 'high-performance',
+  preserveDrawingBuffer: true,
+});
+renderer.setSize(RENDER_W, RENDER_H, false);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.sortObjects = true;
+renderer.autoClear = false;
+
+const camera = new THREE.PerspectiveCamera(40, RENDER_W / RENDER_H, 0.12, 120.0);
+
+const world = await createThermalWorldV3(renderer);
+const director = createThermalDirectorV3(world, camera);
+const imaxPass = createImaxOpticalPass(renderer, RENDER_W, RENDER_H);
+
+// 2D kinetic HUD composited over the IMAX optical pass in GPU
+const hudCanvas = document.createElement('canvas');
+hudCanvas.width = RENDER_W;
+hudCanvas.height = RENDER_H;
+const hudCtx = hudCanvas.getContext('2d');
+const hudTex = new THREE.CanvasTexture(hudCanvas);
+hudTex.minFilter = THREE.LinearFilter;
+hudTex.magFilter = THREE.LinearFilter;
+
+const hudScene = new THREE.Scene();
+const hudCam = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+const hudQuad = new THREE.Mesh(
+  new THREE.PlaneGeometry(2, 2),
+  new THREE.MeshBasicMaterial({
+    map: hudTex,
+    transparent: true,
+    depthTest: false,
+    depthWrite: false,
+  })
+);
+hudScene.add(hudQuad);
+
+function renderCompleteFrame(frame, hudOpts = { showCaptions: true }) {
+  const state = director.evaluateFrame(frame);
+  imaxPass.render(world.scene, camera, state.postParams);
+  drawTabahiHud(hudCtx, state, CAPTIONS, hudOpts);
+  hudTex.needsUpdate = true;
+  renderer.setRenderTarget(null);
+  renderer.render(hudScene, hudCam);
+  return state;
+}
+
+window.renderFramePNG = (frame, hudOpts = { showCaptions: true }) => {
+  renderCompleteFrame(frame, hudOpts);
+  return webglCanvas.toDataURL('image/png');
+};
+
+window.renderCoverPNG = () => {
+  renderCompleteFrame(Math.round(15.9 * FPS), { showCaptions: false, coverMode: true });
+  return webglCanvas.toDataURL('image/png');
+};
+
+const gl = renderer.getContext();
+const pixelBuf = new Uint8Array(RENDER_W * RENDER_H * 4);
+let activeWS = null;
+let wsWaitResolve = null;
+
+window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+  const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+  ws.binaryType = 'arraybuffer';
+  ws.onmessage = () => {
+    if (wsWaitResolve) {
+      const r = wsWaitResolve;
+      wsWaitResolve = null;
+      r();
+    }
+  };
+  ws.onopen = () => { activeWS = ws; resolve(true); };
+  ws.onerror = (e) => reject(e);
+});
+
+window.streamFramesWS = async (fStart, fEnd) => {
+  if (fStart > 0) {
+    director.evaluateFrame(fStart - 1);
+  }
+  for (let f = fStart; f < fEnd; f++) {
+    renderCompleteFrame(f, { showCaptions: true });
+    gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+    await new Promise((res) => {
+      wsWaitResolve = res;
+      activeWS.send(pixelBuf);
+    });
+  }
+  return fEnd - fStart;
+};
+
+window.__duration = TOTAL_FRAMES / FPS;
+window.__totalFrames = TOTAL_FRAMES;
+window.__IMAX_READY__ = true;
+window.__SHORT_V6_READY__ = true;
+</script>
+</body>
+</html>
