@@ -1,0 +1,121 @@
+{
+  "projectId": "hen-egg-factory-limit",
+  "createdAt": "2026-11-28T15:05:00Z",
+  "entries": [
+    {
+      "id": "c1",
+      "category": "published-finding",
+      "text": "A hen's egg takes about 23 to 26 hours to pass from ovulation to laying.",
+      "basis": "Poultry Hub Australia, Reproductive system: egg formation time stated as 23 to 26 hours.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c2",
+      "category": "published-finding",
+      "text": "The magnum adds roughly 40% of the albumen over about 3 hours.",
+      "basis": "Poultry Hub Australia: magnum secretes more than 40% of albumen; egg spends about 3 hours in this section.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c3",
+      "category": "published-finding",
+      "text": "The shell gland, or uterus, holds the egg for 18 to 20 hours while the shell and about 40% of the albumen are added.",
+      "basis": "Poultry Hub Australia: uterus secretes about 40% of albumen and the shell; 18 to 20 hours.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c4",
+      "category": "published-finding",
+      "text": "One egg uses about 2.5 g of calcium while a hen absorbs roughly 2.0 g per day from feed.",
+      "basis": "Poultry Hub Australia: approximately 2.5 g calcium per egg and about 2.0 g per day absorbed.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c5",
+      "category": "published-finding",
+      "text": "The shortfall comes from medullary bone, a calcium store inside the long bones.",
+      "basis": "Poultry Hub Australia: medullary bone and skeleton supply the deficit, especially at night.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c6",
+      "category": "derived-calculation",
+      "text": "Because shell calcification alone takes 18 to 20 hours, one egg per day is close to the ceiling of the cycle.",
+      "basis": "Derived from the 23 to 26 hour transit time and the 18 to 20 hour shell gland stage.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c7",
+      "category": "published-finding",
+      "text": "A hen lays eggs without a rooster, and those eggs are unfertilised.",
+      "basis": "Poultry Hub Australia: ovulation is driven by the hen's own cycle; fertilisation needs sperm in the infundibulum.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c8",
+      "category": "illustrative-animation",
+      "text": "The sagittal hen cutaway, five-station oviduct and timer rings are original 3D illustrations, not dissection footage.",
+      "basis": "Built in the V6 SDK; no real tissue shown."
+    },
+    {
+      "id": "c9",
+      "category": "modelled-reconstruction",
+      "text": "Shell crystal growth is a seeded reaction-diffusion model; the on-screen speed is compressed, not real time.",
+      "basis": "Time-lapse compression for a 33 s Short; 18 to 20 hours mapped to about 4 s.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c10",
+      "category": "modelled-reconstruction",
+      "text": "The medullary-bone calcium dissolve is an illustrative model of a documented calcium transfer.",
+      "basis": "Mechanism is published; the visual is a model, not microscopy.",
+      "evidenceIds": [
+        "poultryhub",
+        "v6-sdk"
+      ]
+    },
+    {
+      "id": "c11",
+      "category": "illustrative-animation",
+      "text": "The hero egg, albumen ribbons and closing loop frame are original parametric models.",
+      "basis": "No competitor frames, captions or audio reused.",
+      "evidenceIds": [
+        "v6-sdk"
+      ]
+    },
+    {
+      "id": "c12",
+      "category": "unknown-limitation",
+      "text": "Exact timings vary by breed, age, diet and climate; on-screen numbers use published ranges.",
+      "basis": "Poultry Hub Australia notes percentages vary; single-point claims avoided.",
+      "evidenceIds": [
+        "poultryhub"
+      ]
+    },
+    {
+      "id": "c13",
+      "category": "unknown-limitation",
+      "text": "Outlier multiple came from a candidate with hidden subscriber count; virality is relative, not verified.",
+      "basis": "Official API run 46154175359 retained subscriber_count_known false.",
+      "evidenceIds": [
+        "scan-46154175359"
+      ]
+    }
+  ]
+}

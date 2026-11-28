@@ -14,11 +14,11 @@
   },
   "total": 91,
   "gates": {
-    "claimLedgerComplete": false,
+    "claimLedgerComplete": true,
     "titlePromiseClear": true,
     "proofPossible": true,
     "ownerSelection": false
   },
   "decision": "not-yet",
-  "notes": "2128x demand proof from the Hindi 3D egg-formation animation, reopened for English 9:16 as a calcium-clock limit story. Score 91 but two gates are red: no claim ledger and no owner selection. No thumbnail audit possible."
+  "notes": "2128x demand proof from the Hindi 3D egg-formation animation, reopened for English 9:16 as a calcium-clock limit story. Score 91. Claim ledger now complete and green after Stage 2 claims.json; owner selection still red, thumbnail audit still blocked."
 }

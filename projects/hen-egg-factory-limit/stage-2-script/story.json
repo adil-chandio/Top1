@@ -1,0 +1,81 @@
+{
+  "projectId": "hen-egg-factory-limit",
+  "createdAt": "2026-11-28T15:05:00Z",
+  "premise": "A hen's egg is not made; it is assembled on a 25-hour oviduct clock, and the shell's calcium cost is the hard ceiling on one egg per day.",
+  "claimCheck": {
+    "claimsSupported": [
+      "oviduct transit 23-26 hours",
+      "magnum stage about 3 hours",
+      "shell gland 18-20 hours",
+      "about 2.5 g calcium per egg against roughly 2 g absorbable per day",
+      "medullary bone supplies the shortfall",
+      "hens lay without a rooster"
+    ],
+    "claimsNotSupported": [
+      "exactly 25 hours for every hen and breed",
+      "the animation shows real tissue",
+      "the hen is in pain",
+      "any nutritional or veterinary advice"
+    ]
+  },
+  "narration": "This egg took twenty-five hours to build. Not inside a factory. Inside a hen. One tube does all of it. For three hours, egg white wraps the yolk. Wait. That was the fast part. The shell alone takes eighteen to twenty more hours. One shell costs more calcium than a hen can eat in a day. So she borrows it from her own bones. That is the limit. One egg. One day. This egg took twenty-five hours to build.",
+  "screenDescription": "9:16 original 3D: obsidian studio, hero egg, sagittal hen cutaway, five-station oviduct with timer rings, albumen ribbons, shell crystal growth, medullary calcium dissolve, loop back to the hero egg.",
+  "plannedSeconds": 33,
+  "beats": [
+    {
+      "id": "b1",
+      "seconds": 3,
+      "caption": "This egg took twenty-five hours to build."
+    },
+    {
+      "id": "b2",
+      "seconds": 2,
+      "caption": "Not inside a factory."
+    },
+    {
+      "id": "b3",
+      "seconds": 2,
+      "caption": "Inside a hen."
+    },
+    {
+      "id": "b4",
+      "seconds": 3,
+      "caption": "One tube does all of it."
+    },
+    {
+      "id": "b5",
+      "seconds": 3,
+      "caption": "For three hours, egg white wraps the yolk."
+    },
+    {
+      "id": "b6",
+      "seconds": 3,
+      "caption": "Wait. That was the fast part."
+    },
+    {
+      "id": "b7",
+      "seconds": 4,
+      "caption": "The shell alone takes eighteen to twenty more hours."
+    },
+    {
+      "id": "b8",
+      "seconds": 4,
+      "caption": "One shell costs more calcium than a hen can eat in a day."
+    },
+    {
+      "id": "b9",
+      "seconds": 3,
+      "caption": "So she borrows it from her own bones."
+    },
+    {
+      "id": "b10",
+      "seconds": 3,
+      "caption": "That is the limit. One egg. One day."
+    },
+    {
+      "id": "b11",
+      "seconds": 3,
+      "caption": "This egg took twenty-five hours to build."
+    }
+  ]
+}
