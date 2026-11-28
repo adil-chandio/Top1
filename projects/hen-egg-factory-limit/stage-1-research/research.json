@@ -1,0 +1,118 @@
+{
+  "projectId": "hen-egg-factory-limit",
+  "createdAt": "2026-11-28T14:40:00Z",
+  "sources": [
+    {
+      "id": "scan-46154175359",
+      "url": "https://github.com/adil-chandio/Top1/actions/runs/46154175359",
+      "type": "data",
+      "license": "Public GitHub Actions run; official YouTube Data API v3 metadata only, no media reuse",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "channel-monarch-cam",
+      "url": "https://www.youtube.com/@monarch-cam/about",
+      "type": "channel",
+      "license": "Public YouTube About page; metadata snapshot only",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "comp-egg-3d",
+      "url": "https://www.youtube.com/watch?v=cDXrpGbp34c",
+      "type": "video",
+      "license": "Public watch page; description and transcript read for structure only, no footage or script reuse",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "comp-kinesin",
+      "url": "https://www.youtube.com/watch?v=Mrz-K8Jwrl0",
+      "type": "video",
+      "license": "Public watch page; description only, no media reuse",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "comp-fingers-atoms",
+      "url": "https://www.youtube.com/watch?v=yFVO4W0hyOg",
+      "type": "video",
+      "license": "Public watch page; description only, no media reuse",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "source-poultryhub",
+      "url": "https://www.poultryhub.org/anatomy-and-physiology/body-systems/reproductive-system",
+      "type": "document",
+      "license": "Poultry Hub Australia educational page (UNE); cite by URL, no text reuse",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    },
+    {
+      "id": "source-psu",
+      "url": "https://extension.psu.edu/hen-reproduction",
+      "type": "document",
+      "license": "Penn State Extension; page fetch returned HTTP 500, excerpt only, treated as corroboration not primary",
+      "accessedAt": "2026-11-28T14:40:00Z"
+    }
+  ],
+  "findings": [
+    {
+      "id": "f1",
+      "statement": "Official API scan with the keywords x-ray animal, inside insect, how it works 3d, microscopic world, animal anatomy returned 44 qualified outliers from 50 candidates with 0 errors.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f2",
+      "statement": "Monarch Cam currently has 3.82K subscribers, 82 videos and 2,180,761 views; its recent 3D Shorts range from 263 to 7.9K views, so the channel needs a broader, more searchable promise than niche insect anatomy.",
+      "classification": "measured"
+    },
+    {
+      "id": "f3",
+      "statement": "How a Hen Makes a Perfect Egg Every Day (SP CLASSES) reached 6,694,593 views at 149 s, a 2,138x multiple over its surrounding uploads; narration is Hindi, so the English 9:16 slot is open.",
+      "classification": "measured"
+    },
+    {
+      "id": "f4",
+      "statement": "The competitor devotes its full 149 s to the five oviduct stages and closes on unfertilised eggs; its structure proves demand for the assembly-line framing but leaves a 30 s fast-cut version untaken.",
+      "classification": "directly-observed"
+    },
+    {
+      "id": "f5",
+      "statement": "The whole egg takes about 23 to 26 hours from ovulation to laying; the magnum adds roughly 40% of the albumen in about 3 hours, and the uterus or shell gland holds the egg for 18 to 20 hours while adding the shell and the rest of the albumen.",
+      "classification": "published-finding"
+    },
+    {
+      "id": "f6",
+      "statement": "One egg needs about 2.5 g of calcium while a hen can absorb roughly 2.0 g per day from feed, so part of every shell is drawn from medullary bone.",
+      "classification": "published-finding"
+    },
+    {
+      "id": "f7",
+      "statement": "Because calcification alone takes 18 to 20 hours, the cycle cannot run much under a day; one egg per day is close to a hard biological ceiling.",
+      "classification": "derived-calculation"
+    },
+    {
+      "id": "f8",
+      "statement": "A hen lays without a rooster; unfertilised eggs are the normal supermarket case.",
+      "classification": "published-finding"
+    },
+    {
+      "id": "f9",
+      "statement": "A 6 s kinesin Short reached 19,103,948 views and a 62 s atom-zoom Short reached 9,959,323 views, showing that unseen-microscale mechanics clear millions, but neither fits the Monarch Cam animal-ability spine as cleanly as the oviduct clock.",
+      "classification": "measured"
+    },
+    {
+      "id": "f10",
+      "statement": "Competitor thumbnails could not be audited: i.ytimg.com returns SSL_ERROR_SYSCALL from this sandbox and image search returned unrelated stock art. No palette, contrast or caption claim is made.",
+      "classification": "unknown-limitation"
+    },
+    {
+      "id": "f11",
+      "statement": "All frames must be labelled as original illustrative 3D; no real dissection or lab footage is claimed.",
+      "classification": "hypothesis"
+    }
+  ],
+  "gaps": [
+    "No visual thumbnail audit; competitor thumbnail style is unverified.",
+    "All scan rows report subscriber_count_known false, so channel-size claims are unverifiable.",
+    "Penn State Extension table could not be fetched directly; timings rest on Poultry Hub Australia plus the competitor description.",
+    "No claim ledger, no title lock and no owner selection yet, so the scorecard decision stays not-yet."
+  ]
+}

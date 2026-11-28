@@ -1,0 +1,24 @@
+{
+  "createdAt": "2026-11-28T14:40:00Z",
+  "projectId": "hen-egg-factory-limit",
+  "pilotId": "monarch-cam-short-9x16",
+  "scores": {
+    "viewerPromiseClarity": 19,
+    "visibleProofPotential": 19,
+    "novelty": 12,
+    "evidenceStrength": 14,
+    "emotionalStakesValue": 8,
+    "shortLongFormatFit": 10,
+    "rightsCertainty": 5,
+    "productionFeasibility": 4
+  },
+  "total": 91,
+  "gates": {
+    "claimLedgerComplete": false,
+    "titlePromiseClear": true,
+    "proofPossible": true,
+    "ownerSelection": false
+  },
+  "decision": "not-yet",
+  "notes": "2128x demand proof from the Hindi 3D egg-formation animation, reopened for English 9:16 as a calcium-clock limit story. Score 91 but two gates are red: no claim ledger and no owner selection. No thumbnail audit possible."
+}
