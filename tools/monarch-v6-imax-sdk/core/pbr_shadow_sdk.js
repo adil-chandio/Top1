@@ -393,6 +393,61 @@ export function setImaxLightingPreset(preset = 'cinema_lab', overrides = {}) {
     SHARED_LIGHT_UNIFORMS.uFogStart.value = 1600.0;
     SHARED_LIGHT_UNIFORMS.uFogRange.value = 3400.0;
     SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.62;
+  } else if (preset === 'karoo_desert_sun') {
+    SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(0.54, 0.62, 0.57).normalize();
+    SHARED_LIGHT_UNIFORMS.uKeyColor.value.set('#ffe5ba').multiplyScalar(1.06);
+    SHARED_LIGHT_UNIFORMS.uFillColor.value.set('#bad3ea').multiplyScalar(0.42);
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#ffd294').multiplyScalar(0.50);
+    SHARED_LIGHT_UNIFORMS.uSkyColor.value.set('#7ca0c2').multiplyScalar(0.34);
+    SHARED_LIGHT_UNIFORMS.uGroundColor.value.set('#7c462a').multiplyScalar(0.28);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.52, 0.36, 0.22);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 13.0;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 34.0;
+    SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.72;
+  } else if (preset === 'monsoon_storm') {
+    SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(-0.38, 0.76, 0.52).normalize();
+    SHARED_LIGHT_UNIFORMS.uKeyColor.value.set('#a8bed6').multiplyScalar(0.68);
+    SHARED_LIGHT_UNIFORMS.uFillColor.value.set('#56667c').multiplyScalar(0.34);
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#cfdbe8').multiplyScalar(0.44);
+    SHARED_LIGHT_UNIFORMS.uSkyColor.value.set('#303848').multiplyScalar(0.28);
+    SHARED_LIGHT_UNIFORMS.uGroundColor.value.set('#382216').multiplyScalar(0.22);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.08, 0.07, 0.09);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 12.0;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 32.0;
+    SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.58;
+  } else if (preset === 'sunlit_morning_interior') {
+    SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(0.62, 0.64, 0.45).normalize();
+    SHARED_LIGHT_UNIFORMS.uKeyColor.value.set('#fff1d6').multiplyScalar(1.02);
+    SHARED_LIGHT_UNIFORMS.uFillColor.value.set('#f2dfc4').multiplyScalar(0.48);
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#ffe8c2').multiplyScalar(0.42);
+    SHARED_LIGHT_UNIFORMS.uSkyColor.value.set('#b8cde0').multiplyScalar(0.32);
+    SHARED_LIGHT_UNIFORMS.uGroundColor.value.set('#8c7258').multiplyScalar(0.26);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.45, 0.40, 0.34);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 18.0;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 45.0;
+    SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.60;
+  } else if (preset === 'rainforest_canopy') {
+    SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(0.22, 0.92, 0.32).normalize();
+    SHARED_LIGHT_UNIFORMS.uKeyColor.value.set('#d8f2b8').multiplyScalar(0.95);
+    SHARED_LIGHT_UNIFORMS.uFillColor.value.set('#4c7c58').multiplyScalar(0.42);
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#e8f8b0').multiplyScalar(0.56);
+    SHARED_LIGHT_UNIFORMS.uSkyColor.value.set('#3b6e46').multiplyScalar(0.30);
+    SHARED_LIGHT_UNIFORMS.uGroundColor.value.set('#241c14').multiplyScalar(0.22);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.05, 0.11, 0.06);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 10.0;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 28.0;
+    SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.64;
+  } else if (preset === 'polar_glacial_daylight') {
+    SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(0.44, 0.42, 0.79).normalize();
+    SHARED_LIGHT_UNIFORMS.uKeyColor.value.set('#eef6ff').multiplyScalar(1.08);
+    SHARED_LIGHT_UNIFORMS.uFillColor.value.set('#b8daf2').multiplyScalar(0.58);
+    SHARED_LIGHT_UNIFORMS.uRimLightCol.value.set('#ffffff').multiplyScalar(0.48);
+    SHARED_LIGHT_UNIFORMS.uSkyColor.value.set('#8cb8dc').multiplyScalar(0.40);
+    SHARED_LIGHT_UNIFORMS.uGroundColor.value.set('#9cc2dc').multiplyScalar(0.36);
+    SHARED_LIGHT_UNIFORMS.uFogColor.value.setRGB(0.62, 0.74, 0.84);
+    SHARED_LIGHT_UNIFORMS.uFogStart.value = 18.0;
+    SHARED_LIGHT_UNIFORMS.uFogRange.value = 48.0;
+    SHARED_LIGHT_UNIFORMS.uShadowStrength.value = 0.52;
   } else {
     // 'cinema_lab' — neutral-warm 5200K optical macro stage with cyan rim separation
     SHARED_LIGHT_UNIFORMS.uKeyDir.value.set(0.36, 0.85, 0.38).normalize();

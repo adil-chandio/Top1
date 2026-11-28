@@ -1,0 +1,471 @@
+{
+  "version": "1.0.0",
+  "purpose": "24 Distinct Cinema World, Production Design, Lighting, Lens & HUD Archetypes to eliminate single-template repetition across Top1 productions.",
+  "anti_clone_law": "Never reuse the same archetype_id, staging_topology, or palette_family in two consecutive productions on the same channel, or across more than 1 in 4 consecutive studio productions unless explicitly requested by the user.",
+  "hud_philosophies": {
+    "H0_PURE_CINEMA": "Zero persistent HUD badges, zero callout boxes, zero top pills. Story told 100% through diegetic camera, blocking, focus, light, and optional clean subtitles.",
+    "H1_DOCUMENTARY_LOWER_THIRD": "Restrained BBC/Lemmino-style minimal serif/sans lower-third location/date stamp for 2.5s on scene entry only; completely clean frame thereafter.",
+    "H2_DIEGETIC_IN_WORLD": "Measurements, labels, and scale markers exist physically inside the 3D space (chalk marks on slate, etched ruler on steel, painted depth markers on concrete wall) moving with true 3D parallax.",
+    "H3_FORENSIC_BLUEPRINT": "Precision tracked thin leader lines + micro-mono data tags reserved strictly for anatomical/mechanical proof shots (<35% of runtime).",
+    "H4_KINETIC_TEST_SPLIT": "Synchronized physical test clock / split-lane comparison bar anchored cleanly at top or divider line during side-by-side experimental runs.",
+    "H5_EDITORIAL_CHAPTER_CARDS": "Bold full-bleed or negative-space typographic chapter/question beats between pure-cinema sequences (Vox / Johnny Harris / Kurzgesagt editorial rhythm)."
+  },
+  "archetypes": [
+    {
+      "id": "W01_SUNLIT_DOMESTIC_MORNING",
+      "name": "Window-Lit Lived-In Domestic Morning",
+      "topology": "lived_in_human_interior",
+      "palette_family": "warm_linen_terracotta_daylight",
+      "color_script": {
+        "base_hex": ["#F2EAE0", "#C9B39B", "#4A3B31"],
+        "accent_hex": "#D94E34",
+        "motif_hex": "#2E6F95",
+        "kelvin_key": 5200,
+        "kelvin_fill": 6200
+      },
+      "lighting_ratio": "2.5:1 soft directional window key through blinds/curtains + warm wood bounce",
+      "lens_package_mm": [28, 40, 85],
+      "camera_character": "locked tripod + gentle 4% approach dollies; grazing tabletop macro",
+      "default_hud": "H2_DIEGETIC_IN_WORLD",
+      "best_for": ["everyday physics", "kitchen/home science", "consumer objects", "human perception"],
+      "forbidden_cliches": ["dark teal void", "rotating museum pedestal", "sci-fi cyan laser grid"]
+    },
+    {
+      "id": "W02_SCORCHED_FIELD_EXPEDITION",
+      "name": "Harsh Midday Badlands / Desert Dig Trench",
+      "topology": "field_expedition_site",
+      "palette_family": "bleached_ochre_cobalt_sky",
+      "color_script": {
+        "base_hex": ["#D8A46F", "#7D4E2D", "#231914"],
+        "accent_hex": "#1E6BA8",
+        "motif_hex": "#F4E2C6",
+        "kelvin_key": 5800,
+        "kelvin_fill": 7500
+      },
+      "lighting_ratio": "6:1 hard overhead sun + crisp rock-ledge shadow + sky-dome cool fill",
+      "lens_package_mm": [20, 35, 105],
+      "camera_character": "low ground-level wide against open sky + tight handheld observational inserts",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["paleontology field discovery", "geology", "archaeology", "arid survival"],
+      "forbidden_cliches": ["indoor dark lab turntable", "neon rim lighting"]
+    },
+    {
+      "id": "W03_ABYSSAL_HYDROTHERMAL_DARK",
+      "name": "Deep-Ocean Abyssal Marine Snow & Submersible Beam",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "abyssal_indigo_biolum_violet",
+      "color_script": {
+        "base_hex": ["#040812", "#0B192E", "#1D3549"],
+        "accent_hex": "#7B5CFF",
+        "motif_hex": "#FF6B4A",
+        "kelvin_key": 6800,
+        "kelvin_fill": 9000
+      },
+      "lighting_ratio": "12:1 single moving ROV spotlight cone + rapid inverse-square falloff into pitch black",
+      "lens_package_mm": [24, 50, 90],
+      "camera_character": "heavy fluid-damped submersible drift + sudden macro lock",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["Cambrian marine life", "deep-sea pressure physics", "bioluminescence", "submarine engineering"],
+      "forbidden_cliches": ["flat bright floor", "warm studio key light"]
+    },
+    {
+      "id": "W04_BRUTALIST_FOUNDRY_HIGH_HEAT",
+      "name": "Brutalist Concrete & Molten Steel Test Foundry",
+      "topology": "industrial_test_bay",
+      "palette_family": "soot_charcoal_incandescent_slag",
+      "color_script": {
+        "base_hex": ["#18181A", "#323438", "#5A5550"],
+        "accent_hex": "#FF5A1F",
+        "motif_hex": "#FFD685",
+        "kelvin_key": 2200,
+        "kelvin_fill": 4800
+      },
+      "lighting_ratio": "8:1 self-emissive incandescent radiant heat key + cold industrial skylight rim",
+      "lens_package_mm": [24, 50, 135],
+      "camera_character": "telephoto heat-shimmer compression + heavy hydraulic crane moves",
+      "default_hud": "H4_KINETIC_TEST_SPLIT",
+      "best_for": ["metallurgy", "extreme thermal engineering", "engines", "crash/stress failure limits"],
+      "forbidden_cliches": ["clean hospital aesthetic", "floating holographic rings"]
+    },
+    {
+      "id": "W05_RAINFOREST_CANOPY_UNDERSTORY",
+      "name": "Humid Dappled Rainforest Leaf-Litter & Dew Macro",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "moss_emerald_humus_sunshaft",
+      "color_script": {
+        "base_hex": ["#112117", "#2E4F34", "#4A3525"],
+        "accent_hex": "#E8B948",
+        "motif_hex": "#D93829",
+        "kelvin_key": 5400,
+        "kelvin_fill": 4600
+      },
+      "lighting_ratio": "4:1 dappled canopy sunbeams + translucent leaf subsurface backlight",
+      "lens_package_mm": [18, 60, 105],
+      "camera_character": "organism eye-level ground-skimming probe lens (18mm close) + 105mm razor-thin bokeh",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["arthropod biomechanics", "amphibian/reptile ecology", "botany", "Carboniferous forests"],
+      "forbidden_cliches": ["metal optical breadboard", "grid lines"]
+    },
+    {
+      "id": "W06_HIGH_KEY_SCULPTURAL_ATELIER",
+      "name": "Pure Daylight Cyclorama Architectural Atelier",
+      "topology": "minimalist_sculptural_stage",
+      "palette_family": "chalk_alabaster_graphite_vermilion",
+      "color_script": {
+        "base_hex": ["#F4F3EF", "#D9D6CE", "#2B2D2F"],
+        "accent_hex": "#E03C31",
+        "motif_hex": "#1D4ED8",
+        "kelvin_key": 5600,
+        "kelvin_fill": 5600
+      },
+      "lighting_ratio": "2:1 huge overhead softbox bounce + crisp negative-fill black flags for contour edges",
+      "lens_package_mm": [35, 50, 85],
+      "camera_character": "David Fincher precision: locked geometric symmetry, moves ONLY in exact lockstep with subject",
+      "default_hud": "H5_EDITORIAL_CHAPTER_CARDS",
+      "best_for": ["industrial design", "pure physics paradoxes", "watchmaking/mechanisms", "clean visual metaphors"],
+      "forbidden_cliches": ["dark moody fog", "glowing neon bloom"]
+    },
+    {
+      "id": "W07_CRYOGENIC_GLACIAL_WHITEOUT",
+      "name": "Sub-Zero Blue-Ice Crevasse & Polar Wind",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "glacial_cyan_bone_white_slate",
+      "color_script": {
+        "base_hex": ["#DCEAF2", "#83B4CC", "#1B3244"],
+        "accent_hex": "#D95D39",
+        "motif_hex": "#FFFFFF",
+        "kelvin_key": 7200,
+        "kelvin_fill": 6500
+      },
+      "lighting_ratio": "3:1 overcast polar sky + internal ice refraction glow",
+      "lens_package_mm": [20, 40, 100],
+      "camera_character": "vast Villeneuve negative-space wides + claustrophobic ice-wall close-ups",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["Pleistocene megafauna", "ice-core climate clues", "hypothermia/freeze physics", "glaciology"],
+      "forbidden_cliches": ["warm wooden tables", "indoor spotlight cones"]
+    },
+    {
+      "id": "W08_CANDLELIT_NATURALIST_ARCHIVE",
+      "name": "19th-Century Mahogany & Brass Naturalist Cabinet",
+      "topology": "lived_in_human_interior",
+      "palette_family": "aged_parchment_mahogany_candle_gold",
+      "color_script": {
+        "base_hex": ["#1C130E", "#4E301F", "#D9C39E"],
+        "accent_hex": "#F2A93B",
+        "motif_hex": "#3B7A57",
+        "kelvin_key": 2100,
+        "kelvin_fill": 3800
+      },
+      "lighting_ratio": "10:1 Chiaroscuro warm flame/oil-lamp key + cold rainy window moonlight rim",
+      "lens_package_mm": [32, 50, 85],
+      "camera_character": "slow painterly crane glides across specimen drawers, brass callipers, and ink notebooks",
+      "default_hud": "H2_DIEGETIC_IN_WORLD",
+      "best_for": ["history of science", "forgotten inventions", "early paleontology myths", "forensic mysteries"],
+      "forbidden_cliches": ["digital sci-fi HUD", "modern LED strips"]
+    },
+    {
+      "id": "W09_MONSOON_ASPHALT_NIGHT_STREET",
+      "name": "Wet Monsoon Asphalt, Sodium Vapor & Headlight Reflections",
+      "topology": "lived_in_human_interior",
+      "palette_family": "wet_asphalt_sodium_amber_emerald",
+      "color_script": {
+        "base_hex": ["#0B0E11", "#1F2830", "#3B4A4E"],
+        "accent_hex": "#FF9E2C",
+        "motif_hex": "#2CEAA3",
+        "kelvin_key": 2700,
+        "kelvin_fill": 4300
+      },
+      "lighting_ratio": "8:1 specular streetlamp pools on wet pavement + passing vehicle light sweeps",
+      "lens_package_mm": [24, 35, 85],
+      "camera_character": "tire-level ground rig + rain-streaked windshield OTS + sudden brake-stop inertia",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["everyday urban physics", "braking/friction", "acoustics/Sirens/Doppler", "power grid engineering"],
+      "forbidden_cliches": ["clean lab floor", "floating isolated parts"]
+    },
+    {
+      "id": "W10_SURGICAL_OPERATING_THEATER",
+      "name": "Shadowless Surgical Scialytic Lamp & Living Tissue Macro",
+      "topology": "microscopic_or_cosmic_diegetic",
+      "palette_family": "sterile_sage_crimson_titanium",
+      "color_script": {
+        "base_hex": ["#162624", "#2E4C48", "#E6ECEB"],
+        "accent_hex": "#C82333",
+        "motif_hex": "#F0C987",
+        "kelvin_key": 4500,
+        "kelvin_fill": 5000
+      },
+      "lighting_ratio": "3.5:1 overhead scialytic surgical ring light + moist organic subsurface sheen",
+      "lens_package_mm": [35, 65, 105],
+      "camera_character": "steady clinical overhead + seamless dive through translucent skin into beating anatomy",
+      "default_hud": "H3_FORENSIC_BLUEPRINT",
+      "best_for": ["human body physiology", "medical mysteries", "cardiology/neurology", "trauma & healing"],
+      "forbidden_cliches": ["wooden workshop props", "arbitrary purple cyberpunk lights"]
+    },
+    {
+      "id": "W11_CELLULAR_INNER_CATHEDRAL",
+      "name": "Sub-Micron Electron-Microscope & Bioluminescent Inner World",
+      "topology": "microscopic_or_cosmic_diegetic",
+      "palette_family": "pearl_stroma_violet_atp_gold",
+      "color_script": {
+        "base_hex": ["#120D1D", "#2B1E40", "#9E8FB2"],
+        "accent_hex": "#FFB830",
+        "motif_hex": "#4CE0B3",
+        "kelvin_key": 5000,
+        "kelvin_fill": 6500
+      },
+      "lighting_ratio": "5:1 rim-transillumination (false-color SEM/cryo-EM honesty explicitly maintained)",
+      "lens_package_mm": [24, 50, 105],
+      "camera_character": "fluid Brownian-motion drift + ultra-shallow focal plane rack focus across organelles",
+      "default_hud": "H3_FORENSIC_BLUEPRINT",
+      "best_for": ["molecular motors", "viruses/immune battles", "DNA/protein folding", "nanotechnology"],
+      "forbidden_cliches": ["flat solid plastic shaders", "gravity-bound floor drops in zero-inertia viscous fluid"]
+    },
+    {
+      "id": "W12_HARD_VACUUM_ORBITAL_SUNLIGHT",
+      "name": "Kubrick/Nolan Zero-Atmosphere Hard-Sun Space Vacuum",
+      "topology": "microscopic_or_cosmic_diegetic",
+      "palette_family": "pitch_void_blinding_white_kapton_gold",
+      "color_script": {
+        "base_hex": ["#000000", "#1A1D24", "#EAECEF"],
+        "accent_hex": "#D49B27",
+        "motif_hex": "#3B82F6",
+        "kelvin_key": 5780,
+        "kelvin_fill": 0
+      },
+      "lighting_ratio": "32:1 unfiltered single solar key with razor-hard shadows and ZERO atmospheric haze/fog",
+      "lens_package_mm": [18, 35, 135],
+      "camera_character": "hull-bolted rigid vehicle mount + silent zero-drag inertial drift",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["orbital mechanics", "spacecraft engineering", "astrophysics", "planetary impacts"],
+      "forbidden_cliches": ["dust motes in vacuum", "volumetric fog cones in outer space", "sound explosions in vacuum"]
+    },
+    {
+      "id": "W13_TERRACOTTA_CARPENTER_WORKSHOP",
+      "name": "Warm Sawdust, Raw Timber & Hand-Tool Artisan Bench",
+      "topology": "lived_in_human_interior",
+      "palette_family": "cedar_walnut_brass_afternoon_sun",
+      "color_script": {
+        "base_hex": ["#2A1C14", "#6E472B", "#C89D6C"],
+        "accent_hex": "#E07A2B",
+        "motif_hex": "#4D8B86",
+        "kelvin_key": 3800,
+        "kelvin_fill": 5200
+      },
+      "lighting_ratio": "4:1 low afternoon clerestory sunbeam through floating sawdust + warm tungsten worklamp",
+      "lens_package_mm": [28, 50, 90],
+      "camera_character": "bench-level lateral slider trucks across tools, shavings, and physical rigs",
+      "default_hud": "H2_DIEGETIC_IN_WORLD",
+      "best_for": ["structural mechanics", "levers/gears/bridges", "material grain vs metal", "Desi everyday craft"],
+      "forbidden_cliches": ["futuristic sci-fi UI", "cold hospital blue"]
+    },
+    {
+      "id": "W14_VOLCANIC_BASALT_EXTINCTION",
+      "name": "Ash-Choked Siberian Traps / Basalt Fissure Twilight",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "basalt_ash_sulfur_magma_crimson",
+      "color_script": {
+        "base_hex": ["#0F0D0E", "#2C2627", "#6B5E58"],
+        "accent_hex": "#E63900",
+        "motif_hex": "#C9B458",
+        "kelvin_key": 1900,
+        "kelvin_fill": 6800
+      },
+      "lighting_ratio": "10:1 ground-up magma underglow + diffused overcast ash-cloud skylight",
+      "lens_package_mm": [20, 35, 85],
+      "camera_character": "epic towering vertical tilts through falling ash + seismic ground-tremor close-ups",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["mass extinctions", "plate tectonics", "volcanology", "early Earth atmosphere"],
+      "forbidden_cliches": ["museum glass display case", "clean studio floor"]
+    },
+    {
+      "id": "W15_AERODYNAMIC_WIND_TUNNEL_BAY",
+      "name": "Subsonic Smoke-Filament Wind Tunnel & Schlieren Optics",
+      "topology": "industrial_test_bay",
+      "palette_family": "matte_carbon_titanium_smoke_silver",
+      "color_script": {
+        "base_hex": ["#0E1116", "#252C37", "#C2CAD6"],
+        "accent_hex": "#00B4D8",
+        "motif_hex": "#FF4D6D",
+        "kelvin_key": 5600,
+        "kelvin_fill": 4800
+      },
+      "lighting_ratio": "6:1 razor-thin laser sheet illuminating laminar/turbulent smoke streamlines from behind",
+      "lens_package_mm": [28, 50, 105],
+      "camera_character": "locked wingtip mount + ultra-high-speed phantom slow-motion side profile",
+      "default_hud": "H4_KINETIC_TEST_SPLIT",
+      "best_for": ["flight biomechanics", "F1 downforce", "supersonic shockwaves", "fluid dynamics"],
+      "forbidden_cliches": ["cluttered domestic props", "warm rustic textures"]
+    },
+    {
+      "id": "W16_GOLDEN_HOUR_SAVANNA_GRASSLAND",
+      "name": "BBC-Earth Low Backlit Golden-Hour Floodplain",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "savanna_gold_umber_dusk_violet",
+      "color_script": {
+        "base_hex": ["#332211", "#8C6239", "#F2C166"],
+        "accent_hex": "#FF7F2A",
+        "motif_hex": "#4B5D78",
+        "kelvin_key": 2900,
+        "kelvin_fill": 6000
+      },
+      "lighting_ratio": "5:1 8-degree golden rim sun backlighting fur/dust/grass + cool twilight shadow side",
+      "lens_package_mm": [24, 85, 135],
+      "camera_character": "long-lens 135mm wildlife compression through foreground grass blades + low tracking gimbal",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["predator-prey biomechanics", "Cenozoic mammals", "locomotion speed", "ecological drama"],
+      "forbidden_cliches": ["indoor concrete room", "artificial lasers"]
+    },
+    {
+      "id": "W17_SUBTERRANEAN_KARST_LIMESTONE_CAVE",
+      "name": "Flooded Karst Cavern, Headlamp Cone & Mineral Dripstone",
+      "topology": "field_expedition_site",
+      "palette_family": "wet_limestone_ochre_headlamp_cool",
+      "color_script": {
+        "base_hex": ["#0A0B0D", "#2A2622", "#6E5D4F"],
+        "accent_hex": "#E2F1FF",
+        "motif_hex": "#D48C46",
+        "kelvin_key": 6000,
+        "kelvin_fill": 3200
+      },
+      "lighting_ratio": "14:1 narrow spelunker headlamp beam sweeping wet calcite walls + water-caustic bounce",
+      "lens_package_mm": [18, 35, 65],
+      "camera_character": "tight claustrophobic 18mm squeeze through rock aperture -> crane reveal into cathedral chamber",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["hominin cave fossils", "underground hydrology", "extremophile biology", "claustrophobic survival"],
+      "forbidden_cliches": ["evenly lit sky dome", "open studio horizon"]
+    },
+    {
+      "id": "W18_ARCHITECTURAL_BLUEPRINT_CUTAWAY",
+      "name": "Isometric-to-Perspective Live Building / Infrastructure Section",
+      "topology": "minimalist_sculptural_stage",
+      "palette_family": "drafting_navy_vellum_brass_coral",
+      "color_script": {
+        "base_hex": ["#0F1C2E", "#1F3652", "#ECE6D8"],
+        "accent_hex": "#F26444",
+        "motif_hex": "#E5B84B",
+        "kelvin_key": 5000,
+        "kelvin_fill": 5500
+      },
+      "lighting_ratio": "3:1 clean architectural maquette sun + warm interior room practicals inside the sliced floors",
+      "lens_package_mm": [35, 70, 135],
+      "camera_character": "long-lens near-orthographic cross-section elevation -> smooth dolly into 35mm interior room",
+      "default_hud": "H3_FORENSIC_BLUEPRINT",
+      "best_for": ["civil engineering", "dams/tunnels/skyscrapers", "nuclear reactors", "ship/submarine hulls"],
+      "forbidden_cliches": ["random camera shake", "murky fog hiding structural lines"]
+    },
+    {
+      "id": "W19_SYNCHROTRON_TOMOGRAPHY_CHAMBER",
+      "name": "ESRF Micro-CT Turntable & Translucent X-Ray Specimen Stage",
+      "topology": "minimalist_sculptural_stage",
+      "palette_family": "obsidian_teal_amber_bio_cyan",
+      "color_script": {
+        "base_hex": ["#09121A", "#132433", "#2A4454"],
+        "accent_hex": "#3AD4BE",
+        "motif_hex": "#F7C35F",
+        "kelvin_key": 5400,
+        "kelvin_fill": 6500
+      },
+      "lighting_ratio": "5:1 surgical overhead + rim separation + synchrotron laser plane",
+      "lens_package_mm": [35, 50, 100],
+      "camera_character": "precision orbital inspection + macro dive into translucent internal fossil/organ",
+      "default_hud": "H3_FORENSIC_BLUEPRINT",
+      "best_for": ["non-destructive fossil CT scans", "sealed artifacts"],
+      "forbidden_cliches": ["OVERUSE WARNING: Already used in Karoo Burrow — DO NOT select back-to-back unless explicitly requested!"]
+    },
+    {
+      "id": "W20_STARK_CHIAROSCURO_VOID_SPOTLIGHT",
+      "name": "Caravaggio Single-Cone Pitch-Black Theatrical Stage",
+      "topology": "minimalist_sculptural_stage",
+      "palette_family": "pure_black_warm_ivory_crimson",
+      "color_script": {
+        "base_hex": ["#030304", "#171516", "#E8DEC8"],
+        "accent_hex": "#B81D24",
+        "motif_hex": "#D4AF37",
+        "kelvin_key": 3400,
+        "kelvin_fill": 0
+      },
+      "lighting_ratio": "16:1 single overhead/side theatrical snoot pool; everything outside 1.5m falls to pure #030304",
+      "lens_package_mm": [40, 85],
+      "camera_character": "statuesque stillness; slow deliberate 30-degree psychological approaches",
+      "default_hud": "H0_PURE_CINEMA",
+      "best_for": ["psychological paradoxes", "historicalturning points", "single-object moral/forensic drama"],
+      "forbidden_cliches": ["busy background grids", "colorful sci-fi pills"]
+    },
+    {
+      "id": "W21_TIDAL_COASTAL_BASALT_WAVE_TANK",
+      "name": "Crashing Intertidal Basalt Surge & Refracted Caustics",
+      "topology": "in_situ_natural_biome",
+      "palette_family": "kelp_slate_seafoam_turmeric",
+      "color_script": {
+        "base_hex": ["#0D1F26", "#244954", "#D8E8E6"],
+        "accent_hex": "#E88D2A",
+        "motif_hex": "#5BC0BE",
+        "kelvin_key": 5900,
+        "kelvin_fill": 6800
+      },
+      "lighting_ratio": "4:1 crisp coastal sun + shimmering underwater caustic projections",
+      "lens_package_mm": [20, 35, 90],
+      "camera_character": "split half-above/half-below water dome-port framing + wave-impact surge physics",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["marine-to-land tetrapod evolution", "tsunami/wave physics", "barnacle/mollusk adhesion", "coastal engineering"],
+      "forbidden_cliches": ["dry flat floor", "static lifeless water plane"]
+    },
+    {
+      "id": "W22_DESI_ROOFTOP_COURTYARD_DUSK",
+      "name": "Warm South-Asian Terracotta Chhat / Courtyard at Blue-Hour Dusk",
+      "topology": "lived_in_human_interior",
+      "palette_family": "terracotta_indigo_dusk_tungsten_bulb",
+      "color_script": {
+        "base_hex": ["#1A2238", "#6B3F2E", "#D9A773"],
+        "accent_hex": "#FFB703",
+        "motif_hex": "#4ECDC4",
+        "kelvin_key": 2800,
+        "kelvin_fill": 6800
+      },
+      "lighting_ratio": "5:1 warm bare tungsten filament bulb against deep cobalt-indigo twilight sky",
+      "lens_package_mm": [28, 40, 75],
+      "camera_character": "intimate human-height eye-level + tactile close-ups of everyday steel, clay, water, ice, glass",
+      "default_hud": "H4_KINETIC_TEST_SPLIT",
+      "best_for": ["Monarch Edits Hindi-Urdu everyday science", "household physics", "cultural relatable anchors"],
+      "forbidden_cliches": ["sterile Western sci-fi lab", "cold alien aesthetic"]
+    },
+    {
+      "id": "W23_HIGH_VOLTAGE_FARADAY_DARKROOM",
+      "name": "Copper Coil, Glass Vacuum Tube & Corona Discharge Chamber",
+      "topology": "industrial_test_bay",
+      "palette_family": "oxidized_copper_midnight_violet_arc",
+      "color_script": {
+        "base_hex": ["#090A10", "#2A1F1D", "#B86B35"],
+        "accent_hex": "#8B5CF6",
+        "motif_hex": "#93C5FD",
+        "kelvin_key": 3200,
+        "kelvin_fill": 8000
+      },
+      "lighting_ratio": "9:1 warm filament glow on copper/glass punctuated by transient high-kelvin plasma/arc flashes",
+      "lens_package_mm": [24, 50, 100],
+      "camera_character": "locked macro observation of glass/copper interfaces + sudden recoil on discharge",
+      "default_hud": "H3_FORENSIC_BLUEPRINT",
+      "best_for": ["electromagnetism", "semiconductors/chips", "quantum/optics", "battery/lightning physics"],
+      "forbidden_cliches": ["generic green Matrix code", "unmotivated constant strobing"]
+    },
+    {
+      "id": "W24_DUAL_STRAND_OPPENHEIMER_CONTRAST",
+      "name": "Dual-Format Subjective Color vs Objective Monochrome Archive",
+      "topology": "split_reality_dual_timeline",
+      "palette_family": "silver_gelatin_bw_vs_saturated_ochre",
+      "color_script": {
+        "base_hex": ["#121212", "#8C8C8C", "#F0F0F0"],
+        "accent_hex": "#D97724",
+        "motif_hex": "#C93B2B",
+        "kelvin_key": 5200,
+        "kelvin_fill": 5200
+      },
+      "lighting_ratio": "8:1 silver-gelatin crisp B&W for objective evidence strand vs 4:1 rich warm color for living subjective strand",
+      "lens_package_mm": [35, 65, 110],
+      "camera_character": "locked objective tripod on B&W evidence cuts vs intimate close subjective tracking on color cuts",
+      "default_hud": "H1_DOCUMENTARY_LOWER_THIRD",
+      "best_for": ["historical forensic reconstructions", "myth vs reality investigations", "scientific controversy"],
+      "forbidden_cliches": ["same grade on both timelines", "muddy mid-gray B&W"]
+    }
+  ]
+}

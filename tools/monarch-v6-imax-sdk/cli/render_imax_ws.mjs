@@ -26,7 +26,7 @@ const req = createRequire('/tmp/v6_runtime/package.json');
 const { createServer } = req('vite');
 const { chromium } = req('playwright-core');
 
-const ROOT = '/home/user/Top1';
+const ROOT = process.cwd();
 const CHROMIUM_EXEC = '/tmp/chromium';
 
 function findFfmpeg() {
@@ -56,6 +56,7 @@ function parseArgs(argv) {
     frames: 1050,
     workers: cpuCap,
     chunkSize: 175,
+    maxChunks: 999,
     buildDir: '/tmp/imax_v6_build',
     exportDir: path.join(ROOT, 'exports/imax-v6-run'),
     audio: '',
@@ -74,6 +75,7 @@ function parseArgs(argv) {
     else if (a === '--frames') opts.frames = Number(argv[++i]);
     else if (a === '--workers') opts.workers = Math.min(os.cpus().length, Number(argv[++i]));
     else if (a === '--chunk') opts.chunkSize = Number(argv[++i]);
+    else if (a === '--max-chunks') opts.maxChunks = Number(argv[++i]);
     else if (a === '--build-dir') opts.buildDir = argv[++i];
     else if (a === '--export-dir') opts.exportDir = path.resolve(ROOT, argv[++i]);
     else if (a === '--audio') opts.audio = argv[++i];
@@ -235,7 +237,10 @@ async function runPreflight(vitePort, opts) {
 
     let beatFrames;
     if (opts.beatsJson) {
-      beatFrames = JSON.parse(opts.beatsJson);
+      const rawBeats = fs.existsSync(opts.beatsJson)
+        ? fs.readFileSync(opts.beatsJson, 'utf8')
+        : opts.beatsJson;
+      beatFrames = JSON.parse(rawBeats);
     } else {
       beatFrames = Array.from({ length: 12 }, (_, i) => {
         const f = Math.min(opts.frames - 2, Math.round(((i + 0.4) / 12) * opts.frames));
@@ -293,8 +298,9 @@ async function runFullRender(vitePort, opts) {
     const outMp4 = path.join(platesDir, `plate_${String(ci).padStart(3, '0')}.mp4`);
     allChunks.push({ ci, a, b: Math.min(opts.frames, a + opts.chunkSize), outMp4 });
   }
-  const pendingChunks = allChunks.filter((c) => !fs.existsSync(c.outMp4));
-  console.log(`[Resume] ${allChunks.length - pendingChunks.length}/${allChunks.length} chunks ready; rendering ${pendingChunks.length} chunks (${opts.workers} workers)...`);
+  const allMissing = allChunks.filter((c) => !fs.existsSync(c.outMp4));
+  const pendingChunks = allMissing.slice(0, opts.maxChunks);
+  console.log(`[Resume] ${allChunks.length - allMissing.length}/${allChunks.length} chunks ready; rendering ${pendingChunks.length} of ${allMissing.length} remaining chunks (${opts.workers} workers)...`);
 
   const activePipes = new Map();
   const wsServer = await startRawWSServer(opts.w * opts.h * 4, async (wid, frameBuf) => {
@@ -350,11 +356,15 @@ async function runFullRender(vitePort, opts) {
   }
 
   const plateFiles = fs.readdirSync(platesDir).filter((f) => f.endsWith('.mp4')).sort();
+  if (plateFiles.length < allChunks.length) {
+    console.log(`[Partial Batch Complete] ${plateFiles.length}/${allChunks.length} chunk plates finished. Re-run to finish remaining chunks.`);
+    return;
+  }
   const concatList = path.join(opts.buildDir, 'concat_v6.txt');
   fs.writeFileSync(concatList, plateFiles.map((f) => `file '${path.join(platesDir, f)}'`).join('\n') + '\n');
 
   const finalMp4 = path.join(opts.exportDir, opts.outName);
-  // Unified single-SPS/PPS broadcast H.264 High@L4.0 master pass!
+  // Unified single-SPS/PPS broadcast H.264 High@L4.0 master pass + post-AAC True-Peak alimiter guard!
   const ffArgs = ['-y', '-f', 'concat', '-safe', '0', '-i', concatList];
   if (opts.audio && fs.existsSync(opts.audio)) {
     ffArgs.push(
@@ -362,6 +372,7 @@ async function runFullRender(vitePort, opts) {
       '-map', '0:v:0', '-map', '1:a:0',
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '16', '-g', '30', '-bf', '2',
       '-pix_fmt', 'yuv420p', '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+      '-af', 'alimiter=limit=0.708:level=false',
       '-c:a', 'aac', '-b:a', '320k', '-ar', '48000',
       '-movflags', '+faststart', '-shortest', finalMp4
     );

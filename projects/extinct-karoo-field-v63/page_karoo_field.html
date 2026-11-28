@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Extinct Life V6.3 Director Edition — This Rock Holds Two Animals (W02 Field Expedition)</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #20120a; overflow: hidden; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<script type="module">
+import * as THREE from 'three';
+import {
+  loadVerifiedCinemaFonts,
+  createImaxOpticalPass,
+  createGpuHudCompositor,
+  assertSafeLatinGlyphs,
+} from '/tools/monarch-v6-imax-sdk/index.js';
+import { FPS, TOTAL_FRAMES, createKarooFieldWorldV63 } from '/projects/extinct-karoo-field-v63/film_karoo_field_world.js';
+import { CAPTIONS, createKarooFieldDirectorV63, drawKarooFieldHudV63 } from '/projects/extinct-karoo-field-v63/film_karoo_field.js';
+
+const params = new URLSearchParams(window.location.search);
+const RENDER_W = parseInt(params.get('w') || '1080', 10);
+const RENDER_H = parseInt(params.get('h') || '1920', 10);
+
+assertSafeLatinGlyphs(
+  CAPTIONS.flatMap((c) => [c.l1, c.l2, c.hi]),
+  'Karoo-Field-V63-Captions'
+);
+
+await loadVerifiedCinemaFonts();
+console.log('[Fonts Verified] Karoo Burrow V6.3 Field Director Edition');
+
+const webglCanvas = document.createElement('canvas');
+webglCanvas.width = RENDER_W;
+webglCanvas.height = RENDER_H;
+document.body.appendChild(webglCanvas);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas: webglCanvas,
+  antialias: false,
+  alpha: false,
+  powerPreference: 'high-performance',
+  preserveDrawingBuffer: true,
+});
+renderer.setSize(RENDER_W, RENDER_H, false);
+renderer.setPixelRatio(1);
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
+renderer.sortObjects = true;
+renderer.autoClear = false;
+
+const camera = new THREE.PerspectiveCamera(54.4, RENDER_W / RENDER_H, 0.16, 90.0);
+
+const world = await createKarooFieldWorldV63(renderer);
+const director = createKarooFieldDirectorV63(world, camera);
+const imaxPass = createImaxOpticalPass(renderer, RENDER_W, RENDER_H);
+const hud = createGpuHudCompositor(renderer, RENDER_W, RENDER_H);
+
+function renderCompleteFrame(frame, hudOpts = { showCaptions: true }) {
+  const state = director.evaluateFrame(frame);
+  imaxPass.render(world.scene, camera, state.postParams);
+  if (!state.hud.inProtectedClimax || hudOpts.coverMode) {
+    drawKarooFieldHudV63(hud.ctx, state, CAPTIONS, hudOpts);
+    hud.composite();
+  }
+  return state;
+}
+
+window.renderFramePNG = (frame, hudOpts = { showCaptions: true }) => {
+  renderCompleteFrame(frame, hudOpts);
+  return webglCanvas.toDataURL('image/png');
+};
+
+window.renderCoverPNG = () => {
+  // Hero mid-peel outdoor Karoo trench frame (`f=134`: golden calcite peel + dual skeletons + red rock + tools!)
+  renderCompleteFrame(134, { showCaptions: false, coverMode: true });
+  return webglCanvas.toDataURL('image/png');
+};
+
+window.measureLoopSeamMAE = () => {
+  const gl = renderer.getContext();
+  const b0 = new Uint8Array(RENDER_W * RENDER_H * 4);
+  const bN = new Uint8Array(RENDER_W * RENDER_H * 4);
+  renderCompleteFrame(0, { showCaptions: false });
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, b0);
+  director.evaluateFrame(TOTAL_FRAMES - 2);
+  renderCompleteFrame(TOTAL_FRAMES - 1, { showCaptions: false });
+  gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, bN);
+  let diff = 0;
+  const pxCount = RENDER_W * RENDER_H * 3;
+  for (let i = 0; i < b0.length; i += 4) {
+    diff += Math.abs(b0[i] - bN[i]) + Math.abs(b0[i + 1] - bN[i + 1]) + Math.abs(b0[i + 2] - bN[i + 2]);
+  }
+  return diff / pxCount;
+};
+
+const gl = renderer.getContext();
+const pixelBuf = new Uint8Array(RENDER_W * RENDER_H * 4);
+let activeWS = null;
+let wsWaitResolve = null;
+
+window.connectRawWS = (wsPort, workerId) => new Promise((resolve, reject) => {
+  const ws = new WebSocket(`ws://127.0.0.1:${wsPort}/?w=${workerId}`);
+  ws.binaryType = 'arraybuffer';
+  ws.onmessage = () => {
+    if (wsWaitResolve) {
+      const r = wsWaitResolve;
+      wsWaitResolve = null;
+      r();
+    }
+  };
+  ws.onopen = () => { activeWS = ws; resolve(true); };
+  ws.onerror = (e) => reject(e);
+});
+
+window.streamFramesWS = async (fStart, fEnd) => {
+  if (fStart > 0) {
+    director.evaluateFrame(fStart - 1);
+  }
+  for (let f = fStart; f < fEnd; f++) {
+    renderCompleteFrame(f, { showCaptions: true });
+    gl.readPixels(0, 0, RENDER_W, RENDER_H, gl.RGBA, gl.UNSIGNED_BYTE, pixelBuf);
+    await new Promise((res) => {
+      wsWaitResolve = res;
+      activeWS.send(pixelBuf);
+    });
+  }
+  return fEnd - fStart;
+};
+
+window.__duration = TOTAL_FRAMES / FPS;
+window.__totalFrames = TOTAL_FRAMES;
+window.__IMAX_READY__ = true;
+window.__SHORT_V6_READY__ = true;
+</script>
+</body>
+</html>

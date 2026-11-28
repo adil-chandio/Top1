@@ -31,6 +31,9 @@ def verify_imax_mp4(
     check_seamless_loop: bool = True,
     max_loop_mae: float = 9.5,
     vacuum_window_s: tuple = None,
+    line_windows: list = None,
+    max_line_spread_db: float = 4.2,
+    max_hiss_floor_db: float = None,
     scale_w: int = 320,
     scale_h: int = 180,
 ) -> dict:
@@ -126,6 +129,46 @@ def verify_imax_mp4(
         vac_rms_db = float(20.0 * np.log10(np.sqrt(np.mean(audio ** 2)) + 1e-9))
         assert vac_rms_db < -48.0, f"Pre-twist vacuum drop too noisy: {vac_rms_db:.1f} dBFS"
 
+    # 6. Optional V7 Per-Line Dialogue Consistency & Stationary Hiss/Buzz Floor Audit on Decoded AAC!
+    line_spread_db = None
+    hiss_floor_db = None
+    if line_windows is not None or max_hiss_floor_db is not None:
+        from scipy import signal as _sig
+        full_pcm = subprocess.run(
+            [ffmpeg, "-v", "error", "-i", mp4_path, "-vn", "-f", "f32le", "-ac", "2", "-ar", "48000", "-"],
+            capture_output=True, check=True,
+        ).stdout
+        full_aud = np.frombuffer(full_pcm, dtype=np.float32).reshape((-1, 2))
+        mono_aud = np.mean(full_aud, axis=1)
+
+        if line_windows:
+            line_dbs = []
+            win = int(0.018 * 48000)
+            kern = np.ones(win, dtype=np.float32) / win
+            for ln in line_windows:
+                s0, s1 = int(ln["t0"] * 48000), int(ln["t1"] * 48000)
+                seg = mono_aud[s0:s1]
+                env = np.sqrt(np.convolve(seg ** 2, kern, mode="same"))
+                p95 = float(np.percentile(env, 95))
+                voiced = env >= max(0.002, p95 * 0.25)
+                rms = float(np.sqrt(np.mean(seg[voiced] ** 2)) + 1e-12)
+                line_dbs.append(20.0 * np.log10(rms))
+            line_spread_db = float(max(line_dbs) - min(line_dbs))
+            assert line_spread_db <= max_line_spread_db, (
+                f"Post-AAC dialogue level inconsistent! spread={line_spread_db:.2f} dB > {max_line_spread_db} dB"
+            )
+
+        if max_hiss_floor_db is not None:
+            sos_h = _sig.butter(4, [2500.0 / 24000.0, 7000.0 / 24000.0], btype="bandpass", output="sos")
+            hi = _sig.sosfilt(sos_h, mono_aud)
+            wlen = int(0.10 * 48000)
+            nw = len(hi) // wlen
+            wrms = np.sqrt(np.mean(hi[: nw * wlen].reshape(nw, wlen) ** 2, axis=1))
+            hiss_floor_db = float(20.0 * np.log10(float(np.percentile(wrms, 15)) + 1e-12))
+            assert hiss_floor_db <= max_hiss_floor_db, (
+                f"Post-AAC stationary hiss/buzz floor too high: {hiss_floor_db:.1f} dBFS > {max_hiss_floor_db} dBFS"
+            )
+
     return {
         "decoded_frames": n_frames,
         "min_luma": min_luma,
@@ -134,4 +177,6 @@ def verify_imax_mp4(
         "lufs": lufs,
         "true_peak_dbfs": tp,
         "vacuum_rms_db": vac_rms_db,
+        "line_spread_db": line_spread_db,
+        "hiss_floor_db": hiss_floor_db,
     }

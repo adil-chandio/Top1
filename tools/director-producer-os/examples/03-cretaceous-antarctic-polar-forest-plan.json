@@ -1,0 +1,411 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "ref-03-cretaceous-antarctic-polar-forest",
+  "channel": "extinct-channel",
+  "format": "9:16_short",
+  "fps": 30,
+  "duration_s": 40.0,
+  "producer_brief": {
+    "topic_summary": "Core PS104/20-2 recovered off West Antarctica (Klages et al., Nature 2020) contains intact 90-million-year-old fossilized root networks, pollen, and amber just 900 km from the South Pole.",
+    "core_dramatic_question": "How did a lush temperate swampy rainforest survive four straight months of continuous polar winter darkness near the South Pole?",
+    "target_emotion_arc": "Blinding polar awe -> scientific disbelief at warm roots inside frozen seabed mud -> deep-time wonder at a vanished green Antarctica.",
+    "audience_takeaway": "Mid-Cretaceous CO2 levels (~1120-1680 ppm) kept Antarctic mean annual temperatures near ~12-13C with zero continental ice cap.",
+    "opening_hook_grammar": "SIDE_BY_SIDE_PARADOX_QUESTION",
+    "hook_lands_within_s": 1.8,
+    "seamless_loop": true,
+    "epistemic_ledger": {
+      "observed_evidence": [
+        "RV Polarstern drill core PS104/20-2 from the Amundsen Sea shelf (~73.5S, paleolatitude ~82S) preserved CT-imaged root networks, conifer/fern pollen, and translucent amber.",
+        "Geochemical paleothermometry indicates ~12-13C mean annual air temperatures and ~19C summer warmth ~90 million years ago."
+      ],
+      "scientific_inferences": [
+        "Dense high-latitude forest canopy required ice-free Antarctica and atmospheric CO2 exceeding 1000 ppm to prevent winter freezing during 4-month polar night."
+      ],
+      "illustrative_abstractions": [
+        "Seamless match-cut transition from split sediment core cylinder into living 90 Ma Nothofagus-podocarp swamp forest."
+      ]
+    }
+  },
+  "anti_clone_declaration": {
+    "selected_archetype_id": "W07_CRYOGENIC_GLACIAL_WHITEOUT",
+    "staging_topology": "in_situ_natural_biome",
+    "primary_prop_anchor": "split_cylindrical_marine_sediment_core_on_snow_trench_bench",
+    "palette_family": "high_albedo_glacial_ice_white_cerulean_peat_amber",
+    "dominant_sequence_pattern": "parallel_crosscut_convergence",
+    "hud_philosophy": "H5_EDITORIAL_CHAPTER_CARDS",
+    "why_not_previous_template": "Breaks completely from dark indoor Karoo/Thermal chambers into blinding 7200K high-key Antarctic blue-white glacier daylight paired with golden-amber deep-time forest.",
+    "user_explicit_template_override": false
+  },
+  "dramaturgy": {
+    "dominant_mode": "MYSTERY",
+    "beats": [
+      {
+        "beat_id": "B1_ICE_VS_ROOT_PARADOX",
+        "t0": 0.0,
+        "t1": 7.5,
+        "narrative_claim": "Amid blinding West Antarctic sea ice, a split drill core reveals intact tree roots still threaded through ancient soil.",
+        "audience_emotion": "Instant cognitive dissonance — tree roots at the bottom of the frozen world.",
+        "intensity_0_to_100": 60,
+        "visual_route": "LITERAL_SPECIMEN",
+        "audience_knows_vs_hidden": "Viewer sees dark fibrous roots inside icy core; the amber droplet and living biome are still withheld."
+      },
+      {
+        "beat_id": "B2_AMBER_TIME_CAPSULE",
+        "t0": 7.5,
+        "t1": 16.5,
+        "narrative_claim": "Micro-CT scanning inside core PS104/20-2 uncovers golden conifer resin and 62 spore/pollen taxa just 900 km from the South Pole.",
+        "audience_emotion": "Investigative excitement as microscopic evidence locks in.",
+        "intensity_0_to_100": 76,
+        "visual_route": "PROCESS_MECHANISM",
+        "audience_knows_vs_hidden": "Viewer sees fossil amber and root architecture inside the cylinder before stepping through time."
+      },
+      {
+        "beat_id": "B3_90MA_SWAMP_RECONSTRUCTION",
+        "t0": 16.5,
+        "t1": 26.0,
+        "narrative_claim": "Ninety million years ago, this exact latitude stood at 12-13C average warmth — a misty podocarp and tree-fern river forest.",
+        "audience_emotion": "Transportive wonder as blinding white ice dissolves into living green swamp.",
+        "intensity_0_to_100": 86,
+        "visual_route": "HUMAN_OR_CREATURE_WITNESS",
+        "audience_knows_vs_hidden": "Full living Turonian biome revealed, leading to the ultimate polar-night question."
+      },
+      {
+        "beat_id": "B4_FOUR_MONTH_POLAR_NIGHT_CLIMAX",
+        "t0": 26.0,
+        "t1": 34.0,
+        "narrative_claim": "Even through four unbroken months of South Polar winter darkness, extreme greenhouse warmth prevented a single ice sheet from forming.",
+        "audience_emotion": "Sublime cosmic scale — an emerald forest breathing beneath aurora-lit polar night.",
+        "intensity_0_to_100": 97,
+        "visual_route": "CONSEQUENCE_AFTERMATH",
+        "audience_knows_vs_hidden": "Peak visual contrast as warm golden resin droplet catches aurora sky over dark water."
+      },
+      {
+        "beat_id": "B5_FROZEN_CORE_RETURN",
+        "t0": 34.0,
+        "t1": 40.0,
+        "narrative_claim": "Buried beneath modern Antarctic ice lies physical proof of how radically CO2 rewrites an entire continent.",
+        "audience_emotion": "Sobering planetary perspective.",
+        "intensity_0_to_100": 42,
+        "visual_route": "LITERAL_SPECIMEN",
+        "audience_knows_vs_hidden": "Fossil amber grain bridges straight back into the blinding white expedition trench."
+      }
+    ],
+    "see_hide_pairs": [
+      {
+        "hidden_element": "Golden fossilized conifer resin bead embedded deep inside dark lignite mudstone",
+        "hide_shot_id": "S01",
+        "reveal_shot_id": "S03",
+        "withholding_technique": "Split mudstone face looks like plain dark peat in S01-S02 until 100mm macro grazing sun reveals translucent #D97A2B amber in S03."
+      }
+    ],
+    "motifs": [
+      {
+        "motif_name": "Translucent #D97A2B conifer amber droplet",
+        "planted_shot_id": "S03",
+        "callback_shot_id": "S07",
+        "meaning_shift": "First seen as a 1mm fossil grain in frozen sediment; returns as fresh liquid resin bleeding down a living polar conifer under aurora."
+      }
+    ]
+  },
+  "production_design": {
+    "world_description": "Dual-era Antarctic site: (A) High-albedo 7200K modern West Antarctic snow trench with aluminum core tray holding split sediment cylinder PS104/20-2; (B) 90 Ma Turonian swampy podocarp-fern forest at 82 deg South.",
+    "lighting_paradigm": "1.8:1 blinding 7200K polar snow-albedo daylight in modern trench contrasting against 8:1 low-horizon twilight/aurora chiaroscuro in the 90 Ma polar winter forest.",
+    "color_script": {
+      "base_hex": ["#EAF4FA", "#B8D6EA", "#4F758E", "#2C2621"],
+      "reserved_accent_hex": "#D97A2B",
+      "accent_meaning": "90-million-year-old fossilized and living conifer resin proving warm ice-free forest ecology",
+      "act1_palette_mood": "Crisp high-key glacial white and cerulean ice bounce around dark brown lignite core",
+      "act2_palette_mood": "Misty temperate podocarp greens and peat water warmed by low-angle polar summer sun",
+      "act3_palette_mood": "Deep polar-night twilight water lit by a glowing #D97A2B resin bead before snapping back to bright glacier snow"
+    },
+    "bruce_block_visual_arc": {
+      "climax_beat_id": "B4_FOUR_MONTH_POLAR_NIGHT_CLIMAX",
+      "climax_visual_contrast_0_to_100": 92,
+      "resolution_visual_affinity_0_to_100": 78,
+      "space_progression": "Vast flat polar snow horizon -> cylindrical core macro -> deep multi-plane ancient swamp canopy -> return to crisp trench.",
+      "tone_progression": "High-key 1.8:1 bright snow affinity -> 4:1 dappled swamp midtones -> 10:1 polar-night chiaroscuro -> 1.8:1 bright snow affinity."
+    }
+  },
+  "scene_geography": [
+    {
+      "scene_id": "ANTARCTIC_CORE_TRENCH",
+      "bounds_xyz_m": [6.0, 2.5, 6.0],
+      "key_light_direction_xyz": [0.42, 0.35, 0.84],
+      "line_of_action_xz": [-2.0, 0.0, 2.0, 0.0],
+      "allowed_camera_side": 1,
+      "scale_reference_object": "10cm metric sediment-core liner tube, gloved expedition cuff, and snow-pit shovel blade"
+    },
+    {
+      "scene_id": "TURONIAN_POLAR_FOREST",
+      "bounds_xyz_m": [12.0, 8.0, 12.0],
+      "key_light_direction_xyz": [-0.30, 0.18, 0.94],
+      "line_of_action_xz": [-3.0, 0.0, 3.0, 0.0],
+      "allowed_camera_side": 1,
+      "scale_reference_object": "1.4m Dicksonia tree-fern fronds and 3cm conifer cones overhanging peat stream"
+    }
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "beat_id": "B1_ICE_VS_ROOT_PARADOX",
+      "scene_id": "ANTARCTIC_CORE_TRENCH",
+      "t0": 0.0,
+      "t1": 4.2,
+      "subject_id": "split_core_ps104",
+      "subject_width_m": 0.42,
+      "shot_size": "MS",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [0.0, 0.62, 0.96],
+      "look_at_xyz": [0.0, 0.18, 0.0],
+      "lens_mm_equiv": 28,
+      "dof_mode": "deep",
+      "move": "push_in",
+      "ease": "easeOutQuart",
+      "motivation": "APPROACH",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Juxtapose blinding white Antarctic glacier snow directly against dark fibrous tree roots inside a split 10cm drill core.",
+      "reason": "High-key 28mm push-in keeps both the frozen polar horizon and the impossible brown root network sharp simultaneously.",
+      "layers_fg_mg_bg": {
+        "fg": "Wind-rippled sastrugi snow lip at trench edge",
+        "mg": "Split polycarbonate core liner PS104/20-2 exposing dark fossil root soil",
+        "bg": "Bright cerulean-white West Antarctic ice shelf under low polar sun"
+      },
+      "start_frame_desc": "Bright polar field trench framing the dark split sediment core against white glacier expanse.",
+      "end_frame_desc": "Closer medium view locking onto tangled fossilized rootlets crossing the mudstone face.",
+      "eye_trace_start_xy": [0.50, 0.48],
+      "eye_trace_end_xy": [0.50, 0.50],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected displaying the sediment core inside a dark museum room because blinding polar snow outside the core tray makes the warm-forest paradox instantaneous."
+    },
+    {
+      "id": "S02",
+      "beat_id": "B1_ICE_VS_ROOT_PARADOX",
+      "scene_id": "ANTARCTIC_CORE_TRENCH",
+      "t0": 4.2,
+      "t1": 7.5,
+      "subject_id": "root_network_face",
+      "subject_width_m": 0.11,
+      "shot_size": "CU",
+      "camera_angle": "overhead_90",
+      "camera_pos_xyz": [0.0, 0.52, 0.24],
+      "look_at_xyz": [0.0, 0.18, 0.0],
+      "lens_mm_equiv": 50,
+      "dof_mode": "deep",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Hold still over the split mudstone while clean editorial serif chapter card states '82° SOUTH · 90 MILLION YEARS AGO'.",
+      "reason": "Locked overhead 50mm frame honors hold_for_text and lets fine branching root capillaries read clearly.",
+      "layers_fg_mg_bg": {
+        "fg": "Millimeter scale strip along core liner edge",
+        "mg": "In-situ branching fossil rootlets preserved in fine siltstone",
+        "bg": "Brushed aluminum core tray"
+      },
+      "start_frame_desc": "Crisp top-down close-up of intact fossil root branching across split core.",
+      "end_frame_desc": "Spindrift ice crystals blow lightly across the liner edge while ancient roots stay still.",
+      "eye_trace_start_xy": [0.50, 0.50],
+      "eye_trace_end_xy": [0.52, 0.46],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "STORY_23",
+      "hold_for_text": [[4.6, 7.1]]
+    },
+    {
+      "id": "S03",
+      "beat_id": "B2_AMBER_TIME_CAPSULE",
+      "scene_id": "ANTARCTIC_CORE_TRENCH",
+      "t0": 7.5,
+      "t1": 16.5,
+      "subject_id": "amber_grain_and_ct_roots",
+      "subject_width_m": 0.03,
+      "shot_size": "MACRO",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.10, 0.20, 0.18],
+      "look_at_xyz": [0.0, 0.18, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "shallow",
+      "move": "probe_macro_glide",
+      "ease": "easeInOutCubic",
+      "motivation": "REVEAL",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Uncover a glowing #D97A2B translucent conifer amber bead nested beside 3D root channels inside the dark peat.",
+      "reason": "100mm grazing-sun macro ignites internal golden refraction inside the fossil resin grain.",
+      "layers_fg_mg_bg": {
+        "fg": "Dark lignite peat crumb in soft foreground",
+        "mg": "1.5mm #D97A2B translucent amber droplet and preserved conifer pollen grains",
+        "bg": "High-key cerulean ice reflection beyond tray"
+      },
+      "start_frame_desc": "Grazing polar sunlight skimming dark peat matrix.",
+      "end_frame_desc": "Warm #D97A2B amber bead blazing like trapped liquid sunlight amid frozen sediment.",
+      "eye_trace_start_xy": [0.52, 0.46],
+      "eye_trace_end_xy": [0.50, 0.48],
+      "cut_in_type": "J_CUT_AUDIO_LEAD",
+      "murch_cut_driver": "STORY_23",
+      "rejected_alternative": "Rejected jumping straight to dinosaur CGI; anchoring the transition in real RV Polarstern fossil amber preserves strict paleobotanical truth."
+    },
+    {
+      "id": "S04",
+      "beat_id": "B3_90MA_SWAMP_RECONSTRUCTION",
+      "scene_id": "TURONIAN_POLAR_FOREST",
+      "t0": 16.5,
+      "t1": 22.0,
+      "subject_id": "living_podocarp_roots",
+      "subject_width_m": 1.40,
+      "shot_size": "MWS",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [-0.45, 0.45, 2.85],
+      "look_at_xyz": [0.0, 0.85, 0.0],
+      "lens_mm_equiv": 28,
+      "dof_mode": "deep",
+      "move": "pull_out",
+      "ease": "easeOutQuart",
+      "motivation": "WITHDRAW",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Match-cut from the fossil root crown directly into a living misty 90 Ma Antarctic podocarp and tree-fern swamp.",
+      "reason": "28mm pull-out expands from a single root buttress into a lush temperate wetland thriving at 82 deg South.",
+      "layers_fg_mg_bg": {
+        "fg": "Sphagnum moss hummock and rippling dark peat water",
+        "mg": "Towering podocarp conifer roots and unfurling Dicksonia tree-fern fronds",
+        "bg": "Low golden polar summer sun skimming misty river channel"
+      },
+      "start_frame_desc": "Living wet conifer root buttress matching the geometry of the core root network.",
+      "end_frame_desc": "Lush temperate Antarctic rainforest bathed in low-horizon golden mist.",
+      "eye_trace_start_xy": [0.50, 0.48],
+      "eye_trace_end_xy": [0.48, 0.44],
+      "cut_in_type": "MATCH_CUT_GEOMETRY",
+      "murch_cut_driver": "EMOTION_51"
+    },
+    {
+      "id": "S05",
+      "beat_id": "B3_90MA_SWAMP_RECONSTRUCTION",
+      "scene_id": "TURONIAN_POLAR_FOREST",
+      "t0": 22.0,
+      "t1": 26.0,
+      "subject_id": "fern_canopy_horizon",
+      "subject_width_m": 2.40,
+      "shot_size": "WS",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.85, 1.35, 4.40],
+      "look_at_xyz": [0.0, 1.50, 0.0],
+      "lens_mm_equiv": 28,
+      "dof_mode": "deep",
+      "move": "pan",
+      "ease": "easeInOutCubic",
+      "motivation": "ORIENT",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Show the sun sliding sideways along the horizon without rising high — proving high-polar latitude geometry.",
+      "reason": "Slow pan follows the grazing sub-horizon sun path as twilight settles for four winter months.",
+      "layers_fg_mg_bg": {
+        "fg": "Hanging conifer branchlet with dew",
+        "mg": "Dense Nothofagus and fern canopy steaming in mild 12C air",
+        "bg": "Low polar sun dipping below distant ice-free mountain ridge"
+      },
+      "start_frame_desc": "Golden grazing sunlight skimming horizontally across misty swamp crowns.",
+      "end_frame_desc": "Sun slipping beneath the southern ridge as deep polar-night indigo descends.",
+      "eye_trace_start_xy": [0.48, 0.42],
+      "eye_trace_end_xy": [0.54, 0.38],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "SPACE_3D_4"
+    },
+    {
+      "id": "S06",
+      "beat_id": "B4_FOUR_MONTH_POLAR_NIGHT_CLIMAX",
+      "scene_id": "TURONIAN_POLAR_FOREST",
+      "t0": 26.0,
+      "t1": 31.2,
+      "subject_id": "aurora_swamp_canopy",
+      "subject_width_m": 3.10,
+      "shot_size": "EWS",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [-0.90, 0.65, 5.20],
+      "look_at_xyz": [0.0, 2.10, 0.0],
+      "lens_mm_equiv": 24,
+      "dof_mode": "deep",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Unobstructed pure-cinema climax: lush ice-free Antarctic forest standing unfrozen beneath polar winter stars and faint australis glow.",
+      "reason": "Locked 24mm monument frame lets the impossible coexistence of lush ferns and polar winter darkness sink in.",
+      "layers_fg_mg_bg": {
+        "fg": "Unfrozen liquid river surface reflecting sky",
+        "mg": "Dark silhouettes of dormant Nothofagus and evergreen podocarps",
+        "bg": "Star-filled South Polar winter sky with subtle pale-green aurora curtain"
+      },
+      "start_frame_desc": "Wide locked frame of unfrozen polar river and forest silhouettes under deep winter night.",
+      "end_frame_desc": "Warm breath of mist rising off liquid water with zero frost or ice.",
+      "eye_trace_start_xy": [0.52, 0.40],
+      "eye_trace_end_xy": [0.50, 0.46],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected fast fly-through camera spin during polar night; holding a completely still wide frame delivers Villeneuve-scale awe."
+    },
+    {
+      "id": "S07",
+      "beat_id": "B4_FOUR_MONTH_POLAR_NIGHT_CLIMAX",
+      "scene_id": "TURONIAN_POLAR_FOREST",
+      "t0": 31.2,
+      "t1": 34.0,
+      "subject_id": "living_resin_droplet",
+      "subject_width_m": 0.04,
+      "shot_size": "CU",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.14, 1.10, 0.36],
+      "look_at_xyz": [0.0, 1.10, 0.0],
+      "lens_mm_equiv": 85,
+      "dof_mode": "shallow",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Motif callback: fresh #D97A2B resin bead oozing slowly down wet conifer bark in the mild polar night.",
+      "reason": "85mm shallow focus isolates the glowing #D97A2B amber bead to bridge 90 million years back into the drill core.",
+      "layers_fg_mg_bg": {
+        "fg": "Conifer scale leaf",
+        "mg": "Glowing #D97A2B liquid resin droplet clinging to bark",
+        "bg": "Indigo polar night reflection"
+      },
+      "start_frame_desc": "Fresh golden #D97A2B resin droplet swelling on wet conifer bark.",
+      "end_frame_desc": "Droplet centered at [0.50, 0.48] ready to match-cut back into modern glacier daylight.",
+      "eye_trace_start_xy": [0.50, 0.46],
+      "eye_trace_end_xy": [0.50, 0.48],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EYE_TRACE_7"
+    },
+    {
+      "id": "S08",
+      "beat_id": "B5_FROZEN_CORE_RETURN",
+      "scene_id": "ANTARCTIC_CORE_TRENCH",
+      "t0": 34.0,
+      "t1": 40.0,
+      "subject_id": "split_core_ps104",
+      "subject_width_m": 0.42,
+      "shot_size": "MS",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [0.0, 0.62, 0.96],
+      "look_at_xyz": [0.0, 0.18, 0.0],
+      "lens_mm_equiv": 28,
+      "dof_mode": "deep",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Snap from warm resin bead back to the split Antarctic drill core in blinding 7200K snow, locking onto Frame 0.",
+      "reason": "High-contrast temperature snap (twilight amber -> blinding glacier snow) lands the climate takeaway and seals the loop.",
+      "layers_fg_mg_bg": {
+        "fg": "Wind-rippled sastrugi snow lip at trench edge",
+        "mg": "Split polycarbonate core PS104/20-2 resting in bright polar sun",
+        "bg": "Blinding white West Antarctic ice shelf"
+      },
+      "start_frame_desc": "Bright polar snow trench snapping back around the dark fossil root core.",
+      "end_frame_desc": "Exact Frame-0 geometry and eye-trace [0.50, 0.48] for seamless replay.",
+      "eye_trace_start_xy": [0.50, 0.48],
+      "eye_trace_end_xy": [0.50, 0.48],
+      "cut_in_type": "LOOP_SEAM_MATCH",
+      "murch_cut_driver": "EYE_TRACE_7"
+    }
+  ],
+  "sound_dramaturgy": {
+    "acoustic_world_bed": "Dual acoustic world: crisp katabatic Antarctic wind + dry snow crunch in modern trench <-> warm swamp water lap + insect-free high-latitude conifer wind in 90 Ma forest.",
+    "silence_before_climax_window_s": [25.2, 26.0],
+    "protected_hud_free_climax_windows_s": [[26.0, 34.0]],
+    "audio_lead_notes": "8.0s of pure HUD-free polar-night forest cinema [26.0-34.0s]; katabatic glacier wind J-cuts in 0.35s early at 33.65s before snapping back to blinding snow at 34.0s."
+  }
+}

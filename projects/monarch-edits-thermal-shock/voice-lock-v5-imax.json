@@ -1,0 +1,290 @@
+{
+  "project": "monarch-edits-thermal-shock-v5-imax",
+  "fps": 30,
+  "duration_s": 40.0,
+  "total_frames": 1200,
+  "time_stretch_applied": false,
+  "voice_id": "voice-00",
+  "vacuum_t0": 22.493,
+  "shatter_t": 22.8333,
+  "shatter_f": 685,
+  "vacuum_qa_window": [
+    22.538,
+    22.788
+  ],
+  "protected_climax_window_s": [
+    22.493,
+    24.3333
+  ],
+  "crack_times_s": [
+    17.981,
+    19.357,
+    20.618,
+    21.65
+  ],
+  "shard_bounce_times_s": [
+    23.255,
+    23.549,
+    23.856,
+    24.079,
+    24.382,
+    24.655,
+    24.937,
+    25.212,
+    25.51,
+    25.714,
+    25.96,
+    26.264,
+    26.588,
+    26.855,
+    27.067,
+    27.402
+  ],
+  "shots": [
+    {
+      "id": "S1_HOOK",
+      "f0": 0,
+      "f1": 104
+    },
+    {
+      "id": "S2_HEAT_SOAK",
+      "f0": 104,
+      "f1": 222
+    },
+    {
+      "id": "S3_ICE_POUR",
+      "f0": 222,
+      "f1": 358
+    },
+    {
+      "id": "S4_CUTAWAY",
+      "f0": 358,
+      "f1": 500
+    },
+    {
+      "id": "S5_ATOMIC",
+      "f0": 500,
+      "f1": 685
+    },
+    {
+      "id": "S6_SHATTER",
+      "f0": 685,
+      "f1": 736
+    },
+    {
+      "id": "S7_SHARDS",
+      "f0": 736,
+      "f1": 888
+    },
+    {
+      "id": "S8_BORO_HERO",
+      "f0": 888,
+      "f1": 1055
+    },
+    {
+      "id": "S9_LOOP_RETURN",
+      "f0": 1055,
+      "f1": 1200
+    }
+  ],
+  "captions": [
+    {
+      "id": "S1_HOOK",
+      "t0": 0.18,
+      "t1": 3.3098,
+      "f0": 5,
+      "f1": 99,
+      "l1": "KHOLTE GARAM GLASS PAR",
+      "l2": "BARAF THANDA PAANI DAALEIN?",
+      "hi": "BARAF THANDA",
+      "accent": "#FFB454"
+    },
+    {
+      "id": "S2_HEAT",
+      "t0": 3.5498,
+      "t1": 7.2384,
+      "f0": 106,
+      "f1": 217,
+      "l1": "300°C KI GARMI SE",
+      "l2": "POORI DEEWAR PHAIL CHUKI HAI",
+      "hi": "300°C",
+      "accent": "#FF6A28"
+    },
+    {
+      "id": "S3_POUR_A",
+      "t0": 7.4784,
+      "t1": 9.9668,
+      "f0": 224,
+      "f1": 299,
+      "l1": "TABHI UPAR SE 10°C",
+      "l2": "THANDA PAANI GIRTA HAI",
+      "hi": "10°C",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S3_POUR_B",
+      "t0": 10.0868,
+      "t1": 11.6919,
+      "f0": 303,
+      "f1": 351,
+      "l1": "SEEDHA GARAM GLASS PAR",
+      "l2": "1 SECOND MEIN ASLI KHEL!",
+      "hi": "1 SECOND",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S4_WAIT",
+      "t0": 11.9719,
+      "t1": 12.4289,
+      "f0": 359,
+      "f1": 373,
+      "l1": "RUKO.",
+      "l2": "ANDAR DEKHO KYA HUA!",
+      "hi": "RUKO.",
+      "accent": "#FFD166"
+    },
+    {
+      "id": "S4_CUTAWAY_A",
+      "t0": 12.6089,
+      "t1": 15.0701,
+      "f0": 378,
+      "f1": 452,
+      "l1": "BAHAR KI PATLI PARAT",
+      "l2": "10°C PAR THANDI HO GAYI",
+      "hi": "10°C",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S4_CUTAWAY_B",
+      "t0": 15.2101,
+      "t1": 16.4801,
+      "f0": 456,
+      "f1": 494,
+      "l1": "JABKE ANDAR KA KANCH",
+      "l2": "AB BHI 300°C AAG HAI!",
+      "hi": "300°C AAG",
+      "accent": "#FF4A1C"
+    },
+    {
+      "id": "S5_SHEAR_A",
+      "t0": 16.7201,
+      "t1": 18.4202,
+      "f0": 502,
+      "f1": 553,
+      "l1": "BAHAR WALI PARAT",
+      "l2": "TEZI SE SIKUDTI HAI",
+      "hi": "SIKUDTI",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S5_SHEAR_B",
+      "t0": 18.5602,
+      "t1": 19.9807,
+      "f0": 557,
+      "f1": 599,
+      "l1": "AUR ANDAR WALI PARAT",
+      "l2": "GARMI SE PHAILI REHTI HAI",
+      "hi": "PHAILI",
+      "accent": "#FF6A28"
+    },
+    {
+      "id": "S5_CRITICAL",
+      "t0": 20.1207,
+      "t1": 22.4628,
+      "f0": 604,
+      "f1": 674,
+      "l1": "KHICHAO 4 GUNA ZYADA",
+      "l2": "STRESS LIMIT CROSS!",
+      "hi": "4 GUNA",
+      "accent": "#FF3B1F"
+    },
+    {
+      "id": "S7_DHADAM",
+      "t0": 24.3333,
+      "t1": 25.0939,
+      "f0": 730,
+      "f1": 753,
+      "l1": "DHADAM! THERMAL SHOCK!",
+      "l2": "1 SECOND MEIN VISFOT!",
+      "hi": "DHADAM!",
+      "accent": "#FF4A1C"
+    },
+    {
+      "id": "S7_STORM_A",
+      "t0": 25.2539,
+      "t1": 26.7849,
+      "f0": 758,
+      "f1": 804,
+      "l1": "ISI THERMAL SHOCK SE",
+      "l2": "APNE HI KHICHAO KE KARAN",
+      "hi": "THERMAL SHOCK",
+      "accent": "#FFB454"
+    },
+    {
+      "id": "S7_STORM_B",
+      "t0": 26.9049,
+      "t1": 29.3992,
+      "f0": 807,
+      "f1": 882,
+      "l1": "GLASS SAIKDON TUKDON",
+      "l2": "MEIN PHAT JATA HAI!",
+      "hi": "SAIKDON",
+      "accent": "#FFB454"
+    },
+    {
+      "id": "S8_BORO_A",
+      "t0": 29.6592,
+      "t1": 31.2009,
+      "f0": 890,
+      "f1": 936,
+      "l1": "MAGAR BOROSILICATE",
+      "l2": "PYREX LAB WALA KANCH",
+      "hi": "BOROSILICATE",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S8_BORO_B",
+      "t0": 31.3409,
+      "t1": 33.0022,
+      "f0": 940,
+      "f1": 990,
+      "l1": "3 GUNA KAM SIKUDTA HAI",
+      "l2": "BORON ATOMIC SHIELD!",
+      "hi": "3 GUNA KAM",
+      "accent": "#3AD4BE"
+    },
+    {
+      "id": "S8_BORO_C",
+      "t0": 33.1422,
+      "t1": 34.9852,
+      "f0": 994,
+      "f1": 1050,
+      "l1": "ISLIYE WOH JHATKA",
+      "l2": "AARAM SE JHEL LETA HAI",
+      "hi": "JHEL LETA",
+      "accent": "#5EF2D6"
+    },
+    {
+      "id": "S9_LOOP_A",
+      "t0": 35.2452,
+      "t1": 37.4744,
+      "f0": 1057,
+      "f1": 1124,
+      "l1": "TOH AGLI BAAR GARAM",
+      "l2": "SHEESHE MEIN PAANI SE PEHLE",
+      "hi": "GARAM",
+      "accent": "#FFB454"
+    },
+    {
+      "id": "S9_LOOP_B",
+      "t0": 37.6144,
+      "t1": 39.118,
+      "f0": 1128,
+      "f1": 1174,
+      "l1": "YEH SCIENCE ZAROOR",
+      "l2": "YAAD RAKHNA!",
+      "hi": "SCIENCE",
+      "accent": "#3AD4BE"
+    }
+  ]
+}
