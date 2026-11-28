@@ -1,0 +1,402 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "ref-02-rainforest-cordyceps-canopy",
+  "channel": "monarch-cam",
+  "format": "9:16_short",
+  "fps": 30,
+  "duration_s": 36.0,
+  "producer_brief": {
+    "topic_summary": "Why Ophiocordyceps unilateralis forces a carpenter ant to clamp a leaf vein ~25 cm above the forest floor at solar noon — hijacking muscle fibers directly without melting the brain.",
+    "core_dramatic_question": "How does a blind fungus steer an ant to an exact microclimate altitude and lock its mandibles even after death?",
+    "target_emotion_arc": "Uncanny botanical beauty -> eerie realization of bodily puppetry -> quiet natural-history awe.",
+    "audience_takeaway": "Fungal hyphal networks wrap directly around mandibular muscle fibers, bypassing the ant's central brain like an external puppeteer.",
+    "opening_hook_grammar": "SILENT_ANOMALY_CLOSEUP",
+    "hook_lands_within_s": 1.5,
+    "seamless_loop": true,
+    "epistemic_ledger": {
+      "observed_evidence": [
+        "Infected Camponotus leonardi ants descend from the canopy to bite major leaf veins roughly 25 cm above humid forest soil, predominantly around solar noon.",
+        "3D electron-microscopy reconstructions (Hughes / Fredericksen et al.) show dense fungal networks surrounding muscle fibers while leaving the brain anatomically intact."
+      ],
+      "scientific_inferences": [
+        "Bioactive fungal metabolites contract mandibular closer muscles into irreversible lockjaw atrophy so the cadaver stays anchored for weeks."
+      ],
+      "illustrative_abstractions": [
+        "Translucent cuticle peel showing white-gold hyphal web around muscle bundles vs untouched central ganglion."
+      ]
+    }
+  },
+  "anti_clone_declaration": {
+    "selected_archetype_id": "W05_RAINFOREST_CANOPY_UNDERSTORY",
+    "staging_topology": "in_situ_natural_biome",
+    "primary_prop_anchor": "dew_drenched_understory_leaf_vein_above_moss_floor",
+    "palette_family": "emerald_chlorophyll_wet_bark_ochre_crimson_stroma",
+    "dominant_sequence_pattern": "micro_clue_macro_reveal",
+    "hud_philosophy": "H0_PURE_CINEMA",
+    "why_not_previous_template": "Zero HUD, zero laboratory room, zero cyan/gold telemetry: shot 100% as BBC Planet Earth II / Lubezki sunlit translucent rainforest macro.",
+    "user_explicit_template_override": false
+  },
+  "dramaturgy": {
+    "dominant_mode": "MYSTERY",
+    "beats": [
+      {
+        "beat_id": "B1_LOCKJAW_ANOMALY",
+        "t0": 0.0,
+        "t1": 6.5,
+        "narrative_claim": "Upside-down under a rainforest leaf, a dead carpenter ant hangs solely by jaws sunk deep into the central vein.",
+        "audience_emotion": "Uncanny fascination — why didn't gravity drop it?",
+        "intensity_0_to_100": 54,
+        "visual_route": "LITERAL_SPECIMEN",
+        "audience_knows_vs_hidden": "Viewer sees locked mandibles piercing leaf tissue; internal fungal puppeteer is hidden beneath black chitin."
+      },
+      {
+        "beat_id": "B2_EXACT_25CM_GOLDILOCKS_ZONE",
+        "t0": 6.5,
+        "t1": 14.5,
+        "narrative_claim": "Every victim stops within a razor-thin ~25 cm humidity layer above the mossy floor where spores thrive.",
+        "audience_emotion": "Chilling precision — realizing a non-random geometric pattern.",
+        "intensity_0_to_100": 70,
+        "visual_route": "HUMAN_OR_CREATURE_WITNESS",
+        "audience_knows_vs_hidden": "Viewer sees the forest floor height relationship, wondering how the brain was programmed."
+      },
+      {
+        "beat_id": "B3_BRAIN_SPARED_MUSCLE_CAGED",
+        "t0": 14.5,
+        "t1": 24.5,
+        "narrative_claim": "Inside the head capsule, the brain sits untouched — instead, fungal hyphae weave a physical cage directly around jaw muscle fibers.",
+        "audience_emotion": "Body-horror scientific revelation — trapped inside one's own hijacked muscles.",
+        "intensity_0_to_100": 88,
+        "visual_route": "PROCESS_MECHANISM",
+        "audience_knows_vs_hidden": "Cuticle peel reveals the exact peripheral-muscle hijack mechanism."
+      },
+      {
+        "beat_id": "B4_CRIMSON_STROMA_CANOPY_RAIN",
+        "t0": 24.5,
+        "t1": 31.0,
+        "narrative_claim": "A crimson-tipped stroma erupts behind the head, raining spores straight onto the ant trail directly below.",
+        "audience_emotion": "Awe at ruthless evolutionary architecture.",
+        "intensity_0_to_100": 95,
+        "visual_route": "CONSEQUENCE_AFTERMATH",
+        "audience_knows_vs_hidden": "Full ecological trap completed across vertical forest space."
+      },
+      {
+        "beat_id": "B5_SILENT_VEIN_RETURN",
+        "t0": 31.0,
+        "t1": 36.0,
+        "narrative_claim": "In the quiet emerald understory, the leaf sways once in humid breeze — anchored by jaws that never let go.",
+        "audience_emotion": "Haunting natural stillness.",
+        "intensity_0_to_100": 38,
+        "visual_route": "LITERAL_SPECIMEN",
+        "audience_knows_vs_hidden": "Returns to the mandible clamp now understood as a fungal anchor."
+      }
+    ],
+    "see_hide_pairs": [
+      {
+        "hidden_element": "Peripheral hyphal mesh strangling jaw closer muscles while sparing the central brain",
+        "hide_shot_id": "S01",
+        "reveal_shot_id": "S04",
+        "withholding_technique": "Glossy wet black chitin exoskeleton conceals internal anatomy in S01-S03 until backlit translucent cutaway in S04."
+      }
+    ],
+    "motifs": [
+      {
+        "motif_name": "Serrated mandible tips sunken into translucent green leaf midrib",
+        "planted_shot_id": "S01",
+        "callback_shot_id": "S08",
+        "meaning_shift": "Starts as a mysterious insect behavior; ends as an engineered fungal mooring bolt."
+      }
+    ]
+  },
+  "production_design": {
+    "world_description": "Humid tropical lowland rainforest understory: sunlit translucent dicot leaf veins overhead, damp mossy buttress root and fallen leaf litter 25 cm below, drifting mist motes and dew droplets.",
+    "lighting_paradigm": "5800K solar-noon sunlight transmitted through green chlorophyll leaf canopy (subsurface backlight) + soft 6400K humid sky fill (3.5:1 organic contrast).",
+    "color_script": {
+      "base_hex": ["#0E1F14", "#264B2A", "#6B9B59", "#3B2B1E"],
+      "reserved_accent_hex": "#D94B38",
+      "accent_meaning": "Mature Ophiocordyceps perithecial spore head erupting from dorsal neck",
+      "act1_palette_mood": "Luminous backlit emerald leaf veins against glistening wet obsidian-brown chitin",
+      "act2_palette_mood": "Pale ivory fungal filaments weaving across striated amber muscle bundles inside head capsule",
+      "act3_palette_mood": "Deep emerald canopy pierced by the single #D94B38 crimson spore club catching a sunbeam"
+    },
+    "bruce_block_visual_arc": {
+      "climax_beat_id": "B4_CRIMSON_STROMA_CANOPY_RAIN",
+      "climax_visual_contrast_0_to_100": 90,
+      "resolution_visual_affinity_0_to_100": 76,
+      "space_progression": "Razor-thin macro plane -> vertical 25cm forest-floor depth -> microscopic internal chamber -> deep vertical spore fall.",
+      "tone_progression": "Glowing translucent green midtones -> shadowed anatomical contrast -> radiant sunbeam rim against dark moss floor."
+    }
+  },
+  "scene_geography": [
+    {
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "bounds_xyz_m": [0.8, 0.6, 0.8],
+      "key_light_direction_xyz": [0.18, 0.94, 0.28],
+      "line_of_action_xz": [-0.5, 0.0, 0.5, 0.0],
+      "allowed_camera_side": 1,
+      "scale_reference_object": "3mm dew droplet hanging from leaf serration and 12mm foraging worker ants on moss 25cm below"
+    }
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "beat_id": "B1_LOCKJAW_ANOMALY",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 0.0,
+      "t1": 4.0,
+      "subject_id": "ant_mandible_bite",
+      "subject_width_m": 0.012,
+      "shot_size": "MACRO",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [0.0, 0.24, 0.14],
+      "look_at_xyz": [0.0, 0.25, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "shallow",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Arrest viewer at Frame 0 with backlit emerald leaf midrib punctured by motionless serrated mandibles.",
+      "reason": "Locked 100mm macro frame lets wind tremble the leaf while the dead ant's jaw stays unnervingly rigid.",
+      "layers_fg_mg_bg": {
+        "fg": "Refracting dew bead on leaf margin",
+        "mg": "Mandibles clamped around glowing green central leaf vein",
+        "bg": "Dappled rainforest canopy bokeh"
+      },
+      "start_frame_desc": "Extreme macro of serrated ant jaws sunk into backlit green leaf vein, tiny sap bead crystallized at bite.",
+      "end_frame_desc": "Leaf trembles slightly in humid air; ant body hangs upside-down without twitching.",
+      "eye_trace_start_xy": [0.50, 0.44],
+      "eye_trace_end_xy": [0.50, 0.46],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected opening on a generic wide jungle pan because starting directly on the upside-down death grip hooks curiosity within 0.5s."
+    },
+    {
+      "id": "S02",
+      "beat_id": "B1_LOCKJAW_ANOMALY",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 4.0,
+      "t1": 6.5,
+      "subject_id": "hanging_ant_body",
+      "subject_width_m": 0.025,
+      "shot_size": "CU",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.12, 0.25, 0.18],
+      "look_at_xyz": [0.0, 0.24, 0.0],
+      "lens_mm_equiv": 85,
+      "dof_mode": "moderate",
+      "move": "pull_out",
+      "ease": "easeOutQuart",
+      "motivation": "REVEAL",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Reveal that all six legs hang limp in mid-air — only the jaws support the entire body mass.",
+      "reason": "Gentle 85mm pull-out uncovers the dangling legs suspended above empty air.",
+      "layers_fg_mg_bg": {
+        "fg": "Blurred moss tendril on nearby bark",
+        "mg": "Full upside-down carpenter ant suspended solely by its mandibles",
+        "bg": "Humid sunlit understory foliage"
+      },
+      "start_frame_desc": "Tight frame on head and thorax beneath the leaf underside.",
+      "end_frame_desc": "Full ant silhouette revealing all six tarsi detached and hanging limp in humid air.",
+      "eye_trace_start_xy": [0.48, 0.44],
+      "eye_trace_end_xy": [0.50, 0.54],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "STORY_23"
+    },
+    {
+      "id": "S03",
+      "beat_id": "B2_EXACT_25CM_GOLDILOCKS_ZONE",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 6.5,
+      "t1": 14.5,
+      "subject_id": "understory_vertical_column",
+      "subject_width_m": 0.22,
+      "shot_size": "WS",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [-0.18, 0.14, 0.56],
+      "look_at_xyz": [0.0, 0.13, 0.0],
+      "lens_mm_equiv": 35,
+      "dof_mode": "deep",
+      "move": "pedestal_vertical",
+      "ease": "easeInOutCubic",
+      "motivation": "RELATE",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Connect the foraging ant column on the damp moss floor directly to the victim suspended ~25 cm overhead.",
+      "reason": "Vertical pedestal on 35mm deep-focus lens physically measures the 25 cm microclimate elevation in one continuous space.",
+      "layers_fg_mg_bg": {
+        "fg": "Wet emerald moss carpet and fallen twig scale reference at y=0m",
+        "mg": "Living worker ants marching along root trail directly beneath the hanging leaf at y=0.25m",
+        "bg": "Sun-shafted rainforest buttress trunk"
+      },
+      "start_frame_desc": "Ground-level view of living carpenter ants crossing wet moss litter.",
+      "end_frame_desc": "Vertical rise arriving at the underside of the leaf 25 cm directly above their trail.",
+      "eye_trace_start_xy": [0.50, 0.62],
+      "eye_trace_end_xy": [0.50, 0.38],
+      "cut_in_type": "J_CUT_AUDIO_LEAD",
+      "murch_cut_driver": "SPACE_3D_4",
+      "rejected_alternative": "Rejected overlaid holographic ruler graphics; physical vertical pedestal from live ant trail up to leaf proves the 25cm ambush geometry naturally."
+    },
+    {
+      "id": "S04",
+      "beat_id": "B3_BRAIN_SPARED_MUSCLE_CAGED",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 14.5,
+      "t1": 20.0,
+      "subject_id": "head_capsule_interior",
+      "subject_width_m": 0.008,
+      "shot_size": "MACRO",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.05, 0.25, 0.11],
+      "look_at_xyz": [0.0, 0.25, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "shallow",
+      "move": "probe_macro_glide",
+      "ease": "easeInOutCubic",
+      "motivation": "REVEAL",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Glide inside translucent head capsule to show intact central brain surrounded by hyphal-caged jaw muscles.",
+      "reason": "100mm macro glide contrasts the untouched neural ganglion with densely wrapped striated closer fibers.",
+      "layers_fg_mg_bg": {
+        "fg": "Semi-translucent amber chitin head rim",
+        "mg": "Ivory hyphal network anastomosing tightly around mandibular muscle bundles while central brain sits clear",
+        "bg": "Soft emerald transmitted leaf glow"
+      },
+      "start_frame_desc": "Outer chitin shell turning translucent under strong solar-noon leaf backlight.",
+      "end_frame_desc": "Clear anatomical contrast: intact central brain vs fungal-wrapped mandibular muscle fibers.",
+      "eye_trace_start_xy": [0.50, 0.42],
+      "eye_trace_end_xy": [0.52, 0.48],
+      "cut_in_type": "OCCLUSION_WIPE_NATURAL",
+      "murch_cut_driver": "STORY_23"
+    },
+    {
+      "id": "S05",
+      "beat_id": "B3_BRAIN_SPARED_MUSCLE_CAGED",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 20.0,
+      "t1": 24.5,
+      "subject_id": "muscle_fiber_contraction",
+      "subject_width_m": 0.004,
+      "shot_size": "ECU",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [-0.06, 0.29, 0.09],
+      "look_at_xyz": [0.0, 0.25, 0.0],
+      "lens_mm_equiv": 135,
+      "dof_mode": "shallow",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Hold still as fungal threads squeeze sarcomeres into permanent lockjaw rigor.",
+      "reason": "Static 135mm compression makes the microscopic mechanical squeeze feel inescapable.",
+      "layers_fg_mg_bg": {
+        "fg": "Single out-of-focus fungal filament",
+        "mg": "Mandibular closer muscle fibers locked rigid by interconnected hyphal bridges",
+        "bg": "Deep emerald shadow"
+      },
+      "start_frame_desc": "Static 135mm microscopic view of hyphal bridges constricting muscle fibers.",
+      "end_frame_desc": "Fibers locked rigid as dorsal neck suture begins to bulge outward.",
+      "eye_trace_start_xy": [0.52, 0.48],
+      "eye_trace_end_xy": [0.50, 0.44],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "RHYTHM_10"
+    },
+    {
+      "id": "S06",
+      "beat_id": "B4_CRIMSON_STROMA_CANOPY_RAIN",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 24.5,
+      "t1": 28.5,
+      "subject_id": "crimson_stroma_stalk",
+      "subject_width_m": 0.03,
+      "shot_size": "CU",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [0.09, 0.21, 0.19],
+      "look_at_xyz": [0.0, 0.23, 0.0],
+      "lens_mm_equiv": 85,
+      "dof_mode": "moderate",
+      "move": "crane_arc",
+      "ease": "easeOutQuart",
+      "motivation": "REVEAL",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Reveal the #D94B38 crimson-headed fungal stroma curving down from behind the ant's head into a noon sunbeam.",
+      "reason": "Reserved #D94B38 crimson accent appears for the first time in the film against pure emerald canopy.",
+      "layers_fg_mg_bg": {
+        "fg": "Dew-tipped moss frond",
+        "mg": "Stalk and #D94B38 spherical spore head emerging from dorsal pronotum",
+        "bg": "Radiant 5800K sunbeam piercing canopy mist"
+      },
+      "start_frame_desc": "Dorsal neck plate splitting as pale stalk emerges downward beneath the leaf.",
+      "end_frame_desc": "Mature #D94B38 crimson perithecial globe catching a razor-sharp shaft of noon sunlight.",
+      "eye_trace_start_xy": [0.50, 0.44],
+      "eye_trace_end_xy": [0.50, 0.52],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected speeding through stroma emergence with neon glowing veins; real botanical crimson against sunlit emerald moss is far more haunting."
+    },
+    {
+      "id": "S07",
+      "beat_id": "B4_CRIMSON_STROMA_CANOPY_RAIN",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 28.5,
+      "t1": 31.0,
+      "subject_id": "falling_spores_plume",
+      "subject_width_m": 0.16,
+      "shot_size": "MWS",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [-0.16, 0.16, 0.56],
+      "look_at_xyz": [0.0, 0.15, 0.0],
+      "lens_mm_equiv": 50,
+      "dof_mode": "deep",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Watch glittering microscopic spores drift straight down through the sunbeam onto the ant trail below.",
+      "reason": "Locked 50mm frame lets slow gravity-driven spore drift read like silent snowfall.",
+      "layers_fg_mg_bg": {
+        "fg": "Sunlit dust and drifting filiform spores",
+        "mg": "Crimson stroma overhead and foraging trail 25 cm below",
+        "bg": "Dark wet buttress bark"
+      },
+      "start_frame_desc": "Fine golden-lit spores releasing from the #D94B38 globe into still humid air.",
+      "end_frame_desc": "Spores settling gently across the mossy foraging path below.",
+      "eye_trace_start_xy": [0.50, 0.48],
+      "eye_trace_end_xy": [0.50, 0.46],
+      "cut_in_type": "L_CUT_AUDIO_TRAIL",
+      "murch_cut_driver": "STORY_23"
+    },
+    {
+      "id": "S08",
+      "beat_id": "B5_SILENT_VEIN_RETURN",
+      "scene_id": "UNDERSTORY_LEAF_COLUMN",
+      "t0": 31.0,
+      "t1": 36.0,
+      "subject_id": "ant_mandible_bite",
+      "subject_width_m": 0.012,
+      "shot_size": "MACRO",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [0.0, 0.24, 0.14],
+      "look_at_xyz": [0.0, 0.25, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "moderate",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Hold on the locked mandible bite on the glowing leaf midrib, closing the seamless Frame-0 loop.",
+      "reason": "Locked 100mm macro composition lands identically on S01 camera coordinates and eye-trace center.",
+      "layers_fg_mg_bg": {
+        "fg": "Refracting dew bead on leaf margin",
+        "mg": "Mandibles clamped permanently into the glowing green midrib",
+        "bg": "Dappled rainforest canopy bokeh"
+      },
+      "start_frame_desc": "Macro profile of locked jaws anchored in the sunlit green vein.",
+      "end_frame_desc": "Exact Frame-0 composition ready for an invisible replay seam.",
+      "eye_trace_start_xy": [0.49, 0.45],
+      "eye_trace_end_xy": [0.50, 0.44],
+      "cut_in_type": "LOOP_SEAM_MATCH",
+      "murch_cut_driver": "EYE_TRACE_7"
+    }
+  ],
+  "sound_dramaturgy": {
+    "acoustic_world_bed": "Authentic lowland rainforest noon: distant cicada shimmer, slow leaf-drip water plinks, tactile microscopic chitin creak.",
+    "silence_before_climax_window_s": [23.7, 24.5],
+    "protected_hud_free_climax_windows_s": [[0.0, 36.0]],
+    "audio_lead_notes": "Entire 36s film runs H0_PURE_CINEMA (100% zero HUD); cicada chorus drops to -58 dBFS vacuum at 23.7s right before dorsal chitin splits at 24.5s."
+  }
+}

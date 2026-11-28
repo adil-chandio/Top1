@@ -1,0 +1,441 @@
+{
+  "schema_version": "1.0.0",
+  "project_id": "ref-01-sunlit-kitchen-pressure-cooker",
+  "channel": "monarch-edits",
+  "format": "9:16_short",
+  "fps": 30,
+  "duration_s": 34.0,
+  "producer_brief": {
+    "topic_summary": "Why a blocked pressure-cooker whistle does not detonate the pot: the hidden 240C bismuth-lead-tin fusible safety plug under the handle.",
+    "core_dramatic_question": "When wet rice starch seals the main whistle at 200 kPa, what stops the aluminum vessel from rupturing in your face?",
+    "target_emotion_arc": "Warm morning familiarity -> creeping dread as the whistle goes eerily silent -> surgical relief as the sacrificial alloy melts cleanly.",
+    "audience_takeaway": "That tiny dull hex nut beside the handle is a calibrated thermal fuse engineered to fail before the pot walls ever yield.",
+    "opening_hook_grammar": "FAMILIAR_OBJECT_STRANGE_BEHAVIOR",
+    "hook_lands_within_s": 1.6,
+    "seamless_loop": true,
+    "epistemic_ledger": {
+      "observed_evidence": [
+        "Domestic aluminum pressure cookers operate near 100 kPa gauge (~120C) and carry a secondary metallic/elastomeric safety plug.",
+        "Fusible bismuth-tin-lead safety alloys melt cleanly in a calibrated 180C-245C window when dry/overpressurized superheat climbs."
+      ],
+      "scientific_inferences": [
+        "Starch foam clogging the central vent tube traps saturated steam, causing rapid pressure and wall-temperature rise."
+      ],
+      "illustrative_abstractions": [
+        "Half-lid cutaway plane and #C83E2B thermal stress gradient across the fusible alloy core for visual legibility."
+      ]
+    }
+  },
+  "anti_clone_declaration": {
+    "selected_archetype_id": "W01_SUNLIT_DOMESTIC_MORNING",
+    "staging_topology": "lived_in_human_interior",
+    "primary_prop_anchor": "sunlit_terrazzo_gas_stove_counter_with_linen_cloth",
+    "palette_family": "warm_daylight_cream_terrazzo_aluminum_vermilion",
+    "dominant_sequence_pattern": "orient_escalate_payoff",
+    "hud_philosophy": "H1_DOCUMENTARY_LOWER_THIRD",
+    "why_not_previous_template": "Previous episodes used dark obsidian/teal sculptural pedestals; a household pressure cooker earns 10x visceral stakes on a bright sunlit South Asian morning stove counter.",
+    "user_explicit_template_override": false
+  },
+  "dramaturgy": {
+    "dominant_mode": "SUSPENSE",
+    "beats": [
+      {
+        "beat_id": "B1_SILENT_WHISTLE_HOOK",
+        "t0": 0.0,
+        "t1": 5.5,
+        "narrative_claim": "Flame roars underneath, yet the pressure-cooker whistle suddenly stops hissing.",
+        "audience_emotion": "Immediate domestic alarm — every viewer knows a silent cooker on high flame means trouble.",
+        "intensity_0_to_100": 58,
+        "visual_route": "HUMAN_OR_CREATURE_WITNESS",
+        "audience_knows_vs_hidden": "Viewer sees flame high and whistle dead still; cause inside vent tube is still hidden."
+      },
+      {
+        "beat_id": "B2_CLOGGED_VENT_TRAP",
+        "t0": 5.5,
+        "t1": 14.5,
+        "narrative_claim": "Thick starch foam has cemented the central vent stem shut, trapping rising steam pressure.",
+        "audience_emotion": "Claustrophobic escalation as internal pressure climbs.",
+        "intensity_0_to_100": 74,
+        "visual_route": "PROCESS_MECHANISM",
+        "audience_knows_vs_hidden": "Viewer now sees the blocked main vent, while the unassuming secondary hex plug beside the handle looks inert."
+      },
+      {
+        "beat_id": "B3_SACRIFICIAL_ALLOY_SOFTENING",
+        "t0": 14.5,
+        "t1": 22.0,
+        "narrative_claim": "Beside the handle sits a low-melting fusible alloy plug engineered to surrender before the aluminum lid.",
+        "audience_emotion": "Focused anticipation — watching crystalline metal approach its exact melting threshold.",
+        "intensity_0_to_100": 86,
+        "visual_route": "PROCESS_MECHANISM",
+        "audience_knows_vs_hidden": "Viewer watches #C83E2B thermal boundary reach the alloy core seconds before rupture."
+      },
+      {
+        "beat_id": "B4_CLEAN_FUSE_BLOWOUT",
+        "t0": 22.0,
+        "t1": 28.5,
+        "narrative_claim": "At threshold temperature the alloy core liquefies and ejects upward, venting a vertical steam column safely.",
+        "audience_emotion": "Visceral catharsis and awe at simple fail-safe engineering.",
+        "intensity_0_to_100": 96,
+        "visual_route": "CONSEQUENCE_AFTERMATH",
+        "audience_knows_vs_hidden": "Full physical release revealed in unobstructed sunlit counter space."
+      },
+      {
+        "beat_id": "B5_SAFE_KITCHEN_LOOP",
+        "t0": 28.5,
+        "t1": 34.0,
+        "narrative_claim": "A 50-rupee sacrificial metal pellet dies so the pot never becomes shrapnel.",
+        "audience_emotion": "Grounded respect and calm resolution.",
+        "intensity_0_to_100": 34,
+        "visual_route": "LITERAL_SPECIMEN",
+        "audience_knows_vs_hidden": "Motif callback transforms the dull hex nut into a deliberate guardian."
+      }
+    ],
+    "see_hide_pairs": [
+      {
+        "hidden_element": "Starch plug sealing the narrow brass vent bore",
+        "hide_shot_id": "S01",
+        "reveal_shot_id": "S03",
+        "withholding_technique": "Opaque brushed-aluminum lid hides internal bore in S01-S02 before vertical cutaway enters in S03."
+      },
+      {
+        "hidden_element": "Low-melting fusible alloy core inside the hex nut",
+        "hide_shot_id": "S02",
+        "reveal_shot_id": "S05",
+        "withholding_technique": "Framed as an ordinary dull fastener in S02 until macro cross-section exposes the softening core in S05."
+      }
+    ],
+    "motifs": [
+      {
+        "motif_name": "Dull hex safety plug beside lid handle",
+        "planted_shot_id": "S02",
+        "callback_shot_id": "S09",
+        "meaning_shift": "Appears first as an ignored manufacturing bolt; returns vented open as the intentional sacrificial hero."
+      }
+    ]
+  },
+  "production_design": {
+    "world_description": "Sunlit morning South Asian kitchen counter: cream terrazzo slab, blue-flame cast-iron burner, brushed 5L aluminum cooker, folded cotton dish towel in foreground, blurred ceramic spice jars in background.",
+    "lighting_paradigm": "5400K morning casement window key from camera-right at 35 deg elevation + warm 3800K cream tile bounce fill (2.5:1 airy natural contrast; 6:1 inside steam cutaway).",
+    "color_script": {
+      "base_hex": ["#F4EFE6", "#D9C3A3", "#8E979E", "#2C333A"],
+      "reserved_accent_hex": "#C83E2B",
+      "accent_meaning": "Critical superheated thermal front reaching the fusible safety alloy",
+      "act1_palette_mood": "Airy warm cream morning sunlight with crisp brushed-silver highlights",
+      "act2_palette_mood": "Pressurized steel-slate interior cutaway pierced by rising #C83E2B thermal stress",
+      "act3_palette_mood": "Bright sunlit white steam dispersion returning the kitchen to calm morning warmth"
+    },
+    "bruce_block_visual_arc": {
+      "climax_beat_id": "B4_CLEAN_FUSE_BLOWOUT",
+      "climax_visual_contrast_0_to_100": 88,
+      "resolution_visual_affinity_0_to_100": 72,
+      "space_progression": "Medium-depth kitchen counter -> flat architectural cross-section -> deep vertical Z-axis steam column.",
+      "tone_progression": "2.5:1 sunlit high-mid key -> 6:1 internal steel shadow contrast -> bright airy 2:1 morning recovery."
+    }
+  },
+  "scene_geography": [
+    {
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "bounds_xyz_m": [2.2, 1.8, 1.6],
+      "key_light_direction_xyz": [0.65, 0.62, 0.44],
+      "line_of_action_xz": [-1.0, 0.0, 1.0, 0.0],
+      "allowed_camera_side": 1,
+      "scale_reference_object": "Folded cotton kitchen towel, cast-iron burner ring, and ceramic chai cup beside the 22cm cooker"
+    }
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "beat_id": "B1_SILENT_WHISTLE_HOOK",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 0.0,
+      "t1": 3.0,
+      "subject_id": "cooker_lid_assembly",
+      "subject_width_m": 0.26,
+      "shot_size": "MS",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.0, 0.34, 0.68],
+      "look_at_xyz": [0.0, 0.26, 0.0],
+      "lens_mm_equiv": 35,
+      "dof_mode": "moderate",
+      "move": "push_in",
+      "ease": "easeInOutCubic",
+      "motivation": "APPROACH",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Establish blue burner roar below a disturbingly silent, trembling aluminum cooker lid in morning sunlight.",
+      "reason": "Creeping 35mm push-in compresses viewer personal space toward a vessel building unseen pressure.",
+      "layers_fg_mg_bg": {
+        "fg": "Linen dish-towel corner on front terrazzo lip",
+        "mg": "22cm aluminum pressure cooker lid with dead-still central weight",
+        "bg": "Sunlit cream ceramic tile backsplash and blurred glass spice jars"
+      },
+      "start_frame_desc": "Medium shot of full cooker over blue gas flame, lid handle centered at y=0.42 in crisp morning window shafts.",
+      "end_frame_desc": "Tighter medium frame closing onto the motionless whistle and subtly flexing rubber gasket rim.",
+      "eye_trace_start_xy": [0.50, 0.42],
+      "eye_trace_end_xy": [0.50, 0.38],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected spinning dark studio render of an isolated cooker because removing the stove flame and kitchen counter destroys real-world danger."
+    },
+    {
+      "id": "S02",
+      "beat_id": "B1_SILENT_WHISTLE_HOOK",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 3.0,
+      "t1": 5.5,
+      "subject_id": "whistle_and_hex_plug",
+      "subject_width_m": 0.09,
+      "shot_size": "CU",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [0.24, 0.48, 0.32],
+      "look_at_xyz": [0.02, 0.30, 0.0],
+      "lens_mm_equiv": 85,
+      "dof_mode": "shallow",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Plant both the silent brass whistle and the overlooked hex safety plug side by side in dead stillness.",
+      "reason": "Locked 85mm frame lets the unnatural absence of steam motion register viscerally.",
+      "layers_fg_mg_bg": {
+        "fg": "Out-of-focus brass whistle crown",
+        "mg": "Sharp brushed lid top showing dried white starch crust and hex safety nut",
+        "bg": "Warm sunlit terrazzo reflection"
+      },
+      "start_frame_desc": "Static 85mm close-up framing silent whistle left-center and dull hex nut right-center.",
+      "end_frame_desc": "Same locked frame as a single microscopic bead of water boils dry on the hot lid.",
+      "eye_trace_start_xy": [0.46, 0.40],
+      "eye_trace_end_xy": [0.54, 0.44],
+      "cut_in_type": "J_CUT_AUDIO_LEAD",
+      "murch_cut_driver": "STORY_23"
+    },
+    {
+      "id": "S03",
+      "beat_id": "B2_CLOGGED_VENT_TRAP",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 5.5,
+      "t1": 10.2,
+      "subject_id": "vent_bore_cutaway",
+      "subject_width_m": 0.14,
+      "shot_size": "MCU",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [-0.22, 0.28, 0.46],
+      "look_at_xyz": [0.0, 0.26, 0.0],
+      "lens_mm_equiv": 50,
+      "dof_mode": "deep",
+      "move": "truck_lateral",
+      "ease": "easeOutQuart",
+      "motivation": "REVEAL",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Slice the front half of the lid away to reveal dense starch paste cementing the central vent tube shut.",
+      "reason": "Lateral reveal slides past intact aluminum wall into crisp cross-section mechanics in deep focus.",
+      "layers_fg_mg_bg": {
+        "fg": "Machined aluminum cutaway bevel edge",
+        "mg": "Clogged central brass vent channel and roiling pressurized steam pocket",
+        "bg": "Soft sunlit kitchen tile beyond cooker silhouette"
+      },
+      "start_frame_desc": "Exterior bevel edge of lid parting cleanly along the central vertical plane.",
+      "end_frame_desc": "Full cross-section showing gelatinized starch plug blocking upward steam arrows.",
+      "eye_trace_start_xy": [0.50, 0.46],
+      "eye_trace_end_xy": [0.48, 0.50],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "STORY_23",
+      "hold_for_text": []
+    },
+    {
+      "id": "S04",
+      "beat_id": "B2_CLOGGED_VENT_TRAP",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 10.2,
+      "t1": 14.5,
+      "subject_id": "lid_gasket_bulge",
+      "subject_width_m": 0.24,
+      "shot_size": "MS",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [0.28, 0.16, 0.58],
+      "look_at_xyz": [0.0, 0.25, 0.0],
+      "lens_mm_equiv": 35,
+      "dof_mode": "deep",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Show rim clamps straining under 200 kPa gauge load while lower-third pressure metric is read cleanly.",
+      "reason": "Static low-angle 35mm frame respects hold_for_text readability while making the pot loom overhead.",
+      "layers_fg_mg_bg": {
+        "fg": "Blue gas burner crown tongues",
+        "mg": "Cooker locking flange flexing microscopically under internal pressure",
+        "bg": "Upper window frame in bright daylight"
+      },
+      "start_frame_desc": "Locked low-angle shot looking up past blue burner flame at the strained lid flange.",
+      "end_frame_desc": "Locked frame as internal thermal tint climbs along the upper lid dome.",
+      "eye_trace_start_xy": [0.50, 0.52],
+      "eye_trace_end_xy": [0.56, 0.42],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EYE_TRACE_7",
+      "hold_for_text": [[10.6, 13.8]]
+    },
+    {
+      "id": "S05",
+      "beat_id": "B3_SACRIFICIAL_ALLOY_SOFTENING",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 14.5,
+      "t1": 18.8,
+      "subject_id": "fusible_plug_core",
+      "subject_width_m": 0.03,
+      "shot_size": "MACRO",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.08, 0.30, 0.22],
+      "look_at_xyz": [0.05, 0.30, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "shallow",
+      "move": "probe_macro_glide",
+      "ease": "easeInOutCubic",
+      "motivation": "APPROACH",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Enter macro cross-section of the hex safety plug as #C83E2B heat front reaches the bismuth-tin alloy core.",
+      "reason": "100mm macro glide isolates the grain boundary transition from solid silver-grey metal to liquid sheen.",
+      "layers_fg_mg_bg": {
+        "fg": "Threaded stainless hex housing wall",
+        "mg": "Crystalline fusible alloy pellet glowing #C83E2B along its lower steam interface",
+        "bg": "Compressed warm kitchen bokeh"
+      },
+      "start_frame_desc": "Macro cross-section of solid silver-grey alloy pellet seated inside threaded steel ring.",
+      "end_frame_desc": "Lower face of alloy pellet shimmering liquid-mercury bright under #C83E2B thermal load.",
+      "eye_trace_start_xy": [0.54, 0.44],
+      "eye_trace_end_xy": [0.50, 0.48],
+      "cut_in_type": "MATCH_CUT_GEOMETRY",
+      "murch_cut_driver": "STORY_23",
+      "rejected_alternative": "Rejected abstract floating temperature chart; showing real metallic grain liquefaction communicates the fuse principle directly."
+    },
+    {
+      "id": "S06",
+      "beat_id": "B3_SACRIFICIAL_ALLOY_SOFTENING",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 18.8,
+      "t1": 22.0,
+      "subject_id": "fusible_plug_core",
+      "subject_width_m": 0.025,
+      "shot_size": "ECU",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [-0.14, 0.42, 0.18],
+      "look_at_xyz": [0.05, 0.30, 0.0],
+      "lens_mm_equiv": 100,
+      "dof_mode": "shallow",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": true,
+      "dramatic_purpose": "Hold dead-still in acoustic vacuum for 0.8s as the molten alloy dome bulges upward just before shear.",
+      "reason": "Villeneuve pre-impact stillness maximizes contrast right before the upward steam blowout.",
+      "layers_fg_mg_bg": {
+        "fg": "Bakelite handle edge silhouette",
+        "mg": "Doming molten fusible plug surface trembling at 240C",
+        "bg": "Darkened shadowed lid recess"
+      },
+      "start_frame_desc": "High-angle ECU on the hex plug crown beginning to dome upward.",
+      "end_frame_desc": "Thin silver meniscus stretching taut at the threshold millisecond of release.",
+      "eye_trace_start_xy": [0.50, 0.48],
+      "eye_trace_end_xy": [0.50, 0.50],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "RHYTHM_10"
+    },
+    {
+      "id": "S07",
+      "beat_id": "B4_CLEAN_FUSE_BLOWOUT",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 22.0,
+      "t1": 26.2,
+      "subject_id": "cooker_steam_plume",
+      "subject_width_m": 0.38,
+      "shot_size": "WS",
+      "camera_angle": "low_angle",
+      "camera_pos_xyz": [-0.26, 0.22, 0.92],
+      "look_at_xyz": [0.0, 0.44, 0.0],
+      "lens_mm_equiv": 28,
+      "dof_mode": "deep",
+      "move": "pull_out",
+      "ease": "easeOutQuart",
+      "motivation": "WITHDRAW",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Pure unobstructed cinema climax: plug pops cleanly and a narrow vertical white steam jet shoots harmlessly toward the range hood while the pot sits rock-solid.",
+      "reason": "28mm wide pull-out captures the full vertical steam column backlit by 5400K window shafts with zero HUD clutter.",
+      "layers_fg_mg_bg": {
+        "fg": "Linen towel and chai cup untouched on counter",
+        "mg": "Intact aluminum cooker venting a straight sunlit steam column from the safety port",
+        "bg": "Morning sunlight slicing across kitchen tiles"
+      },
+      "start_frame_desc": "Instant of crisp alloy pop as high-velocity white steam erupts straight up from the safety port.",
+      "end_frame_desc": "Wide kitchen view: steam pressure safely bled off, pot walls and handle completely unharmed.",
+      "eye_trace_start_xy": [0.50, 0.52],
+      "eye_trace_end_xy": [0.50, 0.40],
+      "cut_in_type": "HARD_CUT_ON_ACTION",
+      "murch_cut_driver": "EMOTION_51",
+      "rejected_alternative": "Rejected violent cartoon explosion of the pot because the scientific truth is how engineered controlled failure PREVENTS an explosion."
+    },
+    {
+      "id": "S08",
+      "beat_id": "B4_CLEAN_FUSE_BLOWOUT",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 26.2,
+      "t1": 28.5,
+      "subject_id": "vented_hex_port",
+      "subject_width_m": 0.07,
+      "shot_size": "CU",
+      "camera_angle": "high_angle",
+      "camera_pos_xyz": [0.18, 0.44, 0.28],
+      "look_at_xyz": [0.05, 0.30, 0.0],
+      "lens_mm_equiv": 85,
+      "dof_mode": "moderate",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Inspect the clean open safety bore venting gentle residual wisps as pressure reaches equilibrium.",
+      "reason": "Calm static 85mm close-up lets the viewer appreciate the clean sacrificial port.",
+      "layers_fg_mg_bg": {
+        "fg": "Handle bracket screw",
+        "mg": "Open threaded hex port with solidified alloy bead harmlessly beside it",
+        "bg": "Warm sunlit lid surface"
+      },
+      "start_frame_desc": "Close-up of the cleanly opened safety port exhaling gentle translucent steam.",
+      "end_frame_desc": "Steam wisp thinning into warm morning air.",
+      "eye_trace_start_xy": [0.52, 0.44],
+      "eye_trace_end_xy": [0.50, 0.43],
+      "cut_in_type": "L_CUT_AUDIO_TRAIL",
+      "murch_cut_driver": "STORY_23"
+    },
+    {
+      "id": "S09",
+      "beat_id": "B5_SAFE_KITCHEN_LOOP",
+      "scene_id": "KITCHEN_STOVE_COUNTER",
+      "t0": 28.5,
+      "t1": 34.0,
+      "subject_id": "cooker_lid_assembly",
+      "subject_width_m": 0.26,
+      "shot_size": "MS",
+      "camera_angle": "eye_level",
+      "camera_pos_xyz": [0.0, 0.34, 0.70],
+      "look_at_xyz": [0.0, 0.26, 0.0],
+      "lens_mm_equiv": 35,
+      "dof_mode": "moderate",
+      "move": "static",
+      "motivation": "HOLD_STILLNESS",
+      "held_stillness_beat": false,
+      "dramatic_purpose": "Callback motif shot locking cleanly onto Frame-0 geometry so the intact cooker loops seamlessly.",
+      "reason": "Calm static 35mm medium frame aligns cooker silhouette and eye-trace directly onto S01 start pose.",
+      "layers_fg_mg_bg": {
+        "fg": "Linen dish-towel corner on front terrazzo lip",
+        "mg": "Cooker lid assembly in warm 5400K window light",
+        "bg": "Sunlit cream ceramic tile backsplash and spice jars"
+      },
+      "start_frame_desc": "Slight left-angle medium view of calm sunlit cooker on the stove.",
+      "end_frame_desc": "Centered medium pose matching S01 Frame 0 for an invisible infinite loop.",
+      "eye_trace_start_xy": [0.48, 0.43],
+      "eye_trace_end_xy": [0.50, 0.42],
+      "cut_in_type": "LOOP_SEAM_MATCH",
+      "murch_cut_driver": "EYE_TRACE_7"
+    }
+  ],
+  "sound_dramaturgy": {
+    "acoustic_world_bed": "Warm morning kitchen ambience: gentle gas-ring hiss, faint distant courtyard bird chirp, subtle aluminum thermal ticks.",
+    "silence_before_climax_window_s": [21.1, 22.0],
+    "protected_hud_free_climax_windows_s": [[22.0, 26.2]],
+    "audio_lead_notes": "Pull gas roar and room tone down to -58 dBFS at 21.1s so the crisp metallic alloy pop and vertical steam rush at 22.0s hit with tactile physical realism."
+  }
+}

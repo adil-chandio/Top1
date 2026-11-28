@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "description": "Historical registry of completed Top1 V6 productions used by anti_clone_validator.py to guarantee visual, spatial, optical, and structural diversity.",
+  "productions": [
+    {
+      "project_id": "monarch-cam-03-cockroach",
+      "channel": "monarch-cam",
+      "archetype_id": "W15_AERODYNAMIC_WIND_TUNNEL_BAY",
+      "staging_topology": "minimalist_sculptural_stage",
+      "primary_prop_anchor": "optical_breadboard_clearance_slit",
+      "palette_family": "obsidian_amber_cyan_gold",
+      "opening_hook_grammar": "macro_impossible_compression_feat",
+      "dominant_sequence_pattern": "wide_feat_to_xray_sagittal_to_human_analogy",
+      "hud_philosophy": "H3_FORENSIC_BLUEPRINT"
+    },
+    {
+      "project_id": "monarch-edits-thermal-shock-v6",
+      "channel": "monarch-edits",
+      "archetype_id": "W13_TERRACOTTA_CARPENTER_WORKSHOP",
+      "staging_topology": "minimalist_sculptural_stage",
+      "primary_prop_anchor": "dual_pedestal_comparison_table",
+      "palette_family": "obsidian_teal_amber_ice_cyan",
+      "opening_hook_grammar": "side_by_side_paradox_question",
+      "dominant_sequence_pattern": "two_shot_test_to_molecular_zoom_to_payoff",
+      "hud_philosophy": "H4_KINETIC_TEST_SPLIT"
+    },
+    {
+      "project_id": "extinct-karoo-burrow-v6",
+      "channel": "extinct-channel",
+      "archetype_id": "W19_SYNCHROTRON_TOMOGRAPHY_CHAMBER",
+      "staging_topology": "minimalist_sculptural_stage",
+      "primary_prop_anchor": "turntable_pedestal_nodule",
+      "palette_family": "obsidian_teal_amber_bio_cyan",
+      "opening_hook_grammar": "solid_specimen_laser_xray_slice",
+      "dominant_sequence_pattern": "lab_scan_to_vertigo_macro_to_past_cutaway",
+      "hud_philosophy": "H3_FORENSIC_BLUEPRINT"
+    },
+    {
+      "project_id": "extinct-karoo-field-v63",
+      "channel": "extinct-channel",
+      "archetype_id": "W02_SCORCHED_FIELD_EXPEDITION",
+      "staging_topology": "field_expedition_site",
+      "primary_prop_anchor": "excavated_karoo_sandstone_trench_with_rock_hammer_hog_brush_and_field_notebook",
+      "palette_family": "scorched_ochre_terracotta_bone_ivory_vermilion",
+      "opening_hook_grammar": "IMPOSSIBLE_SCALE_JUXTAPOSITION",
+      "dominant_sequence_pattern": "parallel_crosscut_convergence",
+      "hud_philosophy": "H1_DOCUMENTARY_LOWER_THIRD",
+      "format": "9:16_short",
+      "completed_date": "2026-11-28"
+    },
+    {
+      "project_id": "extinct-karoo-ultra-v7",
+      "channel": "extinct-channel",
+      "archetype_id": "W02_SCORCHED_FIELD_EXPEDITION",
+      "staging_topology": "open_desert_excavation_to_triassic_burrow_diorama",
+      "primary_prop_anchor": "cleaving_karoo_sandstone_cap_active_brush_safari_camp_and_living_burrow_refuge",
+      "palette_family": "sunlit_karoo_terracotta_sky_cerulean_amber_bone_vermilion_storm_slate",
+      "opening_hook_grammar": "KINETIC_EXCAVATION_BRUSH_SWEEP_PARADOX",
+      "dominant_sequence_pattern": "active_excavation_cap_cleave_to_osteology_macro_to_living_biomechanical_flashback",
+      "hud_philosophy": "H2_ARCHIVAL_FIELD_JOURNAL",
+      "format": "9:16_short",
+      "completed_date": "2026-11-28"
+    }
+  ]
+}

@@ -180,7 +180,7 @@ export function createImaxOpticalPass(renderer, width, height) {
         float coc = clamp(abs(linD - uFocusDist) / max(1.0, uDofRange), 0.0, 1.0) * uMaxBlur;
         vec2 texel = 1.0 / uRes;
 
-        vec3 col = (coc > 0.16) ? sampleVogelBokeh(vUv, coc * texel) : sampleLinear(vUv);
+        vec3 col = (rawD < 0.9998 && coc > 0.16) ? sampleVogelBokeh(vUv, coc * texel) : sampleLinear(vUv);
 
         vec2 fromCenter = vUv - 0.5;
         float edgeR2 = dot(fromCenter, fromCenter);

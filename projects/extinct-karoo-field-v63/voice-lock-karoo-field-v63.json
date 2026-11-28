@@ -1,0 +1,337 @@
+{
+  "project": "extinct-karoo-field-v63",
+  "archetype_id": "W02_SCORCHED_FIELD_EXPEDITION",
+  "hud_philosophy": "H1_DOCUMENTARY_LOWER_THIRD",
+  "specimen": "BP/1/5558 (Thrinaxodon liorhinus + Broomistega putterilli, ~250 Ma Early Triassic Karoo)",
+  "voice_id": "voice-01",
+  "time_stretch_applied": false,
+  "fps": 30,
+  "duration_s": 36.0,
+  "total_frames": 1080,
+  "vacuum_window_s": [
+    10.22,
+    10.48
+  ],
+  "vacuum_qa_window": [
+    10.245,
+    10.455
+  ],
+  "flood_surge_t": 26.45,
+  "flood_surge_f": 794,
+  "protected_climax_windows_s": [
+    [
+      10.22,
+      10.5
+    ],
+    [
+      26.0,
+      30.88
+    ]
+  ],
+  "lines": [
+    {
+      "id": "L01_HOOK",
+      "t0": 0.18,
+      "t1": 2.1986,
+      "f0": 5,
+      "f1": 66
+    },
+    {
+      "id": "L02_ASLEEP",
+      "t0": 2.54,
+      "t1": 6.6983,
+      "f0": 76,
+      "f1": 201
+    },
+    {
+      "id": "L03_PAIR",
+      "t0": 6.98,
+      "t1": 9.9856,
+      "f0": 209,
+      "f1": 300
+    },
+    {
+      "id": "L04_WAIT",
+      "t0": 10.5,
+      "t1": 10.9214,
+      "f0": 315,
+      "f1": 328
+    },
+    {
+      "id": "L05_NOT_ENEMIES",
+      "t0": 11.18,
+      "t1": 12.5652,
+      "f0": 335,
+      "f1": 377
+    },
+    {
+      "id": "L06A_RIBS",
+      "t0": 12.86,
+      "t1": 15.9133,
+      "f0": 386,
+      "f1": 477
+    },
+    {
+      "id": "L06B_NO_HUNT",
+      "t0": 16.24,
+      "t1": 17.856,
+      "f0": 487,
+      "f1": 536
+    },
+    {
+      "id": "L07_SHELTER",
+      "t0": 18.18,
+      "t1": 20.9218,
+      "f0": 545,
+      "f1": 628
+    },
+    {
+      "id": "L08_DORMANCY",
+      "t0": 21.22,
+      "t1": 25.1888,
+      "f0": 637,
+      "f1": 756
+    },
+    {
+      "id": "L09_FLOOD",
+      "t0": 25.54,
+      "t1": 28.3359,
+      "f0": 766,
+      "f1": 850
+    },
+    {
+      "id": "L10_CLUE",
+      "t0": 30.92,
+      "t1": 32.8953,
+      "f0": 928,
+      "f1": 987
+    },
+    {
+      "id": "L11_LOOP",
+      "t0": 33.18,
+      "t1": 35.428,
+      "f0": 995,
+      "f1": 1063
+    }
+  ],
+  "shots": [
+    {
+      "id": "S01",
+      "f0": 0,
+      "f1": 76,
+      "set": "TRENCH",
+      "lens_mm": 35,
+      "move": "push_in"
+    },
+    {
+      "id": "S02",
+      "f0": 76,
+      "f1": 209,
+      "set": "TRENCH",
+      "lens_mm": 35,
+      "move": "truck_lateral"
+    },
+    {
+      "id": "S03",
+      "f0": 209,
+      "f1": 307,
+      "set": "TRENCH",
+      "lens_mm": 35,
+      "move": "static"
+    },
+    {
+      "id": "S04",
+      "f0": 307,
+      "f1": 385,
+      "set": "TRENCH",
+      "lens_mm": 50,
+      "move": "dolly_zoom"
+    },
+    {
+      "id": "S05",
+      "f0": 385,
+      "f1": 487,
+      "set": "TRENCH",
+      "lens_mm": 100,
+      "move": "probe_macro_glide"
+    },
+    {
+      "id": "S06",
+      "f0": 487,
+      "f1": 545,
+      "set": "TRENCH",
+      "lens_mm": 85,
+      "move": "static"
+    },
+    {
+      "id": "S07",
+      "f0": 545,
+      "f1": 636,
+      "set": "BURROW",
+      "lens_mm": 28,
+      "move": "tracking_follow"
+    },
+    {
+      "id": "S08",
+      "f0": 636,
+      "f1": 766,
+      "set": "BURROW",
+      "lens_mm": 50,
+      "move": "static"
+    },
+    {
+      "id": "S09",
+      "f0": 766,
+      "f1": 852,
+      "set": "BURROW",
+      "lens_mm": 28,
+      "move": "pull_out"
+    },
+    {
+      "id": "S10",
+      "f0": 852,
+      "f1": 926,
+      "set": "BURROW",
+      "lens_mm": 35,
+      "move": "static"
+    },
+    {
+      "id": "S11",
+      "f0": 926,
+      "f1": 995,
+      "set": "TRENCH",
+      "lens_mm": 35,
+      "move": "static"
+    },
+    {
+      "id": "S12",
+      "f0": 995,
+      "f1": 1080,
+      "set": "TRENCH",
+      "lens_mm": 35,
+      "move": "static"
+    }
+  ],
+  "captions": [
+    {
+      "id": "L01_HOOK",
+      "t0": 0.18,
+      "t1": 2.1986,
+      "l1": "THIS ROCK HOLDS",
+      "l2": "TWO ANIMALS INSIDE",
+      "hi": "TWO ANIMALS",
+      "accent": "#E8B059",
+      "text": "THIS ROCK HOLDS \u2014 TWO ANIMALS INSIDE"
+    },
+    {
+      "id": "L02_ASLEEP",
+      "t0": 2.54,
+      "t1": 6.6983,
+      "l1": "250 MILLION YEARS AGO",
+      "l2": "ONE CURLED UP ASLEEP",
+      "hi": "250 MILLION",
+      "accent": "#F4DFB8",
+      "text": "250 MILLION YEARS AGO \u2014 ONE CURLED UP ASLEEP"
+    },
+    {
+      "id": "L03_PAIR",
+      "t0": 6.98,
+      "t1": 9.9856,
+      "l1": "A MAMMAL RELATIVE",
+      "l2": "BESIDE AN AMPHIBIAN",
+      "hi": "AMPHIBIAN",
+      "accent": "#E8B059",
+      "text": "A MAMMAL RELATIVE \u2014 BESIDE AN AMPHIBIAN"
+    },
+    {
+      "id": "L04_WAIT",
+      "t0": 10.5,
+      "t1": 10.9214,
+      "l1": "WAIT.",
+      "l2": "LOOK CLOSER AT THE BONES",
+      "hi": "WAIT.",
+      "accent": "#E63926",
+      "text": "WAIT. \u2014 LOOK CLOSER AT THE BONES"
+    },
+    {
+      "id": "L05_NOT_ENEMIES",
+      "t0": 11.18,
+      "t1": 12.5652,
+      "l1": "THEY WERE NOT ENEMIES",
+      "l2": "ZERO PREDATOR STRUGGLE",
+      "hi": "NOT ENEMIES",
+      "accent": "#E63926",
+      "text": "THEY WERE NOT ENEMIES \u2014 ZERO PREDATOR STRUGGLE"
+    },
+    {
+      "id": "L06A_RIBS",
+      "t0": 12.86,
+      "t1": 15.9133,
+      "l1": "AMPHIBIAN RIBS HEALING",
+      "l2": "WITH ZERO BITE MARKS",
+      "hi": "HEALING",
+      "accent": "#E63926",
+      "text": "AMPHIBIAN RIBS HEALING \u2014 WITH ZERO BITE MARKS"
+    },
+    {
+      "id": "L06B_NO_HUNT",
+      "t0": 16.24,
+      "t1": 17.856,
+      "l1": "SO THIS WAS NOT A HUNT",
+      "l2": "OSTEOLOGICAL PROOF",
+      "hi": "NOT A HUNT",
+      "accent": "#E8B059",
+      "text": "SO THIS WAS NOT A HUNT \u2014 OSTEOLOGICAL PROOF"
+    },
+    {
+      "id": "L07_SHELTER",
+      "t0": 18.18,
+      "t1": 20.9218,
+      "l1": "THE LIKELY STORY:",
+      "l2": "IT CRAWLED IN FOR SHELTER",
+      "hi": "SHELTER",
+      "accent": "#F4DFB8",
+      "text": "THE LIKELY STORY: \u2014 IT CRAWLED IN FOR SHELTER"
+    },
+    {
+      "id": "L08_DORMANCY",
+      "t0": 21.22,
+      "t1": 25.1888,
+      "l1": "DEEP AESTIVATION",
+      "l2": "SCORCHING DROUGHT SLEEP",
+      "hi": "AESTIVATION",
+      "accent": "#E8B059",
+      "text": "DEEP AESTIVATION \u2014 SCORCHING DROUGHT SLEEP"
+    },
+    {
+      "id": "L09_FLOOD",
+      "t0": 25.54,
+      "t1": 28.3359,
+      "l1": "THEN A SUDDEN FLOOD",
+      "l2": "FILLED & SEALED THEM",
+      "hi": "FLOOD",
+      "accent": "#E8B059",
+      "text": "THEN A SUDDEN FLOOD \u2014 FILLED & SEALED THEM"
+    },
+    {
+      "id": "L10_CLUE",
+      "t0": 30.92,
+      "t1": 32.8953,
+      "l1": "THAT IS THE CLUE",
+      "l2": "THE ROCK KEPT FOR 250M YRS",
+      "hi": "THE CLUE",
+      "accent": "#F4DFB8",
+      "text": "THAT IS THE CLUE \u2014 THE ROCK KEPT FOR 250M YRS"
+    },
+    {
+      "id": "L11_LOOP",
+      "t0": 33.18,
+      "t1": 35.428,
+      "l1": "THIS ROCK HOLDS",
+      "l2": "TWO ANIMALS.",
+      "hi": "TWO ANIMALS.",
+      "accent": "#E8B059",
+      "text": "THIS ROCK HOLDS \u2014 TWO ANIMALS."
+    }
+  ]
+}
